@@ -88,16 +88,17 @@ project_root
 
 ```
 web
-├── css/                 // css 编译完全的文件及非库文件
-├── js/                  // js 编译完全的文件,项目使用ts,故此文件夹内只有库文件的打包压缩后的文件
-├── ts/                  // ts 文件目录,遵循https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines 规范
-├── fonts/               // 字体目录
-├── imgs/                // 图片文件
-├── index.html           // 默认返回的index.html文件
-├── node_modules/        // 该文件夹需使用npm install生成,默认不需要
-├── package.json         // 项目所需的node库,遵循npm规范
-├── gruntfile.js         // js, css 压缩配置文件,grunt 你懂的
-└── nginx.conf           // nginx 配置文件
+|-  api/                 // api 所有交互的API的json格式样例，命名规则 checklogin（默认返回的JSON格式），checklogin_METHOD（METHOD 为请求发送的方式，小写，内为发送的请求json样例），
+|-  css/                 // css 编译完全的文件及非库文件
+|-  js/                  // js 编译完全的文件,项目使用ts,故此文件夹内只有库文件的打包压缩后的文件
+|-  ts/                  // ts 文件目录,遵循https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines 规范
+|-  fonts/               // 字体目录
+|-  imgs/                // 图片文件
+|-  index.html           // 默认返回的index.html文件
+|-  node_modules/        // 该文件夹需使用npm install生成,默认不需要
+|-  package.json         // 项目所需的node库,遵循npm规范
+|-  gruntfile.js         // js, css 压缩配置文件,grunt 你懂的
+\-  nginx.conf           // nginx 配置文件
 ```
 详细编码规范后期说明
 
