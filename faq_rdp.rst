@@ -33,7 +33,7 @@ RDP 协议资产连接错误排查思路
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务url, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=xxxxxx jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=xxxxxx jumpserver/jms_guacamole:1.4.8
 
     # 正常运行后到Jumpserver 会话管理-终端管理 里面查看 gua 的状态是否为绿色(等待大概5s后刷新页面)
 
@@ -42,7 +42,7 @@ RDP 协议资产连接错误排查思路
 .. code-block:: vim
 
     # Windows 7/2008 勾选 允许运行任意版本远程桌面的计算机连接(较不安全)(L)
-    # Windows 8/10/2012 勾选 允许远程连接到此计算机(L)
+    # Windows 8/10/2012 只勾选 允许远程连接到此计算机(L), 其他选项请取消勾选
 
     # Windows防火墙-高级设置-入站规则 把远程桌面开头的选项 右键-启用规则
     # Windows 7/2008 启用 远程桌面(TCP-In)

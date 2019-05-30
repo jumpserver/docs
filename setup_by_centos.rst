@@ -338,10 +338,10 @@ Luna 已改为纯前端, 需要 Nginx 来运行访问
 .. code-block:: shell
 
     $ cd /opt
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.4.8/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.4.8/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
@@ -387,10 +387,10 @@ Luna 已改为纯前端, 需要 Nginx 来运行访问
     $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties  # guacamole 配置文件
 
     $ cd /config
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-    $ tar xf apache-tomcat-8.5.40.tar.gz
-    $ rm -rf apache-tomcat-8.5.40.tar.gz
-    $ mv apache-tomcat-8.5.40 tomcat8
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz
+    $ tar xf apache-tomcat-8.5.41.tar.gz
+    $ rm -rf apache-tomcat-8.5.41.tar.gz
+    $ mv apache-tomcat-8.5.41 tomcat8
     $ rm -rf /config/tomcat8/webapps/*
     $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war  # guacamole client
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat8/conf/server.xml  # 修改默认端口为 8081
