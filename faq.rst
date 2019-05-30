@@ -136,7 +136,7 @@ FAQ
         client_max_body_size 100m;  # 上传录像大小限制
 
         location / {
-                # 这里的IP是后端服务器的IP, 后端服务器就是文档一步一步安装来的
+                # 这里的IP是后端服务器的IP
                 proxy_pass http://192.168.244.144;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;

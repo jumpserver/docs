@@ -47,7 +47,9 @@
     $ source /opt/py3/bin/activate
 
     # 下载 Jumpserver
-    $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+    $ git clone https://github.com/jumpserver/jumpserver.git
+    $ cd /opt/jumpserver
+    $ git checkout 1.4.8
 
     # 安装依赖 RPM 包
     $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
