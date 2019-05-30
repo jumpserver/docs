@@ -320,6 +320,9 @@
     # SFTP是否显示隐藏文件
     # SFTP_SHOW_HIDDEN_FILE: false
 
+    # 是否复用和用户后端资产已建立的连接(用户不会复用其他用户的连接)
+    # REUSE_CONNECTION: true
+
 .. code-block:: shell
 
     $ ./cocod start -d  # 后台运行使用 -d 参数./cocod start -d
