@@ -125,7 +125,7 @@ Ubuntu 18.04 安装文档
 .. code-block:: yaml
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    # 加密秘钥 生产环境中请修改为随机字符串, 请勿外泄
+    # 加密秘钥 生产环境中请修改为随机字符串, 请勿外泄, PS: 纯数字不可以
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
