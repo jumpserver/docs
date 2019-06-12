@@ -348,18 +348,18 @@ Luna 已改为纯前端, 需要 Nginx 来运行访问
     $ cd /opt
     $ git clone --depth=1 https://github.com/jumpserver/docker-guacamole.git
     $ cd docker-guacamole
-    $ tar xf guacamole-server-0.9.14.tar.gz
-    $ cd guacamole-server-0.9.14
+    $ tar xf guacamole-server-1.0.0.tar.gz
+    $ cd guacamole-server-1.0.0
     $ autoreconf -fi
     $ ./configure --with-init-dir=/etc/init.d
     $ make && make install
     $ ln -s /usr/local/lib/freerdp/*.so /usr/lib/x86_64-linux-gnu/freerdp/
     $ cd ..
-    $ rm -rf guacamole-server-0.9.14
+    $ rm -rf guacamole-server-1.0.0
     $ ldconfig
 
     $ mkdir -p /config/guacamole /config/guacamole/lib /config/guacamole/extensions  # 创建 guacamole 目录
-    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-0.9.14.jar /config/guacamole/extensions/guacamole-auth-jumpserver-0.9.14.jar
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
     $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties  # guacamole 配置文件
 
     $ cd /config
@@ -376,14 +376,14 @@ Luna 已改为纯前端, 需要 Nginx 来运行访问
 .. code-block:: shell
 
     $ cd /config
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-    $ tar xf apache-tomcat-8.5.40.tar.gz
-    $ rm -rf apache-tomcat-8.5.40.tar.gz
-    $ mv apache-tomcat-8.5.40 tomcat8
-    $ rm -rf /config/tomcat8/webapps/*
-    $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war  # guacamole client
-    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat8/conf/server.xml  # 修改默认端口为 8081
-    $ sed -i 's/FINE/WARNING/g' /config/tomcat8/conf/logging.properties  # 修改 log 等级为 WARNING
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.21/bin/apache-tomcat-9.0.21.tar.gz
+    $ tar xf apache-tomcat-9.0.21.tar.gz
+    $ rm -rf apache-tomcat-9.0.21.tar.gz
+    $ mv apache-tomcat-9.0.21 tomcat9
+    $ rm -rf /config/tomcat9/webapps/*
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war  # guacamole client
+    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml  # 修改默认端口为 8081
+    $ sed -i 's/FINE/WARNING/g' /config/tomcat9/conf/logging.properties  # 修改 log 等级为 WARNING
 
 **5.4 配置环境变量**
 
@@ -406,7 +406,7 @@ Luna 已改为纯前端, 需要 Nginx 来运行访问
 .. code-block:: shell
 
     $ /etc/init.d/guacd restart
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 这里所需要注意的是 guacamole 暴露出来的端口是 8081, 若与主机上其他端口冲突请自定义一下。
 

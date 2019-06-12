@@ -473,10 +473,10 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
-    $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war
-    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-0.9.14.jar /config/guacamole/extensions/guacamole-auth-jumpserver-0.9.14.jar
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
 
     $ cd /config
     $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
@@ -492,7 +492,7 @@
     $ echo "export BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN" >> ~/.bashrc
 
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 
@@ -724,10 +724,10 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
-    $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war
-    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-0.9.14.jar /config/guacamole/extensions/guacamole-auth-jumpserver-0.9.14.jar
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
 
     $ cd /config
     $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
@@ -743,7 +743,7 @@
     $ echo "export BOOTSTRAP_TOKEN=*****" >> ~/.bashrc
 
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 
@@ -974,10 +974,10 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
-    $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war
-    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-0.9.14.jar /config/guacamole/extensions/guacamole-auth-jumpserver-0.9.14.jar
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
 
     $ cd /config
     $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
@@ -993,7 +993,7 @@
     $ echo "export BOOTSTRAP_TOKEN=*****" >> ~/.bashrc
 
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 
@@ -1070,12 +1070,12 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
-    $ ln -sf /opt/docker-guacamole/guacamole-0.9.14.war /config/tomcat8/webapps/ROOT.war
-    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-0.9.14.jar /config/guacamole/extensions/guacamole-auth-jumpserver-0.9.14.jar
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 
@@ -1150,10 +1150,12 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 
@@ -1228,10 +1230,12 @@
 
     $ cd /opt/docker-guacamole
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ git pull
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
 **Luna**
 

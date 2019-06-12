@@ -47,21 +47,20 @@ Systemd 管理自启
 .. code-block:: vim
 
     # Guacamole
-    $ chkconfig guacd on
     $ vi /usr/lib/systemd/system/guacamole.service
     [Unit]
     Description=guacamole
-    After=network.target jms.service
+    After=network.target jms.service guacd.service
     Wants=jms.service
 
     [Service]
     Type=forking
-    # PIDFile=/config/tomcat8/tomcat.pid
+    # PIDFile=/config/tomcat9/tomcat.pid
     # BOOTSTRAP_TOKEN 根据实际情况修改
     Environment="JUMPSERVER_SERVER=http://127.0.0.1:8080" "JUMPSERVER_KEY_DIR=/config/guacamole/keys" "GUACAMOLE_HOME=/config/guacamole" "BOOTSTRAP_TOKEN=******"
-    ExecStart=/config/tomcat8/bin/startup.sh
+    ExecStart=/config/tomcat9/bin/startup.sh
     ExecReload=
-    ExecStop=/config/tomcat8/bin/shutdown.sh
+    ExecStop=/config/tomcat9/bin/shutdown.sh
 
     [Install]
     WantedBy=multi-user.target
@@ -71,16 +70,19 @@ Systemd 管理自启
     # 开机自启设置
     $ systemctl enable jms
     $ systemctl enable coco
+    $ systemctl enable guacd
     $ systemctl enable guacamole
 
     # 启动
     $ systemctl start jms
     $ systemctl start coco
+    $ systemctl start guacd
     $ systemctl start guacamole
 
     # 停止
     $ systemctl stop jms
     $ systemctl stop coco
+    $ systemctl stop guacd
     $ systemctl stop guacamole
 
 Docker 组件部署自启 (Centos 7)
