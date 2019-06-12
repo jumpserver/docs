@@ -12,7 +12,7 @@
 ~~~~~~~~~~~~~~
 - Jumpserver 默认端口为 8080/tcp 配置文件 jumpserver/config.yml
 - Coco 默认 SSH 端口为 2222/tcp, 默认 Web Terminal 端口为 5000/tcp 配置文件在 coco/config.yml
-- Guacamole 默认端口为 8081/tcp, 配置文件 /config/tomcat8/conf/server.xml
+- Guacamole 默认端口为 8081/tcp, 配置文件 /config/tomcat9/conf/server.xml
 - Nginx 默认端口为 80/tcp
 - Redis 默认端口为 6379/tcp
 - Mysql 默认端口为 3306/tcp

@@ -22,10 +22,10 @@ RDP 协议资产连接错误排查思路
     $ env | grep BOOTSTRAP_TOKEN
 
     $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
+    $ sh /config/tomcat9/bin/shutdown.sh
     $ rm -rf /config/guacamole/keys/*
     $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
+    $ sh /config/tomcat9/bin/startup.sh
 
     # docker 部署请直接删除容器后重建, 记得一定要先在 终端管理 删除不在线的组件
     $ docker stop jms_guacamole
