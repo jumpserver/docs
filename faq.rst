@@ -58,16 +58,7 @@ FAQ
     > u.reset_password('password')  # password 为你要修改的密码
     > u.save()
 
-4. 修改 SSH 资产登录超时时间(TIMEOUT 默认 10 秒)
-
-.. code-block:: shell
-
-    $ vi /opt/coco/config.yml
-
-    # 把 SSH_TIMEOUT: 15 修改成你想要的数字 单位为：秒
-    SSH_TIMEOUT: 60
-
-5. 设置浏览器会话过期
+4. 设置浏览器会话过期
 
 .. code-block:: shell
 
@@ -83,14 +74,14 @@ FAQ
 
     # 86400 单位是秒(s)
 
-6. 资产授权说明
+5. 资产授权说明
 
 .. code-block:: vim
 
     资产授权就是把 系统用户关联到用户 并授权到 对应的资产
     用户只能看到自己被授权的资产
 
-7. Web Terminal 页面经常需要重新刷新页面才能连接资产
+6. Web Terminal 页面经常需要重新刷新页面才能连接资产
 
 .. code-block:: nginx
 
@@ -136,7 +127,7 @@ FAQ
         client_max_body_size 100m;  # 上传录像大小限制
 
         location / {
-                # 这里的IP是后端服务器的IP, 后端服务器就是文档一步一步安装来的
+                # 这里的IP是后端服务器的IP
                 proxy_pass http://192.168.244.144;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;
@@ -167,7 +158,7 @@ FAQ
         }
     }
 
-8. 连接资产时提示 System user <xxx> and asset <xxx> protocol are inconsistent.
+7. 连接资产时提示 System user <xxx> and asset <xxx> protocol are inconsistent.
 
 .. code-block:: shell
 
@@ -187,7 +178,7 @@ FAQ
     >>> exit()
 
 
-9. 重启服务器后无法访问 Jumpserver, 页面提示502 或者 403等
+8. 重启服务器后无法访问 Jumpserver, 页面提示502 或者 403等
 
 .. code-block:: shell
 
@@ -201,7 +192,7 @@ FAQ
 
     # Centos 7 在不关闭 selinux 和 防火墙 的情况下使用 Jumpserver
     $ firewall-cmd --zone=public --add-port=80/tcp --permanent  # nginx 端口
-    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 coco
+    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 koko
       --permanent  永久生效, 没有此参数重启后失效
 
     $ firewall-cmd --reload  # 重新载入规则
@@ -209,7 +200,7 @@ FAQ
     $ setsebool -P httpd_can_network_connect 1  # 设置 selinux 允许 http 访问
 
 
-10. 传递明文数据到 Jumpserver 数据库(数据导入)
+9. 传递明文数据到 Jumpserver 数据库(数据导入)
 
 .. code-block:: shell
 
@@ -222,7 +213,7 @@ FAQ
     >>> user.public_key = '明文key'
     >>> user.save()
 
-11. 登录提示登录频繁
+10. 登录提示登录频繁
 
 .. code-block:: shell
 
