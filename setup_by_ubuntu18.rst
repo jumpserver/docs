@@ -129,7 +129,7 @@ Ubuntu 18.04 安装文档
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制
+    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制
     BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -203,7 +203,7 @@ Ubuntu 18.04 安装文档
 
 运行不报错, 请继续往下操作
 
-三. 安装 SSH Server 和 WebSocket Server: Coco
+三. 安装 SSH Server 和 WebSocket Server: koko
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **3.1 安装 Docker**
@@ -218,11 +218,11 @@ Ubuntu 18.04 安装文档
     $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
     $ systemctl restart docker.service
 
-**3.2 部署 Coco**
+**3.2 部署 koko**
 
 .. code-block:: shell
 
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 四. 安装 RDP Server 和 VNC Server: Guacamole
@@ -347,7 +347,7 @@ Ubuntu 18.04 安装文档
 
 默认账号: admin 密码: admin
 
-到Jumpserver 会话管理-终端管理 检查 Coco Guacamole 等应用的注册
+到Jumpserver 会话管理-终端管理 检查 koko Guacamole 等应用的注册
 
 **测试连接**
 

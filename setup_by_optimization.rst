@@ -17,17 +17,7 @@
     LOG_LEVEL: ERROR
     ...
 
-.. code-block:: shell
-
-    $ cd /opt/coco
-    $ vi config.yml
-
-    # 调整 log_level
-    ...
-    LOG_LEVEL: ERROR
-    ...
-
-    # 设置好后重启 jumpserver 和 coco
+    # 设置好后重启 jumpserver
 
 **静态资源 OSS 加速访问**
 

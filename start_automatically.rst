@@ -1,90 +1,6 @@
 开机自启
 ------------------
 
-Systemd 管理自启
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- 一步一步安装适用 (CentOS 7)
-
-.. code-block:: vim
-
-    # Jumpserver
-    $ vi /usr/lib/systemd/system/jms.service
-    [Unit]
-    Description=jms
-    After=network.target mariadb.service redis.service
-    Wants=mariadb.service redis.service
-
-    [Service]
-    Type=forking
-    Environment="PATH=/opt/py3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin"
-    ExecStart=/opt/jumpserver/jms start all -d
-    ExecReload=
-    ExecStop=/opt/jumpserver/jms stop
-
-    [Install]
-    WantedBy=multi-user.target
-
-.. code-block:: vim
-
-    # Coco
-    $ vi /usr/lib/systemd/system/coco.service
-    [Unit]
-    Description=coco
-    After=network.target jms.service
-
-    [Service]
-    Type=forking
-    PIDFile=/opt/coco/coco.pid
-    Environment="PATH=/opt/py3/bin"
-    ExecStart=/opt/coco/cocod start -d
-    ExecReload=
-    ExecStop=/opt/coco/cocod stop
-
-    [Install]
-    WantedBy=multi-user.target
-
-.. code-block:: vim
-
-    # Guacamole
-    $ vi /usr/lib/systemd/system/guacamole.service
-    [Unit]
-    Description=guacamole
-    After=network.target jms.service guacd.service
-    Wants=jms.service
-
-    [Service]
-    Type=forking
-    # PIDFile=/config/tomcat9/tomcat.pid
-    # BOOTSTRAP_TOKEN 根据实际情况修改
-    Environment="JUMPSERVER_SERVER=http://127.0.0.1:8080" "JUMPSERVER_KEY_DIR=/config/guacamole/keys" "GUACAMOLE_HOME=/config/guacamole" "BOOTSTRAP_TOKEN=******"
-    ExecStart=/config/tomcat9/bin/startup.sh
-    ExecReload=
-    ExecStop=/config/tomcat9/bin/shutdown.sh
-
-    [Install]
-    WantedBy=multi-user.target
-
-.. code-block:: shell
-
-    # 开机自启设置
-    $ systemctl enable jms
-    $ systemctl enable coco
-    $ systemctl enable guacd
-    $ systemctl enable guacamole
-
-    # 启动
-    $ systemctl start jms
-    $ systemctl start coco
-    $ systemctl start guacd
-    $ systemctl start guacamole
-
-    # 停止
-    $ systemctl stop jms
-    $ systemctl stop coco
-    $ systemctl stop guacd
-    $ systemctl stop guacamole
-
 Docker 组件部署自启 (Centos 7)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -121,7 +37,7 @@ Docker 组件部署自启 (Centos 7)
     export LANG=zh_CN.UTF-8
 
     systemctl start jms
-    docker start jms_coco
+    docker start jms_koko
     docker start jms_guacamole
 
     exit 0
@@ -136,7 +52,7 @@ Docker 组件部署自启 (Centos 7)
 
     export LANG=zh_CN.UTF-8
 
-    docker stop jms_coco
+    docker stop jms_koko
     docker stop jms_guacamole
     systemctl stop jms
 
@@ -183,7 +99,7 @@ Docker 组件部署自启 (Ubuntu 18)
     export LANG=zh_CN.utf8
 
     systemctl start jms
-    docker start jms_coco
+    docker start jms_koko
     docker start jms_guacamole
 
     exit 0
@@ -198,7 +114,7 @@ Docker 组件部署自启 (Ubuntu 18)
 
     export LANG=zh_CN.utf8
 
-    docker stop jms_coco
+    docker stop jms_koko
     docker stop jms_guacamole
     systemctl stop jms
 

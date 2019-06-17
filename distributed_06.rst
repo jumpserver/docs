@@ -1,4 +1,4 @@
-分布式部署文档 - coco 部署
+分布式部署文档 - koko 部署
 ----------------------------------------------------
 
 说明
@@ -15,9 +15,9 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   |    Coco    | 192.168.100.40  |   2222, 5000  |          Nginx         |
+|    TCP   |    Koko    | 192.168.100.40  |   2222, 5000  |          Nginx         |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   |   Coco01   | 192.168.100.40  |   2223, 5001  |          Nginx         |
+|    TCP   |   Koko01   | 192.168.100.40  |   2223, 5001  |          Nginx         |
 +----------+------------+-----------------+---------------+------------------------+
 
 开始安装
@@ -43,14 +43,15 @@
     $ systemctl start docker
 
     # 通过 docker 部署
-    $ docker run --name jms_coco -d \
+    $ docker run --name jms_koko -d \
         -p 2222:2222 \
         -p 5000:5000 \
         -e CORE_HOST=http://192.168.100.30:8080 \
         -e BOOTSTRAP_TOKEN=你的token \
-        jumpserver/jms_coco:1.5.0
+        -e LOG_LEVEL=ERROR \
+        jumpserver/jms_koko:1.5.0
 
-    # 访问 http://192.168.100.100/terminal/terminal/ 检查 coco 注册
+    # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
 
 
 多节点部署
@@ -62,11 +63,12 @@
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="5001" accept"
     $ firewall-cmd --reload
 
-    $ docker run --name jms_coco1 -d \
+    $ docker run --name jms_koko1 -d \
         -p 2223:2222 \
         -p 5001:5000 \
         -e CORE_HOST=http://192.168.100.30:8080 \
         -e BOOTSTRAP_TOKEN=你的token \
-        jumpserver/jms_coco:1.5.0
+        -e LOG_LEVEL=ERROR \
+        jumpserver/jms_koko:1.5.0
 
-    # 访问 http://192.168.100.100/terminal/terminal/ 检查 coco 注册
+    # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
