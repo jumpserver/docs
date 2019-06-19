@@ -447,7 +447,7 @@ CentOS 7 安装文档
         }
 
         location /coco/ {
-            proxy_pass       http://kokows/koko/;
+            proxy_pass       http://kokows/coco/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
