@@ -395,7 +395,7 @@ CentOS 7 安装文档
 
     $ vi /etc/nginx/conf.d/jumpserver.conf
     upstream jumpserver {
-        server localhost:80;
+        server localhost:8080;
         # 这里是 jumpserver 的后端ip
     }
 
