@@ -114,11 +114,9 @@ Ubuntu 18.04 安装文档
     $ sed -i "s/# LOG_LEVEL: DEBUG/LOG_LEVEL: ERROR/g" /opt/jumpserver/config.yml
     $ sed -i "s/# SESSION_EXPIRE_AT_BROWSER_CLOSE: false/SESSION_EXPIRE_AT_BROWSER_CLOSE: true/g" /opt/jumpserver/config.yml
     $ sed -i "s/DB_PASSWORD: /DB_PASSWORD: $DB_PASSWORD/g" /opt/jumpserver/config.yml
-    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
 
     $ echo -e "\033[31m 你的SECRET_KEY是 $SECRET_KEY \033[0m"
     $ echo -e "\033[31m 你的BOOTSTRAP_TOKEN是 $BOOTSTRAP_TOKEN \033[0m"
-    $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
     $ vim config.yml  # 确认内容有没有错误
 
@@ -217,6 +215,8 @@ Ubuntu 18.04 安装文档
     $ apt-get -y install docker-ce
     $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
     $ systemctl restart docker.service
+    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
+    $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
 **3.2 部署 koko**
 
