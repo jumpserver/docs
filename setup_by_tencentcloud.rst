@@ -47,6 +47,9 @@
       && yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt) \
       && source /opt/py3/bin/activate \
       && pip install --upgrade pip setuptools -i http://mirrors.tencentyun.com/pypi/simple \
+      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep ansible) -i http://mirrors.tencentyun.com/pypi/simple \
+      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep python-gssapi) -i http://mirrors.tencentyun.com/pypi/simple \
+      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep python-keycloak) -i http://mirrors.tencentyun.com/pypi/simple \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i http://mirrors.tencentyun.com/pypi/simple \
       && curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io \
       && systemctl restart docker \
