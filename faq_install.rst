@@ -92,8 +92,13 @@
 .. code-block:: vim
 
     # 这是因为你的 config.yml 文件格式有误
-    # 常见的错误就是字段为空或者: 后面有一个空格
-    # SECRET_KEY: xxxxx  # 不要忽略: 后面的空格
+    # 常见的错误就是字段为空和: 后面少一个空格, 参考下面, 请勿照抄
+    # SECRET_KEY: 5RLbBjm8AkMSvnft...  # 不要忽略: 后面的空格, 不支持纯数字
+    # BOOTSTRAP_TOKEN: ihR4WG4gRShCnpQL...  # 不要忽略: 后面的空格, 不支持纯数字
+    # DB_PASSWORD: '123456'  # 密码纯数字用单引号括起来
+    # DB_PASSWORD: cPzxaiUAtA5IkdT2...  # 非纯数字可以不用单引号
+    # REDIS_PASSWORD: '888888'  # 密码纯数字用单引号括起来
+    # REDIS_PASSWORD: Ma5bzA3gVK5oY17l...  # 非纯数字可以不用单引号
 
 13. 启动 jumpserver 后, 访问 8080 端口页面显示不正常
 
