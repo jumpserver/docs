@@ -47,7 +47,7 @@ CentOS 7 安装文档
     $ systemctl start redis
 
     # 安装 MySQL, 如果不使用 Mysql 可以跳过相关 Mysql 安装和配置, 支持sqlite3, mysql, postgres等
-    $ yum -y install mariadb mariadb-devel mariadb-server mariadb-shared # centos7下叫mariadb, 用法与mysql一致
+    $ yum -y install mariadb mariadb-devel mariadb-server MariaDB-shared # centos7下叫mariadb, 用法与mysql一致
     $ systemctl enable mariadb
     $ systemctl start mariadb
     # 创建数据库 Jumpserver 并授权
@@ -213,7 +213,7 @@ CentOS 7 安装文档
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务端口, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.0
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.0
 
 .. code-block:: shell

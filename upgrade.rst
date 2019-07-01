@@ -153,12 +153,12 @@
 
 .. code-block:: shell
 
-    # 1.0.x 升级到最新版本需要执行迁移脚本 (新版本授权管理更新, 升级前版本不是 1.0.x 请跳过)
+    # 升级前版本小于 1.1.0 需要执行此步骤
     $ sh 2018_04_11_migrate_permissions.sh
 
 .. code-block:: shell
 
-    # 任意版本升级到 1.4.0 版本, 需要执行(升级前版本小于 1.4.0 需要执行此步骤, 没有此文件则跳过)
+    # 升级前版本小于 1.4.0 需要执行此步骤, 没有此文件则跳过
     $ sh 2018_07_15_set_win_protocol_to_ssh.sh
 
 .. code-block:: shell
@@ -169,7 +169,7 @@
 
 .. code-block:: nginx
 
-    # 任意版本升级到 1.4.2 版本, 需要修改 nginx 配置 (升级前版本小于 1.4.2 需要执行此步骤)
+    # 升级前版本小于 1.4.2 需要执行此步骤
     $ vi /etc/nginx/conf.d/jumpserver.conf  # 部分用户的配置文件是/etc/nginx/nginx.conf
 
     server {
@@ -415,7 +415,7 @@
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
     $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.0
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.0
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
@@ -551,7 +551,7 @@
     $ docker pull jumpserver/jms_guacamole:1.5.0
 
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_koko:1.5.0
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.0
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
@@ -686,7 +686,7 @@
     $ docker pull jumpserver/jms_guacamole:1.5.0
 
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_koko:1.5.0
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.0
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
@@ -738,7 +738,7 @@
     $ docker rm jms_guacamole
     $ docker pull jumpserver/jms_koko:1.5.0
     $ docker pull jumpserver/jms_guacamole:1.5.0
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** -e LOG_LEVEL=ERROR jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.0
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.0
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
