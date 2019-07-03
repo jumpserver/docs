@@ -435,6 +435,10 @@ CentOS 7 安装文档
             try_files $uri / /index.html;
             alias /opt/luna/;
         }
+       
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
 
         location /socket.io/ {
             proxy_pass       http://kokows/socket.io/;  # koko
