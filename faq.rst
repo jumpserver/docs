@@ -182,23 +182,7 @@ FAQ
 
 .. code-block:: shell
 
-    # CentOS 7 临时关闭
-    $ setenforce 0  # 临时关闭 selinux, 重启后失效
-    $ systemctl stop firewalld.service  # 临时关闭防火墙, 重启后失效
-
-    # Centos 7 如需永久关闭, 还需执行下面步骤
-    $ sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config  # 禁用 selinux
-    $ systemctl disable firewalld.service  # 禁用防火墙
-
-    # Centos 7 在不关闭 selinux 和 防火墙 的情况下使用 Jumpserver
-    $ firewall-cmd --zone=public --add-port=80/tcp --permanent  # nginx 端口
-    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 koko
-      --permanent  永久生效, 没有此参数重启后失效
-
-    $ firewall-cmd --reload  # 重新载入规则
-
-    $ setsebool -P httpd_can_network_connect 1  # 设置 selinux 允许 http 访问
-
+    # 确定 防火墙 和 selinux 已经正确放行或者关闭, 然后检查 jms 是否已经启动成功
 
 9. 传递明文数据到 Jumpserver 数据库(数据导入)
 
