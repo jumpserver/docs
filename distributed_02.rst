@@ -64,10 +64,10 @@
 
     # 下载 luna
     $ cd /opt
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
@@ -104,10 +104,10 @@
             # 这里是 Mariadb 的后端ip
         }
 
-        upstream kokossh {
+        upstream cocossh {
             server 192.168.100.40:2222;
             server 192.168.100.40:2223;  # 多节点
-            # 这里是 koko ssh 的后端ip
+            # 这里是 coco ssh 的后端ip
             least_conn;
         }
 
@@ -119,7 +119,7 @@
 
         server {
             listen 2222;
-            proxy_pass kokossh;
+            proxy_pass cocossh;
             proxy_connect_timeout 1s;  # detect failure quickly
         }
     }
@@ -157,10 +157,10 @@
         # 这里是 jumpserver 的后端ip
     }
 
-    upstream kokows {
+    upstream cocows {
         server 192.168.100.40:5000 weight=1;
         server 192.168.100.40:5001 weight=1;  # 多节点
-        # 这里是 koko ws 的后端ip
+        # 这里是 coco ws 的后端ip
         ip_hash;
     }
 
@@ -205,7 +205,7 @@
         }
 
         location /socket.io/ {
-            proxy_pass       http://kokows/socket.io/;  # koko
+            proxy_pass       http://cocows/socket.io/;  # coco
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -217,7 +217,7 @@
         }
 
         location /coco/ {
-            proxy_pass       http://kokows/coco/;
+            proxy_pass       http://cocows/coco/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -244,7 +244,7 @@
     $ systemctl start nginx
 
     # 访问 http://192.168.100.100
-    # 默认账号: admin 密码: admin  到会话管理-终端管理 检查 koko Guacamole 等应用的注册
+    # 默认账号: admin 密码: admin  到会话管理-终端管理 检查 coco Guacamole 等应用的注册
     # 测试连接
     $ ssh -p2222 admin@192.168.100.100
     $ sftp -P2222 admin@192.168.100.100

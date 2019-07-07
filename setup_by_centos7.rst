@@ -30,7 +30,7 @@ CentOS 7 安装文档
     # 防火墙 与 selinux 设置说明, 如果已经关闭了 防火墙 和 Selinux 的用户请跳过设置
     $ systemctl start firewalld
     $ firewall-cmd --zone=public --add-port=80/tcp --permanent  # nginx 端口
-    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 koko
+    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 coco
       --permanent  永久生效, 没有此参数重启后失效
 
     $ firewall-cmd --reload  # 重新载入规则
@@ -120,7 +120,7 @@ CentOS 7 安装文档
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制
     BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -187,12 +187,12 @@ CentOS 7 安装文档
 
     # 运行 Jumpserver
     $ cd /opt/jumpserver
-    $ ./jms start all -d  # 后台运行使用 -d 参数./jms start all -d
+    $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
 .. code-block:: shell
 
-    # 安装 docker 部署 koko 与 guacamole
+    # 安装 docker 部署 coco 与 guacamole
     $ yum install -y yum-utils device-mapper-persistent-data lvm2
     $ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
     $ yum makecache fast
@@ -213,17 +213,17 @@ CentOS 7 安装文档
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务端口, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.1
 
 .. code-block:: shell
 
     # 安装 Web Terminal 前端: Luna  需要 Nginx 来运行访问 访问(https://github.com/jumpserver/luna/releases)下载对应版本的 release 包, 直接解压, 不需要编译
     $ cd /opt
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
@@ -304,7 +304,7 @@ CentOS 7 安装文档
     $ systemctl start nginx
 
     # 访问 http://192.168.244.144 (注意 没有 :8080 通过 nginx 代理端口进行访问)
-    # 默认账号: admin 密码: admin  到会话管理-终端管理 接受 koko Guacamole 等应用的注册
+    # 默认账号: admin 密码: admin  到会话管理-终端管理 接受 coco Guacamole 等应用的注册
     # 测试连接
     $ ssh -p2222 admin@192.168.244.144
     $ sftp -P2222 admin@192.168.244.144
@@ -323,14 +323,14 @@ CentOS 7 安装文档
 
 .. code-block:: shell
 
-    # koko 服务默认运行在单核心下面, 当负载过高时会导致用户访问变慢, 这时可运行多个 docker 容器缓解
-    $ docker run --name jms_koko01 -d -p 2223:2222 -p 5001:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_koko02 -d -p 2224:2222 -p 5002:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.0
+    # coco 服务默认运行在单核心下面, 当负载过高时会导致用户访问变慢, 这时可运行多个 docker 容器缓解
+    $ docker run --name jms_coco01 -d -p 2223:2222 -p 5001:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_coco02 -d -p 2224:2222 -p 5002:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_coco:1.5.1
     ...
 
     # guacamole 也是一样
-    $ docker run --name jms_guacamole01 -d -p 8082:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.0
-    $ docker run --name jms_guacamole02 -d -p 8083:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_guacamole01 -d -p 8082:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.1
+    $ docker run --name jms_guacamole02 -d -p 8083:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.1
     ...
 
     # nginx 代理设置
@@ -356,16 +356,16 @@ CentOS 7 安装文档
         access_log /var/log/nginx/tcp-access.log  proxy;
         open_log_file_cache off;
 
-        upstream kokossh {
+        upstream cocossh {
             server localhost:2222 weight=1;
             server localhost:2223 weight=1;  # 多节点
             server localhost:2224 weight=1;  # 多节点
-            # 这里是 koko ssh 的后端ip
+            # 这里是 coco ssh 的后端ip
             hash $remote_addr;
         }
         server {
             listen 2220;  # 不能使用已经使用的端口, 自行修改, 用户ssh登录时的端口
-            proxy_pass kokossh;
+            proxy_pass cocossh;
             proxy_connect_timeout 10s;
         }
     }
@@ -401,11 +401,11 @@ CentOS 7 安装文档
         # 这里是 jumpserver 的后端ip
     }
 
-    upstream kokows {
+    upstream cocows {
         server localhost:5000 weight=1;
         server localhost:5001 weight=1;  # 多节点
         server localhost:5002 weight=1;  # 多节点
-        # 这里是 koko ws 的后端ip
+        # 这里是 coco ws 的后端ip
         ip_hash;
     }
 
@@ -437,7 +437,7 @@ CentOS 7 安装文档
         }
 
         location /socket.io/ {
-            proxy_pass       http://kokows/socket.io/;  # koko
+            proxy_pass       http://cocows/socket.io/;  # coco
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -449,7 +449,7 @@ CentOS 7 安装文档
         }
 
         location /coco/ {
-            proxy_pass       http://kokows/coco/;
+            proxy_pass       http://cocows/coco/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

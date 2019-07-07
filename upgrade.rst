@@ -165,7 +165,7 @@
 
     # 启动 jumpserver
     $ cd ../
-    $ ./jms start all -d
+    $ ./jms start -d
 
 .. code-block:: nginx
 
@@ -236,6 +236,9 @@
     # 保存后重新载入配置
     $ nginx -s reload
 
+1.4.4 升级到 1.4.8 (推荐)
+
+
 1.4.4 升级到最新版本
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -283,7 +286,7 @@
     SECRET_KEY: *****
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
     BOOTSTRAP_TOKEN: *****
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -378,7 +381,7 @@
     $ sh 1.4.4_to_1.4.5_migrations.sh
 
     $ cd ../
-    $ ./jms start all -d
+    $ ./jms start -d
 
 **Luna**
 
@@ -388,35 +391,35 @@
 
     $ cd /opt
     $ rm -rf luna luna.tar.gz
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
 
     # 注意把浏览器缓存清理下
 
-**Docker koko Guacamole**
+**Docker coco Guacamole**
 
-说明: Docker 部署的 koko 与 guacamole 升级说明
+说明: Docker 部署的 coco 与 guacamole 升级说明
 
 .. code-block:: shell
 
     # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_koko
+    $ docker stop jms_coco
     $ docker stop jms_guacamole
-    $ docker rm jms_koko
+    $ docker rm jms_coco
     $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_koko:1.5.0
-    $ docker pull jumpserver/jms_guacamole:1.5.0
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker pull jumpserver/jms_guacamole:1.5.1
 
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
     $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.1
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
 
@@ -449,7 +452,7 @@
     SECRET_KEY: *****
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
     BOOTSTRAP_TOKEN: *****
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -515,7 +518,7 @@
 .. code-block:: shell
 
     $ pip install -r requirements/requirements.txt
-    $ ./jms start all -d
+    $ ./jms start -d
 
 **Luna**
 
@@ -525,34 +528,34 @@
 
     $ cd /opt
     $ rm -rf luna luna.tar.gz
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
 
     # 注意把浏览器缓存清理下
 
-**Docker koko Guacamole**
+**Docker coco Guacamole**
 
-说明: Docker 部署的 koko 与 guacamole 升级说明
+说明: Docker 部署的 coco 与 guacamole 升级说明
 
 .. code-block:: shell
 
     # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_koko
+    $ docker stop jms_coco
     $ docker stop jms_guacamole
 
-    $ docker rm jms_koko
+    $ docker rm jms_coco
     $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_koko:1.5.0
-    $ docker pull jumpserver/jms_guacamole:1.5.0
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker pull jumpserver/jms_guacamole:1.5.1
 
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.1
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
 
@@ -585,7 +588,7 @@
     SECRET_KEY: *****
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
     BOOTSTRAP_TOKEN: *****
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -651,7 +654,7 @@
 .. code-block:: shell
 
     $ pip install -r requirements/requirements.txt
-    $ ./jms start all -d
+    $ ./jms start -d
 
 **Luna**
 
@@ -661,33 +664,33 @@
 
     $ cd /opt
     $ rm -rf luna luna.tar.gz
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
 
     # 注意把浏览器缓存清理下
 
-**Docker koko Guacamole**
+**Docker coco Guacamole**
 
-说明: Docker 部署的 koko 与 guacamole 升级说明
+说明: Docker 部署的 coco 与 guacamole 升级说明
 
 .. code-block:: shell
 
     # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_koko
+    $ docker stop jms_coco
     $ docker stop jms_guacamole
-    $ docker rm jms_koko
+    $ docker rm jms_coco
     $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_koko:1.5.0
-    $ docker pull jumpserver/jms_guacamole:1.5.0
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker pull jumpserver/jms_guacamole:1.5.1
 
     # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.1
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
 
@@ -699,13 +702,14 @@
 .. code-block:: shell
 
     $ cd /opt/jumpserver
+    $ git checkout master
     $ source /opt/py3/bin/activate
     $ ./jms stop
     $ git pull
     $ pip install -r requirements/requirements.txt
 
     $ cd ../
-    $ ./jms start all -d
+    $ ./jms start -d
 
 **Luna**
 
@@ -715,30 +719,30 @@
 
     $ cd /opt
     $ rm -rf luna luna.tar.gz
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
 
     # 注意把浏览器缓存清理下
 
-**Docker koko Guacamole**
+**Docker coco Guacamole**
 
-说明: Docker 部署的 koko 与 guacamole 升级说明
+说明: Docker 部署的 coco 与 guacamole 升级说明
 
 .. code-block:: shell
 
     # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_koko
+    $ docker stop jms_coco
     $ docker stop jms_guacamole
-    $ docker rm jms_koko
+    $ docker rm jms_coco
     $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_koko:1.5.0
-    $ docker pull jumpserver/jms_guacamole:1.5.0
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.0
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.0
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker pull jumpserver/jms_guacamole:1.5.1
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.1
 
     # 到 Web 会话管理 - 终端管理 查看组件是否已经在线

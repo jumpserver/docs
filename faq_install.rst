@@ -66,14 +66,14 @@
     $ pip uninstall django-celery-beat
     $ pip install django-celery-beat
 
-9. 执行 ./jms start all 后一直卡在 beat: Waking up in 1.00 minute.
+9. 执行 ./jms start 后一直卡在 beat: Waking up in 1.00 minute.
 
 .. code-block:: vim
 
     # 如果没有error提示进程无法启动, 那么这是正常现象
-    # 如果不想在前台启动, 可以使用 ./jms start all -d 在后台启动
+    # 如果不想在前台启动, 可以使用 ./jms start -d 在后台启动
 
-10. 执行 ./jms start all 后提示 xxx is stopped
+10. 执行 ./jms start 后提示 xxx is stopped
 
 .. code-block:: shell
 
@@ -81,7 +81,7 @@
     # xxx is stopped
     $ ./jms restart xxx  # 如 ./jms restart gunicorn
 
-11. 执行 ./jms start all 后提示 WARNINGS: ?: (mysql.W002) MySQL Strict Mode is not set for database connection 'default' ...
+11. 执行 ./jms start 后提示 WARNINGS: ?: (mysql.W002) MySQL Strict Mode is not set for database connection 'default' ...
 
 .. code-block:: vim
 
@@ -138,7 +138,7 @@
         }
 
         location /socket.io/ {
-            proxy_pass       http://localhost:5000/socket.io/;  # 如果koko安装在别的服务器, 请填写它的ip
+            proxy_pass       http://localhost:5000/socket.io/;  # 如果coco安装在别的服务器, 请填写它的ip
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -146,7 +146,7 @@
         }
 
         location /coco/ {
-            proxy_pass       http://localhost:5000/coco/;  # 如果koko安装在别的服务器, 请填写它的ip
+            proxy_pass       http://localhost:5000/coco/;  # 如果coco安装在别的服务器, 请填写它的ip
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -171,7 +171,7 @@
 
     ...
 
-15. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, koko, 配置nginx做url分发...
+15. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, coco, 配置nginx做url分发...
 
 .. code-block:: vim
 
