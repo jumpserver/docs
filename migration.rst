@@ -56,6 +56,6 @@
 
 .. code-block:: shell
 
-    $ ./jms start all
+    $ ./jms start
 
 5. 其他组件参考安装文档重新设置即可

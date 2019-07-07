@@ -66,14 +66,14 @@
     $ pip uninstall django-celery-beat
     $ pip install django-celery-beat
 
-9. 执行 ./jms start all 后一直卡在 beat: Waking up in 1.00 minute.
+9. 执行 ./jms start 后一直卡在 beat: Waking up in 1.00 minute.
 
 .. code-block:: vim
 
     # 如果没有error提示进程无法启动, 那么这是正常现象
-    # 如果不想在前台启动, 可以使用 ./jms start all -d 在后台启动
+    # 如果不想在前台启动, 可以使用 ./jms start -d 在后台启动
 
-10. 执行 ./jms start all 后提示 xxx is stopped
+10. 执行 ./jms start 后提示 xxx is stopped
 
 .. code-block:: shell
 
@@ -81,7 +81,7 @@
     # xxx is stopped
     $ ./jms restart xxx  # 如 ./jms restart gunicorn
 
-11. 执行 ./jms start all 后提示 WARNINGS: ?: (mysql.W002) MySQL Strict Mode is not set for database connection 'default' ...
+11. 执行 ./jms start 后提示 WARNINGS: ?: (mysql.W002) MySQL Strict Mode is not set for database connection 'default' ...
 
 .. code-block:: vim
 

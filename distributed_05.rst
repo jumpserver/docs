@@ -183,7 +183,7 @@
 
     # 运行 Jumpserver
     $ cd /opt/jumpserver
-    $ ./jms start all  # 后台运行使用 -d 参数./jms start all -d
+    $ ./jms start  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
     # 访问 http://192.168.100.30 默认账号: admin 密码: admin

@@ -81,7 +81,7 @@
 
     # 启动 jumpserver, 确定没有错误
     $ cd /opt/jumpserver
-    $ ./jms start all
+    $ ./jms start
 
     # 打开 web 页面检查是否都正常
 

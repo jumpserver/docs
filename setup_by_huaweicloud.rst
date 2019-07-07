@@ -47,7 +47,7 @@
 
     $ echo -e "\033[31m 3. 下载组件 \033[0m" \
       && cd /opt \
-      && if [ ! -d "/opt/jumpserver" ]; then git clone https://github.com/jumpserver/jumpserver.git; cd /opt/jumpserver; git checkout 1.4.8; fi \
+      && if [ ! -d "/opt/jumpserver" ]; then git clone https://github.com/jumpserver/jumpserver.git; cd /opt/jumpserver; git checkout 1.4.8; cd /opt; fi \
       && if [ ! -f "/opt/luna.tar.gz" ]; then wget https://demo.jumpserver.org/download/luna/1.4.8/luna.tar.gz; tar xf luna.tar.gz; chown -R root:root luna; fi \
       && yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt) \
       && source /opt/py3/bin/activate \
@@ -75,7 +75,7 @@
     $ echo -e "\033[31m 5. 启动 Jumpserver \033[0m" \
       && systemctl start nginx \
       && cd /opt/jumpserver \
-      && ./jms start all -d \
+      && ./jms start -d \
       && docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.4.8 \
       && docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.4.8 \
       && echo -e "\033[31m 你的数据库密码是 $DB_PASSWORD \033[0m" \

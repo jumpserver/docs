@@ -199,7 +199,7 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ cd /opt/jumpserver
-    $ ./jms start all -d  # 后台运行使用 -d 参数./jms start all -d
+    $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
 
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
