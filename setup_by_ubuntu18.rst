@@ -127,7 +127,7 @@ Ubuntu 18.04 安装文档
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制
     BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -195,13 +195,13 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ cd /opt/jumpserver
-    $ ./jms start all -d  # 后台运行使用 -d 参数./jms start all -d
+    $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
 
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
 运行不报错, 请继续往下操作
 
-三. 安装 SSH Server 和 WebSocket Server: koko
+三. 安装 SSH Server 和 WebSocket Server: coco
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **3.1 安装 Docker**
@@ -218,11 +218,11 @@ Ubuntu 18.04 安装文档
     $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
     $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
-**3.2 部署 koko**
+**3.2 部署 coco**
 
 .. code-block:: shell
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.5.1
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 四. 安装 RDP Server 和 VNC Server: Guacamole
@@ -232,7 +232,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.0
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.1
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 五. 安装 Web Terminal 前端: Luna
@@ -245,10 +245,10 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ cd /opt/
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.0/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.0/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
@@ -347,7 +347,7 @@ Ubuntu 18.04 安装文档
 
 默认账号: admin 密码: admin
 
-到Jumpserver 会话管理-终端管理 检查 koko Guacamole 等应用的注册
+到Jumpserver 会话管理-终端管理 检查 coco Guacamole 等应用的注册
 
 **测试连接**
 

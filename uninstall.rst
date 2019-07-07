@@ -1,7 +1,7 @@
 卸载文档
 -------------
 
-- 确保已经停止 jms koko guacamole 进程
+- 确保已经停止 jms coco guacamole 进程
 - 确定数据已经处理完毕
 - 此操作不可逆
 - 请自行替换文中相关路径为你的实际环境路径
@@ -15,10 +15,10 @@
     $ rm -rf /etc/nginx/conf.d/jumpserver.conf
 
     # 删除 docker 组件
-    $ docker rm jms_koko
+    $ docker rm jms_coco
     $ docker rm jms_guacamole
-    $ docker rmi jumpserver/jms_koko:1.5.0  # 自行替换版本
-    $ docker rmi jumpserver/jms_guacamole:1.5.0  # 自行替换版本
+    $ docker rmi jumpserver/jms_coco:1.5.1  # 自行替换版本
+    $ docker rmi jumpserver/jms_guacamole:1.5.1  # 自行替换版本
 
     # 删除自启文件
     $ rm -rf /usr/lib/systemd/system/jms.service

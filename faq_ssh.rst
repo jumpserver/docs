@@ -15,17 +15,17 @@ SSH 协议资产连接错误排查思路
 
 .. code-block:: shell
 
-    # 如果不在线请检查 koko 的 BOOTSTRAP_TOKEN 是否与 jumpserver 一致, 如果不一致请修改后重启
+    # 如果不在线请检查 coco 的 BOOTSTRAP_TOKEN 是否与 jumpserver 一致, 如果不一致请修改后重启
     # 在 终端管理 删除不在线的组件
 
-    $ docker stop jms_koko
-    $ docker rm jms_koko
+    $ docker stop jms_coco
+    $ docker rm jms_coco
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务url, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=xxxxxx jumpserver/jms_koko:1.5.0
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=xxxxxx jumpserver/jms_coco:1.5.1
 
-    # 正常运行后到Jumpserver 会话管理-终端管理 里面查看 koko 的状态是否为绿色
+    # 正常运行后到Jumpserver 会话管理-终端管理 里面查看 coco 的状态是否为绿色
 
 2. 访问 luna 界面不显示资产信息
 
@@ -47,8 +47,8 @@ SSH 协议资产连接错误排查思路
 
     # 请参考第一条检查终端是否在线
     # 检查 nginx 配置的 socket.io 设置是否有误
-    # docker 容器部署的 koko 组件请检查防火墙是否无误, 重启容器即可
-    $ docker restart jms_koko
+    # docker 容器部署的 coco 组件请检查防火墙是否无误, 重启容器即可
+    $ docker restart jms_coco
 
 .. image:: _static/img/faq_linux_03.jpg
 
@@ -92,7 +92,7 @@ SSH 协议资产连接错误排查思路
 
 .. code-block:: vim
 
-    # 这里是信息填写错误, ip端口应该填koko服务器的ip, 端口应该填koko服务的ssh端口(默认2222)
+    # 这里是信息填写错误, ip端口应该填coco服务器的ip, 端口应该填coco服务的ssh端口(默认2222)
 
 9. 清理celery产生的数据(无法正常推送及连接资产, 一直显示........等可以使用, 请确定字符集是zh_CN.UTF-8)
 

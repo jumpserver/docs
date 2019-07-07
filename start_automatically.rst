@@ -37,7 +37,7 @@ Docker 组件部署自启 (Centos 7)
     export LANG=zh_CN.UTF-8
 
     systemctl start jms
-    docker start jms_koko
+    docker start jms_coco
     docker start jms_guacamole
 
     exit 0
@@ -52,7 +52,7 @@ Docker 组件部署自启 (Centos 7)
 
     export LANG=zh_CN.UTF-8
 
-    docker stop jms_koko
+    docker stop jms_coco
     docker stop jms_guacamole
     systemctl stop jms
 
@@ -99,7 +99,7 @@ Docker 组件部署自启 (Ubuntu 18)
     export LANG=zh_CN.utf8
 
     systemctl start jms
-    docker start jms_koko
+    docker start jms_coco
     docker start jms_guacamole
 
     exit 0
@@ -114,7 +114,7 @@ Docker 组件部署自启 (Ubuntu 18)
 
     export LANG=zh_CN.utf8
 
-    docker stop jms_koko
+    docker stop jms_coco
     docker stop jms_guacamole
     systemctl stop jms
 

@@ -3,7 +3,7 @@
 
 说明
 ``````````
-- 到 Jumpserver 会话管理-终端管理 查看 koko Guacamole 等应用是否在线
+- 到 Jumpserver 会话管理-终端管理 查看 coco Guacamole 等应用是否在线
 
 一、系统设置
 ````````````````````
@@ -53,7 +53,7 @@
     # "命令存储""录像存储"位置设置
 
     # "命令存储""录像存储"修改后, 需要在Jumpserver 会话管理-终端管理 修改terminal的配置 录像存储 命令记录, 然后重启 Jumpserver 服务
-    # 设置后重启 koko 才能生效
+    # 设置后重启 coco 才能生效
 
 .. image:: _static/img/admin_settings_terminal_list_01.jpg
 .. image:: _static/img/admin_settings_terminal_list_02.jpg
@@ -65,7 +65,7 @@
 
     # "MAF二次认证"勾选会开启全局强制"MFA", 所有 jumpserver 用户必须使用动态口令进行认证登录(即时生效)
     # "限制登录失败"和"限制登录时间"设置需要重启 jumpserver 才能生效
-    # "SSH最大空闲时间"设置需要重启 koko 才能生效
+    # "SSH最大空闲时间"设置需要重启 coco 才能生效
     # "密码校验规则"设置立即生效
 
 .. image:: _static/img/admin_settings_security_list_01.jpg
