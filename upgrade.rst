@@ -699,9 +699,9 @@
 .. code-block:: shell
 
     $ cd /opt/jumpserver
-    $ git checkout master
     $ source /opt/py3/bin/activate
     $ ./jms stop
+    $ git checkout master
     $ git pull
     $ pip install -r requirements/requirements.txt
 
