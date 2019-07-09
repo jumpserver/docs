@@ -705,7 +705,6 @@
     $ git pull
     $ pip install -r requirements/requirements.txt
 
-    $ cd ../
     $ ./jms start -d
 
 **Luna**
