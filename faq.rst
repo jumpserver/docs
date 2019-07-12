@@ -13,6 +13,7 @@ FAQ
    升级过程 常见问题 <faq_upgrade.rst>
    Firewalld 使用说明 <faq_firewalld.rst>
    RDP 协议资产连接说明 <faq_rdp.rst>
+   VNC 协议资产连接说明 <faq_vnc.rst>
    SSH 协议资产连接说明 <faq_ssh.rst>
    添加组织 及 组织管理员说明 <faq_org.rst>
 
