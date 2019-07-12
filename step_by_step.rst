@@ -82,7 +82,39 @@
     $ ./jms start  # 可以 -d 参数在后台运行 ./jms start -d
     # 确保已经载入 py3 虚拟环境, 中间如果遇到报错请参考 FAQ 文档或者 搜索引擎 解决
 
-8. 正常部署 coco 组件
+8. 正常部署 koko 组件
+
+.. code-block:: shell
+
+    # 注意, coco 目前已经被 koko 取代
+
+    $ cd /opt
+
+    # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
+    $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
+    $ chown -R root:root kokodir
+    $ cd kokodir
+
+    $ chown -R root:root /opt/kokodir
+    $ cd /opt/kokodir
+    $ cp config_example.yml config.yml
+    $ vim config.yml
+    # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
+    $ ./koko
+
+8.1. docker 部署 koko 组件
+
+.. code-block:: shell
+
+    # 如果前面已经部署了 coco, 可以跳过部署 koko
+
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:<Tag>
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.1
+
+
+9. 正常部署 coco 组件
 
 .. code-block:: shell
 
@@ -105,41 +137,16 @@
     $ ./cocod start  # 可以 -d 参数在后台运行 ./cocod start -d
     # 确保已经载入 py3 虚拟环境, 中间如果遇到报错请参考 FAQ 文档或者 搜索引擎 解决
 
-8.1 docker 部署 coco 组件
+9.1 docker 部署 coco 组件
 
 .. code-block:: shell
 
-    # 注意, coco 目前已经被 koko 取代, 你任可以在当前版本中使用 coco, 或者跳过此步骤直接部署 koko
+    # 注意, coco 目前已经被 koko 取代, 你任可以在当前版本中使用 coco
 
     # 如果正常部署 coco 太麻烦, 你可以直接使用 docker 部署, docker 请使用最新版本
     $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
     # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
-
-9. 正常部署 koko 组件
-
-.. code-block:: shell
-
-    # 如果前面已经部署了 coco, 可以跳过部署 koko
-
-    # 先访问 https://github.com/jumpserver/koko/releases 下载 release 包并解压到 /opt目录
-
-    $ chown -R root:root /opt/kokodir
-    $ cd /opt/kokodir
-    $ cp config_example.yml config.yml
-    $ vim config.yml
-    # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
-    $ ./koko
-
-9.1. docker 部署 koko 组件
-
-.. code-block:: shell
-
-    # 如果前面已经部署了 coco, 可以跳过部署 koko
-
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:<Tag>
-    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.1
 
 10. 正常安装并启动 guacamole 组件
 
