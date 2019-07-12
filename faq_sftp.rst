@@ -18,7 +18,7 @@ sftp 使用说明
 
 .. code-block:: vim
 
-    $ vi coco/conf.yml
+    $ vi coco/config.yml 或者 vi koko/config.yml
 
     # SFTP的根目录, 可选 /tmp, Home其他自定义目录
     SFTP_ROOT: /tmp

@@ -965,6 +965,40 @@ docker 部署的 guacamole
 
     # 注意把浏览器缓存清理下
 
+**Koko**
+
+说明: 在未来的版本中, koko 将会取带 coco
+
+.. code-block:: shell
+
+    $ cd /opt
+
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/koko/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
+
+    $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
+    $ chown -R root:root kokodir
+    $ cd kokodir
+    $ cp config_example.yml config.yml
+    $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/kokodir/config.yml
+    $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
+    $ vim config.yml  # 配置文件与 coco 一样
+
+    $ ./koko
+
+docker 部署的 koko
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 koko 组件
+    $ docker stop jms_koko
+    $ docker rm jms_koko
+    $ docker pull jumpserver/jms_koko:1.5.1
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.1
+
 **Coco**
 
 说明: 在未来的版本中, coco 组件将会被 koko 组件取代, 推荐使用 koko
@@ -989,40 +1023,6 @@ docker 部署的 coco
     $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:1.5.1
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
     # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
-
-**Koko**
-
-说明: 在未来的版本中, koko 将会取带 coco
-
-.. code-block:: shell
-
-    $ cd /opt
-
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
-    # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/koko/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
-
-    $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
-    $ chown -R root:root kokodir
-    $ cd kokodir
-    $ cp config_example.yml config.yml
-    $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/kokodir/config.yml
-    $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
-    $ vim config.yml  # 配置文件与 coco 一样
-
-    $ ./koko
-
-guacamole 部署的 koko
-
-.. code-block:: shell
-
-    # 先到 Web 会话管理 - 终端管理 删掉 koko 组件
-    $ docker stop jms_koko
-    $ docker rm jms_koko
-    $ docker pull jumpserver/jms_koko:1.5.1
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:1.5.1
-    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.1
 
 **Guacamole**
 

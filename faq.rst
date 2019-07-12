@@ -213,3 +213,13 @@ FAQ
     >>> cache.delete_pattern('_LOGIN_BLOCK_*')
     >>> cache.delete_pattern('_LOGIN_LIMIT_*')
     >>> exit()
+
+11. 清理celery产生的数据(无法正常推送及连接资产, 一直显示........等可以使用, 请确定字符集是zh_CN.UTF-8)
+
+.. code-block:: shell
+
+    $ source /opt/py3/bin/activate
+    $ cd /opt/jumpserver/apps
+    $ celery -A ops purge -f
+
+    # 如果任然异常, 手动结束所有jumpserver进程, 然后kill掉未能正常结束的jumpserver相关进程, 在重新启动jumpserver即可
