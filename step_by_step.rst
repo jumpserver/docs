@@ -122,7 +122,9 @@
 
     # 如果前面已经部署了 coco, 可以跳过部署 koko
 
-    # 访问 https://github.com/jumpserver/koko/releases 下载 release 包并解压到 /opt目录
+    # 先访问 https://github.com/jumpserver/koko/releases 下载 release 包并解压到 /opt目录
+
+    $ chown -R root:root /opt/kokodir
     $ cd /opt/kokodir
     $ cp config_example.yml config.yml
     $ vim config.yml

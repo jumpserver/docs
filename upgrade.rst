@@ -1003,6 +1003,7 @@ docker 部署的 coco
     $ wget https://demo.jumpserver.org/download/koko/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
 
     $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
+    $ chown -R root:root kokodir
     $ cd kokodir
     $ cp config_example.yml config.yml
     $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/kokodir/config.yml
