@@ -9,7 +9,7 @@
 - 请先检查自己各组件的当前版本
 - 不支持从 0.x 版本升级到 1.x 版本
 - 本文档仅针对 1.0.x - 1.4.3 的版本升级教程
-- 从 1.4.x 版本开始 mysql 版本需要大于等于 5.6, mariadb 版本需要大于等于 5.5.6
+- 从 1.4.x 版本开始 mysql 版本需要大于等于 5.6, mariadb 版本需要大于等于 5.5.56
 - 更新配置文件需要把对应旧版本的设置复制到新的配置文件
 
 0. 检查数据库表结构文件是否完整
@@ -236,7 +236,7 @@
     # 保存后重新载入配置
     $ nginx -s reload
 
-1.4.4 升级到最新版本
+1.4.4 版本升级到最新版本
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **请务必认真详细阅读每一个文字并理解后才能操作升级事宜**
@@ -398,30 +398,161 @@
 
     # 注意把浏览器缓存清理下
 
-**Docker Coco Guacamole**
+**Coco**
 
-说明: Docker 部署的 coco 与 guacamole 升级说明
+正常部署的 coco
 
 .. code-block:: shell
 
-    # 先到 Web 会话管理 - 终端管理 删掉所有组件
+    $ cd /opt/coco
+    $ source /opt/py3/bin/activate
+    $ ./cocod stop
+    $ mv conf.py conf.bak
+    $ git pull
+    $ pip install -r requirements/requirements.txt
+    $ cp config_example.yml config.yml
+    $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/coco/config.yml
+    $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/coco/config.yml
+    $ vim config.yml
+
+.. code-block:: vim
+
+    # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
+    # NAME: {{ Hostname }}
+
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080
+
+    # Bootstrap Token, 预共享秘钥, 用来注册coco使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致, 注册完成后可以删除
+    BOOTSTRAP_TOKEN: *****
+
+    # 启动时绑定的ip, 默认 0.0.0.0
+    # BIND_HOST: 0.0.0.0
+
+    # 监听的SSH端口号, 默认2222
+    # SSHD_PORT: 2222
+
+    # 监听的HTTP/WS端口号, 默认5000
+    # HTTPD_PORT: 5000
+
+    # 项目使用的ACCESS KEY, 默认会注册, 并保存到 ACCESS_KEY_STORE中,
+    # 如果有需求, 可以写到配置文件中, 格式 access_key_id:access_key_secret
+    # ACCESS_KEY: null
+
+    # ACCESS KEY 保存的地址, 默认注册后会保存到该文件中
+    # ACCESS_KEY_STORE: data/keys/.access_key
+
+    # 加密密钥
+    # SECRET_KEY: null
+
+    # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
+    LOG_LEVEL: ERROR
+
+    # 日志存放的目录
+    # LOG_DIR: logs
+
+    # SSH白名单
+    # ALLOW_SSH_USER: all
+
+    # SSH黑名单, 如果用户同时在白名单和黑名单, 黑名单优先生效
+    # BLOCK_SSH_USER:
+    #   -
+
+    # 和Jumpserver 保持心跳时间间隔
+    # HEARTBEAT_INTERVAL: 5
+
+    # Admin的名字, 出问题会提示给用户
+    # ADMINS: ''
+
+    # SSH连接超时时间 (default 15 seconds)
+    # SSH_TIMEOUT: 15
+
+    # 语言 [en, zh]
+    # LANGUAGE_CODE: zh
+
+    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
+    # SFTP_ROOT: /tmp
+
+    # SFTP是否显示隐藏文件
+    # SFTP_SHOW_HIDDEN_FILE: false
+
+    # 是否复用和用户后端资产已建立的连接(用户不会复用其他用户的连接)
+    # REUSE_CONNECTION: true
+
+.. code-block:: shell
+
+    $ mkdir data
+    $ mv keys data/
+    $ ./coocd start -d
+
+docker 部署的 coco
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 coco 组件
     $ docker stop jms_coco
-    $ docker stop jms_guacamole
     $ docker rm jms_coco
-    $ docker rm jms_guacamole
     $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
+
+**Guacamole**
+
+正常部署的 guacamole
+
+.. code-block:: shell
+
+    $ /etc/init.d/guacd stop
+    $ sh /config/tomcat8/bin/shutdown.sh
+    $ cd /opt/docker-guacamole
+    $ git pull
+    $ cd /config
+    $ rm -rf /cofig/tomcat8
+
+    # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.22/bin/apache-tomcat-9.0.22.tar.gz
+    $ tar xf apache-tomcat-9.0.22.tar.gz
+    $ mv apache-tomcat-9.0.22 tomcat9
+    $ rm -rf /config/tomcat9/webapps/*
+    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
+    $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
+    $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
+
+    $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/ssh-forward/v0.0.5/linux-amd64.tar.gz
+
+    $ tar xf linux-amd64.tar.gz -C /bin/
+    $ chmod +x /bin/ssh-forward
+
+    # BOOTSTRAP_TOKEN 请和 jumpserver/config.yml 配置文件中保持一致
+    $ export BOOTSTRAP_TOKEN=*****
+    $ echo "export BOOTSTRAP_TOKEN=*****" >> ~/.bashrc
+
+    $ /etc/init.d/guacd start
+    $ sh /config/tomcat9/bin/startup.sh
+
+docker 部署的 guacamole
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 guacamole 组件
+    $ docker stop jms_guacamole
+    $ docker rm jms_guacamole
     $ docker pull jumpserver/jms_guacamole:1.5.1
 
-    # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.1
 
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_coco:1.5.1
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.1
+到 Web 会话管理 - 终端管理 查看组件是否已经在线
 
-    # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
-
-1.4.5 升级到最新版本
-~~~~~~~~~~~~~~~~~~~~~
+1.4.5-1.4.7 升级到最新版本
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **请务必认真详细阅读每一个文字并理解后才能操作升级事宜**
 
@@ -535,164 +666,161 @@
 
     # 注意把浏览器缓存清理下
 
-**Docker Coco Guacamole**
+**Coco**
 
-说明: Docker 部署的 coco 与 guacamole 升级说明
-
-.. code-block:: shell
-
-    # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_coco
-    $ docker stop jms_guacamole
-
-    $ docker rm jms_coco
-    $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_coco:1.5.1
-    $ docker pull jumpserver/jms_guacamole:1.5.1
-
-    # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_coco:1.5.1
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.1
-
-    # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
-
-1.4.6 升级到最新版本
-~~~~~~~~~~~~~~~~~~~~~
-
-**请务必认真详细阅读每一个文字并理解后才能操作升级事宜**
-
-- 更新配置文件需要把对应旧版本的设置复制到新的配置文件
-
-**Jumpserver**
+正常部署的 coco
 
 .. code-block:: shell
 
-    $ cd /opt/jumpserver
+    $ cd /opt/coco
     $ source /opt/py3/bin/activate
-    $ ./jms stop
-    $ cd /opt/jumpserver
+    $ ./cocod stop
+    $ mv conf.py conf_1.4.5.bak
     $ git pull
-
-    # 更新 config.yml, 请根据你原来的 config.bak 内容进行修改
-    $ mv config.py config_1.4.6.bak
+    $ pip install -r requirements/requirements.txt
     $ cp config_example.yml config.yml
-    $ vi config.yml
+    $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/coco/config.yml
+    $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/coco/config.yml
+    $ vim config.yml
 
 .. code-block:: vim
 
-    # SECURITY WARNING: keep the secret key used in production secret!
-    # 加密秘钥 升级请保证与你原来的 SECRET_KEY 一致, 可以从旧版本的config_1.4.6.bak配置文件里面获取
-    SECRET_KEY: *****
+    # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
+    # NAME: {{ Hostname }}
 
-    # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制, 可随机生成
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080
+
+    # Bootstrap Token, 预共享秘钥, 用来注册coco使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致, 注册完成后可以删除
     BOOTSTRAP_TOKEN: *****
 
-    # Development env open this, when error occur display the full process track, Production disable it
-    # DEBUG 模式 开启DEBUG后遇到错误时可以看到更多日志
-    DEBUG: false
+    # 启动时绑定的ip, 默认 0.0.0.0
+    # BIND_HOST: 0.0.0.0
 
-    # DEBUG, INFO, WARNING, ERROR, CRITICAL can set. See https://docs.djangoproject.com/en/1.10/topics/logging/
-    # 日志级别
+    # 监听的SSH端口号, 默认2222
+    # SSHD_PORT: 2222
+
+    # 监听的HTTP/WS端口号, 默认5000
+    # HTTPD_PORT: 5000
+
+    # 项目使用的ACCESS KEY, 默认会注册, 并保存到 ACCESS_KEY_STORE中,
+    # 如果有需求, 可以写到配置文件中, 格式 access_key_id:access_key_secret
+    # ACCESS_KEY: null
+
+    # ACCESS KEY 保存的地址, 默认注册后会保存到该文件中
+    # ACCESS_KEY_STORE: data/keys/.access_key
+
+    # 加密密钥
+    # SECRET_KEY: null
+
+    # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
     LOG_LEVEL: ERROR
-    # LOG_DIR:
 
-    # Session expiration setting, Default 24 hour, Also set expired on on browser close
-    # 浏览器Session过期时间, 默认24小时, 也可以设置浏览器关闭则过期
-    # SESSION_COOKIE_AGE: 86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE: true
+    # 日志存放的目录
+    # LOG_DIR: logs
 
-    # Database setting, Support sqlite3, mysql, postgres ....
-    # 数据库设置
-    # See https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+    # SSH白名单
+    # ALLOW_SSH_USER: all
 
-    # SQLite setting:
-    # 使用单文件sqlite数据库
-    # DB_ENGINE: sqlite3
-    # DB_NAME:
+    # SSH黑名单, 如果用户同时在白名单和黑名单, 黑名单优先生效
+    # BLOCK_SSH_USER:
+    #   -
 
-    # MySQL or postgres setting like:
-    # 使用Mysql作为数据库
-    DB_ENGINE: mysql
-    DB_HOST: 127.0.0.1
-    DB_PORT: 3306
-    DB_USER: jumpserver
-    DB_PASSWORD: *****
-    DB_NAME: jumpserver
+    # 和Jumpserver 保持心跳时间间隔
+    # HEARTBEAT_INTERVAL: 5
 
-    # When Django start it will bind this host and port
-    # ./manage.py runserver 127.0.0.1:8080
-    # 运行时绑定端口
-    HTTP_BIND_HOST: 0.0.0.0
-    HTTP_LISTEN_PORT: 8080
+    # Admin的名字, 出问题会提示给用户
+    # ADMINS: ''
 
-    # Use Redis as broker for celery and web socket
-    # Redis配置
-    REDIS_HOST: 127.0.0.1
-    REDIS_PORT: 6379
-    # REDIS_PASSWORD:
-    # REDIS_DB_CELERY: 3
-    # REDIS_DB_CACHE: 4
+    # SSH连接超时时间 (default 15 seconds)
+    # SSH_TIMEOUT: 15
 
-    # Use OpenID authorization
-    # 使用OpenID 来进行认证设置
-    # BASE_SITE_URL: http://localhost:8080
-    # AUTH_OPENID: false  # True or False
-    # AUTH_OPENID_SERVER_URL: https://openid-auth-server.com/
-    # AUTH_OPENID_REALM_NAME: realm-name
-    # AUTH_OPENID_CLIENT_ID: client-id
-    # AUTH_OPENID_CLIENT_SECRET: client-secret
+    # 语言 [en, zh]
+    # LANGUAGE_CODE: zh
 
-    # OTP settings
-    # OTP/MFA 配置
-    # OTP_VALID_WINDOW: 0
-    # OTP_ISSUER_NAME: Jumpserver
+    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
+    # SFTP_ROOT: /tmp
+
+    # SFTP是否显示隐藏文件
+    # SFTP_SHOW_HIDDEN_FILE: false
+
+    # 是否复用和用户后端资产已建立的连接(用户不会复用其他用户的连接)
+    # REUSE_CONNECTION: true
 
 .. code-block:: shell
 
-    $ pip install -r requirements/requirements.txt
-    $ ./jms start -d
+    $ mkdir data
+    $ mv keys data/
+    $ ./coocd start -d
 
-**Luna**
-
-说明: 直接下载 release 包
-
-.. code-block:: shell
-
-    $ cd /opt
-    $ rm -rf luna luna.tar.gz
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
-
-    # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
-
-    $ tar xf luna.tar.gz
-    $ chown -R root:root luna
-
-    # 注意把浏览器缓存清理下
-
-**Docker Coco Guacamole**
-
-说明: Docker 部署的 coco 与 guacamole 升级说明
+docker 部署的 coco
 
 .. code-block:: shell
 
-    # 先到 Web 会话管理 - 终端管理 删掉所有组件
+    # 先到 Web 会话管理 - 终端管理 删掉 coco 组件
     $ docker stop jms_coco
-    $ docker stop jms_guacamole
     $ docker rm jms_coco
-    $ docker rm jms_guacamole
     $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
+
+**Guacamole**
+
+正常部署的 guacamole
+
+.. code-block:: shell
+
+    $ /etc/init.d/guacd stop
+    $ sh /config/tomcat8/bin/shutdown.sh
+    $ cd /opt/docker-guacamole
+    $ git pull
+    $ cd /config
+    $ rm -rf /cofig/tomcat8
+
+    # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.22/bin/apache-tomcat-9.0.22.tar.gz
+    $ tar xf apache-tomcat-9.0.22.tar.gz
+    $ mv apache-tomcat-9.0.22 tomcat9
+    $ rm -rf /config/tomcat9/webapps/*
+    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
+    $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
+    $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
+
+    $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/ssh-forward/v0.0.5/linux-amd64.tar.gz
+
+    $ tar xf linux-amd64.tar.gz -C /bin/
+    $ chmod +x /bin/ssh-forward
+
+    # BOOTSTRAP_TOKEN 请和 jumpserver/config.yml 配置文件中保持一致
+    $ export BOOTSTRAP_TOKEN=*****
+    $ echo "export BOOTSTRAP_TOKEN=*****" >> ~/.bashrc
+
+    $ /etc/init.d/guacd start
+    $ sh /config/tomcat9/bin/startup.sh
+
+docker 部署的 guacamole
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 guacamole 组件
+    $ docker stop jms_guacamole
+    $ docker rm jms_guacamole
     $ docker pull jumpserver/jms_guacamole:1.5.1
 
-    # BOOTSTRAP_TOKEN 请和 jumpserver 配置文件中保持一致
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_coco:1.5.1
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=***** jumpserver/jms_guacamole:1.5.1
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.1
 
-    # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
+到 Web 会话管理 - 终端管理 查看组件是否已经在线
 
-1.4.7 及之后的版本升级到最新版本
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.4.8-1.4.9 升级到最新版本
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Jumpserver**
 
@@ -725,20 +853,215 @@
 
     # 注意把浏览器缓存清理下
 
-**Docker Coco Guacamole**
+**Coco**
 
-说明: Docker 部署的 coco 与 guacamole 升级说明
+正常部署的 coco
 
 .. code-block:: shell
 
-    # 先到 Web 会话管理 - 终端管理 删掉所有组件
-    $ docker stop jms_coco
-    $ docker stop jms_guacamole
-    $ docker rm jms_coco
-    $ docker rm jms_guacamole
-    $ docker pull jumpserver/jms_coco:1.5.1
-    $ docker pull jumpserver/jms_guacamole:1.5.1
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_coco:1.5.1
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_guacamole:1.5.1
+    $ cd /opt/coco
+    $ source /opt/py3/bin/activate
+    $ ./cocod stop
+    $ git checkout master
+    $ git pull
+    $ pip install -r requirements/requirements.txt
+    $ ./cocod start -d
 
-    # 到 Web 会话管理 - 终端管理 查看组件是否已经在线
+docker 部署的 coco
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 coco 组件
+    $ docker stop jms_coco
+    $ docker rm jms_coco
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
+
+**Guacamole**
+
+正常部署的 guacamole
+
+.. code-block:: shell
+
+    $ /etc/init.d/guacd stop
+    $ sh /config/tomcat8/bin/shutdown.sh
+    $ cd /opt/docker-guacamole
+    $ git pull
+    $ cd /config
+    $ rm -rf /cofig/tomcat8
+
+    # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.22/bin/apache-tomcat-9.0.22.tar.gz
+    $ tar xf apache-tomcat-9.0.22.tar.gz
+    $ mv apache-tomcat-9.0.22 tomcat9
+    $ rm -rf /config/tomcat9/webapps/*
+    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
+    $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
+    $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
+
+    $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/ssh-forward/v0.0.5/linux-amd64.tar.gz
+
+    $ tar xf linux-amd64.tar.gz -C /bin/
+    $ chmod +x /bin/ssh-forward
+
+    # BOOTSTRAP_TOKEN 请和 jumpserver/config.yml 配置文件中保持一致
+    $ export BOOTSTRAP_TOKEN=*****
+    $ echo "export BOOTSTRAP_TOKEN=*****" >> ~/.bashrc
+
+    $ /etc/init.d/guacd start
+    $ sh /config/tomcat9/bin/startup.sh
+
+docker 部署的 guacamole
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 guacamole 组件
+    $ docker stop jms_guacamole
+    $ docker rm jms_guacamole
+    $ docker pull jumpserver/jms_guacamole:1.5.1
+
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.1
+
+到 Web 会话管理 - 终端管理 查看组件是否已经在线
+
+1.5.0 版本升级到最新版本
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Jumpserver**
+
+.. code-block:: shell
+
+    $ cd /opt/jumpserver
+    $ source /opt/py3/bin/activate
+    $ ./jms stop
+    $ git pull
+    $ pip install -r requirements/requirements.txt
+
+    $ ./jms start -d
+
+**Luna**
+
+说明: 直接下载 release 包
+
+.. code-block:: shell
+
+    $ cd /opt
+    $ rm -rf luna luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.1/luna.tar.gz
+
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/luna/1.5.1/luna.tar.gz
+
+    $ tar xf luna.tar.gz
+    $ chown -R root:root luna
+
+    # 注意把浏览器缓存清理下
+
+**Coco**
+
+说明: 在未来的版本中, coco 组件将会被 koko 组件取代, 推荐使用 koko
+
+.. code-block:: shell
+
+    $ cd /opt/coco
+    $ source /opt/py3/bin/activate
+    $ ./cocod stop
+    $ git pull
+    $ pip install -r requirements/requirements.txt
+    $ ./cocod start -d
+
+docker 部署的 coco
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 coco 组件
+    $ docker stop jms_coco
+    $ docker rm jms_coco
+    $ docker pull jumpserver/jms_coco:1.5.1
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.1
+
+**Koko**
+
+说明: 在未来的版本中, koko 将会取带 coco
+
+.. code-block:: shell
+
+    $ cd /opt
+
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
+    # 如果网络有问题导致下载无法完成可以使用下面地址
+    $ wget https://demo.jumpserver.org/download/koko/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
+
+    $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
+    $ chown -R root:root kokodir
+    $ cd kokodir
+    $ cp config_example.yml config.yml
+    $ sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/kokodir/config.yml
+    $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
+    $ vim config.yml  # 配置文件与 coco 一样
+
+    $ ./koko
+
+guacamole 部署的 koko
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 koko 组件
+    $ docker stop jms_koko
+    $ docker rm jms_koko
+    $ docker pull jumpserver/jms_koko:1.5.1
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:1.5.1
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.1
+
+**Guacamole**
+
+正常部署的 guacamole
+
+.. code-block:: shell
+
+    $ /etc/init.d/guacd stop
+    $ sh /config/tomcat8/bin/shutdown.sh
+    $ cd /opt/docker-guacamole
+    $ git pull
+    $ cd /config
+    $ rm -rf /cofig/tomcat8
+
+    # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.22/bin/apache-tomcat-9.0.22.tar.gz
+    $ tar xf apache-tomcat-9.0.22.tar.gz
+    $ mv apache-tomcat-9.0.22 tomcat9
+    $ rm -rf /config/tomcat9/webapps/*
+    $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
+    $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
+    $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
+    $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
+    $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
+
+    $ /etc/init.d/guacd start
+    $ sh /config/tomcat9/bin/startup.sh
+
+docker 部署的 guacamole
+
+.. code-block:: shell
+
+    # 先到 Web 会话管理 - 终端管理 删掉 guacamole 组件
+    $ docker stop jms_guacamole
+    $ docker rm jms_guacamole
+    $ docker pull jumpserver/jms_guacamole:1.5.1
+
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
+    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    # 例: docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.1
+
+到 Web 会话管理 - 终端管理 查看组件是否已经在线
