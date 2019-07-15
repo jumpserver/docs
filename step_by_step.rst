@@ -196,6 +196,18 @@
     $ tar xf linux-amd64.tar.gz -C /bin/
     $ chmod +x /bin/ssh-forward
 
+    # 设置 guacamole 环境
+    $ export JUMPSERVER_SERVER=http://127.0.0.1:8080  # http://127.0.0.1:8080 指 jumpserver 访问地址
+    $ echo "export JUMPSERVER_SERVER=http://127.0.0.1:8080" >> ~/.bashrc
+
+    # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN 值
+    $ export BOOTSTRAP_TOKEN=******
+    $ echo "export BOOTSTRAP_TOKEN=******" >> ~/.bashrc
+    $ export JUMPSERVER_KEY_DIR=/config/guacamole/keys
+    $ echo "export JUMPSERVER_KEY_DIR=/config/guacamole/keys" >> ~/.bashrc
+    $ export GUACAMOLE_HOME=/config/guacamole
+    $ echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
+
     $ /etc/init.d/guacd start
     $ sh /config/tomcat9/bin/startup.sh
 
