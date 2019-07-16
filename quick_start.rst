@@ -3,7 +3,7 @@
 
 说明
 ``````````
-- 到 Jumpserver 会话管理-终端管理 查看 coco Guacamole 等应用是否在线
+- 到 Jumpserver 会话管理-终端管理 查看 coco Guacamole 等应用是否在线, 不在线可以参考 FAQ 文档解决
 
 一、系统设置
 ````````````````````
@@ -119,10 +119,11 @@
 .. code-block:: vim
 
     # "系统用户"是 Jumpserver 跳转登录资产时使用的用户, 用户使用该用户登录资产
-    # "自动生成密码"、"自动推送"、"Sudo"等功能需要对应资产的"管理用户"是且有root权限, 否则自动推送失败
+    # "自动生成密码"、"自动推送"、"Sudo"等功能需要对应资产的"管理用户"有相应的权限, 否则自动推送失败
     # ssh 协议的 "Sudo" 栏设定用户的 sudo 权限,
     # ssh 协议如果创建的"系统用户"已在资产上面存在, "推送"将会覆盖掉原用户的"home"目录权限(注: 替换成700权限)
     # ssh 协议的 "ssh私钥" 如果私钥有密码, 请把key的密码填在密码栏上, 目前仅支持 RSA DSA 格式私钥
+    # 目前 telnet 和 vnc 协议不支持自动推送
 
     # 这里简单举几个 "sudo" 设置例子
     Sudo /bin/su  # 当前系统用户可以免sudo密码执行sudo su命令
@@ -135,9 +136,11 @@
     # 此处的权限应该根据使用用户的需求汇总后定制, 原则上给予最小权限即可
 
     # "系统用户"创建时, 如果选择了"自动推送" Jumpserver 会使用"Ansible"自动推送系统用户到资产中, "root"用户不支持推送
-    # 如果资产(交换机、Windows)不支持"Ansible", 请去掉"自动生成密钥"、"自动推送"勾选。手动填写资产上已有的账号及账号密码
+    # 如果资产不支持"Ansible", 请去掉"自动生成密钥"、"自动推送"勾选。手动填写资产上已有的账号及账号密码, 目前支持 Windows 系统用户推送
 
     # 如果想让用户登录资产时自己输入密码, 可以在创建系统用户时选择"手动登录"
+
+Windows 系统用户推送的环境要求参考 `windows-ssh-setup <https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#windows-ssh-setup>`_
 
 .. image:: _static/img/admin_assets_system-user_create_01.jpg
 .. image:: _static/img/admin_assets_system-user_create_02.jpg
