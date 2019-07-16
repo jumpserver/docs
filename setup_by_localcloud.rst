@@ -82,8 +82,8 @@
 .. code-block:: shell
 
     $ echo -e "\033[31m 6. 配置自启 \033[0m" \
-      && if [ ! -f "/usr/lib/systemd/system/jms.service" ]; then wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/centos/jms.service; chmod 755 /usr/lib/systemd/system/jms.service; fi \
-      && if [ ! -f "/opt/start_jms.sh" ]; then wget -O /opt/start_jms.sh https://demo.jumpserver.org/download/shell/centos/start_jms.sh; fi \
-      && if [ ! -f "/opt/stop_jms.sh" ]; then wget -O /opt/stop_jms.sh https://demo.jumpserver.org/download/shell/centos/stop_jms.sh; fi \
+      && if [ ! -f "/usr/lib/systemd/system/jms.service" ]; then wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/1.4.8/centos/jms.service; chmod 755 /usr/lib/systemd/system/jms.service; fi \
+      && if [ ! -f "/opt/start_jms.sh" ]; then wget -O /opt/start_jms.sh https://demo.jumpserver.org/download/shell/1.4.8/centos/start_jms.sh; fi \
+      && if [ ! -f "/opt/stop_jms.sh" ]; then wget -O /opt/stop_jms.sh https://demo.jumpserver.org/download/shell/1.4.8/centos/stop_jms.sh; fi \
       && if [ "$(cat /etc/rc.local | grep start_jms.sh)" == "" ]; then echo "sh /opt/start_jms.sh" >> /etc/rc.local; chmod +x /etc/rc.d/rc.local; fi \
       && echo -e "\033[31m 启动停止的脚本在 /opt 目录下, 如果自启失败可以手动启动 \033[0m"
