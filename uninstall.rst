@@ -30,9 +30,9 @@
     $ docker rm jms_coco
     $ docker rm jms_koko
     $ docker rm jms_guacamole
-    $ docker rmi jumpserver/jms_coco:1.5.1  # 自行替换版本
-    $ docker rmi jumpserver/jms_koko:1.5.1  # 自行替换版本
-    $ docker rmi jumpserver/jms_guacamole:1.5.1  # 自行替换版本
+    $ docker rmi jumpserver/jms_coco:1.5.2  # 自行替换版本
+    $ docker rmi jumpserver/jms_koko:1.5.2  # 自行替换版本
+    $ docker rmi jumpserver/jms_guacamole:1.5.2  # 自行替换版本
 
     # 删除自启文件
     $ rm -rf /usr/lib/systemd/system/jms.service
