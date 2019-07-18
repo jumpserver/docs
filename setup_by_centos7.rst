@@ -323,7 +323,7 @@ CentOS 7 安装文档
 
 .. code-block:: shell
 
-    # koko 服务默认运行在单核心下面, 当负载过高时会导致用户访问变慢, 这时可运行多个 docker 容器缓解
+    # 当负载过高时会导致用户访问变慢, 这时可在多个服务器运行 docker 容器负载均衡
     $ docker run --name jms_koko01 -d -p 2223:2222 -p 5001:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.2
     $ docker run --name jms_koko02 -d -p 2224:2222 -p 5002:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=****** jumpserver/jms_koko:1.5.2
     ...
