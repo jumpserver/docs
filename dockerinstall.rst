@@ -69,7 +69,6 @@ Tips: 不建议在生产中使用, 因为所有软件都打包到一个Docker中
 .. code-block:: shell
 
     $ docker run --name jms_all -d \
-        -v /opt/mysql:/var/lib/mysql \
         -v /opt/jumpserver:/opt/jumpserver/data/media \
         -p 80:80 \
         -p 2222:2222 \

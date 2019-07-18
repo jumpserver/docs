@@ -1,6 +1,8 @@
 阿里云服务器极速安装
 ------------------------
 
+生产环境建议使用 `1.4.8 版本 <http://docs.jumpserver.org/zh/1.4.8/setup_by_alicloud.html>`_
+
 **说明**
 
 - 全新安装的 Centos7 系统
