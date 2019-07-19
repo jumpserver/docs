@@ -94,8 +94,8 @@
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.1/koko-master-24dd3c4-linux-amd64.tar.gz
-    $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-accd0e6-linux-amd64.tar.gz
+    $ tar xf koko-master-accd0e6-linux-amd64.tar.gz
     $ chown -R root:root kokodir
     $ cd kokodir
 
