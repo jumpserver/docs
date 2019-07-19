@@ -1,4 +1,4 @@
-分布式部署文档 - mariadb 部署
+分布式部署文档 - 数据库 部署
 ----------------------------------------------------
 
 说明
@@ -42,7 +42,7 @@
     gpgcheck=1
 
     # 安装 MariaDB Galera Cluster
-    $ yum install -y mariadb mariadb-server MariaDB-shared mariadb-common galera rsync
+    $ yum install -y mariadb mariadb-server mariadb-shared mariadb-common galera rsync
 
     # 设置 Firewalld 和 Selinux
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="3306" accept"

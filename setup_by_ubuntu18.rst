@@ -1,8 +1,6 @@
 Ubuntu 18.04 安装文档
 --------------------------
 
-生产环境建议使用 `1.4.8 版本 <http://docs.jumpserver.org/zh/1.4.8/setup_by_ubuntu18.html>`_
-
 说明
 ~~~~~~~
 -  # 开头的行表示注释
@@ -82,7 +80,9 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ cd /opt/
-    $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+    $ git clone https://github.com/jumpserver/jumpserver.git
+    $ cd /opt/jumpserver
+    $ git checkout 1.5.2
 
 **2.2 安装依赖包**
 
@@ -116,16 +116,18 @@ Ubuntu 18.04 安装文档
     $ sed -i "s/# LOG_LEVEL: DEBUG/LOG_LEVEL: ERROR/g" /opt/jumpserver/config.yml
     $ sed -i "s/# SESSION_EXPIRE_AT_BROWSER_CLOSE: false/SESSION_EXPIRE_AT_BROWSER_CLOSE: true/g" /opt/jumpserver/config.yml
     $ sed -i "s/DB_PASSWORD: /DB_PASSWORD: $DB_PASSWORD/g" /opt/jumpserver/config.yml
+    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
 
     $ echo -e "\033[31m 你的SECRET_KEY是 $SECRET_KEY \033[0m"
     $ echo -e "\033[31m 你的BOOTSTRAP_TOKEN是 $BOOTSTRAP_TOKEN \033[0m"
+    $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
     $ vim config.yml  # 确认内容有没有错误
 
 .. code-block:: yaml
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    # 加密秘钥 生产环境中请修改为随机字符串, 请勿外泄, PS: 纯数字不可以
+    # 加密秘钥 生产环境中请修改为随机字符串, 请勿外泄
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
@@ -203,7 +205,7 @@ Ubuntu 18.04 安装文档
 
 运行不报错, 请继续往下操作
 
-三. 安装 SSH Server 和 WebSocket Server: coco
+三. 安装 SSH Server 和 WebSocket Server: Coco
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **3.1 安装 Docker**
@@ -217,10 +219,8 @@ Ubuntu 18.04 安装文档
     $ apt-get -y install docker-ce
     $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
     $ systemctl restart docker.service
-    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
-    $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
-**3.2 部署 coco**
+**3.2 部署 Coco**
 
 .. code-block:: shell
 
@@ -349,7 +349,7 @@ Ubuntu 18.04 安装文档
 
 默认账号: admin 密码: admin
 
-到Jumpserver 会话管理-终端管理 检查 coco Guacamole 等应用的注册
+到Jumpserver 会话管理-终端管理 检查 Coco Guacamole 等应用的注册
 
 **测试连接**
 

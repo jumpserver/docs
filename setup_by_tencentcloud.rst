@@ -1,8 +1,6 @@
 腾讯云服务器极速安装
 ------------------------
 
-生产环境建议使用 `1.4.8 版本 <http://docs.jumpserver.org/zh/1.4.8/setup_by_tencentcloud.html>`_
-
 **说明**
 
 - 全新安装的 Centos7 系统
@@ -34,7 +32,7 @@
       && rpm --import https://mirrors.cloud.tencent.com/docker-ce/linux/centos/gpg \
       && echo -e "[nginx-stable]\nname=nginx stable repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=1\nenabled=1\ngpgkey=https://nginx.org/keys/nginx_signing.key" > /etc/yum.repos.d/nginx.repo \
       && rpm --import https://nginx.org/keys/nginx_signing.key \
-      && yum -y install redis mariadb mariadb-devel mariadb-server MariaDB-shared nginx docker-ce \
+      && yum -y install redis mariadb mariadb-devel mariadb-server mariadb-shared nginx docker-ce \
       && systemctl enable redis mariadb nginx docker \
       && systemctl start redis mariadb \
       && yum -y install python36 python36-devel \
@@ -44,14 +42,11 @@
 
     $ echo -e "\033[31m 3. 下载组件 \033[0m" \
       && cd /opt \
-      && if [ ! -d "/opt/jumpserver" ]; then git clone --depth=1 https://github.com/jumpserver/jumpserver.git; fi \
+      && if [ ! -d "/opt/jumpserver" ]; then git clone https://github.com/jumpserver/jumpserver.git; cd /opt/jumpserver; git checkout 1.5.2; cd /opt; fi \
       && if [ ! -f "/opt/luna.tar.gz" ]; then wget https://demo.jumpserver.org/download/luna/1.5.2/luna.tar.gz; tar xf luna.tar.gz; chown -R root:root luna; fi \
       && yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt) \
       && source /opt/py3/bin/activate \
       && pip install --upgrade pip setuptools -i http://mirrors.tencentyun.com/pypi/simple \
-      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep ansible) -i http://mirrors.tencentyun.com/pypi/simple \
-      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep python-gssapi) -i http://mirrors.tencentyun.com/pypi/simple \
-      && pip install $(cat /opt/jumpserver/requirements/requirements.txt | grep python-keycloak) -i http://mirrors.tencentyun.com/pypi/simple \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i http://mirrors.tencentyun.com/pypi/simple \
       && curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io \
       && systemctl restart docker \
@@ -63,7 +58,6 @@
 .. code-block:: shell
 
     $ echo -e "\033[31m 4. 处理配置文件 \033[0m" \
-      && source ~/.bashrc \
       && if [ "$DB_PASSWORD" = "" ]; then DB_PASSWORD=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24`; fi \
       && if [ "$SECRET_KEY" = "" ]; then SECRET_KEY=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`; echo "SECRET_KEY=$SECRET_KEY" >> ~/.bashrc; fi \
       && if [ "$BOOTSTRAP_TOKEN" = "" ]; then BOOTSTRAP_TOKEN=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`; echo "BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN" >> ~/.bashrc; fi \
@@ -89,8 +83,8 @@
 .. code-block:: shell
 
     $ echo -e "\033[31m 6. 配置自启 \033[0m" \
-      && if [ ! -f "/usr/lib/systemd/system/jms.service" ]; then wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/centos/jms.service; chmod 755 /usr/lib/systemd/system/jms.service; fi \
-      && if [ ! -f "/opt/start_jms.sh" ]; then wget -O /opt/start_jms.sh https://demo.jumpserver.org/download/shell/centos/start_jms.sh; fi \
-      && if [ ! -f "/opt/stop_jms.sh" ]; then wget -O /opt/stop_jms.sh https://demo.jumpserver.org/download/shell/centos/stop_jms.sh; fi \
+      && if [ ! -f "/usr/lib/systemd/system/jms.service" ]; then wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/1.5.2/centos/jms.service; chmod 755 /usr/lib/systemd/system/jms.service; fi \
+      && if [ ! -f "/opt/start_jms.sh" ]; then wget -O /opt/start_jms.sh https://demo.jumpserver.org/download/shell/1.5.2/centos/start_jms.sh; fi \
+      && if [ ! -f "/opt/stop_jms.sh" ]; then wget -O /opt/stop_jms.sh https://demo.jumpserver.org/download/shell/1.5.2/centos/stop_jms.sh; fi \
       && if [ "$(cat /etc/rc.local | grep start_jms.sh)" == "" ]; then echo "sh /opt/start_jms.sh" >> /etc/rc.local; chmod +x /etc/rc.d/rc.local; fi \
       && echo -e "\033[31m 启动停止的脚本在 /opt 目录下, 如果自启失败可以手动启动 \033[0m"

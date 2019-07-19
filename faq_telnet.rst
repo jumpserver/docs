@@ -10,6 +10,8 @@ Telnet 使用说明
     # 需要在 Web "系统设置"-"终端设置" 添加成功判断代码
     # 是 通过 "tenlet" 命令登录 telnet设备 "成功" 的返回字符串
 
+    # 保存后需要重启coco组件
+
 2. 举例
 
 .. code-block:: shell

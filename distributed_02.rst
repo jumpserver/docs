@@ -205,7 +205,7 @@
         }
 
         location /socket.io/ {
-            proxy_pass       http://kokows/socket.io/;  # koko
+            proxy_pass       http://kokows/socket.io/;  # coco
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -244,7 +244,7 @@
     $ systemctl start nginx
 
     # 访问 http://192.168.100.100
-    # 默认账号: admin 密码: admin  到会话管理-终端管理 检查 koko Guacamole 等应用的注册
+    # 默认账号: admin 密码: admin  到会话管理-终端管理 接受 Coco Guacamole 等应用的注册
     # 测试连接
     $ ssh -p2222 admin@192.168.100.100
     $ sftp -P2222 admin@192.168.100.100

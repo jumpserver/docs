@@ -13,7 +13,6 @@ FAQ
    升级过程 常见问题 <faq_upgrade.rst>
    Firewalld 使用说明 <faq_firewalld.rst>
    RDP 协议资产连接说明 <faq_rdp.rst>
-   VNC 协议资产连接说明 <faq_vnc.rst>
    SSH 协议资产连接说明 <faq_ssh.rst>
    添加组织 及 组织管理员说明 <faq_org.rst>
 
@@ -59,7 +58,16 @@ FAQ
     > u.reset_password('password')  # password 为你要修改的密码
     > u.save()
 
-4. 设置浏览器会话过期
+4. 修改 SSH 资产登录超时时间(TIMEOUT 默认 10 秒)
+
+.. code-block:: shell
+
+    $ vi /opt/coco/config.yml
+
+    # 把 SSH_TIMEOUT: 15 修改成你想要的数字 单位为：秒
+    SSH_TIMEOUT: 60
+
+5. 设置浏览器会话过期
 
 .. code-block:: shell
 
@@ -75,14 +83,14 @@ FAQ
 
     # 86400 单位是秒(s)
 
-5. 资产授权说明
+6. 资产授权说明
 
 .. code-block:: vim
 
     资产授权就是把 系统用户关联到用户 并授权到 对应的资产
     用户只能看到自己被授权的资产
 
-6. Web Terminal 页面经常需要重新刷新页面才能连接资产
+7. Web Terminal 页面经常需要重新刷新页面才能连接资产
 
 .. code-block:: nginx
 
@@ -159,7 +167,7 @@ FAQ
         }
     }
 
-7. 连接资产时提示 System user <xxx> and asset <xxx> protocol are inconsistent.
+8. 连接资产时提示 System user <xxx> and asset <xxx> protocol are inconsistent.
 
 .. code-block:: shell
 
@@ -179,13 +187,29 @@ FAQ
     >>> exit()
 
 
-8. 重启服务器后无法访问 Jumpserver, 页面提示502 或者 403等
+9. 重启服务器后无法访问 Jumpserver, 页面提示502 或者 403等
 
 .. code-block:: shell
 
-    # 确定 防火墙 和 selinux 已经正确放行或者关闭, 然后检查 jms 是否已经启动成功
+    # CentOS 7 临时关闭
+    $ setenforce 0  # 临时关闭 selinux, 重启后失效
+    $ systemctl stop firewalld.service  # 临时关闭防火墙, 重启后失效
 
-9. 传递明文数据到 Jumpserver 数据库(数据导入)
+    # Centos 7 如需永久关闭, 还需执行下面步骤
+    $ sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config  # 禁用 selinux
+    $ systemctl disable firewalld.service  # 禁用防火墙
+
+    # Centos 7 在不关闭 selinux 和 防火墙 的情况下使用 Jumpserver
+    $ firewall-cmd --zone=public --add-port=80/tcp --permanent  # nginx 端口
+    $ firewall-cmd --zone=public --add-port=2222/tcp --permanent  # 用户SSH登录端口 coco
+      --permanent  永久生效, 没有此参数重启后失效
+
+    $ firewall-cmd --reload  # 重新载入规则
+
+    $ setsebool -P httpd_can_network_connect 1  # 设置 selinux 允许 http 访问
+
+
+10. 传递明文数据到 Jumpserver 数据库(数据导入)
 
 .. code-block:: shell
 
@@ -198,7 +222,7 @@ FAQ
     >>> user.public_key = '明文key'
     >>> user.save()
 
-10. 登录提示登录频繁
+11. 登录提示登录频繁
 
 .. code-block:: shell
 
@@ -214,13 +238,3 @@ FAQ
     >>> cache.delete_pattern('_LOGIN_BLOCK_*')
     >>> cache.delete_pattern('_LOGIN_LIMIT_*')
     >>> exit()
-
-11. 清理celery产生的数据(无法正常推送及连接资产, 一直显示........等可以使用, 请确定字符集是zh_CN.UTF-8)
-
-.. code-block:: shell
-
-    $ source /opt/py3/bin/activate
-    $ cd /opt/jumpserver/apps
-    $ celery -A ops purge -f
-
-    # 如果任然异常, 手动结束所有jumpserver进程, 然后kill掉未能正常结束的jumpserver相关进程, 在重新启动jumpserver即可

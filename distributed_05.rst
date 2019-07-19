@@ -15,7 +15,7 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   | Jumpserver | 192.168.100.30  |    80, 8080   | Nginx, koko, Guacamole |
+|    TCP   | Jumpserver | 192.168.100.30  |    80, 8080   | Nginx, Coco, Guacamole |
 +----------+------------+-----------------+---------------+------------------------+
 
 开始安装
@@ -29,7 +29,7 @@
     # 安装依赖包
     $ yum -y install gcc epel-release git
 
-    # 设置防火墙, 开放 80 端口给 nginx 访问, 开放 8080 端口给 koko 和 guacamole 访问
+    # 设置防火墙, 开放 80 端口给 nginx 访问, 开放 8080 端口给 coco 和 guacamole 访问
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="80" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.40" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.50" port protocol="tcp" port="8080" accept"
@@ -47,7 +47,9 @@
     $ source /opt/py3/bin/activate
 
     # 下载 Jumpserver
-    $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+    $ git clone https://github.com/jumpserver/jumpserver.git
+    $ cd /opt/jumpserver
+    $ git checkout 1.5.2
 
     # 安装依赖 RPM 包
     $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
@@ -83,7 +85,7 @@
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制
+    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制
     BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it

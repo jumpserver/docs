@@ -31,7 +31,7 @@ Docker 使用说明
     ecda634206af    jumpserver/guacamole:test    "/init"    12 days ago    Up 3 days    0.0.0.0:8081->8080/tcp    jms_guacamole
 
     $ docker exec -it ecda634206af /bin/bash 或 docker exec -it jms_guacamole /bin/bash
-    # 如果没有 /bin/bash 可以使用 /bin/sh  例: docker exec -it jms_koko /bin/sh
+    # 如果不存在 /bin/bash 可以使用 /bin/sh, 如 docker exec -it jms_koko /bin/sh
 
 5. 开始 停止 重启 容器
 
@@ -98,5 +98,5 @@ Docker 使用说明
 
     # 例:
     $ docker pull jumpserver/jms_all:latest
-    $ docker pull jumpserver/jms_coco:1.5.2
+    $ docker pull jumpserver/jms_koko:1.5.2
     $ docker pull jumpserver/jms_guacamole:1.5.2

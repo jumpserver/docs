@@ -87,18 +87,13 @@
 
     # 这是严格模式的警告, 可以参考后面的url解决, 或者忽略
 
-12. 启动 Jumpserver 报错 Error: expected '<document start>', but found '<scalar>'
+12. 启动 Jumpserver 或者 coco 报错 Error: expected '<document start>', but found '<scalar>'
 
 .. code-block:: vim
 
     # 这是因为你的 config.yml 文件格式有误
-    # 常见的错误就是字段为空和: 后面少一个空格, 参考下面, 请勿照抄
-    # SECRET_KEY: 5RLbBjm8AkMSvnft...  # 不要忽略: 后面的空格, 不支持纯数字
-    # BOOTSTRAP_TOKEN: ihR4WG4gRShCnpQL...  # 不要忽略: 后面的空格, 不支持纯数字
-    # DB_PASSWORD: '123456'  # 密码纯数字用单引号括起来
-    # DB_PASSWORD: cPzxaiUAtA5IkdT2...  # 非纯数字可以不用单引号
-    # REDIS_PASSWORD: '888888'  # 密码纯数字用单引号括起来
-    # REDIS_PASSWORD: Ma5bzA3gVK5oY17l...  # 非纯数字可以不用单引号
+    # 常见的错误就是字段为空或者: 后面有一个空格
+    # SECRET_KEY: xxxxx  # 不要忽略: 后面的空格
 
 13. 启动 jumpserver 后, 访问 8080 端口页面显示不正常
 
@@ -107,7 +102,71 @@
     # 这是因为你在 config.yml 里面设置了 DEBUG: false
     # 跟着教程继续操作, 后面搭建 nginx 代理即可正常访问
 
-14. 通过 nginx 代理的端口访问 jumpserver 页面显示不正常
+14. 执行 ./cocod start 后提示 No module named 'jms'
+
+.. code-block:: shell
+
+    # 一般是由于 py3 环境未载入
+    $ source /opt/py3/bin/activate
+
+    # 看到下面的提示符代表成功, 以后运行 Jumpserver 都要先运行以上 source 命令, 以下所有命令均在该虚拟环境中运行
+    (py3) [root@localhost py3]
+
+    # 如果已经在 py3 虚拟环境下
+    $ cd /opt/coco/
+    $ pip install -r requirements/requirements.txt
+    # 然后重新执行 ./cocod start 即可
+
+15. 执行 ./cocod start 后提示 Failed register terminal xxxx exist already
+
+.. code-block:: shell
+
+    # 这是由于 coco 注册未成功造成的, 需要重新注册 (能正常访问 jumpserver 页面后再处理)
+    # 到 Jumpserver后台 会话管理-终端管理  删掉 coco 的注册
+    # 必须到 Jumpserver后台 会话管理-终端管理  删掉 coco 的注册
+    # 一定要先到 Jumpserver后台 会话管理-终端管理  删掉 coco 的注册
+    $ cd /opt/coco && ./cocod stop
+    $ rm /opt/coco/data/keys/.access_key  # coco, 如果你是按文档安装的, key应该在这里, 如果不存在key文件直接下一步
+    $ ./cocod start -d  # 正常运行后到Jumpserver 会话管理-终端管理 里面接受coco注册
+
+16. 执行 ./cocod start 后提示 Failed register terminal unknow: xxxx
+
+.. code-block:: vim
+
+    # 这是因为当前系统的 hostname 有 coco 不支持的字符, 需要手动指定 coco 的 NAME
+    $ cd /opt/coco/
+    $ vi config.yml
+
+    # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
+    # NAME: {{ Hostname }}
+    NAME: localhost
+
+    # 保存后重新执行 ./cocod start 即可
+
+17. 运行 ./cocod start 后提示 "detail":"身份认证信息未提供。" Failed register terminal
+
+.. code-block:: shell
+
+    # 保证 coco 的 BOOTSTRAP_TOKEN 与 jumpserver/config.yml 里面的内容不一致
+    $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
+    $ cat /opt/coco/config.yml | grep BOOTSTRAP_TOKEN
+
+    # 修改成一致保存后 重新执行 ./cocod start 即可
+
+18. 运行 ./cocod start 后提示 Connect endpoint http://xxxx:8080 error: HTTPConnectionPool(host='xxxx', port=8080)
+
+.. code-block:: vim
+
+    # 这是因为 coco 无法连接到 jumpserver 报的错误, 确定 http://xxxx:8080 设置正确(配置文件 coco/config.yml)
+    # 如果 jumpserver 的IP和端口不对, 请手动修改 config.yml 的 CORE_HOST
+
+19. 运行 ./cocod start 后提示 Unexpected error occur: 'AppService' object has no attribute 'get_system_user_cmd_filter_rules'
+
+.. code-block:: vim
+
+    # 这是因为你的 pip 依赖包未正确安装, 参考本文档第 4 条
+
+20. 通过 nginx 代理的端口访问 jumpserver 页面显示不正常
 
 .. code-block:: nginx
 
@@ -171,7 +230,7 @@
 
     ...
 
-15. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, coco, 配置nginx做url分发...
+21. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, coco, 配置nginx做url分发...
 
 .. code-block:: vim
 

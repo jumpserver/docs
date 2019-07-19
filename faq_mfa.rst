@@ -22,4 +22,4 @@ MFA遗失无法登陆
         # 如果在系统设置里面开启的 MFA 二次认证, 需要修改数据库 settings 表 SECURITY_MFA_AUTH 的 value 值为 false
         mysql -uroot
         > use jumpserver;
-        > update settings_setting set value='false' where name='SECURITY_MFA_AUTH';
+        > update settings set value='false' where name='SECURITY_MFA_AUTH';
