@@ -14,12 +14,15 @@
 
     # 参考第一条解决
 
-3. pip install 提示 download 错误
+3. pip install 提示 download 错误或者卡在某个依赖很久不动
 
 .. code-block:: vim
 
     # 一般是由于网络不好, 导致下载文件失败, 重新执行命令即可
     # 如果多次重试均无效, 请更换网络环境
+    $ vim ~/.pydistutils.cfg
+    [easy_install]
+    index_url = https://mirrors.aliyun.com/pypi/simple/
 
 4. pip install 提示 Could not find a version that satisfies the requirement xxxxxx==x.x.xx(版本)
 
@@ -80,6 +83,8 @@
     # Error: xxx start error
     # xxx is stopped
     $ ./jms restart xxx  # 如 ./jms restart gunicorn
+
+    # 如果经常这样, 可能是硬件配置不够, 可以尝试升级硬件
 
 11. 执行 ./jms start 后提示 WARNINGS: ?: (mysql.W002) MySQL Strict Mode is not set for database connection 'default' ...
 
@@ -176,3 +181,36 @@
 .. code-block:: vim
 
     # 请通过 nginx 代理的端口访问 jumpserver 页面, 不要再直接访问 8080 端口
+
+16. 启动 koko 或者 coco 提示 "name":["名称重复"]
+
+.. code-block:: vim
+
+    $ vi config.yml
+
+    NAME: coco01  # 把 coco01 换成你想要的名字, 注意默认是 # NAME: {{ Hostname }}, 注意去掉注释#
+
+17. 启动 koko coco 提示 "detail":"身份认证信息未提供"
+
+.. code-block:: vim
+
+    $ vi config.yml
+
+    BOOTSTRAP_TOKEN: xxxxxx  # 把 xxxxxx 换成跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样的内容
+
+    # 如果是 guacamole 提示 "detail":"身份认证信息未提供"
+    $ env | grep BOOTSTRAP_TOKEN
+    $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
+
+    # 对比, 如果不一致请修改 ~/.bashrc 文件里面的内容
+    $ vi ~/.bashrc
+
+    export BOOTSTRAP_TOKEN=xxxxxx  # 把 xxxxxx 换成跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样的内容
+
+    # 如果是 docker 部署出现的
+    $ docker stop jms_coco
+    $ docker stop jms_guacamole
+    $ docker rm jms_coco
+    $ docker rm jms_guacamole
+
+    # 重新 docker run 即可, 注意 BOOTSTRAP_TOKEN 需要跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样
