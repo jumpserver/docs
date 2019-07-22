@@ -54,15 +54,15 @@
 分布式部署文档(基于CentOS 7)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-等待更新ing...
+请勿使用, 等待更新ing...
 
 .. toctree::
    :maxdepth: 1
 
    环境说明 <distributed_01.rst>
-   nginx 代理部署 <distributed_02.rst>
-   数据库 部署 <distributed_03.rst>
-   redis 部署 <distributed_04.rst>
-   jumpserver 部署 <distributed_05.rst>
-   koko 部署 <distributed_06.rst>
-   guacamole 部署 <distributed_07.rst>
+   Tengine 代理部署 <distributed_02.rst>
+   MariaDB 部署 <distributed_03.rst>
+   Redis 部署 <distributed_04.rst>
+   Jumpserver 部署 <distributed_05.rst>
+   Koko 部署 <distributed_06.rst>
+   Guacamole 部署 <distributed_07.rst>
