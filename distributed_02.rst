@@ -1,4 +1,4 @@
-分布式部署文档 - nginx 代理部署
+分布式部署文档 - Tengine 代理部署
 ----------------------------------------------------
 
 说明
@@ -15,9 +15,9 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   |    Nginx   | 192.168.100.100 | 80, 443, 2222 |           All          |
+|    TCP   |  Tengine   | 192.168.100.100 | 80, 443, 2222 |           All          |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   |    Nginx   | 192.168.100.100 |      3306     |       Jumpserver       |
+|    TCP   |  Tengine   | 192.168.100.100 |      3306     |       Jumpserver       |
 +----------+------------+-----------------+---------------+------------------------+
 
 开始安装
@@ -46,21 +46,8 @@
 
 .. code-block:: shell
 
-    # 安装 nginx
-    $ vi /etc/yum.repos.d/nginx.repo
-
-    [nginx]
-    name=nginx repo
-    baseurl=http://nginx.org/packages/centos/7/$basearch/
-    gpgcheck=0
-    enabled=1
-
-    # 非 Centos7 请参考 http://nginx.org/en/linux_packages.html#stable
-
-.. code-block:: shell
-
-    $ yum -y install nginx
-    $ systemctl enable nginx
+    # 安装 Tengine
+    # 请参考 http://tengine.taobao.org/
 
     # 下载 luna
     $ cd /opt
@@ -153,7 +140,7 @@
     $ vi /etc/nginx/conf.d/jumpserver.conf
 
     upstream jumpserver {
-        server 192.168.100.30:80;
+        server 192.168.100.30:8080;
         # 这里是 jumpserver 的后端ip
     }
 
@@ -241,7 +228,6 @@
 
     # nginx 测试并启动, 如果报错请按报错提示自行解决
     $ nginx -t
-    $ systemctl start nginx
 
     # 访问 http://192.168.100.100
     # 默认账号: admin 密码: admin  到会话管理-终端管理 检查 koko Guacamole 等应用的注册

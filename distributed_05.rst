@@ -12,11 +12,11 @@
 -  系统: CentOS 7
 -  IP: 192.168.100.30
 
-+----------+------------+-----------------+---------------+------------------------+
-| Protocol | ServerName |        IP       |      Port     |         Used By        |
-+==========+============+=================+===============+========================+
-|    TCP   | Jumpserver | 192.168.100.30  |    80, 8080   | Nginx, koko, Guacamole |
-+----------+------------+-----------------+---------------+------------------------+
++----------+------------+-----------------+---------------+-------------------------+
+| Protocol | ServerName |        IP       |      Port     |         Used By         |
++==========+============+=================+===============+=========================+
+|    TCP   | Jumpserver | 192.168.100.30  |    80, 8080   |Tengine, koko, Guacamole |
++----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
 ~~~~~~~~~~~~
@@ -29,15 +29,11 @@
     # 安装依赖包
     $ yum -y install gcc epel-release git
 
-    # 设置防火墙, 开放 80 端口给 nginx 访问, 开放 8080 端口给 koko 和 guacamole 访问
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="80" accept"
+    # 开放 8080 端口给 koko 、 guacamole 和 tengine 访问
+    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.40" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.50" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --reload
-
-    # 安装 nginx
-    $ yum -y install nginx
-    $ systemctl enable nginx
 
     # 安装 Python3.6
     $ yum -y install python36 python36-devel
@@ -146,44 +142,10 @@
     # OTP_VALID_WINDOW: 0
     # OTP_ISSUER_NAME: Jumpserver
 
-.. code-block:: nginx
-
-    # 修改 nginx 配置文件(如果无法正常访问, 请注释掉 nginx.conf 的 server 所有字段)
-    $ vi /etc/nginx/conf.d/jumpserver.conf
-
-    server {
-        listen 80;
-
-        client_max_body_size 100m;  # 录像上传大小限制
-
-        location /media/ {
-            add_header Content-Encoding gzip;
-            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
-        }
-
-        location /static/ {
-            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
-        }
-
-        location / {
-            proxy_pass http://localhost:8080;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-    }
-
-.. code-block:: shell
-
-    # nginx 测试并启动, 如果报错请按报错提示自行解决
-    $ nginx -t
-    $ systemctl start nginx
-
     # 运行 Jumpserver
     $ cd /opt/jumpserver
     $ ./jms start  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
-    # 访问 http://192.168.100.30 默认账号: admin 密码: admin
-
+    # 需要把 jumpserver/data/ 目录同步给其他 jumpserver 服务器 和 Tengine 服务器使用, 建议使用共享文件夹或者 oss 解决
     # 多节点部署, 请参考此文档, 设置数据库时请选择从库, 其他的一样
