@@ -57,7 +57,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ apt-get -y install python3.6-dev python3.6-venv
+    $ apt-get -y install python3.6-dev python3-venv
 
 **1.6 建立 Python 虚拟环境**
 
