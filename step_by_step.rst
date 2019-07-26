@@ -94,8 +94,10 @@
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-37daa82-linux-amd64.tar.gz
-    $ tar xf koko-master-37daa82-linux-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-9ab4ea6-darwin-amd64.tar.gz
+
+    $ tar xf koko-master-9ab4ea6-darwin-amd64.tar.gz
+
     $ chown -R root:root kokodir
     $ cd kokodir
 
