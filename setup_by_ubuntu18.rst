@@ -201,6 +201,10 @@ Ubuntu 18.04 安装文档
 
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
+    $ $ wget -O /lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/ubuntu/jms.service
+    $ chmod 755 /lib/systemd/system/jms.service
+    $ systemctl enable jms  # 配置自启
+
 运行不报错, 请继续往下操作
 
 三. 安装 SSH Server 和 WebSocket Server: coco
@@ -224,7 +228,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.2
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.2
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 四. 安装 RDP Server 和 VNC Server: Guacamole
@@ -234,7 +238,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.2
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.2
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 五. 安装 Web Terminal 前端: Luna

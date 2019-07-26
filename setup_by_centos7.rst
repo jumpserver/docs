@@ -192,6 +192,10 @@ CentOS 7 安装文档
     $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
+    $ wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/centos/jms.service
+    $ chmod 755 /usr/lib/systemd/system/jms.service
+    $ systemctl enable jms  # 配置自启
+
 .. code-block:: shell
 
     # 安装 docker 部署 koko 与 guacamole
@@ -215,8 +219,8 @@ CentOS 7 安装文档
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务端口, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.2
-    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.2
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.2
+    $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.2
 
 .. code-block:: shell
 

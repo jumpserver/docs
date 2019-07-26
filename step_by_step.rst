@@ -19,8 +19,6 @@
    setup_by_fast
    dockerinstall
    setup_by_prod
-   setup_by_optimization
-   start_automatically
    upgrade
    migration
    uninstall
@@ -114,9 +112,9 @@
 
     # 如果前面已经部署了 coco, 可以跳过部署 koko
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_koko:<Tag>
+    $ docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always jumpserver/jms_koko:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_koko:1.5.2
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_koko:1.5.2
 
 
 9. 正常部署 coco 组件
@@ -149,9 +147,9 @@
     # 注意, coco 目前已经被 koko 取代, 你任可以在当前版本中使用 coco
 
     # 如果正常部署 coco 太麻烦, 你可以直接使用 docker 部署, docker 请使用最新版本
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_coco:<Tag>
+    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always jumpserver/jms_coco:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_coco:1.5.2
+    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_coco:1.5.2
 
 10. 正常安装并启动 guacamole 组件
 
