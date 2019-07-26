@@ -201,7 +201,7 @@ Ubuntu 18.04 安装文档
 
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
-    $ $ wget -O /lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/ubuntu/jms.service
+    $ wget -O /lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/ubuntu/jms.service
     $ chmod 755 /lib/systemd/system/jms.service
     $ systemctl enable jms  # 配置自启
 
