@@ -166,8 +166,8 @@
 
     server {
         # 推荐使用 https 访问, 如果不使用 https 请自行注释下面的选项
-        listen 443;
-        server_name www.jumpserver.org;  # 自行修改成你的域名
+        listen 443  ssl;
+        server_name demo.jumpserver.org;  # 自行修改成你的域名
         ssl on;
         ssl_certificate   /etc/nginx/sslkey/1_jumpserver.org_bundle.crt;  # 自行设置证书
         ssl_certificate_key  /etc/nginx/sslkey/2_jumpserver.org.key;  # 自行设置证书
