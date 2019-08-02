@@ -47,7 +47,7 @@
       && if [ ! -d "/opt/jumpserver" ]; then git clone --depth=1 https://github.com/jumpserver/jumpserver.git; fi \
       && if [ ! -f "/opt/luna.tar.gz" ]; then wget https://demo.jumpserver.org/download/luna/1.5.2/luna.tar.gz; tar xf luna.tar.gz; chown -R root:root luna; fi \
       && yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt) \
-      && echo -e "[easy_install]\nindex_url = http://mirrors.tencentyun.com/pypi/simple">> ~/.pydistutils.cfg \
+      && echo -e "[easy_install]\nindex_url = http://mirrors.tencentyun.com/pypi/simple" > ~/.pydistutils.cfg \
       && source /opt/py3/bin/activate \
       && pip install --upgrade pip setuptools -i http://mirrors.tencentyun.com/pypi/simple \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i http://mirrors.tencentyun.com/pypi/simple \
