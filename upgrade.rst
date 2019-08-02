@@ -43,10 +43,10 @@
 
     $ cd /opt
 
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-9ab4ea6-darwin-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-6d4e69b-darwin-amd64.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/koko/1.5.2/koko-master-9ab4ea6-darwin-amd64.tar.gz
+    $ wget https://demo.jumpserver.org/download/koko/1.5.2/koko-master-6d4e69b-darwin-amd64.tar.gz
 
 
     $ tar xf koko-master-24dd3c4-linux-amd64.tar.gz
