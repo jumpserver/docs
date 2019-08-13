@@ -38,6 +38,11 @@ API 文档
     >>> u.create_private_token()
     937b38011acf499eb474e2fecb424ab3
 
+    # 如果生成报错, 表示已经存在 private_token, 直接获取即可
+    >>> u.private_token
+    <PrivateToken: 937b38011acf499eb474e2fecb424ab3>
+    # 937b38011acf499eb474e2fecb424ab3 就是
+
     $ curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' -H "Content-Type:application/json" http://localhost/api/users/v1/users/
 
 - python代码示例
