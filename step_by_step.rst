@@ -99,8 +99,6 @@
     $ chown -R root:root kokodir
     $ cd kokodir
 
-    $ chown -R root:root /opt/kokodir
-    $ cd /opt/kokodir
     $ cp config_example.yml config.yml
     $ vim config.yml
     # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
