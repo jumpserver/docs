@@ -165,12 +165,15 @@
 
     # Ubuntu: apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev
     # Ubuntu: apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
+    # ln -s /usr/local/lib/freerdp/*.so /usr/lib/x86_64-linux-gnu/freerdp
 
     # Debian: apt-get install -y libcairo2-dev libjpeg62-turbo-dev libpng12-dev libossp-uuid-dev
     # Debian: apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
+    # ln -s /usr/local/lib/freerdp/*.so /usr/lib/x86_64-linux-gnu/freerdp
 
     # Fedora/CentOS/RHEL: yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel
     # Fedora/CentOS/RHEL: yum install -y ffmpeg-devel freerdp-devel pango-devel	libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
+    # ln -s /usr/local/lib/freerdp/*.so /usr/lib64/freerdp/
 
     $ autoreconf -fi
     $ ./configure --with-init-dir=/etc/init.d
