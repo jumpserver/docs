@@ -27,4 +27,11 @@ Telnet 使用说明
     <RA-L7-RD>
 
     # 把 <RA-L7-RD> 写入到 Web "系统设置"-"终端设置"-"Telnet 成功正则表达式" 里面, 多个不一样的字符串用 | 隔开, 如 <RA-L7-RD>|<CHXZ-Group-S7503-LB2>|success|成功
-    # <RA-L7-RD> 正则可用 <.*>+? 表示
+    # <RA-L7-RD> 正则可用 <.*> 表示 或者 <RA-.*>
+
+    # RW-F1-1  正则可用 RW-.*
+
+    # 不会写正则直接写设备名就行, 设备1名|设备2名|设备3名|设备4名|success|成功
+    # RW-1F-1|RW-2F-1|RW-3F-1|success|成功
+    # <RA-L7-RD>|<RA-L6-RD>|<RA-L5-RD>|success|成功
+    # <.*>|.*>|success|成功

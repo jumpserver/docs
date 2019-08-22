@@ -18,14 +18,6 @@ RDP 协议资产连接错误排查思路
 .. code-block:: shell
 
     # 如果终端不在线, 请检查 guacamole 的 BOOTSTRAP_TOKEN 是否与 jumpserver 一致, 如果不一致请修改后重启
-    $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
-    $ env | grep BOOTSTRAP_TOKEN
-
-    $ /etc/init.d/guacd stop
-    $ sh /config/tomcat8/bin/shutdown.sh
-    $ rm -rf /config/guacamole/keys/*
-    $ /etc/init.d/guacd start
-    $ sh /config/tomcat8/bin/startup.sh
 
     # docker 部署请直接删除容器后重建, 记得一定要先在 终端管理 删除不在线的组件
     $ docker stop jms_guacamole
@@ -50,11 +42,7 @@ RDP 协议资产连接错误排查思路
 
 .. image:: _static/img/faq_windows_firewalld.jpg
 
-3. 登录要连接的windows资产, 检查用户和IP信息(Windows目前还不支持推送, 所以必须使用资产上面已存在的用户进行登录)
-
-.. code-block:: vim
-
-    # 注：因为 windows 暂时不支持推送, 所以必须使用资产上面已经存在的账户进行登录, 如 administrator 账户
+3. 登录要连接的windows资产, 检查用户和IP信息
 
 .. image:: _static/img/faq_windows_02.jpg
 
@@ -69,14 +57,16 @@ RDP 协议资产连接错误排查思路
 
 5. 创建Windows资产系统用户(如果是域资产, 格式是uesr@domain.com, 注意协议不要选错)
 
+Windows 系统用户推送的环境要求参考 `windows-ssh-setup <https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#windows-ssh-setup>`_
+
 .. code-block:: vim
 
-    # 注：因为 windows 暂时不支持推送, 所以必须使用资产上面已经存在的账户进行登录, 如 administrator 账户
     # 不带域的用户直接输入用户名即可, 如 administrator
     # 域用户的用户名格式为 user@domain.com, 如 administrator@jumpserver.org
-    # 如果想让用户登录资产时自己输入资产的账户密码, 可以点击系统用户的名称 点击清除认证信息
+    # 如果想让用户登录资产时自己输入资产的账户密码, 可以使用手动登录功能
     # 此处必须输入能正确登录 windows 资产的 账户密码
     # 如不确实是不是因为密码或者账户信息错误导致的无法登录, 可以使用手动登录功能(在系统用户处设置)
+    # 推送的 Windows 系统用户属于 Users 和 Remote Desktop Users 用户组
 
 .. image:: _static/img/faq_windows_04.jpg
 
@@ -105,8 +95,8 @@ RDP 协议资产连接错误排查思路
 
 .. code-block:: vim
 
-    # 直接拖拽文件到 windows 窗口即可, 文件上传后在 Guacamole RDP上的 G 目录查看
-    # 下载在 luna 页面, 按 ctrl+alt+shift, 选择文件下载即可
+    # 直接拖拽文件到 windows 窗口即可, 文件上传后在 Guacamole RDP上的 G 目录查看, 下载请把文件拖到 Guacamole RDP上的 G 目录下面的 Download 文件夹浏览器会弹出下载框
+    # 或者按 ctrl+alt+shift, 选择文件上传下载即可
 
 .. image:: _static/img/faq_windows_08.jpg
 
