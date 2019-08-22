@@ -7,6 +7,8 @@ Tips: 不建议在生产中使用, 因为所有软件都打包到一个Docker中
 
 生产环境部署建议参考 `进阶安装文档 <setup_by_prod.html>`_
 
+Docker-Compose 参考 `docker-compose 示例<https://github.com/wojiushixiaobai/docker-compose>`_
+
 **快速启动**
 
 - 使用 root 身份输入

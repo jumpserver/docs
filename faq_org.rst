@@ -20,7 +20,6 @@
 
     # 然后使用 user 用户登录 jumpserver 即可
 
-
 向现有组织加入管理员
 
 .. code-block:: shell
@@ -36,7 +35,6 @@
     >>> dev_org.admins.add(user)
     >>> exit()
 
-
 向现有组织加入已存在用户
 
 .. code-block:: shell
@@ -51,7 +49,6 @@
     >>> user = User.objects.get(username='admin')
     >>> dev_org.users.add(user)
     >>> exit()
-
 
 向现有组织加入新建的用户
 

@@ -17,14 +17,16 @@ RDP 协议资产连接错误排查思路
 
 .. code-block:: shell
 
-    # 如果终端不在线, 请检查 guacamole 的 BOOTSTRAP_TOKEN 是否与 jumpserver 一致, 如果不一致请修改后重启
+    # 注意, guacamole 的版本需要于 jumpserver 保存一致
+    # 如果终端不在线, 请检查 guacamole 的 "BOOTSTRAP_TOKEN" 是否与 jumpserver 一致, 如果不一致请修改后重启
+
+    # 编译部署的请检查 ~/.bashrc 里面的 guacamole 相关设置, 具体可参考安装文档时的定义，确认无误后重启 guacd 与 tomcat 即可, 记得一定要先在 "终端管理" 删除不在线的组件
     $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
     $ env | grep BOOTSTRAP_TOKEN
 
-    # docker 部署请直接删除容器后重建, 记得一定要先在 终端管理 删除不在线的组件
+    # docker 部署请检查 docker run 时的变量设置是否正确, 如不确认也可直接删除容器后重建, 记得一定要先在 "终端管理" 删除不在线的组件
     $ docker stop jms_guacamole
     $ docker rm jms_guacamole
-
     # http://<Jumpserver_url> 指向 jumpserver 的服务url, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
     $ docker run --name jms_guacamole -d -p 8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=xxxxxx jumpserver/jms_guacamole:1.5.2
@@ -58,6 +60,8 @@ RDP 协议资产连接错误排查思路
 .. image:: _static/img/faq_windows_03.jpg
 
 5. 创建Windows资产系统用户(如果是域资产, 格式是uesr@domain.com, 注意协议不要选错)
+
+Windows 系统用户推送的环境要求参考 `windows-ssh-setup <https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#windows-ssh-setup>`_
 
 .. code-block:: vim
 
