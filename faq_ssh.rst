@@ -19,7 +19,7 @@ SSH 协议资产连接错误排查思路
     # 在 终端管理 删除不在线的组件
 
     $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
-    $ cat /opt/koko/config.yml | grep BOOTSTRAP_TOKEN
+    $ cat /opt/kokodir/config.yml | grep BOOTSTRAP_TOKEN
     $ cat /opt/coco/config.yml | grep BOOTSTRAP_TOKEN
 
     # docker 部署
@@ -62,8 +62,8 @@ SSH 协议资产连接错误排查思路
 
 .. code-block:: vim
 
-    # 请检查推送 或 系统用户 是否正确, 可以把系统用户设置成手动登录测试
-    # 在 资产管理-系统用户 下, 点击相应的 系统用户名称 可以看到 系统用户详情, 右边可以测试
+    # 请检查 "推送" 或 "系统用户" 是否正确, 可以把"系统用户"设置成"手动登录"测试
+    # 在 资产管理-系统用户 下, 点击相应的 "系统用户名称" 可以看到 "系统用户详情", 右边可以测试
 
 .. image:: _static/img/faq_linux_04.jpg
 
