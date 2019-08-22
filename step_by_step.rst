@@ -92,15 +92,13 @@
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-6d4e69b-darwin-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-master-6d4e69b-linux-amd64.tar.gz
 
-    $ tar xf koko-master-6d4e69b-darwin-amd64.tar.gz
+    $ tar xf koko-master-6d4e69b-linux-amd64.tar.gz
 
     $ chown -R root:root kokodir
     $ cd kokodir
 
-    $ chown -R root:root /opt/kokodir
-    $ cd /opt/kokodir
     $ cp config_example.yml config.yml
     $ vim config.yml
     # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
