@@ -9,7 +9,7 @@ API 文档
     $ vi jumpserver/config.yml
 
     ...
-    Debug: true
+    DEBUG: true
 
 
 - 手动调用 api 的方法
