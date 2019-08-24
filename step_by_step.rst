@@ -8,7 +8,6 @@
    dockerinstall
    setup_by_prod
    setup_by_optimization
-   start_automatically
    upgrade
    migration
    uninstall
