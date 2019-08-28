@@ -27,7 +27,7 @@
       && yum makecache \
       && yum install -y yum-utils device-mapper-persistent-data lvm2 \
       && wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo \
-      && sed -i "s@https://download.docker.com@http://mirrors.tencentyun.com/docker-ce@g" /etc/yum.repos.d/docker-ce.repo \
+      && sed -i 's+download.docker.com+mirrors.cloud.tencent.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo \
       && yum makecache fast \
       && rpm --import https://mirrors.cloud.tencent.com/docker-ce/linux/centos/gpg \
       && echo -e "[nginx-stable]\nname=nginx stable repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=1\nenabled=1\ngpgkey=https://nginx.org/keys/nginx_signing.key" > /etc/yum.repos.d/nginx.repo \
