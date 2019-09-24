@@ -92,9 +92,9 @@
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.2/koko-v52-1e1f1a8-linux-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.3/koko-master-c16b817-linux-amd64.tar.gz
 
-    $ tar xf koko-v52-1e1f1a8-linux-amd64.tar.gz
+    $ tar xf koko-master-c16b817-linux-amd64.tar.gz
 
     $ chown -R root:root kokodir
     $ cd kokodir
@@ -112,44 +112,9 @@
 
     $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always jumpserver/jms_koko:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_koko:1.5.2
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_koko:1.5.3
 
-
-9. 正常部署 coco 组件
-
-.. code-block:: shell
-
-    # 注意, coco 目前已经被 koko 取代, 你任可以在当前版本中使用 coco, 或者跳过此步骤直接部署 koko
-
-    $ cd /opt
-    $ git clone --depth=1 https://github.com/jumpserver/coco.git
-
-    $ cd /opt/coco/requirements
-    # 根据当前系统, 选择对应的文件执行即可
-
-    $ pip install -r requirements.txt
-    # 确保已经载入 py3 虚拟环境, 中间如果遇到报错一般是依赖包没装全, 可以通过 搜索引擎 解决
-
-    $ cd /opt/coco
-    $ cp config_example.yml config.yml
-    $ vim config.yml
-    # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
-
-    $ ./cocod start  # 可以 -d 参数在后台运行 ./cocod start -d
-    # 确保已经载入 py3 虚拟环境, 中间如果遇到报错请参考 FAQ 文档或者 搜索引擎 解决
-
-9.1 docker 部署 coco 组件
-
-.. code-block:: shell
-
-    # 注意, coco 目前已经被 koko 取代, 你任可以在当前版本中使用 coco
-
-    # 如果正常部署 coco 太麻烦, 你可以直接使用 docker 部署, docker 请使用最新版本
-    $ docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always jumpserver/jms_coco:<Tag>
-    # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_coco -d -p 2222:2222 -p 5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_coco:1.5.2
-
-10. 正常安装并启动 guacamole 组件
+9. 正常安装并启动 guacamole 组件
 
 .. code-block:: shell
 
@@ -187,9 +152,9 @@
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ mkdir -p /config/guacamole /config/guacamole/lib /config/guacamole/extensions /config/guacamole/data/log/
     $ cd /config
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.22/bin/apache-tomcat-9.0.22.tar.gz
-    $ tar xf apache-tomcat-9.0.22.tar.gz
-    $ mv apache-tomcat-9.0.22 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
+    $ tar xf apache-tomcat-9.0.26.tar.gz
+    $ mv apache-tomcat-9.0.26 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
@@ -215,27 +180,27 @@
     $ /etc/init.d/guacd start
     $ sh /config/tomcat9/bin/startup.sh
 
-10.1 docker 部署 guacamole 组件
+9.1 docker 部署 guacamole 组件
 
 .. code-block:: shell
 
     $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8081 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.2
+    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8081 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.3
 
-11. 下载 luna 组件
+10. 下载 luna 组件
 
 .. code-block:: shell
 
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/luna/releases 获取
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.2/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.3/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
 
-12. 配置 nginx 整合各组件
+11. 配置 nginx 整合各组件
 
 .. code-block:: shell
 
