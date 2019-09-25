@@ -192,7 +192,7 @@
         }
 
         location /koko/ {
-            proxy_pass       http://koko/;  # koko
+            proxy_pass       http://koko;  # koko
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;

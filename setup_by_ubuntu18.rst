@@ -300,7 +300,7 @@ Ubuntu 18.04 安装文档
         }
 
         location /koko/ {
-            proxy_pass       http://localhost:5000/;
+            proxy_pass       http://localhost:5000;
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
