@@ -274,14 +274,6 @@ CentOS 7 安装文档
             access_log off;
         }
 
-        location /koko/ {
-            proxy_pass       http://localhost:5000/;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;
-        }
-
         location /guacamole/ {
             proxy_pass       http://localhost:8081/;
             proxy_buffering off;
@@ -461,14 +453,6 @@ CentOS 7 安装文档
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;
-        }
-
-        location /koko/ {
-            proxy_pass       http://koko/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

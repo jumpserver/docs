@@ -203,14 +203,6 @@
             access_log off;
         }
 
-        location /koko/ {
-            proxy_pass       http://koko/;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;
-        }
-
         location /guacamole/ {
             proxy_pass       http://guacamole/;  #  guacamole
             proxy_buffering off;
