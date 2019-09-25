@@ -129,7 +129,7 @@ Ubuntu 18.04 安装文档
     SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token coco和guacamole用来注册服务账号, 不在使用原来的注册接受机制
+    # 预共享Token koko和guacamole用来注册服务账号, 不在使用原来的注册接受机制
     BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it
@@ -207,7 +207,7 @@ Ubuntu 18.04 安装文档
 
 运行不报错, 请继续往下操作
 
-三. 安装 SSH Server 和 WebSocket Server: coco
+三. 安装 SSH Server 和 WebSocket Server: koko
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **3.1 安装 Docker**
@@ -224,7 +224,7 @@ Ubuntu 18.04 安装文档
     $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
     $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
-**3.2 部署 coco**
+**3.2 部署 koko**
 
 .. code-block:: shell
 
@@ -238,7 +238,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.3
+    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.3
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 五. 安装 Web Terminal 前端: Luna
@@ -299,8 +299,8 @@ Ubuntu 18.04 安装文档
             root /opt/jumpserver/data/;
         }
 
-        location /socket.io/ {
-            proxy_pass       http://localhost:5000/socket.io/;
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -311,8 +311,8 @@ Ubuntu 18.04 安装文档
             access_log off;
         }
 
-        location /coco/ {
-            proxy_pass       http://localhost:5000/coco/;
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -353,7 +353,7 @@ Ubuntu 18.04 安装文档
 
 默认账号: admin 密码: admin
 
-到Jumpserver 会话管理-终端管理 检查 coco Guacamole 等应用的注册
+到Jumpserver 会话管理-终端管理 检查 koko Guacamole 等应用的注册
 
 **测试连接**
 

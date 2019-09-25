@@ -58,7 +58,7 @@
 
 点击页面上边的 "终端设置" 按钮, 进入终端设置页面, 编辑终端信息, 点击"提交"按钮, 终端设置完成。
 
-资产列表排序项, 可以选择按主机名或者 IP 来排序, 默认是按主机名排序。心跳间隔指的是 coco 和 Gua 等终端向 Jumpserver 发送心跳信息的频率, 如果 Jumpserver 长时间(1个小时)未收到 coco 和 Gua 发送的心跳数据, Jumpserver 则认为该终端也"死掉", 在"会话管理"下的"终端管理"页面会显示该终端已掉线。
+资产列表排序项, 可以选择按主机名或者 IP 来排序, 默认是按主机名排序。心跳间隔指的是 koko 和 Gua 等终端向 Jumpserver 发送心跳信息的频率, 如果 Jumpserver 长时间(1个小时)未收到 koko 和 Gua 发送的心跳数据, Jumpserver 则认为该终端也"死掉", 在"会话管理"下的"终端管理"页面会显示该终端已掉线。
 
 .. image:: _static/img/admin_settings_terminal_list_01.jpg
 .. image:: _static/img/admin_settings_terminal_list_02.jpg

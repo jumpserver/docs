@@ -220,7 +220,7 @@ CentOS 7 安装文档
     # http://<Jumpserver_url> 指向 jumpserver 的服务端口, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
     $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.3
-    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8081 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.3
+    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.3
 
 .. code-block:: shell
 
@@ -262,8 +262,8 @@ CentOS 7 安装文档
             root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
         }
 
-        location /socket.io/ {
-            proxy_pass       http://localhost:5000/socket.io/;
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -274,8 +274,8 @@ CentOS 7 安装文档
             access_log off;
         }
 
-        location /coco/ {
-            proxy_pass       http://localhost:5000/coco/;
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -451,8 +451,12 @@ CentOS 7 安装文档
             root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
         }
 
-        location /socket.io/ {
-            proxy_pass       http://kokows/socket.io/;  # koko
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /koko/ {
+            proxy_pass       http://koko;  # koko
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -463,8 +467,8 @@ CentOS 7 安装文档
             access_log off;
         }
 
-        location /coco/ {
-            proxy_pass       http://kokows/coco/;
+        location /koko/ {
+            proxy_pass       http://koko;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

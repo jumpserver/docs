@@ -87,14 +87,14 @@ FAQ
 .. code-block:: nginx
 
     # 具体表现为在luna页面一会可以连接资产, 一会就不行, 需要多次刷新页面
-    # 如果从开发者工具里面看, 可以看到部分不正常的 502 socket.io
+    # 如果从开发者工具里面看, 可以看到部分不正常的 502 koko
     # 此问题一般是由最前端一层的nginx反向代理造成的, 需要在每层的代理上添加(注意是每层)
     $ vi /etc/nginx/conf.d/jumpserver.conf  # 配置文件所在目录, 自行修改
 
     ...  # 省略
 
-    location /socket.io/ {
-            proxy_pass http://你后端的服务器url地址/socket.io/;
+    location /koko/ {
+            proxy_pass http://你后端的服务器url地址/koko/;
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -136,8 +136,8 @@ FAQ
                 proxy_read_timeout 150;
         }
 
-        location /socket.io/ {
-                proxy_pass http://192.168.244.144/socket.io/;
+        location /koko/ {
+                proxy_pass http://192.168.244.144/koko/;
                 proxy_buffering off;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;

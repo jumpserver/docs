@@ -142,16 +142,16 @@
             root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
         }
 
-        location /socket.io/ {
-            proxy_pass       http://localhost:5000/socket.io/;  # 如果coco安装在别的服务器, 请填写它的ip
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;  # 如果koko安装在别的服务器, 请填写它的ip
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
         }
 
-        location /coco/ {
-            proxy_pass       http://localhost:5000/coco/;  # 如果coco安装在别的服务器, 请填写它的ip
+        location /koko/ {
+            proxy_pass       http://localhost:5000/koko/;  # 如果koko安装在别的服务器, 请填写它的ip
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -176,21 +176,21 @@
 
     ...
 
-15. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, coco, 配置nginx做url分发...
+15. 访问 luna 页面提示 Luna是单独部署的一个程序, 你需要部署luna, koko, 配置nginx做url分发...
 
 .. code-block:: vim
 
     # 请通过 nginx 代理的端口访问 jumpserver 页面, 不要再直接访问 8080 端口
 
-16. 启动 koko 或者 coco 提示 "name":["名称重复"]
+16. 启动 koko 或者 koko 提示 "name":["名称重复"]
 
 .. code-block:: vim
 
     $ vi config.yml
 
-    NAME: coco01  # 把 coco01 换成你想要的名字, 注意默认是 # NAME: {{ Hostname }}, 注意去掉注释#
+    NAME: koko01  # 把 koko01 换成你想要的名字, 注意默认是 # NAME: {{ Hostname }}, 注意去掉注释#
 
-17. 启动 koko coco 提示 "detail":"身份认证信息未提供"
+17. 启动 koko 提示 "detail":"身份认证信息未提供"
 
 .. code-block:: vim
 
@@ -208,9 +208,9 @@
     export BOOTSTRAP_TOKEN=xxxxxx  # 把 xxxxxx 换成跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样的内容
 
     # 如果是 docker 部署出现的
-    $ docker stop jms_coco
+    $ docker stop jms_koko
     $ docker stop jms_guacamole
-    $ docker rm jms_coco
+    $ docker rm jms_koko
     $ docker rm jms_guacamole
 
     # 重新 docker run 即可, 注意 BOOTSTRAP_TOKEN 需要跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样
