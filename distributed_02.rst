@@ -91,10 +91,10 @@
             # 这里是 Mariadb 的后端ip
         }
 
-        upstream cocossh {
+        upstream kokossh {
             server 192.168.100.40:2222;
             server 192.168.100.40:2223;  # 多节点
-            # 这里是 coco ssh 的后端ip
+            # 这里是 koko ssh 的后端ip
             least_conn;
         }
 
@@ -106,7 +106,7 @@
 
         server {
             listen 2222;
-            proxy_pass cocossh;
+            proxy_pass kokossh;
             proxy_connect_timeout 1s;  # detect failure quickly
         }
     }
@@ -191,8 +191,8 @@
             alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
         }
 
-        location /socket.io/ {
-            proxy_pass       http://kokows/socket.io/;  # koko
+        location /koko/ {
+            proxy_pass       http://koko;  # koko
             proxy_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -203,8 +203,8 @@
             access_log off;
         }
 
-        location /coco/ {
-            proxy_pass       http://kokows/coco/;
+        location /koko/ {
+            proxy_pass       http://koko;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
