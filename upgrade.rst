@@ -493,7 +493,7 @@ docker 部署的 koko
     $ cd /opt/docker-guacamole
     $ git pull
     $ cd /config
-    $ rm -rf /cofig/tomcat8
+    $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
@@ -754,7 +754,7 @@ docker 部署的 koko
     $ cd /opt/docker-guacamole
     $ git pull
     $ cd /config
-    $ rm -rf /cofig/tomcat8
+    $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
@@ -933,7 +933,7 @@ docker 部署的 koko
     $ cd /opt/docker-guacamole
     $ git pull
     $ cd /config
-    $ rm -rf /cofig/tomcat8
+    $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
@@ -1122,7 +1122,7 @@ docker 部署的 koko
     $ cd /opt/docker-guacamole
     $ git pull
     $ cd /config
-    $ rm -rf /cofig/tomcat8
+    $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
