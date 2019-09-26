@@ -372,6 +372,66 @@
     $ cd ../
     $ ./jms start -d
 
+.. code-block:: nginx
+
+    $ vi /etc/nginx/conf.d/jumpserver.conf  # 部分用户的配置文件是/etc/nginx/nginx.conf
+
+    server {
+        listen 80;
+
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /luna/ {
+            try_files $uri / /index.html;
+            alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /koko/ {
+            proxy_pass       http://localhost:5000;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /guacamole/ {
+            proxy_pass       http://localhost:8081/;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+
+.. code-block:: shell
+
+    # 保存后重新载入配置
+    $ nginx -s reload
+
 **Luna**
 
 说明: 直接下载 release 包
@@ -572,6 +632,67 @@ docker 部署的 guacamole
     $ pip install -r requirements/requirements.txt
     $ ./jms start -d
 
+.. code-block:: nginx
+
+    $ vi /etc/nginx/conf.d/jumpserver.conf  # 部分用户的配置文件是/etc/nginx/nginx.conf
+
+    server {
+        listen 80;
+
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /luna/ {
+            try_files $uri / /index.html;
+            alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /koko/ {
+            proxy_pass       http://localhost:5000;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /guacamole/ {
+            proxy_pass       http://localhost:8081/;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+
+.. code-block:: shell
+
+    # 保存后重新载入配置
+    $ nginx -s reload
+
+
 **Luna**
 
 说明: 直接下载 release 包
@@ -691,6 +812,66 @@ docker 部署的 guacamole
 
     $ ./jms start -d
 
+.. code-block:: nginx
+
+    $ vi /etc/nginx/conf.d/jumpserver.conf  # 部分用户的配置文件是/etc/nginx/nginx.conf
+
+    server {
+        listen 80;
+
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /luna/ {
+            try_files $uri / /index.html;
+            alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /koko/ {
+            proxy_pass       http://localhost:5000;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /guacamole/ {
+            proxy_pass       http://localhost:8081/;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+
+.. code-block:: shell
+
+    # 保存后重新载入配置
+    $ nginx -s reload
+
 **Luna**
 
 说明: 直接下载 release 包
@@ -808,6 +989,77 @@ docker 部署的 guacamole
     $ pip install -r requirements/requirements.txt
 
     $ ./jms start -d
+
+.. code-block:: nginx
+
+    $ vi /etc/nginx/conf.d/jumpserver.conf  # 部分用户的配置文件是/etc/nginx/nginx.conf
+
+    server {
+        listen 80;
+
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /luna/ {
+            try_files $uri / /index.html;
+            alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        # location /ws/ {
+        #     proxy_set_header X-Real-IP $remote_addr;
+        #     proxy_set_header Host $host;
+        #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        #     proxy_pass http://localhost:8080;
+        #     proxy_http_version 1.1;
+        #     proxy_buffering off;
+        #     proxy_set_header Upgrade $http_upgrade;
+        #     proxy_set_header Connection "upgrade";
+        # }
+
+        location /koko/ {
+            proxy_pass       http://localhost:5000;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /guacamole/ {
+            proxy_pass       http://localhost:8081/;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+
+.. code-block:: shell
+
+    # 保存后重新载入配置
+    $ nginx -s reload
 
 **Luna**
 
