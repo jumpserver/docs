@@ -54,7 +54,7 @@
       && docker pull jumpserver/jms_koko:1.5.2 \
       && docker pull jumpserver/jms_guacamole:1.5.2 \
       && rm -rf /etc/nginx/conf.d/default.conf \
-      && wget -O /etc/nginx/conf.d/jumpserver.conf https://demo.jumpserver.org/download/nginx/conf.d/jumpserver.conf
+      && wget -O /etc/nginx/conf.d/jumpserver.conf https://demo.jumpserver.org/download/nginx/conf.d/jumpserver_1.5.2.conf
 
 .. code-block:: shell
 
