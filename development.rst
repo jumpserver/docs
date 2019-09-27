@@ -8,4 +8,5 @@
    api_style_guide
    python_style_guide
    project_structure
+   api_auth
    user_api
