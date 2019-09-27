@@ -215,6 +215,18 @@
             access_log off;
         }
 
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
         location / {
             proxy_pass http://localhost:8080;
             proxy_set_header X-Real-IP $remote_addr;
@@ -413,6 +425,18 @@
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -679,6 +703,18 @@ docker 部署的 guacamole
             access_log off;
         }
 
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
         location / {
             proxy_pass http://localhost:8080;
             proxy_set_header X-Real-IP $remote_addr;
@@ -859,6 +895,18 @@ docker 部署的 guacamole
             access_log off;
         }
 
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
         location / {
             proxy_pass http://localhost:8080;
             proxy_set_header X-Real-IP $remote_addr;
@@ -1013,16 +1061,17 @@ docker 部署的 guacamole
             root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
         }
 
-        # location /ws/ {
-        #     proxy_set_header X-Real-IP $remote_addr;
-        #     proxy_set_header Host $host;
-        #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        #     proxy_pass http://localhost:8080;
-        #     proxy_http_version 1.1;
-        #     proxy_buffering off;
-        #     proxy_set_header Upgrade $http_upgrade;
-        #     proxy_set_header Connection "upgrade";
-        # }
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
 
         location /koko/ {
             proxy_pass       http://localhost:5000;
