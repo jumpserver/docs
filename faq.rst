@@ -116,6 +116,17 @@ FAQ
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             access_log off;  # 不记录到 log
     }
+
+    location /ws/ {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://localhost:8070;
+            proxy_http_version 1.1;
+            proxy_buffering off;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+    }
     ...
 
     # 为了便于理解, 附上一份 demo 网站的配置文件参考
@@ -148,7 +159,7 @@ FAQ
         }
 
         location /guacamole/ {
-                proxy_pass       http://192.168.244.144/guacamole/;
+                proxy_pass http://192.168.244.144/guacamole/;
                 proxy_buffering off;
                 proxy_http_version 1.1;
                 proxy_set_header Upgrade $http_upgrade;
@@ -156,6 +167,17 @@ FAQ
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /ws/ {
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_pass http://192.168.244.144/ws/;
+                proxy_http_version 1.1;
+                proxy_buffering off;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
         }
     }
 

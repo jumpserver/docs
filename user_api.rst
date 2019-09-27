@@ -16,17 +16,17 @@ API 文档
 
 .. code-block:: shell
 
-    $ curl -X POST http://localhost/api/users/v1/auth/ -H 'Content-Type: application/json' -d '{"username": "admin", "password": "admin"}'  # 获取token
+    $ curl -X POST http://localhost/api/v1/users/auth/ -H 'Content-Type: application/json' -d '{"username": "admin", "password": "admin"}'  # 获取token
     {"token":"937b38011acf499eb474e2fecb424ab3"}  # 获取到的token
 
     # 如果开启了 MFA, 则返回的是 seed, 需要携带 seed 和 otp_code 再次提交一次才能获取到 token
-    curl -X POST http://localhost/api/users/v1/auth/ -H 'Content-Type: application/json' -d '{"username": "admin", "password": "admin"}'
+    $ curl -X POST http://localhost/api/v1/users/auth/ -H 'Content-Type: application/json' -d '{"username": "admin", "password": "admin"}'
     {"code":101, "msg":"请携带seed值, 进行MFA二次认证", "otp_url":"/api/users/v1/otp/auth/", "seed":"629ba0935a624bd9b21e31c19e0cc8cb"}
-    $ curl -X POST http://localhost/api/users/v1/otp/auth/ -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"seed": "629ba0935a624bd9b21e31c19e0cc8cb", "otp_code": "202123"}'
+    $ curl -X POST http://localhost/api/v1/users/otp/auth/ -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"seed": "629ba0935a624bd9b21e31c19e0cc8cb", "otp_code": "202123"}'
     {"token":"937b38011acf499eb474e2fecb424ab3"}
     # otp_code 为动态密码
 
-    $ curl -H 'Authorization: Bearer 937b38011acf499eb474e2fecb424ab3' -H "Content-Type:application/json" http://localhost/api/users/v1/users/
+    $ curl -H 'Authorization: Bearer 937b38011acf499eb474e2fecb424ab3' -H "Content-Type:application/json" http://localhost/api/v1/users/users/
     # 使用token访问, token有效期 1小时
 
     # 也可以创建一个永久 private_token, 避免二次认证
@@ -43,7 +43,7 @@ API 文档
     <PrivateToken: 937b38011acf499eb474e2fecb424ab3>
     # 937b38011acf499eb474e2fecb424ab3 就是
 
-    $ curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' -H "Content-Type:application/json" http://localhost/api/users/v1/users/
+    $ curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' -H "Content-Type:application/json" http://localhost/api/v1/users/users/
 
 - python代码示例
 
@@ -55,7 +55,7 @@ API 文档
 
     def get_token():
 
-        url = 'https://demo.jumpserver.org/api/users/v1/auth/'
+        url = 'https://demo.jumpserver.org/api/v1/users/auth/'
 
         query_args = {
             "username": "admin",
@@ -68,7 +68,7 @@ API 文档
 
     def get_user_info():
 
-        url = 'https://demo.jumpserver.org/api/users/v1/users/'
+        url = 'https://demo.jumpserver.org/api/v1/users/users/'
 
         token = get_token()
 
