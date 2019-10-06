@@ -15,7 +15,7 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   | Jumpserver | 192.168.100.30  |    80, 8080   |Tengine, koko, Guacamole |
+|    TCP   | Jumpserver | 192.168.100.30  |  8070, 8080   |Tengine, koko, Guacamole |
 +----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
@@ -30,6 +30,7 @@
     $ yum -y install gcc epel-release git
 
     # 开放 8080 端口给 koko 、 guacamole 和 tengine 访问
+    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8070" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.40" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.50" port protocol="tcp" port="8080" accept"
