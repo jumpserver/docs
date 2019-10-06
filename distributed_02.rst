@@ -203,6 +203,17 @@
             access_log off;
         }
 
+        location /ws/ {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://jumpserver_ws;
+            proxy_http_version 1.1;
+            proxy_buffering off;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+        }
+
         location /guacamole/ {
             proxy_pass       http://guacamole/;  #  guacamole
             proxy_buffering off;

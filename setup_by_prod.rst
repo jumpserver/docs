@@ -12,7 +12,7 @@
 
 端口说明
 ~~~~~~~~~~~~~~
-- Jumpserver 默认端口为 8080/tcp 配置文件 jumpserver/config.yml
+- Jumpserver 默认 Web 端口为 8080/tcp, 默认 WS 端口为 8070/tcp, 配置文件 jumpserver/config.yml
 - koko 默认 SSH 端口为 2222/tcp, 默认 Web Terminal 端口为 5000/tcp 配置文件在 koko/config.yml
 - Guacamole 默认端口为 8081/tcp, 配置文件 /config/tomcat9/conf/server.xml
 - Nginx 默认端口为 80/tcp
@@ -22,7 +22,7 @@
 +------------+-----------------+------------+
 |  Protocol  |   Server name   |    Port    |
 +============+=================+============+
-|     TCP    |    Jumpserver   |    8080    |
+|     TCP    |    Jumpserver   | 8070, 8080 |
 +------------+-----------------+------------+
 |     TCP    |       koko      | 2222, 5000 |
 +------------+-----------------+------------+
