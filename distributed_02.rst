@@ -144,6 +144,11 @@
         # 这里是 jumpserver 的后端ip
     }
 
+    upstream jumpserver_ws {
+        server 192.168.100.30:8070;
+        # 这里是 jumpserver 的后端ip
+    }
+
     upstream kokows {
         server 192.168.100.40:5000 weight=1;
         server 192.168.100.40:5001 weight=1;  # 多节点
