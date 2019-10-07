@@ -295,7 +295,7 @@ CentOS 7 安装文档
             proxy_buffering off;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-        }        
+        }
 
         location / {
             proxy_pass http://localhost:8080;
@@ -410,7 +410,7 @@ CentOS 7 安装文档
         # 这里是 jumpserver 的后端ip
     }
 
-    upstream kokows {
+    upstream koko {
         server localhost:5000 weight=1;
         server localhost:5001 weight=1;  # 多节点
         server localhost:5002 weight=1;  # 多节点
@@ -452,10 +452,6 @@ CentOS 7 安装文档
         location /media/ {
             add_header Content-Encoding gzip;
             root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
-        }
-
-        location /static/ {
-            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
         }
 
         location /koko/ {
