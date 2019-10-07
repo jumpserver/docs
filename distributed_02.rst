@@ -149,10 +149,10 @@
         # 这里是 jumpserver 的后端ip
     }
 
-    upstream kokows {
+    upstream koko {
         server 192.168.100.40:5000 weight=1;
         server 192.168.100.40:5001 weight=1;  # 多节点
-        # 这里是 koko ws 的后端ip
+        # 这里是 koko 的后端ip
         ip_hash;
     }
 
