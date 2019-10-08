@@ -492,7 +492,7 @@
     $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
     $ vim config.yml
 
-    $ ./koko  # 后台运行可以使用 ./koko &
+    $ ./koko  # 后台运行可以使用 ./koko -d
 
 docker 部署的 koko
 
@@ -765,7 +765,7 @@ docker 部署的 guacamole
     $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
     $ vim config.yml
 
-    $ ./koko  # 后台运行可以使用 ./koko &
+    $ ./koko  # 后台运行可以使用 ./koko -d
 
 docker 部署的 koko
 
@@ -956,7 +956,7 @@ docker 部署的 guacamole
     $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
     $ vim config.yml
 
-    $ ./koko  # 后台运行可以使用 ./koko &
+    $ ./koko  # 后台运行可以使用 ./koko -d
 
 docker 部署的 koko
 
@@ -1146,7 +1146,7 @@ docker 部署的 guacamole
     $ sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/kokodir/config.yml
     $ vim config.yml
 
-    $ ./koko  # 后台运行可以使用 ./koko &
+    $ ./koko  # 后台运行可以使用 ./koko -d
 
 docker 部署的 koko
 
