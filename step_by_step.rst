@@ -99,7 +99,7 @@
     $ cp config_example.yml config.yml
     $ vim config.yml
     # BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致
-    $ ./koko
+    $ ./koko  # 可以 -d 参数在后台运行 ./koko -d
 
 8.1. docker 部署 koko 组件
 
