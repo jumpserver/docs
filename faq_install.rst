@@ -185,10 +185,11 @@
 
     NAME: koko01  # 把 koko01 换成你想要的名字, 注意默认是 # NAME: {{ Hostname }}, 注意去掉注释#
 
-17. 启动 koko 提示 "detail":"身份认证信息未提供"
+17. 启动 组件 提示 "detail":"身份认证信息未提供"
 
 .. code-block:: vim
 
+    # 如果是 koko 提示 "detail":"身份认证信息未提供"
     $ vi config.yml
 
     BOOTSTRAP_TOKEN: xxxxxx  # 把 xxxxxx 换成跟 jumpserver/config.yml 的 BOOTSTRAP_TOKEN: 一样的内容

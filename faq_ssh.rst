@@ -124,4 +124,39 @@ SSH 协议资产连接错误排查思路
     # 提示 "MODULE FAILURE", "module_stdout":"/bin/sh: 1: /usr/bin/python: not found\r\n", "module_stderr":"Shared connection to xx.xx.xx.xx closed.\r\n"
     # 一般是资产 python 未安装或者 python 异常
 
+11. 测试资产, 刷新硬件, 推送, 测试系统用户连接 提示 No such file or directory: b'ssh': b'ssh' fatal
+
+.. code-block:: vim
+
+    # 这个问题一般是使用 systemd 管理，但是缺少了 PATH 环境变量
+    # Environment="PATH=/opt/py3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin"
+
+12. 连接资产提示 timeout
+
+.. code-block:: vim
+
+    # 如果在 系统用户 详情里面测试提示 ok, 但是 web 连接资产提示 timeout, 请手动登录该资产修改 /etc/ssh/sshd_config 的 usedns 为 no
+    $ vim /etc/ssh/sshd_config
+
+    ...
+
+    # UseDNS no
+    UseDNS no
+
+    ...
+
+    # 修改后, 重启 ssh 服务, 再次在web上连接资产
+
+    # 如果在 系统用户 详情里面测试提示 其他错误, 请检查推送或者系统用户是否设置正确
+
+    # 如果同一个组里面, 出现个别用户无法登录某个资产, 组的其他人可以正常使用的, 请关闭 koko/config.yml 的 连接复用功能
+    $ vim koko/config.yml
+
+    ...
+
+    # REUSE_CONNECTION: true
+    REUSE_CONNECTION: false
+
+    ...
+
 其他问题可参考 `FAQ <faq.html>`_
