@@ -38,7 +38,7 @@ Docker-Compose 参考 `docker-compose示例 <https://github.com/wojiushixiaobai/
 
 - mysql 版本需要大于等于 5.6
 - mariadb 版本需要大于等于 5.5.6
-- 数据库编码要求 uft8
+- 数据库编码要求 utf8
 
 **创建数据库**
 
