@@ -29,7 +29,7 @@
 .. code-block:: shell
 
     # 一般是由于镜像源未同步, -i 指定官方源即可, 如：
-    $ pip install -r requirement.txt -i https://pypi.org/simple
+    $ pip install -r requirements.txt -i https://pypi.org/simple
     $ pip install xxxxx==x.x.xx -i https://pypi.org/simple
 
 5. pip install 提示 install for mysqlclient ... error /usr/bin/ld: 找不到 -lmariadb
