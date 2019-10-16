@@ -221,7 +221,7 @@ Ubuntu 18.04 安装文档
     $ apt-get -y install docker-ce
     $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
     $ systemctl restart docker.service
-    $ Server_IP=`ip addr | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
+    $ Server_IP=`ip addr | grep 'state UP' -A2 | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
     $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"
 
 **3.2 部署 koko**
