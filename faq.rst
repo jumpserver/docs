@@ -171,14 +171,14 @@ FAQ
         }
 
         location /ws/ {
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_pass http://192.168.244.144/ws/;
                 proxy_http_version 1.1;
                 proxy_buffering off;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
     }
 
@@ -247,3 +247,34 @@ FAQ
     $ celery -A ops purge -f
 
     # 如果任然异常, 手动结束所有jumpserver进程, 然后kill掉未能正常结束的jumpserver相关进程, 在重新启动jumpserver即可
+
+12. koko ssh登录获取用户真实ip
+
+.. code-block:: shell
+
+    # 暂不支持使用容器方式部署的koko, 目前仅支持二进制运行的
+    $ vim /etc/nginx/nginx.conf
+
+    ...
+    # 加入下面内容
+    stream {
+        log_format  proxy  '$remote_addr [$time_local] '
+                           '$protocol $status $bytes_sent $bytes_received '
+                           '$session_time "$upstream_addr" '
+                           '"$upstream_bytes_sent" "$upstream_bytes_received" "$upstream_connect_time"';
+
+        access_log /var/log/nginx/tcp-access.log  proxy;
+        open_log_file_cache off;
+
+        upstream kokossh {
+            server 127.0.0.1:2222;  # 这里是 koko ssh 的后端ip
+        }
+
+        server {
+            listen 2220;  # 防止端口冲突, 用户通过2220端口访问即可获取用户真实ip地址
+            proxy_pass kokossh;
+            proxy_protocol on;  # 通过此设置获取用户真实ip
+            proxy_connect_timeout 1s;  # detect failure quickly
+        }
+    }
+    ...
