@@ -9,13 +9,17 @@
 
     # 这是因为你修改了本地文件导致代码冲突, 请确认修改的内容并手动进行合并, 请谨慎处理
 
-    # 如果希望保留你的改动
+    # 如果希望保留你的改动 (不推荐)
     $ git stash
     $ git pull
     $ git stash pop
     # 可以使用git diff -w +文件名 来确认代码自动合并的情况
 
-    # 或者放弃本地的修改
+    # 或者放弃本地的修改 (推荐)
+    # 可以使用 git checkout + 文件名来撤销文件的更改
+    # 如 git checkout apps/jumpserver/settings.py  # 这里的 apps/jumpserver/settings.py 就是报错的路径文件
+
+    # 或者取消所有更改, (谨慎执行)
     $ git reset --hard
     $ git pull
 
