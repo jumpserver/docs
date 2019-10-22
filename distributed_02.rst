@@ -71,6 +71,9 @@
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
+    
+    #需要把jumpserver源码目录下/jumpserver/apps/static目录下所有文件替换到luna的目录下的static目录，不然部署完毕访问时会无样式和显示不了logo。
+
 
 .. code-block:: nginx
 
@@ -202,6 +205,10 @@
         location /luna/ {
             try_files $uri / /index.html;
             alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/luna/;  #指定静态资源路径，如js、css、logo等，请根据实际存放路径修改
         }
 
         location /socket.io/ {
