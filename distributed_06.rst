@@ -48,7 +48,7 @@
         -p 5000:5000 \
         -e CORE_HOST=http://192.168.100.30:8080 \
         -e BOOTSTRAP_TOKEN=你的token \
-        jumpserver/jms_koko:1.5.3
+        jumpserver/jms_koko:1.5.4
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
 
@@ -67,6 +67,6 @@
         -p 5001:5000 \
         -e CORE_HOST=http://192.168.100.30:8080 \
         -e BOOTSTRAP_TOKEN=你的token \
-        jumpserver/jms_koko:1.5.3
+        jumpserver/jms_koko:1.5.4
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册

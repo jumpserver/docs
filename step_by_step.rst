@@ -89,7 +89,7 @@
 
     $ cd /opt
     # 访问 https://github.com/jumpserver/koko/releases 下载对应 release 包并解压到 /opt目录
-    $ wget https://github.com/jumpserver/koko/releases/download/1.5.3/koko-master-linux-amd64.tar.gz
+    $ wget https://github.com/jumpserver/koko/releases/download/1.5.4/koko-master-linux-amd64.tar.gz
 
     $ tar xf koko-master-linux-amd64.tar.gz
 
@@ -109,7 +109,7 @@
 
     $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always jumpserver/jms_koko:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_koko:1.5.3
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always jumpserver/jms_koko:1.5.4
 
 9. 正常安装并启动 guacamole 组件
 
@@ -183,7 +183,7 @@
 
     $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> jumpserver/jms_guacamole:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.3
+    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 jumpserver/jms_guacamole:1.5.4
 
 10. 下载 luna 组件
 
@@ -192,7 +192,7 @@
     $ cd /opt
 
     # 访问 https://github.com/jumpserver/luna/releases 获取
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.3/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.4/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
