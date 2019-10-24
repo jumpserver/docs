@@ -134,7 +134,7 @@
     # ln -s /usr/local/lib/freerdp/*.so /usr/lib/x86_64-linux-gnu/freerdp
 
     # Fedora/CentOS/RHEL: yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel
-    # Fedora/CentOS/RHEL: yum install -y ffmpeg-devel freerdp-devel pango-devel	libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
+    # Fedora/CentOS/RHEL: yum install -y ffmpeg-devel freerdp1.2-devel pango-devel	libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
     # ln -s /usr/local/lib/freerdp/*.so /usr/lib64/freerdp/
 
     $ autoreconf -fi
@@ -149,9 +149,9 @@
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ mkdir -p /config/guacamole /config/guacamole/lib /config/guacamole/extensions /config/guacamole/data/log/
     $ cd /config
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz
-    $ tar xf apache-tomcat-9.0.26.tar.gz
-    $ mv apache-tomcat-9.0.26 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.27/bin/apache-tomcat-9.0.27.tar.gz
+    $ tar xf apache-tomcat-9.0.27.tar.gz
+    $ mv apache-tomcat-9.0.27 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
