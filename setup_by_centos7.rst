@@ -255,7 +255,7 @@ CentOS 7 安装文档
 
         location /media/ {
             add_header Content-Encoding gzip;
-            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+            alias /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
         }
 
         location /static/ {
