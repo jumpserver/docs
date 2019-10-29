@@ -173,6 +173,8 @@
     $ echo "export JUMPSERVER_KEY_DIR=/config/guacamole/keys" >> ~/.bashrc
     $ export GUACAMOLE_HOME=/config/guacamole
     $ echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
+    $ export GUACAMOLE_LOG_LEVEL=ERROR
+    $ echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
 
     $ /etc/init.d/guacd start
     $ sh /config/tomcat9/bin/startup.sh
