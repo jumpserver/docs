@@ -15,7 +15,7 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   | Jumpserver | 192.168.100.30  |  8070, 8080   |Tengine, koko, Guacamole |
+|    TCP   | Jumpserver | 192.168.100.30  |       80      |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
@@ -145,8 +145,65 @@
 
     # 运行 Jumpserver
     $ cd /opt/jumpserver
-    $ ./jms start  # 后台运行使用 -d 参数./jms start -d
+    $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
-    # 需要把 jumpserver/data/ 目录同步给其他 jumpserver 服务器 和 Tengine 服务器使用, 建议使用共享文件夹或者 oss 解决
-    # 多节点部署, 请参考此文档, 设置数据库时请选择从库, 其他的一样
+    # 部署 Nginx 反向代理
+    $ vi /etc/yum.repos.d/nginx.repo
+
+    [nginx]
+    name=nginx repo
+    baseurl=http://nginx.org/packages/centos/7/$basearch/
+    gpgcheck=0
+    enabled=1
+
+    $ yum -y install nginx
+    $ systemctl enable nginx
+
+    # 配置 Nginx 整合各组件
+    $ rm -rf /etc/nginx/conf.d/default.conf
+
+.. code-block:: shell
+
+    $ vi /etc/nginx/conf.d/jumpserver.conf
+
+    server {
+        listen 80;
+
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /ws/ {
+            proxy_pass http://localhost:8070;
+            proxy_http_version 1.1;
+            proxy_buffering off;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location / {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+    }
+
+    # 运行 Nginx
+    $ nginx -t   # 确保配置没有问题, 有问题请先解决
+    $ systemctl start nginx
+
+    # 多节点部署, 请参考此文档部署即可

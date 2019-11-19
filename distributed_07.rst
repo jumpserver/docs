@@ -63,7 +63,7 @@
     $ docker run --name jms_guacamole1 -d \
         -p 8082:8081 \
         -e JUMPSERVER_KEY_DIR=/config/guacamole/key \
-        -e JUMPSERVER_SERVER=http://192.168.100.30:8080 \
+        -e JUMPSERVER_SERVER=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         jumpserver/jms_guacamole:1.5.4
 

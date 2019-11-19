@@ -65,7 +65,7 @@
     $ docker run --name jms_koko1 -d \
         -p 2223:2222 \
         -p 5001:5000 \
-        -e CORE_HOST=http://192.168.100.30:8080 \
+        -e CORE_HOST=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         jumpserver/jms_koko:1.5.4
 
