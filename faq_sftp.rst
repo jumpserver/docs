@@ -18,10 +18,27 @@ sftp 使用说明
 
 .. code-block:: vim
 
-    $ vi koko/config.yml 或者 vi koko/config.yml
+    $ vi koko/config.yml
 
     # SFTP的根目录, 可选 /tmp, Home其他自定义目录
-    SFTP_ROOT: /tmp
+    # SFTP_ROOT: /tmp
+    SFTP_ROOT: /
+
+    # SFTP是否显示隐藏文件
+    # SFTP_SHOW_HIDDEN_FILE: false
+
+如果你的 koko 是 docker 方式部署
+
+.. code-block:: vim
+
+    $ docker exec -it jms_koko /bin/sh
+    $ if [ ! -f "/opt/koko/config.yml" ]; then cp /opt/koko/config_example.yml /opt/koko/config.yml; sed -i '5d' /opt/koko/config.yml; sed -i "5i CORE_HOST: $CORE_HOST" /opt/koko/config.yml; sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/koko/config.yml; sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/koko/config.yml; fi
+
+    $ vi koko/config.yml
+
+    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
+    # SFTP_ROOT: /tmp
+    SFTP_ROOT: /
 
     # SFTP是否显示隐藏文件
     # SFTP_SHOW_HIDDEN_FILE: false
