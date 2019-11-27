@@ -41,6 +41,7 @@
 
     $ cd /opt/jumpserver/requirements
     $ yum -y install $(cat rpm_requirements.txt)
+    $ pip install wheel
     $ pip install --upgrade pip setuptools
     $ pip install -r requirements.txt
 
@@ -50,7 +51,7 @@
 
     $ cd /opt/jumpserver
     $ vi config.yml
-    # 把数据库和 redis 信息修改并保存
+    # 把数据库和 redis 信息修改并保存, 不要修改其他的选项, 只改 数据库 和 redis 的配置
 
 4. 启动 jumpserver
 

@@ -213,12 +213,6 @@ Windows 系统用户推送的环境要求参考 `windows-ssh-setup <https://docs
 
     # 如果资产不能正常连接, 请检查"管理用户"的用户名和密钥是否正确以及该"管理用户"是否能使用 SSH 从 Jumpserver 主机正确登录到资产主机上
 
-SSH 协议参考 `SSH 协议资产连接说明 <faq_ssh.html>`_
-
-RDP 协议参考 `RDP 协议资产连接说明 <faq_rdp.html>`_
-
-Telnet 协议参考 `Telnet 协议资产连接说明 <faq_telnet.html>`_
-
 四、创建授权规则
 `````````````````````
 
@@ -279,8 +273,6 @@ Telnet 协议参考 `Telnet 协议资产连接说明 <faq_telnet.html>`_
     # 点击 "文件管理"
     # 先在左边选择资产, 目前只支持自动登录的 SSH 协议资产
     # 也可以使用 sftp 方式进行文件管理
-
-参考 `SFTP 连接说明 <faq_sftp.html>`_
 
 .. image:: _static/img/user_terminal_web-sftp_list.jpg
 

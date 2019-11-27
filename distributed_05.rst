@@ -50,6 +50,7 @@
     $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
 
     # 安装 Python 库依赖
+    $ pip install wheel
     $ pip install --upgrade pip setuptools
     $ pip install -r /opt/jumpserver/requirements/requirements.txt
 

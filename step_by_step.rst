@@ -63,6 +63,7 @@
     # 如 Centos: yum install -y $(cat rpm_requirements.txt)
     # 如 Ubuntu: apt-get install -y $(cat deb_requirements.txt)
 
+    $ pip install wheel
     $ pip install -r requirements.txt
     # 确保已经载入 py3 虚拟环境, 中间如果遇到报错一般是依赖包没装全, 可以通过 搜索引擎 解决
 
