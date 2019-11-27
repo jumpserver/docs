@@ -1,6 +1,8 @@
 更新升级
 -------------
 
+**升级及迁移请保持 SECRET_KEY 与旧版本一致, 否则会导致数据库加密数据无法解密**
+
 1.0.0-1.4.3 升级到 1.4.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -352,6 +354,7 @@
 
 .. code-block:: shell
 
+    $ pip install wheel
     $ pip install -r requirements/requirements.txt
     $ cd utils
     $ vi 1.4.4_to_1.4.5_migrations.sh
@@ -653,6 +656,7 @@ docker 部署的 guacamole
 
 .. code-block:: shell
 
+    $ pip install wheel
     $ pip install -r requirements/requirements.txt
     $ ./jms start -d
 
@@ -844,6 +848,7 @@ docker 部署的 guacamole
     $ ./jms stop
     $ git checkout master
     $ git pull
+    $ pip install wheel
     $ pip install -r requirements/requirements.txt
 
     $ ./jms start -d
@@ -1034,6 +1039,7 @@ docker 部署的 guacamole
     $ source /opt/py3/bin/activate
     $ ./jms stop
     $ git pull
+    $ pip install wheel
     $ pip install -r requirements/requirements.txt
 
     $ ./jms start -d

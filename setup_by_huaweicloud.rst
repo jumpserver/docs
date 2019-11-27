@@ -54,6 +54,7 @@
       && yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt) \
       && echo -e "[easy_install]\nindex_url = https://mirrors.huaweicloud.com/repository/pypi/simple" > ~/.pydistutils.cfg \
       && source /opt/py3/bin/activate \
+      && pip install wheel -i https://mirrors.huaweicloud.com/repository/pypi/simple \
       && pip install --upgrade pip setuptools -i https://mirrors.huaweicloud.com/repository/pypi/simple \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i https://mirrors.huaweicloud.com/repository/pypi/simple \
       && curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io \
