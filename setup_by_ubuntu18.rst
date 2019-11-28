@@ -95,6 +95,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
+    $ pip install wheel
     $ pip install --upgrade pip setuptools
     $ pip install -r requirements.txt
 
