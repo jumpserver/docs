@@ -116,7 +116,6 @@ git clone -b master https://github.com/jumpserver/web.git --depth 1
 ## 数据库规范
 
 1. 原则上每个项目如果有数据库的需求，必须有独立的数据库（即便是在同一台数据库服务器上，Database name必须也是独立的）。
-2. 生产环境推荐用户首选PostgreSQL 9.4以上版本，默认安装脚本也采用这个版本来做。
 
 ### 命名原则
 

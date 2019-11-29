@@ -1,8 +1,6 @@
 CentOS 7 安装文档
 --------------------------
 
-生产环境建议使用 `1.4.8 版本 <http://docs.jumpserver.org/zh/1.4.8/setup_by_centos7.html>`_
-
 说明
 ~~~~~~~
 -  # 开头的行表示注释
