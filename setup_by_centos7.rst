@@ -9,7 +9,7 @@ CentOS 7 安装文档
 
 云服务器快速部署参考 `极速安装 <setup_by_fast.html>`_
 
-安装过程中遇到问题可参考 `安装过程中常见的问题 <faq_install.html>`_
+安装过程中遇到问题可参考 `FAQ 文档 <faq.html>`_
 
 环境
 ~~~~~~~
