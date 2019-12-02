@@ -1,4 +1,4 @@
-CentOS 7 安装文档
+CentOS 8 安装文档
 --------------------------
 
 说明
@@ -7,14 +7,12 @@ CentOS 7 安装文档
 -  > 开头的行表示需要在 mysql 中执行
 -  $ 开头的行表示需要执行的命令
 
-云服务器快速部署参考 `极速安装 <setup_by_fast.html>`_
-
 安装过程中遇到问题可参考 `安装过程中常见的问题 <faq_install.html>`_
 
 环境
 ~~~~~~~
 
--  系统: CentOS 7
+-  系统: CentOS 8
 -  IP: 192.168.244.144
 -  目录: /opt
 -  数据库: mariadb
@@ -35,8 +33,7 @@ CentOS 7 安装文档
 
     $ firewall-cmd --reload  # 重新载入规则
 
-    $ setenforce 0
-    $ sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+    $ setsebool -P httpd_can_network_connect 1
 
     # 安装依赖包
     $ yum -y install wget gcc epel-release git
@@ -47,7 +44,7 @@ CentOS 7 安装文档
     $ systemctl start redis
 
     # 安装 MySQL, 如果不使用 Mysql 可以跳过相关 Mysql 安装和配置, 支持sqlite3, mysql, postgres等
-    $ yum -y install mariadb mariadb-devel mariadb-server MariaDB-shared # centos7下叫mariadb, 用法与mysql一致
+    $ yum -y install mariadb mariadb-devel mariadb-server
     $ systemctl enable mariadb
     $ systemctl start mariadb
     # 创建数据库 Jumpserver 并授权
@@ -58,11 +55,13 @@ CentOS 7 安装文档
     # 安装 Nginx, 用作代理服务器整合 Jumpserver 与各个组件
     $ vi /etc/yum.repos.d/nginx.repo
 
-    [nginx]
-    name=nginx repo
-    baseurl=http://nginx.org/packages/centos/7/$basearch/
-    gpgcheck=0
+    [nginx-stable]
+    name=nginx stable repo
+    baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+    gpgcheck=1
     enabled=1
+    gpgkey=https://nginx.org/keys/nginx_signing.key
+    module_hotfixes=true
 
     $ yum -y install nginx
     $ systemctl enable nginx
@@ -83,7 +82,7 @@ CentOS 7 安装文档
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 
     # 安装依赖 RPM 包
-    $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
+    $ yum -y install gcc krb5-devel libtiff-devel libjpeg-devel libzip-devel freetype-devel libwebp-devel tcl-devel tk-devel sshpass openldap-devel mariadb-devel libffi-devel openssh-clients telnet openldap-clients
 
     # 安装 Python 库依赖
     $ pip install wheel
@@ -191,26 +190,28 @@ CentOS 7 安装文档
     $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数
 
-    $ wget -O /usr/lib/systemd/system/jms.service https://demo.jumpserver.org/download/shell/centos/jms.service
-    $ chmod 755 /usr/lib/systemd/system/jms.service
-    $ systemctl enable jms  # 配置自启
-
 .. code-block:: shell
 
-    # 安装 docker 部署 koko 与 guacamole
-    $ yum install -y yum-utils device-mapper-persistent-data lvm2
-    $ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-    $ yum makecache fast
-    $ rpm --import https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
-    $ yum -y install docker-ce
-    $ systemctl enable docker
-    $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
-    $ systemctl restart docker
+    # 安装 podman 部署 koko 与 guacamole
+    $ yum install -y podman-docker
+    $ alias docker=podman
+    $ echo "alias docker=podman" >> ~/.bashrc
+
+    # 配置 podman 镜像源
+    $ vi /etc/containers/registries.conf
+
+    ...
+
+    [registries.search]
+    # registries = ['registry.redhat.io', 'quay.io', 'docker.io']
+    registries = ['bmtrgdvx.mirror.aliyuncs.com', 'f1361db2.m.daocloud.io', 'docker.io']
+
+    ...
 
     # 允许 容器ip 访问宿主 8080 端口, (容器的 ip 可以进入容器查看)
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="172.17.0.0/16" port protocol="tcp" port="8080" accept"
+    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="10.88.0.0/16" port protocol="tcp" port="8080" accept"
     $ firewall-cmd --reload
-    # 172.17.0.x 是docker容器默认的IP池, 这里偷懒直接授权ip段了, 可以根据实际情况单独授权IP
+    # 10.88.0.x 是 podman 容器默认的IP池, 这里偷懒直接授权ip段了, 可以根据实际情况单独授权IP
 
     # 获取当前服务器 IP
     $ Server_IP=`ip addr | grep 'state UP' -A2 | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
@@ -218,8 +219,8 @@ CentOS 7 安装文档
 
     # http://<Jumpserver_url> 指向 jumpserver 的服务端口, 如 http://192.168.244.144:8080
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
-    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.4
-    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.4
+    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_koko:1.5.4
+    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN jumpserver/jms_guacamole:1.5.4
 
 .. code-block:: shell
 

@@ -1,6 +1,8 @@
 安装文档
 ++++++++++++++++++++++++
 
+- 首次安装请在测试环境上使用 极速安装 或者 docker 快速部署, 后续生产环境中再根据实际需要进行更改
+
 **Jumpserver 环境要求：**
 
 - 硬件配置: 2个CPU核心, 4G 内存, 50G 硬盘（最低）
@@ -23,6 +25,8 @@
 
 **安装步骤**
 
+- 下面的步骤需要很强的动手能力, 部署过程中你会面临各种各样的问题
+
 1. 安装 python3.6 mysql Redis
 
 .. code-block:: vim
@@ -44,6 +48,8 @@
     # 部分系统可能会提示 source: not found , 可以使用 "." 代替 "source"
     $ . /opt/py3/bin/activate
 
+    # 偷懒可以在 ~/.bashrc 末尾加入 source /opt/py3/bin/activate
+
 4. 获取 jumpserver 代码
 
 .. code-block:: shell
@@ -51,6 +57,8 @@
     $ cd /opt
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
     # 如果没有安装 git 请先安装
+
+    # 网络有问题可以从 https://demo.jumpserver.org/download/jumpserver/ 下载
 
 5. 安装依赖
 
