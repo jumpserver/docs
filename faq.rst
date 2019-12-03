@@ -10,6 +10,7 @@ FAQ
    Jms_core 常见问题 <faq_core.rst>
    Jms_koko 常见问题 <faq_koko.rst>
    Jms_guacamole 常见问题 <faq_guacamole.rst>
+   Windows SSH 设置说明 <faq_rdp.rst>
    升级过程 常见问题 <faq_upgrade.rst>
    Nginx SSL 使用说明 <faq_nginx.rst>
    Firewalld 使用说明 <faq_firewalld.rst>
