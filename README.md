@@ -110,7 +110,7 @@ git clone -b master https://github.com/jumpserver/web.git --depth 1
 ```
 或者 直接下载这个链接<https://github.com/jumpserver/web/archive/master.zip>
 
-解解压进入到项目目录，将nginx.conf复制到你的nginx site-enabled 目录下（高级的运维会放到 sites-available ，然后做软连接），修改对应路径和域名。`nginx -s relooad `
+解解压进入到项目目录，将nginx.conf复制到你的nginx sites-enabled 目录下（高级的运维会放到 sites-available ，然后做软连接），修改对应路径和域名。`nginx -s relooad `
 
 
 ## 数据库规范
