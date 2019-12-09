@@ -29,6 +29,9 @@ Windows 资产测试连接, 获取硬件, 自动推送需要进行相关设置
     # 设置 OpenSSH 自启
     Set-Service sshd -StartupType Automatic
 
+    # 打开 Windows 远程设置 勾选允许远程到此计算机(L)
+    # Windows 8/10/2012/2016 手动登录 不要勾选 仅允许运行使用网络级别身份验证的远程桌面的计算机连接(建议)(N)
+    # Windows 7/2008 手动登录 要勾选 允许运行任意版本远程桌面的计算机连接(较不安全)(L)
 
 回到 Web 添加 Windows 资产
 
