@@ -11,7 +11,7 @@ Jms_guacamole 常见问题
     # 检查 BOOTSTRAP_TOKEN 与 jumpserver 的 BOOTSTRAP_TOKEN 是否一致
     $ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
 
-    # 首先到 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的那个 )
+    # 首先到 web - 会话管理 - 终端管理 里面删除 guacamole 的注册 [gua]xxxxxxx ( 在线显示红色的那个 )
 
     # 如果是极速安装部署的 guacamole
     $ docker stop jms_guacamole
