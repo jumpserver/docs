@@ -140,6 +140,7 @@
     # Debian: apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
     # ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp
 
+    # yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm https://mirrors.aliyun.com/rpmfusion/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
     # Fedora/CentOS/RHEL: yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel
     # Fedora/CentOS/RHEL: yum install -y ffmpeg-devel freerdp1.2-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
     # ln -s /usr/local/lib/freerdp /usr/lib64/freerdp
@@ -154,7 +155,8 @@
     # Centos: yum install -y java-1.8.0-openjdk
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
-    $ mkdir -p /config/guacamole /config/guacamole/lib /config/guacamole/extensions /config/guacamole/data/log/
+    $ mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record
+    $ chmod 777 /config/guacamole/record
     $ cd /config
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.29/bin/apache-tomcat-9.0.29.tar.gz
     $ tar xf apache-tomcat-9.0.29.tar.gz
