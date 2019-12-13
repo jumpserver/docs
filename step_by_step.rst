@@ -156,7 +156,8 @@
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record
-    $ chmod 777 /config/guacamole/record
+    $ chown daemon:daemon /config/guacamole/record
+    $ chown daemon:daemon /config/guacamole/drive
     $ cd /config
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.29/bin/apache-tomcat-9.0.29.tar.gz
     $ tar xf apache-tomcat-9.0.29.tar.gz
@@ -184,6 +185,10 @@
     $ echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
     $ export GUACAMOLE_LOG_LEVEL=ERROR
     $ echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
+    $ export JUMPSERVER_CLEAR_DRIVE_SESSION=true
+    $ echo "export JUMPSERVER_CLEAR_DRIVE_SESSION=true" >> ~/.bashrc
+    $ export JUMPSERVER_ENABLE_DRIVE=true
+    $ echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
 
     $ /etc/init.d/guacd start
     $ sh /config/tomcat9/bin/startup.sh
