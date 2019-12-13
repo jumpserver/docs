@@ -156,8 +156,7 @@
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
     $ mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record
-    $ chown daemon:daemon /config/guacamole/record
-    $ chown daemon:daemon /config/guacamole/drive
+    $ chown daemon:daemon /config/guacamole/record /config/guacamole/drive
     $ cd /config
     $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.29/bin/apache-tomcat-9.0.29.tar.gz
     $ tar xf apache-tomcat-9.0.29.tar.gz
