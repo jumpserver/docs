@@ -107,6 +107,7 @@
         server {
             listen 2222;
             proxy_pass kokossh;
+            proxy_protocol on;
             proxy_connect_timeout 1s;  # detect failure quickly
         }
     }
