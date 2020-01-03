@@ -227,7 +227,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.5
+    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_koko:1.5.6
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 四. 安装 RDP Server 和 VNC Server: Guacamole
@@ -237,7 +237,7 @@ Ubuntu 18.04 安装文档
 
 .. code-block:: shell
 
-    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.5
+    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN --restart=always jumpserver/jms_guacamole:1.5.6
     # BOOTSTRAP_TOKEN 为 Jumpserver/config.yml 里面的 BOOTSTRAP_TOKEN
 
 五. 安装 Web Terminal 前端: Luna
@@ -250,10 +250,10 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ cd /opt/
-    $ wget https://github.com/jumpserver/luna/releases/download/1.5.5/luna.tar.gz
+    $ wget https://github.com/jumpserver/luna/releases/download/1.5.6/luna.tar.gz
 
     # 如果网络有问题导致下载无法完成可以使用下面地址
-    $ wget https://demo.jumpserver.org/download/luna/1.5.5/luna.tar.gz
+    $ wget https://demo.jumpserver.org/download/luna/1.5.6/luna.tar.gz
 
     $ tar xf luna.tar.gz
     $ chown -R root:root luna
