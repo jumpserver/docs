@@ -158,9 +158,9 @@
     $ mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record
     $ chown daemon:daemon /config/guacamole/record /config/guacamole/drive
     $ cd /config
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.29/bin/apache-tomcat-9.0.29.tar.gz
-    $ tar xf apache-tomcat-9.0.29.tar.gz
-    $ mv apache-tomcat-9.0.29 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
+    $ tar xf apache-tomcat-9.0.30.tar.gz
+    $ mv apache-tomcat-9.0.30 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
