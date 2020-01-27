@@ -4,7 +4,7 @@ Jms_koko 常见问题
 - Jms_koko 是指 https://github.com/jumpserver/koko 项目
 - Jms_koko 默认的路径为 /opt/koko 或者 /opt/kokodir
 
-1. Jms_koko 启动异常或者启动失败
+1. Jms_koko 启动异常、启动失败或者 Web 连接资产无反应
 
 .. code-block:: shell
 
