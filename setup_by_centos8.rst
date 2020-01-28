@@ -204,7 +204,7 @@ CentOS 8 安装文档
 
     [registries.search]
     # registries = ['registry.redhat.io', 'quay.io', 'docker.io']
-    registries = ['bmtrgdvx.mirror.aliyuncs.com', 'f1361db2.m.daocloud.io', 'docker.io']
+    registries = ['dockerhub.azk8s.cn', 'docker.mirrors.ustc.edu.cn', 'docker.io']
 
     ...
 
