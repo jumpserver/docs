@@ -184,8 +184,6 @@
     $ echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
     $ export GUACAMOLE_LOG_LEVEL=ERROR
     $ echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
-    $ export JUMPSERVER_CLEAR_DRIVE_SESSION=true
-    $ echo "export JUMPSERVER_CLEAR_DRIVE_SESSION=true" >> ~/.bashrc
     $ export JUMPSERVER_ENABLE_DRIVE=true
     $ echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
 
