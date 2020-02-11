@@ -37,8 +37,9 @@
     $ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
     $ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
     $ yum makecache fast
-    $ yum -y install docker-ce
-    $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+    $ yum -y install docker-ce wget
+    $ mkdir /etc/docker
+    $ wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
     $ systemctl enable docker
     $ systemctl start docker
 

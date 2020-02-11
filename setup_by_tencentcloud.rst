@@ -49,7 +49,8 @@
       && pip install wheel -i http://mirrors.tencentyun.com/pypi/simple \
       && pip install --upgrade pip setuptools -i http://mirrors.tencentyun.com/pypi/simple \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i http://mirrors.tencentyun.com/pypi/simple \
-      && curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io \
+      && mkdir /etc/docker \
+      && wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json \
       && systemctl restart docker \
       && docker pull jumpserver/jms_coco:1.4.8 \
       && docker pull jumpserver/jms_guacamole:1.4.8 \
