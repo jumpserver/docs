@@ -203,8 +203,9 @@ CentOS 7 安装文档
     $ yum makecache fast
     $ rpm --import https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
     $ yum -y install docker-ce
-    $ systemctl enable docker
-    $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+    $ systemctl enable docker wget
+    $ mkdir /etc/docker
+    $ wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
     $ systemctl restart docker
 
     # 允许 容器ip 访问宿主 8080 端口, (容器的 ip 可以进入容器查看)
