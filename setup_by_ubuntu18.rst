@@ -217,8 +217,9 @@ Ubuntu 18.04 安装文档
     $ curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
     $ add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
     $ apt-get -y update
-    $ apt-get -y install docker-ce
-    $ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+    $ apt-get -y install docker-ce wget
+    $ mkdir /etc/docker
+    $ wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
     $ systemctl restart docker.service
     $ Server_IP=`ip addr | grep 'state UP' -A2 | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
     $ echo -e "\033[31m 你的服务器IP是 $Server_IP \033[0m"

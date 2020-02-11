@@ -50,7 +50,8 @@
       && pip install wheel -i https://mirrors.aliyun.com/pypi/simple/ \
       && pip install --upgrade pip setuptools -i https://mirrors.aliyun.com/pypi/simple/ \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ \
-      && curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io \
+      && mkdir /etc/docker \
+      && wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json \
       && systemctl restart docker \
       && docker pull wojiushixiaobai/jms_koko:1.5.6 \
       && docker pull wojiushixiaobai/jms_guacamole:1.5.6 \
