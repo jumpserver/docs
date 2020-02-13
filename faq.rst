@@ -25,7 +25,7 @@ FAQ
 
     # 用户管理里面的用户列表 是用来登录jumpserver平台的用户, 用户需要先登录jumpserver平台, 才能管理或者连接资产
     # 资产管理里面的管理用户 是jumpserver用来管理资产需要的服务账户, Linux资产需要root或 NOPASSWD: ALL sudo
-    权限, Jumpserver使用该用户来 '推送系统用户'、'获取资产硬件信息'等。Windows资产随意指定一个, 暂无作用
+    权限, JumpServer使用该用户来 '推送系统用户'、'获取资产硬件信息'等。Windows资产随意指定一个, 暂无作用
     # 资产管理里面的系统用户 是jumpserver用户连接资产需要的登录账户, Linux资产可以自动推送该系统用户到资产上,
     Windows需要指定资产上已经创建的系统用户
 
@@ -159,13 +159,13 @@ FAQ
         }
     }
 
-6. 重启服务器后无法访问 Jumpserver, 页面提示502 或者 403等
+6. 重启服务器后无法访问 JumpServer, 页面提示502 或者 403等
 
 .. code-block:: shell
 
     # 确定 防火墙 和 selinux 已经正确放行或者关闭, 然后检查 jms 是否已经启动成功
 
-7. 传递明文数据到 Jumpserver 数据库(数据导入)
+7. 传递明文数据到 JumpServer 数据库(数据导入)
 
 .. code-block:: shell
 

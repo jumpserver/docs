@@ -1,4 +1,4 @@
-Jumpserver 项目规范(Draft)
+JumpServer 项目规范(Draft)
 ============================
 
 语言框架

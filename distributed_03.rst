@@ -16,11 +16,11 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   | Mariadb-01 | 192.168.100.10  |      3306     |        Jumpserver      |
+|    TCP   | Mariadb-01 | 192.168.100.10  |      3306     |        JumpServer      |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   | Mariadb-02 | 192.168.100.11  |      3306     |        Jumpserver      |
+|    TCP   | Mariadb-02 | 192.168.100.11  |      3306     |        JumpServer      |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   | Mariadb-03 | 192.168.100.12  |      3306     |        Jumpserver      |
+|    TCP   | Mariadb-03 | 192.168.100.12  |      3306     |        JumpServer      |
 +----------+------------+-----------------+---------------+------------------------+
 
 
@@ -50,7 +50,7 @@
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="4568" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="4444" accept"
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="udp" port="4567" accept"
-    # 192.168.100.0/24 为整个 Jumpserver 网络网段, 这里就偷懒了, 自己根据实际情况修改即可
+    # 192.168.100.0/24 为整个 JumpServer 网络网段, 这里就偷懒了, 自己根据实际情况修改即可
 
     $ firewall-cmd --reload
 
@@ -138,7 +138,7 @@
 
 .. code-block:: shell
 
-    # 创建 Jumpserver 数据库及授权
+    # 创建 JumpServer 数据库及授权
     $ mysql -uroot
     > create database jumpserver default charset 'utf8';
     > grant all on jumpserver.* to 'jumpserver'@'192.168.100.%' identified by 'weakPassword';

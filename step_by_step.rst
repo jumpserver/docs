@@ -3,7 +3,7 @@
 
 - 首次安装请在测试环境上使用 极速安装 或者 docker 快速部署, 后续生产环境中再根据实际需要进行更改
 
-**Jumpserver 环境要求：**
+**JumpServer 环境要求：**
 
 - 硬件配置: 2个CPU核心, 4G 内存, 50G 硬盘（最低）
 - 操作系统: Linux 发行版 x86_64
@@ -286,7 +286,7 @@
     $ nginx -t
     $ nginx -s reload
 
-12. 开始使用 Jumpserver
+12. 开始使用 JumpServer
 
 .. code-block:: vim
 

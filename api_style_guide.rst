@@ -24,7 +24,7 @@ API 与用户的通信协议, 总是使用 HTTPS 协议。
 版本
 ~~~~
 
-将 API 的版本号放入 URL 中, 由于一个项目多个 APP 所以 Jumpserver 使用以下风格, 将版本号放到 APP 后面
+将 API 的版本号放入 URL 中, 由于一个项目多个 APP 所以 JumpServer 使用以下风格, 将版本号放到 APP 后面
 
 ::
 

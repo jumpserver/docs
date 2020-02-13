@@ -31,7 +31,7 @@ Ubuntu 18.04 安装文档
     $ apt-get update && apt-get -y upgrade
     $ apt-get -y install wget gcc libffi-dev git
 
-**1.2 安装 Redis, Jumpserver 使用 Redis 做 cache 和 celery broke**
+**1.2 安装 Redis, JumpServer 使用 Redis 做 cache 和 celery broke**
 
 .. code-block:: shell
 
@@ -45,7 +45,7 @@ Ubuntu 18.04 安装文档
 
     $ apt-get -y install mysql-server libmysqlclient-dev
 
-**1.4 创建数据库 Jumpserver 并授权**
+**1.4 创建数据库 JumpServer 并授权**
 
 .. code-block:: shell
 
@@ -69,10 +69,10 @@ Ubuntu 18.04 安装文档
     $ python3.6 -m venv py3
     $ source /opt/py3/bin/activate
 
-    # 看到下面的提示符代表成功, 以后运行 Jumpserver 都要先运行以上 source 命令, 以下所有命令均在该虚拟环境中运行
+    # 看到下面的提示符代表成功, 以后运行 JumpServer 都要先运行以上 source 命令, 以下所有命令均在该虚拟环境中运行
     (py3) [root@localhost py3]
 
-二. 安装 Jumpserver
+二. 安装 JumpServer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **2.1 下载或 Clone 项目**
@@ -97,7 +97,7 @@ Ubuntu 18.04 安装文档
     $ pip install --upgrade pip setuptools
     $ pip install -r requirements.txt
 
-**2.4 修改 Jumpserver 配置文件**
+**2.4 修改 JumpServer 配置文件**
 
 .. code-block:: shell
 
@@ -191,7 +191,7 @@ Ubuntu 18.04 安装文档
     # OTP_VALID_WINDOW: 0
     # OTP_ISSUER_NAME: Jumpserver
 
-**2.5 运行 Jumpserver**
+**2.5 运行 JumpServer**
 
 .. code-block:: shell
 
@@ -351,13 +351,13 @@ Ubuntu 18.04 安装文档
     $ nginx -t  # 如果没有报错请继续
     $ systemctl restart nginx
 
-**6.4 开始使用 Jumpserver**
+**6.4 开始使用 JumpServer**
 
 服务全部启动后, 访问 http://192.168.244.144
 
 默认账号: admin 密码: admin
 
-到Jumpserver 会话管理-终端管理 检查 koko Guacamole 等应用的注册
+到JumpServer 会话管理-终端管理 检查 koko Guacamole 等应用的注册
 
 **测试连接**
 

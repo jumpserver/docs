@@ -17,7 +17,7 @@
 +==========+============+=================+===============+========================+
 |    TCP   |  Tengine   | 192.168.100.100 | 80, 443, 2222 |           All          |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   |  Tengine   | 192.168.100.100 |      3306     |       Jumpserver       |
+|    TCP   |  Tengine   | 192.168.100.100 |      3306     |       JumpServer       |
 +----------+------------+-----------------+---------------+------------------------+
 
 开始安装
@@ -36,7 +36,7 @@
     $ firewall-cmd --zone=public --add-port=443/tcp --permanent
     $ firewall-cmd --zone=public --add-port=2222/tcp --permanent
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="3306" accept"
-    # 192.168.100.0/24 为整个 Jumpserver 网络网段, 这里就偷懒了, 自己根据实际情况修改即可
+    # 192.168.100.0/24 为整个 JumpServer 网络网段, 这里就偷懒了, 自己根据实际情况修改即可
 
     $ firewall-cmd --reload
 

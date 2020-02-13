@@ -71,7 +71,7 @@
 
 .. code-block:: shell
 
-    $ echo -e "\033[31m 5. 启动 Jumpserver \033[0m" \
+    $ echo -e "\033[31m 5. 启动 JumpServer \033[0m" \
       && systemctl start nginx \
       && cd /opt/jumpserver \
       && ./jms start -d \

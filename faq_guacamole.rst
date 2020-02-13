@@ -24,7 +24,7 @@ Jms_guacamole 常见问题
 
     ...
 
-    BOOTSTRAP_TOKEN=xxxxx  # 自行修改这里的 BOOTSTRAP_TOKEN 与 Jumpserver 的一致
+    BOOTSTRAP_TOKEN=xxxxx  # 自行修改这里的 BOOTSTRAP_TOKEN 与 JumpServer 的一致
 
     ...
 

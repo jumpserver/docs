@@ -22,7 +22,7 @@ http://HOST:PORT/api/{VERSION}/{APP}/{RESOURCE}/{RESOURCEID}/
 Api 列表
 ------------------------------
 
-通过访问 http://Jumpserver的URL地址/docs 来访问(如 http://192.168.244.144/docs)
+通过访问 http://JumpServer的URL地址/docs 来访问(如 http://192.168.244.144/docs)
 
 注：需要打开 debug 模式
 
@@ -35,4 +35,3 @@ Api 列表
 
 
 .. image:: _static/img/api_swagger.jpg
-

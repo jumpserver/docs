@@ -38,7 +38,7 @@ CentOS 8 安装文档
     # 安装依赖包
     $ yum -y install wget gcc epel-release git
 
-    # 安装 Redis, Jumpserver 使用 Redis 做 cache 和 celery broke
+    # 安装 Redis, JumpServer 使用 Redis 做 cache 和 celery broke
     $ yum -y install redis
     $ systemctl enable redis
     $ systemctl start redis
@@ -47,12 +47,12 @@ CentOS 8 安装文档
     $ yum -y install mariadb mariadb-devel mariadb-server
     $ systemctl enable mariadb
     $ systemctl start mariadb
-    # 创建数据库 Jumpserver 并授权
+    # 创建数据库 JumpServer 并授权
     $ DB_PASSWORD=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24`  # 生成随机数据库密码
     $ echo -e "\033[31m 你的数据库密码是 $DB_PASSWORD \033[0m"
     $ mysql -uroot -e "create database jumpserver default charset 'utf8'; grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by '$DB_PASSWORD'; flush privileges;"
 
-    # 安装 Nginx, 用作代理服务器整合 Jumpserver 与各个组件
+    # 安装 Nginx, 用作代理服务器整合 JumpServer 与各个组件
     $ vi /etc/yum.repos.d/nginx.repo
 
     [nginx-stable]
@@ -74,10 +74,10 @@ CentOS 8 安装文档
     $ python3.6 -m venv py3  # py3 为虚拟环境名称, 可自定义
     $ source /opt/py3/bin/activate  # 退出虚拟环境可以使用 deactivate 命令
 
-    # 看到下面的提示符代表成功, 以后运行 Jumpserver 都要先运行以上 source 命令, 载入环境后默认以下所有命令均在该虚拟环境中运行
+    # 看到下面的提示符代表成功, 以后运行 JumpServer 都要先运行以上 source 命令, 载入环境后默认以下所有命令均在该虚拟环境中运行
     (py3) [root@localhost py3]
 
-    # 下载 Jumpserver
+    # 下载 JumpServer
     $ cd /opt/
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 
@@ -92,7 +92,7 @@ CentOS 8 安装文档
 .. code-block:: shell
 
 
-    # 修改 Jumpserver 配置文件
+    # 修改 JumpServer 配置文件
     $ cd /opt/jumpserver
     $ cp config_example.yml config.yml
 
@@ -185,7 +185,7 @@ CentOS 8 安装文档
 
 .. code-block:: shell
 
-    # 运行 Jumpserver
+    # 运行 JumpServer
     $ cd /opt/jumpserver
     $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数

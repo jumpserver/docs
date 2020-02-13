@@ -1,7 +1,7 @@
 API 认证
 ==========================
 
-Jumpserver Api 支持的认证有以下几种方式:
+JumpServer Api 支持的认证有以下几种方式:
 
 - Session 登录后可以直接使用session_id作为认证方式
 - Token 获取一次性Token，该Token有有效期, 过期作废
