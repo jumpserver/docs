@@ -20,9 +20,9 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'Jumpserver'
+project = 'JumpServer'
 copyright = u'北京堆栈科技有限公司 © 2014-2018'
-author = 'Jumpserver team'
+author = 'JumpServer team'
 
 # The short X.Y version
 version = ''
@@ -110,7 +110,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = u'Jumpserver 文档'
+htmlhelp_basename = u'JumpServer 文档'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -155,8 +155,8 @@ else:
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Jumpserver.tex', 'Jumpserver Documentation',
-     'Jumpserver team', 'manual'),
+    (master_doc, 'JumpServer.tex', 'JumpServer Documentation',
+     'JumpServer team', 'manual'),
 ]
 
 
@@ -165,7 +165,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'Jumpserver', 'Jumpserver Documentation',
+    (master_doc, 'JumpServer', 'JumpServer Documentation',
      [author], 1)
 ]
 
@@ -176,8 +176,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Jumpserver', u'Jumpserver 文档',
-     author, 'Jumpserver', u' Jumpserver是全球首款完全开源的堡垒机,是符合 4A 的专业运维审计系统',
+    (master_doc, 'JumpServer', u'JumpServer 文档',
+     author, 'JumpServer', u' JumpServer是全球首款完全开源的堡垒机,是符合 4A 的专业运维审计系统',
      'Miscellaneous'),
 ]
 

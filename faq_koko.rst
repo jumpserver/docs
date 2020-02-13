@@ -40,7 +40,7 @@ Jms_koko 常见问题
 
     ...
 
-    # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
+    # 项目名称, 会用来向JumpServer注册, 识别而已, 不能重复
     # NAME: {{ Hostname }}
     NAME: koko01  # 把 koko01 换成你想要的名字
 
@@ -53,7 +53,7 @@ Jms_koko 常见问题
 .. code-block:: shell
 
     # koko 默认的 ssh 端口是 2222
-    $ ssh admin@Jumpserver_IP -p2222
+    $ ssh admin@JumpServer_IP -p2222
 
 3. 修改 sftp 默认的路径
 

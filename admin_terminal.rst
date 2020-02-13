@@ -48,7 +48,7 @@
 
 2.2 查看历史话录像
 
-Jumpserver 提供历史会话的录像观看。点击左侧的"回放"按钮, 即可观看录像。
+JumpServer 提供历史会话的录像观看。点击左侧的"回放"按钮, 即可观看录像。
 
 三、命令记录
 ```````````````````````
@@ -76,6 +76,6 @@ Web 终端是资产使用界面, 管理员和用户都是从这里登录到资�
 六、终端管理
 ```````````````````````
 
-终端列表页面列出了 Jumpserver 正在使用的终端有哪些, 例如：koko、Gua 等。终端第一次使用, 会首先向 Jumpserver 发送请求注册, 在 Jumpserver 中接受注册后就可以正常使用该终端了。
+终端列表页面列出了 JumpServer 正在使用的终端有哪些, 例如：koko、Gua 等。终端第一次使用, 会首先向 JumpServer 发送请求注册, 在 JumpServer 中接受注册后就可以正常使用该终端了。
 
 .. image:: _static/img/admin_terminal_terminal_terminal_list.jpg

@@ -31,7 +31,7 @@
 
 丢失表结构文件参考 `升级常见问题 <faq_upgrade.html>`_
 
-1. 备份 Jumpserver
+1. 备份 JumpServer
 
 .. code-block:: shell
 
@@ -48,7 +48,7 @@
         fi
       done
 
-2. 升级 Jumpserver
+2. 升级 JumpServer
 
 .. code-block:: shell
 
@@ -70,9 +70,9 @@
         jumpserver.config
         ~~~~~~~~~~~~~~~~~
 
-        Jumpserver project setting file
+        JumpServer project setting file
 
-        :copyright: (c) 2014-2017 by Jumpserver Team
+        :copyright: (c) 2014-2017 by JumpServer Team
         :license: GPL v2, see LICENSE for more details.
     """
     import os
@@ -83,7 +83,7 @@
     class Config:
         # Use it to encrypt or decrypt data
 
-        # Jumpserver 使用 SECRET_KEY 进行加密, 请务必修改以下设置
+        # JumpServer 使用 SECRET_KEY 进行加密, 请务必修改以下设置
         # 保持与你原来的 SECRET_KEY 一致, 可查看 config_old.bak
         SECRET_KEY = os.environ.get('SECRET_KEY') or '2vym+ky!997d5kkcc64mnz06y1mmui3lut#(^wd=%s_qj$1%x'
 
@@ -251,7 +251,7 @@
 - 从 1.4.5 版本开始, 由官方维护唯一 migrations
 - 更新配置文件需要把对应旧版本的设置复制到新的配置文件
 
-**Jumpserver**
+**JumpServer**
 
 .. code-block:: shell
 
@@ -261,7 +261,7 @@
 
 .. code-block:: shell
 
-    # 备份 Jumpserver
+    # 备份 JumpServer
     $ cp -r /opt/jumpserver /opt/jumpserver_1.4.4_bak
 
 .. code-block:: shell
@@ -364,10 +364,10 @@
     #!/bin/bash
     #
 
-    host=127.0.0.1  # 修改成 Jumpserver 数据库服务器IP
-    port=3306  # 修改成 Jumpserver 数据库服务器端口
+    host=127.0.0.1  # 修改成 JumpServer 数据库服务器IP
+    port=3306  # 修改成 JumpServer 数据库服务器端口
     username=root  # 修改成有权限对数据库进行删改的用户
-    db=jumpserver  # 修改成 Jumpserver 数据库名称
+    db=jumpserver  # 修改成 JumpServer 数据库名称
 
     echo "备份原来的 migrations"
     mysqldump -u${username} -h${host} -P${port} -p ${db} django_migrations > django_migrations.sql.bak
@@ -569,7 +569,7 @@ docker 部署的 guacamole
 
 - 更新配置文件需要把对应旧版本的设置复制到新的配置文件
 
-**Jumpserver**
+**JumpServer**
 
 .. code-block:: shell
 
@@ -839,7 +839,7 @@ docker 部署的 guacamole
 1.4.8-1.4.10 升级到最新版本
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Jumpserver**
+**JumpServer**
 
 .. code-block:: shell
 
@@ -1031,7 +1031,7 @@ docker 部署的 guacamole
 1.5.0 及之后版本升级到最新版本
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Jumpserver**
+**JumpServer**
 
 .. code-block:: shell
 

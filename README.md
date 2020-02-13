@@ -1,4 +1,4 @@
-# Jumpserver 项目规范（Draft）
+# JumpServer 项目规范（Draft）
 
 ## 代码风格
 

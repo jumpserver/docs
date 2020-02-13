@@ -3,7 +3,7 @@ Radius 使用说明
 
 支持使用 Radius 的用户作为 jumpserver 登录用户
 
-1. 修改 Jumpserver 配置文件启用 Radius 认证
+1. 修改 JumpServer 配置文件启用 Radius 认证
 
 .. code-block:: yaml
 

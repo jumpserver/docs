@@ -151,7 +151,7 @@
 
 **组件说明**
 
-* 自 v1.5.3 版本起（包含 v1.5.3） ，Koko 将担任 Coco 在 Jumpserver 项目中的重要角色，之后的版本将不会再对 Coco 进行升级维护。
+* 自 v1.5.3 版本起（包含 v1.5.3） ，Koko 将担任 Coco 在 JumpServer 项目中的重要角色，之后的版本将不会再对 Coco 进行升级维护。
 
 **添加功能**
 
@@ -272,7 +272,7 @@
 * 创建资产时允许ip字段填写为host地址
 * OpenID Middleware去掉输出日志
 * 资产节点API添加search功能
-* 解决ldap映射is_active等字段为bool值的问题(可解决LDAP禁用用户后，同时禁止用户登录Jumpserver的场景)
+* 解决ldap映射is_active等字段为bool值的问题(可解决LDAP禁用用户后，同时禁止用户登录JumpServer的场景)
 
 **Bug修复**
 
@@ -446,7 +446,7 @@
 2018年7月17日
 
 * 支持telnet协议
-* 支持用户手动输入密码登陆, 密码不用托管到Jumpserver
+* 支持用户手动输入密码登陆, 密码不用托管到JumpServer
 * 登陆日志增加失败原因
 * session增加登陆源
 * 修复网关端口和密码bug
@@ -546,7 +546,7 @@
 * 使用完全使用 Django Class Base View开发
 * 代码结构更加合理规整, 分组件开发
 * 支持Restful API
-* 拆分 Jumpserver, terminal, web termial为三个项目 Jumpserver, coco, luna。coco和luna为无状态的, 支持扩展
+* 拆分 JumpServer, terminal, web termial为三个项目 JumpServer, coco, luna。coco和luna为无状态的, 支持扩展
 * 支持国际化, 英文+中文
 * Ansible使用 2.1 版本
 * 各组件功能都有所加强

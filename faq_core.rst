@@ -10,7 +10,7 @@ Jms_core 常见问题
 
 .. code-block:: shell
 
-    # 请先检查宿主环境的硬件配置是否达到 Jumpserver 的最低硬件要求
+    # 请先检查宿主环境的硬件配置是否达到 JumpServer 的最低硬件要求
 
     - 提示 ModuleNotFoundError: No module named 'daemon'
     $ source /opt/py3/bin/activate

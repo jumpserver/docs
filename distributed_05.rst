@@ -15,7 +15,7 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   | Jumpserver | 192.168.100.30  |       80      |         Tengine         |
+|    TCP   | JumpServer | 192.168.100.30  |       80      |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
@@ -43,7 +43,7 @@
     $ python3.6 -m venv /opt/py3
     $ source /opt/py3/bin/activate
 
-    # 下载 Jumpserver
+    # 下载 JumpServer
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 
     # 安装依赖 RPM 包
@@ -142,9 +142,9 @@
     # OTP settings
     # OTP/MFA 配置
     # OTP_VALID_WINDOW: 0
-    # OTP_ISSUER_NAME: Jumpserver
+    # OTP_ISSUER_NAME: JumpServer
 
-    # 运行 Jumpserver
+    # 运行 JumpServer
     $ cd /opt/jumpserver
     $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数

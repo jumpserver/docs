@@ -41,7 +41,7 @@
     # 备份当前版本数据库, 忽略 django_migrations 表
     $ mysqldump -uroot -p jumpserver --ignore-table=jumpserver.django_migrations > /opt/jumpserver.sql
 
-    # 重命名 Jumpserver 目录
+    # 重命名 JumpServer 目录
     $ mv /opt/jumpserver /opt/jumpserver_bak
 
     # 重新 clone 代码
