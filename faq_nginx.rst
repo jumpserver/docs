@@ -12,7 +12,7 @@ Nginx SSL 使用说明
 
     server {
         listen 80;
-        server_name www.jumpserver.org;  # 自行修改成你的域名
+        server_name demo.jumpserver.org;  # 自行修改成你的域名
         return 301 https://$server_name$request_uri;
     }
 
