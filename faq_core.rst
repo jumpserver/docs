@@ -130,7 +130,9 @@ Jms_core 常见问题
 
     ...
 
-    # 修改后, 重启 ssh 服务, 再次在web上连接资产
+    # 修改后, 重启 ssh 服务, 再次在 web 上连接资产, 如果任然提示 timeout, 重启 docker
+    $ systemctl restart docker
+    $ docker restart jms_koko
 
     # 如果在 系统用户 详情里面测试提示 其他错误, 请检查推送或者系统用户是否设置正确
 

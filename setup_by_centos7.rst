@@ -203,7 +203,7 @@ CentOS 7 安装文档
     $ yum makecache fast
     $ rpm --import https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
     $ yum -y install docker-ce
-    $ systemctl enable docker wget
+    $ systemctl enable docker
     $ mkdir /etc/docker
     $ wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
     $ systemctl restart docker
