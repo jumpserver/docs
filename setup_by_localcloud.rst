@@ -48,7 +48,6 @@
       && echo -e "[easy_install]\nindex_url = https://mirrors.aliyun.com/pypi/simple/" > ~/.pydistutils.cfg \
       && source /opt/py3/bin/activate \
       && pip install wheel -i https://mirrors.aliyun.com/pypi/simple/ \
-      && pip install --upgrade pip setuptools -i https://mirrors.aliyun.com/pypi/simple/ \
       && pip install -r /opt/jumpserver/requirements/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ \
       && mkdir /etc/docker \
       && wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json \

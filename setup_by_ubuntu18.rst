@@ -94,7 +94,6 @@ Ubuntu 18.04 安装文档
 .. code-block:: shell
 
     $ pip install wheel
-    $ pip install --upgrade pip setuptools
     $ pip install -r requirements.txt
 
 **2.4 修改 JumpServer 配置文件**

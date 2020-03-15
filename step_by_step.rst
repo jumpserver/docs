@@ -128,6 +128,8 @@
     $ git clone --depth=1 https://github.com/jumpserver/docker-guacamole.git
     $ cd /opt/docker-guacamole
     $ tar xf guacamole-server-1.0.0.tar.gz
+    $ tar xf ssh-forward.tar.gz -C /bin/
+    $ chmod +x /bin/ssh-forward
     $ cd /opt/docker-guacamole/guacamole-server-1.0.0
 
     # 根据 http://guacamole.apache.org/doc/gug/installing-guacamole.html 文档安装对应的依赖包
@@ -167,9 +169,6 @@
     $ ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war
     $ ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar
     $ ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
-    $ wget https://github.com/ibuler/ssh-forward/releases/download/v0.0.5/linux-amd64.tar.gz
-    $ tar xf linux-amd64.tar.gz -C /bin/
-    $ chmod +x /bin/ssh-forward
 
     # 设置 guacamole 环境
     $ export JUMPSERVER_SERVER=http://127.0.0.1:8080  # http://127.0.0.1:8080 指 jumpserver 访问地址
