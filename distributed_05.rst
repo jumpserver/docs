@@ -51,7 +51,6 @@
 
     # 安装 Python 库依赖
     $ pip install wheel
-    $ pip install --upgrade pip setuptools
     $ pip install -r /opt/jumpserver/requirements/requirements.txt
 
     # 修改 jumpserver 配置文件
