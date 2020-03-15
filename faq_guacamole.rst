@@ -4,7 +4,7 @@ Jms_guacamole 常见问题
 - Jms_guacamole 是指 https://github.com/jumpserver/docker-guacamole 项目
 - Jms_guacamole 默认的路径为 /opt/docker-guacamole
 
-1. Jms_guacamole 启动异常、启动失败或者 Web 连接资产提示无权限访问
+1. Jms_guacamole 启动异常、启动失败或者 Web 连接资产提示无权限访问、黑屏、白屏等
 
 .. code-block:: shell
 
