@@ -28,8 +28,8 @@
     # 删除 docker 组件
     $ docker rm jms_koko
     $ docker rm jms_guacamole
-    $ docker rmi wojiushixiaobai/jms_koko:1.5.6  # 自行替换版本
-    $ docker rmi wojiushixiaobai/jms_guacamole:1.5.6  # 自行替换版本
+    $ docker rmi jumpserver/jms_koko:1.5.6  # 自行替换版本
+    $ docker rmi jumpserver/jms_guacamole:1.5.6  # 自行替换版本
 
     # 删除自启文件
     $ rm -rf /usr/lib/systemd/system/jms.service
