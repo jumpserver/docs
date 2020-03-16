@@ -114,9 +114,9 @@
 
     # 如果前面已经部署了 koko, 可以跳过部署 koko
 
-    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> --restart=always wojiushixiaobai/jms_koko:<Tag>
+    $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> -e LOG_LEVEL=ERROR --restart=always jumpserver/jms_koko:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 --restart=always wojiushixiaobai/jms_koko:1.5.6
+    # 例: docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 -e LOG_LEVEL=ERROR --restart=always jumpserver/jms_koko:1.5.6
 
 9. 正常安装并启动 guacamole 组件
 
@@ -193,9 +193,9 @@
 
 .. code-block:: shell
 
-    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> wojiushixiaobai/jms_guacamole:<Tag>
+    $ docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://<Jumpserver_url> -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> -e GUACAMOLE_LOG_LEVEL=ERROR jumpserver/jms_guacamole:<Tag>
     # <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
-    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 wojiushixiaobai/jms_guacamole:1.5.6
+    # 例: docker run --name jms_guacamole -d -p 127.0.0.1:8081:8080 -e JUMPSERVER_SERVER=http://192.168.244.144:8080 -e BOOTSTRAP_TOKEN=abcdefg1234 -e GUACAMOLE_LOG_LEVEL=ERROR jumpserver/jms_guacamole:1.5.6
 
 10. 下载 luna 组件
 
