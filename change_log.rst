@@ -5,6 +5,8 @@
 ------------------------
 2020年3月19日
 
+- JumpServer 录像离线播放器 https://github.com/jumpserver/VideoPlayer
+
 **新增功能**
 
 * 支持 CAS Server （中央认证服务）用户登录认证
