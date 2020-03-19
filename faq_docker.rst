@@ -98,5 +98,5 @@ Docker 使用说明
 
     # 例:
     $ docker pull jumpserver/jms_all:latest
-    $ docker pull jumpserver/jms_koko:1.5.6
-    $ docker pull jumpserver/jms_guacamole:1.5.6
+    $ docker pull jumpserver/jms_koko:1.5.7
+    $ docker pull jumpserver/jms_guacamole:1.5.7

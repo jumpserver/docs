@@ -50,7 +50,7 @@
         -e CORE_HOST=http://192.168.100.30:8080 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e LOG_LEVEL=ERROR \
-        jumpserver/jms_koko:1.5.6
+        jumpserver/jms_koko:1.5.7
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
 
@@ -70,6 +70,6 @@
         -e CORE_HOST=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e LOG_LEVEL=ERROR \
-        jumpserver/jms_koko:1.5.6
+        jumpserver/jms_koko:1.5.7
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册

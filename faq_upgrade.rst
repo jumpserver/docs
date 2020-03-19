@@ -56,6 +56,7 @@
     $ source /opt/py3/bin/activate
     $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
     $ pip install wheel
+    $ pip install --upgrade pip setuptools
     $ pip install -r /opt/jumpserver/requirements/requirements.txt
 
     # 重新创建一个数据库
