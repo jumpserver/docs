@@ -67,47 +67,6 @@ FAQ
     # 具体表现为在luna页面一会可以连接资产, 一会就不行, 需要多次刷新页面
     # 如果从开发者工具里面看, 可以看到部分不正常的 502 koko
     # 此问题一般是由最前端一层的nginx反向代理造成的, 需要在每层的代理上添加(注意是每层)
-    $ vi /etc/nginx/conf.d/jumpserver.conf  # 配置文件所在目录, 自行修改
-
-    ...  # 省略
-
-    location /koko/ {
-            proxy_pass http://你后端的服务器url地址/koko/;
-            proxy_buffering off;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;  # 不记录到 log
-    }
-
-    location /guacamole/ {
-            proxy_pass       http://你后端的服务器url地址/guacamole/;
-            proxy_buffering off;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $http_connection;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;  # 不记录到 log
-    }
-
-    location /ws/ {
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass http://localhost:8070;
-            proxy_http_version 1.1;
-            proxy_buffering off;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-    }
-    ...
-
-    # 为了便于理解, 附上一份 demo 网站的配置文件参考
     $ vi /etc/nginx/conf.d/jumpserver.conf
     server {
 
@@ -117,40 +76,9 @@ FAQ
         client_max_body_size 100m;  # 上传录像大小限制
 
         location / {
-                # 这里的IP是后端服务器的IP
+                # 这里的 IP 是后端 nginx 的 IP
                 proxy_pass http://192.168.244.144;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_read_timeout 150;
-        }
-
-        location /koko/ {
-                proxy_pass http://192.168.244.144/koko/;
-                proxy_buffering off;
                 proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection "upgrade";
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location /guacamole/ {
-                proxy_pass http://192.168.244.144/guacamole/;
-                proxy_buffering off;
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection $http_connection;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location /ws/ {
-                proxy_pass http://192.168.244.144/ws/;
-                proxy_http_version 1.1;
-                proxy_buffering off;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
                 proxy_set_header X-Real-IP $remote_addr;
