@@ -25,16 +25,16 @@
     $ chmod +x ./jmsctl.sh
 
     # Install
-    $ ./jmsctl install
+    $ ./jmsctl.sh install
 
     # Uninstall
-    $ ./jmsctl uninstall
+    $ ./jmsctl.sh uninstall
 
     # Upgrade
-    $ ./jmsctl upgrade
+    $ ./jmsctl.sh upgrade
 
     # Help
-    $ ./jmsctl -h
+    $ ./jmsctl.sh -h
 
 .. code-block:: shell
 
@@ -43,4 +43,4 @@
     $ cd /opt
     $ tar -xf jms_install.tar.gz
     $ cd jms_install
-    $ ./jmsctl -h
+    $ ./jmsctl.sh -h
