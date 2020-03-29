@@ -15,9 +15,9 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   | Guacamole  | 192.168.100.50  |      8081     |          Nginx         |
+|    TCP   | Guacamole  | 192.168.100.50  |      8081     |         Tengine        |
 +----------+------------+-----------------+---------------+------------------------+
-|    TCP   | Guacamole1 | 192.168.100.50  |      8082     |          Nginx         |
+|    TCP   | Guacamole  | 192.168.100.51  |      8081     |         Tengine        |
 +----------+------------+-----------------+---------------+------------------------+
 
 
@@ -29,7 +29,7 @@
     # 升级系统
     $ yum upgrade -y
 
-    # 设置防火墙, 开放 8081 端口 给 nginx 访问
+    # 设置防火墙, 开放 8081 端口 给 Tengine 访问
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8081" accept"
     $ firewall-cmd --reload
 
@@ -47,7 +47,7 @@
     $ docker run --name jms_guacamole -d \
         -p 8081:8080 \
         -e JUMPSERVER_KEY_DIR=/config/guacamole/key \
-        -e JUMPSERVER_SERVER=http://192.168.100.30:8080 \
+        -e JUMPSERVER_SERVER=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e GUACAMOLE_LOG_LEVEL=ERROR \
         jumpserver/jms_guacamole:1.5.7
@@ -60,10 +60,11 @@
 
 .. code-block:: shell
 
+    # 登录到新的节点服务器, 前面安装 docker 都是一样的, 这里就懒得写了
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8082" accept"
     $ firewall-cmd --reload
-    $ docker run --name jms_guacamole1 -d \
-        -p 8082:8081 \
+    $ docker run --name jms_guacamole -d \
+        -p 8081:8080 \
         -e JUMPSERVER_KEY_DIR=/config/guacamole/key \
         -e JUMPSERVER_SERVER=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \

@@ -20,7 +20,7 @@
 +------------+-----------------+------------+
 |  Protocol  |   Server name   |    Port    |
 +============+=================+============+
-|     TCP    |    JumpServer   | 8070, 8080 |
+|     TCP    |    JumpServer   |    8080    |
 +------------+-----------------+------------+
 |     TCP    |       koko      | 2222, 5000 |
 +------------+-----------------+------------+
@@ -63,10 +63,11 @@
 .. toctree::
    :maxdepth: 1
 
-   环境说明 <distributed_01.rst>
-   Tengine 代理部署 <distributed_02.rst>
+   环境说明 <distributed.rst>
+   NFS 部署 <distributed_01.rst>
+   Tengine 部署 <distributed_02.rst>
    MariaDB 部署 <distributed_03.rst>
    Redis 部署 <distributed_04.rst>
-   JumpServer 部署 <distributed_05.rst>
+   Core 部署 <distributed_05.rst>
    Koko 部署 <distributed_06.rst>
    Guacamole 部署 <distributed_07.rst>
