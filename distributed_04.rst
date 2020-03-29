@@ -15,7 +15,7 @@
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
 +==========+============+=================+===============+========================+
-|    TCP   |    Redis   | 192.168.100.20  |      6379     |        JumpServer      |
+|    TCP   |    Redis   | 192.168.100.20  |      6379     |           Core         |
 +----------+------------+-----------------+---------------+------------------------+
 
 开始安装
@@ -31,7 +31,7 @@
     $ yum install -y redis
 
     # 设置防火墙, 开放 6379 端口 给 jumpserver 访问
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.30" port protocol="tcp" port="6379" accept"
+    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="6379" accept"
     $ firewall-cmd --reload
 
     # 设置 redis 自启

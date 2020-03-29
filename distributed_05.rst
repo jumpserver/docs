@@ -1,4 +1,4 @@
-分布式部署文档 - jumpserver 部署
+分布式部署文档 - Core 部署
 ----------------------------------------------------
 
 说明
@@ -17,6 +17,8 @@
 +==========+============+=================+===============+=========================+
 |    TCP   | JumpServer | 192.168.100.30  |       80      |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
+|    TCP   | JumpServer | 192.168.100.31  |       80      |         Tengine         |
++----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
 ~~~~~~~~~~~~
@@ -29,11 +31,8 @@
     # 安装依赖包
     $ yum -y install gcc epel-release git
 
-    # 开放 8080 端口给 koko 、 guacamole 和 tengine 访问
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8070" accept"
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.40" port protocol="tcp" port="8080" accept"
-    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.50" port protocol="tcp" port="8080" accept"
+    # 开放 80 给 tengine 访问
+    $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="80" accept"
     $ firewall-cmd --reload
 
     # 安装 Python3.6
@@ -72,7 +71,7 @@
     $ echo -e "\033[31m 你的SECRET_KEY是 $SECRET_KEY \033[0m"
     $ echo -e "\033[31m 你的BOOTSTRAP_TOKEN是 $BOOTSTRAP_TOKEN \033[0m"
 
-    $ vi config.yml
+    $ vi config.yml  # 主节点编辑好此配置文件后, 其他节点之间复制过去使用
 
 .. code-block:: yaml
 
@@ -110,10 +109,10 @@
     # MySQL or postgres setting like:
     # 使用Mysql作为数据库
     DB_ENGINE: mysql
-    DB_HOST: 192.168.100.100
+    DB_HOST: 192.168.100.10
     DB_PORT: 3306
     DB_USER: jumpserver
-    DB_PASSWORD: 你的数据库密码
+    DB_PASSWORD: weakPassword
     DB_NAME: jumpserver
 
     # When Django start it will bind this host and port
@@ -124,9 +123,9 @@
 
     # Use Redis as broker for celery and web socket
     # Redis配置
-    REDIS_HOST: 127.0.0.1
+    REDIS_HOST: 192.168.100.20
     REDIS_PORT: 6379
-    # REDIS_PASSWORD:
+    REDIS_PASSWORD: weakPassword
     # REDIS_DB_CELERY: 3
     # REDIS_DB_CACHE: 4
 
@@ -143,6 +142,22 @@
     # OTP/MFA 配置
     # OTP_VALID_WINDOW: 0
     # OTP_ISSUER_NAME: JumpServer
+
+.. code-block:: shell
+
+    # 挂载 NFS 共享文件夹
+    $ yum -y install nfs-utils
+    $ showmount -e 192.168.100.99  # 连接 NFS 服务器检查
+    $ mount -t nfs 192.168.100.99:/data /opt/jumpserver/data  # 挂载到 jumpserver/data
+
+.. code-block:: vim
+
+    # 写入自启
+    $ vi /etc/fstab
+
+    192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0
+
+.. code-block:: shell
 
     # 运行 JumpServer
     $ cd /opt/jumpserver
@@ -162,7 +177,7 @@
     $ systemctl enable nginx
 
     # 配置 Nginx 整合各组件
-    $ rm -rf /etc/nginx/conf.d/default.conf
+    $ echo > /etc/nginx/conf.d/default.conf
 
 .. code-block:: shell
 
@@ -203,8 +218,49 @@
         }
     }
 
+.. code-block:: shell
+
     # 运行 Nginx
     $ nginx -t   # 确保配置没有问题, 有问题请先解决
     $ systemctl start nginx
 
-    # 多节点部署, 请参考此文档部署即可
+多节点部署
+~~~~~~~~~~~~~~~~~~
+
+    # 多节点部署与上面一致, config.yml 不需要重新生成, 直接复制主节点的配置文件即可
+    # 登录到新的节点服务器
+    $ yum upgrade -y
+    $ yum -y install gcc epel-release git
+    $ yum -y install python36 python36-devel
+    $ python3.6 -m venv /opt/py3
+    $ source /opt/py3/bin/activate
+    $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+    $ yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
+    $ pip install wheel
+    $ pip install --upgrade pip setuptools
+    $ pip install -r /opt/jumpserver/requirements/requirements.txt
+
+    # 到此, 复制主节点 config.yml 到 /opt/jumpserver
+    $ scp root@192.168.100.30:/opt/jumpserver/config.yml /opt/jumpserver
+    # 输入密码即可
+
+    $ yum -y install nfs-utils
+    $ showmount -e 192.168.100.99
+    $ mount -t nfs 192.168.100.99:/data /opt/jumpserver/data
+    $ echo "192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0" >> /etc/fstab
+
+    $ cd /opt/jumpserver
+    $ ./jms start -d
+
+    $ echo -e "[nginx-stable]\nname=nginx stable repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=1\nenabled=1\ngpgkey=https://nginx.org/keys/nginx_signing.key" > /etc/yum.repos.d/nginx.repo
+    $ rpm --import https://nginx.org/keys/nginx_signing.key
+    $ yum -y install nginx
+    $ systemctl enable nginx
+
+    $ echo > /etc/nginx/conf.d/default.conf
+    # 复制主节点的 jumpserver.conf 到当前节点
+    $ scp root@192.168.100.30:/etc/nginx/conf.d/jumpserver.conf /etc/nginx/conf.d/
+
+    # 运行 Nginx
+    $ nginx -t   # 确保配置没有问题, 有问题请先解决
+    $ systemctl start nginx

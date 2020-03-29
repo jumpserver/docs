@@ -1,46 +1,55 @@
-分布式部署文档 - 环境说明
---------------------------------------------------------
+分布式部署文档 - NFS 部署
+----------------------------------------------------
+
+说明
+~~~~~~~
+-  # 开头的行表示注释
+-  $ 开头的行表示需要执行的命令
 
 环境
 ~~~~~~~
 
 -  系统: CentOS 7
--  数据库 IP: 192.168.100.10 192.168.100.11 192.168.100.12
--  Redis ip: 192.168.100.20
--  JumpServer IP: 192.168.100.30
--  koko IP: 192.168.100.40
--  Guacamole IP: 192.168.100.50
--  Tengine 代理 IP: 192.168.100.100
+-  IP: 192.168.100.99
 
-+------------+-----------------+------------+------------------------+
-|  Protocol  |   Server name   |    Port    |         Used By        |
-+============+=================+============+========================+
-|     TCP    |    JumpServer   | 8070, 8080 | Nginx, koko, Guacamole |
-+------------+-----------------+------------+------------------------+
-|     TCP    |       koko      | 2222, 5000 |         Tengine        |
-+------------+-----------------+------------+------------------------+
-|     TCP    |     Guacamole   |    8081    |         Tengine        |
-+------------+-----------------+------------+------------------------+
-|     TCP    |        Db       |    3306    |        JumpServer      |
-+------------+-----------------+------------+------------------------+
-|     TCP    |       Redis     |    6379    |        JumpServer      |
-+------------+-----------------+------------+------------------------+
-|     TCP    |      Tengine    |  80, 2222  |         All User       |
-+------------+-----------------+------------+------------------------+
++----------+------------+-----------------+------------------------+
+| Protocol | ServerName |        IP       |         Used By        |
++==========+============+=================+========================+
+|    TCP   |     NFS    |  192.168.100.99 |       Core, Tengine    |
++----------+------------+-----------------+------------------------+
 
+开始安装
+~~~~~~~~~~~~
 
-Nginx 多组件注意 upstream 的负载模式, 需要解决 session 问题
+.. code-block:: shell
 
-安全
-~~~~~~~
+    $ yum upgrade -y
+    $ yum -y install epel-release wget
 
-ssh、telnet协议 资产的防火墙设置允许 koko 与 jumpserver 访问
+    # 部署 NFS
+    $ yum -y install nfs-utils rpcbind
+    $ systemctl enable rpcbind nfs-server nfs-lock nfs-idmap
+    $ systemctl start rpcbind nfs-server nfs-lock nfs-idmap
 
-rdp协议 资产的防火墙设置允许 guacamole 与 jumpserver 访问
+    # 设置防火墙
+    $ firewall-cmd --add-service=nfs --permanent --zone=public
+    $ firewall-cmd --add-service=mountd --permanent --zone=public
+    $ firewall-cmd --add-service=rpc-bind --permanent --zone=public
+    $ firewall-cmd --reload
 
-其他
-~~~~~~~
+    # 创建 NFS 共享目录, 此共享目录存放 jumpserver 的录像及任务结果
+    $ mkdir /data
+    $ chmod 777 -R /data
 
-最终用户都是通过 Tengine 反向代理访问。
-如需要做 HA 或 负载, 按照如上方式部署多个应用, 数据库做主从, 然后在 Tengine 代理服务器用负载即可(四层)。
-注意：录像需要自己手动同步或者存放在公共目录。
+.. code-block:: vim
+
+    # 设置 NFS 访问权限, /data 是刚才创建的将被共享的目录, 192.168.100.* 表示整个 192.168.100.* 的资产都有括号里面的权限
+    # 也可以写具体的授权对象 /data 192.168.100.30(rw,sync,no_root_squash) 192.168.100.31(rw,sync,no_root_squash)
+    $ vi /etc/exports
+
+    /data 192.168.100.*(rw,sync,all_squash,anonuid=0,anongid=0)
+
+.. code-block:: vim
+
+    # 使 exports 生效
+    $ exportfs -a
