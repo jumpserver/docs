@@ -43,4 +43,5 @@
     $ cd /opt
     $ tar -xf jms_install.tar.gz
     $ cd jms_install
+    $ git pull
     $ ./jmsctl.sh -h
