@@ -37,44 +37,7 @@
 
     # 安装 Tengine
     $ cd /opt
-    $ yum install -y gcc-c++ pcre-devel openssl-devel
-    $ wget http://tengine.taobao.org/download/tengine-2.3.2.tar.gz
-    $ tar -xf tengine-2.3.2.tar.gz
-    $ rm -rf tengine-2.3.2.tar.gz
-    $ wget https://github.com/openresty/headers-more-nginx-module/archive/v0.33.tar.gz
-    $ tar -xf v0.33.tar.gz -C tengine-2.3.2/modules
-    $ rm -rf v0.33.tar.gz
-    $ cd tengine-2.3.2
-    $ ./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' --with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie' --add-module=modules/ngx_http_upstream_check_module --add-module=modules/headers-more-nginx-module-0.33 --add-module=modules/ngx_http_upstream_session_sticky_module
-    $ make
-    & make install
-    $ groupadd nginx
-    $ useradd -g nginx nginx
-    $ mkdir /var/cache/nginx
-    $ chown nginx:nginx /var/cache/nginx/ -R
-
-.. code-block:: nginx
-
-    # 配置 nginx 自启
-    $ vi /usr/lib/systemd/system/nginx.service
-
-    [Unit]
-    Description=nginx - high performance web server
-    Documentation=http://nginx.org/en/docs/
-    After=network-online.target remote-fs.target nss-lookup.target
-    Wants=network-online.target
-
-    [Service]
-    Type=forking
-    PIDFile=/var/run/nginx.pid
-    ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf
-    ExecReload=/bin/kill -s HUP $MAINPID
-    ExecStop=/bin/kill -s TERM $MAINPID
-
-    [Install]
-    WantedBy=multi-user.target
-
-.. code-block:: shell
+    $ yum localinstall -y http://demo.jumpserver.org/download/centos/7/tengine-2.3.2-1.el7.ngx.x86_64.rpm
 
     # 下载 luna
     $ cd /opt
@@ -96,7 +59,6 @@
 .. code-block:: nginx
 
     # 配置 Nginx
-    $ mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
     $ vi /etc/nginx/nginx.conf
 
     user  nginx;
