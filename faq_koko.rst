@@ -59,25 +59,7 @@ Jms_koko 常见问题
 
 .. code-block:: shell
 
-    $ vi /opt/kokodir/config.yml
-
-    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
-    # SFTP_ROOT: /tmp
-    SFTP_ROOT: /
-    # 如果想使用用户自己的Home目录, 直接 SFTP_ROOT: Home 即可
-
-    # SFTP是否显示隐藏文件
-    # SFTP_SHOW_HIDDEN_FILE: false
-
-    - 如果你的 koko 是 docker 方式部署
-    $ docker exec -it jms_koko /bin/sh
-    $ if [ ! -f "/opt/koko/config.yml" ]; then cp /opt/koko/config_example.yml /opt/koko/config.yml; sed -i '5d' /opt/koko/config.yml; sed -i "5i CORE_HOST: $CORE_HOST" /opt/koko/config.yml; sed -i "s/BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/koko/config.yml; sed -i "s/# LOG_LEVEL: INFO/LOG_LEVEL: ERROR/g" /opt/koko/config.yml; fi
-
-    $ vi config.yml
-
-    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
-    # SFTP_ROOT: /tmp
-    SFTP_ROOT: /
-
-    # SFTP是否显示隐藏文件
-    # SFTP_SHOW_HIDDEN_FILE: false
+    # 在 系统用户 的 SFTP根路径 指定, 默认是 tmp, 可以改成/ 或者 home
+    # 如果设置为 home 用户的 sftp 目录为 ~/
+    # 如果设置为 tmp  用户的 sftp 目录为 /tmp
+    # 如果设置为 /    用户的 sftp 目录为 /

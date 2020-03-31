@@ -1,18 +1,11 @@
 极速安装
 --------
 
-.. toctree::
-   :maxdepth: 1
-
-   setup_by_localcloud
-
 **说明**
 
 - 全新安装的 Centos7 (7.x)
 - 需要连接 互联网
 - 使用 root 用户执行
-
-**Koko、Guacamole 容器化部署(推荐)**
 
 .. code-block:: shell
 
