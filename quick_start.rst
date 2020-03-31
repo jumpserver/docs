@@ -48,7 +48,8 @@ Windows 资产先进行如下操作 `Windows SSH 设置说明 <faq_rdp.html>`_
 
 Mysql Server 需要授权 core 和 koko 的远程访问, 测试环境可以用 'root'@'%'
 
-.. code-block:: vim
+.. code-block:: shell
+
     $ mysql -uroot
     $ grant all on *.* to 'root'@'%' identified by 'Test@2020.M';
     $ flush privileges;
