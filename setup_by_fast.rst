@@ -20,12 +20,6 @@
     # Install
     $ ./jmsctl.sh install
 
-    # Uninstall
-    $ ./jmsctl.sh uninstall
-
-    # Upgrade
-    $ ./jmsctl.sh upgrade
-
     # Help
     $ ./jmsctl.sh -h
 
