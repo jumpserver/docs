@@ -3,8 +3,6 @@ Docker 安装
 
 JumpServer 封装了一个 All in one Docker, 可以快速启动。该镜像集成了所需要的组件, 支持使用外置 Database 和 Redis
 
-Docker-Compose 参考 `docker-compose示例 <https://github.com/jumpserver/Dockerfile>`_
-
 **快速启动**
 
 - 使用 root 身份输入
@@ -81,6 +79,20 @@ Docker-Compose 参考 `docker-compose示例 <https://github.com/jumpserver/Docke
         -e REDIS_PORT=6379 \
         -e REDIS_PASSWORD=xxx \
         jumpserver/jms_all:latest
+
+
+Docker-Compose 安装
+====================================
+
+- .env 的变量 用在 docker-compose 里面, 可以自己看下 可能还有一些未能检测到的问题, 尽量自己调试一遍后再使用
+
+.. code-block:: shell
+
+    $ git clone https://github.com/wojiushixiaobai/docker-compose.git
+    $ cd docker-compose
+    $ cat .env
+    $ docker-compose up
+
 
 **仓库地址**
 
