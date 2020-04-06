@@ -11,8 +11,8 @@
 
     $ cd /opt
     $ yum -y install wget git
-    $ git clone --depth=1 https://github.com/wojiushixiaobai/jms_install.git
-    $ cd jms_install
+    $ git clone --depth=1 https://github.com/jumpserver/setuptools.git
+    $ cd setuptools
     $ cp config_example.conf config.conf
     $ vi config.conf
     $ chmod +x ./jmsctl.sh
@@ -26,9 +26,9 @@
 .. code-block:: shell
 
     # 如果网络有问题无法连接到 github
-    $ wget -O /opt/jms_install.tar.gz http://demo.jumpserver.org/download/jms_install.tar.gz
+    $ wget -O /opt/setuptools.tar.gz http://demo.jumpserver.org/download/setuptools.tar.gz
     $ cd /opt
-    $ tar -xf jms_install.tar.gz
-    $ cd jms_install
+    $ tar -xf setuptools.tar.gz
+    $ cd setuptools
     $ git pull
     $ ./jmsctl.sh -h

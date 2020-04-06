@@ -3,7 +3,7 @@ Docker 安装
 
 JumpServer 封装了一个 All in one Docker, 可以快速启动。该镜像集成了所需要的组件, 支持使用外置 Database 和 Redis
 
-Docker-Compose 参考 `docker-compose示例 <https://github.com/wojiushixiaobai/docker-compose>`_
+Docker-Compose 参考 `docker-compose示例 <https://github.com/jumpserver/Dockerfile>`_
 
 **快速启动**
 
