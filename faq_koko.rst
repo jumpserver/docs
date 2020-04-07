@@ -22,7 +22,7 @@ Jms_koko 常见问题
     $ docker run --name jms_koko -d -p 2222:2222 -p 127.0.0.1:5000:5000 -e CORE_HOST=http://$Server_IP:8080 -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN -e LOG_LEVEL=ERROR --restart=always jumpserver/jms_koko:1.5.7
 
     # 如果是正常部署的 koko
-    $ rm /opt/kokodir/keys/*
+    $ rm /opt/kokodir/data/keys/*
     $ vi /opt/kokodir/config.yml
 
     ...
