@@ -34,9 +34,7 @@
 
 .. code-block:: shell
 
-    # 一定要知道自己升级之前的版本, 在升级之前可以通过如下代码进行查询, 记住是升级之前, 也可以通过 web 页面的右下角来查看当前版本信息
-    $ cat /opt/jumpserver/apps/jumpserver/context_processor.py | grep version
-    $ cat /opt/jumpserver/apps/templates/_footer.html | grep Version
+    # 一定要知道自己升级之前的版本, 记住是升级之前, 也可以通过 web 页面的右下角来查看当前版本信息
 
     # 备份当前版本数据库, 忽略 django_migrations 表
     $ mysqldump -uroot -p jumpserver --ignore-table=jumpserver.django_migrations > /opt/jumpserver.sql
@@ -76,9 +74,12 @@
     DB_PASSWORD = 'weakPassword'
     DB_NAME = 'jumpserver01'
 
-    # 初始化数据库
-    $ cd /opt/jumpserver/utils
-    $ sh make_migrations.sh
+    # 初始化数据库(版本大于 1.4.5 请跳过此步骤)
+    $ cd /opt/jumpserver/utils  # 当前版本大于 1.4.5 请跳过此命令
+    $ sh make_migrations.sh  # 当前版本大于 1.4.5 请跳过此命令
+
+    # 初始化数据库(版本大于 1.4.5 请执行下面命令初始化数据库)
+    $ ./jms start  # 如果未报错, 全部提示 ok 然后 ctrl + c 退出
 
     # 确定初始化没有错误, 把旧的数据库导入
     $ mysql -uroot
