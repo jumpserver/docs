@@ -15,7 +15,6 @@
     $ cd setuptools
     $ cp config_example.conf config.conf
     $ vi config.conf
-    $ chmod +x ./jmsctl.sh
 
     # Install
     $ ./jmsctl.sh install
