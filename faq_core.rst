@@ -4,8 +4,6 @@ Jms_core 常见问题
 - Jms_core 是指 https://github.com/jumpserver/jumpserver 项目
 - Jms_core 默认的路径为 /opt/jumpserver
 
-有关安装过程中出现的问题请参考 `安装常见问题文档 <faq_install.html>`_
-
 1. Jms_core 启动异常或者启动失败
 
 .. code-block:: shell
