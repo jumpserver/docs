@@ -27,7 +27,7 @@
     $ systemctl start mariadb
 
     $ mysql -uroot
-    > create database jumpserver default charset 'utf8' collate utf8_bin;
+    > create database jumpserver default charset 'utf8' collate 'utf8_bin';
     > grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by 'weakPassword';
     > use jumpserver;
     > source /opt/jumpserver.sql;

@@ -51,7 +51,7 @@ Ubuntu 18.04 安装文档
 
     $ DB_PASSWORD=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24`  # 生成随机数据库密码
     $ echo -e "\033[31m 你的数据库密码是 $DB_PASSWORD \033[0m"
-    $ mysql -uroot -p -e "create database jumpserver default charset 'utf8' collate utf8_bin; grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by '$DB_PASSWORD'; flush privileges;"
+    $ mysql -uroot -p -e "create database jumpserver default charset 'utf8' collate 'utf8_bin'; grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by '$DB_PASSWORD'; flush privileges;"
 
 **1.5 安装 Python3.6**
 

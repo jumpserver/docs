@@ -524,9 +524,9 @@ docker 部署的 koko
     $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-    $ tar xf apache-tomcat-9.0.33.tar.gz
-    $ mv apache-tomcat-9.0.33 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
+    $ tar xf apache-tomcat-9.0.34.tar.gz
+    $ mv apache-tomcat-9.0.34 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
@@ -799,9 +799,9 @@ docker 部署的 koko
     $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-    $ tar xf apache-tomcat-9.0.33.tar.gz
-    $ mv apache-tomcat-9.0.33 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
+    $ tar xf apache-tomcat-9.0.34.tar.gz
+    $ mv apache-tomcat-9.0.34 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
@@ -992,9 +992,9 @@ docker 部署的 koko
     $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-    $ tar xf apache-tomcat-9.0.33.tar.gz
-    $ mv apache-tomcat-9.0.33 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
+    $ tar xf apache-tomcat-9.0.34.tar.gz
+    $ mv apache-tomcat-9.0.34 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
@@ -1184,9 +1184,9 @@ docker 部署的 koko
     $ rm -rf /config/tomcat8
 
     # 访问 https://tomcat.apache.org/download-90.cgi 下载最新的 tomcat9
-    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
-    $ tar xf apache-tomcat-9.0.33.tar.gz
-    $ mv apache-tomcat-9.0.33 tomcat9
+    $ wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
+    $ tar xf apache-tomcat-9.0.34.tar.gz
+    $ mv apache-tomcat-9.0.34 tomcat9
     $ rm -rf /config/tomcat9/webapps/*
     $ sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
     $ echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties
