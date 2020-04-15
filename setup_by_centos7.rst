@@ -53,7 +53,7 @@ CentOS 7 安装文档
     # 创建数据库 JumpServer 并授权
     $ DB_PASSWORD=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24`  # 生成随机数据库密码
     $ echo -e "\033[31m 你的数据库密码是 $DB_PASSWORD \033[0m"
-    $ mysql -uroot -e "create database jumpserver default charset 'utf8'; grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by '$DB_PASSWORD'; flush privileges;"
+    $ mysql -uroot -e "create database jumpserver default charset 'utf8' collate utf8_bin; grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by '$DB_PASSWORD'; flush privileges;"
 
     # 安装 Nginx, 用作代理服务器整合 JumpServer 与各个组件
     $ vi /etc/yum.repos.d/nginx.repo

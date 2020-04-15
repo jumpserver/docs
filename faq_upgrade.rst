@@ -59,7 +59,7 @@
 
     # 重新创建一个数据库
     $ mysql -uroot
-    > create database jumpserver01 default charset 'utf8';
+    > create database jumpserver01 default charset 'utf8' collate utf8_bin;
     > grant all on jumpserver01.* to 'jumpserver01'@'127.0.0.1' identified by 'weakPassword';
     > flush privileges;
     > quit

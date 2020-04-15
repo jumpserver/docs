@@ -40,7 +40,7 @@
 
     # 创建 JumpServer 数据库及授权
     $ mysql -uroot
-    > create database jumpserver default charset 'utf8';
+    > create database jumpserver default charset 'utf8' collate utf8_bin;
     > grant all on jumpserver.* to 'jumpserver'@'192.168.100.%' identified by 'weakPassword';
     > flush privileges;
     > quit

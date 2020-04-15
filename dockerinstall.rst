@@ -41,7 +41,7 @@ JumpServer 封装了一个 All in one Docker, 可以快速启动。该镜像集�
 .. code-block:: shell
 
     # mysql
-    $ create database jumpserver default charset 'utf8';
+    $ create database jumpserver default charset 'utf8' collate utf8_bin;
     $ grant all on jumpserver.* to 'jumpserver'@'%' identified by 'weakPassword';
 
 
