@@ -50,7 +50,7 @@
         -e JUMPSERVER_SERVER=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e GUACAMOLE_LOG_LEVEL=ERROR \
-        jumpserver/jms_guacamole:1.5.7
+        jumpserver/jms_guacamole:1.5.8
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 guacamole 注册
 
@@ -69,6 +69,6 @@
         -e JUMPSERVER_SERVER=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e GUACAMOLE_LOG_LEVEL=ERROR \
-        jumpserver/jms_guacamole:1.5.7
+        jumpserver/jms_guacamole:1.5.8
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 guacamole 注册

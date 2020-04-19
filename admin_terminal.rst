@@ -50,7 +50,7 @@
 
 JumpServer 提供历史会话的录像观看。点击左侧的"回放"按钮, 即可观看录像。
 
-JumpServer 录像离线播放器 `下载地址 <https://github.com/jumpserver/videoplayer>`_
+JumpServer 录像离线播放器 `下载地址 <https://github.com/jumpserver/VideoPlayer/releases>`_
 
 三、命令记录
 ```````````````````````
