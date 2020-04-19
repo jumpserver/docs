@@ -32,6 +32,8 @@
     $ firewall-cmd --zone=public --add-port=2222/tcp --permanent
 
     $ firewall-cmd --reload
+    $ setenforce 0
+    $ sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 
 .. code-block:: shell
 

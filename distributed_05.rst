@@ -34,6 +34,7 @@
     # 开放 80 给 tengine 访问
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="80" accept"
     $ firewall-cmd --reload
+    $ setsebool -P httpd_can_network_connect 1
 
     # 安装 Python3.6
     $ yum -y install python36 python36-devel
@@ -43,6 +44,7 @@
     $ source /opt/py3/bin/activate
 
     # 下载 JumpServer
+    $ cd /opt
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 
     # 安装依赖 RPM 包
@@ -226,6 +228,8 @@
 
 多节点部署
 ~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
 
     # 多节点部署与上面一致, config.yml 不需要重新生成, 直接复制主节点的配置文件即可
     # 登录到新的节点服务器
