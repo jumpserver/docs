@@ -18,6 +18,8 @@
 |    TCP   |    Redis   | 192.168.100.20  |      6379     |           Core         |
 +----------+------------+-----------------+---------------+------------------------+
 
+注意: Redis 的数据库 3,4,5 被 Core 使用, 6 被 Koko 使用
+
 开始安装
 ~~~~~~~~~~~~
 
@@ -30,11 +32,11 @@
     $ yum install -y install epel-release
     $ yum install -y redis
 
-    # 设置防火墙, 开放 6379 端口 给 jumpserver 访问
+    # 设置防火墙, 开放 6379 端口 给 Core Koko 访问
     $ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.0/24" port protocol="tcp" port="6379" accept"
     $ firewall-cmd --reload
 
-    # 设置 redis 自启
+    # 设置 Redis 自启
     $ systemctl enable redis
 
 .. code-block:: vim
@@ -53,7 +55,5 @@
 
 .. code-block:: shell
 
-    # 启动 redis
+    # 启动 Redis
     $ systemctl start redis
-
-    # redis 的主从设置请参考其官方, 之后会补上

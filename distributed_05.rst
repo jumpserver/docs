@@ -15,9 +15,9 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   | JumpServer | 192.168.100.30  |       80      |         Tengine         |
+|    TCP   |    Core    | 192.168.100.30  |       80      |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
-|    TCP   | JumpServer | 192.168.100.31  |       80      |         Tengine         |
+|    TCP   |    Core    | 192.168.100.31  |       80      |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
 
 开始安装
@@ -43,7 +43,7 @@
     $ python3.6 -m venv /opt/py3
     $ source /opt/py3/bin/activate
 
-    # 下载 JumpServer
+    # 下载 Core
     $ cd /opt
     $ git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 
@@ -55,7 +55,7 @@
     $ pip install --upgrade pip setuptools
     $ pip install -r /opt/jumpserver/requirements/requirements.txt
 
-    # 修改 jumpserver 配置文件
+    # 修改 Core 配置文件
     $ cd /opt/jumpserver
     $ cp config_example.yml config.yml
 
@@ -161,7 +161,7 @@
 
 .. code-block:: shell
 
-    # 运行 JumpServer
+    # 运行 Core
     $ cd /opt/jumpserver
     $ ./jms start -d  # 后台运行使用 -d 参数./jms start -d
     # 新版本更新了运行脚本, 使用方式./jms start|stop|status all  后台运行请添加 -d 参数

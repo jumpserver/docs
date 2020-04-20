@@ -11,7 +11,7 @@
 ~~~~~~~
 
 -  系统: CentOS 7
--  服务: MariaDB Galera Cluster
+-  服务: MariaDB Server
 
 +----------+------------+-----------------+---------------+------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By        |
@@ -35,6 +35,13 @@
     # 192.168.100.0/24 为整个 JumpServer 网络网段, 这里就偷懒了, 自己根据实际情况修改即可
 
     $ firewall-cmd --reload
+
+.. code-block:: shell
+
+    # 启动 MariaDB
+
+    $ systemctl enable mariadb
+    $ systemctl start mariadb
 
 .. code-block:: shell
 

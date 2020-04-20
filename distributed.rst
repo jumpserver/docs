@@ -25,3 +25,4 @@
 - 最终用户都是通过 Tengine 反向代理访问
 - 负载均衡模式, 七层使用 session_sticky, 四层用 least_conn
 - jumpserver/data 目录需要同步
+- koko 需要使用同一个 redis

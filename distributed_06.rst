@@ -50,6 +50,9 @@
         -e CORE_HOST=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e LOG_LEVEL=ERROR \
+        -e REDIS_HOST=192.168.100.20 \
+        -e REDIS_PORT=6379 \
+        -e REDIS_PASSWORD=weakPassword \
         jumpserver/jms_koko:1.5.8
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
@@ -70,6 +73,9 @@
         -e CORE_HOST=http://192.168.100.100 \
         -e BOOTSTRAP_TOKEN=你的token \
         -e LOG_LEVEL=ERROR \
+        -e REDIS_HOST=192.168.100.20 \
+        -e REDIS_PORT=6379 \
+        -e REDIS_PASSWORD=weakPassword \
         jumpserver/jms_koko:1.5.8
 
     # 访问 http://192.168.100.100/terminal/terminal/ 检查 koko 注册
