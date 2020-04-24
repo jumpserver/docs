@@ -23,3 +23,13 @@ MFA遗失无法登陆
         mysql -uroot
         > use jumpserver;
         > update settings_setting set value='false' where name='SECURITY_MFA_AUTH';
+
+        # 或者通过 shell 来重置
+        $ source /opt/py3/bin/activate
+        $ cd /opt/jumpserver/apps
+        python manage.py shell << EOF
+        from users.models import User
+        u = User.objects.get(username='test')  # test 为用户账户
+        u.mfa_level='0'                        # 关闭 mfa
+        u.otp_secret_key=''                    # 重置 mfa key
+        u.save()
