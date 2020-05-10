@@ -1,0 +1,4 @@
+mkdocs >= 1.1
+mkdocs-material
+mdx_gh_links
+markdown

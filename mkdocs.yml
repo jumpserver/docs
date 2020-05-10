@@ -1,0 +1,137 @@
+site_name: 'JumpServer Docs'
+site_url: 'https://jumpserver.org'
+site_description: 'JumpServer Docs'
+site_author: 'wojiushixiaobai'
+
+repo_name: 'JumpServer Docs'
+repo_url: 'https://github.com/jumpserver/docs'
+
+theme:
+    name: 'material'
+    logo: 'img/logo.ico'
+    favicon: 'img/facio.ico'
+    language: 'zh'
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - django
+
+nav:
+    - 主页: index.md
+    - 安装配置:
+        - 安装文档: install/step_by_step.md
+        - 极速部署: install/setup_by_fast.md
+        - 容器部署: install/docker_install.md
+        - 分布式部署:
+            - 环境说明: install/setup_by_prod.md
+            - NFS 部署: install/prod/distributed_01.md
+            - Tengine 部署: install/prod/distributed_02.md
+            - Mariadb 部署: install/prod/distributed_03.md
+            - Redis 部署: install/prod/distributed_04.md
+            - Core 部署: install/prod/distributed_05.md
+            - Koko 部署: install/prod/distributed_06.md
+            - Guacamole 部署: install/prod/distributed_07.md
+
+        - Ansible 部署: install/ansible_install.md
+        - 卸载文档: install/uninstall.md
+
+    - 管理文档:
+        - 快速入门: admin-guide/quick_start.md
+        - 更新升级:
+            - 1.0.0-1.4.3 升级到 1.4.4: admin-guide/upgrade/1.0.0-1.4.3.md
+            - 1.4.4 升级到 最新: admin-guide/upgrade/1.4.4.md
+            - 1.4.5-1.4.10 升级到 最新: admin-guide/upgrade/1.4.5-1.4.10.md
+            - 1.5.0 及之后版本升级到 最新: admin-guide/upgrade/1.5.0.md
+            - 其他部署方式升级说明: admin-guide/upgrade/other.md
+
+        - 迁移文档: admin-guide/migration.md
+        - 资产要求:
+            - Tetnet: admin-guide/assets/telnet.md
+            - Linux SSH: admin-guide/assets/linux_ssh.md
+            - Linux VNC: admin-guide/assets/linux_vnc.md
+            - Windows SSH: admin-guide/assets/windows_ssh.md
+            - Windows VNC: admin-guide/assets/windows_vnc.md
+            - Windows RDP: admin-guide/assets/windows_rdp.md
+
+        - 身份认证:
+            - CAS 认证: admin-guide/authentication/cas.md
+            - MFA 认证: admin-guide/authentication/mfa.md
+            - LDAP 认证: admin-guide/authentication/ldap.md
+            - OpenID 认证: admin-guide/authentication/openid.md
+            - Radius 认证: admin-guide/authentication/radius.md
+
+        - 组织管理: admin-guide/organization/index.md
+        - 反向代理: admin-guide/proxy.md
+
+    - 开发文档:
+        - API文档: dev/rest_api.md
+
+    - 问题清单: issues/list.md
+
+    - 用户文档:
+        - 我的资产: user-guide/assets/user-asset.md
+        - 我的应用:
+              - 数据库应用: user-guide/applications/user-database-app.md
+
+        - 命令执行: user-guide/ops/command-executions/create.md
+        - 个人信息: user-guide/users/profile.md
+        - Web终端: user-guide/terminal/web-terminal.md
+        - 文件管理: user-guide/terminal/web-sftp.md
+
+    - 帮助文档:
+        - Core 常见问题: faq/core.md
+        - Luna 常见问题: faq/luna.md
+        - koko 常见问题: faq/koko.md
+        - Guacamole 问题: faq/guacamole.md
+
+
+    - 关于:
+        - 许可: about/license.md
+        - 贡献: about/contributor.md
+        - 更新说明: about/change_log.md
+        - 联系方式: about/contact.md
+
+markdown_extensions:
+    - admonition
+    - codehilite:
+        guess_lang: True
+        linenums: False
+    - toc:
+        permalink: True
+    - footnotes
+    - attr_list
+    - def_list
+    - tables
+    - abbr
+    - md_in_html
+    - pymdownx.extra
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_generator: !!python/name:pymdownx.emoji.to_png
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink:
+        repo_url_shortener: True
+        repo_url_shorthand: True
+        repo_url_shorthand: True
+        social_url_shorthand: True
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist
+    - pymdownx.tilde
+    - pymdownx.betterem
+    - pymdownx.superfences
+    - pymdownx.progressbar
+
+extra_css:
+    - css/extra.css
+
+copyright: Copyright &copy; 2014-2020 <a href="https://www.fit2cloud.com">杭州飞致云信息科技有限公司</a>, All Rights Reserved. <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备15023818号</a>
+
+plugins:
+    - search
