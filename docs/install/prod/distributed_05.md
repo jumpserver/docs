@@ -83,7 +83,7 @@ pip install -r /opt/jumpserver/requirements/requirements.txt
 ```
 
 ### 9. 修改配置文件
-    
+
 ```sh
 cd /opt/jumpserver
 ```
@@ -330,6 +330,7 @@ server {
 ```sh
 nginx -t
 systemctl start nginx
+```
 
 ## 多节点部署
 
