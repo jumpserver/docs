@@ -198,3 +198,5 @@ ansible-playbook deploy.yml
 
 - 如果安装过程提示错误, 可以尝试重新执行 ansible-playbook deploy.yml  
 - 暂时未集成升级功能, 暂时未集成卸载功能(等待后续更新)
+
+后续的使用请参考 [快速入门](../../admin-guide/quick_start/)

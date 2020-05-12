@@ -604,4 +604,4 @@ nginx -s reload
     服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问  
     默认账号: admin 密码: admin  
 
-后续的使用请参考 [快速入门](../admin-guide/quick_start/)
+后续的使用请参考 [快速入门](../../admin-guide/quick_start/)
