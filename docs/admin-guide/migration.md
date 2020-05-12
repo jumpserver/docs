@@ -15,8 +15,8 @@ mysqldump -uroot -p jumpserver > /opt/jumpserver.sql
 - 登录新的服务器，拷贝 jumpserver 和 jumpserver.sql 到 /opt 目录
 
 ```sh
-scp -r root@jumpserver服务器ip:/opt/jumpserver /opt/
-scp -r root@jumpserver服务器ip:/opt/jumpserver.sql /opt/
+scp -r root@jumpserver_ip:/opt/jumpserver /opt/
+scp -r root@jumpserver_ip:/opt/jumpserver.sql /opt/
 ```
 
 ### 3. 配置新服务器
