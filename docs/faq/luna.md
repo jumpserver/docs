@@ -6,15 +6,15 @@
     如果组件都已经启动, 但是访问提示 502 或者 403, 可以检查下 防火墙 和 selinux
 
 !!! question "访问 rdp vnc 资产白屏"
-    根据 faq guacamole 文档第一条, 重新部署 guacamole  
+    根据帮助文档 [guacamole 问题](guacamole.md) 第一条, 重新部署 guacamole  
     确定 `web` - `会话管理` - `终端管理` 里面的组件都 `在线`, 在线图标处于 `绿色` 状态
 
-!!! question "访问 rdp vnc 资产提示无权限"
-    根据 faq guacamole 文档第一条, 重新部署 guacamole  
+!!! question "访问 rdp vnc 资产提示没有权限访问此连接"
+    根据帮助文档 [guacamole 问题](guacamole.md) 第一条, 重新部署 guacamole  
     确定 `web` - `会话管理` - `终端管理` 里面的组件都 `在线`, 在线图标处于 `绿色` 状态
 
 !!! question "访问 ssh telnet 资产无反应"
-    只有一个白色光标, 无任何其他提示, 根据 faq koko 文档第一条, 重新部署 koko  
+    只有一个白色光标, 无任何其他提示, 根据帮助文档 [koko 常见问题](koko.md) 第一条, 重新部署 koko  
     确定 `web` - `会话管理` - `终端管理` 里面的组件都 `在线`, 在线图标处于 `绿色` 状态
 
 !!! question "访问 ssh 资产错误"
