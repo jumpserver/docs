@@ -22,6 +22,7 @@ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
 
     !!! tip "如果依旧提示 wait for jms_core ready"
     ```sh
+    docker stop jms_guacamole
     docker rm jms_guacamole
     docker run --name jms_guacamole -d
       -p 127.0.0.1:8081:8080

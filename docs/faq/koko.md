@@ -55,6 +55,7 @@
 
     !!! tip "如果依旧提示 wait for jms_core ready"
     ```sh
+    docker stop jms_koko
     docker rm jms_koko
     docker run --name jms_koko -d
       -p 2222:2222
