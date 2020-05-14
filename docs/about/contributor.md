@@ -7,7 +7,7 @@
 - **[jiaxiangkong <陈尚委>][jiaxiangkong]** JumpServer 测试运营
 - **[liuz <刘正> 全栈工程师][liuz]** 编写了 Web Terminal 大部分代码
 - **[yumaojun03 <喻茂峻>][yumaojun03]** DevOps 资深开发者, 擅长 Python、Go 以及 PaaS 平台开发
-- **[kelianchun <柯连春>][kelianchun]** DevOps 资产开发者, 修复了很多 Bugs
+- **[kelianchun <柯连春>][kelianchun]** DevOps 资深开发者, 修复了很多 Bugs
 - **小彧 <李磊>** Django 资深开发者, 为用户模块贡献了很多代码
 - **[sofia <周小侠>][sofia]** 资深前端工程师, 前端代码贡献者
 - **[q4speed <莫鹍>][q4speed]** 架构师, 贡献了 Windows 远程桌面登录大部分代码
