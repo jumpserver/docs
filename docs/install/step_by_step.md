@@ -509,7 +509,7 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/luna/releases) 获取"
     ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/luna/) 快速下载"
         ```sh
-        wget https://github.com/jumpserver/luna/releases/download/1.5.8/luna.tar.gz
+        wget http://demo.jumpserver.org/download/luna/1.5.8/luna.tar.gz
         ```
     ```sh
     wget https://github.com/jumpserver/luna/releases/download/1.5.8/luna.tar.gz
