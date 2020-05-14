@@ -87,12 +87,12 @@ pip install -r requirements.txt
 ### 6. 修改配置文件
 
 ```sh
-    cd /opt/jumpserver && \  
-    cp config_example.yml config.yml && \  
-    vi config.yml
+cd /opt/jumpserver && \  
+cp config_example.yml config.yml && \  
+vi config.yml
 ```
-??? info "注意不能使用纯数字字符串"
-    以下模板仅供参考  
+
+??? info "注意不能使用纯数字字符串, 可以参考此模版"
     ```yaml
     # SECURITY WARNING: keep the secret key used in production secret!
     # 加密秘钥 生产环境中请修改为随机字符串，请勿外泄, 可使用命令生成
