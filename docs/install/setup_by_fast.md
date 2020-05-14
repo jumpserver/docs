@@ -4,9 +4,9 @@
     全新安装的 Centos7 (7.x)  
     需要连接 互联网  
     使用 root 用户执行  
+    [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! warning "对系统进行任何修改均可能导致安装失败，推荐在安装完成后再进行调优"
-
 
 ## 下载
 
