@@ -113,4 +113,4 @@
 
 !!! question "Connect websocket server error"
     kill 掉进程再重启 core  
-    如果任然一样, 表示 nginx 也有错误, 根据安装文档进行修改后重启 nginx 即可
+    如果仍然一样, 表示 nginx 也有错误, 根据安装文档进行修改后重启 nginx 即可

@@ -43,7 +43,7 @@ source /opt/py3/bin/activate
 
 ### 4. 获取 jumpserver 代码
 ```sh
-cd /opt && \  
+cd /opt && \
 git clone --depth=1 https://github.com/jumpserver/jumpserver.git
 ```
 
@@ -63,16 +63,16 @@ cd /opt/jumpserver/requirements
 ??? tip "根据当前系统, 选择对应的文件执行即可"
     Centos:
     ```sh
-    yum install -y $(cat rpm_requirements.txt)  
+    yum install -y $(cat rpm_requirements.txt)
     ```
     Ubuntu:
     ```sh
-    apt-get install -y $(cat deb_requirements.txt)  
+    apt-get install -y $(cat deb_requirements.txt)
     ```
 
 ```sh
-pip install wheel && \  
-pip install --upgrade pip setuptools && \  
+pip install wheel && \
+pip install --upgrade pip setuptools && \
 pip install -r requirements.txt
 ```
 
@@ -87,8 +87,8 @@ pip install -r requirements.txt
 ### 6. 修改配置文件
 
 ```sh
-cd /opt/jumpserver && \  
-cp config_example.yml config.yml && \  
+cd /opt/jumpserver && \
+cp config_example.yml config.yml && \
 vi config.yml
 ```
 
@@ -217,7 +217,7 @@ vi config.yml
 
 ```sh
 cd /opt/jumpserver
-./jms start  
+./jms start
 ```
 
 ??? warning "确保已经载入 py3 虚拟环境"
@@ -227,7 +227,7 @@ cd /opt/jumpserver
 
 ??? tip "可以 -d 参数在后台运行"
     ```sh
-    ./jms start -d  
+    ./jms start -d
     ```
 
 ### 8. 正常部署 koko 组件
@@ -246,13 +246,13 @@ cd /opt
     ```
 
 ```sh                               
-tar -xf koko-master-linux-amd64.tar.gz && \  
-chown -R root:root kokodir && \  
+tar -xf koko-master-linux-amd64.tar.gz && \
+chown -R root:root kokodir && \
 cd kokodir
 ```
 
 ```sh
-cp config_example.yml config.yml && \  
+cp config_example.yml config.yml && \
 vi config.yml
 ```
 
@@ -369,14 +369,14 @@ vi config.yml
 !!! tip "建议使用 docker 部署 guacamole 组件 , 部分环境可能无法正常编译安装"
 
 ```sh
-cd /opt && \  
+cd /opt && \
 git clone --depth=1 https://github.com/jumpserver/docker-guacamole.git
 ```
 
 ```sh
-cd /opt/docker-guacamole && \  
-tar -xf guacamole-server-1.0.0.tar.gz && \  
-tar -xf ssh-forward.tar.gz -C /bin/ && \  
+cd /opt/docker-guacamole && \
+tar -xf guacamole-server-1.0.0.tar.gz && \
+tar -xf ssh-forward.tar.gz -C /bin/ && \
 chmod +x /bin/ssh-forward
 ```
 
@@ -387,28 +387,28 @@ cd /opt/docker-guacamole/guacamole-server-1.0.0
 ??? warning "根据 [guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
     Ubuntu:  
     ```sh
-    apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev && \  
-    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \  
+    apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev && \
+    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
     ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp
     ```
     Debian:  
     ```sh
-    apt-get install -y libcairo2-dev libjpeg62-turbo-dev libpng12-dev libossp-uuid-dev && \  
-    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \  
+    apt-get install -y libcairo2-dev libjpeg62-turbo-dev libpng12-dev libossp-uuid-dev && \
+    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
     ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp
     ```
     Fedora/CentOS/RHEL:  
     ```sh
-    yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm https://mirrors.aliyun.com/rpmfusion/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm && \  
-    yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel && \  
-    yum install -y ffmpeg-devel freerdp1.2-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel && \  
+    yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm https://mirrors.aliyun.com/rpmfusion/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm && \
+    yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel && \
+    yum install -y ffmpeg-devel freerdp1.2-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel && \
     ln -s /usr/local/lib/freerdp /usr/lib64/freerdp
     ```
 
 ```sh
-autoreconf -fi && \  
-./configure --with-init-dir=/etc/init.d && \  
-make && \  
+autoreconf -fi && \
+./configure --with-init-dir=/etc/init.d && \
+make && \
 make install
 ```
 
@@ -423,9 +423,9 @@ make install
     ```
 
 ```sh
-    mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record /config/guacamole/drive && \  
-    chown daemon:daemon /config/guacamole/record /config/guacamole/drive && \  
-    cd /config
+mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record /config/guacamole/drive && \
+chown daemon:daemon /config/guacamole/record /config/guacamole/drive && \
+cd /config
 ```
 
 ??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 tomcat9"
@@ -435,31 +435,31 @@ make install
     ```
 
 ```sh
-tar -xf apache-tomcat-9.0.34.tar.gz && \  
-mv apache-tomcat-9.0.34 tomcat9 && \  
-rm -rf /config/tomcat9/webapps/* && \  
-sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \  
-echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \  
-ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war && \  
-ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar && \  
+tar -xf apache-tomcat-9.0.34.tar.gz && \
+mv apache-tomcat-9.0.34 tomcat9 && \
+rm -rf /config/tomcat9/webapps/* && \
+sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
+echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
+ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war && \
+ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar && \
 ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
 ```
 
 !!! warning "设置 guacamole 环境"
 
 ```sh
-export JUMPSERVER_SERVER=http://127.0.0.1:8080  
-echo "export JUMPSERVER_SERVER=http://127.0.0.1:8080" >> ~/.bashrc  
-export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN  
-echo "export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN" >> ~/.bashrc  
-export JUMPSERVER_KEY_DIR=/config/guacamole/keys  
-echo "export JUMPSERVER_KEY_DIR=/config/guacamole/keys" >> ~/.bashrc  
-export GUACAMOLE_HOME=/config/guacamole  
-echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc  
-export GUACAMOLE_LOG_LEVEL=ERROR  
-echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc  
-export JUMPSERVER_ENABLE_DRIVE=true  
-echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc  
+export JUMPSERVER_SERVER=http://127.0.0.1:8080
+echo "export JUMPSERVER_SERVER=http://127.0.0.1:8080" >> ~/.bashrc
+export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN
+echo "export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN" >> ~/.bashrc
+export JUMPSERVER_KEY_DIR=/config/guacamole/keys
+echo "export JUMPSERVER_KEY_DIR=/config/guacamole/keys" >> ~/.bashrc
+export GUACAMOLE_HOME=/config/guacamole
+echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
+export GUACAMOLE_LOG_LEVEL=ERROR
+echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
+export JUMPSERVER_ENABLE_DRIVE=true
+echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
 ```
 
 ??? info "环境变量说明"
@@ -473,7 +473,7 @@ echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
 !!! tip "启动 guacamole"
 
 ```sh
-/etc/init.d/guacd start  
+/etc/init.d/guacd start
 sh /config/tomcat9/bin/startup.sh
 ```
 
@@ -489,7 +489,6 @@ sh /config/tomcat9/bin/startup.sh
       jumpserver/jms_guacamole:<Tag>
     <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
     ```
-
 
 !!! tip "例:"
     ```sh
@@ -601,7 +600,7 @@ nginx -s reload
 ### 12. 开始使用 JumpServer
 
 !!! tip "检查应用是否已经正常运行"
-    服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问  
-    默认账号: admin 密码: admin  
+    服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问
+    默认账号: admin 密码: admin
 
 后续的使用请参考 [快速入门](../../admin-guide/quick_start/)
