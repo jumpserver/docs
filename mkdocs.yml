@@ -3,21 +3,27 @@ site_url: 'https://jumpserver.org'
 site_description: 'JumpServer Docs'
 site_author: 'wojiushixiaobai'
 
-repo_name: 'JumpServer Docs'
+repo_name: 'Github Star'
 repo_url: 'https://github.com/jumpserver/docs'
 
 theme:
     name: 'material'
-    logo: 'img/logo.ico'
+    logo: 'img/logo.png'
     favicon: 'img/facio.ico'
     language: 'zh'
     highlightjs: true
+    feature:
+        tabs: true
     hljs_languages:
         - yaml
         - django
 
+    palette:
+        primary: 'green'
+        accent: 'red'
+
 nav:
-    - 主页: index.md
+    - 总体介绍: index.md
     - 安装配置:
         - 安装文档: install/step_by_step.md
         - 极速部署: install/setup_by_fast.md
@@ -86,7 +92,7 @@ nav:
 
 
     - 关于:
-        - 贡献: about/contributor.md
+        - 贡献列表: about/contributor.md
         - 更新说明: about/change_log.md
         - 联系方式: about/contact.md
 
