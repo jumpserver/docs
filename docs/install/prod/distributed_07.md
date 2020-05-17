@@ -73,8 +73,10 @@ docker run --name jms_guacamole -d \
   jumpserver/jms_guacamole:1.5.8
 ```
 
-!!! warning "BOOTSTRAP_TOKEN 的值从 jumpserver/config.yml 里面获取"
-    访问 http://192.168.100.100/terminal/terminal/ 检查 guacamole 注册
+!!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
+    `JUMPSERVER_SERVER=https://demo.jumpserver.org`  请自行替换此处的域名  
+    `BOOTSTRAP_TOKEN` 的值从 `jumpserver/config.yml` 里面获取  
+    访问 web页面 `会话管理` - `终端管理` 检查 guacamole 注册
 
 ## 多节点部署
 
@@ -104,5 +106,7 @@ docker run --name jms_guacamole -d \
   jumpserver/jms_guacamole:1.5.8
 ```
 
-!!! warning "BOOTSTRAP_TOKEN 的值从 jumpserver/config.yml 里面获取"
-    访问 http://192.168.100.100/terminal/terminal/ 检查 guacamole 注册
+!!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
+    `JUMPSERVER_SERVER=https://demo.jumpserver.org`  请自行替换此处的域名  
+    `BOOTSTRAP_TOKEN` 的值从 `jumpserver/config.yml` 里面获取  
+    访问 web页面 `会话管理` - `终端管理` 检查 guacamole 注册
