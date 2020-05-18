@@ -4,7 +4,8 @@ site_description: 'JumpServer Docs'
 site_author: 'wojiushixiaobai'
 
 repo_name: 'Github Star'
-repo_url: 'https://github.com/jumpserver/docs'
+repo_url: 'https://github.com/jumpserver/jumpserver'
+edit_uri: ''
 
 theme:
     name: 'material'
