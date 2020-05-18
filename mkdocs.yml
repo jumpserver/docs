@@ -46,7 +46,7 @@ nav:
         - 快速入门: admin-guide/quick_start.md
         - 更新升级:
             - 1.0.0-1.4.3 升级到 1.4.4: admin-guide/upgrade/1.0.0-1.4.3.md
-            - 1.4.4 升级到 最新: admin-guide/upgrade/1.4.4.md
+            - 1.4.4 升级到 1.4.5: admin-guide/upgrade/1.4.4.md
             - 1.4.5-1.4.10 升级到 最新: admin-guide/upgrade/1.4.5-1.4.10.md
             - 1.5.0 及之后版本升级到 最新: admin-guide/upgrade/1.5.0.md
             - 其他部署方式升级说明: admin-guide/upgrade/other.md
