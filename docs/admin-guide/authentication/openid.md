@@ -43,6 +43,7 @@
     vi /opt/jumpserver/config.yml
     ```
     ```yaml
+    BASE_SITE_URL: http://localhost:8080
     AUTH_OPENID: False
     AUTH_OPENID_CLIENT_ID: client-id
     AUTH_OPENID_CLIENT_SECRET: client-secret
@@ -65,6 +66,8 @@
     ```
 
     ??? question "设置参数说明"
+        `BASE_SITE_URL`: JumpServer service URL
+
         `AUTH_OPENID`: Whether to enable OpenID authentication  
 
         `AUTH_OPENID_CLIENT_ID`: This setting defines the Client ID that should be provided by the considered OIDC provider.  
@@ -105,6 +108,7 @@
 
     例:
         ```yaml
+        BASE_SITE_URL: https://demo.jumpserver.org
         AUTH_OPENID: True
         AUTH_OPENID_CLIENT_ID: jumpserver
         AUTH_OPENID_CLIENT_SECRET: 5222e5ed-0234-45f5-b3e7-3133f0d15f99
