@@ -239,10 +239,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/koko/releases) 下载对应 release 包并解压到 /opt目录"
     ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/koko/) 下载"
         ```sh
-        wget https://demo.jumpserver.org/download/koko/1.5.8/koko-master-linux-amd64.tar.gz
+        wget https://demo.jumpserver.org/download/koko/1.5.9/koko-master-linux-amd64.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/koko/releases/download/1.5.8/koko-master-linux-amd64.tar.gz
+    wget https://github.com/jumpserver/koko/releases/download/1.5.9/koko-master-linux-amd64.tar.gz
     ```
 
 ```sh                               
@@ -361,7 +361,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN
       -e LOG_LEVEL=ERROR
       --restart=always
-      jumpserver/jms_koko:1.5.8
+      jumpserver/jms_koko:1.5.9
     ```
 
 ### 9. 正常安装并启动 guacamole 组件
@@ -497,7 +497,7 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080
       -e BOOTSTRAP_TOKEN=abcdefg1234
       -e GUACAMOLE_LOG_LEVEL=ERROR
-      jumpserver/jms_guacamole:1.5.8
+      jumpserver/jms_guacamole:1.5.9
     ```
 
 ### 10. 下载 luna 组件
@@ -509,10 +509,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/luna/releases) 获取"
     ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/luna/) 快速下载"
         ```sh
-        wget http://demo.jumpserver.org/download/luna/1.5.8/luna.tar.gz
+        wget http://demo.jumpserver.org/download/luna/1.5.9/luna.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/luna/releases/download/1.5.8/luna.tar.gz
+    wget https://github.com/jumpserver/luna/releases/download/1.5.9/luna.tar.gz
     ```
 
 ```sh
@@ -601,6 +601,7 @@ nginx -s reload
 
 !!! tip "检查应用是否已经正常运行"
     服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问
-    默认账号: admin 密码: admin
+    默认账号: admin 密码: admin  
 
-后续的使用请参考 [快速入门](../../admin-guide/quick_start/)
+
+后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)

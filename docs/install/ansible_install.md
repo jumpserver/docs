@@ -163,7 +163,7 @@ nginx_server = 192.168.1.146         # nginx 服务器的 ip 地址
 ansible_user = root
 install_dir = /opt                   # jumpserver安装的位置, 建议默认, 修改此选项, 下面 nfs 客户端挂载的位置也需要修改
 ntp_server = ntp1.aliyun.com         # ntp 需要时间同步
-jms_version = 1.5.8                  # jumpserver 的版本
+jms_version = 1.5.9                  # jumpserver 的版本
 nfs_src_dir = /data                  # nfs 服务端挂载位置, 建议默认
 nfs_dest_dir = /opt/jumpserver/data  # nfs 客户端挂载的位置, 必须指向 jumpserver 安装目录的 data 文件夹
 jms_network = 192.168.1.0/24         # 设置防火墙需要, 授权整个网段, 请修改成你部署 jumpserver 的资产网段
@@ -199,4 +199,4 @@ ansible-playbook deploy.yml
 - 如果安装过程提示错误, 可以尝试重新执行 ansible-playbook deploy.yml  
 - 暂时未集成升级功能, 暂时未集成卸载功能(等待后续更新)
 
-后续的使用请参考 [快速入门](../../admin-guide/quick_start/)
+后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)

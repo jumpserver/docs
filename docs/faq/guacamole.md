@@ -29,5 +29,5 @@ cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
       -e JUMPSERVER_SERVER=http://你的core_url:8080
       -e BOOTSTRAP_TOKEN=你的token
       -e GUACAMOLE_LOG_LEVEL=ERROR
-    jumpserver/jms_guacamole:1.5.8
+    jumpserver/jms_guacamole:1.5.9
     ```

@@ -26,7 +26,7 @@
     # 以下设置默认情况下不需要修改
 
     # 需要安装的版本
-    Version=1.5.8
+    Version=1.5.9
 
     # Jms 加密配置
     SECRET_KEY=
@@ -88,4 +88,4 @@
     ./jmsctl.sh -h  
     ```
 
-后续的使用请参考 [快速入门](../../admin-guide/quick_start/)  
+后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  

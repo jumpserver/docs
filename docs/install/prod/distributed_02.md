@@ -50,12 +50,12 @@ yum localinstall -y http://demo.jumpserver.org/download/centos/7/tengine-2.3.2-1
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/1.5.8/luna.tar.gz
+wget https://github.com/jumpserver/luna/releases/download/1.5.9/luna.tar.gz
 ```
 
 ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/luna/) 下载"
     ```sh
-    wget https://demo.jumpserver.org/download/luna/1.5.8/luna.tar.gz
+    wget https://demo.jumpserver.org/download/luna/1.5.9/luna.tar.gz
     ```
 
 ### 5. 解压 luna

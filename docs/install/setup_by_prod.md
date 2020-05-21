@@ -28,7 +28,7 @@
 - jumpserver/data 目录需要同步
 - koko 需要使用同一个 redis
 
-!!! tip "生产建议"
+!!! tip "[生产建议](install_security.md) "
     你也可以使用如 NetScaler 类似的硬件或者软件来进行负载均衡策略，请处理好 session 问题  
     在生产环境中，你应该替换 nfs 为更强大的分布式文件系统，如： Ceph  
     如果你的设备很多使用人数也很多，你应该部署分布式关系型数据库  
