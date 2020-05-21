@@ -17,3 +17,7 @@
 - JumpServer 不要使用弱口令密码，应立即改掉默认的 admin 密码
 
 - 推荐开启 MFA 功能，避免因密码泄露导致的安全问题
+
+!!! tip ""
+    关注官方更新，及时更新修复漏洞的版本  
+    如发现 JumpServer 安全问题，请反馈给我们 ibuler@fit2cloud.com
