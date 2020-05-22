@@ -2,7 +2,8 @@
 
 ## 商业支持
 
-[企业版（XPack + 软件订阅服务）](https://jumpserver.org/purchase.html) [一体机](https://jumpserver.org/hardware.html)
+[一体机](https://jumpserver.org/hardware.html)
+[企业版（XPack + 软件订阅服务）](https://jumpserver.org/purchase.html)
 
 ## QQ群
 
@@ -20,7 +21,6 @@
 - support@fit2cloud.com
 - 400-052-0755
 
-[aliyun]: https://market.aliyun.com/products/53690006/cmgj026011.html
 [6群]: https://shang.qq.com/wpa/qunwpa?idkey=7156e710f7087c5f20e29bcdb5951743956837c71bc7ed8557a5215daab2725b
 [jumpserver]: https://github.com/jumpserver/jumpserver
 [jumpserver stars]: https://img.shields.io/github/stars/jumpserver/jumpserver.svg
