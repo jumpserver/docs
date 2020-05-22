@@ -431,12 +431,12 @@ cd /config
 ??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 tomcat9"
     !!! question "网络有问题可以通过国内镜像源下载"
     ```sh
-    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.34/bin/apache-tomcat-9.0.34.tar.gz
+    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
     ```
 
 ```sh
-tar -xf apache-tomcat-9.0.34.tar.gz && \
-mv apache-tomcat-9.0.34 tomcat9 && \
+tar -xf apache-tomcat-9.0.35.tar.gz && \
+mv apache-tomcat-9.0.35 tomcat9 && \
 rm -rf /config/tomcat9/webapps/* && \
 sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
 echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \

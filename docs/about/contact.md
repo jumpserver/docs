@@ -2,8 +2,7 @@
 
 ## 商业支持
 
-
-[阿里云市场购买][aliyun]
+[企业版（XPack + 软件订阅服务）](https://jumpserver.org/purchase.html) [一体机](https://jumpserver.org/hardware.html)
 
 ## QQ群
 
