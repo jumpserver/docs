@@ -2,8 +2,8 @@
 
 ## 商业支持
 
-[一体机](https://jumpserver.org/hardware.html)
-[企业版（XPack + 软件订阅服务）](https://jumpserver.org/purchase.html)
+- [企业版（XPack + 软件订阅服务）](https://jumpserver.org/purchase.html)
+- [一体机](https://jumpserver.org/hardware.html)
 
 ## QQ群
 
