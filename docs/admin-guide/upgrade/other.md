@@ -66,7 +66,7 @@ docker run --name jms_all -d \
 
 ```sh
 docker run --name jms_all -d \  
-  -v /opt/jumpserver:/opt/jumpserver/data/media \  
+  -v /opt/jumpserver/data:/opt/jumpserver/data \  
   -p 80:80 \  
   -p 2222:2222 \  
   -e SECRET_KEY=xxxxxx \  

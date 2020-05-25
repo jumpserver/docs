@@ -19,7 +19,12 @@
 
 ### 1. 安装 python3.6 mysql Redis
 
-    编译或者直接从仓库获取都可以, 版本要求参考最上方环境要求
+    推荐直接从仓库获取
+
+    数据库字符集要求:
+    ```mysql
+    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    ```
 
 ### 2. 创建 py3 虚拟环境
 
