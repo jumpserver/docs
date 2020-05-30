@@ -8,6 +8,8 @@
 
 !!! info "本文档是针对所有 `Linux` 发行版 `x86_64` 的安装说明, 非特定系统说明文档, 但是示例中我们仅展示 `Ubuntu` 和` Centos` 部分(注释部分)"
 
+- [Centos 7 安装视频](https://www.bilibili.com/video/BV1VV411C797)
+
 !!! info "JumpServer 环境要求:"
     硬件配置: 2个CPU核心, 4G 内存, 50G 硬盘（最低）  
     操作系统: Linux 发行版 x86_64  
