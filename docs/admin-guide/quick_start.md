@@ -45,7 +45,7 @@
 +--------------+-----------------+------------+------------+---------------+---------------+
 ```
 
-!!! warning "Windows 资产先进行 [Windows SSH 设置](https://docs.jumpserver.org)"
+!!! warning "Windows 资产先进行 [Windows SSH 设置](assets/windows_ssh.md)"
 
 !!! warning "Mysql Server 需要授权 core 和 koko 的远程访问的权限"
     ```
