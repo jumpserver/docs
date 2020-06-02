@@ -1,5 +1,7 @@
 # 安全建议
 
+Jumpserver 对外需要开放 80 和 2222 端口，如果你配置了 ssl 还需要开放 443 端口, 8080 端口开放给 koko 和 guacamole 组件访问
+
 - JumpServer 所在服务器操作系统应该升级到最新
 
 - JumpServer 依赖的软件升级到最新版本
