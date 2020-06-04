@@ -8,7 +8,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
-
+.md-header{
+  background-color: #2b937c;
+}
+.md-nav__item .md-nav__link--active {
+  color: #2b937c;
+}
+.md-typeset a {
+  color: #2b937c;
+}
 .progress-bar {
   height: 1.2rem;
   float: left;
