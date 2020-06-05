@@ -184,10 +184,10 @@ JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。
 - [JumpServer 堡垒机护航顺丰科技超大规模资产安全运维](https://blog.fit2cloud.com/?p=1147)
 - [JumpServer 堡垒机让“大智慧”的混合 IT 运维更智慧](https://blog.fit2cloud.com/?p=882)
 - [携程 JumpServer 堡垒机部署与运营实战](https://blog.fit2cloud.com/?p=851)
-- [小红书的JumpServer堡垒机大规模资产跨版本迁移之路](https://blog.fit2cloud.com/?p=516)
-- [JumpServer堡垒机助力中手游提升多云环境下安全运维能力](https://blog.fit2cloud.com/?p=732)
-- [中通快递：JumpServer主机安全运维实践](https://blog.fit2cloud.com/?p=708)
-- [东方明珠：JumpServer高效管控异构化、分布式云端资产](https://blog.fit2cloud.com/?p=687)
-- [江苏农信：JumpServer堡垒机助力行业云安全运维](https://blog.fit2cloud.com/?p=666)
+- [小红书的 JumpServer 堡垒机大规模资产跨版本迁移之路](https://blog.fit2cloud.com/?p=516)
+- [JumpServer 堡垒机助力中手游提升多云环境下安全运维能力](https://blog.fit2cloud.com/?p=732)
+- [中通快递：JumpServer 主机安全运维实践](https://blog.fit2cloud.com/?p=708)
+- [东方明珠：JumpServer 高效管控异构化、分布式云端资产](https://blog.fit2cloud.com/?p=687)
+- [江苏农信：JumpServer 堡垒机助力行业云安全运维](https://blog.fit2cloud.com/?p=666)
 
 [ko_url]: https://github.com/KubeOperator/KubeOperator
