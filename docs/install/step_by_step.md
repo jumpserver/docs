@@ -398,20 +398,20 @@ cd /opt/docker-guacamole/guacamole-server-1.0.0
     ```sh
     apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev && \
     apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
-    ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp
+    ln -s /usr/lib/x86_64-linux-gnu/freerdp /usr/local/lib/freerdp
     ```
     Debian:  
     ```sh
     apt-get install -y libcairo2-dev libjpeg62-turbo-dev libpng12-dev libossp-uuid-dev && \
     apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
-    ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp
+    ln -s /usr/lib/x86_64-linux-gnu/freerdp /usr/local/lib/freerdp
     ```
     Fedora/CentOS/RHEL:  
     ```sh
     yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm https://mirrors.aliyun.com/rpmfusion/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm && \
     yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel && \
     yum install -y ffmpeg-devel freerdp1.2-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel && \
-    ln -s /usr/local/lib/freerdp /usr/lib64/freerdp
+    ln -s /usr/lib64/freerdp /usr/local/lib/freerdp
     ```
 
 ```sh
