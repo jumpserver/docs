@@ -281,7 +281,7 @@ yum -y install nginx
 systemctl enable nginx
 ```
 
-### 13. 配置 ninx
+### 13. 配置 nginx
 
 ```sh
 echo > /etc/nginx/conf.d/default.conf
