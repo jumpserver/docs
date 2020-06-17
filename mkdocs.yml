@@ -97,6 +97,7 @@ nav:
         - 贡献列表: about/contributor.md
         - 更新说明: about/change_log.md
         - 联系方式: about/contact.md
+        - 商业产品: about/commercial.md
 
 markdown_extensions:
     - admonition
