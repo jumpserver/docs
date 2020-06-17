@@ -77,12 +77,17 @@
         ```python
         u.private_token
         ```
+        以 PrivateToken: 937b38011acf499eb474e2fecb424ab3 为例:
+        ```sh
+        curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' \
+             -H "Content-Type:application/json" http://demo.jumpserver.org/api/v1/users/users/
+        ```
     ??? question "Access Key"
         Access key 签名机制是为了安全， IETF 发布的法案 [详见此处](https://tools.ietf.org/html/draft-cavage-http-signatures-08)
         认证的原理是:
 
             用户有一个 access key, key有ID(keyId)和密钥(keySecret), 这个key是预生成的，请求者和服务器都知晓  
-            
+
             用户请求时 将请求的 地址、请求方法、时间等使用 密钥(某种对称算法)进行加密，作为签名 连同 keyId 一同放到 header 中发给服务器
             Authorization: Signature keyId="Test",algorithm="rsa-sha256",
             signature="jKyvPcxB4JbmYY4mByyBY7cZfNl4OW9HpFQlG7N4YcJPteKTu4MW
