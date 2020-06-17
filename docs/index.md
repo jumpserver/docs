@@ -10,8 +10,6 @@ JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。
 
 改变世界, 从一点点开始。
 
-!!! tip ""
-    [KubeOperator][ko_url] 是 JumpServer 团队在 Kubernetes 领域的的又一全新力作，欢迎关注和使用。
 
 ## 特色优势
 
@@ -190,4 +188,24 @@ JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。
 - [东方明珠：JumpServer 高效管控异构化、分布式云端资产](https://blog.fit2cloud.com/?p=687)
 - [江苏农信：JumpServer 堡垒机助力行业云安全运维](https://blog.fit2cloud.com/?p=666)
 
-[ko_url]: https://github.com/KubeOperator/KubeOperator
+
+## 安全说明
+
+JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.jumpserver.org/zh/master/install/install_security/) 部署安装.
+
+如果你发现安全问题，可以直接联系我们：
+
+- ibuler@fit2cloud.com 
+- support@fit2cloud.com 
+- 400-052-0755
+
+
+## 商业产品
+
+- [JumpServer企业版](https://jumpserver.org/enterprise.html)
+- [JumpServer一体机](https://jumpserver.org/hardware.html)
+
+## 飞致云旗下其他开源项目
+
+- [KubeOperator 开源容器平台](https://kubeoperator.io)
+- [MeterSphere 开源持续测试平台](https://metersphere.io)
