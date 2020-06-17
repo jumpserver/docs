@@ -202,8 +202,8 @@ JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.ju
 
 ## 商业产品
 
-- [JumpServer企业版](https://jumpserver.org/enterprise.html)
-- [JumpServer一体机](https://jumpserver.org/hardware.html)
+- [JumpServer 企业版](https://jumpserver.org/enterprise.html)
+- [JumpServer 一体机](https://jumpserver.org/hardware.html)
 
 ## 飞致云旗下其他开源项目
 
