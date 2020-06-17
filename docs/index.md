@@ -205,7 +205,7 @@ JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.ju
 - [JumpServer 企业版](https://jumpserver.org/enterprise.html)
 - [JumpServer 一体机](https://jumpserver.org/hardware.html)
 
-## 飞致云旗下其他开源项目
+## 项目推荐
 
 - [KubeOperator 开源容器平台](https://kubeoperator.io)
 - [MeterSphere 开源持续测试平台](https://metersphere.io)
