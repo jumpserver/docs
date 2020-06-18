@@ -25,10 +25,10 @@
 
     推荐直接从仓库获取
 
-    !!! tip "数据库字符集要求:"
-        ```mysql
-        create database jumpserver default charset 'utf8' collate 'utf8_bin';
-        ```
+!!! tip "数据库字符集要求:"
+    ```mysql
+    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    ```
 
 ### 2. 创建 py3 虚拟环境
 
