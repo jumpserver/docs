@@ -25,7 +25,7 @@
 
     推荐直接从仓库获取
 
-    数据库字符集要求:
+    !!! tip "数据库字符集要求:"
     ```mysql
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
     ```
@@ -53,15 +53,19 @@ source /opt/py3/bin/activate
 ### 4. 获取 jumpserver 代码
 ```sh
 cd /opt && \
-git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.0.tar.gz
 ```
 
-??? question "如果没有安装 git 请先安装, 网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
+??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
     ```sh
     cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/latest/jumpserver.tar.gz
-    tar xf jumpserver.tar.gz
+    wget http://demo.jumpserver.org/download/jumpserver/2.0.0/jumpserver.tar.gz
     ```
+
+```sh
+tar xf jumpserver.tar.gz
+mv jumpserver-2.0.0 jumpserver
+```
 
 ### 5. 安装编译环境依赖
 
@@ -248,10 +252,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/koko/releases) 下载对应 release 包并解压到 /opt目录"
     ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/koko/) 下载"
         ```sh
-        wget https://demo.jumpserver.org/download/koko/1.5.9/koko-master-linux-amd64.tar.gz
+        wget https://demo.jumpserver.org/download/koko/2.0.0/koko-master-linux-amd64.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/koko/releases/download/1.5.9/koko-master-linux-amd64.tar.gz
+    wget https://github.com/jumpserver/koko/releases/download/2.0.0/koko-master-linux-amd64.tar.gz
     ```
 
 ```sh                               
@@ -370,7 +374,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
       --restart=always \
-      jumpserver/jms_koko:1.5.9
+      jumpserver/jms_koko:2.0.0
     ```
 
 ### 9. 正常安装并启动 guacamole 组件
@@ -506,10 +510,31 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:1.5.9
+      jumpserver/jms_guacamole:2.0.0
     ```
 
-### 10. 下载 luna 组件
+### 10. 下载 lina 组件
+
+```sh
+cd /opt
+```
+
+!!! tip "访问 [此处](https://github.com/jumpserver/lina/releases) 获取"
+    ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/lina/) 快速下载"
+        ```sh
+        wget http://demo.jumpserver.org/download/lina/2.0.0/lina.tar.gz
+        ```
+    ```sh
+    wget https://github.com/jumpserver/lina/releases/download/2.0.0/lina.tar.gz
+    ```
+
+```sh
+tar -xf lina.tar.gz
+chown -R nginx:nginx lina
+```
+
+
+### 11. 下载 luna 组件
 
 ```sh
 cd /opt
@@ -518,10 +543,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/luna/releases) 获取"
     ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/luna/) 快速下载"
         ```sh
-        wget http://demo.jumpserver.org/download/luna/1.5.9/luna.tar.gz
+        wget http://demo.jumpserver.org/download/luna/2.0.0/luna.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/luna/releases/download/1.5.9/luna.tar.gz
+    wget https://github.com/jumpserver/luna/releases/download/2.0.0/luna.tar.gz
     ```
 
 ```sh
@@ -529,7 +554,7 @@ tar -xf luna.tar.gz
 chown -R nginx:nginx luna
 ```
 
-### 11. 配置 nginx 整合各组件
+### 12. 配置 nginx 整合各组件
 
 !!! tip "参考 [官方文档](http://nginx.org/en/linux_packages.html) 安装最新的稳定版 nginx"
 
@@ -542,6 +567,11 @@ server {
     listen 80;
 
     client_max_body_size 100m;  # 录像及文件上传大小限制
+
+    location /ui/ {
+        try_files $uri / /index.html;
+        alias /opt/lina/;
+    }
 
     location /luna/ {
         try_files $uri / /index.html;
@@ -592,11 +622,20 @@ server {
         proxy_set_header Connection "upgrade";
     }
 
-    location / {
-        proxy_pass http://localhost:8080;
+    location /api/ {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8080;
+    }
+    location /core/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8080;
+    }
+    location / {
+        rewrite ^/(.*)$ /ui/$1 last;
     }
 }
 ```
@@ -606,7 +645,7 @@ nginx -t
 nginx -s reload
 ```
 
-### 12. 开始使用 JumpServer
+### 13. 开始使用 JumpServer
 
 !!! tip "检查应用是否已经正常运行"
     服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问

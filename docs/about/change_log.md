@@ -1,5 +1,28 @@
 # 更新日志
 
+2.0.0
+------------------------
+2020年06月18日
+
+- [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
+- [申请试用JumpServer 企业版](https://jinshuju.net/f/kyOYpi/)
+
+!!! note "v2.0 版本"
+
+* 使用Vue重构前端工程 (Lina)，实现前后端分离
+* 优化、添加部分 API
+* 优化、删除大部分 View 及 Template 模块
+* 重构 Web 前端
+
+!!! note "优化功能"
+
+* 优化API请求
+* 支持使用授权token连接资产
+
+!!! note "修复Bug"
+
+* 修复分页造成的进程退出
+
 1.5.9
 ------------------------
 2020年05月21日

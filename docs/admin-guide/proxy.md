@@ -27,6 +27,11 @@ server {
 
     client_max_body_size 100m;  # 录像及文件上传大小限制
 
+    location /ui/ {
+        try_files $uri / /index.html;
+        alias /opt/lina/;
+    }
+
     location /luna/ {
         try_files $uri / /index.html;
         alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
@@ -77,11 +82,20 @@ server {
         access_log off;
     }
 
-    location / {
-        proxy_pass http://localhost:8080;
+    location /api/ {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8080;
+    }
+    location /core/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8080;
+    }
+    location / {
+        rewrite ^/(.*)$ /ui/$1 last;
     }
 }
 ```

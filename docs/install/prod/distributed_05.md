@@ -10,9 +10,9 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   |    Core    | 192.168.100.30  |       80      |         Tengine         |
+|    TCP   |    Core    | 192.168.100.30  |      8080     |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
-|    TCP   |    Core    | 192.168.100.31  |       80      |         Tengine         |
+|    TCP   |    Core    | 192.168.100.31  |      8080     |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
 ```
 
@@ -28,7 +28,7 @@ yum -y install epel-release wget
 ### 2. 配置防火墙
 
 ```sh
-firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="80" accept"
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
 firewall-cmd --reload
 setsebool -P httpd_can_network_connect 1
 ```
@@ -56,17 +56,21 @@ source /opt/py3/bin/activate
 
 ### 6. 下载 core
 
-```sh
-cd /opt
-git clone --depth=1 https://github.com/jumpserver/jumpserver.git
+``sh
+cd /opt && \
+wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.0.tar.gz
 ```
 
 ??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
     ```sh
     cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/latest/jumpserver.tar.gz
-    tar xf jumpserver.tar.gz
+    wget http://demo.jumpserver.org/download/jumpserver/2.0.0/jumpserver.tar.gz
     ```
+
+```sh
+tar xf jumpserver.tar.gz
+mv jumpserver-2.0.0 jumpserver
+```
 
 ### 7. 安装 rpm 依赖包
 
@@ -263,75 +267,6 @@ cd /opt/jumpserver
 ./jms start -d
 ```
 
-### 12. 部署 nginx
-
-```
-vi /etc/yum.repos.d/nginx.repo
-```
-```vim
-[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/7/$basearch/
-gpgcheck=0
-enabled=1
-```
-
-```sh
-yum -y install nginx
-systemctl enable nginx
-```
-
-### 13. 配置 nginx
-
-```sh
-echo > /etc/nginx/conf.d/default.conf
-vi /etc/nginx/conf.d/jumpserver.conf
-```
-
-```vim
-server {
-    listen 80;
-
-    client_max_body_size 100m;  # 录像及文件上传大小限制
-
-    location /media/ {
-        add_header Content-Encoding gzip;
-        root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
-    }
-
-    location /static/ {
-        root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
-    }
-
-    location /ws/ {
-        proxy_pass http://localhost:8070;
-        proxy_http_version 1.1;
-        proxy_buffering off;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        access_log off;
-    }
-
-    location / {
-        proxy_pass http://localhost:8080;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        access_log off;
-    }
-}
-```
-
-### 14. 运行 nginx
-
-```sh
-nginx -t
-systemctl start nginx
-```
-
 ## 多节点部署
 
 !!! info "多节点部署与上面一致, config.yml 不需要重新生成, 直接复制主节点的配置文件即可"
@@ -377,15 +312,6 @@ cd /opt/jumpserver
 ./jms start -d
 ```
 
-- 配置 nginx
-
-```sh
-echo -e "[nginx-stable]\nname=nginx stable repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=1\nenabled=1\ngpgkey=https://nginx.org/keys/nginx_signing.key" > /etc/yum.repos.d/nginx.repo
-rpm --import https://nginx.org/keys/nginx_signing.key
-yum -y install nginx
-echo > /etc/nginx/conf.d/default.conf
-```
-
 - 复制主节点的 jumpserver.conf 到当前节点
 
 ```sh
@@ -393,11 +319,3 @@ scp root@192.168.100.30:/etc/nginx/conf.d/jumpserver.conf /etc/nginx/conf.d/
 ```
 
 !!! tip "192.168.100.30 为主 core 服务器 ip，按照提示输入密码"
-
-- 运行 nginx
-
-```sh
-nginx -t
-systemctl start nginx
-systemctl enable nginx
-```

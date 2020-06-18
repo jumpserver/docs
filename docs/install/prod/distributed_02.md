@@ -46,19 +46,34 @@ yum localinstall -y http://demo.jumpserver.org/download/centos/7/tengine-2.3.2-1
 ??? warning "生产环境请自行编译安装 [tengine](http://tengine.taobao.org)"
     [该 rpm 源码点击此处](https://github.com/wojiushixiaobai/tengine-rpm)   
 
-### 4. 下载 luna
+### 4. 部署 lina
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/1.5.9/luna.tar.gz
+wget https://github.com/jumpserver/lina/releases/download/2.0.0/lina.tar.gz
+```
+
+??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/lina/) 下载"
+    ```sh
+    wget https://demo.jumpserver.org/download/lina/2.0.0/lina.tar.gz
+    ```
+
+```sh
+tar -xf lina.tar.gz
+chown -R nginx:nginx lina
+```
+
+### 5. 部署 luna
+
+```sh
+cd /opt
+wget https://github.com/jumpserver/luna/releases/download/2.0.0/luna.tar.gz
 ```
 
 ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/luna/) 下载"
     ```sh
-    wget https://demo.jumpserver.org/download/luna/1.5.9/luna.tar.gz
+    wget https://demo.jumpserver.org/download/luna/2.0.0/luna.tar.gz
     ```
-
-### 5. 解压 luna
 
 ```sh
 tar -xf luna.tar.gz
@@ -154,8 +169,8 @@ vi /etc/nginx/conf.d/jumpserver.conf
 ```
 ```vim
 upstream jumpserver {
-    server 192.168.100.30:80;
-    server 192.168.100.31:80;
+    server 192.168.100.30:8080;
+    server 192.168.100.31:8080;
     # 这里是 core 的后端ip
     session_sticky;
 }
@@ -193,6 +208,11 @@ server {
 
     client_max_body_size 100m;  # 录像上传大小限制
 
+    location /ui/ {
+        try_files $uri / /index.html;
+        alias /opt/lina/;
+    }
+
     location /luna/ {
         try_files $uri / /index.html;
         alias /opt/luna/;  # luna 路径
@@ -205,18 +225,6 @@ server {
 
     location /static/ {
         root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
-    }
-
-    location / {
-        proxy_pass       http://jumpserver;  # jumpserver
-        proxy_buffering  off;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        access_log off;
     }
 
     location /koko/ {
@@ -241,6 +249,24 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         access_log off;
+    }
+
+    location /api/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://jumpserver;
+    }
+
+    location /core/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://jumpserver;
+    }
+
+    location / {
+        rewrite ^/(.*)$ /ui/$1 last;
     }
 }
 ```

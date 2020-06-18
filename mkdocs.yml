@@ -27,7 +27,6 @@ nav:
     - 总体介绍: index.md
     - 安装配置:
         - 安装文档: install/step_by_step.md
-        - 2.0安装文档: install/setup_2.0.md
         - 极速部署: install/setup_by_fast.md
         - 容器部署: install/docker_install.md
         - 分布式部署:
