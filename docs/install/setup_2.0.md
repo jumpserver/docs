@@ -515,8 +515,8 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/lina/releases) 获取"
 
 ```sh
-tar -xf luna.tar.gz
-chown -R nginx:nginx luna
+tar -xf lina.tar.gz
+chown -R nginx:nginx lina
 ```
 
 
