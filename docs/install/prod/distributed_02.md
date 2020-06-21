@@ -177,7 +177,7 @@ upstream jumpserver {
 
 upstream koko {
     server 192.168.100.40:5000;
-    server 192.168.100.41:5001;  # 多节点
+    server 192.168.100.41:5000;  # 多节点
     # 这里是 koko 的后端ip
     session_sticky;
 }
