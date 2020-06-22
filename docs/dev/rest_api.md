@@ -15,6 +15,8 @@
 
 - 通过访问 http://JumpServer的URL地址/docs 来访问(如 http://192.168.244.144/docs)
 
+注: 2.0.0 及之后版本文档地址改为 http://JumpServer的URL地址/api/docs/ 如 https://demo.jumpserver.org/api/docs/
+
 !!! warning "需要打开 debug 模式"
     ```yaml
     vi jumpserver/config.yml
