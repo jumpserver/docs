@@ -30,7 +30,7 @@
     # 以下设置默认情况下不需要修改
 
     # 需要安装的版本
-    Version=1.5.9
+    Version=2.0.0
 
     # Jms 加密配置
     SECRET_KEY=
@@ -80,16 +80,6 @@
     cd /opt/setuptools
     git pull
     ./jmsctl.sh upgrade
-    ```
-
-??? question "如果网络有问题无法连接到 github"
-    ```sh
-    wget -O /opt/setuptools.tar.gz http://demo.jumpserver.org/download/setuptools.tar.gz  
-    cd /opt  
-    tar -xf setuptools.tar.gz  
-    cd setuptools  
-    git pull  
-    ./jmsctl.sh -h  
     ```
 
 后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  

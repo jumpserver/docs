@@ -56,12 +56,6 @@ cd /opt && \
 wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
 ```
 
-??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
-    ```sh
-    cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/2.0.1/jumpserver.tar.gz
-    ```
-
 ```sh
 tar xf jumpserver.tar.gz
 mv jumpserver-2.0.1 jumpserver
@@ -246,17 +240,9 @@ cd /opt/jumpserver
 ### 8. 正常部署 koko 组件
 
 ```sh
-cd /opt
+cd /opt && \
+wget https://github.com/jumpserver/koko/releases/download/2.0.1/koko-master-linux-amd64.tar.gz
 ```
-
-!!! tip "访问 [此处](https://github.com/jumpserver/koko/releases) 下载对应 release 包并解压到 /opt目录"
-    ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/koko/) 下载"
-        ```sh
-        wget https://demo.jumpserver.org/download/koko/2.0.1/koko-master-linux-amd64.tar.gz
-        ```
-    ```sh
-    wget https://github.com/jumpserver/koko/releases/download/2.0.1/koko-master-linux-amd64.tar.gz
-    ```
 
 ```sh                               
 tar -xf koko-master-linux-amd64.tar.gz && \
@@ -383,18 +369,20 @@ vi config.yml
 
 ```sh
 cd /opt && \
-git clone --depth=1 https://github.com/jumpserver/docker-guacamole.git
+wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/guacamole/archive/2.0.1.tar.gz
 ```
 
 ```sh
-cd /opt/docker-guacamole && \
+tar -xf guacamole.tar.gz && \
+mv docker-guacamole-2.0.1 guacamole && \
+cd /opt/guacamole && \
 tar -xf guacamole-server-1.0.0.tar.gz && \
 tar -xf ssh-forward.tar.gz -C /bin/ && \
 chmod +x /bin/ssh-forward
 ```
 
 ```sh
-cd /opt/docker-guacamole/guacamole-server-1.0.0
+cd /opt/guacamole/guacamole-server-1.0.0
 ```
 
 ??? warning "根据 [guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
@@ -453,9 +441,9 @@ mv apache-tomcat-9.0.35 tomcat9 && \
 rm -rf /config/tomcat9/webapps/* && \
 sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
 echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
-ln -sf /opt/docker-guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war && \
-ln -sf /opt/docker-guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar && \
-ln -sf /opt/docker-guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
+ln -sf /opt/guacamole/guacamole-1.0.0.war /config/tomcat9/webapps/ROOT.war && \
+ln -sf /opt/guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/extensions/guacamole-auth-jumpserver-1.0.0.jar && \
+ln -sf /opt/guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
 ```
 
 !!! warning "设置 guacamole 环境"
@@ -517,16 +505,8 @@ sh /config/tomcat9/bin/startup.sh
 
 ```sh
 cd /opt
+wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
 ```
-
-!!! tip "访问 [此处](https://github.com/jumpserver/lina/releases) 获取"
-    ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/lina/) 快速下载"
-        ```sh
-        wget http://demo.jumpserver.org/download/lina/2.0.1/lina.tar.gz
-        ```
-    ```sh
-    wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
-    ```
 
 ```sh
 tar -xf lina.tar.gz
@@ -538,16 +518,8 @@ chown -R nginx:nginx lina
 
 ```sh
 cd /opt
+wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
 ```
-
-!!! tip "访问 [此处](https://github.com/jumpserver/luna/releases) 获取"
-    ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/luna/) 快速下载"
-        ```sh
-        wget http://demo.jumpserver.org/download/luna/2.0.1/luna.tar.gz
-        ```
-    ```sh
-    wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
-    ```
 
 ```sh
 tar -xf luna.tar.gz

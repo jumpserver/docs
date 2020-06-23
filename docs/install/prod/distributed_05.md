@@ -57,7 +57,7 @@ source /opt/py3/bin/activate
 
 ### 6. 下载 core
 
-``sh
+```sh
 cd /opt && \
 wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
 ```

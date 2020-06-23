@@ -39,7 +39,6 @@ nav:
             - Koko 部署: install/prod/distributed_06.md
             - Guacamole 部署: install/prod/distributed_07.md
 
-        - Ansible 部署: install/ansible_install.md
         - 安全建议: install/install_security.md
         - 卸载文档: install/uninstall.md
 
