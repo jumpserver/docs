@@ -48,21 +48,14 @@ yum makecache fast
 yum -y install docker-ce
 ```
 
-### 5. 配置 docker 加速
-
-```sh
-mkdir /etc/docker
-wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
-```
-
-### 6. 启动 docker
+### 5. 启动 docker
 
 ```sh
 systemctl enable docker
 systemctl start docker
 ```
 
-### 7. 启动 koko
+### 6. 启动 koko
 
 ```sh
 docker run --name jms_koko -d \
@@ -93,8 +86,6 @@ firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="5000" accept"
 firewall-cmd --reload
 yum -y install docker-ce
-mkdir /etc/docker
-wget -O /etc/docker/daemon.json http://demo.jumpserver.org/download/docker/daemon.json
 systemctl enable docker
 systemctl start docker
 ```

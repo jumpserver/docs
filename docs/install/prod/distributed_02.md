@@ -53,11 +53,6 @@ cd /opt
 wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
 ```
 
-??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/lina/) 下载"
-    ```sh
-    wget https://demo.jumpserver.org/download/lina/2.0.1/lina.tar.gz
-    ```
-
 ```sh
 tar -xf lina.tar.gz
 chown -R nginx:nginx lina
@@ -69,11 +64,6 @@ chown -R nginx:nginx lina
 cd /opt
 wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
 ```
-
-??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/luna/) 下载"
-    ```sh
-    wget https://demo.jumpserver.org/download/luna/2.0.1/luna.tar.gz
-    ```
 
 ```sh
 tar -xf luna.tar.gz

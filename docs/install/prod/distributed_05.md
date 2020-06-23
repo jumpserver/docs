@@ -62,12 +62,6 @@ cd /opt && \
 wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
 ```
 
-??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
-    ```sh
-    cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/2.0.1/jumpserver.tar.gz
-    ```
-
 ```sh
 tar xf jumpserver.tar.gz
 mv jumpserver-2.0.1 jumpserver
