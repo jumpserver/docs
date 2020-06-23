@@ -1,11 +1,26 @@
 # 更新日志
 
-2.0.0
+2.0.1
 ------------------------
-2020年06月18日
+2020年06月22日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jinshuju.net/f/kyOYpi/)
+
+!!! note "功能优化"
+
+* 优化路由
+* 优化权限验证
+
+!!! note "修复Bug"
+
+* 修复MFA绑定漏洞
+* 修复批量改密Bug【企业版】
+* 修复安装过程中的bug
+
+2.0.0
+------------------------
+2020年06月18日
 
 !!! note "v2.0 版本"
 
@@ -28,8 +43,6 @@
 2020年05月21日
 
 - [新版 OpenID Connect 认证配置文档](../../admin-guide/authentication/openid/)
-- [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
-- [申请试用JumpServer 企业版](https://jinshuju.net/f/kyOYpi/)
 
 !!! note "新增功能"
 
@@ -65,9 +78,6 @@
 1.5.8
 ------------------------
 2020年04月16日
-
-- [下载离线播放器](https://github.com/jumpserver/VideoPlayer)
-- [申请试用 JumpServer 企业版](https://jinshuju.net/f/kyOYpi/)
 
 !!! note "新增功能"
 
@@ -107,8 +117,6 @@
 1.5.7
 ------------------------
 2020年3月19日
-
-- [JumpServer 录像离线播放器](https://github.com/jumpserver/VideoPlayer)
 
 !!! note "新增功能"
 

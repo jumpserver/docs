@@ -53,18 +53,18 @@ source /opt/py3/bin/activate
 ### 4. 获取 jumpserver 代码
 ```sh
 cd /opt && \
-wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.0.tar.gz
+wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
 ```
 
 ??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
     ```sh
     cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/2.0.0/jumpserver.tar.gz
+    wget http://demo.jumpserver.org/download/jumpserver/2.0.1/jumpserver.tar.gz
     ```
 
 ```sh
 tar xf jumpserver.tar.gz
-mv jumpserver-2.0.0 jumpserver
+mv jumpserver-2.0.1 jumpserver
 ```
 
 ### 5. 安装编译环境依赖
@@ -252,10 +252,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/koko/releases) 下载对应 release 包并解压到 /opt目录"
     ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/koko/) 下载"
         ```sh
-        wget https://demo.jumpserver.org/download/koko/2.0.0/koko-master-linux-amd64.tar.gz
+        wget https://demo.jumpserver.org/download/koko/2.0.1/koko-master-linux-amd64.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/koko/releases/download/2.0.0/koko-master-linux-amd64.tar.gz
+    wget https://github.com/jumpserver/koko/releases/download/2.0.1/koko-master-linux-amd64.tar.gz
     ```
 
 ```sh                               
@@ -374,7 +374,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
       --restart=always \
-      jumpserver/jms_koko:2.0.0
+      jumpserver/jms_koko:2.0.1
     ```
 
 ### 9. 正常安装并启动 guacamole 组件
@@ -510,7 +510,7 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:2.0.0
+      jumpserver/jms_guacamole:2.0.1
     ```
 
 ### 10. 下载 lina 组件
@@ -522,10 +522,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/lina/releases) 获取"
     ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/lina/) 快速下载"
         ```sh
-        wget http://demo.jumpserver.org/download/lina/2.0.0/lina.tar.gz
+        wget http://demo.jumpserver.org/download/lina/2.0.1/lina.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/lina/releases/download/2.0.0/lina.tar.gz
+    wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
     ```
 
 ```sh
@@ -543,10 +543,10 @@ cd /opt
 !!! tip "访问 [此处](https://github.com/jumpserver/luna/releases) 获取"
     ??? question "网络有问题访问 [此处](http://demo.jumpserver.org/download/luna/) 快速下载"
         ```sh
-        wget http://demo.jumpserver.org/download/luna/2.0.0/luna.tar.gz
+        wget http://demo.jumpserver.org/download/luna/2.0.1/luna.tar.gz
         ```
     ```sh
-    wget https://github.com/jumpserver/luna/releases/download/2.0.0/luna.tar.gz
+    wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
     ```
 
 ```sh

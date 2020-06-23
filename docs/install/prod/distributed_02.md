@@ -50,12 +50,12 @@ yum localinstall -y http://demo.jumpserver.org/download/centos/7/tengine-2.3.2-1
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/lina/releases/download/2.0.0/lina.tar.gz
+wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
 ```
 
 ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/lina/) 下载"
     ```sh
-    wget https://demo.jumpserver.org/download/lina/2.0.0/lina.tar.gz
+    wget https://demo.jumpserver.org/download/lina/2.0.1/lina.tar.gz
     ```
 
 ```sh
@@ -67,12 +67,12 @@ chown -R nginx:nginx lina
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/2.0.0/luna.tar.gz
+wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
 ```
 
 ??? question "如果网络存在问题可以点击 [此处](https://demo.jumpserver.org/download/luna/) 下载"
     ```sh
-    wget https://demo.jumpserver.org/download/luna/2.0.0/luna.tar.gz
+    wget https://demo.jumpserver.org/download/luna/2.0.1/luna.tar.gz
     ```
 
 ```sh
@@ -168,9 +168,16 @@ vi /etc/nginx/conf.d/jumpserver.conf
 
 ```
 ```vim
-upstream jumpserver {
+upstream core {
     server 192.168.100.30:8080;
     server 192.168.100.31:8080;
+    # 这里是 core 的后端ip
+    session_sticky;
+}
+
+upstream ws {
+    server 192.168.100.30:8070;
+    server 192.168.100.31:8070;
     # 这里是 core 的后端ip
     session_sticky;
 }
@@ -251,15 +258,26 @@ server {
         access_log off;
     }
 
+    location /ws/ {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://ws;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
     location /api/ {
-        proxy_pass http://jumpserver;
+        proxy_pass http://core;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 
     location /core/ {
-        proxy_pass http://jumpserver;
+        proxy_pass http://core;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  

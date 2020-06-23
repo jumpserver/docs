@@ -10,9 +10,9 @@
 +----------+------------+-----------------+---------------+-------------------------+
 | Protocol | ServerName |        IP       |      Port     |         Used By         |
 +==========+============+=================+===============+=========================+
-|    TCP   |    Core    | 192.168.100.30  |      8080     |         Tengine         |
+|    TCP   |    Core    | 192.168.100.30  |   8070,8080   |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
-|    TCP   |    Core    | 192.168.100.31  |      8080     |         Tengine         |
+|    TCP   |    Core    | 192.168.100.31  |   8070,8080   |         Tengine         |
 +----------+------------+-----------------+---------------+-------------------------+
 ```
 
@@ -29,6 +29,7 @@ yum -y install epel-release wget
 
 ```sh
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8070" accept"
 firewall-cmd --reload
 setsebool -P httpd_can_network_connect 1
 ```
@@ -58,18 +59,18 @@ source /opt/py3/bin/activate
 
 ``sh
 cd /opt && \
-wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.0.tar.gz
+wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
 ```
 
 ??? question "网络有问题可以从 [此处](https://demo.jumpserver.org/download/jumpserver/) 下载"
     ```sh
     cd /opt
-    wget http://demo.jumpserver.org/download/jumpserver/2.0.0/jumpserver.tar.gz
+    wget http://demo.jumpserver.org/download/jumpserver/2.0.1/jumpserver.tar.gz
     ```
 
 ```sh
 tar xf jumpserver.tar.gz
-mv jumpserver-2.0.0 jumpserver
+mv jumpserver-2.0.1 jumpserver
 ```
 
 ### 7. 安装 rpm 依赖包
