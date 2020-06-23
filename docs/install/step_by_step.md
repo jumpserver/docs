@@ -21,7 +21,7 @@
 
 ## 安装步骤
 
-### 1. 安装 python3.6 mysql Redis
+### 1. 安装 Python3.6 MySQL Redis
 
     推荐直接从仓库获取
 
@@ -30,19 +30,19 @@
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
     ```
 
-### 2. 创建 py3 虚拟环境
+### 2. 创建 Python 虚拟环境
 
 ```sh
 python3.6 -m venv /opt/py3
 ```
 
-### 3. 载入 py3 虚拟环境
+### 3. 载入 Python 虚拟环境
 
 ```sh
 source /opt/py3/bin/activate
 ```
 
-!!! tip "每次操作 jumpserver 都需要先载入 py3 虚拟环境"  
+!!! tip "每次操作 JumpServer 都需要先载入 py3 虚拟环境"  
     ??? warning "部分系统可能会提示 source: not found, 可以使用 . 代替 source"
         ```sh
         . /opt/py3/bin/activate  
@@ -50,7 +50,7 @@ source /opt/py3/bin/activate
         可以在 ~/.bashrc 末尾加入 source /opt/py3/bin/activate 自动载入环境
 
 
-### 4. 获取 jumpserver 代码
+### 4. 获取 JumpServer 代码
 ```sh
 cd /opt && \
 wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
@@ -220,7 +220,7 @@ vi config.yml
     WINDOWS_SKIP_ALL_MANUAL_PASSWORD: True
     ```
 
-### 7. 启动 jumpserver
+### 7. 启动 JumpServer
 
 ```sh
 cd /opt/jumpserver
@@ -237,7 +237,7 @@ cd /opt/jumpserver
     ./jms start -d
     ```
 
-### 8. 正常部署 koko 组件
+### 8. 正常部署 KoKo 组件
 
 ```sh
 cd /opt && \
@@ -337,9 +337,9 @@ vi config.yml
     ./koko -d
     ```
 
-### 8.1. docker 部署 koko 组件
+### 8.1. Docker 部署 KoKo 组件
 
-??? info "如果前面已经正常部署了 koko, 可以跳过此步骤"
+??? info "如果前面已经正常部署了 KoKo, 可以跳过此步骤"
     ```sh
     docker run --name jms_koko -d \
       -p 2222:2222 -p 127.0.0.1:5000:5000 \
@@ -363,9 +363,9 @@ vi config.yml
       jumpserver/jms_koko:2.0.1
     ```
 
-### 9. 正常安装并启动 guacamole 组件
+### 9. 正常部署 Guacamole 组件
 
-!!! tip "建议使用 docker 部署 guacamole 组件 , 部分环境可能无法正常编译安装"
+!!! tip "建议使用 Docker 部署 Guacamole 组件 , 部分环境可能无法正常编译安装"
 
 ```sh
 cd /opt && \
@@ -385,7 +385,7 @@ chmod +x /bin/ssh-forward
 cd /opt/guacamole/guacamole-server-1.0.0
 ```
 
-??? warning "根据 [guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
+??? warning "根据 [Guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
     Ubuntu:  
     ```sh
     apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev && \
@@ -413,7 +413,7 @@ make && \
 make install
 ```
 
-??? warning "需要先在当前环境配置好 java"
+??? warning "需要先在当前环境配置好 Java"
     Ubuntu:  
     ```sh
     apt-get -y install default-jre default-jdk
@@ -429,7 +429,7 @@ chown daemon:daemon /config/guacamole/record /config/guacamole/drive && \
 cd /config
 ```
 
-??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 tomcat9"
+??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 Tomcat9"
     !!! question "网络有问题可以通过国内镜像源下载"
     ```sh
     wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
@@ -446,7 +446,7 @@ ln -sf /opt/guacamole/guacamole-auth-jumpserver-1.0.0.jar /config/guacamole/exte
 ln -sf /opt/guacamole/root/app/guacamole/guacamole.properties /config/guacamole/guacamole.properties
 ```
 
-!!! warning "设置 guacamole 环境"
+!!! warning "设置 Guacamole 环境"
 
 ```sh
 export JUMPSERVER_SERVER=http://127.0.0.1:8080
@@ -471,16 +471,16 @@ echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
     GUACAMOLE_LOG_LEVEL 为生成日志的等级  
     JUMPSERVER_ENABLE_DRIVE 为 rdp 协议挂载共享盘
 
-!!! tip "启动 guacamole"
+!!! tip "启动 Guacamole"
 
 ```sh
 /etc/init.d/guacd start
 sh /config/tomcat9/bin/startup.sh
 ```
 
-### 9.1 docker 部署 guacamole 组件
+### 9.1 Docker 部署 Guacamole 组件
 
-!!! tip "如果前面已经正常部署了 guacamole, 可以跳过此步骤"
+!!! tip "如果前面已经正常部署了 Guacamole, 可以跳过此步骤"
     ```sh
     docker run --name jms_guacamole -d \
       -p 127.0.0.1:8081:8080 \
@@ -488,7 +488,7 @@ sh /config/tomcat9/bin/startup.sh
       -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
       jumpserver/jms_guacamole:<Tag>
-    <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
+    <Jumpserver_url> 为 JumpServer 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
     ```
 
 !!! tip "例:"
@@ -501,7 +501,7 @@ sh /config/tomcat9/bin/startup.sh
       jumpserver/jms_guacamole:2.0.1
     ```
 
-### 10. 下载 lina 组件
+### 10. 下载 Lina 组件
 
 ```sh
 cd /opt
@@ -514,7 +514,7 @@ chown -R nginx:nginx lina
 ```
 
 
-### 11. 下载 luna 组件
+### 11. 下载 Luna 组件
 
 ```sh
 cd /opt
@@ -526,7 +526,7 @@ tar -xf luna.tar.gz
 chown -R nginx:nginx luna
 ```
 
-### 12. 配置 nginx 整合各组件
+### 12. 配置 Nginx 整合各组件
 
 !!! tip "参考 [官方文档](http://nginx.org/en/linux_packages.html) 安装最新的稳定版 nginx"
 
@@ -622,7 +622,7 @@ nginx -s reload
 ### 13. 开始使用 JumpServer
 
 !!! tip "检查应用是否已经正常运行"
-    服务全部启动后, 访问 jumpserver 服务器 nginx 代理的 80 端口, 不要通过8080端口访问
+    服务全部启动后, 访问 JumpServer 服务器 nginx 代理的 80 端口, 不要通过8080端口访问
     默认账号: admin 密码: admin  
 
 

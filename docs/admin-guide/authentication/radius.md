@@ -1,6 +1,6 @@
 # Radius 认证
 
-!!! info "使用 Radius 的用户作为 jumpserver 登录用户"
+!!! info "使用 Radius 的用户作为 JumpServer 登录用户"
     修改 JumpServer 配置文件启用 Radius 认证
     ```sh
     vi /opt/jumpserver/config.yml

@@ -2,7 +2,7 @@
 
 !!! info "请先确认下面选项"
     请在 `web` - `系统设置` - `安全设置` 里面允许 `终端注册`  
-    docker 容器部署的 `JUMPSERVER_SERVER` 不可以使用 `http://127.0.0.1:8080`
+    Docker 容器部署的 `JUMPSERVER_SERVER` 不可以使用 `http://127.0.0.1:8080`
 
 ### 1. guacamole 启动异常
 

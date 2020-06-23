@@ -56,12 +56,6 @@ docker rmi jumpserver/jms_mysql:2.0.1
 rm -rf /opt/Dockerfile
 ```
 
-### 5. ansible-playbook 部署卸载
-
-```sh
-ansible-playbook uninstall.yml
-```
-
 - 删除数据库
 
 ```sh

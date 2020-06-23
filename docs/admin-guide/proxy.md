@@ -1,6 +1,6 @@
 # 反向代理
 
-!!! info "反向代理 jumpserver要求说明"
+!!! info "反向代理 JumpServer要求说明"
 
 ### 1. nginx ssl 部署
 
@@ -119,7 +119,7 @@ server {
     client_max_body_size 100m;  # 上传录像大小限制
 
     location / {
-            # 这里的 ip 是后端 jumpserver nginx 的 ip
+            # 这里的 ip 是后端 JumpServer nginx 的 ip
             proxy_pass http://192.168.244.144;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -150,7 +150,7 @@ server {
 
         client_max_body_size 100m;  # 录像及文件上传大小限制
         location / {
-            # 这里的 ip 是后端 jumpserver nginx 的 ip
+            # 这里的 ip 是后端 JumpServer nginx 的 ip
             proxy_pass http://192.168.244.144;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;

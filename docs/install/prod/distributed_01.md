@@ -47,7 +47,7 @@ systemctl start rpcbind nfs-server nfs-lock nfs-idmap
 mkdir /data
 ```
 
-!!! info "此共享目录存放 jumpserver 的录像及任务结果"
+!!! info "此共享目录存放 JumpServer 的录像及任务结果"
 
 ### 5. 设置 NFS 访问权限
 

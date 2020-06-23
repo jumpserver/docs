@@ -2,7 +2,7 @@
 
 !!! info "资产必须部署 vncserver"
 
-!!! info "防火墙 vncserver 端口必须开放给 jumpserver 所有服务器访问"
+!!! info "防火墙 vncserver 端口必须开放给 JumpServer 所有服务器访问"
 
 !!! tip "Centos 7 示例"
     ```sh
@@ -31,7 +31,7 @@
     vncpasswd
     ```
 
-    !!! info "安装提示设置密码, 这个密码填在 `jumpserver` `系统用户` 上, `用户名` 为空不需要填写"
+    !!! info "安装提示设置密码, 这个密码填在 `JumpServer` `系统用户` 上, `用户名` 为空不需要填写"
 
     ```sh
     firewall-cmd --permanent --add-service vnc-server

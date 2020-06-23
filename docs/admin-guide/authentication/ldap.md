@@ -1,6 +1,6 @@
 # LDAP 认证
 
-!!! info "LDAP 支持 使用 LADP 与 Windows AD 的用户作为 jumpserver 登录用户"
+!!! info "LDAP 支持 使用 LADP 与 Windows AD 的用户作为 JumpServer 登录用户"
     username 和 mail 具有唯一性, 且不能为空值
 
 

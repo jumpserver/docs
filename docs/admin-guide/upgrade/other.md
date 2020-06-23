@@ -105,7 +105,3 @@ cat docker-compose.yml
 ```sh
 docker-compose up -d
 ```
-
-## ansible-playbook 升级
-
-- 等待更新

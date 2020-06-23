@@ -11,7 +11,7 @@
 
 ## 项目地址
 
-- [jumpserver][jumpserver] ![jumpserver stars][jumpserver stars]
+- [JumpServer][jumpserver] ![jumpserver stars][jumpserver stars]
 - http://www.jumpserver.org
 - support@fit2cloud.com
 - 400-052-0755

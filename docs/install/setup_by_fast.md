@@ -13,6 +13,11 @@
 
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
+!!! tip "一键安装 JumpServer"
+    ```sh
+    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/2.0.1/quick_start.sh | sh
+    ```
+
 ## 下载
 
 !!! tip "下载文件"
