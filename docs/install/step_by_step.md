@@ -369,7 +369,7 @@ vi config.yml
 
 ```sh
 cd /opt && \
-wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/guacamole/archive/2.0.1.tar.gz
+wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/docker-guacamole/archive/2.0.1.tar.gz
 ```
 
 ```sh
