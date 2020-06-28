@@ -73,8 +73,6 @@ nav:
     - 开发文档:
         - API文档: dev/rest_api.md
 
-    - 问题清单: issues/list.md
-
     - 用户文档:
         - 我的资产: user-guide/assets/user-asset.md
         - 我的应用:
