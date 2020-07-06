@@ -369,45 +369,25 @@ vi config.yml
 
 ```sh
 cd /opt && \
-wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/docker-guacamole/archive/2.0.1.tar.gz
+wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/docker-guacamole/archive/2.0.2.tar.gz
 ```
 
 ```sh
 tar -xf guacamole.tar.gz && \
-mv docker-guacamole-2.0.1 guacamole && \
+mv docker-guacamole-2.0.2 guacamole && \
 cd /opt/guacamole && \
-tar -xf guacamole-server-1.0.0.tar.gz && \
+tar -xf guacamole-server-1.2.0.tar.gz && \
 tar -xf ssh-forward.tar.gz -C /bin/ && \
 chmod +x /bin/ssh-forward
 ```
 
 ```sh
-cd /opt/guacamole/guacamole-server-1.0.0
+cd /opt/guacamole/guacamole-server-1.2.0
 ```
 
-??? warning "根据 [Guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
-    Ubuntu:  
-    ```sh
-    apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng12-dev libossp-uuid-dev && \
-    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
-    ln -s /usr/lib/x86_64-linux-gnu/freerdp /usr/local/lib/freerdp
-    ```
-    Debian:  
-    ```sh
-    apt-get install -y libcairo2-dev libjpeg62-turbo-dev libpng12-dev libossp-uuid-dev && \
-    apt-get install -y libavcodec-dev libavutil-dev libswscale-dev libfreerdp-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev && \
-    ln -s /usr/lib/x86_64-linux-gnu/freerdp /usr/local/lib/freerdp
-    ```
-    Fedora/CentOS/RHEL:  
-    ```sh
-    yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm https://mirrors.aliyun.com/rpmfusion/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm && \
-    yum install -y cairo-devel libjpeg-turbo-devel libpng-devel uuid-devel && \
-    yum install -y ffmpeg-devel freerdp1.2-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel && \
-    ln -s /usr/lib64/freerdp /usr/local/lib/freerdp
-    ```
+!!! warning "根据 [Guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
 
 ```sh
-autoreconf -fi && \
 ./configure --with-init-dir=/etc/init.d && \
 make && \
 make install
@@ -432,12 +412,12 @@ cd /config
 ??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 Tomcat9"
     !!! question "网络有问题可以通过国内镜像源下载"
     ```sh
-    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.35/bin/apache-tomcat-9.0.35.tar.gz
+    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.36/bin/apache-tomcat-9.0.36.tar.gz
     ```
 
 ```sh
-tar -xf apache-tomcat-9.0.35.tar.gz && \
-mv apache-tomcat-9.0.35 tomcat9 && \
+tar -xf apache-tomcat-9.0.36.tar.gz && \
+mv apache-tomcat-9.0.36 tomcat9 && \
 rm -rf /config/tomcat9/webapps/* && \
 sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
 echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
