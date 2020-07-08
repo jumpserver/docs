@@ -67,7 +67,6 @@ nav:
             - OpenID 认证: admin-guide/authentication/openid.md
             - Radius 认证: admin-guide/authentication/radius.md
 
-        - 组织管理: admin-guide/organization/index.md
         - 反向代理: admin-guide/proxy.md
 
     - 开发文档:
