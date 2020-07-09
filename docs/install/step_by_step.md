@@ -53,12 +53,12 @@ source /opt/py3/bin/activate
 ### 4. 获取 JumpServer 代码
 ```sh
 cd /opt && \
-wget -O jumpserver.tar.gz https://github.com/jumpserver/jumpserver/archive/2.0.1.tar.gz
+wget https://github.com/jumpserver/jumpserver/releases/download/v2.0.2/jumpserver-v2.0.2.tar.gz
 ```
 
 ```sh
-tar xf jumpserver.tar.gz
-mv jumpserver-2.0.1 jumpserver
+tar xf jumpserver-v2.0.2.tar.gz
+mv jumpserver-v2.0.2 jumpserver
 ```
 
 ### 5. 安装编译环境依赖
@@ -241,13 +241,14 @@ cd /opt/jumpserver
 
 ```sh
 cd /opt && \
-wget https://github.com/jumpserver/koko/releases/download/2.0.1/koko-master-linux-amd64.tar.gz
+wget https://github.com/jumpserver/koko/releases/download/v2.0.2/koko-v2.0.2-linux-amd64.tar.gz
 ```
 
 ```sh                               
-tar -xf koko-master-linux-amd64.tar.gz && \
-chown -R root:root kokodir && \
-cd kokodir
+tar -xf koko-v2.0.2-linux-amd64.tar.gz && \
+mv koko-v2.0.2-linux-amd64 koko && \
+chown -R root:root koko && \
+cd koko
 ```
 
 ```sh
@@ -360,7 +361,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
       --restart=always \
-      jumpserver/jms_koko:2.0.1
+      jumpserver/jms_koko:2.0.2
     ```
 
 ### 9. 正常部署 Guacamole 组件
@@ -478,18 +479,19 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:2.0.1
+      jumpserver/jms_guacamole:2.0.2
     ```
 
 ### 10. 下载 Lina 组件
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
+wget https://github.com/jumpserver/lina/releases/download/v2.0.2/lina-v2.0.2.tar.gz
 ```
 
 ```sh
-tar -xf lina.tar.gz
+tar -xf lina-v2.0.2.tar.gz
+mv lina-v2.0.2 lina
 chown -R nginx:nginx lina
 ```
 
@@ -498,11 +500,12 @@ chown -R nginx:nginx lina
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
+wget https://github.com/jumpserver/luna/releases/download/v2.0.2/luna-v2.0.2.tar.gz
 ```
 
 ```sh
-tar -xf luna.tar.gz
+tar -xf luna-v2.0.2.tar.gz
+mv luna-v2.0.2 luna
 chown -R nginx:nginx luna
 ```
 

@@ -42,7 +42,7 @@
           -e BOOTSTRAP_TOKEN=你的token
           -e LOG_LEVEL=ERROR
           --restart=always
-        jumpserver/jms_koko:2.0.1
+        jumpserver/jms_koko:2.0.2
         ```
 
 !!! question "docker logs -f jms_koko 提示 wait for jms_core ready"
@@ -64,5 +64,5 @@
       -e BOOTSTRAP_TOKEN=你的token
       -e LOG_LEVEL=ERROR
       --restart=always
-    jumpserver/jms_koko:2.0.1
+    jumpserver/jms_koko:2.0.2
     ```

@@ -1,11 +1,15 @@
 # 更新日志
 
-2.0.1
+2.0.2
 ------------------------
-2020年06月22日
+2020年07月09日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jinshuju.net/f/kyOYpi/)
+
+2.0.1
+------------------------
+2020年06月22日
 
 !!! note "功能优化"
 

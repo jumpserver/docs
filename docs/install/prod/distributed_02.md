@@ -50,11 +50,12 @@ yum localinstall -y http://demo.jumpserver.org/download/centos/7/tengine-2.3.2-1
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/lina/releases/download/2.0.1/lina.tar.gz
+wget https://github.com/jumpserver/lina/releases/download/v2.0.2/lina-v2.0.2.tar.gz
 ```
 
 ```sh
-tar -xf lina.tar.gz
+tar -xf lina-v2.0.2.tar.gz
+mv lina-v2.0.2 lina
 chown -R nginx:nginx lina
 ```
 
@@ -62,11 +63,12 @@ chown -R nginx:nginx lina
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/2.0.1/luna.tar.gz
+wget https://github.com/jumpserver/luna/releases/download/v2.0.2/luna-v2.0.2.tar.gz
 ```
 
 ```sh
-tar -xf luna.tar.gz
+tar -xf luna-v2.0.2.tar.gz
+mv luna-v2.0.2 luna
 chown -R nginx:nginx luna
 ```
 
