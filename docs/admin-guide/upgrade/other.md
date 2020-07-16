@@ -42,9 +42,12 @@ docker run --name jms_all -d \
 mkdir /opt/jumpserver
 docker cp jms_all:/opt/jumpserver/data /opt/jumpserver/data
 docker cp jms_all:/var/lib/mysql /opt/jumpserver/mysql
+chown -R 27:27 /opt/jumpserver/mysql
 ```
 
-- 然后挂载到新版本里面
+!!! tip "MySQL 的用户 id 是 27，未改权限的话可能会导致无法启动 Mariadb Server"
+
+- 然后挂载到新版本里面，注意 SECRET_KEY 要和旧版本一致(否则将导致加密数据无法解密)
 
 ```sh
 docker stop jms_all
