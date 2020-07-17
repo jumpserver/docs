@@ -83,6 +83,7 @@ nav:
         - 文件管理: user-guide/terminal/web-sftp.md
 
     - 帮助文档:
+        - 其他问题: faq/other.md
         - Core 常见问题: faq/core.md
         - Luna 常见问题: faq/luna.md
         - koko 常见问题: faq/koko.md
