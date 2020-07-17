@@ -53,12 +53,12 @@ source /opt/py3/bin/activate
 ### 4. 获取 JumpServer 代码
 ```sh
 cd /opt && \
-wget https://github.com/jumpserver/jumpserver/releases/download/v2.0.2/jumpserver-v2.0.2.tar.gz
+wget https://github.com/jumpserver/jumpserver/releases/download/v2.1.0/jumpserver-v2.1.0.tar.gz
 ```
 
 ```sh
-tar xf jumpserver-v2.0.2.tar.gz
-mv jumpserver-v2.0.2 jumpserver
+tar xf jumpserver-v2.1.0.tar.gz
+mv jumpserver-v2.1.0 jumpserver
 ```
 
 ### 5. 安装编译环境依赖
@@ -241,12 +241,12 @@ cd /opt/jumpserver
 
 ```sh
 cd /opt && \
-wget https://github.com/jumpserver/koko/releases/download/v2.0.2/koko-v2.0.2-linux-amd64.tar.gz
+wget https://github.com/jumpserver/koko/releases/download/v2.1.0/koko-v2.1.0-linux-amd64.tar.gz
 ```
 
 ```sh                               
-tar -xf koko-v2.0.2-linux-amd64.tar.gz && \
-mv koko-v2.0.2-linux-amd64 koko && \
+tar -xf koko-v2.1.0-linux-amd64.tar.gz && \
+mv koko-v2.1.0-linux-amd64 koko && \
 chown -R root:root koko && \
 cd koko
 ```
@@ -361,7 +361,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
       --restart=always \
-      jumpserver/jms_koko:2.0.2
+      jumpserver/jms_koko:2.1.0
     ```
 
 ### 9. 正常部署 Guacamole 组件
@@ -370,12 +370,12 @@ vi config.yml
 
 ```sh
 cd /opt && \
-wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/docker-guacamole/archive/2.0.2.tar.gz
+wget -O /opt/guacamole.tar.gz https://github.com/jumpserver/docker-guacamole/archive/v2.1.0.tar.gz
 ```
 
 ```sh
 tar -xf guacamole.tar.gz && \
-mv docker-guacamole-2.0.2 guacamole && \
+mv docker-guacamole-2.1.0 guacamole && \
 cd /opt/guacamole && \
 tar -xf guacamole-server-1.2.0.tar.gz && \
 tar -xf ssh-forward.tar.gz -C /bin/ && \
@@ -479,19 +479,19 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:2.0.2
+      jumpserver/jms_guacamole:2.1.0
     ```
 
 ### 10. 下载 Lina 组件
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/lina/releases/download/v2.0.2/lina-v2.0.2.tar.gz
+wget https://github.com/jumpserver/lina/releases/download/v2.1.0/lina-v2.1.0.tar.gz
 ```
 
 ```sh
-tar -xf lina-v2.0.2.tar.gz
-mv lina-v2.0.2 lina
+tar -xf lina-v2.1.0.tar.gz
+mv lina-v2.1.0 lina
 chown -R nginx:nginx lina
 ```
 
@@ -500,12 +500,12 @@ chown -R nginx:nginx lina
 
 ```sh
 cd /opt
-wget https://github.com/jumpserver/luna/releases/download/v2.0.2/luna-v2.0.2.tar.gz
+wget https://github.com/jumpserver/luna/releases/download/v2.1.0/luna-v2.1.0.tar.gz
 ```
 
 ```sh
-tar -xf luna-v2.0.2.tar.gz
-mv luna-v2.0.2 luna
+tar -xf luna-v2.1.0.tar.gz
+mv luna-v2.1.0 luna
 chown -R nginx:nginx luna
 ```
 
