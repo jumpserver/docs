@@ -1,21 +1,21 @@
-# API文档
+# API 文档
 
-## Api地址
+## Api 列表
 
 - http://HOST:PORT/api/{VERSION}/{APP}/{RESOURCE}/
 - http://HOST:PORT/api/{VERSION}/{APP}/{RESOURCE}/{RESOURCEID}/
 
 !!! info "资产列表"
-    http://localhost/api/v1/assets/assets/
+    http://192.168.244.144/api/v1/assets/assets/
 
 !!! info "资产详情"
-    http://localhost/api/v1/assets/assets/2c56fd37-db65-40ed-b787-b65a98635f12/
+    http://192.168.244.144/api/v1/assets/assets/2c56fd37-db65-40ed-b787-b65a98635f12/
 
-## Api列表
+## Api 访问地址
 
 - 通过访问 http://JumpServer的URL地址/docs 来访问(如 http://192.168.244.144/docs)
 
-注: 2.0.0 及之后版本文档地址改为 http://JumpServer的URL地址/api/docs/ 如 https://demo.jumpserver.org/api/docs/
+注: 2.0.0 及之后版本文档地址改为 http://JumpServer的URL地址/api/docs/ 如 http://192.168.244.144/api/docs/
 
 !!! warning "需要打开 debug 模式"
     ```yaml
