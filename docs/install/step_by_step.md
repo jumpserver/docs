@@ -361,7 +361,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
       --restart=always \
-      jumpserver/jms_koko:2.1.0
+      jumpserver/jms_koko:v2.1.0
     ```
 
 ### 9. 正常部署 Guacamole 组件
@@ -479,7 +479,7 @@ sh /config/tomcat9/bin/startup.sh
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:2.1.0
+      jumpserver/jms_guacamole:v2.1.0
     ```
 
 ### 10. 下载 Lina 组件
