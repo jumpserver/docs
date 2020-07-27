@@ -114,3 +114,15 @@
 !!! question "Connect websocket server error"
     kill 掉进程再重启 core  
     如果仍然一样, 表示 nginx 也有错误, 根据安装文档进行修改后重启 nginx 即可
+
+### 5. 更新 Core 报错
+
+!!! question "启动报错 Cannot add foreign key constraint"
+    这是因为旧版本的数据库字符集和新版本数据库字符集不一样导致，备份好数据库，然后进行如下操作
+    ```mysql
+    use jumpserver;
+    SET FOREIGN_KEY_CHECKS = 0;
+    alter table applications_remoteapp convert to character set utf8 collate utf8_bin;
+    SET FOREIGN_KEY_CHECKS = 1;
+    ```
+    把所有表都修改一下，重启 core 即可(applications_remoteapp 就是表名，把 jumpserver 数据库的所有表都改一下，注意备份)
