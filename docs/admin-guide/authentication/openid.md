@@ -1,25 +1,154 @@
 # OpenID 认证
 
-### 1. 版本 小于等于 1.5.8
+## Keycloak 对接
 
-!!! info "使用 OpenID 来进行认证设置"
-    修改 JumpServer 配置文件启用 OpenID 认证
+### 1. 创建设置 KeyCloak Client
+
+![KeyCloak](./img/Keycloak_01.png)
+
+### 2. 获取 Secret key
+
+![KeyCloak](./img/Keycloak_02.png)
+
+### 3. 查看配置
+
+![KeyCloak](./img/Keycloak_03.png)
+
+```yaml
+{
+    "issuer":"https://id.jumpserver.org/auth/realms/jumpserver",
+    "authorization_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/auth",
+    "token_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token",
+    "token_introspection_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token/introspect",
+    "userinfo_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/userinfo",
+    "end_session_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/logout",
+    "jwks_uri":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/certs",
+    "check_session_iframe":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/login-status-iframe.html",
+    "grant_types_supported":[
+        "authorization_code",
+        "implicit",
+        "refresh_token",
+        "password",
+        "client_credentials"
+    ],
+    "response_types_supported":[
+        "code",
+        "none",
+        "id_token",
+        "token",
+        "id_token token",
+        "code id_token",
+        "code token",
+        "code id_token token"
+    ],
+    "subject_types_supported":[
+        "public",
+        "pairwise"
+    ],
+    "id_token_signing_alg_values_supported":[
+        "ES384",
+        "RS384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "RS512"
+    ],
+    "userinfo_signing_alg_values_supported":[
+        "ES384",
+        "RS384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "RS512",
+        "none"
+    ],
+    "request_object_signing_alg_values_supported":[
+        "ES384",
+        "RS384",
+        "ES256",
+        "RS256",
+        "ES512",
+        "RS512",
+        "none"
+    ],
+    "response_modes_supported":[
+        "query",
+        "fragment",
+        "form_post"
+    ],
+    "registration_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/clients-registrations/openid-connect",
+    "token_endpoint_auth_methods_supported":[
+        "private_key_jwt",
+        "client_secret_basic",
+        "client_secret_post",
+        "client_secret_jwt"
+    ],
+    "token_endpoint_auth_signing_alg_values_supported":[
+        "RS256"
+    ],
+    "claims_supported":[
+        "sub",
+        "iss",
+        "auth_time",
+        "name",
+        "given_name",
+        "family_name",
+        "preferred_username",
+        "email"
+    ],
+    "claim_types_supported":[
+        "normal"
+    ],
+    "claims_parameter_supported":false,
+    "scopes_supported":[
+        "openid",
+        "address",
+        "email",
+        "offline_access",
+        "phone",
+        "profile",
+        "roles",
+        "web-origins"
+    ],
+    "request_parameter_supported":true,
+    "request_uri_parameter_supported":true,
+    "code_challenge_methods_supported":[
+        "plain",
+        "S256"
+    ],
+    "tls_client_certificate_bound_access_tokens":true,
+    "introspection_endpoint":"https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token/introspect"
+}
+```
+
+### 5. 配置 JumpServer
+
+!!! info "配置有两种方式，一种是 Keycloak 的配置，一种是 OIDC 的配置"
+    Keycloak 方式使用配置
     ```sh
     vi /opt/jumpserver/config.yml
     ```
     ```yaml
-    BASE_SITE_URL: http://localhost:8080
-    AUTH_OPENID: True
-    AUTH_OPENID_SERVER_URL: https://openid-auth-server.com/
-    AUTH_OPENID_REALM_NAME: realm-name
-    AUTH_OPENID_CLIENT_ID: client-id
-    AUTH_OPENID_CLIENT_SECRET: client-secret
-    AUTH_OPENID_IGNORE_SSL_VERIFICATION: True
-    AUTH_OPENID_SHARE_SESSION: True
+    # OPENID配置
+    # version <= 1.5.8
+    AUTH_OPENID=true
+    BASE_SITE_URL=http://demo.jumpserver.org/
+    AUTH_OPENID_SERVER_URL=https://id.jumpserver.org/auth
+    AUTH_OPENID_REALM_NAME=jumpserver
+    AUTH_OPENID_CLIENT_ID=jumpserver
+    AUTH_OPENID_CLIENT_SECRET=****************
+    AUTH_OPENID_SHARE_SESSION=true
+    AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
     ```
 
     ??? question "设置参数说明"
-        `BASE_SITE_URL`: JumpServer服务的地址（注意末尾不加  "/"）
+        `BASE_SITE_URL`: JumpServer服务的地址（注意末尾加  "/"）
 
         `AUTH_OPENID`: 是否启用 OpenID 认证
 
@@ -35,34 +164,31 @@
 
         `AUTH_OPENID_SHARE_SESSION`: 是否共享 session（控制用户是否可以单点退出）
 
-### 2. 版本大于等于 1.5.9
-
-!!! info "使用 OpenID 来进行认证设置"
-    修改 JumpServer 配置文件启用 OpenID 认证
+    标准 OICD 配置方式
     ```sh
     vi /opt/jumpserver/config.yml
     ```
     ```yaml
-    BASE_SITE_URL: http://localhost:8080
-    AUTH_OPENID: False
-    AUTH_OPENID_CLIENT_ID: client-id
-    AUTH_OPENID_CLIENT_SECRET: client-secret
-    AUTH_OPENID_PROVIDER_ENDPOINT: https://op-example.com/
-    AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT: https://op-example.com/authorize
-    AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT: https://op-example.com/token
-    AUTH_OPENID_PROVIDER_JWKS_ENDPOINT: https://op-example.com/jwks
-    AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT: https://op-example.com/userinfo
-    AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT: https://op-example.com/logout
-    AUTH_OPENID_PROVIDER_SIGNATURE_ALG: HS256
-    AUTH_OPENID_PROVIDER_SIGNATURE_KEY: None
-    AUTH_OPENID_SCOPES: openid profile email
-    AUTH_OPENID_ID_TOKEN_MAX_AGE: 60
-    AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIM: True
-    AUTH_OPENID_USE_STATE: True
-    AUTH_OPENID_USE_NONCE: True
-    AUTH_OPENID_SHARE_SESSION: True
-    AUTH_OPENID_IGNORE_SSL_VERIFICATION: True
-    AUTH_OPENID_ALWAYS_UPDATE_USER: True
+    # OPENID配置
+    AUTH_OPENID=true
+    BASE_SITE_URL=https://demo.jumpserver.org/
+    AUTH_OPENID_CLIENT_ID=jumpserver
+    AUTH_OPENID_CLIENT_SECRET=****************
+    AUTH_OPENID_PROVIDER_ENDPOINT=https://id.jumpserver.org/auth
+    AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/auth
+    AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token
+    AUTH_OPENID_PROVIDER_JWKS_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/certs
+    AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/userinfo
+    AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/logout
+    AUTH_OPENID_PROVIDER_SIGNATURE_ALG=HS256
+    AUTH_OPENID_PROVIDER_SIGNATURE_KEY=null
+    AUTH_OPENID_SCOPES='openid profile email'
+    AUTH_OPENID_ID_TOKEN_MAX_AGE=60
+    AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS=true
+    AUTH_OPENID_USE_STATE=true
+    AUTH_OPENID_USE_NONCE=true
+    AUTH_OPENID_SHARE_SESSION=true
+    AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
     ```
 
     ??? question "设置参数说明"
@@ -105,27 +231,3 @@
         `AUTH_OPENID_IGNORE_SSL_VERIFICATION`: Whether to ignore SSL validation (when sending a request to OpenID Server for data)  
 
         `AUTH_OPENID_ALWAYS_UPDATE_USER`: Whether the user information is always updated (when the user logs in and authenticates successfully every time)  
-
-    例:
-        ```yaml
-        BASE_SITE_URL: https://demo.jumpserver.org
-        AUTH_OPENID: True
-        AUTH_OPENID_CLIENT_ID: jumpserver
-        AUTH_OPENID_CLIENT_SECRET: 5222e5ed-0234-45f5-b3e7-3133f0d15f99
-        AUTH_OPENID_PROVIDER_ENDPOINT: https://op-example.com/
-        AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT: /authorize
-        AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT: /token
-        AUTH_OPENID_PROVIDER_JWKS_ENDPOINT: /jwks
-        AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT: /userinfo
-        AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT: /logout
-        AUTH_OPENID_PROVIDER_SIGNATURE_ALG: HS256
-        AUTH_OPENID_PROVIDER_SIGNATURE_KEY: None
-        AUTH_OPENID_SCOPES: openid profile email
-        AUTH_OPENID_ID_TOKEN_MAX_AGE: 60
-        AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIM: True
-        AUTH_OPENID_USE_STATE: True
-        AUTH_OPENID_USE_NONCE: True
-        AUTH_OPENID_SHARE_SESSION: True
-        AUTH_OPENID_IGNORE_SSL_VERIFICATION: True
-        AUTH_OPENID_ALWAYS_UPDATE_USER: True
-        ```
