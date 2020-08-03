@@ -4,15 +4,15 @@
 
 ### 1. 创建设置 KeyCloak Client
 
-![KeyCloak](./img/Keycloak_01.png)
+![KeyCloak](../../../img/Keycloak_01.png)
 
 ### 2. 获取 Secret key
 
-![KeyCloak](./img/Keycloak_02.png)
+![KeyCloak](../../../img/Keycloak_02.png)
 
 ### 3. 查看配置
 
-![KeyCloak](./img/Keycloak_03.png)
+![KeyCloak](../../../img/Keycloak_03.png)
 
 ```yaml
 {
