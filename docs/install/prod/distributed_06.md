@@ -67,7 +67,7 @@ docker run --name jms_koko -d \
   -e REDIS_HOST=192.168.100.20 \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD=weakPassword \
-  jumpserver/jms_koko:v2.1.0
+  jumpserver/jms_koko:v2.1.1
 ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
@@ -102,7 +102,7 @@ docker run --name jms_koko -d \
   -e REDIS_HOST=192.168.100.20 \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD=weakPassword \
-  jumpserver/jms_koko:v2.1.0
+  jumpserver/jms_koko:v2.1.1
 ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"

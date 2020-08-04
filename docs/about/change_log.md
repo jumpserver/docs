@@ -1,11 +1,43 @@
 # 更新日志
 
-v2.1.0
+v2.1.1
 ------------------------
-2020年07月17日
+2020年08月04日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+!!! note "修复Bug"
+
+* 修复 es7 数据结构引起的命令无法查询的问题
+* 修复 cas 校验不通过的问题
+* 修复 perms api UserPermissionMixin 中 kwargs 参数传递（未发现引出其他问题）
+* 修复 radius decode error 的问题
+* 修复用户认证 Radius 认证中参数传递错误问题 `*kwargs -> **kwargs`
+* 设置环境语言 en_US.utf8
+* 修复中文输入
+* 修复当有搜索条件时禁用导出所有选项
+* 修复创建远程应用密码框显示明文的问题
+* 开启 Preload
+* 修复详情页数据如果没有 ID 字段，则不显示 ID
+* 优化工单详情
+* 优化列表组件一些字段的宽度
+* 优化创建命令存储的提示文案
+* 更新 xpack 指向
+* 优化资产详情中网域字段名的显示
+* detailCard 增加 ID 字段
+* 优化授权列表添加刷新按钮
+* 修复命令过滤执行的系统用户选择
+* 修复翻页搜索结果不正确的问题
+* 默认添加 clearable 属性
+* 更新 xpack 指向
+* 添加 form 组件的 refs
+* 修复 Luna 资产树搜索异常
+* 添加 Cookie 时间
+
+v2.1.0
+------------------------
+2020年07月17日
 
 !!! note "新增功能"
 
