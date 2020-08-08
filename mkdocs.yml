@@ -68,6 +68,7 @@ nav:
             - Radius 认证: admin-guide/authentication/radius.md
 
         - 反向代理: admin-guide/proxy.md
+        - 参数说明: admin-guide/env.md
 
     - 开发文档:
         - API文档: dev/rest_api.md
