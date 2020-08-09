@@ -120,9 +120,28 @@
 !!! question "启动报错 Cannot add foreign key constraint"
     这是因为旧版本的数据库字符集和新版本数据库字符集不一样导致，备份好数据库，然后进行如下操作
     ```mysql
+    alter database jumpserver character set utf8 collate utf8_bin;
     use jumpserver;
     SET FOREIGN_KEY_CHECKS = 0;
     alter table applications_remoteapp convert to character set utf8 collate utf8_bin;
     SET FOREIGN_KEY_CHECKS = 1;
     ```
     把所有表都修改一下，重启 core 即可(applications_remoteapp 就是表名，把 jumpserver 数据库的所有表都改一下，注意备份)
+    ```sh
+    # 表很多，可以用 shell 快速生成 sql 语句
+    sql=`mysql -uroot -e "use jumpserver; show tables;" | grep -v "Tables_in" | awk '{print $1}'`
+    for i in $sql; do echo "alter table $i convert to character set utf8 collate utf8_bin;"; done
+    # 然后登陆 mysql 服务参考上面的教程处理即可
+    mysql -uroot
+    ```
+    ```mysql
+    alter database jumpserver character set utf8 collate utf8_bin;
+    use jumpserver;
+    SET FOREIGN_KEY_CHECKS = 0;
+    alter table applications_databaseapp convert to character set utf8 collate utf8_bin;
+    alter table applications_remoteapp convert to character set utf8 collate utf8_bin;
+    alter table assets_adminuser convert to character set utf8 collate utf8_bin;
+    alter table assets_asset convert to character set utf8 collate utf8_bin;
+    ... 把刚才查询到 sql 语句执行完
+    SET FOREIGN_KEY_CHECKS = 1;
+    ```
