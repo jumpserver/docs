@@ -48,7 +48,9 @@ docker run --name jms_all -d \
   -p 80:80 -p 2222:2222 \
   -e SECRET_KEY=$SECRET_KEY \
   -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN \
-  jumpserver/jms_all:latest
+  -v /opt/jumpserver/data:/opt/jumpserver/data \
+  -v /opt/jumpserver/mysql:/var/lib/mysql \
+  jumpserver/jms_all:v2.1.2
 ```
 
 ### 访问
@@ -82,13 +84,13 @@ docker run --name jms_all -d \
     REDIS_HOST = redis_host  
     REDIS_PORT = 6379  
     REDIS_PASSWORD = weakPassword  
-    VOLUME /opt/jumpserver/data/media  
+    VOLUME /opt/jumpserver/data
     VOLUME /var/lib/mysql
 
 
 ```sh
 docker run --name jms_all -d \  
-  -v /opt/jumpserver:/opt/jumpserver/data/media \  
+  -v /opt/jumpserver/data:/opt/jumpserver/data \  
   -p 80:80 \  
   -p 2222:2222 \  
   -e SECRET_KEY=xxxxxx \  
@@ -101,7 +103,7 @@ docker run --name jms_all -d \
   -e REDIS_HOST=192.168.x.x \  
   -e REDIS_PORT=6379 \  
   -e REDIS_PASSWORD=xxx \  
-  jumpserver/jms_all:latest
+  jumpserver/jms_all:v2.1.2
 ```
 
 ## Docker-Compose 部署

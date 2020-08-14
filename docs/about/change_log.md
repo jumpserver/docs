@@ -1,11 +1,22 @@
 # 更新日志
 
-v2.1.1
+v2.1.2
 ------------------------
-2020年08月04日
+2020年08月13日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+!!! note "修复Bug"
+
+* 修复JMSCSVParser调用serializer导致循环调用问题
+* default zh language code
+* 去掉任务详情中多余的ID字段
+* 修复打开多Tab引起Tab折叠的问题
+
+v2.1.1
+------------------------
+2020年08月04日
 
 !!! note "修复Bug"
 
