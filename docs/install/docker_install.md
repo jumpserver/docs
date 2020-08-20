@@ -50,7 +50,7 @@ docker run --name jms_all -d \
   -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN \
   -v /opt/jumpserver/data:/opt/jumpserver/data \
   -v /opt/jumpserver/mysql:/var/lib/mysql \
-  jumpserver/jms_all:v2.1.2
+  jumpserver/jms_all:v2.2.0
 ```
 
 ### 访问
@@ -103,7 +103,7 @@ docker run --name jms_all -d \
   -e REDIS_HOST=192.168.x.x \  
   -e REDIS_PORT=6379 \  
   -e REDIS_PASSWORD=xxx \  
-  jumpserver/jms_all:v2.1.2
+  jumpserver/jms_all:v2.2.0
 ```
 
 ## Docker-Compose 部署

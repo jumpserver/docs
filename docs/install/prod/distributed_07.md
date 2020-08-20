@@ -63,7 +63,7 @@ docker run --name jms_guacamole -d \
   -e JUMPSERVER_SERVER=http://192.168.100.100 \
   -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
   -e GUACAMOLE_LOG_LEVEL=ERROR \
-  jumpserver/jms_guacamole:v2.1.2
+  jumpserver/jms_guacamole:v2.2.0
 ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
@@ -94,7 +94,7 @@ docker run --name jms_guacamole -d \
   -e JUMPSERVER_SERVER=http://192.168.100.100 \
   -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
   -e GUACAMOLE_LOG_LEVEL=ERROR \
-  jumpserver/jms_guacamole:v2.1.2
+  jumpserver/jms_guacamole:v2.2.0
 ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"

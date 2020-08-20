@@ -1,11 +1,58 @@
 # 更新日志
 
-v2.1.2
+v2.2.0
 ------------------------
-2020年08月13日
+2020年08月20日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+!!! note "新增功能"
+
+* 工单申请授权
+* Kubernetes 应用支持
+* 系统管理员首次登录，强制更新密码
+* 支持对RDP/VNC会话的复制、粘贴和上传、下载权限进行单独控制
+* 支持第三方系统SSO登录
+* 优化系统用户页面，新增home和groups字段
+* 添加用户界面K8S应用
+* 添加kubenetes应用
+* feat(Kubernetes): 添加K8S 应用支持
+
+!!! note "功能优化"
+
+* 修改组织删除失败翻译信息
+* 修改默认登录日志保存时间
+* 优化提示信息
+* 优化kubernetes更新页面翻译
+* 优化ip字段宽度，以及修改kubernetes apps翻译
+* 优化详情页bool值字段的显示
+* 增加ssh终端选中复制右键黏贴，增加批量发送ssh命令，增加tab标题右键功能
+* 重写luna翻译模块, 默认中文
+
+!!! note "修复Bug"
+
+* 修复工单comment
+* 创建组织用户不必填
+* 修复登录时有时解密失败
+* 登录复核 Not found
+* 修改用户角色显示名称
+* 远程应用MySQL Workbench添加port字段
+* file descriptor leaks
+* 去掉API请求的加载条
+* 优化用户列表和用户创建的角色
+* 创建mysql_workbench表单添加端口字段
+* 创建K8S系统用户时允许填写username
+* 修正新窗口打开的应用的问题
+* 修正翻译
+* 修改顶部菜单排列顺序以及调整Tree的隐藏显示
+* 修改翻译加载路由
+* 修复TS类型检查
+* 修复K8S应用链接问题
+
+v2.1.2
+------------------------
+2020年08月13日
 
 !!! note "修复Bug"
 
