@@ -67,6 +67,7 @@ docker run --name jms_koko -d \
   -e REDIS_HOST=192.168.100.20 \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD=weakPassword \
+  --privileged=true \
   jumpserver/jms_koko:v2.2.0
 ```
 
@@ -102,6 +103,7 @@ docker run --name jms_koko -d \
   -e REDIS_HOST=192.168.100.20 \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD=weakPassword \
+  --privileged=true \
   jumpserver/jms_koko:v2.2.0
 ```
 

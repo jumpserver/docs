@@ -248,7 +248,13 @@ wget https://github.com/jumpserver/koko/releases/download/v2.2.0/koko-v2.2.0-lin
 tar -xf koko-v2.2.0-linux-amd64.tar.gz && \
 mv koko-v2.2.0-linux-amd64 koko && \
 chown -R root:root koko && \
-cd koko
+cd koko \
+mv kubectl /usr/local/bin/ && \
+wget https://download.jumpserver.org/public/kubectl.tar.gz && \
+tar -xf kubectl.tar.gz && \
+chmod 755 kubectl && \
+mv kubectl /usr/local/bin/rawkubectl && \
+rm -rf kubectl.tar.gz
 ```
 
 ```sh
@@ -348,6 +354,7 @@ vi config.yml
       -e BOOTSTRAP_TOKEN=<Jumpserver_BOOTSTRAP_TOKEN> \
       -e LOG_LEVEL=ERROR \
       --restart=always \
+      --privileged=true \
       jumpserver/jms_koko:<Tag>
     <Jumpserver_url> 为 jumpserver 的 url 地址, <Jumpserver_BOOTSTRAP_TOKEN> 需要从 jumpserver/config.yml 里面获取, 保证一致, <Tag> 是版本
     ```
@@ -360,6 +367,7 @@ vi config.yml
       -e CORE_HOST=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=zxffNymGjP79j6BN \
       -e LOG_LEVEL=ERROR \
+      --privileged=true \
       --restart=always \
       jumpserver/jms_koko:v2.2.0
     ```
