@@ -394,7 +394,7 @@ chmod +x /bin/ssh-forward
 ```
 
 ```sh
-cd /opt/guacamole/guacamole-server-1.2.0
+cd /opt/docker-guacamole/guacamole-server-1.2.0
 ```
 
 !!! warning "根据 [Guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
