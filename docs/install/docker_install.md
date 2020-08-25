@@ -50,6 +50,7 @@ docker run --name jms_all -d \
   -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN \
   -v /opt/jumpserver/data:/opt/jumpserver/data \
   -v /opt/jumpserver/mysql:/var/lib/mysql \
+  --privileged=true \
   jumpserver/jms_all:v2.2.0
 ```
 
@@ -89,20 +90,21 @@ docker run --name jms_all -d \
 
 
 ```sh
-docker run --name jms_all -d \  
-  -v /opt/jumpserver/data:/opt/jumpserver/data \  
-  -p 80:80 \  
-  -p 2222:2222 \  
-  -e SECRET_KEY=xxxxxx \  
-  -e BOOTSTRAP_TOKEN=xxx \  
-  -e DB_HOST=192.168.x.x \  
-  -e DB_PORT=3306 \  
-  -e DB_USER=root \  
-  -e DB_PASSWORD=xxx \  
-  -e DB_NAME=jumpserver \  
-  -e REDIS_HOST=192.168.x.x \  
-  -e REDIS_PORT=6379 \  
-  -e REDIS_PASSWORD=xxx \  
+docker run --name jms_all -d \
+  -v /opt/jumpserver/data:/opt/jumpserver/data \
+  -p 80:80 \
+  -p 2222:2222 \
+  -e SECRET_KEY=xxxxxx \
+  -e BOOTSTRAP_TOKEN=xxx \
+  -e DB_HOST=192.168.x.x \
+  -e DB_PORT=3306 \
+  -e DB_USER=root \
+  -e DB_PASSWORD=xxx \
+  -e DB_NAME=jumpserver \
+  -e REDIS_HOST=192.168.x.x \
+  -e REDIS_PORT=6379 \
+  -e REDIS_PASSWORD=xxx \
+  --privileged=true \
   jumpserver/jms_all:v2.2.0
 ```
 
