@@ -1,11 +1,19 @@
 # 更新日志
 
-v2.2.0
+v2.2.1
 ------------------------
-2020年08月20日
+2020年8月25日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+!!! note "修复Bug"
+
+* 修复init-kubectl兼容Centos系统
+
+v2.2.0
+------------------------
+2020年08月20日
 
 !!! note "新增功能"
 
