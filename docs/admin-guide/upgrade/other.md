@@ -106,5 +106,15 @@ cat docker-compose.yml
 !!! warning "注意, 新版本更改了 jumpserver/data 挂载目录, 请自行完成替换或者还原"
 
 ```sh
+vi .env
+```
+
+```vi
+Version=v2.2.0  # 修改你要升级的版本号为最新版本即可
+
+...
+```
+
+```sh
 docker-compose up -d
 ```
