@@ -195,8 +195,8 @@ JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.ju
 
 如果你发现安全问题，可以直接联系我们：
 
-- ibuler@fit2cloud.com 
-- support@fit2cloud.com 
+- ibuler@fit2cloud.com
+- support@fit2cloud.com
 - 400-052-0755
 
 
@@ -209,3 +209,9 @@ JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.ju
 
 - [KubeOperator 开源容器平台](https://kubeoperator.io)
 - [MeterSphere 开源持续测试平台](https://metersphere.io)
+
+## 企业版试用
+
+- [申请企业版试用](https://jinshuju.net/f/kyOYpi)
+
+> 注: 企业版支持离线安装，申请通过后会提供高速下载链接。

@@ -90,12 +90,13 @@ nav:
         - koko 常见问题: faq/koko.md
         - Guacamole 问题: faq/guacamole.md
 
-
     - 关于:
         - 贡献列表: about/contributor.md
         - 更新说明: about/change_log.md
         - 联系方式: about/contact.md
         - 商业产品: about/commercial.md
+
+    - 企业版试用: enterprise.md
 
 markdown_extensions:
     - admonition
