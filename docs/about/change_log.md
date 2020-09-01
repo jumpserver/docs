@@ -1,11 +1,21 @@
 # 更新日志
 
-v2.2.1
+v2.2.2
 ------------------------
-2020年8月25日
+2020年9月1日
 
 - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
 - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+!!! note "修复Bug"
+
+* 修复用户在不同组织引起的问题
+* 修复K8S系统用户更新时令牌是必填项的问题
+* use k8s app name
+
+v2.2.1
+------------------------
+2020年8月25日
 
 !!! note "修复Bug"
 
