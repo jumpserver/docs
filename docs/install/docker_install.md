@@ -115,6 +115,7 @@ docker run --name jms_all -d \
 ```sh
 git clone https://github.com/jumpserver/Dockerfile.git
 cd Dockerfile
+cp config_example.conf .env
 cat .env
 docker-compose up
 ```
