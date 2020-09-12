@@ -47,12 +47,12 @@ rm -rf /opt/stop_jms.sh
 cd /opt/Dockerfile
 docker-compose down
 docker volume prune
-docker rmi jumpserver/jms_core:2.1.0
+docker rmi jumpserver/jms_core:v2.2.2
 docker rmi jumpserver/jms_koko:v2.2.2
 docker rmi jumpserver/jms_guacamole:v2.2.2
-docker rmi jumpserver/jms_nginx:2.1.0
-docker rmi jumpserver/jms_redis:2.1.0
-docker rmi jumpserver/jms_mysql:2.1.0
+docker rmi jumpserver/jms_nginx:v2.2.2
+docker rmi jumpserver/jms_redis:v2.2.2
+docker rmi jumpserver/jms_mysql:v2.2.2
 rm -rf /opt/Dockerfile
 ```
 
