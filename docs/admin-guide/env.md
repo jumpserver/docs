@@ -121,6 +121,9 @@ JUMPSERVER_CLEAR_DRIVE_SCHEDULE: 24    # 清理多久以前的上传文件（每
 JUMPSERVER_COLOR_DEPTH: 24             # 颜色深度 8,16,24,32
 # JUMPSERVER_DPI:                      # 图像每英寸长度内的像素点数
 
+JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD: false  # 全局禁用上传下载(>= 2.2.3 版本支持)
+JUMPSERVER_DISABLE_ALL_COPY_PASTE: false      # 全局禁用剪切板粘贴复制(>= 2.2.3 版本支持)
+
 JUMPSERVER_DISABLE_AUDIO: false               # 禁止声音 true, false  无(允许声音)
 JUMPSERVER_ENABLE_WALLPAPER: false            # 启用墙纸 true, false  无（禁用）
 JUMPSERVER_ENABLE_THEMING: false              # 启用主题 true, false  无（禁用）
