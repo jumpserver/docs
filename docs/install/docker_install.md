@@ -51,7 +51,7 @@ docker run --name jms_all -d \
   -v /opt/jumpserver/data:/opt/jumpserver/data \
   -v /opt/jumpserver/mysql:/var/lib/mysql \
   --privileged=true \
-  jumpserver/jms_all:v2.2.2
+  jumpserver/jms_all:v2.2.3
 ```
 
 ### 访问
@@ -105,7 +105,7 @@ docker run --name jms_all -d \
   -e REDIS_PORT=6379 \
   -e REDIS_PASSWORD=xxx \
   --privileged=true \
-  jumpserver/jms_all:v2.2.2
+  jumpserver/jms_all:v2.2.3
 ```
 
 ## Docker-Compose 部署

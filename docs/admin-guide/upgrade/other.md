@@ -34,7 +34,7 @@ docker run --name jms_all -d \
   -e SECRET_KEY=xxxxxx \
   -e BOOTSTRAP_TOKEN=xxx \
   -e DB_PASSWORD=xxxxxx \
-  jumpserver/jms_all:v2.2.2
+  jumpserver/jms_all:v2.2.3
 ```
 
 - 如果没有做容器持久化, 需要先将文件拷出
@@ -64,7 +64,7 @@ docker run --name jms_all -d \
   -e SECRET_KEY=xxxxxx \
   -e BOOTSTRAP_TOKEN=xxx \
   -e DB_PASSWORD=xxxxxx \
-  jumpserver/jms_all:v2.2.2
+  jumpserver/jms_all:v2.2.3
 ```
 
 - 如果数据库已经外置, 则只需要挂载 jumpserver/data 即可
@@ -81,7 +81,7 @@ docker run --name jms_all -d \
   -e DB_USER=root \  
   -e DB_PASSWORD=xxx \  
   -e DB_NAME=jumpserver \  
-  jumpserver/jms_all:v2.2.2
+  jumpserver/jms_all:v2.2.3
 ```
 
 ## docker-compose 升级
@@ -112,7 +112,7 @@ vi .env
 ```
 
 ```vi
-Version=v2.2.2  # 修改你要升级的版本号为最新版本即可
+Version=v2.2.3  # 修改你要升级的版本号为最新版本即可
 
 ...
 ```
