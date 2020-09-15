@@ -75,6 +75,7 @@ SECURITY_LOGIN_CHALLENGE_ENABLED: False   # 登录页面是否开启 CHALLENGE �
 SECURITY_LOGIN_CAPTCHA_ENABLED: True      # 登录页面是否开启验证码
 AUTH_SSO: False                           # 是否开启其他系统到 JumpServer 的单点登录
 AUTH_SSO_AUTHKEY_TTL: 900s                # 单点登录 token 有效时长 (单位：秒)
+USER_LOGIN_SINGLE_MACHINE_ENABLED: False  # 只允许用户一个浏览器登录
 ```
 
 ## KoKo 参数说明
