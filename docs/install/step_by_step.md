@@ -7,8 +7,7 @@
     注意: 使用本文档你将无法获得额外的技术支持，包括后续的升级均需要自行处理，我们只推荐真正有需要的运维工程师进行使用
 
 !!! info "本文档是针对所有 `Linux` 发行版 `x86_64` 的安装说明, 非特定系统说明文档, 但是示例中我们仅展示 `Ubuntu` 和` Centos` 部分(注释部分)"
-
-- 遇到问题可以参考 [安装视频](https://www.bilibili.com/video/BV1VV411C797)
+    - 遇到问题可以参考 [安装视频](https://www.bilibili.com/video/BV1VV411C797)
 
 !!! info "JumpServer 环境要求:"
     硬件配置: 2个CPU核心, 4G 内存, 50G 硬盘（最低）  
@@ -32,15 +31,17 @@
 
 ### 2. 创建 Python 虚拟环境
 
-```sh
-python3.6 -m venv /opt/py3
-```
+!!! tip ""
+    ```sh
+    python3.6 -m venv /opt/py3
+    ```
 
 ### 3. 载入 Python 虚拟环境
 
-```sh
-source /opt/py3/bin/activate
-```
+!!! tip ""
+    ```sh
+    source /opt/py3/bin/activate
+    ```
 
 !!! tip "每次操作 JumpServer 都需要先载入 py3 虚拟环境"  
     ??? warning "部分系统可能会提示 source: not found, 可以使用 . 代替 source"
@@ -51,21 +52,25 @@ source /opt/py3/bin/activate
 
 
 ### 4. 获取 JumpServer 代码
-```sh
-cd /opt && \
-wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
-```
 
-```sh
-tar xf jumpserver-v2.2.3.tar.gz
-mv jumpserver-v2.2.3 jumpserver
-```
+!!! tip ""
+    ```sh
+    cd /opt && \
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
+    ```
+
+!!! tip ""
+    ```sh
+    tar xf jumpserver-v2.2.3.tar.gz
+    mv jumpserver-v2.2.3 jumpserver
+    ```
 
 ### 5. 安装编译环境依赖
 
-```sh
-cd /opt/jumpserver/requirements
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver/requirements
+    ```
 
 ??? tip "根据当前系统, 选择对应的文件执行即可"
     Centos:
@@ -77,11 +82,12 @@ cd /opt/jumpserver/requirements
     apt-get install -y $(cat deb_requirements.txt)
     ```
 
-```sh
-pip install wheel && \
-pip install --upgrade pip setuptools && \
-pip install -r requirements.txt
-```
+!!! tip ""
+    ```sh
+    pip install wheel && \
+    pip install --upgrade pip setuptools && \
+    pip install -r requirements.txt
+    ```
 
 ??? question "确保已经载入 py3 虚拟环境, 中间如果遇到报错一般是依赖包没装全, 可以通过 搜索引擎 解决"
     国内可以使用镜像加速  
@@ -93,11 +99,12 @@ pip install -r requirements.txt
 
 ### 6. 修改配置文件
 
-```sh
-cd /opt/jumpserver && \
-cp config_example.yml config.yml && \
-vi config.yml
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver && \
+    cp config_example.yml config.yml && \
+    vi config.yml
+    ```
 
 ??? info "注意不能使用纯数字字符串, 可以参考此模版"
     ```yaml
@@ -222,10 +229,11 @@ vi config.yml
 
 ### 7. 启动 JumpServer
 
-```sh
-cd /opt/jumpserver
-./jms start
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver
+    ./jms start
+    ```
 
 ??? warning "确保已经载入 py3 虚拟环境"
     ```sh
@@ -239,28 +247,31 @@ cd /opt/jumpserver
 
 ### 8. 正常部署 KoKo 组件
 
-```sh
-cd /opt && \
-wget https://github.com/jumpserver/koko/releases/download/v2.2.3/koko-v2.2.3-linux-amd64.tar.gz
-```
+!!! tip ""
+    ```sh
+    cd /opt && \
+    wget https://github.com/jumpserver/koko/releases/download/v2.2.3/koko-v2.2.3-linux-amd64.tar.gz
+    ```
 
-```sh                               
-tar -xf koko-v2.2.3-linux-amd64.tar.gz && \
-mv koko-v2.2.3-linux-amd64 koko && \
-chown -R root:root koko && \
-cd koko \
-mv kubectl /usr/local/bin/ && \
-wget https://download.jumpserver.org/public/kubectl.tar.gz && \
-tar -xf kubectl.tar.gz && \
-chmod 755 kubectl && \
-mv kubectl /usr/local/bin/rawkubectl && \
-rm -rf kubectl.tar.gz
-```
+!!! tip ""
+    ```sh                               
+    tar -xf koko-v2.2.3-linux-amd64.tar.gz && \
+    mv koko-v2.2.3-linux-amd64 koko && \
+    chown -R root:root koko && \
+    cd koko \
+    mv kubectl /usr/local/bin/ && \
+    wget https://download.jumpserver.org/public/kubectl.tar.gz && \
+    tar -xf kubectl.tar.gz && \
+    chmod 755 kubectl && \
+    mv kubectl /usr/local/bin/rawkubectl && \
+    rm -rf kubectl.tar.gz
+    ```
 
-```sh
-cp config_example.yml config.yml && \
-vi config.yml
-```
+!!! tip ""
+    ```sh
+    cp config_example.yml config.yml && \
+    vi config.yml
+    ```
 
 ??? info "BOOTSTRAP_TOKEN 需要从 jumpserver/config.yml 里面获取, 保证一致"
     以下配置仅供参考
@@ -335,9 +346,10 @@ vi config.yml
     REDIS_DB_ROOM: 6
     ```
 
-```sh
-./koko  
-```
+!!! tip ""
+    ```sh
+    ./koko  
+    ```
 
 ??? tip "可以 -d 参数在后台运行"
     ```sh
@@ -376,34 +388,38 @@ vi config.yml
 
 !!! tip "建议使用 Docker 部署 Guacamole 组件 , 部分环境可能无法正常编译安装"
 
-```sh
-cd /opt && \
-wget -O docker-guacamole-v2.2.3.tar.gz https://github.com/jumpserver/docker-guacamole/archive/master.tar.gz
-```
+!!! tip ""
+    ```sh
+    cd /opt && \
+    wget -O docker-guacamole-v2.2.3.tar.gz https://github.com/jumpserver/docker-guacamole/archive/master.tar.gz
+    ```
 
-```sh
-mkdir /opt/docker-guacamole && \
-tar -xf docker-guacamole-v2.2.3.tar.gz -C /opt/docker-guacamole --strip-components 1 && \
-rm -rf /opt/docker-guacamole-v2.2.3.tar.gz && \
-cd /opt/docker-guacamole && \
-wget http://download.jumpserver.org/public/guacamole-server-1.2.0.tar.gz && \
-tar -xf guacamole-server-1.2.0.tar.gz && \
-wget http://download.jumpserver.org/public/ssh-forward.tar.gz && \
-tar -xf ssh-forward.tar.gz -C /bin/ && \
-chmod +x /bin/ssh-forward
-```
+!!! tip ""
+    ```sh
+    mkdir /opt/docker-guacamole && \
+    tar -xf docker-guacamole-v2.2.3.tar.gz -C /opt/docker-guacamole --strip-components 1 && \
+    rm -rf /opt/docker-guacamole-v2.2.3.tar.gz && \
+    cd /opt/docker-guacamole && \
+    wget http://download.jumpserver.org/public/guacamole-server-1.2.0.tar.gz && \
+    tar -xf guacamole-server-1.2.0.tar.gz && \
+    wget http://download.jumpserver.org/public/ssh-forward.tar.gz && \
+    tar -xf ssh-forward.tar.gz -C /bin/ && \
+    chmod +x /bin/ssh-forward
+    ```
 
-```sh
-cd /opt/docker-guacamole/guacamole-server-1.2.0
-```
+!!! tip ""
+    ```sh
+    cd /opt/docker-guacamole/guacamole-server-1.2.0
+    ```
 
 !!! warning "根据 [Guacamole官方文档](http://guacamole.apache.org/doc/gug/installing-guacamole.html) 文档安装对应的依赖包"
 
-```sh
-./configure --with-init-dir=/etc/init.d && \
-make && \
-make install
-```
+!!! tip ""
+    ```sh
+    ./configure --with-init-dir=/etc/init.d && \
+    make && \
+    make install
+    ```
 
 ??? warning "需要先在当前环境配置好 Java"
     Ubuntu:  
@@ -415,11 +431,12 @@ make install
     yum install -y java-1.8.0-openjdk
     ```
 
-```sh
-mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record /config/guacamole/drive && \
-chown daemon:daemon /config/guacamole/record /config/guacamole/drive && \
-cd /config
-```
+!!! tip ""
+    ```sh
+    mkdir -p /config/guacamole /config/guacamole/extensions /config/guacamole/record /config/guacamole/drive && \
+    chown daemon:daemon /config/guacamole/record /config/guacamole/drive && \
+    cd /config
+    ```
 
 ??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 Tomcat9"
     !!! question "网络有问题可以通过国内镜像源下载"
@@ -427,37 +444,37 @@ cd /config
     wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.36/bin/apache-tomcat-9.0.36.tar.gz
     ```
 
-```sh
-tar -xf apache-tomcat-9.0.36.tar.gz && \
-mv apache-tomcat-9.0.36 tomcat9 && \
-rm -rf /config/tomcat9/webapps/* && \
-sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
-echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
-wget http://download.jumpserver.org/release/v2.2.3/guacamole-client-v2.2.3.tar.gz && \
-tar -xf guacamole-client-v2.2.3.tar.gz && \
-rm -rf guacamole-client-v2.2.3.tar.gz && \
-cp guacamole-client-v2.2.3/guacamole-*.war /config/tomcat9/webapps/ROOT.war && \
-cp guacamole-client-v2.2.3/guacamole-*.jar /config/guacamole/extensions/ && \
-mv /opt/docker-guacamole/guacamole.properties /config/guacamole/ && \
-rm -rf /opt/docker-guacamole && \
-```
+!!! tip ""
+    ```sh
+    tar -xf apache-tomcat-9.0.36.tar.gz && \
+    mv apache-tomcat-9.0.36 tomcat9 && \
+    rm -rf /config/tomcat9/webapps/* && \
+    sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
+    echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
+    wget http://download.jumpserver.org/release/v2.2.3/guacamole-client-v2.2.3.tar.gz && \
+    tar -xf guacamole-client-v2.2.3.tar.gz && \
+    rm -rf guacamole-client-v2.2.3.tar.gz && \
+    cp guacamole-client-v2.2.3/guacamole-*.war /config/tomcat9/webapps/ROOT.war && \
+    cp guacamole-client-v2.2.3/guacamole-*.jar /config/guacamole/extensions/ && \
+    mv /opt/docker-guacamole/guacamole.properties /config/guacamole/ && \
+    rm -rf /opt/docker-guacamole && \
+    ```
 
 !!! warning "设置 Guacamole 环境"
-
-```sh
-export JUMPSERVER_SERVER=http://127.0.0.1:8080
-echo "export JUMPSERVER_SERVER=http://127.0.0.1:8080" >> ~/.bashrc
-export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN
-echo "export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN" >> ~/.bashrc
-export JUMPSERVER_KEY_DIR=/config/guacamole/data/keys
-echo "export JUMPSERVER_KEY_DIR=/config/guacamole/data/keys" >> ~/.bashrc
-export GUACAMOLE_HOME=/config/guacamole
-echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
-export GUACAMOLE_LOG_LEVEL=ERROR
-echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
-export JUMPSERVER_ENABLE_DRIVE=true
-echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
-```
+    ```sh
+    export JUMPSERVER_SERVER=http://127.0.0.1:8080
+    echo "export JUMPSERVER_SERVER=http://127.0.0.1:8080" >> ~/.bashrc
+    export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN
+    echo "export BOOTSTRAP_TOKEN=zxffNymGjP79j6BN" >> ~/.bashrc
+    export JUMPSERVER_KEY_DIR=/config/guacamole/data/keys
+    echo "export JUMPSERVER_KEY_DIR=/config/guacamole/data/keys" >> ~/.bashrc
+    export GUACAMOLE_HOME=/config/guacamole
+    echo "export GUACAMOLE_HOME=/config/guacamole" >> ~/.bashrc
+    export GUACAMOLE_LOG_LEVEL=ERROR
+    echo "export GUACAMOLE_LOG_LEVEL=ERROR" >> ~/.bashrc
+    export JUMPSERVER_ENABLE_DRIVE=true
+    echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
+    ```
 
 ??? info "环境变量说明"
     JUMPSERVER_SERVER 指 core 访问地址  
@@ -467,12 +484,11 @@ echo "export JUMPSERVER_ENABLE_DRIVE=true" >> ~/.bashrc
     GUACAMOLE_LOG_LEVEL 为生成日志的等级  
     JUMPSERVER_ENABLE_DRIVE 为 rdp 协议挂载共享盘
 
-!!! tip "启动 Guacamole"
-
-```sh
-/etc/init.d/guacd start
-sh /config/tomcat9/bin/startup.sh
-```
+!!! tip ""
+    ```sh
+    /etc/init.d/guacd start
+    sh /config/tomcat9/bin/startup.sh
+    ```
 
 ### 9.1 Docker 部署 Guacamole 组件
 
@@ -499,123 +515,131 @@ sh /config/tomcat9/bin/startup.sh
 
 ### 10. 下载 Lina 组件
 
-```sh
-cd /opt
-wget https://github.com/jumpserver/lina/releases/download/v2.2.3/lina-v2.2.3.tar.gz
-```
+!!! tip ""
+    ```sh
+    cd /opt
+    wget https://github.com/jumpserver/lina/releases/download/v2.2.3/lina-v2.2.3.tar.gz
+    ```
 
-```sh
-tar -xf lina-v2.2.3.tar.gz
-mv lina-v2.2.3 lina
-chown -R nginx:nginx lina
-```
+!!! tip ""
+    ```sh
+    tar -xf lina-v2.2.3.tar.gz
+    mv lina-v2.2.3 lina
+    chown -R nginx:nginx lina
+    ```
 
 
 ### 11. 下载 Luna 组件
 
-```sh
-cd /opt
-wget https://github.com/jumpserver/luna/releases/download/v2.2.3/luna-v2.2.3.tar.gz
-```
+!!! tip ""
+    ```sh
+    cd /opt
+    wget https://github.com/jumpserver/luna/releases/download/v2.2.3/luna-v2.2.3.tar.gz
+    ```
 
-```sh
-tar -xf luna-v2.2.3.tar.gz
-mv luna-v2.2.3 luna
-chown -R nginx:nginx luna
-```
+!!! tip ""
+    ```sh
+    tar -xf luna-v2.2.3.tar.gz
+    mv luna-v2.2.3 luna
+    chown -R nginx:nginx luna
+    ```
 
 ### 12. 配置 Nginx 整合各组件
 
 !!! tip "参考 [官方文档](http://nginx.org/en/linux_packages.html) 安装最新的稳定版 nginx"
 
-```sh
-echo > /etc/nginx/conf.d/default.conf
-vi /etc/nginx/conf.d/jumpserver.conf
-```
-```vim
-server {
-    listen 80;
+!!! tip ""
+    ```sh
+    echo > /etc/nginx/conf.d/default.conf
+    vi /etc/nginx/conf.d/jumpserver.conf
+    ```
 
-    client_max_body_size 100m;  # 录像及文件上传大小限制
+!!! tip ""
+    ```vim
+    server {
+        listen 80;
 
-    location /ui/ {
-        try_files $uri / /index.html;
-        alias /opt/lina/;
+        client_max_body_size 100m;  # 录像及文件上传大小限制
+
+        location /ui/ {
+            try_files $uri / /index.html;
+            alias /opt/lina/;
+        }
+
+        location /luna/ {
+            try_files $uri / /index.html;
+            alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
+        }
+
+        location /media/ {
+            add_header Content-Encoding gzip;
+            root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
+        }
+
+        location /static/ {
+            root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
+        }
+
+        location /koko/ {
+            proxy_pass       http://localhost:5000;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /guacamole/ {
+            proxy_pass       http://localhost:8081/;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            access_log off;
+        }
+
+        location /ws/ {
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://localhost:8070;
+            proxy_http_version 1.1;
+            proxy_buffering off;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+        }
+
+        location /api/ {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /core/ {
+            proxy_pass http://localhost:8080;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location / {
+            rewrite ^/(.*)$ /ui/$1 last;
+        }
     }
+    ```
 
-    location /luna/ {
-        try_files $uri / /index.html;
-        alias /opt/luna/;  # luna 路径, 如果修改安装目录, 此处需要修改
-    }
-
-    location /media/ {
-        add_header Content-Encoding gzip;
-        root /opt/jumpserver/data/;  # 录像位置, 如果修改安装目录, 此处需要修改
-    }
-
-    location /static/ {
-        root /opt/jumpserver/data/;  # 静态资源, 如果修改安装目录, 此处需要修改
-    }
-
-    location /koko/ {
-        proxy_pass       http://localhost:5000;
-        proxy_buffering off;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        access_log off;
-    }
-
-    location /guacamole/ {
-        proxy_pass       http://localhost:8081/;
-        proxy_buffering off;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $http_connection;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        access_log off;
-    }
-
-    location /ws/ {
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http://localhost:8070;
-        proxy_http_version 1.1;
-        proxy_buffering off;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-    }
-
-    location /api/ {
-        proxy_pass http://localhost:8080;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
-    location /core/ {
-        proxy_pass http://localhost:8080;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
-    location / {
-        rewrite ^/(.*)$ /ui/$1 last;
-    }
-}
-```
-
-```sh
-nginx -t
-nginx -s reload
-```
+!!! tip ""
+    ```sh
+    nginx -t
+    nginx -s reload
+    ```
 
 ### 13. 开始使用 JumpServer
 

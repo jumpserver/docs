@@ -43,16 +43,17 @@
     fi
     ```
 
-```sh
-docker run --name jms_all -d \
-  -p 80:80 -p 2222:2222 \
-  -e SECRET_KEY=$SECRET_KEY \
-  -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN \
-  -v /opt/jumpserver/data:/opt/jumpserver/data \
-  -v /opt/jumpserver/mysql:/var/lib/mysql \
-  --privileged=true \
-  jumpserver/jms_all:v2.2.3
-```
+!!! tip ""
+    ```sh
+    docker run --name jms_all -d \
+      -p 80:80 -p 2222:2222 \
+      -e SECRET_KEY=$SECRET_KEY \
+      -e BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN \
+      -v /opt/jumpserver/data:/opt/jumpserver/data \
+      -v /opt/jumpserver/mysql:/var/lib/mysql \
+      --privileged=true \
+      jumpserver/jms_all:v2.2.3
+    ```
 
 ### 访问
 
@@ -89,36 +90,38 @@ docker run --name jms_all -d \
     VOLUME /var/lib/mysql
 
 
-```sh
-docker run --name jms_all -d \
-  -v /opt/jumpserver/data:/opt/jumpserver/data \
-  -p 80:80 \
-  -p 2222:2222 \
-  -e SECRET_KEY=xxxxxx \
-  -e BOOTSTRAP_TOKEN=xxx \
-  -e DB_HOST=192.168.x.x \
-  -e DB_PORT=3306 \
-  -e DB_USER=root \
-  -e DB_PASSWORD=xxx \
-  -e DB_NAME=jumpserver \
-  -e REDIS_HOST=192.168.x.x \
-  -e REDIS_PORT=6379 \
-  -e REDIS_PASSWORD=xxx \
-  --privileged=true \
-  jumpserver/jms_all:v2.2.3
-```
+!!! tip ""
+    ```sh
+    docker run --name jms_all -d \
+      -v /opt/jumpserver/data:/opt/jumpserver/data \
+      -p 80:80 \
+      -p 2222:2222 \
+      -e SECRET_KEY=xxxxxx \
+      -e BOOTSTRAP_TOKEN=xxx \
+      -e DB_HOST=192.168.x.x \
+      -e DB_PORT=3306 \
+      -e DB_USER=root \
+      -e DB_PASSWORD=xxx \
+      -e DB_NAME=jumpserver \
+      -e REDIS_HOST=192.168.x.x \
+      -e REDIS_PORT=6379 \
+      -e REDIS_PASSWORD=xxx \
+      --privileged=true \
+      jumpserver/jms_all:v2.2.3
+    ```
 
 ## Docker-Compose 部署
 
 !!! info "`.env` 的变量 用在 docker-compose 里面使用, 尽量自己调试一遍后再使用"
 
-```sh
-git clone https://github.com/jumpserver/Dockerfile.git
-cd Dockerfile
-cp config_example.conf .env
-cat .env
-docker-compose up
-```
+!!! tip ""
+    ```sh
+    git clone https://github.com/jumpserver/Dockerfile.git
+    cd Dockerfile
+    cp config_example.conf .env
+    cat .env
+    docker-compose up
+    ```
 
 !!! tip "[仓库地址](https://github.com/jumpserver/Dockerfile)"
 
