@@ -35,13 +35,13 @@
         重新运行  
         ```sh
         docker rm jms_koko
-        docker run --name jms_koko -d
-          -p 2222:2222
-          -p 127.0.0.1:5000:5000
-          -e CORE_HOST=http://你的core_url:8080
-          -e BOOTSTRAP_TOKEN=你的token
-          -e LOG_LEVEL=ERROR
-          --restart=always
+        docker run --name jms_koko -d \
+          -p 2222:2222 \
+          -p 127.0.0.1:5000:5000 \
+          -e CORE_HOST=http://你的core_url:8080 \
+          -e BOOTSTRAP_TOKEN=你的token \
+          -e LOG_LEVEL=ERROR \
+          --restart=always \
         jumpserver/jms_koko:v2.2.3
         ```
 
