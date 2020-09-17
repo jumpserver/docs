@@ -2,118 +2,126 @@
 
 ## 环境
 
+!!! tip ""
+    - 系统: CentOS 7
+    - IP: 192.168.100.30
 
--  系统: CentOS 7
--  IP: 192.168.100.30
-
-```
-+----------+------------+-----------------+---------------+-------------------------+
-| Protocol | ServerName |        IP       |      Port     |         Used By         |
-+==========+============+=================+===============+=========================+
-|    TCP   |    Core    | 192.168.100.30  |   8070,8080   |         Tengine         |
-+----------+------------+-----------------+---------------+-------------------------+
-|    TCP   |    Core    | 192.168.100.31  |   8070,8080   |         Tengine         |
-+----------+------------+-----------------+---------------+-------------------------+
-```
+    ```
+    +----------+------------+-----------------+---------------+-------------------------+
+    | Protocol | ServerName |        IP       |      Port     |         Used By         |
+    +==========+============+=================+===============+=========================+
+    |    TCP   |    Core    | 192.168.100.30  |   8070,8080   |         Tengine         |
+    +----------+------------+-----------------+---------------+-------------------------+
+    |    TCP   |    Core    | 192.168.100.31  |   8070,8080   |         Tengine         |
+    +----------+------------+-----------------+---------------+-------------------------+
+    ```
 
 ## 安装步骤
 
 ### 1. 安装 epel 库
 
-```sh
-yum upgrade -y
-yum -y install epel-release wget
-```
+!!! tip ""
+    ```sh
+    yum upgrade -y
+    yum -y install epel-release wget
+    ```
 
 ### 2. 配置防火墙
 
-```sh
-firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
-firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8070" accept"
-firewall-cmd --reload
-setsebool -P httpd_can_network_connect 1
-```
+!!! tip ""
+    ```sh
+    firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8080" accept"
+    firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.100.100" port protocol="tcp" port="8070" accept"
+    firewall-cmd --reload
+    setsebool -P httpd_can_network_connect 1
+    ```
 
 !!! tip "192.168.100.100 为 tengine 服务器 ip, 请根据实际情况修改"
 
 ### 3. 安装 git
 
-```sh
-yum -y install gcc git
-```
+!!! tip ""
+    ```sh
+    yum -y install gcc git
+    ```
 
 ### 4. 安装 python3.6
 
-```sh
-yum -y install python36 python36-devel
-```
+!!! tip ""
+    ```sh
+    yum -y install python36 python36-devel
+    ```
 
 ### 5. 配置 py3 虚拟环境
 
-```sh
-python3.6 -m venv /opt/py3
-source /opt/py3/bin/activate
-```
+!!! tip ""
+    ```sh
+    python3.6 -m venv /opt/py3
+    source /opt/py3/bin/activate
+    ```
 
 ### 6. 下载 core
 
-```sh
-cd /opt && \
-wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
-```
-
-```sh
-tar xf jumpserver-v2.2.3.tar.gz
-mv jumpserver-v2.2.3 jumpserver
-```
+!!! tip ""
+    ```sh
+    cd /opt && \
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
+    ```
+    ```sh
+    tar xf jumpserver-v2.2.3.tar.gz
+    mv jumpserver-v2.2.3 jumpserver
+    ```
 
 ### 7. 安装 rpm 依赖包
 
-```sh
-yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
-```
+!!! tip ""
+    ```sh
+    yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
+    ```
 
 ### 8. 安装 python 依赖
 
-```sh
-pip install wheel
-pip install --upgrade pip setuptools
-pip install -r /opt/jumpserver/requirements/requirements.txt
-```
+!!! tip ""
+    ```sh
+    pip install wheel
+    pip install --upgrade pip setuptools
+    pip install -r /opt/jumpserver/requirements/requirements.txt
+    ```
 
 ### 9. 修改配置文件
 
-```sh
-cd /opt/jumpserver
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver
+    ```
 
-```sh
-cp config_example.yml config.yml
-```
+    ```sh
+    cp config_example.yml config.yml
+    ```
 
-```sh
-SECRET_KEY=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`
-echo "SECRET_KEY=$SECRET_KEY" >> ~/.bashrc
-BOOTSTRAP_TOKEN=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`
-echo "BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN" >> ~/.bashrc
-```
+    ```sh
+    SECRET_KEY=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`
+    echo "SECRET_KEY=$SECRET_KEY" >> ~/.bashrc
+    BOOTSTRAP_TOKEN=`cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`
+    echo "BOOTSTRAP_TOKEN=$BOOTSTRAP_TOKEN" >> ~/.bashrc
+    ```
 
-```sh
-sed -i "s/SECRET_KEY:/SECRET_KEY: $SECRET_KEY/g" /opt/jumpserver/config.yml
-sed -i "s/BOOTSTRAP_TOKEN:/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/jumpserver/config.yml
-sed -i "s/# DEBUG: true/DEBUG: false/g" /opt/jumpserver/config.yml
-sed -i "s/# LOG_LEVEL: DEBUG/LOG_LEVEL: ERROR/g" /opt/jumpserver/config.yml
-sed -i "s/# SESSION_EXPIRE_AT_BROWSER_CLOSE: false/SESSION_EXPIRE_AT_BROWSER_CLOSE: true/g" /opt/jumpserver/config.yml
-```
+    ```sh
+    sed -i "s/SECRET_KEY:/SECRET_KEY: $SECRET_KEY/g" /opt/jumpserver/config.yml
+    sed -i "s/BOOTSTRAP_TOKEN:/BOOTSTRAP_TOKEN: $BOOTSTRAP_TOKEN/g" /opt/jumpserver/config.yml
+    sed -i "s/# DEBUG: true/DEBUG: false/g" /opt/jumpserver/config.yml
+    sed -i "s/# LOG_LEVEL: DEBUG/LOG_LEVEL: ERROR/g" /opt/jumpserver/config.yml
+    sed -i "s/# SESSION_EXPIRE_AT_BROWSER_CLOSE: false/SESSION_EXPIRE_AT_BROWSER_CLOSE: true/g" /opt/jumpserver/config.yml
+    ```
 
-```sh
-echo -e "\033[31m 你的SECRET_KEY是 $SECRET_KEY \033[0m"
-echo -e "\033[31m 你的BOOTSTRAP_TOKEN是 $BOOTSTRAP_TOKEN \033[0m"
-```
+    ```sh
+    echo -e "\033[31m 你的SECRET_KEY是 $SECRET_KEY \033[0m"
+    echo -e "\033[31m 你的BOOTSTRAP_TOKEN是 $BOOTSTRAP_TOKEN \033[0m"
+    ```
 
-```sh
-vi config.yml
-```
+    ```sh
+    vi config.yml
+    ```
 
 ??? info "注意不能使用纯数字字符串, BOOTSTRAP_TOKEN 给其他组件使用, redis 信息要给 koko 使用"
     以下模板仅供参考  
@@ -239,28 +247,31 @@ vi config.yml
 
 ### 10. 挂载 nfs
 
-```sh
-yum -y install nfs-utils
-showmount -e 192.168.100.99
-mount -t nfs 192.168.100.99:/data /opt/jumpserver/data
-```
+!!! tip ""
+    ```sh
+    yum -y install nfs-utils
+    showmount -e 192.168.100.99
+    mount -t nfs 192.168.100.99:/data /opt/jumpserver/data
+    ```
 
 !!! warning "192.168.100.99 为 nfs 服务器 ip, 请根据实际情况更改"
 
-```
-vi /etc/fstab
-```
-```vim
-192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0
-```
+!!! tip ""
+    ```sh
+    vi /etc/fstab
+    ```
+    ```vim
+    192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0
+    ```
 
 
 ### 11. 运行 core
 
-```sh
-cd /opt/jumpserver
-./jms start -d
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver
+    ./jms start -d
+    ```
 
 ## 多节点部署
 
@@ -268,51 +279,56 @@ cd /opt/jumpserver
 
 - 登录到新的节点服务器
 
-```sh
-yum upgrade -y
-yum -y install gcc epel-release git
-yum -y install python36 python36-devel
-python3.6 -m venv /opt/py3
-source /opt/py3/bin/activate
-wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
-tar xf jumpserver-v2.2.3.tar.gz
-mv jumpserver-v2.2.3 jumpserver
-yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
-pip install wheel
-pip install --upgrade pip setuptools
-pip install -r /opt/jumpserver/requirements/requirements.txt
-```
+!!! tip ""
+    ```sh
+    yum upgrade -y
+    yum -y install gcc epel-release git
+    yum -y install python36 python36-devel
+    python3.6 -m venv /opt/py3
+    source /opt/py3/bin/activate
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
+    tar xf jumpserver-v2.2.3.tar.gz
+    mv jumpserver-v2.2.3 jumpserver
+    yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
+    pip install wheel
+    pip install --upgrade pip setuptools
+    pip install -r /opt/jumpserver/requirements/requirements.txt
+    ```
 
 - 复制主节点 config.yml 到 /opt/jumpserver
 
-```sh
-scp root@192.168.100.30:/opt/jumpserver/config.yml /opt/jumpserver
-```
+!!! tip ""
+    ```sh
+    scp root@192.168.100.30:/opt/jumpserver/config.yml /opt/jumpserver
+    ```
 
 !!! info "192.168.100.30 为主 core 服务器 ip，按照提示输入密码"
 
 - 配置 nfs
 
-```sh
-yum -y install nfs-utils
-showmount -e 192.168.100.99
-mount -t nfs 192.168.100.99:/data /opt/jumpserver/data
-echo "192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0" >> /etc/fstab
-```
+!!! tip ""
+    ```sh
+    yum -y install nfs-utils
+    showmount -e 192.168.100.99
+    mount -t nfs 192.168.100.99:/data /opt/jumpserver/data
+    echo "192.168.100.99:/data /opt/jumpserver/data nfs defaults 0 0" >> /etc/fstab
+    ```
 
 !!! info "192.168.100.99 为 nfs 服务器"
 
 - 启动 core
 
-```sh
-cd /opt/jumpserver
-./jms start -d
-```
+!!! tip ""
+    ```sh
+    cd /opt/jumpserver
+    ./jms start -d
+    ```
 
 - 复制主节点的 jumpserver.conf 到当前节点
 
-```sh
-scp root@192.168.100.30:/etc/nginx/conf.d/jumpserver.conf /etc/nginx/conf.d/
-```
+!!! tip ""
+    ```sh
+    scp root@192.168.100.30:/etc/nginx/conf.d/jumpserver.conf /etc/nginx/conf.d/
+    ```
 
 !!! tip "192.168.100.30 为主 core 服务器 ip，按照提示输入密码"
