@@ -22,6 +22,7 @@
 
 ### 1. 安装 Python3.6 MySQL Redis
 
+!!! tip ""
     推荐直接从仓库获取
 
 !!! tip "数据库字符集要求:"
@@ -441,7 +442,7 @@
 ??? warning "访问 [此处](https://tomcat.apache.org/download-90.cgi) 下载最新的 Tomcat9"
     !!! question "网络有问题可以通过国内镜像源下载"
     ```sh
-    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.36/bin/apache-tomcat-9.0.36.tar.gz
+    wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.38/bin/apache-tomcat-9.0.38.tar.gz
     ```
 
 !!! tip ""

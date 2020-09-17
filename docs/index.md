@@ -1,24 +1,26 @@
 # 总体介绍
 
-JumpServer 是全球首款完全开源的堡垒机, 使用 GNU GPL v2.0 开源协议, 是符合 4A 的专业运维审计系统。
+!!! tip ""
+    JumpServer 是全球首款完全开源的堡垒机, 使用 GNU GPL v2.0 开源协议, 是符合 4A 的专业运维审计系统。  
 
-JumpServer 使用 Python / Django 进行开发, 遵循 Web 2.0 规范, 配备了业界领先的 Web Terminal 解决方案, 交互界面美观、用户体验好。
+    JumpServer 使用 Python / Django 进行开发, 遵循 Web 2.0 规范, 配备了业界领先的 Web Terminal 解决方案, 交互界面美观、用户体验好。  
 
-JumpServer 采纳分布式架构, 支持多机房跨区域部署, 中心节点提供 API, 各机房部署登录节点, 可横向扩展、无并发访问限制。
+    JumpServer 采纳分布式架构, 支持多机房跨区域部署, 中心节点提供 API, 各机房部署登录节点, 可横向扩展、无并发访问限制。  
 
-JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。
+    JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。  
 
-改变世界, 从一点点开始。
+    改变世界, 从一点点开始。
 
 
 ## 特色优势
 
-- 开源: 零门槛，线上快速获取和安装；
-- 分布式: 轻松支持大规模并发访问；
-- 无插件: 仅需浏览器，极致的 Web Terminal 使用体验；
-- 多云支持: 一套系统，同时管理不同云上面的资产；
-- 云端存储: 审计录像云端存储，永不丢失；
-- 多租户: 一套系统，多个子公司和部门同时使用。
+!!! tip ""
+    - 开源: 零门槛，线上快速获取和安装；
+    - 分布式: 轻松支持大规模并发访问；
+    - 无插件: 仅需浏览器，极致的 Web Terminal 使用体验；
+    - 多云支持: 一套系统，同时管理不同云上面的资产；
+    - 云端存储: 审计录像云端存储，永不丢失；
+    - 多租户: 一套系统，多个子公司和部门同时使用。
 
 ## 功能列表
 
@@ -179,39 +181,41 @@ JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。
 
 ## 案例研究
 
-- [JumpServer 堡垒机护航顺丰科技超大规模资产安全运维](https://blog.fit2cloud.com/?p=1147)
-- [JumpServer 堡垒机让“大智慧”的混合 IT 运维更智慧](https://blog.fit2cloud.com/?p=882)
-- [携程 JumpServer 堡垒机部署与运营实战](https://blog.fit2cloud.com/?p=851)
-- [小红书的 JumpServer 堡垒机大规模资产跨版本迁移之路](https://blog.fit2cloud.com/?p=516)
-- [JumpServer 堡垒机助力中手游提升多云环境下安全运维能力](https://blog.fit2cloud.com/?p=732)
-- [中通快递：JumpServer 主机安全运维实践](https://blog.fit2cloud.com/?p=708)
-- [东方明珠：JumpServer 高效管控异构化、分布式云端资产](https://blog.fit2cloud.com/?p=687)
-- [江苏农信：JumpServer 堡垒机助力行业云安全运维](https://blog.fit2cloud.com/?p=666)
+!!! tip ""
+    - [JumpServer 堡垒机护航顺丰科技超大规模资产安全运维](https://blog.fit2cloud.com/?p=1147)
+    - [JumpServer 堡垒机让“大智慧”的混合 IT 运维更智慧](https://blog.fit2cloud.com/?p=882)
+    - [携程 JumpServer 堡垒机部署与运营实战](https://blog.fit2cloud.com/?p=851)
+    - [小红书的 JumpServer 堡垒机大规模资产跨版本迁移之路](https://blog.fit2cloud.com/?p=516)
+    - [JumpServer 堡垒机助力中手游提升多云环境下安全运维能力](https://blog.fit2cloud.com/?p=732)
+    - [中通快递：JumpServer 主机安全运维实践](https://blog.fit2cloud.com/?p=708)
+    - [东方明珠：JumpServer 高效管控异构化、分布式云端资产](https://blog.fit2cloud.com/?p=687)
+    - [江苏农信：JumpServer 堡垒机助力行业云安全运维](https://blog.fit2cloud.com/?p=666)
 
 
 ## 安全说明
 
-JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.jumpserver.org/zh/master/install/install_security/) 部署安装.
-
-如果你发现安全问题，可以直接联系我们：
-
-- ibuler@fit2cloud.com
-- support@fit2cloud.com
-- 400-052-0755
+!!! tip ""
+    JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.jumpserver.org/zh/master/install/install_security/) 部署安装.  
+    如果你发现安全问题，可以直接联系我们：  
+    - ibuler@fit2cloud.com
+    - support@fit2cloud.com
+    - 400-052-0755
 
 
 ## 商业产品
 
-- [JumpServer 企业版](https://jumpserver.org/enterprise.html)
-- [JumpServer 一体机](https://jumpserver.org/hardware.html)
+!!! tip ""
+    - [JumpServer 企业版](https://jumpserver.org/enterprise.html)
+    - [JumpServer 一体机](https://jumpserver.org/hardware.html)
 
 ## 项目推荐
 
-- [KubeOperator 开源容器平台](https://kubeoperator.io)
-- [MeterSphere 开源持续测试平台](https://metersphere.io)
+!!! tip ""
+    - [KubeOperator 开源容器平台](https://kubeoperator.io)
+    - [MeterSphere 开源持续测试平台](https://metersphere.io)
 
 ## 企业版试用
 
-- [申请企业版试用](https://jinshuju.net/f/kyOYpi)
-
-> 注: 企业版支持离线安装，申请通过后会提供高速下载链接。
+!!! tip ""
+    - [申请企业版试用](https://jinshuju.net/f/kyOYpi)  
+    > 注: 企业版支持离线安装，申请通过后会提供高速下载链接。

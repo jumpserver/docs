@@ -7,7 +7,7 @@
     ```
     ```yaml
     {
-        "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "https://dockerhub.azk8s.cn", "https://hub.wuxiaobai.win"]
+        "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "https://dockerhub.azk8s.cn"]
     }
     ```
     你可以使用其他的镜像源替换掉 https://hub-mirror.c.163.com, 我们推荐使用阿里云的镜像源，阿里云的镜像源速度很快且免费，登陆 https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors 申请

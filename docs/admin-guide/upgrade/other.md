@@ -4,14 +4,14 @@
 
 ## 极速安装升级
 
-```sh
-cd /opt/setuptools
-git pull
-```
-
-```sh
-./jmsctl.sh upgrade
-```
+!!! tip ""
+    ```sh
+    cd /opt/setuptools
+    git pull
+    ```
+    ```sh
+    ./jmsctl.sh upgrade
+    ```
 
 !!! info "可以使用 ./jmsctl.sh -h 查看帮助"
 
@@ -20,103 +20,101 @@ git pull
 - 请一定要先做好备份
 - 如果已经做了容器持久化, 直接更新镜像然后挂载 /var/lib/mysql 和 /opt/jumpserver/data 目录启动即可
 
-```sh
-docker stop jms_all
-docker rm jms_all
-```
-
-```sh
-docker run --name jms_all -d \
-  -v /opt/jumpserver/data:/opt/jumpserver/data \
-  -v /opt/jumpserver/mysql:/var/lib/mysql \
-  -p 80:80 \
-  -p 2222:2222 \
-  -e SECRET_KEY=xxxxxx \
-  -e BOOTSTRAP_TOKEN=xxx \
-  -e DB_PASSWORD=xxxxxx \
-  jumpserver/jms_all:v2.2.3
-```
+!!! tip ""
+    ```sh
+    docker stop jms_all
+    docker rm jms_all
+    ```
+    ```sh
+    docker run --name jms_all -d \
+      -v /opt/jumpserver/data:/opt/jumpserver/data \
+      -v /opt/jumpserver/mysql:/var/lib/mysql \
+      -p 80:80 \
+      -p 2222:2222 \
+      -e SECRET_KEY=xxxxxx \
+      -e BOOTSTRAP_TOKEN=xxx \
+      -e DB_PASSWORD=xxxxxx \
+      jumpserver/jms_all:v2.2.3
+    ```
 
 - 如果没有做容器持久化, 需要先将文件拷出
 
-```sh
-mkdir /opt/jumpserver
-docker cp jms_all:/opt/jumpserver/data /opt/jumpserver/data
-docker cp jms_all:/var/lib/mysql /opt/jumpserver/mysql
-chown -R 27:27 /opt/jumpserver/mysql
-```
+!!! tip ""
+    ```sh
+    mkdir /opt/jumpserver
+    docker cp jms_all:/opt/jumpserver/data /opt/jumpserver/data
+    docker cp jms_all:/var/lib/mysql /opt/jumpserver/mysql
+    chown -R 27:27 /opt/jumpserver/mysql
+    ```
 
 !!! tip "MySQL 的用户 id 是 27，未改权限的话可能会导致无法启动 Mariadb Server"
 
 - 然后挂载到新版本里面，注意 SECRET_KEY 要和旧版本一致(否则将导致加密数据无法解密)
 
-```sh
-docker stop jms_all
-docker rm jms_all
-```
-
-```sh
-docker run --name jms_all -d \
-  -v /opt/jumpserver/data:/opt/jumpserver/data \
-  -v /opt/jumpserver/mysql:/var/lib/mysql \
-  -p 80:80 \
-  -p 2222:2222 \
-  -e SECRET_KEY=xxxxxx \
-  -e BOOTSTRAP_TOKEN=xxx \
-  -e DB_PASSWORD=xxxxxx \
-  jumpserver/jms_all:v2.2.3
-```
+!!! tip ""
+    ```sh
+    docker stop jms_all
+    docker rm jms_all
+    ```
+    ```sh
+    docker run --name jms_all -d \
+      -v /opt/jumpserver/data:/opt/jumpserver/data \
+      -v /opt/jumpserver/mysql:/var/lib/mysql \
+      -p 80:80 \
+      -p 2222:2222 \
+      -e SECRET_KEY=xxxxxx \
+      -e BOOTSTRAP_TOKEN=xxx \
+      -e DB_PASSWORD=xxxxxx \
+      jumpserver/jms_all:v2.2.3
+    ```
 
 - 如果数据库已经外置, 则只需要挂载 jumpserver/data 即可
 
-```sh
-docker run --name jms_all -d \  
-  -v /opt/jumpserver/data:/opt/jumpserver/data \  
-  -p 80:80 \  
-  -p 2222:2222 \  
-  -e SECRET_KEY=xxxxxx \  
-  -e BOOTSTRAP_TOKEN=xxx \  
-  -e DB_HOST=192.168.x.x \  
-  -e DB_PORT=3306 \  
-  -e DB_USER=root \  
-  -e DB_PASSWORD=xxx \  
-  -e DB_NAME=jumpserver \  
-  jumpserver/jms_all:v2.2.3
-```
+!!! tip ""
+    ```sh
+    docker run --name jms_all -d \  
+      -v /opt/jumpserver/data:/opt/jumpserver/data \  
+      -p 80:80 \  
+      -p 2222:2222 \  
+      -e SECRET_KEY=xxxxxx \  
+      -e BOOTSTRAP_TOKEN=xxx \  
+      -e DB_HOST=192.168.x.x \  
+      -e DB_PORT=3306 \  
+      -e DB_USER=root \  
+      -e DB_PASSWORD=xxx \  
+      -e DB_NAME=jumpserver \  
+      jumpserver/jms_all:v2.2.3
+    ```
 
 ## docker-compose 升级
 
 - 容器默认已经做好了持久化
 
-```sh
-docker volume ls
-```
+!!! tip ""
+    ```sh
+    docker volume ls
+    ```
+    ```sh
+    cd /opt/Dockerfile
+    docker-compose down
+    ```
+    ```sh
+    git pull
+    ```
+    ```sh
+    cat docker-compose.yml
+    ```
 
-```sh
-cd /opt/Dockerfile
-docker-compose down
-```
+!!! warning "注意, 新版本更改了挂载目录, 请自行完成替换或者还原"
 
-```sh
-git pull
-```
-
-```sh
-cat docker-compose.yml
-```
-
-!!! warning "注意, 新版本更改了 jumpserver/data 挂载目录, 请自行完成替换或者还原"
-
-```sh
-vi .env
-```
-
-```vi
-Version=v2.2.3  # 修改你要升级的版本号为最新版本即可
-
-...
-```
-
-```sh
-docker-compose up -d
-```
+!!! tip ""
+    ```sh
+    vi .env
+    ```
+    ```vi
+    Version=v2.2.3  # 修改你要升级的版本号为最新版本即可
+    ...
+    ```
+    ```sh
+    docker-compose up -d
+    ```
