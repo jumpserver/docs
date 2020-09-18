@@ -57,13 +57,13 @@
 !!! tip ""
     ```sh
     cd /opt && \
-    wget https://github.com/jumpserver/jumpserver/releases/download/v2.2.3/jumpserver-v2.2.3.tar.gz
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.3.0/jumpserver-v2.3.0.tar.gz
     ```
 
 !!! tip ""
     ```sh
-    tar xf jumpserver-v2.2.3.tar.gz
-    mv jumpserver-v2.2.3 jumpserver
+    tar xf jumpserver-v2.3.0.tar.gz
+    mv jumpserver-v2.3.0 jumpserver
     ```
 
 ### 5. 安装编译环境依赖
@@ -251,13 +251,13 @@
 !!! tip ""
     ```sh
     cd /opt && \
-    wget https://github.com/jumpserver/koko/releases/download/v2.2.3/koko-v2.2.3-linux-amd64.tar.gz
+    wget https://github.com/jumpserver/koko/releases/download/v2.3.0/koko-v2.3.0-linux-amd64.tar.gz
     ```
 
 !!! tip ""
     ```sh                               
-    tar -xf koko-v2.2.3-linux-amd64.tar.gz && \
-    mv koko-v2.2.3-linux-amd64 koko && \
+    tar -xf koko-v2.3.0-linux-amd64.tar.gz && \
+    mv koko-v2.3.0-linux-amd64 koko && \
     chown -R root:root koko && \
     cd koko \
     mv kubectl /usr/local/bin/ && \
@@ -382,7 +382,7 @@
       -e LOG_LEVEL=ERROR \
       --privileged=true \
       --restart=always \
-      jumpserver/jms_koko:v2.2.3
+      jumpserver/jms_koko:v2.3.0
     ```
 
 ### 9. 正常部署 Guacamole 组件
@@ -392,14 +392,14 @@
 !!! tip ""
     ```sh
     cd /opt && \
-    wget -O docker-guacamole-v2.2.3.tar.gz https://github.com/jumpserver/docker-guacamole/archive/master.tar.gz
+    wget -O docker-guacamole-v2.3.0.tar.gz https://github.com/jumpserver/docker-guacamole/archive/master.tar.gz
     ```
 
 !!! tip ""
     ```sh
     mkdir /opt/docker-guacamole && \
-    tar -xf docker-guacamole-v2.2.3.tar.gz -C /opt/docker-guacamole --strip-components 1 && \
-    rm -rf /opt/docker-guacamole-v2.2.3.tar.gz && \
+    tar -xf docker-guacamole-v2.3.0.tar.gz -C /opt/docker-guacamole --strip-components 1 && \
+    rm -rf /opt/docker-guacamole-v2.3.0.tar.gz && \
     cd /opt/docker-guacamole && \
     wget http://download.jumpserver.org/public/guacamole-server-1.2.0.tar.gz && \
     tar -xf guacamole-server-1.2.0.tar.gz && \
@@ -452,11 +452,11 @@
     rm -rf /config/tomcat9/webapps/* && \
     sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml && \
     echo "java.util.logging.ConsoleHandler.encoding = UTF-8" >> /config/tomcat9/conf/logging.properties && \
-    wget http://download.jumpserver.org/release/v2.2.3/guacamole-client-v2.2.3.tar.gz && \
-    tar -xf guacamole-client-v2.2.3.tar.gz && \
-    rm -rf guacamole-client-v2.2.3.tar.gz && \
-    cp guacamole-client-v2.2.3/guacamole-*.war /config/tomcat9/webapps/ROOT.war && \
-    cp guacamole-client-v2.2.3/guacamole-*.jar /config/guacamole/extensions/ && \
+    wget http://download.jumpserver.org/release/v2.3.0/guacamole-client-v2.3.0.tar.gz && \
+    tar -xf guacamole-client-v2.3.0.tar.gz && \
+    rm -rf guacamole-client-v2.3.0.tar.gz && \
+    cp guacamole-client-v2.3.0/guacamole-*.war /config/tomcat9/webapps/ROOT.war && \
+    cp guacamole-client-v2.3.0/guacamole-*.jar /config/guacamole/extensions/ && \
     mv /opt/docker-guacamole/guacamole.properties /config/guacamole/ && \
     rm -rf /opt/docker-guacamole && \
     ```
@@ -511,7 +511,7 @@
       -e JUMPSERVER_SERVER=http://192.168.244.144:8080 \
       -e BOOTSTRAP_TOKEN=abcdefg1234 \
       -e GUACAMOLE_LOG_LEVEL=ERROR \
-      jumpserver/jms_guacamole:v2.2.3
+      jumpserver/jms_guacamole:v2.3.0
     ```
 
 ### 10. 下载 Lina 组件
@@ -519,13 +519,13 @@
 !!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/lina/releases/download/v2.2.3/lina-v2.2.3.tar.gz
+    wget https://github.com/jumpserver/lina/releases/download/v2.3.0/lina-v2.3.0.tar.gz
     ```
 
 !!! tip ""
     ```sh
-    tar -xf lina-v2.2.3.tar.gz
-    mv lina-v2.2.3 lina
+    tar -xf lina-v2.3.0.tar.gz
+    mv lina-v2.3.0 lina
     chown -R nginx:nginx lina
     ```
 
@@ -535,13 +535,13 @@
 !!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/luna/releases/download/v2.2.3/luna-v2.2.3.tar.gz
+    wget https://github.com/jumpserver/luna/releases/download/v2.3.0/luna-v2.3.0.tar.gz
     ```
 
 !!! tip ""
     ```sh
-    tar -xf luna-v2.2.3.tar.gz
-    mv luna-v2.2.3 luna
+    tar -xf luna-v2.3.0.tar.gz
+    mv luna-v2.3.0 luna
     chown -R nginx:nginx luna
     ```
 
