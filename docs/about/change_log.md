@@ -1,12 +1,20 @@
 # 更新日志
 
-v2.3.0
-------------------------
-2020年9月17日
-
 !!! tip ""
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+
+v2.3.1
+------------------------
+2020年9月24
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复使用 Token 连接资产失败的问题
+    * 修复Redis连接未正常关闭而导致Redis服务异常的问题
+
+v2.3.0
+------------------------
+2020年9月17日
 
 !!! tip "版本变化 What’s Changed"
     * 设置对话框中增加可以设置是否开启右键快速复制功能，默认是不开启右键快速复制功能
