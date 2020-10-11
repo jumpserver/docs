@@ -53,7 +53,7 @@
       -v /opt/jumpserver/data:/opt/jumpserver/data \
       -v /opt/jumpserver/mysql:/var/lib/mysql \
       --privileged=true \
-      jumpserver/jms_all:v2.3.1
+      jumpserver/jms_all:v2.3.2
     ```
 
 ### 访问
@@ -110,7 +110,7 @@
       -e REDIS_PORT=6379 \
       -e REDIS_PASSWORD=xxx \
       --privileged=true \
-      jumpserver/jms_all:v2.3.1
+      jumpserver/jms_all:v2.3.2
     ```
 
 ## Docker-Compose 部署

@@ -36,8 +36,8 @@
     rm -rf /etc/nginx/conf.d/jumpserver.conf
     docker rm jms_koko
     docker rm jms_guacamole
-    docker rmi jumpserver/jms_koko:v2.3.1
-    docker rmi jumpserver/jms_guacamole:v2.3.1
+    docker rmi jumpserver/jms_koko:v2.3.2
+    docker rmi jumpserver/jms_guacamole:v2.3.2
     rm -rf /usr/lib/systemd/system/jms.service
     rm -rf /opt/start_jms.sh
     rm -rf /opt/stop_jms.sh
@@ -50,12 +50,12 @@
     cd /opt/Dockerfile
     docker-compose down
     docker volume prune
-    docker rmi jumpserver/jms_core:v2.3.1
-    docker rmi jumpserver/jms_koko:v2.3.1
-    docker rmi jumpserver/jms_guacamole:v2.3.1
-    docker rmi jumpserver/jms_nginx:v2.3.1
-    docker rmi jumpserver/jms_redis:v2.3.1
-    docker rmi jumpserver/jms_mysql:v2.3.1
+    docker rmi jumpserver/jms_core:v2.3.2
+    docker rmi jumpserver/jms_koko:v2.3.2
+    docker rmi jumpserver/jms_guacamole:v2.3.2
+    docker rmi jumpserver/jms_nginx:v2.3.2
+    docker rmi jumpserver/jms_redis:v2.3.2
+    docker rmi jumpserver/jms_mysql:v2.3.2
     rm -rf /opt/Dockerfile
     ```
 

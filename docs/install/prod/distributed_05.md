@@ -65,11 +65,11 @@
 !!! tip ""
     ```sh
     cd /opt && \
-    wget https://github.com/jumpserver/jumpserver/releases/download/v2.3.1/jumpserver-v2.3.1.tar.gz
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.3.2/jumpserver-v2.3.2.tar.gz
     ```
     ```sh
-    tar xf jumpserver-v2.3.1.tar.gz
-    mv jumpserver-v2.3.1 jumpserver
+    tar xf jumpserver-v2.3.2.tar.gz
+    mv jumpserver-v2.3.2 jumpserver
     ```
 
 ### 7. 安装 rpm 依赖包
@@ -286,9 +286,9 @@
     yum -y install python36 python36-devel
     python3.6 -m venv /opt/py3
     source /opt/py3/bin/activate
-    wget https://github.com/jumpserver/jumpserver/releases/download/v2.3.1/jumpserver-v2.3.1.tar.gz
-    tar xf jumpserver-v2.3.1.tar.gz
-    mv jumpserver-v2.3.1 jumpserver
+    wget https://github.com/jumpserver/jumpserver/releases/download/v2.3.2/jumpserver-v2.3.2.tar.gz
+    tar xf jumpserver-v2.3.2.tar.gz
+    mv jumpserver-v2.3.2 jumpserver
     yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
     pip install wheel
     pip install --upgrade pip setuptools

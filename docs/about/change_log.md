@@ -4,6 +4,17 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.3.2
+------------------------
+2020年10月1日
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复刷新资产列表有时报错的问题
+    * 修复更新用户组织角色时报错的问题
+    * 修复华为云同步实例获取vpc默认分页导致创建网域为default的问题
+    * inject javascript script
+    * G drive enable or not
+
 v2.3.1
 ------------------------
 2020年9月24
