@@ -49,7 +49,7 @@
         ```python
         import requests
         import json
-        from pprint import
+        from pprint import pprint
         def get_token():
             url = 'https://demo.jumpserver.org/api/v1/authentication/auth/'
             query_args = {
@@ -70,13 +70,12 @@
         ```sh
         source /opt/py3/bin/activate
         cd /opt/jumpserver/apps
-        python manage.py shell << EOF
+        python manage.py shell
         from users.models import User
         u = User.objects.get(username='admin')
         u.create_private_token()
-        EOF
-        ```
-        如果生成报错, 表示已经存在 private_token, 直接获取即可
+
+        已经存在 private_token, 可以直接获取即可
         ```python
         u.private_token
         ```

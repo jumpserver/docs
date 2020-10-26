@@ -4,6 +4,14 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.4.1
+------------------------
+2020年10月20日
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复用户的资产不区分组织的问题
+    * 更新用户时org_roles参数为None时不更新组织角色
+
 v2.4.0
 ------------------------
 2020年10月15日
