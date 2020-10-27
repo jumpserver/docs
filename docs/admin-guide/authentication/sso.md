@@ -10,18 +10,18 @@
     ```
     修改完成后保存, 重启 jumpserver 即可
 
-!!! info "使用方式"
-    !!! tip "token 使用方法"
-        ```sh
-        curl -X POST https://demo.jumpserver.org/api/v1/authentication/auth/ \
-         -H 'Content-Type: application/json' \
-         -d '{"username": "admin", "password": "xxxxxx"}'
-        ```
-        ```json
-        {"token":"702ec7d22ea24a749140a00a98872e40", ...}
-        ```
+!!! info "使用方法"
+    通过 api 获取 token
+    ```sh
+    curl -X POST https://demo.jumpserver.org/api/v1/authentication/auth/ \
+      -H 'Content-Type: application/json' \
+      -d '{"username": "admin", "password": "xxxxxx"}'
+    ```
+    ```json
+    {"token":"702ec7d22ea24a749140a00a98872e40", ...}
+    ```
 
-    !!! tip "携带临时 token 请求 sso 接口获取登陆地址"
+    === "Token 使用方法"
         ```sh
         curl -X POST https://demo.jumpserver.org/api/v1/authentication/sso/login-url/ \
           -H 'Content-Type: application/json' \
@@ -29,11 +29,11 @@
           -d '{"username": "admin", "next": "/luna/"}'
         ```
 
-    !!! tip "携带永久 token 请求 sso 接口获取登陆地址"
+    === "Private Token 使用方法"
         ```sh
         curl -X POST https://demo.jumpserver.org/api/v1/authentication/sso/login-url/ \
           -H 'Content-Type: application/json' \
-          -H "Authorization: Token 702ec7d22ea24a749140a00a98872e40" \
+          -H "Authorization: Token 937b38011acf499eb474e2fecb424ab3" \
           -d '{"username": "admin", "next": "/luna/"}'
         ```
 

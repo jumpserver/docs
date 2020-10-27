@@ -4,6 +4,18 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.4.2
+------------------------
+2020年10月27日
+
+!!! success "Bug修复 Bug Fixes"
+    * 系统用户与用户组发生变化时报错
+    * 资产列表添加默认 date_created 排序
+    * 修复asset permission导入的bug
+    * 修复asset permission导入的bug
+    * AttributeError: 'UUID' object has no attribute 'name'
+    * 修复删除节点下资产授权报错的问题
+
 v2.4.1
 ------------------------
 2020年10月20日

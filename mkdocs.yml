@@ -134,9 +134,20 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.tasklist
     - pymdownx.tilde
+    - pymdownx.tabbed
     - pymdownx.betterem
     - pymdownx.superfences
     - pymdownx.progressbar
+    - pymdownx.tasklist:
+        custom_checkbox: true
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jumpserver
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/jumpserver/
 
 extra_css:
     - css/extra.css
@@ -144,5 +155,4 @@ extra_css:
 copyright: Copyright &copy; 2014-2020 <a href="https://www.fit2cloud.com">杭州飞致云信息科技有限公司</a>, All Rights Reserved. <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备15023818号</a>
 google_analytics: ['UA-147297392-3','docs.jumpserver.org']
 plugins:
-    - search:
-        prebuild_index: true
+    - search

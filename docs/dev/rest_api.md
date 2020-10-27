@@ -31,15 +31,17 @@
 ## API认证
 
 !!! into "JumpServer Api 支持的认证有以下几种方式"
-    Session 登录后可以直接使用session_id作为认证方式  
-    Token 获取一次性Token，该Token有有效期, 过期作废  
-    Private Token 永久Token  
-    Access Key签名 对Http Header进行签名
+    ```
+    Session         登录后可以直接使用 session_id 作为认证方式  
+    Token           获取一次性 Token，该 Token 有有效期, 过期作废  
+    Private Token   永久 Token  
+    Access Key      对 Http Header 进行签名
+    ```
 
-    ??? question "Session"
-        用户通过页面后登录，cookie中会存在 sessionid, 请求时同样把sessionid放到 cookie中
-    ??? question "Token"
-        使用账号密码调用 Api获取token，如果启用了MFA，则需要两步验证    
+    === "Session"
+        用户通过页面后登录，cookie 中会存在 sessionid, 请求时同样把 sessionid 放到 cookie 中
+    === "Token"
+        使用账号密码调用 Api 获取 token，如果启用了 MFA，则需要两步验证    
         ```sh
         curl -X POST http://localhost/api/v1/authentication/auth/ \
              -H 'Content-Type: application/json' \
@@ -66,7 +68,7 @@
             print(json.loads(response.text))
         get_user_info()
         ```
-    ??? question "Private Token"
+    === "Private Token"
         ```sh
         source /opt/py3/bin/activate
         cd /opt/jumpserver/apps
@@ -84,7 +86,7 @@
         curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' \
              -H "Content-Type:application/json" http://demo.jumpserver.org/api/v1/users/users/
         ```
-    ??? question "Access Key"
+    === "Access Key"
         Access key 签名机制是为了安全， IETF 发布的法案 [详见此处](https://tools.ietf.org/html/draft-cavage-http-signatures-08)
         认证的原理是:
 
