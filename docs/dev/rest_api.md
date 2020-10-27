@@ -76,7 +76,7 @@
         from users.models import User
         u = User.objects.get(username='admin')
         u.create_private_token()
-
+        ```
         已经存在 private_token, 可以直接获取即可
         ```python
         u.private_token
