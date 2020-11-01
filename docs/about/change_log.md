@@ -4,6 +4,13 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.4.3
+------------------------
+2020年10月30日
+
+!!! summary "性能优化 Optimization"
+    * 优化根据资产获取授权的系统用户
+
 v2.4.2
 ------------------------
 2020年10月27日

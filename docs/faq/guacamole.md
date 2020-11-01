@@ -41,7 +41,7 @@
           -e JUMPSERVER_SERVER=http://你的core_url:8080 \
           -e BOOTSTRAP_TOKEN=你的token \
           -e GUACAMOLE_LOG_LEVEL=ERROR \
-          jumpserver/jms_guacamole:v2.4.0
+          jumpserver/jms_guacamole:v2.4.3
         ```
 
 !!! question "docker logs -f jms_guacamole 提示 wait for jms_core ready"
@@ -61,5 +61,5 @@
       -e JUMPSERVER_SERVER=http://你的core_url:8080
       -e BOOTSTRAP_TOKEN=你的token
       -e GUACAMOLE_LOG_LEVEL=ERROR
-    jumpserver/jms_guacamole:v2.4.0
+    jumpserver/jms_guacamole:v2.4.3
     ```
