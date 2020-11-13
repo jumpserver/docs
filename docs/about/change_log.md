@@ -4,6 +4,28 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.4.4
+------------------------
+2020年11月12日
+
+!!! tip "版本变化 What’s Changed"
+    * 优化Tree加载
+    * 添加Tree加载重试组件
+    * 修复组织url拼写错误
+    * 用户授权树重建冲突时弹出提示信息，并保留之前的树
+    * 添加409错误信息
+
+!!! summary "性能优化 Optimization"
+    * 优化网络请求, 超时自动重试
+
+!!! success "Bug修复 Bug Fixes"
+    * 当用户授权为空时，清空旧的授权树
+    * 由于组织不对，导致生成或显示授权树错误
+    * 优化授权树生成速度
+    * org-member-relation url 拼写错误
+    * 重建授权树冲突时，响应里加 code
+    * 优化用户授权资产列表加载速度
+
 v2.4.3
 ------------------------
 2020年10月30日
