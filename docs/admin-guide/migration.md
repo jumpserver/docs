@@ -26,19 +26,22 @@
     yum -y install wget gcc epel-release git
     ```
     ```sh
-    yum -y install mariadb mariadb-devel mariadb-server MariaDB-shared redis
+    yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+    yum -y install mysql-community-server redis
+    sed -i "s@--initialize @--initialize-insecure @g" /usr/bin/mysqld_pre_systemd
     ```
     ```sh
-    systemctl enable redis mariadb
+    systemctl enable redis mysqld
     ```
     ```sh
-    systemctl start redis mariadb
+    systemctl start redis mysqld
     ```
     ```sh
     mysql -uroot
     ```
     ```mysql
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    set global validate_password_policy=LOW;
     grant all on jumpserver.* to 'jumpserver'@'127.0.0.1' identified by 'weakPassword';
     use jumpserver;
     source /opt/jumpserver.sql;

@@ -35,7 +35,7 @@ nav:
             - 环境说明: install/setup_by_prod.md
             - NFS 部署: install/prod/distributed_01.md
             - Tengine 部署: install/prod/distributed_02.md
-            - Mariadb 部署: install/prod/distributed_03.md
+            - MySQL 部署: install/prod/distributed_03.md
             - Redis 部署: install/prod/distributed_04.md
             - Core 部署: install/prod/distributed_05.md
             - Koko 部署: install/prod/distributed_06.md

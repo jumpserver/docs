@@ -47,7 +47,7 @@
     chown -R 27:27 /opt/jumpserver/mysql
     ```
 
-!!! tip "MySQL 的用户 id 是 27，未改权限的话可能会导致无法启动 Mariadb Server"
+!!! tip "MySQL 的用户 id 是 27，未改权限的话可能会导致无法启动 MySQL "
 
 - 然后挂载到新版本里面，注意 SECRET_KEY 要和旧版本一致(否则将导致加密数据无法解密)
 
