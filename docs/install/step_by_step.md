@@ -15,7 +15,6 @@
 
     Python = 3.6.x  
     Mysql Server ≥ 5.7  
-    Mariadb Server ≥ 10.1  
     Redis
 
 ## 安装步骤

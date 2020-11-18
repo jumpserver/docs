@@ -1,16 +1,16 @@
-# MariaDB 部署
+# mysql 部署
 
 ## 环境
 
 !!! tip ""
     - 系统: CentOS 7
-    - 服务: MariaDB Server
+    - 服务: MySQL Server
 
     ```
     +----------+------------+-----------------+---------------+------------------------+
     | Protocol | ServerName |        IP       |      Port     |         Used By        |
     +==========+============+=================+===============+========================+
-    |    TCP   |   Mariadb  | 192.168.100.10  |      3306     |           Core         |
+    |    TCP   |    MySQL   | 192.168.100.10  |      3306     |           Core         |
     +----------+------------+-----------------+---------------+------------------------+
     ```
 
@@ -34,32 +34,22 @@
 
 !!! warning "生产环境请勿授权整个网段, 请根据实际情况修改"
 
-### 3. 安装 mariadb
+### 3. 安装 mysql
 
 !!! tip ""
     ```sh
-    vi /etc/yum.repos.d/mariadb.repo
-    ```
-    ```vi
-    # MariaDB 10.5 CentOS repository list - created 2020-11-18 06:35 UTC
-    # http://downloads.mariadb.org/mariadb/repositories/
-    [mariadb]
-    name = MariaDB
-    baseurl = http://yum.mariadb.org/10.5/centos7-amd64
-    gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-    gpgcheck=1
-    ```
-    ```sh
-    yum install -y MariaDB-server MariaDB-client MariaDB-devel MariaDB-shared
+    yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+    sed -i "s@http://repo.mysql.com/@http://mirrors.ustc.edu.cn/mysql-repo/@g" /etc/yum.repos.d/mysql-community.repo
+    yum -y install mysql-community-server
+    sed -i "s@--initialize @--initialize-insecure @g" /usr/bin/mysqld_pre_systemd
     ```
 
-### 4. 启动 mariadb
+### 4. 启动 mysql
 
 !!! tip ""
     ```sh
-    systemctl enable mariadb
-    systemctl start mariadb
-    mysql_secure_installation
+    systemctl enable mysqld
+    systemctl start mysqld
     ```
 
 ### 5. 创建数据库及授权
@@ -70,6 +60,7 @@
     ```
     ```mysql
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    set global validate_password_policy=LOW;
     grant all on jumpserver.* to 'jumpserver'@'192.168.100.%' identified by 'weakPassword';
     flush privileges;
     ```
