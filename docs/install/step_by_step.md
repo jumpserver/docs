@@ -14,8 +14,8 @@
     操作系统: Linux 发行版 x86_64  
 
     Python = 3.6.x  
-    Mysql Server ≥ 5.6  
-    Mariadb Server ≥ 5.5.56  
+    Mysql Server ≥ 5.7  
+    Mariadb Server ≥ 10.1  
     Redis
 
 ## 安装步骤

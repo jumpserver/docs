@@ -38,7 +38,19 @@
 
 !!! tip ""
     ```sh
-    yum install -y mariadb mariadb-server mariadb-devel
+    vi /etc/yum.repos.d/mariadb.repo
+    ```
+    ```vi
+    # MariaDB 10.5 CentOS repository list - created 2020-11-18 06:35 UTC
+    # http://downloads.mariadb.org/mariadb/repositories/
+    [mariadb]
+    name = MariaDB
+    baseurl = http://yum.mariadb.org/10.5/centos7-amd64
+    gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+    gpgcheck=1
+    ```
+    ```sh
+    yum install -y MariaDB-server MariaDB-client MariaDB-devel MariaDB-shared
     ```
 
 ### 4. 启动 mariadb
@@ -47,6 +59,7 @@
     ```sh
     systemctl enable mariadb
     systemctl start mariadb
+    mysql_secure_installation
     ```
 
 ### 5. 创建数据库及授权
