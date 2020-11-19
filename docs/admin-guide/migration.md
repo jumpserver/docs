@@ -47,6 +47,10 @@
     source /opt/jumpserver.sql;
     quit
     ```
+    ```sh
+    # 如果新安装的 MySQL 版本与旧版本不一致，需要对 jumpsever 数据库升级
+    mysql_upgrade -uroot
+    ```
 
 !!! info "这里创建数据库应用的账户密码建议与 jumpserver/config.yml 里面的数据库信息一致"
 
