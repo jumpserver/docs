@@ -55,11 +55,11 @@
 !!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/lina/releases/download/v2.5.0/lina-v2.5.0.tar.gz
+    wget https://github.com/jumpserver/lina/releases/download/v2.5.1/lina-v2.5.1.tar.gz
     ```
     ```sh
-    tar -xf lina-v2.5.0.tar.gz
-    mv lina-v2.5.0 lina
+    tar -xf lina-v2.5.1.tar.gz
+    mv lina-v2.5.1 lina
     chown -R nginx:nginx lina
     ```
 
@@ -68,11 +68,11 @@
 !!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/luna/releases/download/v2.5.0/luna-v2.5.0.tar.gz
+    wget https://github.com/jumpserver/luna/releases/download/v2.5.1/luna-v2.5.1.tar.gz
     ```
     ```sh
-    tar -xf luna-v2.5.0.tar.gz
-    mv luna-v2.5.0 luna
+    tar -xf luna-v2.5.1.tar.gz
+    mv luna-v2.5.1 luna
     chown -R nginx:nginx luna
     ```
 

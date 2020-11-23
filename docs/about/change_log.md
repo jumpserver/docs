@@ -4,6 +4,27 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.5.1
+------------------------
+2020年11月23日
+
+!!! summary "性能优化 Optimization"
+    * 优化使用 pip mirror
+    * 优化构建时用的 mirror
+    * 获取用户所有授权时转换成 list 数据结构
+    * 优化用户授权资产列表加载速度
+    * 优化检查节点资产数量的 Celery 任务
+    * 限制搜索授权资产返回的数据条数
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复我的资产页面问题
+    * 修复用户组授权树与资产问题
+    * 当用户授权为空时，清空旧的授权树
+    * 调整旧的组织与用户关联接口
+    * 修复无法隐藏侧边栏的Bug
+    * 修复过滤应用树bug
+    * 修复批量更新组件的问题
+
 v2.5.0
 ------------------------
 2020年11月18日
