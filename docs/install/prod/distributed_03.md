@@ -38,8 +38,7 @@
 
 !!! tip ""
     ```sh
-    yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-    sed -i "s@http://repo.mysql.com/@http://mirrors.ustc.edu.cn/mysql-repo/@g" /etc/yum.repos.d/mysql-community.repo
+    yum -y localinstall http://mirrors.ustc.edu.cn/mysql-repo/mysql57-community-release-el7.rpm
     yum -y install mysql-community-server
     sed -i "s@--initialize @--initialize-insecure @g" /usr/bin/mysqld_pre_systemd
     ```
