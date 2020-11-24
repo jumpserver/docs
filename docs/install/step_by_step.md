@@ -457,7 +457,7 @@
     cp guacamole-client-v2.5.1/guacamole-*.war /config/tomcat9/webapps/ROOT.war && \
     cp guacamole-client-v2.5.1/guacamole-*.jar /config/guacamole/extensions/ && \
     mv /opt/docker-guacamole/guacamole.properties /config/guacamole/ && \
-    rm -rf /opt/docker-guacamole && \
+    rm -rf /opt/docker-guacamole
     ```
 
 !!! warning "设置 Guacamole 环境"
