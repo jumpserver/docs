@@ -52,6 +52,7 @@ nav:
             - 1.4.5-1.4.10 升级到 最新: admin-guide/upgrade/1.4.5-1.4.10.md
             - 1.5.0 及之后版本升级到 最新: admin-guide/upgrade/1.5.0.md
             - 其他部署方式升级说明: admin-guide/upgrade/other.md
+            - MariaDB 迁移到 MySQL: admin-guide/upgrade/mariadb-mysql.md
 
         - 迁移文档: admin-guide/migration.md
         - 资产要求:
