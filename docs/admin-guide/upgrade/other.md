@@ -1,6 +1,7 @@
 # 其他方式升级说明
 
 !!! warning "升级及迁移请保持 SECRET_KEY 与旧版本一致, 否则会导致数据库加密数据无法解密"
+    - v2.5.0 必须使用 mysql5.7+ 作为 jumpserver 数据库, 请自行导入备份的 sql 完成迁移
 
 ## 极速安装升级
 
@@ -21,6 +22,10 @@
 - 如果已经做了容器持久化, 直接更新镜像然后挂载 /var/lib/mysql 和 /opt/jumpserver/data 目录启动即可
 
 !!! tip ""
+    ```sh
+    docker exec jms_all /bin/bash -c 'echo "mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME > /opt/jumpserver.sql" > /tmp/backup.sh; sh /tmp/backup.sh'
+    docker cp jms_all:/opt/jumpserver.sql /opt
+    ```
     ```sh
     docker stop jms_all
     docker rm jms_all
@@ -93,6 +98,8 @@
 !!! tip ""
     ```sh
     docker volume ls
+    docker exec jms_core /bin/bash -c 'echo "mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME > /opt/jumpserver.sql" > /tmp/backup.sh; sh /tmp/backup.sh'
+    docker cp jms_core:/opt/jumpserver.sql /opt
     ```
     ```sh
     cd /opt/Dockerfile
