@@ -59,7 +59,9 @@
         rm -rf /var/lib/mysql
         ```
         ```sh
-        sh scripts/install_mysql.sh
+        source config.conf
+        rm -rf $install_dir/py3
+        ./jmsctl.sh install
         ```
         ```sh
         mysql -uroot
@@ -70,9 +72,6 @@
         exit
         ```
         ```sh
-        rm -rf /opt/py3
-        sh scripts/install_py3.sh
-        sh scripts/install_core.sh
         ./jmsctl.sh start
         ```
 
