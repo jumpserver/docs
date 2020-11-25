@@ -38,10 +38,11 @@
         ```
         ```sh
         rm -rf /opt/py3
-        python3 -m venv /opt/py3
+        python3.6 -m venv /opt/py3
         source /opt/py3/bin/activate
         cd /opt/jumpserver
         pip install -r requirements/requirements.txt
+        ./jms start -d
         ```
 
     === "脚本部署"
@@ -70,15 +71,12 @@
         ```
         ```sh
         rm -rf /opt/py3
-        python3 -m venv /opt/py3
-        source /opt/py3/bin/activate
-        cd /opt/jumpserver
-        pip install -r requirements/requirements.txt
+        sh scripts/install_py3.sh
+        sh scripts/install_core.sh
+        ./jmsctl.sh start
         ```
 
-    ```sh
-    ./jms start  # 启动 Core 看是否有报错
-    ```
+    - 启动 Core 看 jumpserver/logs/jumpserver.log 是否有报错
 
 !!! question "启动报错 Cannot add foreign key constraint"
     - 先停止 core 服务
