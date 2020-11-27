@@ -4,6 +4,22 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.5.2
+------------------------
+2020年11月27日
+
+!!! summary "性能优化 Optimization"
+    * 优化用户列表在大规模数据下慢的问题
+    * 修改节点资产数量自检程序的执行周期
+
+!!! success "Bug修复 Bug Fixes"
+    * Node 保存的时候，在信号里设置 parent_key
+    * 修复动态系统用户和用户关系变化时没有推送到资产的问题
+    * 兼容旧的组织用户关系API
+    * 修复在动态用户所绑定的授权规则中，如授权给用户组，当用户组增加成员后，动态系统用户下没有相应增加用户，因此也不会自动推送的问题
+    * 恢复Web终端入口
+    * 修复列表克隆的bug
+
 v2.5.1
 ------------------------
 2020年11月23日

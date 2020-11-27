@@ -75,7 +75,7 @@
       -e REDIS_PORT=6379 \
       -e REDIS_PASSWORD=weakPassword \
       --privileged=true \
-      jumpserver/jms_koko:v2.5.1
+      jumpserver/jms_koko:v2.5.2
     ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
@@ -109,7 +109,7 @@
       -e REDIS_PORT=6379 \
       -e REDIS_PASSWORD=weakPassword \
       --privileged=true \
-      jumpserver/jms_koko:v2.5.1
+      jumpserver/jms_koko:v2.5.2
     ```
 
 !!! warning "如果你已经配置好了 `域名` 和 `ssl`, 请使用域名注册"
