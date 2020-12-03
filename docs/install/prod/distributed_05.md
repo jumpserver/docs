@@ -83,8 +83,6 @@
 
 !!! tip ""
     ```sh
-    pip install wheel
-    pip install --upgrade pip setuptools
     pip install -r /opt/jumpserver/requirements/requirements.txt
     ```
 
@@ -290,8 +288,6 @@
     tar xf jumpserver-v2.5.2.tar.gz
     mv jumpserver-v2.5.2 jumpserver
     yum -y install $(cat /opt/jumpserver/requirements/rpm_requirements.txt)
-    pip install wheel
-    pip install --upgrade pip setuptools
     pip install -r /opt/jumpserver/requirements/requirements.txt
     ```
 

@@ -84,16 +84,12 @@
 
 !!! tip ""
     ```sh
-    pip install wheel && \
-    pip install --upgrade pip setuptools && \
     pip install -r requirements.txt
     ```
 
 ??? question "确保已经载入 py3 虚拟环境, 中间如果遇到报错一般是依赖包没装全, 可以通过 搜索引擎 解决"
     国内可以使用镜像加速  
     ```sh
-    pip install wheel -i https://mirrors.aliyun.com/pypi/simple/
-    pip install --upgrade pip setuptools -i https://mirrors.aliyun.com/pypi/simple/
     pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
     ```
 
