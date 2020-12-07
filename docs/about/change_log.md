@@ -4,6 +4,17 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.5.3
+------------------------
+2020年12月7日
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复centos的mirror问题
+    * Node ordering [parent_key, value]
+    * 修复默认组织Default节点显示问题(存在key为0的Default节点)
+    * 新建授权时动态用户可能推送不成功
+    * 锁定pip版本
+
 v2.5.2
 ------------------------
 2020年11月27日

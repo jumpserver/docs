@@ -15,7 +15,7 @@
 
 !!! tip "一键安装 JumpServer"
     ```sh
-    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.5.2/quick_start.sh | sh
+    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.5.3/quick_start.sh | sh
     ```
 
 ## 下载
