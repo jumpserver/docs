@@ -111,16 +111,16 @@ REDIS_DB_ROOM: 0                  # redis 配置  选择的 redis 库索引
 ## Guacamole 参数说明
 
 ```yaml
-GUACAMOLE_LOG_LEVEL: INFO            # 日志级别 DEBUG,INFO,WARN,ERROR  INFO
+GUACAMOLE_LOG_LEVEL: INFO            # 日志级别 DEBUG, INFO, WARN, ERROR
 JUMPSERVER_SERVER: http://core:8080  # core 地址
 BOOTSTRAP_TOKEN: *****               # 注册时预共享 TOKEN
-JUMPSERVER_KEY_DIR: /config/guacamole/            # 注册后 Key 文件保存目录
+JUMPSERVER_KEY_DIR: /config/guacamole/keys        # 注册后 Key 文件保存目录
 JUMPSERVER_RECORD_PATH: /config/guacamole/record  # 录像保存目录
 JUMPSERVER_DRIVE_PATH: /config/guacamole/drive    # 上传文件保存目录
 JUMPSERVER_CLEAR_DRIVE_SESSION: false  # 连接断开时清理上传文件 true, false（不清理）
 JUMPSERVER_CLEAR_DRIVE_SCHEDULE: 24    # 清理多久以前的上传文件（每隔1小时）  大于1的数值  无（不设置环境变量就不清理）
-JUMPSERVER_COLOR_DEPTH: 24             # 颜色深度 8,16,24,32
-# JUMPSERVER_DPI:                      # 图像每英寸长度内的像素点数
+JUMPSERVER_COLOR_DEPTH: 32             # 颜色深度 低色 16位, 真彩 24位, 真彩 32位
+JUMPSERVER_DPI: 120                    # 图像每英寸长度内的像素点数 120, 160, 240 等
 
 JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD: false  # 全局禁用上传下载(>= 2.2.3 版本支持)
 JUMPSERVER_DISABLE_ALL_COPY_PASTE: false      # 全局禁用剪切板粘贴复制(>= 2.2.3 版本支持)
