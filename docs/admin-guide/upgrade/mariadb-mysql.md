@@ -37,6 +37,9 @@
         exit
         ```
         ```sh
+        mysql_upgrade -uroot
+        ```
+        ```sh
         rm -rf /opt/py3
         python3.6 -m venv /opt/py3
         source /opt/py3/bin/activate
@@ -70,6 +73,9 @@
         use jumpserver;
         source /opt/jumpserver.sql
         exit
+        ```
+        ```sh
+        mysql_upgrade -uroot
         ```
         ```sh
         ./jmsctl.sh start
