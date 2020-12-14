@@ -7,9 +7,9 @@
 ### 1. koko 启动异常
 
 !!! question "启动异常"
-    POST failed, get code: `403`, {"`detail`":"`身份认证信息未提供`。"}  
-    POST failed, get code: `400`, {"`name`":["`名称重复`"]}  
-    Connect Server error or access key is incalid, remove data/keys/.access_key run agent
+    - POST failed, get code: 403, {"detail":"身份认证信息未提供。"}  
+    - POST failed, get code: 400, {"name":["名称重复"]}  
+    - Connect Server error or access key is incalid, remove data/keys/.access_key run agent
 
     上面报错都按照下面处理
 
@@ -17,7 +17,7 @@
     cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
     ```
 
-    !!! tip "正常部署的 koko 组件"
+    === "正常部署的 koko 组件"
         在 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的那个 )  
         删掉 koko/data/keys/ 下面的文件  
         修改 config.yml 里面的 BOOTSTRAP_TOKEN 为从 jumpserver/config.yml 获取的值  
@@ -28,7 +28,7 @@
         ./koko
         ```
 
-    !!! tip "docker 容器部署的 koko 组件"
+    === "docker 容器部署的 koko 组件"
         在 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的那个 )  
         删掉 jms_koko 容器  
         从 jumpserver/config.yml 获取 BOOTSTRAP_TOKEN  

@@ -7,7 +7,7 @@
 ### 1. guacamole 启动异常
 
 !!! question "启动异常"
-    ERROR o.a.g.a.j.r.JumpserverRegisterService 121 - 注册终端失败
+    - ERROR o.a.g.a.j.r.JumpserverRegisterService 121 - 注册终端失败
 
     上面报错都按照下面处理
 
@@ -17,7 +17,7 @@
 
     !!! info "guacamole 组件不在线可按照下面处理"
 
-    !!! tip "正常部署的 guacamole 组件"
+    === "正常部署的 guacamole 组件"
         在 web - 会话管理 - 终端管理 里面删除 [Gua] 开头的注册 ( 在线显示红色的那个 )  
         删掉 guacamole/data/keys/ 下面的文件(旧版本可能在 /config/guacamole/keys)  
         ```sh
@@ -29,7 +29,7 @@
         sh /config/tomcat9/bin/startup.sh
         ```
 
-    !!! tip "docker 容器部署的 guacamole 组件"
+    === "docker 容器部署的 guacamole 组件"
         在 web - 会话管理 - 终端管理 里面删除 [Gua] 开头的注册 ( 在线显示红色的那个 )  
         删掉 jms_guacamole 容器  
         从 jumpserver/config.yml 获取 BOOTSTRAP_TOKEN  
