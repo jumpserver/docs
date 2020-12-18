@@ -90,19 +90,15 @@ nav:
 
 markdown_extensions:
     - admonition
-    - codehilite:
-        guess_lang: True
-        linenums: False
-    - toc:
-        permalink: True
-    - footnotes
+    - abbr
     - attr_list
     - def_list
-    - tables
-    - abbr
-    - md_in_html
-    - pymdownx.extra
-    - pymdownx.arithmatex
+    - footnotes
+    - meta
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex:
+        generic: true
     - pymdownx.betterem:
         smart_enable: all
     - pymdownx.caret
@@ -111,20 +107,26 @@ markdown_extensions:
     - pymdownx.emoji:
         emoji_index: !!python/name:materialx.emoji.twemoji
         emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.highlight
     - pymdownx.inlinehilite
-    - pymdownx.magiclink
+    - pymdownx.keys
+    - pymdownx.magiclink:
+        repo_url_shorthand: true
+        user: squidfunk
+        repo: mkdocs-material
     - pymdownx.mark
     - pymdownx.smartsymbols
-    - pymdownx.superfences
-    - pymdownx.tasklist
-    - pymdownx.tilde
+    - pymdownx.snippets:
+        check_paths: true
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
     - pymdownx.tabbed
-    - pymdownx.betterem
-    - pymdownx.superfences
-    - pymdownx.progressbar
-    - pymdownx.keys
     - pymdownx.tasklist:
         custom_checkbox: true
+    - pymdownx.tilde
 
 extra:
   generator: false
