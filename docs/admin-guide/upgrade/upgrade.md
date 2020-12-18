@@ -80,11 +80,11 @@
     mysqldump -h127.0.0.1 -P3306 -ujumpserver -p jumpserver > /opt/jumpserver.sql
     ```
     ```sh
-    if grep -q 'COLLATE=utf8_bin' /opt/jumpserver/jumpserver.sql; then
+    if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
         echo "备份数据库字符集正确";
     else
-        cp /opt/jumpserver/jumpserver.sql /opt/jumpserver/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver/jumpserver.sql
+        cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
+        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
     fi
     ```
 
@@ -254,7 +254,7 @@
     ./jmsctl.sh restore_db /opt/jumpserver.sql
     ```
     ```nginx
-    开始还原数据库: /opt/jumpserver/jumpserver.sql
+    开始还原数据库: /opt/jumpserver.sql
     mysql: [Warning] Using a password on the command line interface can be insecure.
     数据库恢复成功！
     ```sh

@@ -53,18 +53,18 @@
         ./jmsctl.sh stop
         ```
         ```sh
-        mkdir -p /opt/jumpserver/db_backup/
-        mysqldump -uroot jumpserver > /opt/jumpserver/db_backup/jumpserver.sql
+        mysqldump -uroot jumpserver > /opt/jumpserver.sql
         ```
         ```sh
-        if grep -q 'COLLATE=utf8_bin' /opt/jumpserver/db_backup/jumpserver.sql; then
+        if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
             echo "备份数据库字符集正确";
         else
-            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver/db_backup/jumpserver.sql
+            cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
+            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
         fi
         ```
         ```sh
-        ./jmsctl.sh restore_db /opt/jumpserver/db_backup/jumpserver.sql
+        ./jmsctl.sh restore_db /opt/jumpserver.sql
         ```
         ```sh
         ./jmsctl.sh start
