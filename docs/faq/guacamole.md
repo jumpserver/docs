@@ -15,3 +15,5 @@
     rm -f /opt/jumpserver/guacamole/data/keys/jumpserver.key
     docker restart jms_guacamole
     ```
+
+    Windows 文件上传可以直接把文件拖拽到 Windows 窗口, 上传后文件在 计算机 - G盘, 下载把文件放到 G 盘的 download  目录即可弹出下载窗口, 快捷键上传下载工具栏 ++ctrl+alt+shift++

@@ -1,6 +1,8 @@
 # 反向代理
 
 !!! info "反向代理 JumpServer要求说明"
+    - rdp 协议复制粘贴需要部署可信任的 ssl 证书
+    - 通过 https 协议访问就能在 rdp 资产里面使用复制粘贴
 
 ### 1. nginx ssl 部署
 
