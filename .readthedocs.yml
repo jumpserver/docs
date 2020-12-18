@@ -11,5 +11,5 @@ python:
   install:
     - requirements: requirements/requirements.txt
 
-buile:
+build:
    image: latest
