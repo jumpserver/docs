@@ -18,16 +18,6 @@
 |  < 2.0.0  |   `http://<url>/docs`    |   `http://192.168.244.144/docs`    |
 |  >=2.0.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
 
-!!! warning "需要打开 debug 模式"
-    ```yaml
-    vi jumpserver/config/config.txt
-    ```
-    ```vim
-    DEBUG=true
-    ```
-    ```sh
-    ./jmsctl.sh restart
-    ```
 
 ![api_swagger](../img/api_swagger.jpg)
 
