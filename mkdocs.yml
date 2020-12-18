@@ -30,12 +30,14 @@ nav:
     - 安装配置:
         - 极速部署: install/setup_by_fast.md
         - 安全建议: install/install_security.md
-
     - 管理文档:
         - 快速入门: admin-guide/quick_start.md
         - 更新升级:
             - 升级文档: admin-guide/upgrade/upgrade.md
-
+            - 其他文档:
+                - 版本小于 1.4.4: admin-guide/upgrade/1.0.0-1.4.3.md
+                - 版本小于 1.4.5: admin-guide/upgrade/1.4.4.md
+                - 迁移到 MySQL: admin-guide/upgrade/mariadb-mysql.md
         - 迁移文档: admin-guide/migration.md
         - 资产要求:
             - Tetnet: admin-guide/assets/telnet.md
@@ -44,11 +46,9 @@ nav:
             - Windows SSH: admin-guide/assets/windows_ssh.md
             - Windows VNC: admin-guide/assets/windows_vnc.md
             - Windows RDP: admin-guide/assets/windows_rdp.md
-
         - 应用要求:
             - MySQL: admin-guide/app/mysql.md
             - Kubernetes: admin-guide/app/kubernetes.md
-
         - 身份认证:
             - SSO: admin-guide/authentication/sso.md
             - CAS: admin-guide/authentication/cas.md
@@ -56,36 +56,29 @@ nav:
             - LDAP: admin-guide/authentication/ldap.md
             - OpenID: admin-guide/authentication/openid.md
             - Radius: admin-guide/authentication/radius.md
-
         - 反向代理: admin-guide/proxy.md
         - 参数说明: admin-guide/env.md
-
     - 开发文档:
         - API文档: dev/rest_api.md
-
     - 用户文档:
         - 我的资产: user-guide/assets/user-asset.md
         - 我的应用:
               - 数据库应用: user-guide/applications/user-database-app.md
-
         - 命令执行: user-guide/ops/command-executions/create.md
         - 个人信息: user-guide/users/profile.md
         - Web终端: user-guide/terminal/web-terminal.md
         - 文件管理: user-guide/terminal/web-sftp.md
-
     - 帮助文档:
         - 其他问题: faq/other.md
         - Core 常见问题: faq/core.md
         - Luna 常见问题: faq/luna.md
         - koko 常见问题: faq/koko.md
         - Guacamole 问题: faq/guacamole.md
-
     - 关于:
         - 贡献列表: about/contributor.md
         - 更新说明: about/change_log.md
         - 联系方式: about/contact.md
         - 商业产品: about/commercial.md
-
     - 企业版试用: enterprise.md
 
 markdown_extensions:
@@ -127,7 +120,6 @@ markdown_extensions:
     - pymdownx.tasklist:
         custom_checkbox: true
     - pymdownx.tilde
-
 
 extra:
   generator: false
