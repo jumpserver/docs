@@ -8,7 +8,7 @@
 vi /opt/jumpserver/config/config.txt
 ```
 
-```
+```vim
 SECRET_KEY=****           # 用来加密解密的 KEY
 BOOTSTRAP_TOKEN=****      # koko/guacamole 用来向jms注册使用的 token
 DEBUG=TRUE                # 是否开启 debug 模式，显示更多信息  开启以后，界面可以显示API调用信息
@@ -84,7 +84,7 @@ USER_LOGIN_SINGLE_MACHINE_ENABLED=False  # 只允许用户一个浏览器登录
 
 ## KoKo 参数说明
 
-```yaml
+```vim
 NAME=hostname                    # 默认是主机名
 CORE_HOST=http://127.0.0.1:8080  # Jumpserver 项目的 url，api 请求注册会使用
 BOOTSTRAP_TOKEN=*****            # 预共享秘钥，请和 jumpserver 配置文件中保持一致。
@@ -114,7 +114,7 @@ REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
 
 ## Guacamole 参数说明
 
-```yaml
+```vim
 GUACAMOLE_LOG_LEVEL=INFO            # 日志级别 DEBUG, INFO, WARN, ERROR
 JUMPSERVER_SERVER=http://core:8080  # core 地址
 BOOTSTRAP_TOKEN=*****               # 注册时预共享 TOKEN
