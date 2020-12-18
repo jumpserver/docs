@@ -131,12 +131,12 @@ Defaule
 | 登录模式    | 自动登陆                |
 | 用户名      | testssh01              |
 | 协议        | ssh                    |
-| 自动推送    | :material-check:        |
+| 自动推送    | √        |
 | Sudo        | ALL                    |
 | Shell       | /bin/bash              |
 | 家目录      |                        |
 | 用户附属组  |                         |
-| 自动生成密钥 | :material-check:       |
+| 自动生成密钥 | √       |
 | SFTP根路径  | /                      |
 
 | 表单        | RDP 系统用户           |
@@ -145,8 +145,8 @@ Defaule
 | 登录模式    | 自动登陆                |
 | 用户名      | testrdp01              |
 | 协议        | rdp                    |
-| 自动推送    | :material-check:       |
-| 自动生成密钥 | :material-check:       |
+| 自动推送    | √       |
+| 自动生成密钥 | √       |
 
 | 表单     | MySQL 系统用户            |
 | -------- | ------------------------ |
@@ -176,7 +176,7 @@ Defaule
 | 资产     | test_ssh01(172.16.80.11)          |          test_rdp01(172.16.80.21) |
 | 节点     |                                   |                                   |
 | 系统用户 | test_ssh01_测试系统用户(testssh01) | test_rdp01_测试系统用户(testrdp01) |
-| 权限     | :material-check: 全部             | :material-check: 全部              |
+| 权限     | √ 全部                            | √ 全部                            |
 
 ??? tip "资产授权提示"
     `名称`, 授权的名称, 不能重复  
