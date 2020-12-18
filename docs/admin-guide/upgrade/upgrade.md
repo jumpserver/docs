@@ -32,15 +32,22 @@
         source /opt/py3/bin/activate
         ./jms stop
         ```
+        ```sh
+        cd /opt
+        mv /opt/jumpserver /opt/jumpserver_bak
+        ```
 
     === "setuptools 脚本部署"
         ```sh
         cd /opt/setuptools
         ./jmsctl.sh stop
+        systemctl disable jms_core
+        mv /opt/jumpserver /opt/jumpserver_bak
         ```
 
     === "docker 部署"
         ```sh
+        docker cp jms_all:/opt/jumpserver /opt/jumpserver_bak
         docker exec -it jms_all /bin/bash
         cd /opt/koko
         ./koko -s stop
@@ -53,6 +60,7 @@
 
     === "docker-compose 部署"
         ```sh
+        docker cp jms_core:/opt/jumpserver /opt/jumpserver_bak
         docker stop jms_koko
         docker stop jms_guacamole
         docker stop jms_core
@@ -249,6 +257,8 @@
     开始还原数据库: /opt/jumpserver/jumpserver.sql
     mysql: [Warning] Using a password on the command line interface can be insecure.
     数据库恢复成功！
+    ```sh
+    mv /opt/jumpserver_bak/data /opt/jumpserver/core/
     ```
     ```sh
     ./jmsctl.sh start

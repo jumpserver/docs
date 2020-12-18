@@ -11,60 +11,11 @@
     - POST failed, get code: 400, {"name":["名称重复"]}  
     - Connect Server error or access key is incalid, remove data/keys/.access_key run agent
 
-    上面报错都按照下面处理
+    在 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的[koko]xxx )  
 
     ```sh
-    cat /opt/jumpserver/config.yml | grep BOOTSTRAP_TOKEN
-    ```
-
-    === "正常部署的 koko 组件"
-        在 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的那个 )  
-        删掉 koko/data/keys/ 下面的文件  
-        修改 config.yml 里面的 BOOTSTRAP_TOKEN 为从 jumpserver/config.yml 获取的值  
-        重启 koko  
-        ```sh
-        rm -rf data/keys/.access_key
-        vi config.yml
-        ./koko
-        ```
-
-    === "docker 容器部署的 koko 组件"
-        在 web - 会话管理 - 终端管理 里面删除 koko 的注册 ( 在线显示红色的那个 )  
-        删掉 jms_koko 容器  
-        从 jumpserver/config.yml 获取 BOOTSTRAP_TOKEN  
-        重新运行  
-        ```sh
-        docker rm jms_koko
-        docker run --name jms_koko -d \
-          -p 2222:2222 \
-          -p 127.0.0.1:5000:5000 \
-          -e CORE_HOST=http://你的core_url:8080 \
-          -e BOOTSTRAP_TOKEN=你的token \
-          -e LOG_LEVEL=ERROR \
-          --restart=always \
-        jumpserver/jms_koko:v2.5.3
-        ```
-
-!!! question "docker logs -f jms_koko 提示 wait for jms_core ready"
-    此问题一般是 CORE_HOST 使用了 127.0.0.1 或者修改了 firewalld iptables 导致网络故障
-    ```sh
-    systemctl restart jms_koko
+    rm -f /opt/jumpserver/koko/data/keys/.access_key
     docker restart jms_koko
-    docker logs -f jms_koko
-    ```
-
-    !!! tip "如果依旧提示 wait for jms_core ready"
-    ```sh
-    docker stop jms_koko
-    docker rm jms_koko
-    docker run --name jms_koko -d
-      -p 2222:2222
-      -p 127.0.0.1:5000:5000
-      -e CORE_HOST=http://你的core_url:8080
-      -e BOOTSTRAP_TOKEN=你的token
-      -e LOG_LEVEL=ERROR
-      --restart=always
-    jumpserver/jms_koko:v2.5.3
     ```
 
 ### 2. SSH 登陆异常

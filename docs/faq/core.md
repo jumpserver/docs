@@ -4,43 +4,18 @@
 
 ### 1. core 启动异常
 
-!!! question "ModuleNotFoundError: No module named 'daemon'"
+!!! question "查看日志"
     ```sh
-    source /opt/py3/bin/activate
-    pip install -r requirements/requirements.txt
+    docker logs -f jms_core --tail 100
     ```
 
-!!! question "redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:6379. Connection refused"
-    检查 config.yml 的 redis 设置
-
-!!! question "django.db.utils.OperationalError: (2006, "Can't connect to MySQL server on '127.0.0.1' (115)")"
-    检查 config.yml 的 mysql 设置
-
-!!! info "config.yml 格式说明"
-    ```yaml
-    常见的错误就是字段为空和: 后面少一个空格, 参考下面, 请勿照抄  
-    SECRET_KEY: 5RLbBjm8AkMSvnft...  # 不要忽略: 后面的空格, 不支持纯数字  
-    BOOTSTRAP_TOKEN: ihR4WG4gRShCnpQL...  # 不要忽略: 后面的空格, 不支持纯数字  
-    DB_PASSWORD: '123456'  # 密码纯数字用单引号括起来  
-    DB_PASSWORD: cPzxaiUAtA5IkdT2...  # 非纯数字可以不用单引号  
-    REDIS_PASSWORD: '888888'  # 密码纯数字用单引号括起来  
-    REDIS_PASSWORD: Ma5bzA3gVK5oY17l...  # 非纯数字可以不用单引号  
-    ```
-
-### 2. Web 登录页面异常
-
-!!! question "页面显示不正常"
-    不要通过 8080 端口访问 Web 页面  
-    不支持 IE 浏览器  
-    其他异常, 请查看 jumpserver/logs/ 和 /var/log/nginx 下面的 log, 根据相应的错误排查问题
-
-### 3. Web 登录失败
+### 2. Web 登录失败
 
 !!! question "忘记密码, 密码过期"
     如果忘了密码或者密码过期, 可以点击找回密码通过邮件找回  
     如果无法通过邮件找回, 可以通过控制台重置
     ```sh
-    source /opt/py3/bin/activate
+    docker exec -it jms_core /bin/bash
     cd /opt/jumpserver/apps
     python manage.py shell
     ```
@@ -57,7 +32,7 @@
     找管理员重置, 管理员可以在对应用户的个人页面重置  
     或者通过下面的 shell 解决
     ```
-    source /opt/py3/bin/activate
+    docker exec -it jms_core /bin/bash
     cd /opt/jumpserver/apps
     python manage.py shell
     ```
@@ -76,18 +51,9 @@
     update settings_setting set value='false' where name='AUTH_LDAP';
     ```
 
-!!! question "如果是设置 其他身份认证 后无法登录, 注释掉 jumpserver/config.yml 里面的身份认证设置重启即可"
+!!! question "如果是设置 其他身份认证 后无法登录, 注释掉 jumpserver/config/config.txt 里面的身份认证设置重启即可"
 
 ### 4. 管理用户 和 系统用户
-
-!!! question "资产测试可连接性、更新硬件信息、推送提示 ..........."
-    ```
-    source /opt/py3/bin/activate
-    ./jms stop
-    ps aux | grep py3 | awk '{print $2}' | xargs kill -9
-    rm -rf tmp/*.pid
-    ./jms start -d
-    ```
 
 !!! question "资产测试可连接性、更新硬件信息 报 Permission denied 或者 Authentication failure"
     一般都是管理用户账户密码不正确

@@ -20,10 +20,13 @@
 
 !!! warning "需要打开 debug 模式"
     ```yaml
-    vi jumpserver/config.yml
+    vi jumpserver/config/config.txt
     ```
-    ```yaml
-    DEBUG: true
+    ```vim
+    DEBUG=true
+    ```
+    ```sh
+    ./jmsctl.sh restart
     ```
 
 ![api_swagger](../img/api_swagger.jpg)

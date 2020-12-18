@@ -30,7 +30,7 @@
         注意: 用户过滤器用什么筛选, LDAP属性映射字段要与其一致, 过滤器用 uid, LDAP属性映射也要用 uid
 
 
-!!! info "LDAP 的部分功能在 jumpserver/config.yml 进行设置"
+!!! info "LDAP 的部分功能在 jumpserver/config/config.txt 进行设置"
     根据需要开启, 请勿照抄
     ```yaml
     # LDAP/AD settings

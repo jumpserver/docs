@@ -4,7 +4,13 @@
 
 !!! info "以下操作均在 Web 页面完成，请使用 admin 用户登陆，默认密码 admin"
 
-
+    ```mermaid
+    graph TD
+        A[Hard] -->|Text| B(Round)
+        B --> C{Decision}
+        C -->|One| D[Result 1]
+        C -->|Two| E[Result 2]
+    ```
 
 ## 一、系统设置
 

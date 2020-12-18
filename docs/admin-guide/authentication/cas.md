@@ -3,7 +3,7 @@
 !!! info "使用 CAS 的用户作为 JumpServer 登录用户"
     修改 JumpServer 配置文件启用 CAS 认证
     ```sh
-    vi /opt/jumpserver/config.yml
+    vi /opt/jumpserver/config/config.txt
     ```
     ```yaml
     AUTH_CAS: True

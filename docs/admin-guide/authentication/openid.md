@@ -133,7 +133,7 @@
 !!! info "配置有两种方式，一种是 Keycloak 的配置，一种是 OIDC 的配置"
     === "Keycloak 方式使用配置"
         ```sh
-        vi /opt/jumpserver/config.yml
+        vi /opt/jumpserver/config/config.txt
         ```
         ```yaml
         # OPENID配置
@@ -167,7 +167,7 @@
 
     === "标准 OICD 配置方式"
         ```sh
-        vi /opt/jumpserver/config.yml
+        vi /opt/jumpserver/config/config.txt
         ```
         ```yaml
         # OPENID配置

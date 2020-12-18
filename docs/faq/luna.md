@@ -1,10 +1,5 @@
 # Luna 常见问题
 
-!!! question "luna 页面访问异常"
-    请不要通过 8080 端口访问 jumpserver, 通过 nginx 代理端口进行访问  
-    如果下载了 luna 源代码, 请先编译好, 并在 nginx 里把 luna 目录指向编译好的目录  
-    如果组件都已经启动, 但是访问提示 502 或者 403, 可以检查下 防火墙 和 selinux
-
 !!! question "访问 rdp vnc 资产白屏"
     根据帮助文档 [guacamole 问题](guacamole.md) 第一条, 重新部署 guacamole  
     确定 `web` - `会话管理` - `终端管理` 里面的组件都 `在线`, 在线图标处于 `绿色` 状态

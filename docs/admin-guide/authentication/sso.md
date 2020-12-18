@@ -3,7 +3,7 @@
 !!! info "使用 SSO 对接第三方系统"
     修改 JumpServer 配置文件启用 SSO
     ```sh
-    vi /opt/jumpserver/config.yml
+    vi /opt/jumpserver/config/config.txt
     ```
     ```yaml
     AUTH_SSO: true
