@@ -4,12 +4,14 @@ mkdocs:
   configuration: mkdocs.yml
   fail_on_warning: false
 
+build:
+  image: latest
+
 formats: all
 
 python:
   version: 3.7
   install:
     - requirements: requirements/requirements.txt
-
-build:
-   image: latest
+    - method: pip
+      path: .
