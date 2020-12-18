@@ -5,7 +5,7 @@
     需要连接 互联网  
     使用 root 用户执行  
 
-- [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
+- :heart:{: .heart }  [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! tip "一键安装 JumpServer"
     ```sh

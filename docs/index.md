@@ -20,7 +20,8 @@
     - 无插件: 仅需浏览器，极致的 Web Terminal 使用体验；
     - 多云支持: 一套系统，同时管理不同云上面的资产；
     - 云端存储: 审计录像云端存储，永不丢失；
-    - 多租户: 一套系统，多个子公司和部门同时使用。
+    - 多租户: 一套系统，多个子公司和部门同时使用；
+    多应用支持: 数据库，Windows远程应用，Kubernetes。
 
 ## 功能列表
 
@@ -176,6 +177,54 @@
   <tr>
     <td>文件传输</td>
     <td>可对文件的上传、下载记录进行审计</td>
+  </tr>
+  <tr>
+    <td rowspan="20">数据库审计<br>Database</td>
+    <td rowspan="2">连接方式</td>
+    <td>命令方式</td>
+  </tr>
+  <tr>
+    <td>Web UI方式 (X-PACK)</td>
+  </tr>
+
+  <tr>
+    <td rowspan="4">支持的数据库</td>
+    <td>MySQL</td>
+  </tr>
+  <tr>
+    <td>Oracle (X-PACK)</td>
+  </tr>
+  <tr>
+    <td>MariaDB (X-PACK)</td>
+  </tr>
+  <tr>
+    <td>PostgreSQL (X-PACK)</td>
+  </tr>
+  <tr>
+    <td rowspan="6">功能亮点</td>
+    <td>语法高亮</td>
+  </tr>
+  <tr>
+    <td>SQL格式化</td>
+  </tr>
+  <tr>
+    <td>支持快捷键</td>
+  </tr>
+  <tr>
+    <td>支持选中执行</td>
+  </tr>
+  <tr>
+    <td>SQL历史查询</td>
+  </tr>
+  <tr>
+    <td>支持页面创建 DB, TABLE</td>
+  </tr>
+  <tr>
+    <td rowspan="2">会话审计</td>
+    <td>命令记录</td>
+  </tr>
+  <tr>
+    <td>录像回放</td>
   </tr>
 </table>
 
