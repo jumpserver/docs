@@ -28,31 +28,13 @@ theme:
 nav:
     - 总体介绍: index.md
     - 安装配置:
-        - 安装文档: install/step_by_step.md
         - 极速部署: install/setup_by_fast.md
-        - 容器部署: install/docker_install.md
-        - 分布式部署:
-            - 环境说明: install/setup_by_prod.md
-            - NFS 部署: install/prod/distributed_01.md
-            - Tengine 部署: install/prod/distributed_02.md
-            - MySQL 部署: install/prod/distributed_03.md
-            - Redis 部署: install/prod/distributed_04.md
-            - Core 部署: install/prod/distributed_05.md
-            - Koko 部署: install/prod/distributed_06.md
-            - Guacamole 部署: install/prod/distributed_07.md
-
         - 安全建议: install/install_security.md
-        - 卸载文档: install/uninstall.md
 
     - 管理文档:
         - 快速入门: admin-guide/quick_start.md
         - 更新升级:
-            - 1.0.0-1.4.3 升级到 1.4.4: admin-guide/upgrade/1.0.0-1.4.3.md
-            - 1.4.4 升级到 1.4.5: admin-guide/upgrade/1.4.4.md
-            - 1.4.5-1.4.10 升级到 最新: admin-guide/upgrade/1.4.5-1.4.10.md
-            - 1.5.0 及之后版本升级到 最新: admin-guide/upgrade/1.5.0.md
-            - 其他部署方式升级说明: admin-guide/upgrade/other.md
-            - MariaDB 迁移到 MySQL: admin-guide/upgrade/mariadb-mysql.md
+            - 升级文档: admin-guide/upgrade/upgrade.md
 
         - 迁移文档: admin-guide/migration.md
         - 资产要求:
@@ -68,12 +50,12 @@ nav:
             - Kubernetes: admin-guide/app/kubernetes.md
 
         - 身份认证:
-            - SSO 认证: admin-guide/authentication/sso.md
-            - CAS 认证: admin-guide/authentication/cas.md
-            - MFA 认证: admin-guide/authentication/mfa.md
-            - LDAP 认证: admin-guide/authentication/ldap.md
-            - OpenID 认证: admin-guide/authentication/openid.md
-            - Radius 认证: admin-guide/authentication/radius.md
+            - SSO: admin-guide/authentication/sso.md
+            - CAS: admin-guide/authentication/cas.md
+            - MFA: admin-guide/authentication/mfa.md
+            - LDAP: admin-guide/authentication/ldap.md
+            - OpenID: admin-guide/authentication/openid.md
+            - Radius: admin-guide/authentication/radius.md
 
         - 反向代理: admin-guide/proxy.md
         - 参数说明: admin-guide/env.md
@@ -127,7 +109,8 @@ markdown_extensions:
     - pymdownx.critic
     - pymdownx.details
     - pymdownx.emoji:
-        emoji_generator: !!python/name:pymdownx.emoji.to_png
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
     - pymdownx.inlinehilite
     - pymdownx.magiclink
     - pymdownx.mark
@@ -141,6 +124,7 @@ markdown_extensions:
     - pymdownx.progressbar
     - pymdownx.tasklist:
         custom_checkbox: true
+    - pymdownx.keys
 
 extra:
   generator: false
@@ -151,7 +135,11 @@ extra:
       link: https://hub.docker.com/r/jumpserver/
 
 extra_css:
-    - css/extra.css
+    - stylesheets/extra.css
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+    - javascripts/extra.js
 
 copyright: Copyright &copy; 2014-2020 <a href="https://www.fit2cloud.com">杭州飞致云信息科技有限公司</a>, All Rights Reserved. <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备15023818号</a>
 google_analytics: ['UA-147297392-3','docs.jumpserver.org']

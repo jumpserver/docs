@@ -23,7 +23,7 @@
 
 !!! tip ""
     ```sh
-    cd /opt/setuptools
+    cd /opt/jumpserver-installer-v2.6.0
     ./jmsctl.sh uninstall
     ```
 

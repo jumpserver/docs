@@ -5,17 +5,11 @@
     需要连接 互联网  
     使用 root 用户执行  
 
-!!! warning ""
-    资产数量不多，或者测试体验的用户请使用本脚本快速部署  
-    如果资产规模较大，请参考 [分布式部署](setup_by_prod.md) 文档  
-
-    注意: 对系统进行任何修改均可能导致安装失败，推荐在安装完成后再进行调优
-
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! tip "一键安装 JumpServer"
     ```sh
-    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.5.3/quick_start.sh | sh
+    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.0/quick_start.sh | sh
     ```
 
 ## 下载
@@ -23,45 +17,105 @@
 !!! tip "下载文件"
     ```sh
     cd /opt
-    yum -y install wget git
-    git clone --depth=1 https://github.com/jumpserver/setuptools.git
-    cd setuptools
-    cp config_example.conf config.conf
-    vi config.conf
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.0/jumpserver-installer-v2.6.0.tar.gz
+    tar -xf jumpserver-installer-v2.6.0.tar.gz
+    cd jumpserver-installer-v2.6.0
+    cat config-example.txt
     ```
 
-??? info "配置文件说明, 注意不能使用纯数字字符串, 如果不知道用途请勿修改"
+??? info "配置文件说明"
     ```vim
     # 以下设置默认情况下不需要修改
 
-    # 需要安装的版本
-    Version=2.0.0
+    # 说明
+    #### 这是项目总的配置文件, 会作为环境变量加载到各个容器中
+    #### 格式必须是 KEY=VALUE 不能有空格等
 
-    # Jms 加密配置
+    # Compose项目设置
+    COMPOSE_PROJECT_NAME=jms
+    COMPOSE_HTTP_TIMEOUT=3600
+    DOCKER_CLIENT_TIMEOUT=3600
+    DOCKER_SUBNET=192.168.250.0/24
+
+    ## IPV6
+    DOCKER_SUBNET_IPV6=2001:db8:10::/64
+    USE_IPV6=0
+
+    ### 持久化目录, 安装启动后不能再修改, 除非移动原来的持久化到新的位置
+    VOLUME_DIR=/opt/jumpserver
+
+    ## 是否使用外部MYSQL和REDIS
+    USE_EXTERNAL_MYSQL=0
+    USE_EXTERNAL_REDIS=0
+
+    ## Nginx 配置，这个Nginx是用来分发路径到不同的服务
+    HTTP_PORT=80
+    HTTPS_PORT=443
+    SSH_PORT=2222
+
+    ## LB 配置, 这个Nginx是HA时可以启动负载均衡到不同的主机
+    USE_LB=0
+    LB_HTTP_PORT=80
+    LB_HTTPS_PORT=443
+    LB_SSH_PORT=2223
+
+    ## Task 配置
+    USE_TASK=1
+
+    ## XPack
+    USE_XPACK=0
+
+
+    # Koko配置
+    CORE_HOST=http://core:8080
+    ENABLE_PROXY_PROTOCOL=true
+
+
+    # Core 配置
+    ### 启动后不能再修改，否则密码等等信息无法解密
     SECRET_KEY=
     BOOTSTRAP_TOKEN=
+    LOG_LEVEL=INFO
+    # SESSION_COOKIE_AGE=86400
+    # SESSION_EXPIRE_AT_BROWSER_CLOSE=false
 
-    # 数据库 配置, 如果 数据库 安装在其他的服务器, 请修改下面设置
-    DB_HOST=127.0.0.1
+    ## MySQL数据库配置
+    DB_ENGINE=mysql
+    DB_HOST=mysql
     DB_PORT=3306
-    DB_USER=jumpserver
+    DB_USER=root
     DB_PASSWORD=
     DB_NAME=jumpserver
 
-    # Redis 配置, 如果 Redis 安装在其他的服务器, 请修改下面设置
-    REDIS_HOST=127.0.0.1
+    ## Redis配置
+    REDIS_HOST=redis
     REDIS_PORT=6379
     REDIS_PASSWORD=
 
-    # 服务端口设置, 如果云服务器未备案请修改 http_port 端口为其他端口
-    http_port=80
-    ssh_port=2222
+    ### Keycloak 配置方式
+    ### AUTH_OPENID=true
+    ### BASE_SITE_URL=https://jumpserver.company.com/
+    ### AUTH_OPENID_SERVER_URL=https://keycloak.company.com/auth
+    ### AUTH_OPENID_REALM_NAME=cmp
+    ### AUTH_OPENID_CLIENT_ID=jumpserver
+    ### AUTH_OPENID_CLIENT_SECRET=
+    ### AUTH_OPENID_SHARE_SESSION=true
+    ### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
 
-    # 服务安装目录
-    install_dir=/opt
 
-    Server_IP=`ip addr | grep 'state UP' -A2 | grep inet | egrep -v '(127.0.0.1|inet6|docker)' | awk '{print $2}' | tr -d "addr:" | head -n 1 | cut -d / -f1`
-    Docker_IP=`ip addr | grep docker.* | grep inet | awk '{print $2}' | head -n 1`
+    # Guacamole 配置
+    JUMPSERVER_SERVER=http://core:8080
+    JUMPSERVER_KEY_DIR=/config/guacamole/data/key/
+    JUMPSERVER_RECORD_PATH=/config/guacamole/data/record/
+    JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive/
+    JUMPSERVER_ENABLE_DRIVE=true
+    JUMPSERVER_CLEAR_DRIVE_SESSION=true
+    JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
+
+    # Mysql 容器配置
+    MYSQL_ROOT_PASSWORD=
+    MYSQL_DATABASE=jumpserver
     ```
 
 ## 安装
@@ -82,7 +136,7 @@
 
 !!! tip "Upgrade"
     ```sh
-    cd /opt/setuptools
+    cd /opt/jumpserver-installer-v2.6.0
     git pull
     ./jmsctl.sh upgrade
     ```

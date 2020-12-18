@@ -14,6 +14,13 @@
         mysqldump -uroot -p jumpserver > /opt/jumpserver.sql
         ```
         ```sh
+        if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
+            echo "备份数据库字符集正确";
+        else
+            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
+        fi
+        ```
+        ```sh
         yum -y remove mariadb-server mariadb-devel mariadb
         rm -rf /var/lib/mysql
         ```
@@ -39,43 +46,25 @@
         ```sh
         mysql_upgrade -uroot
         ```
-        ```sh
-        rm -rf /opt/py3
-        python3.6 -m venv /opt/py3
-        source /opt/py3/bin/activate
-        cd /opt/jumpserver
-        pip install -r requirements/requirements.txt
-        ./jms start -d
-        ```
 
     === "脚本部署"
         ```sh
-        cd /opt/setuptools
+        cd /opt/jumpserver-installer-v2.6.0
         ./jmsctl.sh stop
-        git pull
         ```
         ```sh
-        mysqldump -uroot jumpserver > /opt/jumpserver.sql
+        mkdir -p /opt/jumpserver/db_backup/
+        mysqldump -uroot jumpserver > /opt/jumpserver/db_backup/jumpserver.sql
         ```
         ```sh
-        yum -y remove mariadb-server mariadb-devel mariadb
-        rm -rf /var/lib/mysql
+        if grep -q 'COLLATE=utf8_bin' /opt/jumpserver/db_backup/jumpserver.sql; then
+            echo "备份数据库字符集正确";
+        else
+            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver/db_backup/jumpserver.sql
+        fi
         ```
         ```sh
-        source config.conf
-        rm -rf $install_dir/py3
-        ./jmsctl.sh install
-        ```
-        ```sh
-        mysql -uroot
-        ```
-        ```mysql
-        use jumpserver;
-        source /opt/jumpserver.sql
-        exit
-        ```
-        ```sh
-        mysql_upgrade -uroot
+        ./jmsctl.sh restore_db /opt/jumpserver/db_backup/jumpserver.sql
         ```
         ```sh
         ./jmsctl.sh start
@@ -84,19 +73,7 @@
     - 启动 Core 看 jumpserver/logs/jumpserver.log 是否有报错
 
 !!! question "启动报错 Cannot add foreign key constraint"
-    - 先停止 core 服务
-
-    ```sh
-    cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-    sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
+    - 数据库字符集不正确
     ```
-    ```sh
-    mysql -uroot
-    ```
-    ```mysql
-    drop database jumpserver;
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
-    use jumpserver;
-    source /opt/jumpserver.sql;
-    exit
     ```
