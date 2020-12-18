@@ -122,9 +122,9 @@ markdown_extensions:
     - pymdownx.betterem
     - pymdownx.superfences
     - pymdownx.progressbar
+    - pymdownx.keys
     - pymdownx.tasklist:
         custom_checkbox: true
-    - pymdownx.keys
 
 extra:
   generator: false
