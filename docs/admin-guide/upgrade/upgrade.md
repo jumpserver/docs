@@ -257,6 +257,7 @@
     开始还原数据库: /opt/jumpserver.sql
     mysql: [Warning] Using a password on the command line interface can be insecure.
     数据库恢复成功！
+    ```
     ```sh
     mv /opt/jumpserver_bak/data /opt/jumpserver/core/
     ```
