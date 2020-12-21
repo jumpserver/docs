@@ -129,3 +129,6 @@
     JUMPSERVER_DISABLE_BITMAP_CACHING=true  # 禁用RDP的内置位图缓存功能
     JUMPSERVER_DISABLE_GLYPH_CACHING=true   # 禁用RDP会话中的字形缓存
     ```
+    ```sh
+    ./jmsctl.sh restart
+    ```
