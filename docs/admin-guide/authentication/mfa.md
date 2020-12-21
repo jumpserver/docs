@@ -33,7 +33,7 @@
 
 !!! info "如果是管理员忘记了 MFA, 可以通过控制台重置"
     ```sh
-    source /opt/py3/bin/activate
+    docker exec -it jms_core /bin/bash
     cd /opt/jumpserver/apps
     python manage.py shell
     ```
@@ -47,7 +47,7 @@
 
     ??? tip "admin 为你要重置的账户, 也可以通过新建管理员后登陆 web 重置其他管理员的 MFA"
         ```sh
-        source /opt/py3/bin/activate
+        docker exec -it jms_core /bin/bash
         cd /opt/jumpserver/apps
         python manage.py createsuperuser --username=user --email=user@domain.com
         ```

@@ -63,7 +63,7 @@
         ```
     === "Private Token"
         ```sh
-        source /opt/py3/bin/activate
+        docker exec -it jms_core /bin/bash
         cd /opt/jumpserver/apps
         python manage.py shell
         from users.models import User
