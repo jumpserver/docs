@@ -49,7 +49,7 @@
 
     === "脚本部署"
         ```sh
-        cd /opt/jumpserver-installer-v2.6.0
+        cd /opt/jumpserver-installer-v2.6.1
         ./jmsctl.sh stop
         ```
         ```sh

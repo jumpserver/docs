@@ -4,6 +4,18 @@
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
 
+v2.6.1
+------------------------
+2020年12月21日
+
+!!! tip "版本变化 What’s Changed"
+    * 添加资产编号字段
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复资产导入携带disk_info信息时失败的问题
+    * 修复提交系统设置失败的问题
+    * 修复系统用户私钥问题
+
 v2.6.0
 ------------------------
 2020年12月17日

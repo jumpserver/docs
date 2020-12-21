@@ -92,9 +92,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.6.0/jumpserver-installer-v2.6.0.tar.gz
-    tar -xf jumpserver-installer-v2.6.0.tar.gz
-    cd jumpserver-installer-v2.6.0
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.1/jumpserver-installer-v2.6.1.tar.gz
+    tar -xf jumpserver-installer-v2.6.1.tar.gz
+    cd jumpserver-installer-v2.6.1
     ```
     ```sh
     vi config-example.txt
@@ -112,6 +112,9 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true  # 关闭浏览器后 session 过期
     ```
     ```sh
+    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
+    ```
+    ```sh
     ./jmsctl.sh install
     ```
     ```nginx hl_lines="26 40 44 48 61 65"
@@ -123,7 +126,7 @@
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
        ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  v2.6.0
+    								                             Version:  v2.6.1
 
 
     >>> 一、配置JumpServer
@@ -184,14 +187,14 @@
     完成
 
     >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.0 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.0 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.0 	[ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
 
     >>> 四、安装完成了
     1. 可以使用如下命令启动, 然后访问
@@ -279,10 +282,10 @@
     ```
     ```nginx hl_lines="4"
 
-    最新版本是: v2.6.0
-    当前版本是: v2.5.3
+    最新版本是: v2.6.1
+    当前版本是: v2.6.0
 
-    你确定要升级到 v2.6.0 版本吗? (y/n)  (默认为n): y
+    你确定要升级到 v2.6.1 版本吗? (y/n)  (默认为n): y
 
     1. 检查配置变更
     完成
@@ -292,13 +295,13 @@
 
     3. 升级镜像文件
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.0 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.6.0         [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.0 	[ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.1         [ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
 
     4. 备份数据库
     正在备份...
@@ -335,7 +338,7 @@
     ./jmsctl.sh upgrade
     ```
     ```nginx hl_lines="1"
-    你确定要升级到 v2.6.0 版本吗? (y/n)  (默认为n): y
+    你确定要升级到 v2.6.1 版本吗? (y/n)  (默认为n): y
     1. 检查配置变更
     完成
 
@@ -343,14 +346,14 @@
     完成
 
     3. 升级镜像文件
-    Docker: Pulling from jumpserver/koko:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.0 	[ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.0 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.6.0 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
     完成
     4. 备份数据库
     正在备份...

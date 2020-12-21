@@ -9,7 +9,7 @@
 
 !!! tip "一键安装 JumpServer"
     ```sh
-    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.0/quick_start.sh | sh
+    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.1/quick_start.sh | sh
     ```
 
 ## 下载
@@ -18,9 +18,10 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.6.0/jumpserver-installer-v2.6.0.tar.gz
-    tar -xf jumpserver-installer-v2.6.0.tar.gz
-    cd jumpserver-installer-v2.6.0
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.1/jumpserver-installer-v2.6.1.tar.gz
+    tar -xf jumpserver-installer-v2.6.1.tar.gz
+    cd jumpserver-installer-v2.6.1
+    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
     cat config-example.txt
     ```
 
@@ -136,7 +137,7 @@
 
 !!! tip "Upgrade"
     ```sh
-    cd /opt/jumpserver-installer-v2.6.0
+    cd /opt/jumpserver-installer-v2.6.1
     git pull
     ./jmsctl.sh upgrade
     ```
