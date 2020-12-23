@@ -14,6 +14,7 @@
 !!! tip "v2.6 版本升级说明"
     - 统一企业版本与开源版本安装方式, 企业版和社区版可以无缝切换
     - 今后只会维护此安装方式, 其他安装方式不再提供技术支持
+    - 安装完成后配置文件在 /opt/jumpserver/config/config.txt
 
 ### 迁移步骤
 
@@ -380,4 +381,16 @@
     ```
     ```sh
     ./jmsctl.sh restart
+    ```
+
+!!! tip "如果依旧失败则需要更新 installer"
+    ```sh
+    cd /opt
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.1/jumpserver-installer-v2.6.1.tar.gz
+    tar -xf jumpserver-installer-v2.6.1.tar.gz
+    cd jumpserver-installer-v2.6.1
+    ```
+    ```sh
+    ./jmsctl.sh upgrade
     ```

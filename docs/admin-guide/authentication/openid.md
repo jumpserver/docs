@@ -135,17 +135,17 @@
         ```sh
         vi /opt/jumpserver/config/config.txt
         ```
-        ```yaml
+        ```vim
         # OPENID配置
         # version <= 1.5.8
-        AUTH_OPENID: true
-        BASE_SITE_URL: http://demo.jumpserver.org/
-        AUTH_OPENID_SERVER_URL: https://id.jumpserver.org/auth
-        AUTH_OPENID_REALM_NAME: jumpserver
-        AUTH_OPENID_CLIENT_ID: jumpserver
-        AUTH_OPENID_CLIENT_SECRET: ****************
-        AUTH_OPENID_SHARE_SESSION: true
-        AUTH_OPENID_IGNORE_SSL_VERIFICATION: true
+        AUTH_OPENID=true
+        BASE_SITE_URL=http://demo.jumpserver.org/
+        AUTH_OPENID_SERVER_URL=https://id.jumpserver.org/auth
+        AUTH_OPENID_REALM_NAME=jumpserver
+        AUTH_OPENID_CLIENT_ID=jumpserver
+        AUTH_OPENID_CLIENT_SECRET=****************
+        AUTH_OPENID_SHARE_SESSION=true
+        AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
         ```
 
         ??? question "设置参数说明"
@@ -169,27 +169,27 @@
         ```sh
         vi /opt/jumpserver/config/config.txt
         ```
-        ```yaml
+        ```vim
         # OPENID配置
-        AUTH_OPENID: true
-        BASE_SITE_URL: https://demo.jumpserver.org/
-        AUTH_OPENID_CLIENT_ID: jumpserver
-        AUTH_OPENID_CLIENT_SECRET: ****************
-        AUTH_OPENID_PROVIDER_ENDPOINT: https://id.jumpserver.org/auth
-        AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT: https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/auth
-        AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT: https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token
-        AUTH_OPENID_PROVIDER_JWKS_ENDPOINT: https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/certs
-        AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT: https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/userinfo
-        AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT: https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/logout
-        AUTH_OPENID_PROVIDER_SIGNATURE_ALG: HS256
-        AUTH_OPENID_PROVIDER_SIGNATURE_KEY: null
-        AUTH_OPENID_SCOPES: 'openid profile email'
-        AUTH_OPENID_ID_TOKEN_MAX_AGE: 60
-        AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS: true
-        AUTH_OPENID_USE_STATE: true
-        AUTH_OPENID_USE_NONCE: true
-        AUTH_OPENID_SHARE_SESSION: true
-        AUTH_OPENID_IGNORE_SSL_VERIFICATION: true
+        AUTH_OPENID=true
+        BASE_SITE_URL=https://demo.jumpserver.org/
+        AUTH_OPENID_CLIENT_ID=jumpserver
+        AUTH_OPENID_CLIENT_SECRET=****************
+        AUTH_OPENID_PROVIDER_ENDPOINT=https://id.jumpserver.org/auth
+        AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/auth
+        AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/token
+        AUTH_OPENID_PROVIDER_JWKS_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/certs
+        AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/userinfo
+        AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT=https://id.jumpserver.org/auth/realms/jumpserver/protocol/openid-connect/logout
+        AUTH_OPENID_PROVIDER_SIGNATURE_ALG=HS256
+        AUTH_OPENID_PROVIDER_SIGNATURE_KEY=null
+        AUTH_OPENID_SCOPES=openid profile email
+        AUTH_OPENID_ID_TOKEN_MAX_AGE=60
+        AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS=true
+        AUTH_OPENID_USE_STATE=true
+        AUTH_OPENID_USE_NONCE=true
+        AUTH_OPENID_SHARE_SESSION=true
+        AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
         ```
 
         ??? question "设置参数说明"

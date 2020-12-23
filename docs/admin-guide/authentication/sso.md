@@ -5,8 +5,8 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```yaml
-    AUTH_SSO: true
+    ```vim
+    AUTH_SSO=true
     ```
     修改完成后保存, 重启 jumpserver 即可
 

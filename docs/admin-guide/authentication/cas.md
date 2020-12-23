@@ -5,12 +5,12 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```yaml
-    AUTH_CAS: True
-    CAS_SERVER_URL: https://account.jumpserver.org/cas/
-    CAS_ROOT_PROXIED_AS: https://demo.jumpserver.org:8443
-    CAS_LOGOUT_COMPLETELY: False
-    CAS_VERSION: 3
+    ```vim
+    AUTH_CAS=True
+    CAS_SERVER_URL=https://account.jumpserver.org/cas/
+    CAS_ROOT_PROXIED_AS=https://demo.jumpserver.org:8443
+    CAS_LOGOUT_COMPLETELY=False
+    CAS_VERSION=3
     ```
 
 !!! question "设置参数说明"
