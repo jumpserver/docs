@@ -137,9 +137,7 @@
 
 !!! tip "Upgrade"
     ```sh
-    cd /opt/jumpserver-installer-v2.6.1
-    git pull
-    ./jmsctl.sh upgrade
+    ./jmsctl.sh check_update
     ```
 
 后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  
