@@ -4,9 +4,25 @@
 
 ### 1. core 启动异常
 
-!!! question "查看日志"
+!!! question "启动 jms_core 报错"
     ```sh
-    docker logs -f jms_core --tail 100
+    ./jmsctl.sh start
+    ```
+    ```vim hl_lines="5-9"
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_mysql ... done
+    Creating jms_redis ... done
+    Creating jms_core  ... done
+    ERROR: for celery  Container "76b2e315f69d" is unhealthy.
+    ERROR: for lina  Container "76b2e315f69d" is unhealthy.
+    ERROR: for luna  Container "76b2e315f69d" is unhealthy.
+    ERROR: for guacamole  Container "76b2e315f69d" is unhealthy.
+    ERROR: for koko  Container "76b2e315f69d" is unhealthy.
+    ERROR: Encountered errors while bringing up the project.
+    ```
+    ```sh
+    docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
+    ./jmsctl.sh start
     ```
 
 ### 2. Web 登录失败

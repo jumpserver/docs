@@ -1,4 +1,4 @@
-# 其他问题
+# 升级问题
 
 !!! question "下载 Docker 镜像很慢"
     ```sh
@@ -10,6 +10,58 @@
     }
     ```
     可以使用其他的镜像源, 推荐使用阿里云的镜像源  _[申请地址](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+
+!!! question "导入数据库报错"
+    ```sh
+    ./jmsctl.sh restore_db /opt/jumpserver.sql
+    ```
+    ```vim hl_lines="3"
+    开始还原数据库: /opt/jumpserver.sql
+    mysql: [Warning] Using a password on the command line interface can be insecure.
+    ERROR 1022 (23000) at line 1237: Can't write; duplicate key in table 'ops_adhoc_history'
+    ERRO[0008] error waiting for container: context canceled
+    read unix @->ar/run/docker.sock: read: connection reset by peer
+    数据库恢复失败,请检查数据库文件是否完整，或尝试手动恢复！
+    ```
+    ```sh
+    docker cp /opt/jumpserver.sql jms_mysql:/tmp
+    docker exec -it jms_mysql /bin/bash
+    ```
+    ```sh
+    mysql -uroot -p$MYSQL_ROOT_PASSWORD
+    ```mysql
+    drop database jumpserver;
+    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    use jumpserver;
+    source /tmp/jumpserver.sql;
+    exit;
+    ```
+    ```sh
+    rm -f /tmp/jumpserver.sql
+    exit
+    # 注意: 确定在导入数据库的过程中没有错误
+    ```
+
+!!! question "启动 jms_core 报错"
+    ```sh
+    ./jmsctl.sh start
+    ```
+    ```vim hl_lines="5-9"
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_mysql ... done
+    Creating jms_redis ... done
+    Creating jms_core  ... done
+    ERROR: for celery  Container "76b2e315f69d" is unhealthy.
+    ERROR: for lina  Container "76b2e315f69d" is unhealthy.
+    ERROR: for luna  Container "76b2e315f69d" is unhealthy.
+    ERROR: for guacamole  Container "76b2e315f69d" is unhealthy.
+    ERROR: for koko  Container "76b2e315f69d" is unhealthy.
+    ERROR: Encountered errors while bringing up the project.
+    ```
+    ```sh
+    docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
+    ./jmsctl.sh start
+    ```
 
 !!! question "修改对外访问端口"
     ```sh
