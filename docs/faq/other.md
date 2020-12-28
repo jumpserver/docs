@@ -1,4 +1,4 @@
-# 升级问题
+# 升级 常见问题
 
 !!! question "下载 Docker 镜像很慢"
     ```sh
@@ -42,6 +42,9 @@
     exit
     # 注意: 确定在导入数据库的过程中没有错误
     ```
+    ```sh
+    ./jmsctl.sh start
+    ```
 
 !!! question "启动 jms_core 报错"
     ```sh
@@ -61,6 +64,33 @@
     ```
     ```sh
     docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
+    ./jmsctl.sh start
+    ```
+
+!!! question "Table 'applications_application' already exists"
+    ```sh
+    ./jmsctl.sh stop
+    ```
+    ```sh
+    docker cp /opt/jumpserver.sql jms_mysql:/tmp
+    docker exec -it jms_mysql /bin/bash
+    ```
+    ```sh
+    mysql -uroot -p$MYSQL_ROOT_PASSWORD
+    ```
+    ```mysql
+    drop database jumpserver;
+    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    use jumpserver;
+    source /tmp/jumpserver.sql;
+    exit;
+    ```
+    ```sh
+    rm -f /tmp/jumpserver.sql
+    exit
+    # 注意: 确定在导入数据库的过程中没有错误
+    ```
+    ```sh
     ./jmsctl.sh start
     ```
 
