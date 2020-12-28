@@ -540,7 +540,7 @@
 
 ## 部署 JumpServer 主
 
-    服务器: 192.168.100.22
+    服务器: 192.168.100.21
 
 !!! tip "下载 jumpserver-install"
     ```sh
