@@ -8,6 +8,7 @@
 
 !!! tip "环境说明"
     - 从 v2.5 开始, 数据库要求 MySQL >= 5.7
+    - 推荐使用外置数据库, 方便日后扩展升级
 
 ## 迁移说明
 
@@ -115,111 +116,232 @@
     ```sh
     export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
     ```
-    ```sh
-    ./jmsctl.sh install
-    ```
-    ```nginx hl_lines="26 40 44 48 61 65"
 
-           ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
-           ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
-           ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
-      ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
-      ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
-       ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+!!! tip "开始部署 JumpServer"
 
-    								                             Version:  v2.6.1
+    === "使用内置数据库"
+        ```sh
+        ./jmsctl.sh install
+        ```
+        ```nginx hl_lines="26 40 44 48 61 65"
+
+               ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
+               ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+               ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+          ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+          ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+           ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+
+        								                             Version:  v2.6.1
 
 
-    >>> 一、配置JumpServer
-    1. 检查配置文件
-    各组件使用环境变量式配置文件，而不是 yaml 格式, 配置名称与之前保持一致
-    配置文件位置: /opt/jumpserver/config/config.txt
-    完成
+        >>> 一、配置JumpServer
+        1. 检查配置文件
+        各组件使用环境变量式配置文件，而不是 yaml 格式, 配置名称与之前保持一致
+        配置文件位置: /opt/jumpserver/config/config.txt
+        完成
 
-    2. 配置 Nginx 证书
-    证书位置在: /opt/jumpserver/config/nginx/cert
-    完成
+        2. 配置 Nginx 证书
+        证书位置在: /opt/jumpserver/config/nginx/cert
+        完成
 
-    3. 备份配置文件
-    备份至 /opt/jumpserver/config/backup/config.txt.2020-12-18_10-18-00
-    完成
+        3. 备份配置文件
+        备份至 /opt/jumpserver/config/backup/config.txt.2020-12-18_10-18-00
+        完成
 
-    4. 配置网络
-    需要支持 IPv6 吗? (y/n)  (默认为n): n
-    完成
+        4. 配置网络
+        需要支持 IPv6 吗? (y/n)  (默认为n): n
+        完成
 
-    5. 自动生成加密密钥
-    完成
+        5. 自动生成加密密钥
+        完成
 
-    6. 配置持久化目录
-    修改日志录像等持久化的目录，可以找个最大的磁盘，并创建目录，如 /opt/jumpserver
-    注意: 安装完后不能再更改, 否则数据库可能丢失
+        6. 配置持久化目录
+        修改日志录像等持久化的目录，可以找个最大的磁盘，并创建目录，如 /opt/jumpserver
+        注意: 安装完后不能再更改, 否则数据库可能丢失
 
-    文件系统        容量  已用  可用 已用% 挂载点
-    /dev/sda3        53G  5.0G   49G   10% /
-    /dev/sda1      1014M  160M  855M   16% /boot
+        文件系统        容量  已用  可用 已用% 挂载点
+        /dev/sda3        53G  5.0G   49G   10% /
+        /dev/sda1      1014M  160M  855M   16% /boot
 
-    设置持久化卷存储目录 (默认为/opt/jumpserver): /data/jumpserver
-    完成
+        设置持久化卷存储目录 (默认为/opt/jumpserver): /data/jumpserver
+        完成
 
-    7. 配置MySQL
-    是否使用外部mysql (y/n)  (默认为n): n
-    完成
+        7. 配置MySQL
+        是否使用外部mysql (y/n)  (默认为n): n
+        完成
 
-    8. 配置Redis
-    是否使用外部redis  (y/n)  (默认为n): n
-    完成
+        8. 配置Redis
+        是否使用外部redis  (y/n)  (默认为n): n
+        完成
 
-    >>> 二、安装配置Docker
-    1. 安装Docker
-    完成
+        >>> 二、安装配置Docker
+        1. 安装Docker
+        完成
 
-    2. 配置Docker
-    修改Docker镜像容器的默认存储目录，可以找个最大的磁盘, 并创建目录，如 /opt/docker
-    文件系统        容量  已用  可用 已用% 挂载点
-    /dev/sda3        53G  5.2G   48G   10% /
-    /dev/sda1      1014M  160M  855M   16% /boot
+        2. 配置Docker
+        修改Docker镜像容器的默认存储目录，可以找个最大的磁盘, 并创建目录，如 /opt/docker
+        文件系统        容量  已用  可用 已用% 挂载点
+        /dev/sda3        53G  5.2G   48G   10% /
+        /dev/sda1      1014M  160M  855M   16% /boot
 
-    Docker存储目录 (默认为/opt/docker): /var/lib/docker
-    完成
+        Docker存储目录 (默认为/opt/docker): /var/lib/docker
+        完成
 
-    3. 启动Docker
-    Docker 版本发生改变 或 docker配置文件发生变化，是否要重启 (y/n)  (默认为y): y
-    完成
+        3. 启动Docker
+        Docker 版本发生改变 或 docker配置文件发生变化，是否要重启 (y/n)  (默认为y): y
+        完成
 
-    >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
-    Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+        >>> 三、加载镜像
+        Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+        Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
+        Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
+        Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
 
-    >>> 四、安装完成了
-    1. 可以使用如下命令启动, 然后访问
-    ./jmsctl.sh start
+        >>> 四、安装完成了
+        1. 可以使用如下命令启动, 然后访问
+        ./jmsctl.sh start
 
-    2. 其它一些管理命令
-    ./jmsctl.sh stop
-    ./jmsctl.sh restart
-    ./jmsctl.sh backup
-    ./jmsctl.sh upgrade
-    更多还有一些命令，你可以 ./jmsctl.sh --help来了解
+        2. 其它一些管理命令
+        ./jmsctl.sh stop
+        ./jmsctl.sh restart
+        ./jmsctl.sh backup
+        ./jmsctl.sh upgrade
+        更多还有一些命令，你可以 ./jmsctl.sh --help来了解
 
-    3. 访问 Web 后台页面
-    http://192.168.100.236:8080
-    https://192.168.100.236:8443
+        3. 访问 Web 后台页面
+        http://192.168.100.236:8080
+        https://192.168.100.236:8443
 
-    4. ssh/sftp 访问
-    ssh admin@192.168.100.236 -p2222
-    sftp -P2222 admin@192.168.100.236
+        4. ssh/sftp 访问
+        ssh admin@192.168.100.236 -p2222
+        sftp -P2222 admin@192.168.100.236
 
-    5. 更多信息
-    我们的文档: https://docs.jumpserver.org/
-    我们的官网: https://www.jumpserver.org/
-    ```
+        5. 更多信息
+        我们的文档: https://docs.jumpserver.org/
+        我们的官网: https://www.jumpserver.org/
+        ```
+
+    === "使用外置数据库"
+        ```sh
+        ./jmsctl.sh install
+        ```
+        ```nginx hl_lines="26 40 44-49 53-56 69 73"
+
+               ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
+               ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+               ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+          ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+          ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+           ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+
+        								                             Version:  v2.6.1
+
+
+        >>> 一、配置JumpServer
+        1. 检查配置文件
+        各组件使用环境变量式配置文件，而不是 yaml 格式, 配置名称与之前保持一致
+        配置文件位置: /opt/jumpserver/config/config.txt
+        完成
+
+        2. 配置 Nginx 证书
+        证书位置在: /opt/jumpserver/config/nginx/cert
+        完成
+
+        3. 备份配置文件
+        备份至 /opt/jumpserver/config/backup/config.txt.2020-12-18_10-18-00
+        完成
+
+        4. 配置网络
+        需要支持 IPv6 吗? (y/n)  (默认为n): n
+        完成
+
+        5. 自动生成加密密钥
+        完成
+
+        6. 配置持久化目录
+        修改日志录像等持久化的目录，可以找个最大的磁盘，并创建目录，如 /opt/jumpserver
+        注意: 安装完后不能再更改, 否则数据库可能丢失
+
+        文件系统        容量  已用  可用 已用% 挂载点
+        /dev/sda3        53G  5.0G   49G   10% /
+        /dev/sda1      1014M  160M  855M   16% /boot
+
+        设置持久化卷存储目录 (默认为/opt/jumpserver): /data/jumpserver
+        完成
+
+        7. 配置MySQL
+        是否使用外部mysql (y/n)  (默认为n): y
+        请输入mysql的主机地址 (无默认值): 192.168.100.11
+        请输入mysql的端口 (默认为3306): 3306
+        请输入mysql的数据库(事先做好授权) (默认为jumpserver): jumpserver
+        请输入mysql的用户名 (无默认值): jumpserver
+        请输入mysql的密码 (无默认值): weakPassword
+        完成
+
+        8. 配置Redis
+        是否使用外部redis  (y/n)  (默认为n): y
+        请输入redis的主机地址 (无默认值): 192.168.100.11
+        请输入redis的端口 (默认为6379): 6379
+        请输入redis的密码 (无默认值): weakPassword
+        完成
+
+        >>> 二、安装配置Docker
+        1. 安装Docker
+        完成
+
+        2. 配置Docker
+        修改Docker镜像容器的默认存储目录，可以找个最大的磁盘, 并创建目录，如 /opt/docker
+        文件系统        容量  已用  可用 已用% 挂载点
+        /dev/sda3        53G  5.2G   48G   10% /
+        /dev/sda1      1014M  160M  855M   16% /boot
+
+        Docker存储目录 (默认为/opt/docker): /var/lib/docker
+        完成
+
+        3. 启动Docker
+        Docker 版本发生改变 或 docker配置文件发生变化，是否要重启 (y/n)  (默认为y): y
+        完成
+
+        >>> 三、加载镜像
+        Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+        Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
+        Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
+        Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+
+        >>> 四、安装完成了
+        1. 可以使用如下命令启动, 然后访问
+        ./jmsctl.sh start
+
+        2. 其它一些管理命令
+        ./jmsctl.sh stop
+        ./jmsctl.sh restart
+        ./jmsctl.sh backup
+        ./jmsctl.sh upgrade
+        更多还有一些命令，你可以 ./jmsctl.sh --help来了解
+
+        3. 访问 Web 后台页面
+        http://192.168.100.236:8080
+        https://192.168.100.236:8443
+
+        4. ssh/sftp 访问
+        ssh admin@192.168.100.236 -p2222
+        sftp -P2222 admin@192.168.100.236
+
+        5. 更多信息
+        我们的文档: https://docs.jumpserver.org/
+        我们的官网: https://www.jumpserver.org/
+        ```
+
+
     ```sh
     ./jmsctl.sh start
     ```

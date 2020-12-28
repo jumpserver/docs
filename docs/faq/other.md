@@ -29,6 +29,7 @@
     ```
     ```sh
     mysql -uroot -p$MYSQL_ROOT_PASSWORD
+    ```
     ```mysql
     drop database jumpserver;
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
