@@ -7,12 +7,20 @@
 
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
+## 自动部署
+
 !!! tip "一键安装 JumpServer"
     ```sh
     curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.1/quick_start.sh | sh
     ```
 
-## 下载
+## 手动部署
+
+!!! info "推荐使用外置数据库"
+    - 数据库要求 MySQL >= 5.7
+
+
+### 下载
 
 !!! tip "下载文件"
     ```sh
@@ -25,7 +33,7 @@
     cat config-example.txt
     ```
 
-??? info "配置文件说明"
+???+ info "配置文件说明"
     ```vim
     # 以下设置默认情况下不需要修改
 
@@ -119,21 +127,21 @@
     MYSQL_DATABASE=jumpserver
     ```
 
-## 安装
+### 安装
 
 !!! tip "Install"
     ```sh
     ./jmsctl.sh install
     ```
 
-## 帮助
+### 帮助
 
 !!! tip "Help"
     ```sh
     ./jmsctl.sh -h
     ```
 
-## 升级
+### 升级
 
 !!! tip "Upgrade"
     ```sh
