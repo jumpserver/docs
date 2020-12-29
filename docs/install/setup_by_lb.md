@@ -3,7 +3,8 @@
 !!! warning "该文档还在测试阶段, 请等待更新"
 
 !!! info "环境说明"
-    - 数据库要求 MySQL >= 5.7
+    - MySQL >= 5.7
+    - Redis >= 5.0.0
 
 | Server Name   |        IP        |  Port  |     Use    |
 | ------------- | ---------------- | ------ | ---------- |
@@ -419,102 +420,119 @@
 
 !!! tip "设置 Repo"
     ```sh
-    yum -y install epel-release
+    yum -y install epel-release https://repo.ius.io/ius-release-el7.rpm
     ```
     ```vim
     已加载插件：fastestmirror
-    Loading mirror speeds from cached hostfile
-     * base: mirrors.aliyun.com
-     * extras: mirrors.aliyun.com
-     * updates: mirrors.aliyun.com
+    Determining fastest mirrors
+     * base: mirrors.ustc.edu.cn
+     * extras: mirrors.ustc.edu.cn
+     * updates: mirrors.ustc.edu.cn
+    base                                                                                                             | 3.6 kB  00:00:00     
+    extras                                                                                                           | 2.9 kB  00:00:00     
+    updates                                                                                                          | 2.9 kB  00:00:00     
+    (1/4): base/7/x86_64/group_gz                                                                                    | 153 kB  00:00:00     
+    (2/4): extras/7/x86_64/primary_db                                                                                | 222 kB  00:00:00     
+    (3/4): updates/7/x86_64/primary_db                                                                               | 4.7 MB  00:00:02     
+    (4/4): base/7/x86_64/primary_db                                                                                  | 6.1 MB  00:00:02     
+    ius-release-el7.rpm                                                                                              | 8.2 kB  00:00:00     
+    正在检查 /var/tmp/yum-root-3MSP1P/ius-release-el7.rpm: ius-release-2-1.el7.ius.noarch
+    /var/tmp/yum-root-3MSP1P/ius-release-el7.rpm 将被安装
     正在解决依赖关系
     --> 正在检查事务
     ---> 软件包 epel-release.noarch.0.7-11 将被 安装
+    ---> 软件包 ius-release.noarch.0.2-1.el7.ius 将被 安装
     --> 解决依赖关系完成
 
     依赖关系解决
 
-    =============================================================================================================================================
-     Package                               架构                            版本                            源                               大小
-    =============================================================================================================================================
+    ========================================================================================================================================
+     Package                          架构                       版本                            源                                    大小
+    ========================================================================================================================================
     正在安装:
-     epel-release                          noarch                          7-11                            extras                           15 k
+     epel-release                     noarch                     7-11                            extras                                15 k
+     ius-release                      noarch                     2-1.el7.ius                     /ius-release-el7                     4.5 k
 
     事务概要
-    =============================================================================================================================================
-    安装  1 软件包
+    ========================================================================================================================================
+    安装  2 软件包
 
+    总计：19 k
     总下载量：15 k
-    安装大小：24 k
+    安装大小：29 k
     Downloading packages:
-    epel-release-7-11.noarch.rpm                                                                                          |  15 kB  00:00:00     
+    epel-release-7-11.noarch.rpm                                                                                     |  15 kB  00:00:00     
     Running transaction check
     Running transaction test
     Transaction test succeeded
     Running transaction
-      正在安装    : epel-release-7-11.noarch                                                                                                 1/1
-      验证中      : epel-release-7-11.noarch                                                                                                 1/1
+      正在安装    : epel-release-7-11.noarch                                                                                            1/2
+      正在安装    : ius-release-2-1.el7.ius.noarch                                                                                      2/2
+      验证中      : ius-release-2-1.el7.ius.noarch                                                                                      1/2
+      验证中      : epel-release-7-11.noarch                                                                                            2/2
 
     已安装:
-      epel-release.noarch 0:7-11                                                                                                                 
+      epel-release.noarch 0:7-11                                      ius-release.noarch 0:2-1.el7.ius                                     
 
     完毕！
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    yum install -y redis
+    yum install -y redis5
     ```
     ```vim
     已加载插件：fastestmirror
     Loading mirror speeds from cached hostfile
-     * base: mirrors.aliyun.com
-     * epel: fedora.ipserverone.com
-     * extras: mirrors.aliyun.com
-     * updates: mirrors.aliyun.com
+    epel/x86_64/metalink                                                                                             | 6.4 kB  00:00:00     
+     * base: mirrors.ustc.edu.cn
+     * epel: fedora.cs.nctu.edu.tw
+     * extras: mirrors.ustc.edu.cn
+     * updates: mirrors.ustc.edu.cn
+    base                                                                                                             | 3.6 kB  00:00:00     
+    extras                                                                                                           | 2.9 kB  00:00:00     
+    ius                                                                                                              | 1.3 kB  00:00:00     
+    updates                                                                                                          | 2.9 kB  00:00:00     
+    epel/x86_64/primary_db                                                                                           | 6.9 MB  00:00:06     
+    ius                                                                                                                             584/584
     正在解决依赖关系
     --> 正在检查事务
-    ---> 软件包 redis.x86_64.0.3.2.12-2.el7 将被 安装
-    --> 正在处理依赖关系 libjemalloc.so.1()(64bit)，它被软件包 redis-3.2.12-2.el7.x86_64 需要
-    --> 正在检查事务
-    ---> 软件包 jemalloc.x86_64.0.3.6.0-1.el7 将被 安装
+    ---> 软件包 redis5.x86_64.0.5.0.9-1.el7.ius 将被 安装
     --> 解决依赖关系完成
 
     依赖关系解决
 
-    =============================================================================================================================================
-     Package                           架构                            版本                                  源                             大小
-    =============================================================================================================================================
+    ========================================================================================================================================
+     Package                       架构                          版本                                      源                          大小
+    ========================================================================================================================================
     正在安装:
-     redis                             x86_64                          3.2.12-2.el7                          epel                          544 k
-    为依赖而安装:
-     jemalloc                          x86_64                          3.6.0-1.el7                           epel                          105 k
+     redis5                        x86_64                        5.0.9-1.el7.ius                           ius                        905 k
 
     事务概要
-    =============================================================================================================================================
-    安装  1 软件包 (+1 依赖软件包)
+    ========================================================================================================================================
+    安装  1 软件包
 
-    总下载量：648 k
-    安装大小：1.7 M
+    总下载量：905 k
+    安装大小：2.9 M
     Downloading packages:
-    (1/2): jemalloc-3.6.0-1.el7.x86_64.rpm                                                                                | 105 kB  00:00:00     
-    (2/2): redis-3.2.12-2.el7.x86_64.rpm                                                                                  | 544 kB  00:00:00     
-    ---------------------------------------------------------------------------------------------------------------------------------------------
-    总计                                                                                                         595 kB/s | 648 kB  00:00:01     
+    警告：/var/cache/yum/x86_64/7/ius/packages/redis5-5.0.9-1.el7.ius.x86_64.rpm: 头V4 RSA/SHA256 Signature, 密钥 ID 4b274df2: NOKEY:02 ETA
+    redis5-5.0.9-1.el7.ius.x86_64.rpm 的公钥尚未安装
+    redis5-5.0.9-1.el7.ius.x86_64.rpm                                                                                | 905 kB  00:00:02     
+    从 file:///etc/pki/rpm-gpg/RPM-GPG-KEY-IUS-7 检索密钥
+    导入 GPG key 0x4B274DF2:
+     用户ID     : "IUS (7) <dev@ius.io>"
+     指纹       : c958 7a09 a11f d706 4f0c a0f4 e558 0725 4b27 4df2
+     软件包     : ius-release-2-1.el7.ius.noarch (@/ius-release-el7)
+     来自       : /etc/pki/rpm-gpg/RPM-GPG-KEY-IUS-7
     Running transaction check
     Running transaction test
     Transaction test succeeded
     Running transaction
-      正在安装    : jemalloc-3.6.0-1.el7.x86_64                                                                                              1/2
-      正在安装    : redis-3.2.12-2.el7.x86_64                                                                                                2/2
-      验证中      : redis-3.2.12-2.el7.x86_64                                                                                                1/2
-      验证中      : jemalloc-3.6.0-1.el7.x86_64                                                                                              2/2
+      正在安装    : redis5-5.0.9-1.el7.ius.x86_64                                                                                       1/1
+      验证中      : redis5-5.0.9-1.el7.ius.x86_64                                                                                       1/1
 
     已安装:
-      redis.x86_64 0:3.2.12-2.el7                                                                                                                
-
-    作为依赖被安装:
-      jemalloc.x86_64 0:3.6.0-1.el7                                                                                                              
+      redis5.x86_64 0:5.0.9-1.el7.ius                                                                                                       
 
     完毕！
     ```
@@ -1023,6 +1041,11 @@
         ip_hash;
     }
 
+    upstream core {
+      server 192.168.100.21:8080 max_fails=1 fail_timeout=1s;
+      server 192.168.100.22:8080 max_fails=1 fail_timeout=1s;
+    }
+
     server {
         listen 80;
         server_name demo.jumpserver.org;  # 自行修改成你的域名
@@ -1040,6 +1063,24 @@
         ssl_prefer_server_ciphers on;
 
         client_max_body_size 4096m;  # 录像上传大小限制
+
+        location /api/v1/terminal/ {
+            proxy_pass http://core/api/v1/terminal/;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
+            proxy_upstream_tries 3;
+        }
+
+        location /media/ {
+            proxy_pass http://core/media/;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
+            proxy_upstream_tries 3;
+        }
 
         location / {
             proxy_pass       http://jumpserver;

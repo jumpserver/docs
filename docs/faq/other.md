@@ -94,6 +94,14 @@
     ./jmsctl.sh start
     ```
 
+!!! question "kombu.exceptions.OperationalError"
+    ```vim
+    # Redis < 5.0.0 导致, 请更新 Redis 版本
+    kombu.exceptions.OperationalError:
+    Cannot route message for exchange 'ansible': Table empty or key no longer exists.
+    Probably the key ('_kombu.binding.ansible') has been removed from the Redis databa
+    ```
+
 !!! question "修改对外访问端口"
     ```sh
     vi /opt/jumpserver/config/config.txt
