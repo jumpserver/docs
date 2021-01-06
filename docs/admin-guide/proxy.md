@@ -74,6 +74,9 @@
       }
     }
     ```
+    ```sh
+    ./jmsctl.sh restart
+    ```
 
 ### 2. 多层 nginx 反向代理
 
