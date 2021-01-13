@@ -1070,7 +1070,7 @@
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
-            proxy_upstream_tries 3;
+            proxy_next_upstream_tries 3;
         }
 
         location /media/ {
@@ -1079,7 +1079,7 @@
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
-            proxy_upstream_tries 3;
+            proxy_next_upstream_tries 3;
         }
 
         location / {
