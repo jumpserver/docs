@@ -600,7 +600,7 @@
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
        ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  v2.6.1
+    								                             Version:  v2.6.2
 
 
     >>> 一、配置JumpServer
@@ -669,14 +669,14 @@
     完成
 
     >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
 
     >>> 四、安装完成了
     1. 可以使用如下命令启动, 然后访问
@@ -763,7 +763,7 @@
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
        ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  v2.6.1
+    								                             Version:  v2.6.2
 
 
     >>> 一、配置JumpServer
@@ -832,14 +832,14 @@
     完成
 
     >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
 
     >>> 四、安装完成了
     1. 可以使用如下命令启动, 然后访问
@@ -1083,7 +1083,7 @@
         }
 
         location / {
-            proxy_pass       http://jumpserver;
+            proxy_pass http://jumpserver;
             proxy_buffering  off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;

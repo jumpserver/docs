@@ -133,7 +133,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                             Version:  v2.6.1
+        								                             Version:  v2.6.2
 
 
         >>> 一、配置JumpServer
@@ -194,14 +194,14 @@
         完成
 
         >>> 三、加载镜像
-        Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/core:v2.6.2 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
         Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+        Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
 
         >>> 四、安装完成了
         1. 可以使用如下命令启动, 然后访问
@@ -240,7 +240,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                             Version:  v2.6.1
+        								                             Version:  v2.6.2
 
 
         >>> 一、配置JumpServer
@@ -309,14 +309,14 @@
         完成
 
         >>> 三、加载镜像
-        Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/core:v2.6.2 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
         Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+        Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+        Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
 
         >>> 四、安装完成了
         1. 可以使用如下命令启动, 然后访问
@@ -410,7 +410,7 @@
     最新版本是: v2.6.1
     当前版本是: v2.6.0
 
-    你确定要升级到 v2.6.1 版本吗? (y/n)  (默认为n): y
+    你确定要升级到 v2.6.2 版本吗? (y/n)  (默认为n): y
 
     1. 检查配置变更
     完成
@@ -420,13 +420,13 @@
 
     3. 升级镜像文件
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.6.1         [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.2         [ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
 
     4. 备份数据库
     正在备份...
@@ -460,10 +460,16 @@
 
 !!! tip "如果升级失败可以使用 upgrade 重新升级"
     ```sh
-    ./jmsctl.sh upgrade
+    vi static.env
+    ```
+    ```vim
+    export VERSION=v2.6.2
+    ```
+    ```sh
+    ./jmsctl.sh upgrade v2.6.2
     ```
     ```nginx hl_lines="1"
-    你确定要升级到 v2.6.1 版本吗? (y/n)  (默认为n): y
+    你确定要升级到 v2.6.2 版本吗? (y/n)  (默认为n): y
     1. 检查配置变更
     完成
 
@@ -471,14 +477,14 @@
     完成
 
     3. 升级镜像文件
-    Docker: Pulling from jumpserver/koko:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.6.1 	[ OK ]
+    Docker: Pulling from jumpserver/koko:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.6.2 	[ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.6.1 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.6.1 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.6.2 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.6.2 	    [ OK ]
     完成
     4. 备份数据库
     正在备份...

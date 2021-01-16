@@ -3,6 +3,14 @@
 !!! tip ""
     - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
+    - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
+
+v2.6.2
+------------------------
+2021年01月14
+
+!!! success "Bug修复 Bug Fixes"
+    * 修复远程执行漏洞
 
 v2.6.1
 ------------------------

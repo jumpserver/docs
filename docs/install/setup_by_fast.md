@@ -8,6 +8,7 @@
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 ## 自动部署
+- 安装目录在 /opt/jumpserver-installer-v2.6.1
 
 !!! tip "一键安装 JumpServer"
     ```sh
@@ -75,11 +76,9 @@
     ## XPack
     USE_XPACK=0
 
-
     # Koko配置
     CORE_HOST=http://core:8080
     ENABLE_PROXY_PROTOCOL=true
-
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密
@@ -111,7 +110,6 @@
     ### AUTH_OPENID_CLIENT_SECRET=
     ### AUTH_OPENID_SHARE_SESSION=true
     ### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
-
 
     # Guacamole 配置
     JUMPSERVER_SERVER=http://core:8080
