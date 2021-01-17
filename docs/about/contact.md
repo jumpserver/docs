@@ -7,7 +7,8 @@
     - 群3: 552054376 (满)
     - 群4: 794442067 (满)
     - 群5: 773866691 (满)
-    - [群6: 908100817 (新)][6群]
+    - [群6: 908100817 (满)]
+    - [群7: 1050391720 (新)][7群]
 
 !!! tip "项目地址"
     - [JumpServer][jumpserver] ![jumpserver stars][jumpserver stars]
@@ -15,6 +16,6 @@
     - support@fit2cloud.com
     - 400-052-0755
 
-[6群]: https://shang.qq.com/wpa/qunwpa?idkey=7156e710f7087c5f20e29bcdb5951743956837c71bc7ed8557a5215daab2725b
+[7群]: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
 [jumpserver]: https://github.com/jumpserver/jumpserver
 [jumpserver stars]: https://img.shields.io/github/stars/jumpserver/jumpserver.svg
