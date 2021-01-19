@@ -632,7 +632,7 @@
     /dev/sda3        53G  5.0G   49G   10% /
     /dev/sda1      1014M  160M  855M   16% /boot
 
-    设置持久化卷存储目录 (默认为/opt/jumpserver): /data/jumpserver
+    设置持久化卷存储目录 (默认为/opt/jumpserver): /opt/jumpserver
     完成
 
     7. 配置MySQL
@@ -795,7 +795,7 @@
     /dev/sda3        53G  5.0G   49G   10% /
     /dev/sda1      1014M  160M  855M   16% /boot
 
-    设置持久化卷存储目录 (默认为/opt/jumpserver): /data/jumpserver
+    设置持久化卷存储目录 (默认为/opt/jumpserver): /opt/jumpserver
     完成
 
     7. 配置MySQL
