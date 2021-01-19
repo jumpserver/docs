@@ -95,9 +95,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.6.1/jumpserver-installer-v2.6.1.tar.gz
-    tar -xf jumpserver-installer-v2.6.1.tar.gz
-    cd jumpserver-installer-v2.6.1
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.2/jumpserver-installer-v2.6.2.tar.gz
+    tar -xf jumpserver-installer-v2.6.2.tar.gz
+    cd jumpserver-installer-v2.6.2
     ```
     ```sh
     vi config-example.txt
@@ -455,17 +455,9 @@
     ./jmsctl.sh restart
     ```
 
-
 ### 失败处理
 
 !!! tip "如果升级失败可以使用 upgrade 重新升级"
-    ```sh
-    vi static.env
-    ```
-    ```vim
-    # export VERSION=v2.6.1
-    export VERSION=v2.6.2
-    ```
     ```sh
     ./jmsctl.sh upgrade v2.6.2
     ```
@@ -517,9 +509,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.6.1/jumpserver-installer-v2.6.1.tar.gz
-    tar -xf jumpserver-installer-v2.6.1.tar.gz
-    cd jumpserver-installer-v2.6.1
+    wget https://github.com/jumpserver/installer/releases/download/v2.6.2/jumpserver-installer-v2.6.2.tar.gz
+    tar -xf jumpserver-installer-v2.6.2.tar.gz
+    cd jumpserver-installer-v2.6.2
     ```
     ```sh
     ./jmsctl.sh upgrade
