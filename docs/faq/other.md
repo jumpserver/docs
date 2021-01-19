@@ -6,7 +6,11 @@
     ```
     ```yaml
     {
-      "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
+      "registry-mirrors": [
+        "https://hub-mirror.c.163.com",
+        "https://bmtrgdvx.mirror.aliyuncs.com",
+        "http://f1361db2.m.daocloud.io"
+      ],
       "log-driver": "json-file",
       "log-opts": {
         "max-file": "3",
