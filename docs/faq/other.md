@@ -23,10 +23,13 @@
     ```vim hl_lines="3"
     开始还原数据库: /opt/jumpserver.sql
     mysql: [Warning] Using a password on the command line interface can be insecure.
-    ERROR 1022 (23000) at line 1237: Can't write; duplicate key in table 'ops_adhoc_history'
+    ERROR 1022 (23000) at line 1237: Can't write; duplicate key in table 'xxxxxx'
     ERRO[0008] error waiting for container: context canceled
     read unix @->ar/run/docker.sock: read: connection reset by peer
     数据库恢复失败,请检查数据库文件是否完整，或尝试手动恢复！
+    ```
+    ```sh
+    ./jmsctl.sh stop
     ```
     ```sh
     docker cp /opt/jumpserver.sql jms_mysql:/tmp
