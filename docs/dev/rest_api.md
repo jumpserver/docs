@@ -17,7 +17,18 @@
 | --------- | ------------------------ | ---------------------------------- |
 |  < 2.0.0  |   `http://<url>/docs`    |   `http://192.168.244.144/docs`    |
 |  >=2.0.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
+|  >=2.6.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
 
+!!! tip "版本小于 v2.6 需要打开 debug 模式"
+    ```sh
+    vi config.yml
+    ```
+    ```yaml
+    ...
+    # 如果版本更低的话，配置文件是 config.py
+    # Debug = true
+    DEBUG: true
+    ```
 
 ![api_swagger](../img/api_swagger.jpg)
 
