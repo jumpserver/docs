@@ -30,12 +30,11 @@ nav:
   - 安装配置:
     - 极速部署: install/setup_by_fast.md
     - 负载均衡: install/setup_by_lb.md
+    - 升级文档: install/upgrade/upgrade.md
+    - 迁移文档: install/migration.md
     - 安全建议: install/install_security.md
   - 管理文档:
     - 快速入门: admin-guide/quick_start.md
-    - 更新升级:
-        - 升级文档: admin-guide/upgrade/upgrade.md
-    - 迁移文档: admin-guide/migration.md
     - 资产要求:
         - Tetnet: admin-guide/assets/telnet.md
         - Linux SSH: admin-guide/assets/linux_ssh.md
@@ -53,6 +52,11 @@ nav:
         - LDAP: admin-guide/authentication/ldap.md
         - OpenID: admin-guide/authentication/openid.md
         - Radius: admin-guide/authentication/radius.md
+    - 导入导出:
+        - CSV 导入: admin-guide/data-import/csv_import.md
+        - CSV 导出: admin-guide/data-import/csv_export.md
+        - Excel 导入: admin-guide/data-import/excel_import.md
+        - Excel 导出: admin-guide/data-import/excel_export.md
     - 反向代理: admin-guide/proxy.md
     - 参数说明: admin-guide/env.md
   - 开发文档:
@@ -60,7 +64,8 @@ nav:
   - 用户文档:
     - 我的资产: user-guide/assets/user-asset.md
     - 我的应用:
-      - 数据库应用: user-guide/applications/user-database-app.md
+      - 数据库: user-guide/apps/user-database.md
+      - Kubernetes: user-guide/apps/user-kubernetes.md
     - 命令执行: user-guide/ops/command-executions/create.md
     - 个人信息: user-guide/users/profile.md
     - Web终端: user-guide/terminal/web-terminal.md

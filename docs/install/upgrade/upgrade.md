@@ -51,19 +51,14 @@
     === "docker 部署"
         ```sh
         docker cp jms_all:/opt/jumpserver /opt/jumpserver_bak
-        docker exec -it jms_all /bin/bash
-        cd /opt/koko
-        ./koko -s stop
-        /etc/init.d/guacd stop
-        sh /config/tomcat9/bin/shutdown.sh
-        cd /opt/jumpserver
-        source /opt/py3/bin/activate
-        ./jms stop
+        docker exec -it jms_all env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
+        docker stop jms_all
         ```
 
     === "docker-compose 部署"
         ```sh
         docker cp jms_core:/opt/jumpserver /opt/jumpserver_bak
+        docker exec -it jms_core env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
         docker stop jms_koko
         docker stop jms_guacamole
         docker stop jms_core
@@ -87,7 +82,7 @@
         echo "备份数据库字符集正确";
     else
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
+        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
     fi
     ```
 
