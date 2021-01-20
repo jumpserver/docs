@@ -17,7 +17,7 @@
         if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
             echo "备份数据库字符集正确";
         else
-            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
+            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
         fi
         ```
         ```sh
@@ -60,7 +60,7 @@
             echo "备份数据库字符集正确";
         else
             cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@' /opt/jumpserver.sql
+            sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
         fi
         ```
         ```sh
