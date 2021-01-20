@@ -54,9 +54,6 @@ nav:
         - Radius: admin-guide/authentication/radius.md
     - 导入导出:
         - CSV 导入: admin-guide/data-import/csv_import.md
-        - CSV 导出: admin-guide/data-import/csv_export.md
-        - Excel 导入: admin-guide/data-import/excel_import.md
-        - Excel 导出: admin-guide/data-import/excel_export.md
     - 反向代理: admin-guide/proxy.md
     - 参数说明: admin-guide/env.md
   - 开发文档:
