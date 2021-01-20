@@ -203,5 +203,3 @@
 | test_rdp         | test    | rdp     |                   |         |         | auto    | 20    |                 | true     |      |           |    |           | Administrators | true              |            |            |
 | test_rdp_aduser  | xiaobai | rdp     | ***************** |         |         | auto    | 50    |                 | false    |      |           |    |           |                |                   | domain.com |            |
 | test_vnc         | root    | vnc     | Develop@A2#L7*T1c |         |         | auto    | 20    |                 | false    |      |           |    |           |                |                   |            |            |
-| test-mysql       | xiaobai
-| test-k8s         |
