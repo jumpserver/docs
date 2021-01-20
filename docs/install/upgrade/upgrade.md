@@ -20,7 +20,17 @@
 
 ### 迁移步骤
 
-!!! tip "停止 JumpServer 相关进程"
+!!! tip "备份数据库"
+    ```yaml
+    # 从 jumpserver/config.yml 获取数据库信息
+    DB_HOST: 127.0.0.1   # 数据库服务器 IP
+    DB_PORT: 3306        # 数据库服务器 端口
+    DB_USER: jumpserver  # 连接数据库的用户
+    DB_PASSWORD: ******  # 连接数据库用户的密码
+    DB_NAME: jumpserver  # JumpServer 使用的数据库
+    # mysqldump -h<DB_HOST> -P<DB_PORT> -u<DB_USER> -p<DB_PASSWORD> <DB_NAME> > /opt/<DB_NAME>.sql
+    ```
+
     === "手动部署"
         ```sh
         cd /opt/koko
@@ -39,19 +49,52 @@
         cd /opt
         mv /opt/jumpserver /opt/jumpserver_bak
         ```
+        ```sh
+        mysqldump -h127.0.0.1 -P3306 -ujumpserver -p jumpserver > /opt/jumpserver.sql
+        ```
+
+    === "组件容器化部署"
+        ```sh
+        docker stop jms_koko jms_guacamole
+        docker rm jms_koko jms_guacamole
+        ```
+        ```sh
+        cd /opt/jumpserver
+        source /opt/py3/bin/activate
+        ./jms stop
+        ```
+        ```sh
+        cd /opt
+        mv /opt/jumpserver /opt/jumpserver_bak
+        ```
+        ```sh
+        mysqldump -h127.0.0.1 -P3306 -ujumpserver -p jumpserver > /opt/jumpserver.sql
+        ```
 
     === "setuptools 脚本部署"
         ```sh
         cd /opt/setuptools
         ./jmsctl.sh stop
+        docker rm jms_koko jms_guacamole
         systemctl disable jms_core
         mv /opt/jumpserver /opt/jumpserver_bak
+        ```
+        ```sh
+        mysqldump -h127.0.0.1 -P3306 -ujumpserver -p jumpserver > /opt/jumpserver.sql
         ```
 
     === "docker 部署"
         ```sh
         docker cp jms_all:/opt/jumpserver /opt/jumpserver_bak
         docker exec -it jms_all env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
+        ```
+        ```sh
+        docker exec -it jms_all /bin/bash
+        mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME > /opt/jumpserver.sql
+        exit
+        ```
+        ```sh
+        docker cp jms_all:/opt/jumpserver.sql /opt
         docker stop jms_all
         ```
 
@@ -59,24 +102,19 @@
         ```sh
         docker cp jms_core:/opt/jumpserver /opt/jumpserver_bak
         docker exec -it jms_core env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
-        docker stop jms_koko
-        docker stop jms_guacamole
-        docker stop jms_core
+        ```
+        ```sh
+        docker exec -it jms_mysql /bin/bash
+        mysqldump -uroot jumpserver > /opt/jumpserver.sql
+        exit
+        ```
+        ```sh
+        docker cp jms_mysql:/opt/jumpserver.sql /opt
+        cd /opt/Dockerfile
+        docker-compose stop
         ```
 
-!!! tip "备份原来的数据库"
-    ```yaml
-    # 从 jumpserver/config.yml 获取数据库信息
-    DB_HOST: 127.0.0.1   # 数据库服务器 IP
-    DB_PORT: 3306        # 数据库服务器 端口
-    DB_USER: jumpserver  # 连接数据库的用户
-    DB_PASSWORD: ******  # 连接数据库用户的密码
-    DB_NAME: jumpserver  # JumpServer 使用的数据库
-    # mysqldump -h<DB_HOST> -P<DB_PORT> -u<DB_USER> -p<DB_PASSWORD> <DB_NAME> > /opt/<DB_NAME>.sql
-    ```
-    ```sh
-    mysqldump -h127.0.0.1 -P3306 -ujumpserver -p jumpserver > /opt/jumpserver.sql
-    ```
+!!! tip "修改数据库字符集"
     ```sh
     if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
         echo "备份数据库字符集正确";
