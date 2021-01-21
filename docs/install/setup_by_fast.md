@@ -8,11 +8,11 @@
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 ## 自动部署
-- 安装目录在 /opt/jumpserver-installer-v2.6.2
+- 安装目录在 /opt/jumpserver-installer-v2.7.0
 
 !!! tip "一键安装 JumpServer"
     ```sh
-    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.2/quick_start.sh | bash
+    curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.7.0/quick_start.sh | bash
     ```
 
 ## 手动部署
@@ -27,9 +27,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.6.2/jumpserver-installer-v2.6.2.tar.gz
-    tar -xf jumpserver-installer-v2.6.2.tar.gz
-    cd jumpserver-installer-v2.6.2
+    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
+    tar -xf jumpserver-installer-v2.7.0.tar.gz
+    cd jumpserver-installer-v2.7.0
     export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
     cat config-example.txt
     ```
