@@ -36,7 +36,6 @@
     ./jmsctl.sh stop
     ```
     ```sh
-    docker cp /opt/jumpserver.sql jms_mysql:/tmp
     docker exec -it jms_mysql /bin/bash
     ```
     ```sh
@@ -45,13 +44,11 @@
     ```mysql
     drop database jumpserver;
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
-    use jumpserver;
-    source /tmp/jumpserver.sql;
     exit;
+    exit
     ```
     ```sh
-    rm -f /tmp/jumpserver.sql
-    exit
+    ./jmsctl.sh restore_db /opt/jumpserver.sql
     # 注意: 确定在导入数据库的过程中没有错误
     ```
     ```sh
@@ -79,7 +76,7 @@
     ./jmsctl.sh start
     ```
 
-!!! question "Table 'applications_application' already exists"
+!!! question "Table 'xxxxxx' already exists"
     ```sh
     ./jmsctl.sh stop
     ```
