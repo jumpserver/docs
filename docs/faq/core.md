@@ -66,6 +66,14 @@
     use jumpserver;
     update settings_setting set value='false' where name='AUTH_LDAP';
     ```
+    ```sh
+    redis-cli -a $REDIS_PASSWORD
+    ```
+    ```redis
+    select 4
+    keys *LDAP*
+    del :1:_SETTING_AUTH_LDAP
+    ```
 
 !!! question "如果是设置 其他身份认证 后无法登录, 注释掉 jumpserver/config/config.txt 里面的身份认证设置重启即可"
 
