@@ -35,6 +35,9 @@
         ```sh
         cd /opt/koko
         ./koko -s stop
+        # 更老的版本使用的 coco
+        # cd /opt/coco
+        # ./cocod stop
         ```
         ```sh
         /etc/init.d/guacd stop
@@ -57,6 +60,9 @@
         ```sh
         docker stop jms_koko jms_guacamole
         docker rm jms_koko jms_guacamole
+        # 更老的版本使用的 coco
+        # docker stop jms_coco
+        # docker rm jms_coco
         ```
         ```sh
         cd /opt/jumpserver
