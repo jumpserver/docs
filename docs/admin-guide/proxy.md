@@ -13,19 +13,19 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```vim hl_lines="9"
+    ```vim hl_lines="8-11"
     ...
 
     ## Nginx 配置，这个 Nginx 是用来分发路径到不同的服务
     HTTP_PORT=8080
-    HTTPS_PORT=127.0.0.1:8443
+    HTTPS_PORT=8443
     SSH_PORT=2222
 
     ## LB 配置, 这个 Nginx 是 HA 时可以启动负载均衡到不同的主机
-    USE_LB=1
-    LB_HTTP_PORT=80
-    LB_HTTPS_PORT=443
-    LB_SSH_PORT=2223
+    USE_LB=1                   # 启用 LB
+    LB_HTTP_PORT=80            # 启用 80   端口(http)
+    LB_HTTPS_PORT=443          # 启用 443  端口(https)
+    LB_SSH_PORT=2223           # 启用 2223 端口(ssh)
     ```
     ```sh
     vi /opt/jumpserver/config/nginx/lb_http_server.conf

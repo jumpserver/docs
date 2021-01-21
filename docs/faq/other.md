@@ -84,7 +84,6 @@
     ./jmsctl.sh stop
     ```
     ```sh
-    docker cp /opt/jumpserver.sql jms_mysql:/tmp
     docker exec -it jms_mysql /bin/bash
     ```
     ```sh
@@ -93,13 +92,11 @@
     ```mysql
     drop database jumpserver;
     create database jumpserver default charset 'utf8' collate 'utf8_bin';
-    use jumpserver;
-    source /tmp/jumpserver.sql;
     exit;
+    exit
     ```
     ```sh
-    rm -f /tmp/jumpserver.sql
-    exit
+    ./jmsctl.sh restore_db /opt/jumpserver.sql
     # 注意: 确定在导入数据库的过程中没有错误
     ```
     ```sh
@@ -118,7 +115,7 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```vim hl_lines="23-25"
+    ```vim hl_lines="23"
     # 说明
     #### 这是项目总的配置文件, 会作为环境变量加载到各个容器中
     #### 格式必须是 KEY=VALUE 不能有空格等
@@ -141,13 +138,13 @@
     USE_EXTERNAL_REDIS=0
 
     ## Nginx 配置，这个Nginx是用来分发路径到不同的服务
-    HTTP_PORT=80          # 默认单节点对外 http  端口  (*)
-    HTTPS_PORT=8443       # 默认单节点对外 https 端口  
-    SSH_PORT=2222         # 默认单节点对外 ssh   端口  (*)
+    HTTP_PORT=80           # 默认单节点对外 http  端口  (*)
+    HTTPS_PORT=8443
+    SSH_PORT=2222
 
     ## LB 配置, 这个Nginx是HA时可以启动负载均衡到不同的主机
     USE_LB=0
-    LB_HTTP_PORT=80
+    LB_HTTP_PORT=80         
     LB_HTTPS_PORT=443
     LB_SSH_PORT=2223
 
