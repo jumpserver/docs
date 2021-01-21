@@ -508,7 +508,14 @@
 
 !!! tip "如果升级失败可以使用 upgrade 重新升级"
     ```sh
-    ./jmsctl.sh upgrade v2.7.0
+    cd /opt
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
+    tar -xf jumpserver-installer-v2.7.0.tar.gz
+    cd jumpserver-installer-v2.7.0
+    ```
+    ```sh
+    ./jmsctl.sh upgrade
     ```
     ```nginx hl_lines="1"
     你确定要升级到 v2.7.0 版本吗? (y/n)  (默认为n): y
@@ -552,16 +559,4 @@
     ```
     ```sh
     ./jmsctl.sh restart
-    ```
-
-!!! tip "如果依旧失败则需要更新 installer"
-    ```sh
-    cd /opt
-    yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
-    tar -xf jumpserver-installer-v2.7.0.tar.gz
-    cd jumpserver-installer-v2.7.0
-    ```
-    ```sh
-    ./jmsctl.sh upgrade
     ```
