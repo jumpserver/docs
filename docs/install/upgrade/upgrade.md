@@ -411,6 +411,16 @@
     Removing jms_celery    ... done
     ```
     ```sh
+    docker exec -it jms_mysql /bin/bash
+    mysql -uroot -p$DB_PASSWORD
+    ```
+    ```mysql
+    drop database jumpserver;
+    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    exit
+    exit
+    ```
+    ```sh
     ./jmsctl.sh restore_db /opt/jumpserver.sql
     ```
     ```nginx
