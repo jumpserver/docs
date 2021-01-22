@@ -8,18 +8,23 @@
 - [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 ## 自动部署
-- 安装目录在 /opt/jumpserver-installer-v2.7.0
 
 !!! tip "一键安装 JumpServer"
     ```sh
     curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.7.0/quick_start.sh | bash
+
+    # 如果出现问题
+    cd /opt/jumpserver-installer-v2.7.0
+    ./jmsctl.sh --help
     ```
 
 ## 手动部署
 
 !!! info "外置环境要求"
-    - MySQL >= 5.7
     - Redis >= 5.0.0
+    - MySQL >= 5.7
+    - MariaDB >= 10.2
+    - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
 
 ### 下载
 

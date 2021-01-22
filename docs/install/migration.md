@@ -2,9 +2,10 @@
 
 !!! warning "升级及迁移请保持 SECRET_KEY 与旧版本一致, 否则会导致数据库加密数据无法解密"
     - 请不要跨大版本迁移数据库
-    - jumpserver >= v2.6.0
-    - mysql >= 5.7
-    - redis >= 5.0.0
+    - JumpServer >= v2.6.0
+    - Redis >= 5.0.0
+    - MySQL >= 5.7
+    - MariaDB >= 10.2
 
 ### 1. 备份数据
 
