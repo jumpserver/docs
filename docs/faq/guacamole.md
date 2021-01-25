@@ -22,8 +22,8 @@
 
 !!! question "Win7/2008 Linux VNC 频繁断开临时解决方案"
     - 使用此方式后将无法使用网域功能
-    - <= 2.6.6  使用 image: guacamole/guacd:1.2.0
-    - >= 2.7.0  使用 image: guacamole/guacd:1.3.0
+    - 版本 <= 2.6.6  使用 image: guacamole/guacd:1.2.0
+    - 版本 >= 2.7.0  使用 image: guacamole/guacd:1.3.0
 
     ```sh
     vi compose/docker-compose-app.yml
