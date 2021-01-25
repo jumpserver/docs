@@ -161,9 +161,6 @@
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true  # 关闭浏览器后 session 过期
     ```
-    ```sh
-    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
-    ```
 
 !!! tip "开始部署 JumpServer"
 

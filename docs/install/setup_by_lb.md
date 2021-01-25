@@ -586,9 +586,6 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
     ```
     ```sh
-    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
-    ```
-    ```sh
     ./jmsctl.sh install
     ```
     ```nginx hl_lines="26 40 44-49 53-56 69 73"
@@ -747,9 +744,6 @@
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
-    ```
-    ```sh
-    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
     ```
     ```sh
     ./jmsctl.sh install
