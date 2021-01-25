@@ -129,6 +129,14 @@
         sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
     fi
     ```
+    ```sh
+    if grep -q 'CHARSET=utf8;' /opt/jumpserver.sql; then
+        cp /opt/jumpserver.sql /opt/jumpserver_bak.sql.1
+        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+    else
+        echo "备份数据库字符集正确";
+    fi
+    ```
 
 !!! tip "下载 jumpserver-install"
     ```sh
@@ -383,6 +391,10 @@
 
 
     ```sh
+    mkdir -p /opt/jumpserver/core/
+    mv /opt/jumpserver_bak/data /opt/jumpserver/core/
+    ```
+    ```sh
     ./jmsctl.sh start
     ```
     ```nginx
@@ -433,9 +445,6 @@
     开始还原数据库: /opt/jumpserver.sql
     mysql: [Warning] Using a password on the command line interface can be insecure.
     数据库恢复成功！
-    ```
-    ```sh
-    mv /opt/jumpserver_bak/data /opt/jumpserver/core/
     ```
     ```sh
     ./jmsctl.sh start

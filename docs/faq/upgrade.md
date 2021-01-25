@@ -81,6 +81,14 @@
     ./jmsctl.sh stop
     ```
     ```sh
+    if grep -q 'CHARSET=utf8;' /opt/jumpserver.sql; then
+        cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
+        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+    else
+        echo "备份数据库字符集正确";
+    fi
+    ```
+    ```sh
     docker exec -it jms_mysql /bin/bash
     ```
     ```sh
@@ -106,6 +114,17 @@
     kombu.exceptions.OperationalError:
     Cannot route message for exchange 'ansible': Table empty or key no longer exists.
     Probably the key ('_kombu.binding.ansible') has been removed from the Redis databa
+    ```
+
+!!! question "Internal Server Error"
+    ```sh
+    docker logs -f jms_core --tail 200
+    # 查看是否有报错，如果没有或者不完整请进入容器查看日志
+    ```
+    ```sh
+    docker exec -it jms_core /bin/bash
+    cat logs/jumpserver.log
+    # 根据报错处理
     ```
 
 !!! question "修改对外访问端口"
