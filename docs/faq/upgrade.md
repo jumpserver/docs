@@ -18,7 +18,7 @@
       }
     }
     ```
-    可以使用其他的镜像源, 推荐使用阿里云的镜像源  _[申请地址](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+    可以使用其他的镜像源, 推荐使用阿里云的镜像源  _[申请地址](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)_
 
 !!! question "导入数据库报错"
     ```sh
@@ -81,6 +81,14 @@
     ./jmsctl.sh stop
     ```
     ```sh
+    if grep -q 'CHARSET=utf8;' /opt/jumpserver.sql; then
+        cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
+        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+    else
+        echo "备份数据库字符集正确";
+    fi
+    ```
+    ```sh
     docker exec -it jms_mysql /bin/bash
     ```
     ```sh
@@ -106,6 +114,17 @@
     kombu.exceptions.OperationalError:
     Cannot route message for exchange 'ansible': Table empty or key no longer exists.
     Probably the key ('_kombu.binding.ansible') has been removed from the Redis databa
+    ```
+
+!!! question "Internal Server Error"
+    ```sh
+    docker logs -f jms_core --tail 200
+    # 查看是否有报错，如果没有或者不完整请进入容器查看日志
+    ```
+    ```sh
+    docker exec -it jms_core /bin/bash
+    cat logs/jumpserver.log
+    # 根据报错处理
     ```
 
 !!! question "修改对外访问端口"
@@ -201,30 +220,6 @@
     # Mysql 容器配置
     MYSQL_ROOT_PASSWORD=
     MYSQL_DATABASE=jumpserver
-    ```
-    ```sh
-    ./jmsctl.sh restart
-    ```
-
-!!! question "RDP VNC 显示效果优化"
-    ```sh
-    vi /opt/jumpserver/config/config.txt
-    ```
-    ```vim hl_lines="11-14"
-    ... 省略
-    # Guacamole 配置
-    JUMPSERVER_SERVER=http://core:8080
-    JUMPSERVER_KEY_DIR=/config/guacamole/data/key/
-    JUMPSERVER_RECORD_PATH=/config/guacamole/data/record/
-    JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive/
-    JUMPSERVER_ENABLE_DRIVE=true
-    JUMPSERVER_CLEAR_DRIVE_SESSION=true
-    JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
-    # 添加下面内容
-    JUMPSERVER_COLOR_DEPTH=32               # 远程桌面使用 32 位真彩
-    JUMPSERVER_DPI=120                      # 远程桌面 DPI
-    JUMPSERVER_DISABLE_BITMAP_CACHING=true  # 禁用RDP的内置位图缓存功能
-    JUMPSERVER_DISABLE_GLYPH_CACHING=true   # 禁用RDP会话中的字形缓存
     ```
     ```sh
     ./jmsctl.sh restart

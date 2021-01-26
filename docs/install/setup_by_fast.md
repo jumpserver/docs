@@ -35,7 +35,6 @@
     wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
     tar -xf jumpserver-installer-v2.7.0.tar.gz
     cd jumpserver-installer-v2.7.0
-    export DOCKER_IMAGE_PREFIX=docker.mirrors.ustc.edu.cn
     cat config-example.txt
     ```
 
