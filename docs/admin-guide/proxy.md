@@ -34,8 +34,8 @@
     # Todo: May be can auto discovery
     upstream http_server {
       sticky name=jms_route;
-      server nginx:8080;    # 这个是 config.txt 里面的 HTTP_PORT 端口
-      # server HOST2:8080;  # 另外的要写真实IP
+      server nginx:80;
+      # server HOST2:8080;  # 多节点
     }
 
     server {
