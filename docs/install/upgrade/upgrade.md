@@ -427,7 +427,7 @@
     ```
     ```sh
     docker exec -it jms_mysql /bin/bash
-    mysql -uroot -p$DB_PASSWORD
+    mysql -uroot -p$DB_PASSWORD       # 不是迁移时从jumpserver/config.yml复制的旧密码，新密码请到/opt/jumpserver/config/config.txt中查看 (*)
     ```
     ```mysql
     drop database jumpserver;
