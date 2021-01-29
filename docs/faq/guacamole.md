@@ -25,7 +25,7 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```vim hl_lines="14"
+    ```vim hl_lines="11"
     ... 省略
     # Guacamole 配置
     JUMPSERVER_SERVER=http://core:8080
@@ -36,9 +36,6 @@
     JUMPSERVER_CLEAR_DRIVE_SESSION=true
     JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
     # 添加下面内容
-    JUMPSERVER_COLOR_DEPTH=32               # 远程桌面使用 32 位真彩
-    JUMPSERVER_DPI=120                      # 远程桌面 DPI
-    JUMPSERVER_DISABLE_BITMAP_CACHING=true  # 禁用RDP的内置位图缓存功能
     JUMPSERVER_DISABLE_GLYPH_CACHING=true   # 禁用RDP会话中的字形缓存
     ```
     ```sh
