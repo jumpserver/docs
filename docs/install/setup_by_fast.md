@@ -145,6 +145,33 @@
     docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/core:v2.7.1
     # 其他镜像也可以使用这样的方式拉, 后续版本我们会在安装脚本里面优化
     ```
+    ```sh
+    # 也可以直接修改代码
+    vi scripts/3_load_images.sh
+    ```
+    ```vim
+    # 在第 44 行左右, 修改 pull_image 的方法
+    function pull_image() {
+      images=$(get_images public)
+      i=1
+      for image in ${images}; do
+        export DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
+        echo "[${image}]"
+        if [[ -n "${DOCKER_IMAGE_PREFIX}" && $(image_has_prefix "${image}") == "0" ]]; then
+          docker pull "${DOCKER_IMAGE_PREFIX}/${image}"
+          docker tag "${DOCKER_IMAGE_PREFIX}/${image}" "${image}"
+        else
+          docker pull "${image}"
+        fi
+        echo ""
+        ((i++)) || true
+      done
+    }
+    # 修改到此结束, 不要修改其他的内容
+    ```
+    ```sh
+    ./jmsctl.sh load_image
+    ```
 
 ## 使用方式
 
