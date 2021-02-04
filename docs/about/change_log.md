@@ -5,6 +5,23 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.7.1
+------------------------
+2021年02月03日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    * 修复Windows 2003 和 2008 等 RDP 连接失败的问题
+    * 修复浏览器多个 tab 页连接 Windows 资产相互冲突的问题
+    * 修复 Chrome 兼容性导致的日期显示问题
+    * 修复 KoKo 终端窗口大小不一致造成的显示问题
+
+!!! summary "🚀 性能优化 Optimization"
+    * 减少 celery 启动数量
+    * 会话列表支持模糊搜索
+    * 还原用户来源字段的设置
+    * 优化 KoKo 录像文件上传，减少内存使用
+    * 添加工单申请人字段显示 【企业版】
+
 v2.7.0
 ------------------------
 2021年01月21日

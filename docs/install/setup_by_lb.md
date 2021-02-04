@@ -564,9 +564,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
-    tar -xf jumpserver-installer-v2.7.0.tar.gz
-    cd jumpserver-installer-v2.7.0
+    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
+    tar -xf jumpserver-installer-v2.7.1.tar.gz
+    cd jumpserver-installer-v2.7.1
     ```
 
 !!! tip "修改配置文件"
@@ -597,7 +597,7 @@
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
        ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  v2.7.0
+    								                             Version:  v2.7.1
 
 
     >>> 一、配置JumpServer
@@ -666,14 +666,14 @@
     完成
 
     >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.7.0 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.7.0 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.7.0 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.7.1 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.7.0 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.7.0 	[ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
 
     >>> 四、安装完成了
     1. 可以使用如下命令启动, 然后访问
@@ -724,9 +724,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
-    tar -xf jumpserver-installer-v2.7.0.tar.gz
-    cd jumpserver-installer-v2.7.0
+    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
+    tar -xf jumpserver-installer-v2.7.1.tar.gz
+    cd jumpserver-installer-v2.7.1
     ```
 
 !!! tip "修改配置文件"
@@ -757,7 +757,7 @@
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
        ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  v2.7.0
+    								                             Version:  v2.7.1
 
 
     >>> 一、配置JumpServer
@@ -826,14 +826,14 @@
     完成
 
     >>> 三、加载镜像
-    Docker: Pulling from jumpserver/core:v2.7.0 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.7.0 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.7.0 	    [ OK ]
+    Docker: Pulling from jumpserver/core:v2.7.1 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.7.0 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.7.0 	[ OK ]
+    Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
 
     >>> 四、安装完成了
     1. 可以使用如下命令启动, 然后访问

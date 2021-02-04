@@ -23,9 +23,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.0/jumpserver-installer-v2.7.0.tar.gz
-    tar -xf jumpserver-installer-v2.7.0.tar.gz
-    cd jumpserver-installer-v2.7.0
+    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
+    tar -xf jumpserver-installer-v2.7.1.tar.gz
+    cd jumpserver-installer-v2.7.1
     ```
     ```sh
     ./jmsctl.sh install
