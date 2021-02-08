@@ -74,7 +74,7 @@
     ```sh
     docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
     ```
-    ```vim
+    ```yaml
     2021-02-08 14:58:53 Mon Feb  8 14:58:53 2021
     2021-02-08 14:58:53 JumpServer version v2.7.1, more see https://www.jumpserver.org
 
