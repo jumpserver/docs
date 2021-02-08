@@ -456,63 +456,6 @@
 
 ### 升级步骤
 
-!!! tip "升级到最新版本"
-    ```sh
-    ./jmsctl.sh check_update
-    ```
-    ```nginx hl_lines="4"
-
-    最新版本是: v2.7.1
-    当前版本是: v2.6.1
-
-    你确定要升级到 v2.7.1 版本吗? (y/n)  (默认为n): y
-
-    1. 检查配置变更
-    完成
-
-    2. 检查程序文件变更
-    完成
-
-    3. 升级镜像文件
-    Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/redis:6-alpine 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
-    Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.7.1         [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
-
-    4. 备份数据库
-    正在备份...
-    mysqldump: [Warning] Using a password on the command line interface can be insecure.
-    备份成功! 备份文件已存放至: /opt/jumpserver/db_backup/jumpserver-2020-12-18_12:43:10.sql.gz
-
-    5. 进行数据库变更
-    表结构变更可能需要一段时间，请耐心等待 (请确保数据库在运行)
-    2020-12-18 12:43:12 Collect static files
-    2020-12-18 12:43:12 Collect static files done
-    2020-12-18 12:43:12 Check database structure change ...
-    2020-12-18 12:43:12 Migrate model change to database ...
-
-    472 static files copied to '/opt/jumpserver/data/static'.
-    Operations to perform:
-      Apply all migrations: admin, applications, assets, audits, auth, authentication, captcha, common, contenttypes, django_cas_ng, django_celery_beat, jms_oidc_rp, ops, orgs, perms, sessions, settings, terminal, tickets, users
-    Running migrations:
-      No migrations to apply.
-    完成
-
-    6. 升级成功, 可以重启程序了
-    ./jmsctl.sh restart
-    ```
-
-    ```sh
-    ./jmsctl.sh restart
-    ```
-
-### 失败处理
-
-!!! tip "如果升级失败可以使用 upgrade 重新升级"
     ```sh
     cd /opt
     yum -y install wget
