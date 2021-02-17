@@ -25,7 +25,7 @@
     New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
     ```
 
-    !!! question "如果 win7 执行上面的命令报错请执行此处的命令"
+    !!! question "如果 win7/win2008 执行上面的命令报错请执行此处的命令"
         ```powershell
         netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=22
         ```
