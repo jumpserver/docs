@@ -57,6 +57,7 @@ nav:
         - CSV 导入: admin-guide/data-import/csv_import.md
     - 反向代理: admin-guide/proxy.md
     - 参数说明: admin-guide/env.md
+    - 存储说明: admin-guide/storages.md
   - 开发文档:
     - API文档: dev/rest_api.md
   - 用户文档:
