@@ -10,6 +10,10 @@
 }
 .md-header{
   background-color: #2b937c;
+  top: 48px;
+}
+.md-main__inner {
+  margin-top: 3rem;
 }
 .md-footer{
   background-color: #2b937c;

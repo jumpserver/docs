@@ -1,0 +1,191 @@
+.sticky{position: fixed;top: 0;right: 0;left: 0;z-index: 10;}
+/*! CSS Used from: https://metersphere.io/css/bootstrap.min.css */
+*,::after,::before{box-sizing:border-box;}
+h4,h5{margin-top:0;margin-bottom:.5rem;}
+p{margin-top:0;margin-bottom:1rem;}
+img{vertical-align:middle;border-style:none;}
+svg{overflow:hidden;vertical-align:middle;}
+button{border-radius:0;}
+button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color;}
+button{margin:0;font-family:inherit;font-size:inherit;line-height:inherit;}
+button{overflow:visible;}
+button{text-transform:none;}
+[type=button],button{-webkit-appearance:button;}
+[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none;}
+h4,h5{margin-bottom:.5rem;font-weight:500;line-height:1.2;}
+h4{font-size:1.5rem;}
+h5{font-size:1.25rem;}
+.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;}
+@media (min-width:576px){
+.container{max-width:540px;}
+}
+@media (min-width:768px){
+.container{max-width:720px;}
+}
+@media (min-width:992px){
+.container{max-width:960px;}
+}
+@media (min-width:1200px){
+.container{max-width:1140px;}
+}
+@media (min-width:576px){
+.container{max-width:540px;}
+}
+@media (min-width:768px){
+.container{max-width:720px;}
+}
+@media (min-width:992px){
+.container{max-width:960px;}
+}
+@media (min-width:1200px){
+.container{max-width:1140px;}
+}
+.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;}
+.col-6,.col-lg-3,.col-md-6{position:relative;width:100%;padding-right:15px;padding-left:15px;}
+.col-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%;}
+@media (min-width:768px){
+.col-md-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%;}
+}
+@media (min-width:992px){
+.col-lg-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%;}
+}
+.card{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem;}
+.card-body{-ms-flex:1 1 auto;flex:1 1 auto;min-height:1px;padding:1.25rem;}
+.bg-white{background-color:#fff!important;}
+.border-0{border:0!important;}
+.rounded{border-radius:.25rem!important;}
+.rounded-circle{border-radius:50%!important;}
+.d-inline-block{display:inline-block!important;}
+.shadow{box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;}
+.shadow-lg{box-shadow:0 1rem 3rem rgba(0,0,0,.175)!important;}
+.mb-1{margin-bottom:.25rem!important;}
+.mt-3{margin-top:1rem!important;}
+.mt-4{margin-top:1.5rem!important;}
+.pr-0{padding-right:0!important;}
+.pl-0{padding-left:0!important;}
+.pt-2{padding-top:.5rem!important;}
+.text-center{text-align:center!important;}
+.text-muted{color:#6c757d!important;}
+@media print{
+*,::after,::before{text-shadow:none!important;box-shadow:none!important;}
+a:not(.btn){text-decoration:underline;}
+img{page-break-inside:avoid;}
+p{orphans:3;widows:3;}
+.container{min-width:992px!important;}
+}
+/*! CSS Used from: https://metersphere.io/css/magnific-popup.css */
+button::-moz-focus-inner{padding:0;border:0;}
+/*! CSS Used from: https://metersphere.io/css/mega.css */
+@media (max-width:767px){
+.visible-xs{display:block!important;}
+}
+@media print{
+.hidden-print{display:none!important;}
+}
+.mega-nav-sandbox{width:100%;}
+.mega-nav-sandbox *{letter-spacing:0;line-height:1.42857143;margin-bottom:0;margin-top:0;text-transform:none;}
+.mega-nav-sandbox h4,.mega-nav-sandbox h5{line-height:1.1;font-size: 24px;}
+.mega-nav-sandbox .mega-nav-banner{background-color:black;color:white;font-family:"klavika-web", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:16px;min-height:3em;}
+.mega-nav-sandbox .mega-nav-banner,.mega-nav-sandbox .mega-nav-banner>.container{align-items:center;display:flex;}
+.mega-nav-sandbox .mega-nav-banner .text-muted{color:#ffffff;}
+.mega-nav-sandbox .mega-nav-banner-logo>img{height:40px;}
+.mega-nav-sandbox .mega-nav-banner-item:first-child{display:none;}
+.mega-nav-sandbox .mega-nav-banner-item:last-child{margin-left:auto;}
+.mega-nav-sandbox .mega-nav-tagline{align-items:center;display:inline-flex;margin-bottom:0;vertical-align:-1px;}
+.mega-nav-sandbox .mega-nav{display:inline-block;font-family:"klavika-web", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;line-height:1.35714;}
+.mega-nav-sandbox .mega-nav h4,.mega-nav-sandbox .mega-nav h5,.mega-nav-sandbox .mega-nav p{margin-top:0;}
+.mega-nav-sandbox .mega-nav img{max-width:100%;}
+.mega-nav-sandbox .mega-nav,.mega-nav-sandbox .mega-nav *{box-sizing:border-box;}
+.mega-nav-sandbox .mega-nav .visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px;}
+.mega-nav-sandbox .mega-nav-icon{display:inline-block;fill:currentColor;height:1em;stroke:currentColor;width:1em;}
+.mega-nav-sandbox .mega-nav-icon-angle-right{height:0.8em;transform:rotate(-90deg);width:0.8em;color:#8492a6;}
+.mega-nav-sandbox .open>.mega-nav-ctrl .mega-nav-icon-angle-right{transform:rotate(0);}
+.mega-nav-sandbox .mega-nav-ctrl{background-color:transparent;border:0;margin-left:0.5em;padding:0;text-align:center;vertical-align:middle;}
+.mega-nav-sandbox .mega-nav-ctrl:active,.mega-nav-sandbox .mega-nav-ctrl:focus,.mega-nav-sandbox .mega-nav-ctrl:hover,.mega-nav-sandbox .mega-nav-ctrl:visited{outline:none;}
+.mega-nav-sandbox .mega-nav-ctrl-items{align-items:center;display:flex;padding-top:1px;}
+.mega-nav-sandbox .mega-nav-icon-outline{border:1px solid #8492a6;margin-top:-1px;padding:0.5em;}
+.mega-nav-sandbox .mega-nav-icon-outline .mega-nav-icon{display:block;}
+.mega-nav-sandbox .mega-nav-body-ct{bottom:0;display:none;left:0;overflow-y:auto;position:fixed;right:0;top:0;z-index:1100;}
+.mega-nav-sandbox .mega-nav.open .mega-nav-body-ct{display:block;}
+.mega-nav-sandbox .mega-nav-body{background-color:white;box-shadow:0 2px 16px rgba(79,99,122,0.2);color:black;margin:1em;padding:1em;}
+.mega-nav-sandbox .mega-nav-body-footer{color:#a4b1b2;display:none;}
+.mega-nav-sandbox .mega-nav-close{background-color:transparent;border:1px solid currentColor;float:right;margin-left:1em;margin-bottom:1em;padding:0.5em;text-align:center;}
+.mega-nav-sandbox .mega-nav-close:hover,.mega-nav-sandbox .mega-nav-close:focus{color:#333333;outline:none;}
+.mega-nav-sandbox .mega-nav-close:active{outline:none;}
+.mega-nav-sandbox .mega-nav-close .mega-nav-icon{display:block;}
+@media (min-width: 570px){
+.mega-nav-sandbox .mega-nav-body{padding:2em 2em 1em;}
+}
+@media (min-width: 768px){
+.mega-nav-sandbox .mega-nav-banner-item:first-child{display:block;}
+}
+@media (min-width: 992px){
+.mega-nav-sandbox .mega-nav{position:relative;}
+.mega-nav-sandbox .mega-nav::before{border-bottom:1em solid white;border-left:0.71429em solid transparent;border-right:0.71429em solid transparent;content:' ';display:none;height:0;left:50%;position:absolute;top:100%;transform:translateX(-50%);width:0;z-index:1101;}
+.mega-nav-sandbox .mega-nav-body-ct{bottom:auto;left:auto;overflow:visible;position:absolute;right:0;top:100%;width:940px;}
+.mega-nav-sandbox .mega-nav-body{margin:1em 0 0;}
+.mega-nav-sandbox .mega-nav-body-header{text-align:center;}
+.mega-nav-sandbox .mega-nav-body-header-item:last-child{margin-left:auto;}
+.mega-nav-sandbox .mega-nav-body-footer{display:block;padding-top:1em;}
+.mega-nav-sandbox .mega-nav-close{display:none;}
+}
+@media (min-width: 1200px){
+.mega-nav-sandbox .mega-nav-body-ct{width:1140px;}
+}
+/*! CSS Used from: https://metersphere.io/css/style.css */
+.text-muted{color:#8492a6!important;font-weight:600;}
+.rounded{border-radius:6px!important;}
+.card .card-body{padding:1.5rem;}
+.shadow{-webkit-box-shadow:0 0 3px rgba(60, 72, 88, 0.15)!important;box-shadow:0 0 3px rgba(60, 72, 88, 0.15)!important;}
+.shadow-lg{-webkit-box-shadow:0 10px 25px rgba(60, 72, 88, 0.15)!important;box-shadow:0 10px 25px rgba(60, 72, 88, 0.15)!important;}
+h4,h5{font-family:"Nunito", sans-serif;line-height:1.5;font-weight:600;}
+::-moz-selection{background:rgba(47, 85, 212, 0.9);color:#ffffff;}
+::selection{background:rgba(47, 85, 212, 0.9);color:#ffffff;}
+a{text-decoration:none!important;}
+p{line-height:1.6;}
+@media (max-width: 991px){
+#topnav .container{width:auto;}
+}
+.explore-feature{-webkit-transition:all 0.5s ease;transition:all 0.5s ease;}
+.explore-feature .icon{height:80px;width:80px;line-height:80px;-webkit-transition:all 0.5s ease;transition:all 0.5s ease;}
+.explore-feature:hover{-webkit-box-shadow:0 10px 25px rgba(60, 72, 88, 0.15)!important;box-shadow:0 10px 25px rgba(60, 72, 88, 0.15)!important;}
+.explore-feature:hover .icon{color:#2f55d4!important;}
+/*! CSS Used from: https://metersphere.io/css/colors/default.css */
+.explore-feature:hover .icon{color:#783887!important;}
+::selection{background-color:rgba(255, 91, 105, 0.9);}
+/*! CSS Used from: https://metersphere.io/css/index.css */
+p{font-family:-apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Helvetica Neue", ".PingFang SC", "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB", sans-serif;}
+h4,h5{font-family:-apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Helvetica Neue", ".PingFang SC", "PingFang SC", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB", sans-serif;line-height:1.5;font-weight:300;margin-bottom:0;}
+.card{background:none;}
+@media (max-width: 768px){
+.mega-nav-sandbox .mega-nav-body{background-color:white;box-shadow:0 2px 16px rgba(79,99,122,0.2);color:black;margin:1em;padding:1em!important;}
+}
+.mega-nav-sandbox .mega-nav-body{background-color:white;box-shadow:0 2px 16px rgba(79,99,122,0.2);color:black;margin-top:1em;padding:1em;padding-left:100px;padding-right:100px;}
+.explore-feature .icon-size{height:30px;width:30px;line-height:30px;-webkit-transition:all 0.5s ease;transition:all 0.5s ease;}
+.explore-feature .product-text-color{color:#6c757d;}
+.explore-feature:hover .bg-js{background-color:#2b937c;color:white!important;}
+.explore-feature:hover .bg-ms{background-color:#783887;color:white!important;}
+.explore-feature:hover .bg-ko{background-color:#fc6554;color:white!important;}
+.explore-feature:hover .bg-f2c{background-color:#00355d;color:white!important;}
+.card .header-card-body{padding:1rem!important;}
+/*! CSS Used fontfaces */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSUbOvISTs.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSUZevISTs.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSUbuvISTs.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSUb-vISTs.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAnsSUYevI.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofIOOaBXso.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofIMeaBXso.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofIOuaBXso.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofIO-aBXso.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKofINeaB.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofA6sKUbOvISTs.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofA6sKUZevISTs.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofA6sKUbuvISTs.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofA6sKUb-vISTs.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofA6sKUYevI.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUbOvISTs.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUZevISTs.woff2) format('woff2');unicode-range:U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUbuvISTs.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUb-vISTs.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/nunito/v16/XRXW3I6Li01BKofAjsOUYevI.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}

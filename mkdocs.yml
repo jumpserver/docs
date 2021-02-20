@@ -24,6 +24,7 @@ theme:
   features:
     - search.suggest
     - search.highlight
+  custom_dir: 'theme'
 
 nav:
   - 总体介绍: index.md
