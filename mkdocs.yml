@@ -81,7 +81,6 @@ nav:
     - 贡献列表: about/contributor.md
     - 更新说明: about/change_log.md
     - 联系方式: about/contact.md
-    - 商业产品: about/commercial.md
 
 markdown_extensions:
   - admonition
@@ -107,10 +106,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+  - pymdownx.saneheaders
+  - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets:
@@ -138,6 +135,8 @@ extra:
       link: https://github.com/jumpserver
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/jumpserver/
+    - icon: fontawesome/solid/envelope
+      link: mailto:support@fit2cloud.com
 
 extra_css:
   - css/extra.css
