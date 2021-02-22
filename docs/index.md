@@ -1,16 +1,17 @@
 # 总体介绍
 
 !!! tip ""
-    JumpServer 是全球首款完全开源的堡垒机, 使用 GNU GPL v2.0 开源协议, 是符合 4A 的专业运维审计系统。  
+    JumpServer 是全球首款开源的堡垒机，使用 GNU GPL v2.0 开源协议，是符合 4A 规范的运维安全审计系统。  
 
-    JumpServer 使用 Python / Django 进行开发, 遵循 Web 2.0 规范, 配备了业界领先的 Web Terminal 解决方案, 交互界面美观、用户体验好。  
+    JumpServer 使用 Python / Django 为主进行开发，遵循 Web 2.0 规范，配备了业界领先的 Web Terminal 方案，交互界面美观、用户体验好。  
 
-    JumpServer 采纳分布式架构, 支持多机房跨区域部署, 中心节点提供 API, 各机房部署登录节点, 可横向扩展、无并发访问限制。  
+    JumpServer 采纳分布式架构，支持多机房跨区域部署，支持横向扩展，无资产数量及并发限制。  
 
-    JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。  
+    改变世界，从一点点开始。
 
-    改变世界, 从一点点开始。
+## 页面展示
 
+![!界面展示](./img/dashboard.png)
 
 ## 特色优势
 
@@ -21,7 +22,7 @@
     - 多云支持: 一套系统，同时管理不同云上面的资产；
     - 云端存储: 审计录像云端存储，永不丢失；
     - 多租户: 一套系统，多个子公司和部门同时使用；
-    多应用支持: 数据库，Windows远程应用，Kubernetes。
+    - 多应用支持: 数据库，Windows远程应用，Kubernetes。
 
 ## 功能列表
 
@@ -51,7 +52,7 @@
     <td>RADIUS 二次认证</td>
   </tr>
   <tr>
-    <td>登录复核（X-PACK）</td>
+    <td>登录复核</td>
     <td>用户登录行为受管理员的监管与控制</td>
   </tr>
   <tr>
@@ -76,22 +77,22 @@
     <td>密码过期设置</td>
   </tr>
   <tr>
-    <td rowspan="2">批量改密（X-PACK）</td>
+    <td rowspan="2">批量改密</td>
     <td>定期批量改密</td>
   </tr>
   <tr>
     <td>多种密码策略</td>
   </tr>
   <tr>
-    <td>多云纳管（X-PACK）</td>
+    <td>多云纳管 </td>
     <td>对私有云、公有云资产自动统一纳管</td>
   </tr>
   <tr>
-    <td>收集用户（X-PACK）</td>
+    <td>收集用户 </td>
     <td>自定义任务定期收集主机用户</td>
   </tr>
   <tr>
-    <td>密码匣子（X-PACK）</td>
+    <td>密码匣子 </td>
     <td>统一对资产主机的用户密码进行查看、更新、测试操作</td>
   </tr>
   <tr>
@@ -117,7 +118,7 @@
     <td>实现更细粒度的应用级授权</td>
   </tr>
   <tr>
-    <td>MySQL 数据库应用、RemoteApp 远程应用（X-PACK）</td>
+    <td>MySQL 数据库应用、RemoteApp 远程应用 </td>
   </tr>
   <tr>
     <td>动作授权</td>
@@ -144,11 +145,11 @@
     <td>实现 Web SFTP 文件管理</td>
   </tr>
   <tr>
-    <td>工单管理（X-PACK）</td>
+    <td>工单管理</td>
     <td>支持对用户登录请求行为进行控制</td>
   </tr>
   <tr>
-    <td>组织管理（X-PACK）</td>
+    <td>组织管理</td>
     <td>实现多租户管理与权限隔离</td>
   </tr>
   <tr>
@@ -168,7 +169,7 @@
     <td>支持对 Linux、Windows 等资产操作的录像进行回放审计</td>
   </tr>
   <tr>
-    <td>支持对 RemoteApp（X-PACK）、MySQL 等应用操作的录像进行回放审计</td>
+    <td>支持对 RemoteApp、MySQL 等应用操作的录像进行回放审计</td>
   </tr>
   <tr>
     <td>指令审计</td>
@@ -184,7 +185,7 @@
     <td>命令方式</td>
   </tr>
   <tr>
-    <td>Web UI方式 (X-PACK)</td>
+    <td>Web UI方式</td>
   </tr>
 
   <tr>
@@ -192,13 +193,13 @@
     <td>MySQL</td>
   </tr>
   <tr>
-    <td>Oracle (X-PACK)</td>
+    <td>Oracle</td>
   </tr>
   <tr>
-    <td>MariaDB (X-PACK)</td>
+    <td>MariaDB</td>
   </tr>
   <tr>
-    <td>PostgreSQL (X-PACK)</td>
+    <td>PostgreSQL</td>
   </tr>
   <tr>
     <td rowspan="6">功能亮点</td>
@@ -245,7 +246,8 @@
 
 !!! tip ""
     JumpServer是一款安全产品，请参考 [基本安全建议](https://docs.jumpserver.org/zh/master/install/install_security/) 部署安装.  
-    如果你发现安全问题，可以直接联系我们：  
+    如果你发现安全问题，可以直接联系我们：
+
     - ibuler@fit2cloud.com
     - support@fit2cloud.com
     - 400-052-0755
@@ -256,15 +258,3 @@
 !!! tip ""
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 一体机](https://jumpserver.org/hardware.html)
-
-## 项目推荐
-
-!!! tip ""
-    - [KubeOperator 开源容器平台](https://kubeoperator.io)
-    - [MeterSphere 开源持续测试平台](https://metersphere.io)
-
-## 企业版试用
-
-!!! tip ""
-    - [申请企业版试用](https://jinshuju.net/f/kyOYpi)  
-    > 注: 企业版支持离线安装，申请通过后会提供高速下载链接。

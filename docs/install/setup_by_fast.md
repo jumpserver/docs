@@ -5,8 +5,7 @@
     需要连接 互联网  
     使用 root 用户执行  
 
-- [安装视频](https://www.bilibili.com/video/bv19a4y1i7i9)
-
+- [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 - 国内用户可以使用由华为云提供的容器镜像服务
 
 | 区域          | 镜像仓库地址                      | 使用方式                                                     |
