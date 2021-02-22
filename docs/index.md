@@ -11,6 +11,13 @@
 
     改变世界, 从一点点开始。
 
+## 界面展示
+
+![!界面展示](file:///Users/zhimin/Desktop/website-2020/jumpserver/images/screenshot/1.png)
+
+!!! info "快速体验 JumpServer"
+-    [演示视频](https://www.bilibili.com/video/BV19D4y1S7s4/)
+-    [在线体验](https://jinshuju.net/f/hmNxtU)
 
 ## 特色优势
 
