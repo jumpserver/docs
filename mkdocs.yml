@@ -137,6 +137,10 @@ extra:
       link: https://hub.docker.com/r/jumpserver/
     - icon: fontawesome/solid/envelope
       link: mailto:support@fit2cloud.com
+    - icon: fontawesome/brands/skype
+      link: tel://400-052-0755
+    - icon: fontawesome/brands/qq
+      link: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
 
 extra_css:
   - css/extra.css
