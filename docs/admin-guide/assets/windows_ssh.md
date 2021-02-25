@@ -40,7 +40,9 @@
 
 ### 4. 使用 Private Key
 
-!!! tip "[使用 public key 认证](https://github.com/PowerShell/Win32-OpenSSH/wiki/Setup-public-key-based-authentication-for-windows)"
+!!! tip ""
+    - [Setup public key based authentication for windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/Setup-public-key-based-authentication-for-windows)
+
     ```powershell
     ssh-keygen.exe -t rsa
     cp $env:USERPROFILE\.ssh\id_rsa.pub $env:USERPROFILE\.ssh\authorized_keys
