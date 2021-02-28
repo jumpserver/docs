@@ -123,6 +123,8 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra:
+  jumpserver:
+    version: v2.7.1
   search:
     separator: '[\s\-\.]+'
     language: 'jp'
@@ -152,3 +154,4 @@ copyright: Copyright &copy; 2014-2021 <a href="https://www.fit2cloud.com">杭州
 google_analytics: ['UA-147297392-3','docs.jumpserver.org']
 plugins:
   - search
+  - macros

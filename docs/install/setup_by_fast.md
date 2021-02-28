@@ -18,19 +18,21 @@
 ## 安装方式
 
 !!! info "外置环境要求"
-    - Redis >= 5.0.0
-    - MySQL >= 5.7
-    - MariaDB >= 10.2
     - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
+
+| DB      | Version |    | Cache | Version |
+| :------ | :------ | :- | :---- | :------ |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+| MariaDB | >= 10.2 |    |       |         |
 
 === "自动部署"
     !!! tip ""
         ```sh
         export DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com
-        curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.7.1/quick_start.sh | bash
+        curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
 
         # 如果出现问题
-        cd /opt/jumpserver-installer-v2.7.1
+        cd /opt/jumpserver-installer-{{ jumpserver.version }}
         ./jmsctl.sh --help
         ```
 
@@ -40,9 +42,9 @@
         export DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com
         cd /opt
         yum -y install wget
-        wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
-        tar -xf jumpserver-installer-v2.7.1.tar.gz
-        cd jumpserver-installer-v2.7.1
+        wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.version }}
         cat config-example.txt
         ```
 
@@ -132,7 +134,7 @@
         JUMPSERVER_CLEAR_DRIVE_SESSION=true
         JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
 
-        # Mysql 容器配置
+        # MySQL 容器配置
         MYSQL_ROOT_PASSWORD=
         MYSQL_DATABASE=jumpserver
         ```
@@ -152,7 +154,7 @@
     docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2 jumpserver/nginx:alpine2
     docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2
     # core koko guacamole lina luna
-    version=v2.7.1
+    version={{ jumpserver.version }}
     for image in core koko guacamole lina luna; do
       if [[ ! "$(docker images | grep $(echo ${image%:*}) | grep $(echo ${image#*:}))" ]]; then
         docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version}
@@ -215,7 +217,7 @@
     ```
     ```yaml
     2021-02-08 14:58:53 Mon Feb  8 14:58:53 2021
-    2021-02-08 14:58:53 JumpServer version v2.7.1, more see https://www.jumpserver.org
+    2021-02-08 14:58:53 JumpServer version {{ jumpserver.version }}, more see https://www.jumpserver.org
 
     - Start Gunicorn WSGI HTTP Server
     2021-02-08 14:58:53 Check database connection ...
@@ -468,7 +470,7 @@
 
 ## 使用方式
 
-- 安装目录 /opt/jumpserver-install-v2.7.1
+- 安装目录 /opt/jumpserver-install-{{ jumpserver.version }}
 
 !!! tip "Install"
     ```sh

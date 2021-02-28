@@ -38,11 +38,11 @@
 | ------------ | --------------- | ---------- | ---------- |--- ---------- |--- ---------- |
 | 172.16.80.11 |    test_ssh01   |     22     |  Centos 7  |      root     |  Test2020.L   |
 | 172.16.80.21 |    test_rdp01   |    3389    | Windows 10 | administrator |  Test2020.W   |
-| 172.16.80.31 |   test_mysql01  |    3306    |   Mysql 5  |      root     |  Test2020.M   |
+| 172.16.80.31 |   test_mysql01  |    3306    |   MySQL 5  |      root     |  Test2020.M   |
 
 !!! warning "Windows 资产先进行 [Windows SSH 设置](assets/windows_ssh.md)"
 
-!!! warning "Mysql 应用需要授权 core 和 koko 的远程访问的权限 [MySQL 应用要求](app/mysql.md)"
+!!! warning "MySQL 应用需要授权 core 和 koko 的远程访问的权限 [MySQL 应用要求](app/mysql.md)"
 
 ### 2.1 编辑资产树###
 
@@ -106,7 +106,7 @@ Defaule
 | 主机   | 172.16.80.31  |
 | 端口   | 3306          |
 | 数据库 |               |
-| 备注   | Mysql 资产    |
+| 备注   | MySQL 资产    |
 
 !!! tip "数据库 选项可以留空, 如果是某些特定用户, 只允许访问指定的数据库, 这里指定数据库名称即可"
 
@@ -116,7 +116,7 @@ Defaule
 | ------------ | ---------- | ------------- | ------------- | ------------ | ------------ | ----------- |
 | 172.16.80.11 |  Centos 7  |   testssh01   |  random pass  |              |      ALL     |      /      |
 | 172.16.80.21 | Windows 10 |   testrdp01   |  random pass  |     Users    |              |             |
-| 172.16.80.23 |   Mysql 5  |      root     |  Test2020.M   |              |              |             |
+| 172.16.80.23 |   MySQL 5  |      root     |  Test2020.M   |              |              |             |
 
 ??? tip "系统用户提示"
     在理解 `系统用户` 之前, 你首先得知道系统用户是干嘛用的. 在 `Jumpserver` 中, 需要对资产不同的用途创建不同的 `系统用户`  
@@ -164,7 +164,7 @@ Defaule
 | ------------ | ---------- | ------------- | --------------- |
 | 172.16.80.11 |  Centos 7  |   testssh01   |      admin      |
 | 172.16.80.21 | Windows 10 |   testrdp01   |      admin      |
-| 172.16.80.31 |  Mysql 5   |      root     |      admin      |
+| 172.16.80.31 |  MySQL 5   |      root     |      admin      |
 
 !!! note "点击页面左侧的 `授权管理` - `资产授权` - `创建授权规则` 创建两个授权"
 
@@ -190,7 +190,7 @@ Defaule
 
 !!! note "点击页面左侧的 `授权管理` - `数据库应用` - `创建授权规则`  创建数据库授权"
 
-| 表单       | Mysql 资产授权                 |
+| 表单       | MySQL 资产授权                 |
 | ---------- | ----------------------------- |
 | 名称       | test_mysql01_测试授权          |
 | 用户       | Administrator(admin)          |

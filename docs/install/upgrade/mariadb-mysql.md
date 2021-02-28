@@ -1,8 +1,14 @@
 # 数据库迁移
 
 !!! warning "迁移前请一定要做好备份"
-    - 从 v2.5 开始, 数据库要求 MySQL >= 5.7  MariaDB >= 10.2
+    - 从 v2.5 开始, 要求 MySQL >= 5.7
     - 推荐使用外置 数据库, 方便日后扩展升级
+
+| DB      | Version |    | Cache | Version |
+| :------ | :------ | :- | :---- | :------ |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+| MariaDB | >= 10.2 |    |       |         |
+
 
 !!! tip "备份数据库"
     === "手动部署"
@@ -95,7 +101,7 @@
         ```
     === "jumpserver-installer"
         ```sh
-        cd /opt/jumpserver-install-v2.7.1
+        cd /opt/jumpserver-install-{{ jumpserver.version }}
         ./jmsctl.sh stop
         ```
         ```sh
@@ -190,12 +196,12 @@
         DB_PASSWORD=rBi41SrDqlX4zsx9e1L0cqTP
         DB_NAME=jumpserver
 
-        # Mysql 容器配置
+        # MySQL 容器配置
         MYSQL_ROOT_PASSWORD=rBi41SrDqlX4zsx9e1L0cqTP
         MYSQL_DATABASE=jumpserver
         ```
         ```sh
-        cd /opt/jumpserver-installer-v2.7.1
+        cd /opt/jumpserver-installer-{{ jumpserver.version }}
         ./jmsctl.sh start
         ```
         ```sh

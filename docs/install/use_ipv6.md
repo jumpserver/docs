@@ -13,7 +13,7 @@
     USE_IPV6=1
     ```
     ```sh
-    cd /opt/jumpserver-installer-v2.7.1
+    cd /opt/jumpserver-installer-{{ jumpserver.version }}
     ./jmsctl.sh down
     ```
     ```sh

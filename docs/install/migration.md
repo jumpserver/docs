@@ -3,9 +3,11 @@
 !!! warning "升级及迁移请保持 SECRET_KEY 与旧版本一致, 否则会导致数据库加密数据无法解密"
     - 请不要跨大版本迁移数据库
     - JumpServer >= v2.6.0
-    - Redis >= 5.0.0
-    - MySQL >= 5.7
-    - MariaDB >= 10.2
+
+| DB      | Version |    | Cache | Version |
+| :------ | :------ | :- | :---- | :------ |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+| MariaDB | >= 10.2 |    |       |         |
 
 ### 1. 备份数据
 
@@ -23,9 +25,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
-    tar -xf jumpserver-installer-v2.7.1.tar.gz
-    cd jumpserver-installer-v2.7.1
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
     ```
     ```sh
     ./jmsctl.sh install

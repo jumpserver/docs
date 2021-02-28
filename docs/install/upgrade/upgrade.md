@@ -7,9 +7,14 @@
     - [升级前版本小于 1.4.5 请先按照此文档操作](1.4.4.md)
 
 !!! tip "环境说明"
-    - 从 v2.5 开始, 数据库要求 MySQL >= 5.7  MariaDB >= 10.2
+    - 从 v2.5 开始, 要求 MySQL >= 5.7
     - 从 v2.6 开始, 要求 Redis >= 5
     - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
+
+| DB      | Version |    | Cache | Version |
+| :------ | :------ | :- | :---- | :------ |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+| MariaDB | >= 10.2 |    |       |         |
 
 ## 迁移说明
 
@@ -142,9 +147,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
-    tar -xf jumpserver-installer-v2.7.1.tar.gz
-    cd jumpserver-installer-v2.7.1
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
     ```
     ```sh
     vi config-example.txt
@@ -177,7 +182,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                             Version:  v2.7.1
+        								                             Version:  {{ jumpserver.version }}
 
 
         >>> 一、配置JumpServer
@@ -238,14 +243,14 @@
         完成
 
         >>> 三、加载镜像
-        Docker: Pulling from jumpserver/core:v2.7.1 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
+        Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
+        Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
+        Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
 
         >>> 四、安装完成了
         1. 可以使用如下命令启动, 然后访问
@@ -284,7 +289,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                             Version:  v2.7.1
+        								                             Version:  {{ jumpserver.version }}
 
 
         >>> 一、配置JumpServer
@@ -353,14 +358,14 @@
         完成
 
         >>> 三、加载镜像
-        Docker: Pulling from jumpserver/core:v2.7.1 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
+        Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
+        Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
+        Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
 
         >>> 四、安装完成了
         1. 可以使用如下命令启动, 然后访问
@@ -459,15 +464,15 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/v2.7.1/jumpserver-installer-v2.7.1.tar.gz
-    tar -xf jumpserver-installer-v2.7.1.tar.gz
-    cd jumpserver-installer-v2.7.1
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
     ```
     ```sh
     ./jmsctl.sh upgrade
     ```
     ```nginx hl_lines="1"
-    你确定要升级到 v2.7.1 版本吗? (y/n)  (默认为n): y
+    你确定要升级到 {{ jumpserver.version }} 版本吗? (y/n)  (默认为n): y
     1. 检查配置变更
     完成
 
@@ -475,14 +480,14 @@
     完成
 
     3. 升级镜像文件
-    Docker: Pulling from jumpserver/koko:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/guacamole:v2.7.1 	[ OK ]
+    Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/nginx:alpine2 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:v2.7.1 	    [ OK ]
-    Docker: Pulling from jumpserver/core:v2.7.1 	    [ OK ]
+    Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
     完成
     4. 备份数据库
     正在备份...

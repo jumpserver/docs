@@ -25,7 +25,7 @@
     ```
     ```yaml
     2021-02-08 14:58:53 Mon Feb  8 14:58:53 2021
-    2021-02-08 14:58:53 JumpServer version v2.7.1, more see https://www.jumpserver.org
+    2021-02-08 14:58:53 JumpServer version {{ jumpserver.version }}, more see https://www.jumpserver.org
 
     - Start Gunicorn WSGI HTTP Server
     2021-02-08 14:58:53 Check database connection ...
