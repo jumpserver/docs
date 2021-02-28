@@ -139,10 +139,29 @@
 
 ??? warning "如果 export 的镜像加速方法无效请查看此处的帮助文档"
     ```sh
-    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/core:v2.7.1
-    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/core:v2.7.1 jumpserver/core:v2.7.1
-    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/core:v2.7.1
-    # 其他镜像也可以使用这样的方式拉, 后续版本我们会在安装脚本里面优化
+    # mysql
+    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5
+    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5 jumpserver/mysql:5
+    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5
+    # redis
+    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine
+    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine jumpserver/redis:6-alpine
+    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine
+    # nginx
+    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2
+    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2 jumpserver/nginx:alpine2
+    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2
+    # core koko guacamole lina luna
+    version=v2.7.1
+    for image in core koko guacamole lina luna; do
+      if [[ ! "$(docker images | grep $(echo ${image%:*}) | grep $(echo ${image#*:}))" ]]; then
+        docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version}
+        docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version} jumpserver/${image}:${version}
+        docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version}
+      else
+        echo -e "Docker: Pulling from jumpserver/${image}:${version}  \t  [ ok ]"
+      fi
+    done
     ```
     ```sh
     # 也可以直接修改代码
@@ -156,11 +175,14 @@
       for image in ${images}; do
         export DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
         echo "[${image}]"
-        if [[ -n "${DOCKER_IMAGE_PREFIX}" && $(image_has_prefix "${image}") == "0" ]]; then
-          docker pull "${DOCKER_IMAGE_PREFIX}/${image}"
-          docker tag "${DOCKER_IMAGE_PREFIX}/${image}" "${image}"
-        else
-          docker pull "${image}"
+        if [[ ! "$(docker images | grep $(echo ${image%:*}) | grep $(echo ${image#*:}))" ]]; then
+          if [[ -n "${DOCKER_IMAGE_PREFIX}" && $(image_has_prefix "${image}") == "0" ]]; then
+            docker pull "${DOCKER_IMAGE_PREFIX}/${image}"
+            docker tag "${DOCKER_IMAGE_PREFIX}/${image}" "${image}"
+            docker rmi -f "${DOCKER_IMAGE_PREFIX}/${image}"
+          else
+            docker pull "${image}"
+          fi
         fi
         echo ""
         ((i++)) || true
