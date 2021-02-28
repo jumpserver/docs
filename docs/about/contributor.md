@@ -1,6 +1,8 @@
 # 贡献者名单
 
-!!! tip "感谢以下朋友为 JumpServer 做出的贡献, 世界因你们而不同, 排名不分先后"
+!!! tip "感谢为 JumpServer 做出的贡献的所有朋友, 世界因你们而不同"
+
+!!! tip ""
     - **[老广 <广宏伟>][ibuler]** JumpServer 创始人
     - **[halcyon <王墉>][halcyon]** DevOps 资深开发者, 0.3.2 核心开发者之一
     - **[jiaxiangkong <陈尚委>][jiaxiangkong]** JumpServer 测试运营

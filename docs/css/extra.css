@@ -114,3 +114,8 @@
   -webkit-mask-image: var(--md-admonition-icon--tx-heart);
           mask-image: var(--md-admonition-icon--tx-heart);
 }
+
+.md-typeset hr {
+  margin: 1.5em 0;
+  border-bottom: .05rem;
+}

@@ -192,3 +192,12 @@ h4,h5{font-family:-apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro
 
 .footer-start-box{position:fixed;bottom:75px!important;right:30px!important;width:100px!important;height:45px!important;padding:13px;border-radius:20px;box-shadow:0 8px 16px 0 rgba(46,37,111,.32);background-image:linear-gradient(109deg,#2b937c,#2b937c);color:#fff;cursor:pointer;text-align:center;}
 .footer-start-title{font-weight:600;}
+
+@-webkit-keyframes mdx-heart{0%,40%,80%,to{transform:scale(1)}20%,60%{transform:scale(1.15)}}
+@keyframes mdx-heart{0%,40%,80%,to{transform:scale(1)}20%,60%{transform:scale(1.15)}}
+.mdx-content__footer{margin-top:1rem;text-align:center}
+.mdx-content__footer a{display:inline-block;color:#e91e63;transition:transform .25s cubic-bezier(.1,.7,.1,1),color 125ms}
+.mdx-content__footer a:focus,
+.mdx-content__footer a:hover{transform:scale(1.2)}
+.mdx-content__footer hr{display:inline-block;width:2rem;margin:1em;vertical-align:middle;background-color:currentColor;border:none}
+.mdx-heart{-webkit-animation:mdx-heart 1s infinite;animation:mdx-heart 1s infinite}
