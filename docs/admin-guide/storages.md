@@ -20,6 +20,7 @@
     docker restart jms_koko
     ```
 
+
 ## 录像存储
 
 !!! info "`终端管理` - `存储配置` - `录像存储` - `新建`"
@@ -27,3 +28,19 @@
 !!! info "在 `终端管理` 页面选择 `更新` 组件"
     - 选择你需要的存储方式即可, 大概需要 1 分钟的时间完成同步
     - 之前已经存储在本地的录像需要自己手动上传到你新的存储环境
+
+
+## 日志存储
+
+!!! info "对接 syslog"
+    ```sh
+    vi /opt/jumpserver/config/config.txt
+    ```
+    ```vim
+    # 加入 syslog 相关设置
+    SYSLOG_ENABLE=true
+    SYSLOG_ADDR=192.168.100.215:514
+    ```
+    ```sh
+    ./jmsctl.sh restart
+    ```
