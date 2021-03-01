@@ -13,4 +13,4 @@
 [7群]: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
 
 !!! tip "微信群"
-![!Weixin](../../img/weixin-group.jpg)
+![Weixin](./../img/weixin-group.jpg)

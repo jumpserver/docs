@@ -461,6 +461,7 @@
 
 ### 升级步骤
 
+!!! tip "操作步骤"
     ```sh
     cd /opt
     yum -y install wget
