@@ -117,5 +117,6 @@
 
 .md-typeset hr {
   margin: 1em;
+  display: inline-block;
   border-bottom: .05rem var(--md-default-fg-color--lightest);
 }
