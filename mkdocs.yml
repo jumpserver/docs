@@ -106,11 +106,7 @@ markdown_extensions:
           - theme/.icons
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.superfences
   - pymdownx.saneheaders
   - pymdownx.magiclink
   - pymdownx.mark
