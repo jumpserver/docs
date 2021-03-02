@@ -276,7 +276,20 @@
     ./jmsctl.sh start
     ```
 
-### 2. Web 登录失败
+### 2. Server error occur, contact administrator
+
+!!! question "Server Internal Error"
+    ```sh
+    docker logs -f jms_core --tail 200
+    # 查看是否有报错，如果没有或者不完整请进入容器查看日志
+    ```
+    ```sh
+    docker exec -it jms_core /bin/bash
+    cat logs/jumpserver.log
+    # 根据报错处理
+    ```
+
+### 3. Web 登录失败
 
 !!! question "忘记密码, 密码过期"
     如果忘了密码或者密码过期, 可以点击找回密码通过邮件找回  
