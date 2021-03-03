@@ -118,7 +118,7 @@
             KEY_ID = 'su-key'
             SECRET = 'my secret string'
 
-            signature_headers = ['(request-target)', 'accept', 'date', 'host']
+            signature_headers = ['(request-target)', 'accept', 'date']
             headers = {
               'Accept': 'application/json',
               'Date': "Mon, 17 Feb 2014 06:11:05 GMT"
