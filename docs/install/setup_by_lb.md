@@ -1,7 +1,5 @@
 # 负载均衡
 
-!!! warning "该文档还在测试阶段, 请等待更新"
-
 !!! info "环境说明"
 - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
 
@@ -12,11 +10,14 @@
 
 | Server Name   |        IP        |  Port  |     Use    |
 | ------------- | ---------------- | ------ | ---------- |
-| MySQL         |  192.168.100.11  |  3306  |  Core      |   
+| MySQL         |  192.168.100.11  |  3306  |  Core      |
 | Redis         |  192.168.100.11  |  6379  |  Core,Koko |
 | Nginx         |  192.168.100.100 | 80,443 |  All       |
-| JumpServer 01 |  192.168.100.21  |  8080  |  Nginx     |
-| JumpServer 02 |  192.168.100.22  |  8080  |  Nginx     |
+| Core Web 01   |  192.168.100.21  |  8080  |  Nginx     |
+| Core Web 02   |  192.168.100.22  |  8080  |  Nginx     |
+| Core Task     |  192.168.100.31  |  8080  |  Nginx     |
+
+!!! warning "Core Task 目前仅支持单节点运行, 后续会优化"
 
 ## 部署 MySQL 服务
 
@@ -560,7 +561,7 @@
     firewall-cmd --reload
     ```
 
-## 部署 JumpServer 主
+## 部署 Core Web 01
 
     服务器: 192.168.100.21
 
@@ -577,9 +578,12 @@
     ```sh
     vi config-example.txt
     ```
-    ```vim hl_lines="6 7"
+    ```vim hl_lines="5 9-10 16"
     # 修改下面选项, 其他保持默认
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
+
+    ## Task 配置
+    USE_TASK=0                                                     # 不启动 jms_celery
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密
@@ -588,6 +592,9 @@
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+
+    # KoKo 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -712,7 +719,6 @@
     Creating jms_mysql     ... done
     Creating jms_redis     ... done
     Creating jms_core      ... done
-    Creating jms_celery    ... done
     Creating jms_luna      ... done
     Creating jms_lina      ... done
     Creating jms_guacamole ... done
@@ -720,7 +726,7 @@
     Creating jms_nginx     ... done
     ```    
 
-## 部署 JumpServer 辅
+## 部署 Core Web 02
 
     服务器: 192.168.100.22
 
@@ -737,9 +743,12 @@
     ```sh
     vi config-example.txt
     ```
-    ```vim hl_lines="6 7"
+    ```vim hl_lines="5 9-10 16"
     # 修改下面选项, 其他保持默认
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
+
+    ## Task 配置
+    USE_TASK=0                                                     # 不启动 jms_celery
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密
@@ -748,6 +757,174 @@
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+
+    # KoKo 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
+    ```
+    ```sh
+    ./jmsctl.sh install
+    ```
+    ```nginx hl_lines="26 40 44-49 53-56 69 73"
+
+           ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
+           ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+           ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+      ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+      ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+       ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+
+    								                             Version:  {{ jumpserver.version }}
+
+
+    >>> 一、配置JumpServer
+    1. 检查配置文件
+    各组件使用环境变量式配置文件，而不是 yaml 格式, 配置名称与之前保持一致
+    配置文件位置: /opt/jumpserver/config/config.txt
+    完成
+
+    2. 配置 Nginx 证书
+    证书位置在: /opt/jumpserver/config/nginx/cert
+    完成
+
+    3. 备份配置文件
+    备份至 /opt/jumpserver/config/backup/config.txt.2020-12-18_10-18-00
+    完成
+
+    4. 配置网络
+    需要支持 IPv6 吗? (y/n)  (默认为n): n
+    完成
+
+    5. 自动生成加密密钥
+    完成
+
+    6. 配置持久化目录
+    修改日志录像等持久化的目录，可以找个最大的磁盘，并创建目录，如 /opt/jumpserver
+    注意: 安装完后不能再更改, 否则数据库可能丢失
+
+    文件系统        容量  已用  可用 已用% 挂载点
+    /dev/sda3        53G  5.0G   49G   10% /
+    /dev/sda1      1014M  160M  855M   16% /boot
+
+    设置持久化卷存储目录 (默认为/opt/jumpserver): /opt/jumpserver
+    完成
+
+    7. 配置MySQL
+    是否使用外部mysql (y/n)  (默认为n): y
+    请输入mysql的主机地址 (无默认值): 192.168.100.11
+    请输入mysql的端口 (默认为3306): 3306
+    请输入mysql的数据库(事先做好授权) (默认为jumpserver): jumpserver
+    请输入mysql的用户名 (无默认值): jumpserver
+    请输入mysql的密码 (无默认值): weakPassword
+    完成
+
+    8. 配置Redis
+    是否使用外部redis  (y/n)  (默认为n): y
+    请输入redis的主机地址 (无默认值): 192.168.100.11
+    请输入redis的端口 (默认为6379): 6379
+    请输入redis的密码 (无默认值): weakPassword
+    完成
+
+    >>> 二、安装配置Docker
+    1. 安装Docker
+    完成
+
+    2. 配置Docker
+    修改Docker镜像容器的默认存储目录，可以找个最大的磁盘, 并创建目录，如 /opt/docker
+    文件系统        容量  已用  可用 已用% 挂载点
+    /dev/sda3        53G  5.2G   48G   10% /
+    /dev/sda1      1014M  160M  855M   16% /boot
+
+    Docker存储目录 (默认为/opt/docker): /var/lib/docker
+    完成
+
+    3. 启动Docker
+    Docker 版本发生改变 或 docker配置文件发生变化，是否要重启 (y/n)  (默认为y): y
+    完成
+
+    >>> 三、加载镜像
+    Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+    Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
+    Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
+    Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
+
+    >>> 四、安装完成了
+    1. 可以使用如下命令启动, 然后访问
+    ./jmsctl.sh start
+
+    2. 其它一些管理命令
+    ./jmsctl.sh stop
+    ./jmsctl.sh restart
+    ./jmsctl.sh backup
+    ./jmsctl.sh upgrade
+    更多还有一些命令，你可以 ./jmsctl.sh --help来了解
+
+    3. 访问 Web 后台页面
+    http://192.168.100.236:8080
+    https://192.168.100.236:8443
+
+    4. ssh/sftp 访问
+    ssh admin@192.168.100.236 -p2222
+    sftp -P2222 admin@192.168.100.236
+
+    5. 更多信息
+    我们的文档: https://docs.jumpserver.org/
+    我们的官网: https://www.jumpserver.org/
+    ```
+
+!!! tip "启动 JumpServer"
+    ```sh
+    ./jmsctl.sh start
+    ```
+    ```nginx
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_mysql     ... done
+    Creating jms_redis     ... done
+    Creating jms_core      ... done
+    Creating jms_luna      ... done
+    Creating jms_lina      ... done
+    Creating jms_guacamole ... done
+    Creating jms_koko      ... done
+    Creating jms_nginx     ... done
+    ```    
+
+## 部署 Core Task
+
+    服务器: 192.168.100.31
+
+!!! tip "下载 jumpserver-install"
+    ```sh
+    cd /opt
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
+    ```
+
+!!! tip "修改配置文件"
+    ```sh
+    vi config-example.txt
+    ```
+    ```vim hl_lines="5 9-10 16"
+    # 修改下面选项, 其他保持默认
+    ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
+
+    ## Task 配置
+    USE_TASK=1                                                     # 启动 jms_celery
+
+    # Core 配置
+    ### 启动后不能再修改，否则密码等等信息无法解密
+    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW  # 要其他 JumpServer 服务器一致 (*)
+    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                               # 要其他 JumpServer 服务器一致 (*)
+    LOG_LEVEL=ERROR
+    # SESSION_COOKIE_AGE=86400
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+
+    # KoKo 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -878,9 +1055,7 @@
     Creating jms_guacamole ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
-    ```    
-
-!!! tip "安装 JumpServer"
+    ```        
 
 ## 部署 Nginx 服务
 
@@ -997,6 +1172,7 @@
         upstream kokossh {
             server 192.168.100.21:2222;
             server 192.168.100.22:2222;
+            server 192.168.100.31:2222;
             least_conn;
         }
 
@@ -1033,15 +1209,22 @@
     vi /etc/nginx/conf.d/jumpserver.conf
     ```
     ```nginx
-    upstream jumpserver {
+    upstream core_web {
+        # 用户连接时使用 ip_hash 负载
         server 192.168.100.21:8080;
         server 192.168.100.22:8080;
         ip_hash;
     }
 
-    upstream core {
-      server 192.168.100.21:8080 max_fails=1 fail_timeout=1s;
-      server 192.168.100.22:8080 max_fails=1 fail_timeout=1s;
+    upstream core_media {
+        # 获取录像失败时自动到对应的 server 取
+        server 192.168.100.21:8080 max_fails=1 fail_timeout=2s;
+        server 192.168.100.22:8080 max_fails=1 fail_timeout=2s;
+    }
+
+    upstream core_task {
+        # use_task = 1 的任务服务器, 目前只能单任务运行
+        server 192.168.100.31:8080;
     }
 
     server {
@@ -1062,26 +1245,36 @@
 
         client_max_body_size 4096m;  # 录像上传大小限制
 
+        location ~ /(ops|task|tasks|flower|ws)/ {
+            proxy_pass http://core_task;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
         location /api/v1/terminal/ {
-            proxy_pass http://core/api/v1/terminal/;
+            proxy_pass http://core_media/api/v1/terminal/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
-            proxy_next_upstream_tries 3;
+            proxy_next_upstream_tries 5;
         }
 
         location /media/ {
-            proxy_pass http://core/media/;
+            proxy_pass http://core_media/media/;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
-            proxy_next_upstream_tries 3;
+            proxy_next_upstream_tries 5;
         }
 
         location / {
-            proxy_pass http://jumpserver;
+            proxy_pass http://core_web;
             proxy_buffering  off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -1101,4 +1294,12 @@
     ```sh
     systemctl enable nginx
     systemctl start nginx
+    ```
+
+!!! tip "配置防火墙"
+    ```sh
+    firewall-cmd --permanent --zone=public --add-port=80/tcp
+    firewall-cmd --permanent --zone=public --add-port=443/tcp
+    firewall-cmd --permanent --zone=public --add-port=2222/tcp
+    firewall-cmd --reload
     ```
