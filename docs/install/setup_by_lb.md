@@ -1172,7 +1172,6 @@
         upstream kokossh {
             server 192.168.100.21:2222;
             server 192.168.100.22:2222;
-            server 192.168.100.31:2222;
             least_conn;
         }
 
