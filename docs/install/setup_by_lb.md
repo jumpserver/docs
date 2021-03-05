@@ -1327,6 +1327,12 @@
     }
     ```
 
+!!! tip "启动 Docker"
+    ```sh
+    systemctl enable docker
+    systemctl start docker
+    ```
+
 !!! tip "下载 MinIO 镜像"
     ```sh
     docker pull minio/minio:latest
@@ -1358,7 +1364,7 @@
     # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
     ```
     ```sh
-    docker run --name jms_minio -d -p 9000:9000 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio minio/minio:latest server /data
+    docker run --name jms_minio -d -p 9000:9000 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio --restart=always minio/minio:latest server /data
     ```
 
 !!! tip "设置 MinIO"
