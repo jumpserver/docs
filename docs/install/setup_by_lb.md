@@ -1,21 +1,25 @@
 # 负载均衡
 
 !!! info "环境说明"
-- 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
+    - 除 JumpServer 自身组件外, 其他组件的高可用请参考对应的官方文档进行部署
+    - 按照此方式部署后, 后续只需要根据需要扩容 core web 节点然后添加节点到 nginx 即可
+    - 如果已经有 HLB 或者 SLB 可以跳过 nginx 部署, 第三方 LB 要注意 session 和 websocket 问题
+    - 如果已经有 云存储(* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署, MySQL Redis 也一样
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
 | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port  |     Use    |
-| ------------- | ---------------- | ------ | ---------- |
-| MySQL         |  192.168.100.11  |  3306  |  Core      |
-| Redis         |  192.168.100.11  |  6379  |  Core,Koko |
-| Nginx         |  192.168.100.100 | 80,443 |  All       |
-| Core Web 01   |  192.168.100.21  |  8080  |  Nginx     |
-| Core Web 02   |  192.168.100.22  |  8080  |  Nginx     |
-| Core Task     |  192.168.100.31  |  8080  |  Nginx     |
+| Server Name   |        IP        |  Port  |     Use          |   Minimize Hardware   |   Standard Hardware    |
+| ------------- | ---------------- | ------ | ---------------- | --------------------- | ---------------------- |
+| MySQL         |  192.168.100.11  |  3306  |  Core            | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
+| Redis         |  192.168.100.11  |  6379  |  Core, Koko      | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
+| Nginx         |  192.168.100.100 | 80,443 |  All             | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
+| Core Web 01   |  192.168.100.21  |  8080  |  Nginx           | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 02   |  192.168.100.22  |  8080  |  Nginx           | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Task     |  192.168.100.31  |  8080  |  Nginx           | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
+| MinIO         |  192.168.100.41  |  9000  |  KoKo, Guacamole | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
 !!! warning "Core Task 目前仅支持单节点运行, 后续会优化"
 
@@ -1170,6 +1174,7 @@
         open_log_file_cache off;
 
         upstream kokossh {
+            # core web 节点
             server 192.168.100.21:2222;
             server 192.168.100.22:2222;
             least_conn;
@@ -1295,6 +1300,81 @@
     firewall-cmd --reload
     ```
 
-!!! warning "配置完成后录像无法正常查看和下载请查看此处的帮助"
-    - 使用云存储 ( S3 / Ceph / Swift / OSS / Azure )
-    - 使用共享存储 NFS, 同步 core/data 持久化目录 ( 默认: /opt/jumpserver/core/data ), 所有 core 节点同步此目录即可
+## 部署 MinIO 服务
+
+    服务器: 192.168.100.41
+
+!!! tip "安装 Docker"
+    ```sh
+    yum install -y yum-utils device-mapper-persistent-data lvm2
+    yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+    yum makecache fast
+    yum -y install docker-ce
+    ```
+
+!!! tip "配置 Docker"
+    ```sh
+    mkdir /etc/docker/
+    vi /etc/docker/daemon.json
+    ```
+    ```vim
+    {
+      "live-restore": true,
+      "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
+      "log-driver": "json-file",
+      "log-opts": {"max-file": "3", "max-size": "10m"}
+    }
+    ```
+
+!!! tip "下载 MinIO 镜像"
+    ```sh
+    docker pull minio/minio:latest
+    ```
+    ```vim
+    latest: Pulling from minio/minio
+    a591faa84ab0: Pull complete
+    76b9354adec6: Pull complete
+    f9d8746550a4: Pull complete
+    890b1dd95baa: Pull complete
+    3a8518c890dc: Pull complete
+    8053f0501aed: Pull complete
+    506c41cb8532: Pull complete
+    Digest: sha256:e7a725edb521dd2af07879dad88ee1dfebd359e57ad8d98104359ccfbdb92024
+    Status: Downloaded newer image for minio/minio:latest
+    docker.io/minio/minio:latest
+    ```
+
+!!! tip "持久化数据目录"
+    ```sh
+    mkdir -p /opt/jumpserver/minio/data /opt/jumpserver/minio/config
+    ```
+
+!!! tip "启动 MinIO"
+    ```vim
+    ## 请自行修改账号密码并牢记, 丢失后可以删掉容器后重新用新密码创建, 数据不会丢失
+    # 9000                                  # 访问端口
+    # MINIO_ROOT_USER=minio                 # minip 账号
+    # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
+    ```
+    ```sh
+    docker run --name jms_minio -d -p 9000:9000 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio minio/minio:latest server /data
+    ```
+
+!!! tip "设置 MinIO"
+    - 访问 http://192.168.100.41:9000, 输入刚才设置的 MinIO 账号密码登录
+    - 点击右下角的 + 号, 选择 Create bucket 创建桶, Bucket Name 输入 jumpserver 回车确认
+
+!!! tip "设置 JumpServer"
+    - 访问 JumpServer Web 页面并使用管理员账号进行登录
+    - 点击左侧菜单栏的 [终端管理], 在页面的上方选择 [存储配置], 在 [录像存储] 下方选择 [创建] 选择 [Ceph]
+    - 根据下方的说明进行填写, 保存后在 [终端管理] 页面对所有组件进行 [更新], 录像存储选择 [jms-mino], 提交
+
+| 选项            | 参考值                      | 说明                |
+| :-------------  | :------------------------- | :------------------ |
+| 名称 (Name)     | jms-minio                  | 标识, 不可重复       |
+| 类型 (Type)     | Ceph                       | 固定, 不可更改       |
+| 桶名称 (Bucket) | jumpserver                 | Bucket Name         |
+| Access key      | minio                      | MINIO_ROOT_USER     |
+| Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
+| 端点 (Endpoint) | http://192.168.184.41:9000 | minio 服务访问地址   |
