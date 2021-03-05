@@ -1294,3 +1294,7 @@
     firewall-cmd --permanent --zone=public --add-port=2222/tcp
     firewall-cmd --reload
     ```
+
+!!! warning "配置完成后录像无法正常查看和下载请查看此处的帮助"
+    - 使用云存储 ( S3 / Ceph / Swift / OSS / Azure )
+    - 使用共享存储 NFS, 同步 core/data 持久化目录 ( 默认: /opt/jumpserver/core/data ), 所有 core 节点同步此目录即可
