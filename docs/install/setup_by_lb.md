@@ -2,8 +2,8 @@
 
 !!! info "环境说明"
     - 除 JumpServer 自身组件外, 其他组件的高可用请参考对应的官方文档进行部署
-    - 按照此方式部署后, 后续只需要根据需要扩容 core web 节点然后添加节点到 nginx 即可
-    - 如果已经有 HLB 或者 SLB 可以跳过 nginx 部署, 第三方 LB 要注意 session 和 websocket 问题
+    - 按照此方式部署后, 后续只需要根据需要扩容 core web 节点然后添加节点到 tengine 即可
+    - 如果已经有 HLB 或者 SLB 可以跳过 Tengine 部署, 第三方 LB 要注意 session 和 websocket 问题
     - 如果已经有 云存储(* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署, MySQL Redis 也一样
 
 | DB      | Version |    | Cache | Version |
@@ -15,10 +15,10 @@
 | ------------- | ---------------- | ------ | ---------------- | --------------------- | ---------------------- |
 | MySQL         |  192.168.100.11  |  3306  |  Core            | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
 | Redis         |  192.168.100.11  |  6379  |  Core, Koko      | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
-| Nginx         |  192.168.100.100 | 80,443 |  All             | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
-| Core Web 01   |  192.168.100.21  |  8080  |  Nginx           | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Web 02   |  192.168.100.22  |  8080  |  Nginx           | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Task     |  192.168.100.31  |  8080  |  Nginx           | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
+| Tengine       |  192.168.100.100 | 80,443 |  All             | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
+| Core Web 01   |  192.168.100.21  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 02   |  192.168.100.22  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Task     |  192.168.100.31  |  8080  |  Tengine         | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
 | MinIO         |  192.168.100.41  |  9000  |  KoKo, Guacamole | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
 !!! warning "Core Task 目前仅支持单节点运行, 后续会优化"
@@ -618,7 +618,7 @@
     Creating jms_nginx     ... done
     ```        
 
-## 部署 Nginx 服务
+## 部署 Tengine 服务
 
     服务器: 192.168.100.100
 
@@ -636,9 +636,9 @@
     module_hotfixes=true
     ```
 
-!!! tip "安装 Nginx"
+!!! tip "安装 Tengine"
     ```sh
-    yum install -y nginx
+    yum install -y https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.2/tengine-2.3.2-1.el7.ngx.x86_64.rpm
     ```
 
 !!! tip "配置 Nginx"
@@ -674,6 +674,7 @@
         }
 
         server {
+            # 对外 ssh 端口
             listen 2222;
             proxy_pass kokossh;
             proxy_protocol on;
@@ -710,7 +711,7 @@
         # 用户连接时使用 ip_hash 负载
         server 192.168.100.21:8080;
         server 192.168.100.22:8080;
-        ip_hash;
+        session_sticky;
     }
 
     upstream core_media {
@@ -743,7 +744,7 @@
 
         client_max_body_size 4096m;  # 录像上传大小限制
 
-        location ~ /(ops|task|tasks|flower|ws)/ {
+        location ~ /(ops|task|tasks|flower)/ {
             proxy_pass http://core_task;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -762,9 +763,20 @@
             proxy_next_upstream_tries 5;
         }
 
+        location /ws/ {
+            proxy_pass http://core_task/ws/;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
         location / {
             proxy_pass http://core_web;
             proxy_buffering  off;
+            proxy_request_buffering off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
@@ -779,7 +791,7 @@
     nginx -t
     ```
 
-!!! tip "启动 Nginx"
+!!! tip "启动 Tengine"
     ```sh
     systemctl enable nginx
     systemctl start nginx
@@ -811,7 +823,7 @@
     mkdir /etc/docker/
     vi /etc/docker/daemon.json
     ```
-    ```vim
+    ```json
     {
       "live-restore": true,
       "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
