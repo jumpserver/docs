@@ -28,18 +28,12 @@
 === "自动部署"
     !!! tip ""
         ```sh
-        export DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com
         curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
-
-        # 如果出现问题
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
-        ./jmsctl.sh --help
         ```
 
 === "手动部署"
     !!! tip ""
         ```sh
-        export DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com
         cd /opt
         yum -y install wget
         wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
@@ -50,13 +44,32 @@
 
     ???+ info "配置文件说明"
         ```vim
-        # 以下设置默认情况下不需要修改
+        # 以下设置如果为空系统会自动生成随机字符串填入
+        ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
 
-        # 说明
-        #### 这是项目总的配置文件, 会作为环境变量加载到各个容器中
-        #### 格式必须是 KEY=VALUE 不能有空格等
+        ## 安装配置
+        DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
+        VOLUME_DIR=/opt/jumpserver
+        DOCKER_DIR=/var/lib/docker
+        SECRET_KEY=
+        BOOTSTRAP_TOKEN=
+        LOG_LEVEL=ERROR
 
-        # Compose项目设置
+        ## 使用外置 MySQL 配置
+        USE_EXTERNAL_MYSQL=0
+        DB_HOST=mysql
+        DB_PORT=3306
+        DB_USER=root
+        DB_PASSWORD=
+        DB_NAME=jumpserver
+
+        ## 使用外置 Redis 配置
+        USE_EXTERNAL_REDIS=0
+        REDIS_HOST=redis
+        REDIS_PORT=6379
+        REDIS_PASSWORD=
+
+        ## Compose 项目设置
         COMPOSE_PROJECT_NAME=jms
         COMPOSE_HTTP_TIMEOUT=3600
         DOCKER_CLIENT_TIMEOUT=3600
@@ -66,23 +79,16 @@
         DOCKER_SUBNET_IPV6=2001:db8:10::/64
         USE_IPV6=0
 
-        ### 持久化目录, 安装启动后不能再修改, 除非移动原来的持久化到新的位置
-        VOLUME_DIR=/opt/jumpserver
-
-        ## 是否使用外部MYSQL和REDIS
-        USE_EXTERNAL_MYSQL=0
-        USE_EXTERNAL_REDIS=0
-
-        ## Nginx 配置，这个Nginx是用来分发路径到不同的服务
+        ## Nginx 配置，这个 Nginx 是用来分发路径到不同的服务
         HTTP_PORT=80
         HTTPS_PORT=443
         SSH_PORT=2222
 
-        ## LB 配置, 这个Nginx是HA时可以启动负载均衡到不同的主机
+        ## LB 配置, 这个 Nginx 是 HA 时可以启动负载均衡到不同的主机
         USE_LB=0
         LB_HTTP_PORT=80
         LB_HTTPS_PORT=443
-        LB_SSH_PORT=2223
+        LB_SSH_PORT=2222
 
         ## Task 配置
         USE_TASK=1
@@ -90,30 +96,13 @@
         ## XPack
         USE_XPACK=0
 
-        # Koko配置
-        CORE_HOST=http://core:8080
-        ENABLE_PROXY_PROTOCOL=true
+        # Mysql 容器配置
+        MYSQL_ROOT_PASSWORD=
+        MYSQL_DATABASE=jumpserver
 
         # Core 配置
-        ### 启动后不能再修改，否则密码等等信息无法解密
-        SECRET_KEY=
-        BOOTSTRAP_TOKEN=
-        LOG_LEVEL=INFO
         # SESSION_COOKIE_AGE=86400
-        # SESSION_EXPIRE_AT_BROWSER_CLOSE=false
-
-        ## MySQL数据库配置
-        DB_ENGINE=mysql
-        DB_HOST=mysql
-        DB_PORT=3306
-        DB_USER=root
-        DB_PASSWORD=
-        DB_NAME=jumpserver
-
-        ## Redis配置
-        REDIS_HOST=redis
-        REDIS_PORT=6379
-        REDIS_PASSWORD=
+        SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
         ### Keycloak 配置方式
         ### AUTH_OPENID=true
@@ -125,6 +114,9 @@
         ### AUTH_OPENID_SHARE_SESSION=true
         ### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
 
+        # Koko 配置
+        CORE_HOST=http://core:8080
+
         # Guacamole 配置
         JUMPSERVER_SERVER=http://core:8080
         JUMPSERVER_KEY_DIR=/config/guacamole/data/key/
@@ -133,68 +125,7 @@
         JUMPSERVER_ENABLE_DRIVE=true
         JUMPSERVER_CLEAR_DRIVE_SESSION=true
         JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
-
-        # MySQL 容器配置
-        MYSQL_ROOT_PASSWORD=
-        MYSQL_DATABASE=jumpserver
         ```
-
-??? warning "如果 export 的镜像加速方法无效请查看此处的帮助文档"
-    ```sh
-    # mysql
-    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5
-    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5 jumpserver/mysql:5
-    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/mysql:5
-    # redis
-    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine
-    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine jumpserver/redis:6-alpine
-    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/redis:6-alpine
-    # nginx
-    docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2
-    docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2 jumpserver/nginx:alpine2
-    docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/nginx:alpine2
-    # core koko guacamole lina luna
-    version={{ jumpserver.version }}
-    for image in core koko guacamole lina luna; do
-      if [[ ! "$(docker images | grep $(echo ${image%:*}) | grep $(echo ${image#*:}))" ]]; then
-        docker pull swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version}
-        docker tag swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version} jumpserver/${image}:${version}
-        docker rmi -f swr.cn-south-1.myhuaweicloud.com/jumpserver/${image}:${version}
-      else
-        echo -e "Docker: Pulling from jumpserver/${image}:${version}  \t  [ ok ]"
-      fi
-    done
-    ```
-    ```sh
-    # 也可以直接修改代码
-    vi scripts/3_load_images.sh
-    ```
-    ```vim
-    # 在第 44 行左右, 修改 pull_image 的方法
-    function pull_image() {
-      images=$(get_images public)
-      i=1
-      for image in ${images}; do
-        export DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
-        echo "[${image}]"
-        if [[ ! "$(docker images | grep $(echo ${image%:*}) | grep $(echo ${image#*:}))" ]]; then
-          if [[ -n "${DOCKER_IMAGE_PREFIX}" && $(image_has_prefix "${image}") == "0" ]]; then
-            docker pull "${DOCKER_IMAGE_PREFIX}/${image}"
-            docker tag "${DOCKER_IMAGE_PREFIX}/${image}" "${image}"
-            docker rmi -f "${DOCKER_IMAGE_PREFIX}/${image}"
-          else
-            docker pull "${image}"
-          fi
-        fi
-        echo ""
-        ((i++)) || true
-      done
-    }
-    # 修改到此结束, 不要修改其他的内容
-    ```
-    ```sh
-    ./jmsctl.sh load_image
-    ```
 
 ??? warning "如果启动过程报错请查看此处的帮助文档"
     ```sh
@@ -213,6 +144,7 @@
     ERROR: Encountered errors while bringing up the project.
     ```
     ```sh
+    # 如果出现上面的错误, 执行下面的命令, 直到出现 Check service status 为止
     docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
     ```
     ```yaml
@@ -465,6 +397,7 @@
     2021-02-08 15:01:02 Check service status: daphne -> running at 54
     ```
     ```sh
+    # 确定上面都是 ok, 没有 error, 重新 start 即可
     ./jmsctl.sh start
     ```
 

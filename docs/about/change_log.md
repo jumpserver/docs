@@ -5,6 +5,84 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.8.0
+
+!!! tip "版本升级 What’s Upgraded"
+    - paramiko==2.7.2
+    - jumpserver-django-oidc-rp=0.3.7.6
+    - pycryptodome==3.10.1
+    - pycryptodomex==3.10.1
+    - pyvmomi==7.0.1
+    - termcolor==1.1.0
+    - azure-identity==1.5.0
+    - azure-mgmt-subscription==1.0.0
+    - pycrypto==2.6.1 (移除)
+
+!!! info "🌱 新功能 Features"
+    - feat: 新增访问控制功能
+    - feat: 新增用户登录限制功能，支持通过`IP地址`进行控制
+    - feat: 新增用户登录资产复核功能，针对通过`ssh`和`telnet`协议登录的资产进行复核【企业版】
+    - feat: 新增云管中心`VMware私有云`同步【企业版】
+    - feat: 新增云管中心`Azure国际云`同步【企业版】
+    - feat: 新增自定义表格列功能
+    - feat: 新增限制用户只能从`Source`登录的功能
+    - feat: 新增`Luna`左侧授权资产树右键全部展开的功能
+    - feat: 新增全局组织功能，默认组织改为实体组织【企业版】
+
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复资源权限校验时组织切换的问题
+    - fix: 修复组件状态上报`API`偶发报错的问题
+    - fix: 修复命令存储`es`类型`主机`字段带用户名密码提交报错的问题
+    - fix: 修复禁用`MFA`之后，短时间内还可以查看密码的问题
+    - fix: 修复文件管理在当前目录下复制、粘贴文件报错的问题
+    - fix: 修复存在无效`es`存储配置时命令记录页面访问失败的问题
+    - fix: 修复`Luna`终端显示字符不完整的问题
+    - fix: 修复系统用户名包含`/`字符无法使用文件管理功能的问题
+    - fix: 修复由于`Chrome`版本兼容性问题导致的日期计算错误
+    - fix: 修复工单列表字段展示错误的问题【企业版】
+    - fix: 修复默认平台列表可删除的问题
+    - fix: 修复访问用户页面无权限的问题
+
+
+!!! summary "🚀 性能优化 Optimization"
+    - perf: 优化用户登录页面
+    - perf: 重构`celery`使用`Threads`模型， 减少内存使用
+    - perf: 优化`settings`配置，采用`redis`消息发布订阅机制
+    - perf: 优化命令记录列表，添加命令存储树展示
+    - perf: 设置用户`source(来源)`字段为可更新
+    - perf: 会话列表支持模糊搜索
+    - perf: 重构&优化资产树、用户授权树加载速度
+    - perf: 优化用户详情页授权列表加载速度
+    - perf: 资产授权规则添加是否有效的过滤条件
+    - perf: 重置用户`MFA`发送邮件提醒邮件
+    - perf: 优化批量更新会查询全部数据的问题
+    - perf: `Ansible`任务执行增加结果汇总信息
+    - perf: 优化定期检查磁盘，添加可控制配置
+    - perf: 系统用户支持`OPENSSH`格式的私钥
+    - perf: 优化系统用户生成密码的复杂度（包含数字、字母大小写、特殊字符）
+    - perf: `OPTION` API添加默认值，前端可以直接使用
+    - perf: 优化`org`获取逻辑，采用`redis`消息发布订阅机制维护`orgs_mapping`数据
+    - perf: 移除资源创建时对于`Auditor`用户的限制
+    - perf: 管理用户详情页添加认证方式与秘钥指纹
+    - perf: 优化命令记录列表加载慢的问题
+    - perf: 优化用户详情页的资产授权列表慢的问题
+    - perf: 添加批量导入时将文件(csv, excel)解析为`JSON`数据格式的接口
+    - perf: 支持修改`忘记密码`与`重置密码`的链接
+    - perf: `Luna`页面获取资产系统用户按`name`排序
+    - perf: 优化系统用户、命令过滤器等关于优先级的问题（数值越小越先）
+    - perf: 点击登录页面右侧图片可直接跳转到`Github`工程项目
+    - perf: 文件管理支持在当前目录进行复制、粘贴
+    - perf: 修改终端登录页面的强制刷新接口
+    - perf: 增加新的`SSH KexAlgorithms`算法【KoKo】
+    - perf: 优化终端的节点展示（同一级节点以`Name`排序）
+    - perf: 添加禁用资产颜色区分
+    - perf: 优化列表页面下拉的配色
+    - perf: 优化命令执行的输出
+    - perf: 去掉`Remote App`中的网域选择
+    - perf: 优化创建系统用户时先选择协议
+    - perf: 优化移除用户和删除用户的行为
+
 v2.7.1
 ------------------------
 2021年02月03日
