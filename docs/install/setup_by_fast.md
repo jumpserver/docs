@@ -8,12 +8,14 @@
 - [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9) :heart:{: .heart }
 - 国内用户可以使用由华为云提供的容器镜像服务
 
-| 区域          | 镜像仓库地址                      | 使用方式                                                     |
-| :----------- | :------------------------------- | :----------------------------------------------------------- |
-| 华北-北京一   | swr.cn-north-1.myhuaweicloud.com | export DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com  |
-| 华北-北京四   | swr.cn-north-4.myhuaweicloud.com | export DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com  |
-| 华南-广州     | swr.cn-south-1.myhuaweicloud.com | export DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com  |
-| 华东-上海一   | swr.cn-east-3.myhuaweicloud.com  | export DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com   |
+| 区域          | 镜像仓库地址                         |
+| :----------- | :----------------------------------- |
+| 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     |
+| 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     |
+| 华南-广州     | swr.cn-south-1.myhuaweicloud.com     |
+| 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      |
+| 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com |
+| 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com |
 
 ## 安装方式
 
