@@ -496,13 +496,6 @@
         session_sticky;
     }
 
-    upstream core_media {
-        # 获取录像失败时自动到对应的 server 取
-        server 192.168.100.21:8080 max_fails=2 fail_timeout=2s;
-        server 192.168.100.22:8080 max_fails=2 fail_timeout=2s;
-        server 192.168.100.31:8080 max_fails=2 fail_timeout=2s;
-    }
-
     upstream core_task {
         # use_task = 1 的任务服务器, 目前只能单任务运行
         server 192.168.100.31:8080;
@@ -526,6 +519,13 @@
 
         client_max_body_size 4096m;  # 录像上传大小限制
 
+        location ~ /replay/ {
+            proxy_pass http://core_web;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
         location ~ /(ops|task|tasks|flower)/ {
             proxy_pass http://core_task;
             proxy_http_version 1.1;
@@ -534,15 +534,6 @@
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location ~ /replay/ {
-            proxy_pass http://core_media;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504 http_404;
-            proxy_next_upstream_tries 5;
         }
 
         location /ws/ {
@@ -565,7 +556,6 @@
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            access_log off;
         }
     }
     ```
