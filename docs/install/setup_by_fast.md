@@ -5,19 +5,20 @@
     需要连接 互联网  
     使用 root 用户执行  
 
-- [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9) :heart:{: .heart }
-- 国内用户可以使用由华为云提供的容器镜像服务
+- 可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }
 
-| 区域          | 镜像仓库地址                         |
-| :----------- | :----------------------------------- |
-| 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     |
-| 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     |
-| 华南-广州     | swr.cn-south-1.myhuaweicloud.com     |
-| 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      |
-| 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com |
-| 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com |
+| 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                |
+| :----------- | :----------------------------------- | -------------------------------------------------------- |
+| 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     |
+| 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com     |
+| 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com     |
+| 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      |
+| 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com |
+| 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-3.myhuaweicloud.com |
 
 ## 安装方式
+
+- 可以参考 [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! info "外置环境要求"
     - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
