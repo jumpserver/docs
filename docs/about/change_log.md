@@ -5,7 +5,24 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.8.1
+------------------------
+2021年03月19日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复创建用户失败的问题
+    - fix: 修复`LDAP导入的用户`用户名中包含空白字符的问题
+    - fix: 修复`LDAP配置`属性映射字段不显示默认值的问题
+    - fix: 修复可以登录`已禁用资产`的问题
+    - fix: 修复文件管理可以看到`已禁用资产目录`的问题
+    - fix: 修复更多`更多操作按钮`下拉菜单为空仍然显示的问题
+
+!!! summary "🚀 性能优化 Optimization"
+    - perf: 优化`云管中心导入主机`异常捕获逻辑【企业版】
+
 v2.8.0
+------------------------
+2021年03月18日
 
 !!! tip "版本升级 What’s Upgraded"
     - paramiko==2.7.2
@@ -29,7 +46,6 @@ v2.8.0
     - feat: 新增`Luna`左侧授权资产树右键全部展开的功能
     - feat: 新增全局组织功能，默认组织改为实体组织【企业版】
 
-
 !!! success "🐛 Bug修复 Bug Fixes"
     - fix: 修复资源权限校验时组织切换的问题
     - fix: 修复组件状态上报`API`偶发报错的问题
@@ -43,7 +59,6 @@ v2.8.0
     - fix: 修复工单列表字段展示错误的问题【企业版】
     - fix: 修复默认平台列表可删除的问题
     - fix: 修复访问用户页面无权限的问题
-
 
 !!! summary "🚀 性能优化 Optimization"
     - perf: 优化用户登录页面

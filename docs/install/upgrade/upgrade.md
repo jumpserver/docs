@@ -475,7 +475,7 @@
     ./jmsctl.sh upgrade
     ```
     ```nginx hl_lines="1 35"
-    是否将版本更新至 v2.8.0 ? (y/n)  (默认为 n): y
+    是否将版本更新至 {{ jumpserver.version }} ? (y/n)  (默认为 n): y
 
     1. 检查配置变更
     /opt/jumpserver/config/nginx/lb_http_server.conf  [ √ ]
