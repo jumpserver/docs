@@ -403,8 +403,6 @@
     ```
     ```nginx
     Creating network "jms_net" with driver "bridge"
-    Creating jms_mysql     ... done
-    Creating jms_redis     ... done
     Creating jms_core      ... done
     Creating jms_celery    ... done
     Creating jms_luna      ... done
