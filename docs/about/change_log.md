@@ -5,6 +5,23 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.8.2
+------------------------
+2021年03月24日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 授权树节点排序 @fit2bot (https://github.com/jumpserver/jumpserver/pull/5836)
+    - fix: 修改mfa强制启用的文案 @fit2bot (https://github.com/jumpserver/jumpserve/pull/5833)
+    - perf: 添加会话来源 rdp terminal @fit2bot (https://github.com/jumpserver/jumpserve/pull/5830)
+    - fix: 修复登录ip限制提示 @fit2bot (https://github.com/jumpserver/jumpserve/pull/5823)
+    - fix: 修复创建远程应用默认Path丢失的问题 @fit2bot (https://github.com/jumpserver/lina/pull/712)
+    - fix: 修复创建K8S系统用户的权限问题 @fit2bot (https://github.com/jumpserver/lina/pull/706)
+    - fix: 恢复RDP系统用户user_group字段 @fit2bot (https://github.com/jumpserver/lina/pull/711)
+    - fix: k8s vim编辑问题 @fit2bot (https://github.com/jumpserver/koko/pull/569)
+
+!!! summary "🚀 性能优化 Optimization"
+    - perf: 优化全局组织下禁止用户更新用户组 @fit2bot (https://github.com/jumpserver/lina/pull/708)
+
 v2.8.1
 ------------------------
 2021年03月19日
