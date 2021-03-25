@@ -4,15 +4,20 @@
 
 !!! tip "是 通过 `telnet` 命令登录 telnet设备 `成功` 的返回字符串"
     - 举例
+    
     ```sh
     telnet 172.16.0.1
     ```
+    ```vim
     Login authentication  
     login: admin  
     password: *********  
     Info: The max number or VTY users is 10, and the number  
           of current VTY users on line is 1.  
     <RA-L7-RD>
+    <RA-L7-RD> system-view
+
+    ```
 
     - 把 `<RA-L7-RD>` 写入到 Web "系统设置"-"终端设置"-"Telnet 成功正则表达式" 里面
     - `<RA-L7-RD> 正则可用 <.*> 表示 或者 <RA-.*>`
