@@ -55,7 +55,6 @@
         ```python
         import requests
         import json
-        from pprint import pprint
         def get_token():
             url = 'https://demo.jumpserver.org/api/v1/authentication/auth/'
             query_args = {
@@ -64,12 +63,14 @@
             }
             response = requests.post(url, data=query_args)
             return json.loads(response.text)['token']
+
         def get_user_info():
             url = 'https://demo.jumpserver.org/api/v1/users/users/'
             token = get_token()
             header_info = { "Authorization": 'Bearer ' + token }
             response = requests.get(url, headers=header_info)
             print(json.loads(response.text))
+
         get_user_info()
         ```
     === "Private Token"
