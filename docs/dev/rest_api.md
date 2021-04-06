@@ -122,7 +122,7 @@
             signature_headers = ['(request-target)', 'accept', 'date']
             headers = {
               'Accept': 'application/json',
-              'Date': "Mon, 17 Feb 2014 06:11:05 GMT"
+              'Date': "Mon, 17 Feb 2020 06:11:05 GMT"
             }
 
             auth = HTTPSignatureAuth(key_id=KEY_ID, secret=SECRET,
