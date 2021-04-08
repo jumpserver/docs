@@ -1,7 +1,7 @@
 # 安装文档
 
 !!! info "说明"
-    全新安装的 Centos7 (7.x)  
+    全新安装的 Linux(x64)  
     需要连接 互联网  
     使用 root 用户执行  
 
@@ -38,7 +38,6 @@
     !!! tip ""
         ```sh
         cd /opt
-        yum -y install wget
         wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
         tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
         cd jumpserver-installer-{{ jumpserver.version }}
@@ -407,6 +406,7 @@
 ## 使用方式
 
 - 安装目录 /opt/jumpserver-install-{{ jumpserver.version }}
+- 配置文件 /opt/jumpserver/config/config.txt
 
 !!! tip "Install"
     ```sh
