@@ -43,7 +43,7 @@
     ```
     ```mysql
     drop database jumpserver;
-    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    create database jumpserver default charset 'utf8';
     exit;
     exit
     ```
@@ -332,9 +332,10 @@
     ./jmsctl.sh stop
     ```
     ```sh
-    if grep -q 'CHARSET=utf8;' /opt/jumpserver.sql; then
+    if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE=utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE utf8_bin@@g' /opt/jumpserver.sql
     else
         echo "备份数据库字符集正确";
     fi
@@ -347,7 +348,7 @@
     ```
     ```mysql
     drop database jumpserver;
-    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    create database jumpserver default charset 'utf8';
     exit;
     exit
     ```

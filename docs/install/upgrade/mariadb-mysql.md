@@ -113,10 +113,11 @@
 !!! tip "修改数据库字符集"
     ```sh
     if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
-        echo "备份数据库字符集正确";
-    else
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE=utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE utf8_bin@@g' /opt/jumpserver.sql
+    else
+        echo "备份数据库字符集正确";
     fi
     ```
 
@@ -146,7 +147,7 @@
         mysql -uroot
         ```
         ```mysql
-        create database jumpserver default charset 'utf8' collate 'utf8_bin';
+        create database jumpserver default charset 'utf8';
         grant all on jumpserver.* to 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
         flush privileges;
         use jumpserver;
@@ -171,7 +172,7 @@
         mysql -uroot
         ```
         ```mysql
-        create database jumpserver default charset 'utf8' collate 'utf8_bin';
+        create database jumpserver default charset 'utf8';
         set global validate_password_policy=LOW;
         grant all on jumpserver.* to 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
         flush privileges;
@@ -216,14 +217,15 @@
 !!! question "启动报错 Cannot add foreign key constraint"
     ```sh
     if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
-        echo "备份数据库字符集正确";
-    else
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE=utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE utf8_bin@@g' /opt/jumpserver.sql
+    else
+        echo "备份数据库字符集正确";
     fi
     ```
     ```sh
     drop database jumpserver;
-    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    create database jumpserver default charset 'utf8';
     source /opt/jumpserver.sql;
     ```

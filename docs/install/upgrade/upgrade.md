@@ -128,16 +128,9 @@
 !!! tip "修改数据库字符集"
     ```sh
     if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
-        echo "备份数据库字符集正确";
-    else
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
-    fi
-    ```
-    ```sh
-    if grep -q 'CHARSET=utf8;' /opt/jumpserver.sql; then
-        cp /opt/jumpserver.sql /opt/jumpserver_bak.sql.1
-        sed -i 's@CHARSET=utf8;@CHARSET=utf8 COLLATE=utf8_bin;@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE=utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@COLLATE utf8_bin@@g' /opt/jumpserver.sql
     else
         echo "备份数据库字符集正确";
     fi
@@ -412,31 +405,12 @@
     Creating jms_nginx     ... done
     ```
     ```sh
-    ./jmsctl.sh stop
-    ```
-    ```nginx
-    Stopping jms_core      ... done
-    Stopping jms_koko      ... done
-    Stopping jms_guacamole ... done
-    Stopping jms_lina      ... done
-    Stopping jms_luna      ... done
-    Stopping jms_nginx     ... done
-    Stopping jms_celery    ... done
-    Removing jms_core      ... done
-    Removing jms_koko      ... done
-    Removing jms_guacamole ... done
-    Removing jms_lina      ... done
-    Removing jms_luna      ... done
-    Removing jms_nginx     ... done
-    Removing jms_celery    ... done
-    ```
-    ```sh
     docker exec -it jms_mysql /bin/bash
     mysql -uroot -p$DB_PASSWORD
     ```
     ```mysql
     drop database jumpserver;
-    create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    create database jumpserver default charset 'utf8';
     exit
     exit
     ```
@@ -449,7 +423,7 @@
     数据库恢复成功！
     ```
     ```sh
-    ./jmsctl.sh start
+    ./jmsctl.sh restart
     ```
 
 

@@ -67,7 +67,7 @@
 
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-    mysql> create database jumpserver default charset 'utf8' collate 'utf8_bin';
+    mysql> create database jumpserver default charset 'utf8';
     Query OK, 1 row affected (0.00 sec)
 
     mysql> set global validate_password_policy=LOW;
