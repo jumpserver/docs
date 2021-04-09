@@ -5,6 +5,21 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.8.3
+------------------------
+2021年04月09日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复 `test cookie` 问题 @fit2bot (https://github.com/jumpserver/jumpserver/pull/5931)
+    - fix: 管理用户输入带密码的秘钥报错 @fit2bot (https://github.com/jumpserver/jumpserver/pull/5899)
+    - fix: 修复 `Default` 组织下出现 app user @fit2bot (https://github.com/jumpserver/jumpserver/pull/5863)
+    - fix: 修复使用 rz 命令上传文件慢的问题 @fit2bot (https://github.com/jumpserver/koko/pull/578)
+    - fix: 修复AWS国际区账号测试可连接性的异常问题【企业版】
+    - fix: 修复资产更多信息更新失败的问题 @fit2bot (https://github.com/jumpserver/lina/pull/726)
+    - fix: 修复命令存储更新失败的问题 @fit2bot (https://github.com/jumpserver/lina/pull/717)
+
+
+
 v2.8.2
 ------------------------
 2021年03月24日
