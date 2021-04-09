@@ -18,8 +18,6 @@ v2.8.3
     - fix: 修复资产更多信息更新失败的问题 @fit2bot (https://github.com/jumpserver/lina/pull/726)
     - fix: 修复命令存储更新失败的问题 @fit2bot (https://github.com/jumpserver/lina/pull/717)
 
-
-
 v2.8.2
 ------------------------
 2021年03月24日
