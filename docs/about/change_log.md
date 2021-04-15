@@ -5,6 +5,13 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.8.4
+------------------------
+2021年04月14日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复升级后Default组织下资产节点树为空的问题 @fit2bot (https://github.com/jumpserver/jumpserver/pull/5957)
+
 v2.8.3
 ------------------------
 2021年04月09日
