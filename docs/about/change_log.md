@@ -5,6 +5,56 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.9.0
+------------------------
+2021年04月15日
+
+!!! tip "版本升级 What’s Upgraded"
+    - cryptography==3.3.2
+    - Django==3.1.6
+    - Jinja2==2.11.3
+    - Pillow==8.1.1
+
+!!! info "🌱 新功能 Features"
+    - feat: 重构资源`导入导出`功能
+    - feat: 新增`Dashboard`页面打印和`PDF导出`功能
+    - feat: 新增云管中心`Nutanix云`同步功能【企业版】
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复`Default`组织下出现`App`用户的问题
+    - fix: 修复`管理用户`输入带密码的秘钥报错的问题
+    - fix: 修复访问`tokens`接口时用户最后登录时间未更新的问题
+    - fix: 修复过期用户登录提示`用户无效`的问题
+    - fix: 修复`Elasticsearch`命令存储索引未创建不可用的问题
+    - fix: 修复`系统设置`配置项未即时更新的问题
+    - fix: 修复组件和终端列表中`在线会话数量`有时不准确的问题
+    - fix: 修复连接`k8s`资产不能使用`vim`编辑的问题
+    - fix: 修复`rz`上传文件慢的问题
+    - fix: 修复创建远程应用默认`Path`丢失的问题
+    - fix: 修复更新命令存储失败的问题
+    - fix: 修复更新资产更多信息失败的问题
+    - fix: 完善页面邮箱地址校验规则
+    - fix: 修复`AWS`账号测试可连接性问题【企业版】
+
+!!! summary "🚀 性能优化 Optimization"
+    - perf: 优化`授权节点`和`授权资产`的排列顺序
+    - perf: 支持`Elasticsearch`命令存储可指定`忽略证书认证`
+    - perf: 优化`访问控制`登录失败提示信息
+    - perf: 优化`nodes/<uuid>/children/add/`API支持`put`和`patch`方法
+    - perf: 资产授权支持按`名称`进行模糊搜索
+    - perf: 优化授权资产列表显示`platform`名称
+    - perf: 配置文件支持修改`全局组织`的名称
+    - perf: 支持`MFA`登录失败次数限制
+    - perf: 移除`components/state/`API，使用`terminal/status/`API进行替换
+    - perf: 优化`健康检测`API，返回`DB`、`Redis`等状态信息
+    - perf: 添加`SSO`用户登录日志记录
+    - perf: 登录`KoKo`进行资产搜索支持自动补全
+    - perf: 创建`RDP系统用户`可填写用户附属组
+    - perf: 优化`全局组织`下禁止用户更新用户组
+    - perf: 修改创建`K8S系统用户`的权限问题
+    - perf: 非`Local`用户禁止更新密码
+    - perf: 优化推送系统用户，设置有效期
+
 v2.8.4
 ------------------------
 2021年04月14日
