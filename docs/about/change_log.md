@@ -5,6 +5,14 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.9.1
+------------------------
+2021年04月19日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 临时移除 Database 协议的用户名与密码相同 选项 @fit2bot (https://github.com/jumpserver/lina/pull/755)
+    - fix: 修复创建的系统用户很快过期的问题 @fit2bot (https://github.com/jumpserver/jumpserver/pull/5980)
+
 v2.9.0
 ------------------------
 2021年04月15日
