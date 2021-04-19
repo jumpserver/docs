@@ -22,8 +22,8 @@ JumpServer 分为多个组件, 大致的架构如上图所示. 其中 [Lina][lin
 可以从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载的源将采用.tar.gz存档的形式，通过命令行中提取该存档:
 
 ```bash
-tar -xf jumpserver-release-{{ jumpserver.version }}.tar.gz
-cd jumpserver-release-{{ jumpserver.version }}
+tar -xf jumpserver-{{ jumpserver.version }}.tar.gz
+cd jumpserver-{{ jumpserver.version }}
 ```
 
 ```bash
