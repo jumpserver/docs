@@ -18,7 +18,7 @@
 | Tengine       |  192.168.100.100 | 80,443 |  All             | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
 | Core Web 01   |  192.168.100.21  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
 | Core Web 02   |  192.168.100.22  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Task     |  192.168.100.31  |  8080  |  Tengine         | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
+| Core Task     |  192.168.100.31  |        |  Tengine         | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
 | MinIO         |  192.168.100.41  |  9000  |  KoKo, Guacamole | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
 !!! warning "Core Task 目前仅支持单节点运行, 后续会优化"
