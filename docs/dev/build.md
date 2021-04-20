@@ -562,7 +562,7 @@ server {
 
   # Guacamole 配置
   location /guacamole/ {
-    proxy_pass http://guacamole:8080/;
+    proxy_pass http://guacamole:8081/;
     proxy_buffering off;
     proxy_request_buffering off;
     proxy_http_version 1.1;
@@ -604,7 +604,7 @@ server {
 
   # 前端 Lina
   location /ui/ {
-    proxy_pass http://127.0.0.1:9528;
+    proxy_pass http://lina:9528;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
