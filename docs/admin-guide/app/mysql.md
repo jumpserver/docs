@@ -5,7 +5,8 @@
     mysql -uroot
     ```
     ```mysql
-    grant all on *.* to 'root'@'%' identified by 'Test2020.M';
+    create user 'root'@'%' identified by 'Test2020.M';
+    grant all on *.* to 'root'@'%';
     flush privileges;
     ```
 

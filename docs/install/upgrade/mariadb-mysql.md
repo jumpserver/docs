@@ -123,6 +123,7 @@
 
 !!! tip "迁移到新服务器"
     - 将导出的 /opt/jumpserver.sql 拷贝要新的服务器上面
+    - 下面以迁移到其他 CentOS7 服务器为例, 实际操作过程中请自行替换对应的命令
 
     === "迁移到 MariaDB 10.5"
         ```sh
@@ -148,7 +149,8 @@
         ```
         ```mysql
         create database jumpserver default charset 'utf8';
-        grant all on jumpserver.* to 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        create user 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        grant all on jumpserver.* to 'jumpserver'@'%';
         flush privileges;
         use jumpserver;
         source /opt/jumpserver.sql;
@@ -168,13 +170,35 @@
         ```sh
         mysql -uroot
         ```
+        ```mysql
+        create database jumpserver default charset 'utf8';
+        set global validate_password_policy=LOW;
+        create user 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        grant all on jumpserver.* to 'jumpserver'@'%';
+        flush privileges;
+        use jumpserver;
+        source /opt/jumpserver.sql;
+        exit;
+        ```
+
+    === "迁移到 MySQL 8.0"
+        ```bash
+        yum -y localinstall http://mirrors.ustc.edu.cn/mysql-repo/mysql80-community-release-el7.rpm
+        yum -y install mysql-community-server mysql-community-devel
+        ```
+        ```sh
+        sed -i "s@--initialize @--initialize-insecure @g" /usr/bin/mysqld_pre_systemd
+        systemctl enable mysqld
+        systemctl start mysqld
+        ```
         ```sh
         mysql -uroot
         ```
         ```mysql
         create database jumpserver default charset 'utf8';
-        set global validate_password_policy=LOW;
-        grant all on jumpserver.* to 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        set global validate_password.policy=LOW;
+        create user 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        grant all on jumpserver.* to 'jumpserver'@'%';
         flush privileges;
         use jumpserver;
         source /opt/jumpserver.sql;

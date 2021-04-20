@@ -73,7 +73,10 @@
     mysql> set global validate_password_policy=LOW;
     Query OK, 0 rows affected (0.00 sec)
 
-    mysql> grant all on jumpserver.* to 'jumpserver'@'192.168.100.%' identified by 'weakPassword';
+    mysql> create user 'jumpserver'@'%' identified by 'weakPassword';
+    Query OK, 0 rows affected (0.00 sec)
+
+    mysql> grant all on jumpserver.* to 'jumpserver'@'%';
     Query OK, 0 rows affected, 1 warning (0.00 sec)
 
     mysql> flush privileges;
