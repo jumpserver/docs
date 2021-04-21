@@ -123,7 +123,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.9.1
+    version: v2.9.2
   search:
     separator: '[\s\-\.]+'
     language: 'jp'
