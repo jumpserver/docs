@@ -218,10 +218,10 @@ REDIS_PASSWORD: ********
 
 ### 启动 Core
 
-后台运行可以加 -d, `./jmsctl.sh start all -d`
+后台运行可以加 -d, `./jms.sh start all -d`
 
 ```bash
-./jmsctl.sh start all
+./jms.sh start all
 ```
 
 ## Lina
