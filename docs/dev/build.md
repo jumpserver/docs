@@ -70,7 +70,7 @@ python3 -m venv ~/project/jms_py3
 source ~/project/jms_py3/bin/activate
 ```
 
-每次运行项目都需要先执行 `source ~/project/jms_py3` 载入此环境. `(jms_py3) [root@jms-test ~]#`
+每次运行项目都需要先执行 `source ~/project/jms_py3/bin/activate` 载入此环境. `(jms_py3) [root@jms-test ~]#`
 
 ```bash
 pip install -r requirements.txt
