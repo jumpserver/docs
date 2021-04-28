@@ -8,7 +8,7 @@
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
-| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+| MySQL   | >= 5.7  |    | Redis | >= 6.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
 | Server Name   |        IP        |  Port  |     Use          |   Minimize Hardware   |   Standard Hardware    |
@@ -96,18 +96,23 @@
 
     服务器: 192.168.100.11
 
-!!! tip "设置 Repo"
+!!! tip "下载源码"
     ```sh
-    yum -y install epel-release https://repo.ius.io/ius-release-el7.rpm
+    yum -y install epel-release wget make
+    cd /opt
+    wget https://download.redis.io/releases/redis-6.2.2.tar.gz
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    yum install -y redis5
+    tar -xf redis-6.2.2.tar.gz
+    cd redis-6.2.2
+    make
     ```
 
 !!! tip "配置 Redis"
     ```sh
+    cp redis.conf /etc/redis.conf
     sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis.conf
     sed -i "561i maxmemory-policy allkeys-lru" /etc/redis.conf
     sed -i "481i requirepass weakPassword" /etc/redis.conf
@@ -115,8 +120,7 @@
 
 !!! tip "启动 Redis"
     ```sh
-    systemctl enable redis
-    systemctl start redis
+    src/redis-server /etc/redis.conf
     ```
 
 !!! tip "配置防火墙"
