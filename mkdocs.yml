@@ -60,7 +60,7 @@ nav:
     - 参数说明: admin-guide/env.md
     - 存储说明: admin-guide/storages.md
   - 开发文档:
-    - API文档: dev/rest_api.md
+    - API 文档: dev/rest_api.md
     - 编译文档: dev/build.md
   - 用户文档:
     - 我的资产: user-guide/assets/user-asset.md

@@ -12,10 +12,10 @@ JumpServer 分为多个组件, 大致的架构如上图所示. 其中 [Lina][lin
 
 ### 环境要求
 
-| Core        | Python | MySQL  | MariaDB | Redis |
-| :---------- | :----- | :----- | :------ | :---- |
-| v1.0 - v2.6 | =  3.6 | >= 5   | >= 5    |       |
-| >= 2.6      | >= 3.6 | >= 5.7 | >= 10.2 | >= 6  |
+| Name    | Core        | Python | MySQL  | MariaDB | Redis |
+| :------ | :---------- | :----- | :----- | :------ | :---- |
+| Version | v1.0 - v2.6 | =  3.6 | >= 5   | >= 5    |       |
+| Version | >= 2.6      | >= 3.6 | >= 5.7 | >= 10.2 | >= 6  |
 
 ### 下载源代码
 
@@ -226,11 +226,13 @@ REDIS_PASSWORD: ********
 
 ## Lina
 
+[Lina][lina] 是 JumpServer 的前端 UI 项目, 主要使用 [Vue][vue], [Element UI][element_ui] 完成.
+
 ### 环境要求
 
-| Lina        | Node   |
-| :---------- | :----- |
-| all         | =  10  |
+| Name    | Lina        | Node   |
+| :------ | :---------- | :----- |
+| Version | all         | = 10   |
 
 ### 下载源代码
 
@@ -299,11 +301,13 @@ yarn build
 
 ## Luna
 
+[Luna][luna] 是 JumpServer 的前端 UI 项目, 主要使用 [Angular CLI][angular_cli] 完成.
+
 ### 环境要求
 
-| Luna        | Node   |
-| :---------- | :----- |
-| all         | =  10  |
+| Name    | Luna        | Node   |
+| :------ | :---------- | :----- |
+| Version | all         | =  10  |
 
 ### 下载源代码
 
@@ -375,10 +379,10 @@ Koko 是 Go 版本的 coco；重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 ### 环境要求
 
-| KoKo        | Go     |
-| :---------- | :----- |
-| v1.0 - v2.6 | = 1.12 |
-| >= 2.6      | = 1.15 |
+| Name    | KoKo        | Go     |
+| :------ | :---------- | :----- |
+| Version | v1.0 - v2.6 | = 1.12 |
+| Version | >= 2.6      | = 1.15 |
 
 ### 下载源代码
 
@@ -402,7 +406,7 @@ go version
 ```
 `go version go1.15 linux/amd64`
 
-### 编译:
+### 编译
 
 | OS    | Arch  | Command     |
 | :---- | :---- | :---------- |
@@ -500,13 +504,106 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 ## Guacamole
 
+[Guacamole][guacamole] 是 [Apache][apache] 软件基金会的开源项目, JumpServer 通过调用 Guacamole 实现 RDP/VNC 协议跳板机功能.
+
 ### 环境要求
 
-| JumpServer  | OpenJDK |
-| :---------- | :------ |
-| All         | = 1.8   |
+| Name    | JumpServer                 | Guacd                  | Guacamole                                                      | OpenJDK | Tomcat |
+| :------ | :------------------------- | :--------------------- | :------------------------------------------------------------- | :------ | :----- |
+| Version | < 1.5.0                    | [0.9.14][guacd-0.9.14] | [0.9.14][guacamole-0.9.14]                                     | = 1.8   | = 7    |
+| Version | >= 1.5.0                   | [1.0.0][guacd-1.0.0]   | [1.0.0][guacamole-1.0.0]                                       | = 1.8   | = 8    |
+| Version | >= 2.0.2                   | [1.2.0][guacd-1.2.0]   | [1.0.0][guacamole-1.0.0]                                       | = 1.8   | = 9    |
+| Version | = v2.2.0                   | [1.3.0][guacd-1.3.0]   | [v2.2.0][guacamole-v2.2.0]                                     | >= 1.8  | >= 9   |
+| Version | = v2.2.1                   | [1.3.0][guacd-1.3.0]   | [v2.2.1][guacamole-v2.2.1]                                     | >= 1.8  | >= 9   |
+| ...     | = v2.x.x                   | [1.3.0][guacd-1.3.0]   | v2.x.x                                                         | >= 1.8  | >= 9   |
+| Version | = {{ jumpserver.version }} | [1.3.0][guacd-1.3.0]   | [{{ jumpserver.version }}][guacamole-{{ jumpserver.version }}] | >= 1.8  | >= 9   |
 
-等待更新..
+可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
+
+```bash
+tar -xzf guacamole-server-1.3.0.tar.gz
+cd guacamole-server-1.3.0/
+```
+
+参考 [building-guacamole-server][building-guacamole-server] 官方文档, 安装对应操作系统的依赖包.
+
+### 构建 Guacd
+
+```bash
+./configure --with-init-dir=/etc/init.d
+make
+make install
+ldconfig
+```
+
+### 安装 Java
+
+请根据 [环境要求](#_18) 安装 OpenJDK, 通过命令行中判断是否安装完成:
+
+```bash
+java -version
+```
+`openjdk version "1.8.0_292"`
+
+### 安装 Tomcat
+
+请根据 [环境要求](#_18) 安装 Tomcat, 下面以 tomcat9 为例:
+
+```bash
+mkdir -p /config/guacamole/lib /config/guacamole/extensions /config/guacamole/data/log/ /config/guacamole/data/record /config/guacamole/data/drive
+cd /config
+TOMCAT_VER=`curl -s http://tomcat.apache.org/tomcat-9.0-doc/ | grep 'Version ' | awk '{print $2}' | sed 's/.$//'`
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz
+tar -xf apache-tomcat-${TOMCAT_VER}.tar.gz
+mv apache-tomcat-${TOMCAT_VER} tomcat9
+sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
+rm -f apache-tomcat-${TOMCAT_VER}.tar.gz
+rm -rf /config/tomcat9/webapps/*
+```
+
+### 部署 Guacamole
+
+请根据 [环境要求](#_18) 下载 Guacamole, 下面以 {{ jumpserver.version }} 为例:
+
+```bash
+wget http://download.jumpserver.org/release/{{ jumpserver.version }}/guacamole-client-{{ jumpserver.version }}.tar.gz
+tar -xf guacamole-client-{{ jumpserver.version }}.tar.gz
+cp guacamole-client-{{ jumpserver.version }}/guacamole-*.war /config/tomcat9/webapps/ROOT.war
+cp guacamole-client-{{ jumpserver.version }}/guacamole-*.jar /config/guacamole/extensions/
+wget https://download.jumpserver.org/public/ssh-forward-linux-amd64.tar.gz
+tar -xf ssh-forward-linux-amd64.tar.gz -C /bin/
+chown root:root /bin/ssh-forward
+chmod 755 /bin/ssh-forward
+```
+
+### 创建启动脚本
+
+```bash
+vi /opt/start_guacamole.sh
+```
+```vim
+#!/bin/bash
+##
+
+# 更多参数说明参考 https://docs.jumpserver.org/zh/master/admin-guide/env/#guacamole
+
+export JUMPSERVER_SERVER=http://127.0.0.1:8080               # Core 的地址
+export BOOTSTRAP_TOKEN=********                              # 和 Core config.yml 的值保持一致
+export GUACAMOLE_HOME=/config/guacamole                      
+export GUACAMOLE_LOG_LEVEL=ERROR                             # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
+export JUMPSERVER_RECORD_PATH=/config/guacamole/data/record  # 视频录像存放路径
+export JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive    # 共享盘路径
+export JUMPSERVER_DISABLE_GLYPH_CACHING=true                 # windows 7/2008/2008r2 和 vnc 频繁断开解决方案
+
+/etc/init.d/guacd start
+sh /config/tomcat9/bin/startup.sh
+```
+
+### 启动 Guacamole
+
+```bash
+sh /opt/start_guacamole.sh
+```
 
 ## Nginx
 
@@ -624,7 +721,10 @@ nginx -s reload
 
 [nginx]: http://nginx.org/
 [lina]: https://github.com/jumpserver/lina/
+[vue]: https://cn.vuejs.org/
+[element_ui]: https://element.eleme.cn/
 [luna]: https://github.com/jumpserver/luna/
+[angular_cli]: https://github.com/angular/angular-cli
 [core]: https://github.com/jumpserver/jumpserver/
 [django]: https://docs.djangoproject.com/
 [gunicorn]: https://gunicorn.org/
@@ -640,3 +740,17 @@ nginx -s reload
 [luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.version }}
 [koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
 [go]: https://golang.google.cn/
+[guacamole]: http://guacamole.apache.org/
+[apache]: http://www.apache.org/
+[guacamole-server]: https://github.com/apache/guacamole-server
+[building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
+[guacd-0.9.14]: https://github.com/jumpserver/docker-guacamole-v1/raw/1.4.10/guacamole-server-0.9.14.tar.gz
+[guacamole-0.9.14]: https://github.com/jumpserver/docker-guacamole-v1/raw/1.4.10/guacamole-0.9.14.war
+[guacd-1.0.0]: https://github.com/jumpserver/docker-guacamole-v1/raw/1.5.0/guacamole-server-1.0.0.tar.gz
+[guacamole-1.0.0]: https://github.com/jumpserver/docker-guacamole-v1/raw/1.5.0/guacamole-1.0.0.war
+[guacd-1.2.0]: https://github.com/jumpserver/docker-guacamole-v1/raw/2.0.2/guacamole-server-1.2.0.tar.gz
+[guacamole-1.0.0]: https://github.com/jumpserver/docker-guacamole-v1/raw/2.0.2/guacamole-1.0.0.war
+[guacd-1.3.0]: http://download.jumpserver.org/public/guacamole-server-1.3.0.tar.gz
+[guacamole-v2.2.0]: http://download.jumpserver.org/release/v2.2.0/guacamole-client-v2.2.0.tar.gz
+[guacamole-v2.2.1]: http://download.jumpserver.org/release/v2.2.1/guacamole-client-v2.2.1.tar.gz
+[guacamole-{{ jumpserver.version }}]: http://download.jumpserver.org/release/{{ jumpserver.version }}/guacamole-client-{{ jumpserver.version }}.tar.gz
