@@ -116,21 +116,22 @@
 
         ```python
         # pip install requests drf-httpsig
-        import requests
+        import requests, datetime
         from httpsig.requests_auth import HTTPSignatureAuth
 
-        KEY_ID = 'su-key'
-        SECRET = 'my secret string'
+        KEY_ID = 'AccessKeyID'
+        SECRET = 'AccessKeySecret'
+        GMT_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
 
         signature_headers = ['(request-target)', 'accept', 'date']
         headers = {
             'Accept': 'application/json',
-            'Date': "Mon, 17 Feb 2020 06:11:05 GMT"
+            'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
         }
 
         auth = HTTPSignatureAuth(key_id=KEY_ID, secret=SECRET, algorithm='hmac-sha256', headers=signature_headers)
         req = requests.get('http://localhost/api/v1/users/users/', auth=auth, headers=headers)
-        print(req.content)
+        print(req.text)
         ```
 
 ## 示例
