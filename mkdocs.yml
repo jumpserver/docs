@@ -24,6 +24,7 @@ theme:
   features:
     - search.suggest
     - search.highlight
+  font: false
   custom_dir: 'theme'
 
 nav:
