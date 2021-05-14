@@ -19,7 +19,7 @@ theme:
     - yaml
     - django
   palette:
-    primary: 'green'
+    primary: 'teal'
     accent: 'red'
   features:
     - search.suggest

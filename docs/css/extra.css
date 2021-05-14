@@ -90,9 +90,8 @@
   animation: heart 1000ms infinite;
 }
 
-[data-md-color-primary=green] {
-  --md-primary-fg-color: #29937b;
-  --md-primary-fg-color--dark: #29937b
+.md-nav__source {
+  background-color: #009484
 }
 
 /* 自定义 Admonitions */
