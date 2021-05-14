@@ -19,11 +19,13 @@ theme:
     - yaml
     - django
   palette:
-    primary: 'teal'
     accent: 'red'
   features:
     - search.suggest
     - search.highlight
+    - search.share
+    - navigation.instant
+    - header.autohide
   font: false
   custom_dir: 'theme'
 
@@ -91,7 +93,7 @@ markdown_extensions:
   - footnotes
   - meta
   - toc:
-      permalink: true
+      permalink: ⚓︎
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
@@ -126,7 +128,7 @@ extra:
     version: v2.9.2
   search:
     separator: '[\s\-\.]+'
-    language: 'jp'
+    language: 'zh'
     Content-Encoding: gzip
   generator: false
   social:

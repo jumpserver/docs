@@ -1,3 +1,7 @@
+:root {
+  --md-primary-fg-color: #2b937c;
+}
+
 .progress-label {
   position: absolute;
   text-align: center;
@@ -91,7 +95,7 @@
 }
 
 .md-nav__source {
-  background-color: #009484
+  background-color: #2b937c;
 }
 
 /* 自定义 Admonitions */
