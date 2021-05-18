@@ -101,7 +101,7 @@
         ```
     === "jumpserver-installer"
         ```sh
-        cd /opt/jumpserver-install-{{ jumpserver.version }}
+        cd /opt/jumpserver-installer-{{ jumpserver.version }}
         ./jmsctl.sh stop
         ```
         ```sh
@@ -226,7 +226,7 @@
         MYSQL_DATABASE=jumpserver
         ```
         ```sh
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
+        cd /opt/jumpserver-installerer-{{ jumpserver.version }}
         ./jmsctl.sh start
         ```
         ```sh

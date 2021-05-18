@@ -405,7 +405,7 @@
 
 ## 使用方式
 
-- 安装目录 /opt/jumpserver-install-{{ jumpserver.version }}
+- 安装目录 /opt/jumpserver-installer-{{ jumpserver.version }}
 - 配置文件 /opt/jumpserver/config/config.txt
 
 !!! tip "Install"
