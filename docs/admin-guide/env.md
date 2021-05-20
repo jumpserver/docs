@@ -10,7 +10,7 @@ vi /opt/jumpserver/config/config.txt
 
 ```vim
 SECRET_KEY=****           # 用来加密解密的 KEY
-BOOTSTRAP_TOKEN=****      # koko/guacamole 用来向jms注册使用的 token
+BOOTSTRAP_TOKEN=****      # koko/lion 用来向jms注册使用的 token
 DEBUG=TRUE                # 是否开启 debug 模式，显示更多信息  开启以后，界面可以显示API调用信息
 SITE_URL= http://1.2.3.4  # 网站的地址，发邮件时使用该地址来做 连接 跳转
 LOG_LEVEL=DEBUG           # 日志级别
@@ -112,23 +112,32 @@ REDIS_CLUSTERS=                  # redis 配置
 REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
 ```
 
-## Guacamole 参数说明
+## lion 参数说明
 
 ```vim
-GUACAMOLE_LOG_LEVEL=INFO            # 日志级别 DEBUG, INFO, WARN, ERROR
-JUMPSERVER_SERVER=http://core:8080  # core 地址
-BOOTSTRAP_TOKEN=*****               # 注册时预共享 TOKEN
-JUMPSERVER_KEY_DIR=/config/guacamole/data/keys        # 注册后 Key 文件保存目录
-JUMPSERVER_RECORD_PATH=/config/guacamole/data/record  # 录像保存目录
-JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive    # 上传文件保存目录
+NAME=hostname                    # 默认是主机名
+CORE_HOST=http://127.0.0.1:8080  # Jumpserver 项目的 url，api 请求注册会使用
+BOOTSTRAP_TOKEN=*****            # 预共享秘钥，请和 jumpserver 配置文件中保持一致。
+BIND_HOST=0.0.0.0                # 启动时绑定的 ip, 默认 0.0.0.0
+HTTPD_PORT=8081                  # 监听的 HTTP/WS 端口号
+GUA_HOST=127.0.0.1               # Guacd 项目 url
+GUA_PORT=4822                    # Guacd 项目 端口
+LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]  debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
+SHARE_ROOM_TYPE=local            # 可选择 local 和 redis  会话监控和共享使用的方式
+REDIS_HOST=127.0.0.1             # redis 配置
+REDIS_PORT=6379                  # redis 配置
+REDIS_PASSWORD=                  # redis 配置
+REDIS_CLUSTERS=                  # redis 配置
+REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
+
+JUMPSERVER_DISABLE_ALL_COPY_PASTE=false             # 全局禁用上传下载
+JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD=false        # 全局禁用剪切板粘贴复制
+JUMPSERVER_REMOTE_APP_UPLOAD_DOWNLOAD_ENABLE=false  # 开启Remote app的上传下载
+JUMPSERVER_REMOTE_APP_COPY_PASTE_ENABLE=false       # 开启Remote app的剪切板粘贴复制
 JUMPSERVER_CLEAR_DRIVE_SESSION=false  # 连接断开时清理上传文件 true, false（不清理）
 JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24    # 清理多久以前的上传文件（每隔1小时）  大于1的数值  无（不设置环境变量就不清理）
 JUMPSERVER_COLOR_DEPTH=32             # 颜色深度 低色 16位, 真彩 24位, 真彩 32位
 JUMPSERVER_DPI=120                    # 图像每英寸长度内的像素点数 120, 160, 240 等
-
-JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD=false  # 全局禁用上传下载(>= 2.2.3 版本支持)
-JUMPSERVER_DISABLE_ALL_COPY_PASTE=false      # 全局禁用剪切板粘贴复制(>= 2.2.3 版本支持)
-
 JUMPSERVER_DISABLE_AUDIO=false               # 禁止声音 true, false  无(允许声音)
 JUMPSERVER_ENABLE_WALLPAPER=false            # 启用墙纸 true, false  无（禁用）
 JUMPSERVER_ENABLE_THEMING=false              # 启用主题 true, false  无（禁用）

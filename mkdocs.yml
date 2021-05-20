@@ -75,11 +75,8 @@ nav:
     - Web终端: user-guide/terminal/web-terminal.md
     - 文件管理: user-guide/terminal/web-sftp.md
   - 帮助文档:
-    - 升级 常见问题: faq/upgrade.md
-    - Core 常见问题: faq/core.md
-    - Luna 常见问题: faq/luna.md
-    - koko 常见问题: faq/koko.md
-    - Guacamole 问题: faq/guacamole.md
+    - 升级问题: faq/upgrade.md
+    - 组件问题: faq/other.md
   - 关于:
     - 贡献列表: about/contributor.md
     - 更新说明: about/change_log.md
@@ -125,7 +122,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.9.2
+    version: v2.10.0
   search:
     separator: '[\s\-\.]+'
     language: 'zh'

@@ -63,8 +63,8 @@
 
     === "组件容器化部署"
         ```sh
-        docker stop jms_koko jms_guacamole
-        docker rm jms_koko jms_guacamole
+        docker stop jms_koko jms_lion     
+        docker rm jms_koko jms_lion     
         # 更老的版本使用的 coco
         # docker stop jms_coco
         # docker rm jms_coco
@@ -86,7 +86,7 @@
         ```sh
         cd /opt/setuptools
         ./jmsctl.sh stop
-        docker rm jms_koko jms_guacamole
+        docker rm jms_koko jms_lion     
         systemctl disable jms_core
         mv /opt/jumpserver /opt/jumpserver_bak
         ```
@@ -201,7 +201,7 @@
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
         Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
+        Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
         >>> 安装配置 JumpServer
         1. 检查配置文件
@@ -308,7 +308,7 @@
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
         Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
+        Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
         >>> 安装配置 JumpServer
         1. 检查配置文件
@@ -400,7 +400,7 @@
     Creating jms_celery    ... done
     Creating jms_luna      ... done
     Creating jms_lina      ... done
-    Creating jms_guacamole ... done
+    Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
     ```
@@ -470,7 +470,7 @@
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
     Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
+    Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
     完成
 

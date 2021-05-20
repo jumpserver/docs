@@ -38,8 +38,8 @@
 
     === "组件容器化"
         ```sh
-        docker stop jms_koko jms_guacamole
-        docker rm jms_koko jms_guacamole
+        docker stop jms_koko jms_lion     
+        docker rm jms_koko jms_lion     
         # 更老的版本使用的 coco
         # docker stop jms_coco
         # docker rm jms_coco
@@ -61,7 +61,7 @@
         ```sh
         cd /opt/setuptools
         ./jmsctl.sh stop
-        docker rm jms_koko jms_guacamole
+        docker rm jms_koko jms_lion     
         systemctl disable jms_core
         mv /opt/jumpserver /opt/jumpserver_bak
         ```

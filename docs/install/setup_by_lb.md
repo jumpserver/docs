@@ -11,15 +11,15 @@
 | MySQL   | >= 5.7  |    | Redis | >= 6.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port  |     Use          |   Minimize Hardware   |   Standard Hardware    |
-| ------------- | ---------------- | ------ | ---------------- | --------------------- | ---------------------- |
-| MySQL         |  192.168.100.11  |  3306  |  Core            | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
-| Redis         |  192.168.100.11  |  6379  |  Core, Koko      | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
-| Tengine       |  192.168.100.100 | 80,443 |  All             | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
-| Core Web 01   |  192.168.100.21  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Web 02   |  192.168.100.22  |  8080  |  Tengine         | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Task     |  192.168.100.31  |        |  Tengine         | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
-| MinIO         |  192.168.100.41  |  9000  |  KoKo, Guacamole | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
+| Server Name   |        IP        |  Port  |     Use           |   Minimize Hardware   |   Standard Hardware    |
+| ------------- | ---------------- | ------ | ----------------- | --------------------- | ---------------------- |
+| MySQL         |  192.168.100.11  |  3306  |  Core             | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
+| Redis         |  192.168.100.11  |  6379  |  Core, Koko, lion | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
+| Tengine       |  192.168.100.100 | 80,443 |  All              | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
+| Core Web 01   |  192.168.100.21  |  8080  |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 02   |  192.168.100.22  |  8080  |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Task     |  192.168.100.31  |        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
+| MinIO         |  192.168.100.41  |  9000  |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
 ## 部署 MySQL 服务
 
@@ -159,8 +159,8 @@
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
-    # KoKo 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
+    # KoKo Lion 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -200,7 +200,7 @@
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
     Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-    Docker: Pulling from jumpserver/guacamole:{{ jumpserver.version }} 	[ OK ]
+    Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
     >>> 安装配置 JumpServer
     1. 检查配置文件
@@ -289,7 +289,7 @@
     Creating jms_core      ... done
     Creating jms_luna      ... done
     Creating jms_lina      ... done
-    Creating jms_guacamole ... done
+    Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
     ```    
@@ -326,8 +326,8 @@
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
-    # KoKo 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
+    # KoKo Lion 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -344,7 +344,7 @@
     Creating jms_core      ... done
     Creating jms_luna      ... done
     Creating jms_lina      ... done
-    Creating jms_guacamole ... done
+    Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
     ```    
@@ -381,8 +381,8 @@
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
-    # KoKo 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo 使用 redis 共享
+    # KoKo Lion 配置
+    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -400,7 +400,7 @@
     Creating jms_celery    ... done
     Creating jms_luna      ... done
     Creating jms_lina      ... done
-    Creating jms_guacamole ... done
+    Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
     ```        

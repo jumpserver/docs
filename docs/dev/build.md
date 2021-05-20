@@ -3,12 +3,12 @@
 !!! warning "目前 JumpServer 不支持在 Windows 平台编译"
 
 ## 架构图
-![!架构图](../img/architecture.jpg)
+![!架构图](../img/architecture.png)
 
 JumpServer 分为多个组件, 大致的架构如上图所示. 其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件, 最终由 [nginx][nginx] 整合
 
 ## Core
-[Core][core] 是 JumpServer 的核心组件, 由 [Django][django] 二次开发而来, 内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务
+[Core][core] 是 JumpServer 的核心组件, 由 [Django][django] 二次开发而来, 内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务
 
 ### 环境要求
 
@@ -90,7 +90,7 @@ vi config.yml
 SECRET_KEY: ****************  # 必填项
 
 # SECURITY WARNING: keep the bootstrap token used in production secret!
-# 预共享Token coco和guacamole用来注册服务账号，不在使用原来的注册接受机制
+# 预共享Token koko 和 lion 用来注册服务账号，不在使用原来的注册接受机制
 BOOTSTRAP_TOKEN: ***********  # 必填项
 
 # Development env open this, when error occur display the full process track, Production disable it
@@ -356,12 +356,12 @@ vi proxy.conf.json
     "target": "http://127.0.0.1:8080",  # Core 地址
     "secure": false
   },
-  "/guacamole/": {
-    "target": "http://127.0.0.1:8081",  # Guacamole 地址
+  "/lion/": {
+    "target": "http://127.0.0.1:8081",  # Lion 地址
     "secure": false,
     "ws": true,
     "pathRewrite": {
-      "^/guacamole": ""
+      "^/lion": ""
     }
   }
 }
@@ -429,7 +429,7 @@ make
 cp config_example.yml config.yml
 vi config.yml
 ```
-```bash
+```yaml
 # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
 # NAME: {{ Hostname }}
 
@@ -508,15 +508,15 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 ./koko
 ```
 
-## Guacamole
+## Lion
 
-[Guacamole][guacamole] 是 [Apache][apache] 软件基金会的开源项目, JumpServer 通过调用 Guacamole 实现 RDP/VNC 协议跳板机功能.
+[Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole], JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能.
 
 ### 环境要求
 
-| Name    | JumpServer               | Guacd                  | Guacamole                                                      | OpenJDK | Tomcat |
-| :------ | :----------------------- | :--------------------- | :------------------------------------------------------------- | :------ | :----- |
-| Version | {{ jumpserver.version }} | [1.3.0][guacd-1.3.0]   | [{{ jumpserver.version }}][guacamole-{{ jumpserver.version }}] | >= 1.8  | >= 9   |
+| Name    | JumpServer               | Guacd                  |  Lion                    |
+| :------ | :----------------------- | :--------------------- | :----------------------- |
+| Version | {{ jumpserver.version }} | [1.3.0][guacd-1.3.0]   | {{ jumpserver.version }} |
 
 可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
 
@@ -539,75 +539,78 @@ make install
 ldconfig
 ```
 
-### 安装 Java
+### 下载 Lion
 
-请根据 [环境要求](#_18) 安装 OpenJDK, 通过命令行中判断是否安装完成:
+可以从 [Github][lion] 网站上获取最新的 [Release][lion_release] 副本。
 
-```bash
-java -version
-```
-`openjdk version "1.8.0_292"`
-
-### 安装 Tomcat
-
-请根据 [环境要求](#_18) 安装 Tomcat:
+| OS      | Arch  | Name                                               |
+| :------ | :---- | :------------------------------------------------- |
+| Linux   | amd64 | lion-{{ jumpserver.version }}-linux-amd64.tar.gz   |
+| Linux   | arm64 | lion-{{ jumpserver.version }}-linux-arm64.tar.gz   |
+| macOS   | amd64 | lion-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
+| Windows | amd64 | lion-{{ jumpserver.version }}-windows-amd64.tar.gz |
 
 ```bash
-mkdir -p /config/guacamole/lib /config/guacamole/extensions /config/guacamole/data/log/ /config/guacamole/data/record /config/guacamole/data/drive
-cd /config
-TOMCAT_VER=`curl -s http://tomcat.apache.org/tomcat-9.0-doc/ | grep 'Version ' | awk '{print $2}' | sed 's/.$//'`
-wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VER}/bin/apache-tomcat-${TOMCAT_VER}.tar.gz
-tar -xf apache-tomcat-${TOMCAT_VER}.tar.gz
-mv apache-tomcat-${TOMCAT_VER} tomcat9
-sed -i 's/Connector port="8080"/Connector port="8081"/g' /config/tomcat9/conf/server.xml
-echo "enable-clipboard-integration: true" > /config/guacamole/guacamole.properties
-rm -f apache-tomcat-${TOMCAT_VER}.tar.gz
-rm -rf /config/tomcat9/webapps/*
+cd /opt
+wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-amd64.tar.gz
+tar -xf lion-{{ jumpserver.version }}-linux-amd64.tar.gz
+cd lion-{{ jumpserver.version }}-linux-amd64
 ```
 
-### 部署 Guacamole
-
-请根据 [环境要求](#_18) 下载 Guacamole, 下面以 {{ jumpserver.version }} 为例:
+### 修改配置文件
 
 ```bash
-cd /opt/guacamole-{{ jumpserver.version }}
-wget http://download.jumpserver.org/release/{{ jumpserver.version }}/guacamole-client-{{ jumpserver.version }}.tar.gz
-tar -xf guacamole-client-{{ jumpserver.version }}.tar.gz
-cp guacamole-client-{{ jumpserver.version }}/guacamole-*.war /config/tomcat9/webapps/ROOT.war
-cp guacamole-client-{{ jumpserver.version }}/guacamole-*.jar /config/guacamole/extensions/
-wget https://download.jumpserver.org/public/ssh-forward-linux-amd64.tar.gz
-tar -xf ssh-forward-linux-amd64.tar.gz -C /bin/
-chown root:root /bin/ssh-forward
-chmod 755 /bin/ssh-forward
+cp config_example.yml config.yml
+vi config.yml
+```
+```yaml
+# 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
+# NAME: {{ Hostname }}
+
+# Jumpserver项目的url, api请求注册会使用
+CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+
+# Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
+# 请和jumpserver 配置文件中保持一致，注册完成后可以删除
+BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+
+# 启动时绑定的ip, 默认 0.0.0.0
+BIND_HOST: 0.0.0.0
+
+# 监听的HTTP/WS端口号，默认8081
+HTTPD_PORT: 8081
+
+# 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
+LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
+
+# Guacamole Server ip， 默认127.0.0.1
+# GUA_HOST: 127.0.0.1
+
+# Guacamole Server 端口号，默认4822
+# GUA_PORT: 4822
+
+# 会话共享使用的类型 [local, redis], 默认local
+# SHARE_ROOM_TYPE: local
+
+# Redis配置
+# REDIS_HOST: 127.0.0.1
+# REDIS_PORT: 6379
+# REDIS_PASSWORD:
+# REDIS_DB_ROOM:
 ```
 
-### 创建启动脚本
+### 启动 Guacd
 
 ```bash
-vi /opt/start_guacamole.sh
-```
-```vim
-#!/bin/bash
-##
-
-# 更多参数说明参考 https://docs.jumpserver.org/zh/master/admin-guide/env/#guacamole
-
-export JUMPSERVER_SERVER=http://127.0.0.1:8080               # Core 的地址
-export BOOTSTRAP_TOKEN=********                              # 和 Core config.yml 的值保持一致
-export GUACAMOLE_HOME=/config/guacamole                      
-export GUACAMOLE_LOG_LEVEL=ERROR                             # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
-export JUMPSERVER_RECORD_PATH=/config/guacamole/data/record  # 视频录像存放路径
-export JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive    # 共享盘路径
-export JUMPSERVER_DISABLE_GLYPH_CACHING=true                 # windows 7/2008/2008r2 和 vnc 频繁断开解决方案
-
 /etc/init.d/guacd start
-sh /config/tomcat9/bin/startup.sh
 ```
 
-### 启动 Guacamole
+### 启动 Lion
+
+后台运行可以加 -d, `./lion -d`
 
 ```bash
-sh /opt/start_guacamole.sh
+./lion
 ```
 
 ## Nginx
@@ -650,7 +653,7 @@ server {
     root /opt/jumpserver-{{ jumpserver.version }}/data/;
   }
 
-  # Koko 配置
+  # KoKo Lion 配置
   location /koko/ {
     proxy_pass       http://koko:5000;
     proxy_set_header X-Real-IP $remote_addr;
@@ -662,9 +665,9 @@ server {
     proxy_set_header Connection "upgrade";
   }
 
-  # Guacamole 配置
-  location /guacamole/ {
-    proxy_pass http://guacamole:8081/;
+  # lion 配置
+  location /lion/ {
+    proxy_pass http://lion:8081;
     proxy_buffering off;
     proxy_request_buffering off;
     proxy_http_version 1.1;
@@ -745,6 +748,8 @@ nginx -s reload
 [luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.version }}
 [koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
 [go]: https://golang.google.cn/
+[lion]: https://github.com/jumpserver/lion-release
+[lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.version }}
 [guacamole]: http://guacamole.apache.org/
 [apache]: http://www.apache.org/
 [guacamole-server]: https://github.com/apache/guacamole-server

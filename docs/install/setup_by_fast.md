@@ -106,27 +106,8 @@
         # SESSION_COOKIE_AGE=86400
         SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
-        ### Keycloak 配置方式
-        ### AUTH_OPENID=true
-        ### BASE_SITE_URL=https://jumpserver.company.com/
-        ### AUTH_OPENID_SERVER_URL=https://keycloak.company.com/auth
-        ### AUTH_OPENID_REALM_NAME=cmp
-        ### AUTH_OPENID_CLIENT_ID=jumpserver
-        ### AUTH_OPENID_CLIENT_SECRET=
-        ### AUTH_OPENID_SHARE_SESSION=true
-        ### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
-
-        # Koko 配置
+        # KoKo Lion 配置
         CORE_HOST=http://core:8080
-
-        # Guacamole 配置
-        JUMPSERVER_SERVER=http://core:8080
-        JUMPSERVER_KEY_DIR=/config/guacamole/data/key/
-        JUMPSERVER_RECORD_PATH=/config/guacamole/data/record/
-        JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive/
-        JUMPSERVER_ENABLE_DRIVE=true
-        JUMPSERVER_CLEAR_DRIVE_SESSION=true
-        JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24
         ```
 
 ??? warning "如果启动过程报错请查看此处的帮助文档"
@@ -141,7 +122,7 @@
     ERROR: for celery  Container "76b2e315f69d" is unhealthy.
     ERROR: for lina  Container "76b2e315f69d" is unhealthy.
     ERROR: for luna  Container "76b2e315f69d" is unhealthy.
-    ERROR: for guacamole  Container "76b2e315f69d" is unhealthy.
+    ERROR: for lion  Container "76b2e315f69d" is unhealthy.
     ERROR: for koko  Container "76b2e315f69d" is unhealthy.
     ERROR: Encountered errors while bringing up the project.
     ```
@@ -416,11 +397,6 @@
 !!! tip "Help"
     ```sh
     ./jmsctl.sh -h
-    ```
-
-!!! tip "Upgrade"
-    ```sh
-    ./jmsctl.sh check_update
     ```
 
 后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  
