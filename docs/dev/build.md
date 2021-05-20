@@ -607,8 +607,6 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 ### 启动 Lion
 
-后台运行可以加 -d, `./lion -d`
-
 ```bash
 ./lion
 ```
