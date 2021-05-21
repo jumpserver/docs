@@ -93,7 +93,7 @@ SSHD_PORT=2222                   # 监听的 SSH 端口号
 HTTPD_PORT=5000                  # 监听的 HTTP/WS 端口号
 # ACCESS_KEY=                    # 项目使用的 ACCESS KEY, 默认会注册,并保存到文件
 ACCESS_KEY_FILE=data/keys/.access_key  # ACCESS KEY 保存的地址, 默认注册后会保存到该文件中
-LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]  debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
+LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL] debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
 SSH_TIMEOUT=15                   # SSH 连接超时时间(单位=秒)  如果用户服务器启用了 useDNS 这些参数，有可能登录时间超过 15S，需要修改此参数
 LANG=zh                          # 可选 [en, zh]  切换 KOKO 登录界面中英文
 SFTP_ROOT=/tmp                   # SFTP 的根目录, 可选 /tmp, Home 其他自定义目录  1.5.7起已弃用这个选项，需要在在 core 的系统用户页面上配置
@@ -122,12 +122,11 @@ BIND_HOST=0.0.0.0                # 启动时绑定的 ip, 默认 0.0.0.0
 HTTPD_PORT=8081                  # 监听的 HTTP/WS 端口号
 GUA_HOST=127.0.0.1               # Guacd 项目 url
 GUA_PORT=4822                    # Guacd 项目 端口
-LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]  debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
+LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL] debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
 SHARE_ROOM_TYPE=local            # 可选择 local 和 redis  会话监控和共享使用的方式
 REDIS_HOST=127.0.0.1             # redis 配置
 REDIS_PORT=6379                  # redis 配置
 REDIS_PASSWORD=                  # redis 配置
-REDIS_CLUSTERS=                  # redis 配置
 REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
 
 JUMPSERVER_DISABLE_ALL_COPY_PASTE=false             # 全局禁用上传下载
