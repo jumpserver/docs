@@ -1,14 +1,14 @@
 # 编译文档
 
-!!! warning "目前 JumpServer 不支持在 Windows 平台编译"
+!!! warning "目前 JumpServer 部分组件不支持在 Windows 平台编译"
 
 ## 架构图
 ![!架构图](../img/architecture.png)
 
-JumpServer 分为多个组件, 大致的架构如上图所示. 其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件, 最终由 [nginx][nginx] 整合
+JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [nginx][nginx] 整合。
 
 ## Core
-[Core][core] 是 JumpServer 的核心组件, 由 [Django][django] 二次开发而来, 内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务
+[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来, 内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 
 ### 环境要求
 
@@ -18,7 +18,7 @@ JumpServer 分为多个组件, 大致的架构如上图所示. 其中 [Lina][lin
 
 ### 下载源代码
 
-可以从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载的源将采用 .tar.gz 存档的形式，通过命令行中提取该存档:
+可以从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载的源将采用 .tar.gz 存档的形式，通过命令行中提取该存档：
 
 ```bash
 mkdir /opt/jumpserver-{{ jumpserver.version }}
@@ -50,7 +50,7 @@ requirements/                     # 对应操作系统需要的依赖包
 
 ### 安装 Python3
 
-从 [Python][python] 网站部署 Python3, 请根据 [环境要求](#_3), 通过命令行中判断是否安装完成:
+从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
 
 ```bash
 python3
@@ -64,14 +64,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ### 安装 python 依赖
 
-为 JumpServer 项目单独创建 python3 虚拟环境
+为 JumpServer 项目单独创建 python3 虚拟环境。
 
 ```bash
 python3 -m venv /opt/py3
 source /opt/py3/bin/activate
 ```
 
-每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境.  
+每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
 ```bash
 pip install -r requirements.txt
@@ -219,7 +219,7 @@ REDIS_PASSWORD: ********
 
 ### 启动 Core
 
-后台运行可以加 -d, `./jms.sh start all -d`
+后台运行可以加 -d，`./jms.sh start all -d`
 
 ```bash
 ./jms.sh start all
@@ -227,7 +227,7 @@ REDIS_PASSWORD: ********
 
 ## Lina
 
-[Lina][lina] 是 JumpServer 的前端 UI 项目, 主要使用 [Vue][vue], [Element UI][element_ui] 完成.
+[Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue], [Element UI][element_ui] 完成。
 
 ### 环境要求
 
@@ -237,7 +237,7 @@ REDIS_PASSWORD: ********
 
 ### 下载源代码
 
-可以从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
+可以从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
 ```bash
 mkdir /opt/lina-{{ jumpserver.version }}
@@ -247,7 +247,7 @@ cd lina-{{ jumpserver.version }}
 ```
 
 ### 安装 Node
-从 [Node][node] 官方网站参考文档部署 Node.js, 请根据 [环境要求](#_6), 通过命令行中判断是否安装完成:
+从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
 
 ```bash
 node -v
@@ -297,14 +297,14 @@ yarn serve
 ```
 
 ### 构建 Lina
-构建完成后的 lina 包为 html 文件, 可以直接移到到 nginx 服务器
+构建完成后的 lina 包为 html 文件，可以直接移到到 nginx 服务器。
 ```bash
 yarn build
 ```
 
 ## Luna
 
-[Luna][luna] 是 JumpServer 的前端 UI 项目, 主要使用 [Angular CLI][angular_cli] 完成.
+[Luna][luna] 是 JumpServer 的前端 UI 项目, 主要使用 [Angular CLI][angular_cli] 完成。
 
 ### 环境要求
 
@@ -314,7 +314,7 @@ yarn build
 
 ### 下载源代码
 
-可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
+可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
 ```bash
 mkdir /opt/luna-{{ jumpserver.version }}
@@ -324,7 +324,7 @@ cd luna-{{ jumpserver.version }}
 ```
 
 ### 安装 Node
-从 [Node][node] 官方网站参考文档部署 Node.js, 请根据 [环境要求](#_10), 通过命令行中判断是否安装完成:
+从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
 
 ```bash
 node -v
@@ -380,7 +380,7 @@ ng build
 
 ## KoKo
 
-Koko 是 Go 版本的 coco；重构了 coco 的 SSH/SFTP 服务和 Web Terminal 服务
+Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 服务。
 
 ### 环境要求
 
@@ -390,7 +390,7 @@ Koko 是 Go 版本的 coco；重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 ### 下载源代码
 
-可以从 [Github][koko] 网站上获取最新的 [Release][koko_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
+可以从 [Github][koko] 网站上获取最新的 [Release][koko_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
 | OS    | Arch  | Name                                              |
 | :---- | :---- | :------------------------------------------------ |
@@ -405,7 +405,7 @@ cd koko-{{ jumpserver.version }}
 ```
 
 ### 安装 Go
-从 [Go][go] 官方网站参考文档部署 golang, 请根据 [环境要求](#_14), 通过命令行中判断是否安装完成:
+从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
 
 ```bash
 go version
@@ -510,7 +510,7 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 ## Lion
 
-[Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole], JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能.
+[Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole]，JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能。
 
 ### 环境要求
 
@@ -518,7 +518,7 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 | :------ | :----------------------- | :--------------------- | :----------------------- |
 | Version | {{ jumpserver.version }} | [1.3.0][guacd-1.3.0]   | {{ jumpserver.version }} |
 
-可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档:
+可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
 ```bash
 mkdir /opt/guacamole-{{ jumpserver.version }}
@@ -528,7 +528,7 @@ tar -xzf guacamole-server-1.3.0.tar.gz
 cd guacamole-server-1.3.0/
 ```
 
-参考 [building-guacamole-server][building-guacamole-server] 官方文档, 安装对应操作系统的依赖包.
+参考 [building-guacamole-server][building-guacamole-server] 官方文档, 安装对应操作系统的依赖包。
 
 ### 构建 Guacd
 
@@ -613,7 +613,7 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 ## Nginx
 
-从 [Nginx][nginx] 官方网站上获取 Nginx 的最新发行版本 [linux_packages][linux_packages], 通过命令行验证安装是否完成:
+从 [Nginx][nginx] 官方网站上获取 Nginx 的最新发行版本 [linux_packages][linux_packages]，通过命令行验证安装是否完成：
 
 ```bash
 nginx -v
