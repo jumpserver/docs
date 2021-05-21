@@ -1,6 +1,6 @@
 # 编译文档
 
-!!! warning "目前 JumpServer 不支持在 Windows 平台编译"
+!!! warning "目前 JumpServer 部分组件不支持在 Windows 平台编译"
 
 ## 架构图
 ![!架构图](../img/architecture.png)
