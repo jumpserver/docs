@@ -5,6 +5,15 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.10.1
+------------------------
+2021年05月21日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复通过网关登录资产不成功的问题 (https://github.com/jumpserver/jumpserver/pull/6168)
+    - fix: 修复仪表盘用户数量统计有误的问题 (https://github.com/jumpserver/jumpserver/pull/6163)
+    - fix: 修复周期监测任务配置不生效的问题 (https://github.com/jumpserver/jumpserver/pull/6160)
+
 v2.10.0
 ------------------------
 2021年05月20日
