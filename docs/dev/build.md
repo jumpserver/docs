@@ -46,7 +46,7 @@ requirements/                     # 对应操作系统需要的依赖包
 | macOS           | brew install -y $(cat mac_requirements.txt)    |
 | Alpine          | apk add $(cat alpine_requirements.txt)         |
 | Ubuntu / Debian | apt-get install -y $(cat deb_requirements.txt) |
-| CentOS / RedHat | apt-get install -y $(cat deb_requirements.txt) |
+| CentOS / RedHat | yum install -y $(cat rpm_requirements.txt)     |
 
 ### 安装 Python3
 
