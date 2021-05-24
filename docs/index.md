@@ -28,8 +28,8 @@
 
 <table>
   <tr>
-    <td rowspan="8">身份认证<br>Authentication</td>
-    <td rowspan="5">登录认证</td>
+    <td rowspan="11">身份认证<br>Authentication</td>
+    <td rowspan="7">登录认证</td>
     <td>资源统一登录与认证</td>
   </tr>
   <tr>
@@ -45,6 +45,12 @@
     <td>CAS 认证 （实现单点登录）</td>
   </tr>
   <tr>
+    <td>钉钉认证 （扫码登录）</td>
+  </tr>
+  <tr>
+    <td>企业微信认证 （扫码登录）</td>
+  </tr>
+  <tr>
     <td rowspan="2">MFA认证</td>
     <td>MFA 二次认证（Google Authenticator）</td>
   </tr>
@@ -54,6 +60,10 @@
   <tr>
     <td>登录复核</td>
     <td>用户登录行为受管理员的监管与控制</td>
+  </tr>
+  <tr>
+    <td>登录限制</td>
+    <td>用户登录来源 IP 受管理员控制（支持黑/白名单）</td>
   </tr>
   <tr>
     <td rowspan="11">账号管理<br>Account</td>
@@ -96,7 +106,7 @@
     <td>统一对资产主机的用户密码进行查看、更新、测试操作</td>
   </tr>
   <tr>
-    <td rowspan="15">授权控制<br>Authorization</td>
+    <td rowspan="17">授权控制<br>Authorization</td>
     <td>多维授权</td>
     <td>对用户、用户组、资产、资产节点、应用以及系统用户进行授权</td>
   </tr>
@@ -149,16 +159,26 @@
     <td>支持对用户登录请求行为进行控制</td>
   </tr>
   <tr>
+    <td rowspan="2">访问控制</td>
+    <td>登录资产复核（通过 SSH/Telnet 协议登录资产）</td>
+  </tr>
+  <tr>
+    <td>命令执行复核</td>
+  </tr>
+  <tr>
     <td>组织管理</td>
     <td>实现多租户管理与权限隔离</td>
   </tr>
   <tr>
-    <td rowspan="7">安全审计<br>Audit</td>
+    <td rowspan="8">安全审计<br>Audit</td>
     <td>操作审计</td>
     <td>用户操作行为审计</td>
   </tr>
   <tr>
-    <td rowspan="2">会话审计</td>
+    <td rowspan="3">会话审计</td>
+    <td>在线会话监控（支持通过 SSH/RDP/Telnet/VNC/Kubernetes 等协议建立的会话）</td>
+  </tr>
+  <tr>
     <td>在线会话内容审计</td>
   </tr>
   <tr>
@@ -228,6 +248,7 @@
     <td>录像回放</td>
   </tr>
 </table>
+
 
 ## 案例研究
 

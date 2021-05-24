@@ -11,4 +11,4 @@
 ![文件管理](../../img/user_terminal_web-sftp_list.jpg)
 
 !!! warning "Windows 文件管理"
-    Windows 文件上传需要部署 openssh 才可以使用文件管理功能。或者直接在页面右侧选择文件上传下载即可
+    Windows 文件上传需要部署 openssh 才可以使用文件管理功能。或者直接在页面右侧选择文件上传下载

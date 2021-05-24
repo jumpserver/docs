@@ -23,4 +23,4 @@
 ![钉钉权限配置](../../img/dingtalk_05.jpg)
 ![钉钉权限配置2](../../img/dingtalk_06.jpg)
 
-现在可以在 Jumpserver 使用 `钉钉` 登录了
+用户正常使用账号密码登录 JumpServer 后，在个人信息里面绑定钉钉账号，绑定完成后就可以使用钉钉账号登录 JumpServer
