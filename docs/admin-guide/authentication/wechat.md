@@ -27,4 +27,4 @@
 ![配置信任](../../img/wechat_06.jpg)
 ![配置信任2](../../img/wechat_07.jpg)
 
-现在可以在 Jumpserver 使用 `企业微信` 登录了
+用户正常使用账号密码登录 JumpServer 后，在个人信息里面绑定微信账号，绑定完成后就可以使用微信账号登录 JumpServer
