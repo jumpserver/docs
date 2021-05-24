@@ -119,6 +119,7 @@ u.save()
 !!! question "登录频繁账号被锁定"
     找管理员重置, 管理员可以在对应用户的个人页面重置  
     或者通过下面的 shell 解决
+
 ```bash
 docker exec -it jms_core /bin/bash
 cd /opt/jumpserver/apps
@@ -128,6 +129,14 @@ python manage.py shell
 from django.core.cache import cache
 cache.delete_pattern('_LOGIN_BLOCK_*')
 cache.delete_pattern('_LOGIN_LIMIT_*')
+```
+
+!!! tip "或者你也可以新建一个超级管理员来对其他用户进行设置"
+
+```sh
+docker exec -it jms_core /bin/bash
+cd /opt/jumpserver/apps
+python manage.py createsuperuser --username=user --email=user@domain.com
 ```
 
 !!! question "如果是设置了 LDAP 后无法登录, 请登录数据库禁用 ldap 登录, 然后重新设置 LDAP"

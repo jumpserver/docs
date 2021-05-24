@@ -32,22 +32,16 @@
     web - 用户列表 点击用户的 名称, 即可看到用户详情
 
 !!! info "如果是管理员忘记了 MFA, 可以通过控制台重置"
-    ```sh
-    docker exec -it jms_core /bin/bash
-    cd /opt/jumpserver/apps
-    python manage.py shell
-    ```
-    ```python
-    from users.models import User
-    u = User.objects.get(username='admin')
-    u.mfa_level='0'
-    u.otp_secret_key=''
-    u.save()
-    ```
 
-    ??? tip "admin 为你要重置的账户, 也可以通过新建管理员后登陆 web 重置其他管理员的 MFA"
-        ```sh
-        docker exec -it jms_core /bin/bash
-        cd /opt/jumpserver/apps
-        python manage.py createsuperuser --username=user --email=user@domain.com
-        ```
+```sh
+docker exec -it jms_core /bin/bash
+cd /opt/jumpserver/apps
+python manage.py shell
+```
+```python
+from users.models import User
+u = User.objects.get(username='admin')
+u.mfa_level='0'
+u.otp_secret_key=''
+u.save()
+```
