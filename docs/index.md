@@ -176,7 +176,7 @@
   </tr>
   <tr>
     <td rowspan="3">会话审计</td>
-    <td>在线会话监控（支持通过 SSH/RDP/Telnet/VNC/Kubernetes 等协议建立的会话）</td>
+    <td>在线会话内容监控</td>
   </tr>
   <tr>
     <td>在线会话内容审计</td>
