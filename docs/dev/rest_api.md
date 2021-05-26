@@ -206,7 +206,7 @@ class User(object):
             'email': self.email,
             'is_active': True
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         self.id           = res.json().get('id')
 
     def perform(self):
@@ -234,7 +234,7 @@ class Node(object):
         data              = {
             'value': self.name
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         self.id           = res.json().get('id')
 
     def perform(self):
@@ -266,7 +266,7 @@ class AdminUser(object):
             'username': self.username,
             'password': self.password
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         self.id           = res.json().get('id')
 
     def perform(self):
@@ -309,7 +309,7 @@ class Asset(object):
             'nodes': [self.node.id],
             'is_active': True
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         self.id           = res.json().get('id')
 
     def perform(self):
@@ -346,7 +346,7 @@ class SystemUser(object):
             'auto_generate_key': True,
             'is_active': True
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         self.id           = res.json().get('id')
 
     def perform(self):
@@ -373,7 +373,7 @@ class AssetPermission(object):
             'date_start': perm_date_start,
             'date_expired': perm_date_expired
         }
-        res               = HTTP.post(url, data)
+        res               = HTTP.post(url, json=data)
         res_data          = res.json()
         if res.status_code in [200, 201] and res_data:
             print("创建资产授权规则成功: ", res_data)
