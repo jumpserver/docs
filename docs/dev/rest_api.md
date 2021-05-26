@@ -187,13 +187,6 @@ class User(object):
         self.username     = user_username
         self.email        = user_email
 
-    def input_preconditions(self):
-        if self.username is None:
-            self.username = input("请输入需要新建的用户 (user): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
-
     def exist(self):
         url               = '/api/v1/users/users/'
         params            = {'username': self.username}
@@ -217,7 +210,6 @@ class User(object):
         self.id           = res.json().get('id')
 
     def perform(self):
-        self.get_preconditions()
         self.exist()
 
 class Node(object):
@@ -225,13 +217,6 @@ class Node(object):
     def __init__(self):
         self.id           = None
         self.name         = asset_node_name
-
-    def input_preconditions(self):
-        if self.name is None:
-            self.name     = input("请输入资产节点名称 (Default): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
 
     def exist(self):
         url               = '/api/v1/assets/nodes/'
@@ -253,7 +238,6 @@ class Node(object):
         self.id           = res.json().get('id')
 
     def perform(self):
-        self.get_preconditions()
         self.exist()
 
 class AdminUser(object):
@@ -263,13 +247,6 @@ class AdminUser(object):
         self.name         = assets_admin_name
         self.username     = assets_admin_username
         self.password     = assets_admin_password
-
-    def input_preconditions(self):
-        if self.name is None:
-            self.name     = input("请输入资产管理用户名称 (test_root): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
 
     def exist(self):
         url               = '/api/v1/assets/admin-user/'
@@ -283,10 +260,6 @@ class AdminUser(object):
 
     def create(self):
         print("创建管理用户 {}".format(self.name))
-        if self.username is None:
-            self.username = input("请输入资产的管理用户 (root): ")
-        if self.password is None:
-            self.password = input("请输入资产管理用户 {} 的密码 (********): ".format(self.username))
         url               = '/api/v1/assets/admin-users/'
         data              = {
             'name': self.name,
@@ -297,7 +270,6 @@ class AdminUser(object):
         self.id           = res.json().get('id')
 
     def perform(self):
-        self.get_preconditions()
         self.exist()
 
 class Asset(object):
@@ -310,15 +282,6 @@ class Asset(object):
         self.protocols    = asset_protocols
         self.admin_user   = AdminUser()
         self.node         = Node()
-
-    def input_preconditions(self):
-        if self.ip is None:
-            self.ip           = input("请输入资产IP (172.16.0.1): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
-        self.admin_user.get_preconditions()
-        self.node.get_preconditions()
 
     def exist(self):
         url               = '/api/v1/assets/assets/'
@@ -334,10 +297,6 @@ class Asset(object):
 
     def create(self):
         print("创建资产 {}".format(self.ip))
-        if self.platform is None:
-            self.platform = input("请输入资产的系统平台 (linux):")
-        if self.protocols is None:
-            self.protocols= input("请输入资产的协议端口 (ssh/22): ")
         self.admin_user.perform()
         self.node.perform()
         url               = '/api/v1/assets/assets/'
@@ -354,7 +313,6 @@ class Asset(object):
         self.id           = res.json().get('id')
 
     def perform(self):
-        self.get_preconditions()
         self.exist()
 
 class SystemUser(object):
@@ -364,15 +322,8 @@ class SystemUser(object):
         self.name         = assets_system_name
         self.username     = assets_system_username
 
-    def input_preconditions(self):
-        if self.name is None:
-            self.name     = input("请输入资产的系统用户名称 (test_ssh): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
-
     def exist(self):
-        url               = '/api/v1/assets/system-user/'
+        url               = '/api/v1/assets/system-users/'
         params            = {'name': self.name}
         res               = HTTP.get(url, params)
         res_data          = res.json()
@@ -383,25 +334,22 @@ class SystemUser(object):
 
     def create(self):
         print("创建系统用户 {}".format(self.name))
-        if self.username is None:
-            self.username = input("请输入资产的系统用户 (devuser): ")
-        url               = '/api/v1/assets/system-user/'
+        url               = '/api/v1/assets/system-users/'
         data              = {
             'name': self.name,
             'username': self.username,
             'login_mode': 'auto',
             'protocol': 'ssh',
-            'auto_push': 'true',
+            'auto_push': True,
             'sudo': 'All',
             'shell': '/bin/bash',
-            'auto_generate_key': 'true',
-            'is_active': 'true'
+            'auto_generate_key': True,
+            'is_active': True
         }
         res               = HTTP.post(url, data)
         self.id           = res.json().get('id')
 
     def perform(self):
-        self.get_preconditions()
         self.exist()
 
 class AssetPermission(object):
@@ -411,13 +359,6 @@ class AssetPermission(object):
         self.user         = User()
         self.asset        = Asset()
         self.system_user  = SystemUser()
-
-    def input_preconditions(self):
-        if self.name is None:
-            self.name         = input("情输入资产授权名称 (test_ssh_perms): ")
-
-    def get_preconditions(self):
-        self.input_preconditions()
 
     def create(self):
         print("创建资产授权名称 {}".format(self.name))
@@ -432,7 +373,6 @@ class AssetPermission(object):
             'date_start': perm_date_start,
             'date_expired': perm_date_expired
         }
-        print(data)
         res               = HTTP.post(url, data)
         res_data          = res.json()
         if res.status_code in [200, 201] and res_data:
@@ -444,7 +384,6 @@ class AssetPermission(object):
         self.user.perform()
         self.asset.perform()
         self.system_user.perform()
-        self.get_preconditions()
         self.create()
 
 class APICreateAssetPermission(object):
