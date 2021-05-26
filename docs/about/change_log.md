@@ -5,6 +5,14 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.10.2
+------------------------
+2021年05月26日
+
+fix: 修复创建/更新用户时密码策略相关的问题 (https://github.com/jumpserver/jumpserver/pull/6176)
+fix: 修复Parser没有处理整数类型数据的问题 (https://github.com/jumpserver/jumpserver/pull/6174)
+fix: 修复连接图形会话时，当鼠标移出操作窗口无法再正常输入的问题
+
 v2.10.1
 ------------------------
 2021年05月21日
