@@ -446,7 +446,7 @@
 
 !!! tip "安装 Tengine"
     ```sh
-    yum install -y https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.2/tengine-2.3.2-1.el7.ngx.x86_64.rpm
+    yum install -y policycoreutils-python https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.2/tengine-2.3.2-1.el7.ngx.x86_64.rpm
     ```
 
 !!! tip "配置 Nginx"
@@ -587,6 +587,12 @@
     ```
     ```sh
     nginx -t
+    ```
+
+!!! tip "配置 Selinux"
+    ```sh
+    setsebool -P httpd_can_network_connect 1
+    semanage port -a -t http_port_t -p tcp 2222
     ```
 
 !!! tip "启动 Tengine"
