@@ -18,6 +18,7 @@ ERROR: for koko  Container "76b2e315f69d" is unhealthy.
 ERROR: Encountered errors while bringing up the project.
 ```
 ```sh
+# 如果出现上面的错误, 执行下面的命令, 直到出现 Check service status 为止
 docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完毕后然后重新 start 即可
 ```
 ```yaml
@@ -64,6 +65,7 @@ users
     Applying tickets.0006_auto_20201023_1628... OK
     Applying tickets.0007_auto_20201224_1821... OK
     Applying users.0031_auto_20201118_1801... OK
+    # 确定这上面都是显示 ok，不能有 error
   2021-02-08 14:59:31 [cache INFO] CACHE: Send refresh task <orgs.caches.OrgResourceStatisticsCache object at 0x7fb9122ce0d0>.('nodes_amount',)
   Operations to perform:
     Apply all migrations: admin, applications, assets, audits, auth, authentication, captcha, common, contenttypes, django_cas_ng, django_celery_beat, jms_oidc_rp, ops, orgs, perms, sessions, settings, terminal, tickets, users
