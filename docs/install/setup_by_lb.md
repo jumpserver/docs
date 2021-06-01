@@ -103,8 +103,8 @@
 
 !!! tip "安装 Redis"
     ```sh
-    tar -xf redis-6.2.2.tar.gz
-    cd redis-6.2.2
+    tar -xf redis-6.2.3.tar.gz
+    cd redis-6.2.3
     make
     make install PREFIX=/usr/local/redis
     ```
