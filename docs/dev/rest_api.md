@@ -420,7 +420,7 @@ if __name__ == '__main__':
     # 资产信息
     asset_name             = '192.168.100.1'
     asset_ip               = '192.168.100.1'
-    asset_platform         = 'linux'
+    asset_platform         = 'Linux'
     asset_protocols        = ['ssh/22']
 
     # 资产管理用户
