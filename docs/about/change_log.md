@@ -5,6 +5,14 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.10.3
+------------------------
+2021年06月02日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - perf: 修改 Logo 和文案的显示
+    - perf: 优化 RDP 右侧菜单
+
 v2.10.2
 ------------------------
 2021年05月26日
