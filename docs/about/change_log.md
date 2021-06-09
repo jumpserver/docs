@@ -5,6 +5,16 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.10.4
+
+------------------------
+2021年06月08日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复在其他组织中创建的用户默认会添加到Default组织的问题【企业版】@fit2bot (https://github.com/jumpserver/jumpserver/pull/6235)
+    - fix: 禁止批量删除组织【企业版】@fit2bot (https://github.com/jumpserver/jumpserver/pull/6221)
+    - fix: 修改文件管理页面的标题文案
+
 v2.10.3
 ------------------------
 2021年06月02日
