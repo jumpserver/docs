@@ -494,6 +494,9 @@
       Apply all migrations: acls, admin, applications, assets, audits, auth, authentication, captcha, common, contenttypes, django_cas_ng, django_celery_beat, jms_oidc_rp, ops, orgs, perms, sessions, settings, terminal, tickets, users
     Running migrations:
       No migrations to apply.
+      # 有时候是下方红色的提示，忽略即可，不需要做处理。
+      Your models have changes that are not yet reflected in a migration, and so won't be applied.
+  Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
     完成
 
     6. 升级成功, 可以重启程序了

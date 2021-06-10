@@ -121,7 +121,7 @@
 !!! tip "推荐部署 ssl 使用更安全的 https 协议访问"
     - 遵循 [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/) 建议
 
-    ```vim hl_lines="3 8-10 13 19 22"
+    ```vim hl_lines="3 8-10 13 18 21"
     server {
         listen 80;
         server_name demo.jumpserver.org;  # 自行修改成你的域名
@@ -137,7 +137,6 @@
         ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
         ssl_prefer_server_ciphers off;
         ssl_protocols TLSv1.1 TLSv1.2;
-        ssl_prefer_server_ciphers off;
         add_header Strict-Transport-Security "max-age=63072000" always;
 
         client_max_body_size 4096m;  # 录像及文件上传大小限制
