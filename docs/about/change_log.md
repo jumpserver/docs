@@ -5,8 +5,48 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
-v2.10.4
+v2.11.0
+------------------------
+2021年06月17日
 
+!!! tip "版本升级 What’s Upgraded"
+    - jms-storage-sdk==0.0.37
+
+!!! info "🌱 新功能 Features"
+    - feat: 新增站内信模块，⽀持订阅、推送和查看内部消息提⽰。如：危险命令告警、监控告警等
+    - feat: ⽀持通过 SSH ⼯具直连资产。如：ssh jumpserverUsername@systemUsername@AssetIP@jumpserverHostIP
+    - feat: ⽀持通过 Visual Studio Code 的 Remote - SSH 插件连接资产进⾏远程开发（⽬前仅⽀持 Linux 资产)
+    - feat: ⽀持使⽤华为云对象存储服务 OBS 对会话录像进⾏存储
+    - feat: 新增账号管理模块。包括资产账号、应⽤账号、收集⽤户和批量改密等功能 【企业版】
+    - feat: 新增XRDP组件，⽀持通过本地客户端直接连接资产，建⽴ RDP、VNC 等协议的图形会话 【企业版】
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复 Redis 服务异常时(如: 主从切换)⽤户 session ⽴即过期的问题
+    - fix: 修复导⼊模版⽣成的列表中没有显⽰整数类型所在列的问题
+    - fix: 修改周期监测任务的配置参数
+    - fix: 修复 Default 组织中⽤户数量统计错误的问题
+    - fix: 修复获取⽹关信息没有密码的问题
+    - fix: 修复导⼊数据没有处理整数类型数据的问题
+    - fix: 修复创建/更新⽤户时密码策略相关的问题
+    - fix: 修复删除资产账号时报错的问题
+    - fix: 修 复LDAP 提交时 json 报错的问题
+    - fix: 修复我的资产页⾯按钮消失的问题
+    - fix: 修复 Azure 云管账号创建必填字段提⽰信息 【企业版】
+    - fix: 修复组织批量删除的问题，禁⽌批量删除 【企业版】
+
+!!! summary "🚀 性能优化 Optimization"
+    - perf: 获取资产⽤户信息返回 Name 和 BackendDisplay 字段
+    - perf: 优化系统⽤户，⽀持⽤户设置临时密码
+    - perf: 优化记录 Token 认证的登录⽇志
+    - perf: 优化字符会话中命令解析的记录时间
+    - perf: 优化 KoKo 组件的代码结构，并重构部分代码逻辑
+    - perf: 优化连接 RDP 会话的窗⼜显⽰（可⾃适应窗⼜）
+    - perf: 优化连接 RDP 会话的分辨率（可⼿动配置）
+    - perf: 优化通过 Luna 页⾯登录资产时对系统⽤户的选择，提升⽤户使⽤体验
+    - perf: 优化云账号测试失败的提⽰信息 【企业版】
+    - perf: 优化云同步的资产创建者字段为 System 【企业版】
+
+v2.10.4
 ------------------------
 2021年06月08日
 
