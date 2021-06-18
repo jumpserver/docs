@@ -5,6 +5,7 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+
 v2.11.0
 ------------------------
 2021年06月17日
