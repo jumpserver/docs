@@ -14,7 +14,7 @@
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
-    ```vim"
+    ```vim
     ...
 
     ## Nginx 配置, USE_LB=1 表示开启, 为 0 的情况下, HTTPS_PORT 定义不生效
