@@ -37,7 +37,7 @@
 
 !!! tip "说明"
     - 将旧服务器备份的数据库拷贝到新服务器 /opt
-    - 将旧服务器 /opt/jumpserver/config.txt 拷贝到新服务器 /opt/jumpserver/config.txt
+    - 将旧服务器 /opt/jumpserver/config/config.txt 拷贝到新服务器 /opt/jumpserver/config/config.txt
 
 !!! tip ""
     ```sh
