@@ -80,6 +80,9 @@ SECURITY_LOGIN_CAPTCHA_ENABLED=True      # 登录页面是否开启验证码
 AUTH_SSO=False                           # 是否开启其他系统到 JumpServer 的单点登录
 AUTH_SSO_AUTHKEY_TTL=900                 # 单点登录 token 有效时长 (单位：秒)
 USER_LOGIN_SINGLE_MACHINE_ENABLED=False  # 只允许用户一个浏览器登录
+ONLY_ALLOW_AUTH_FROM_SOURCE=False        # 是否仅允许从 用户来源 处登录，默认是 v2.8 添加
+ONLY_ALLOW_EXIST_USER_AUTH=False         # 是否仅允许 已创建 的用户登录，如果是，则 ldap 需先导入再登录 v2.8 添加
+DISK_CHECK_ENABLED=True                  # 	是否开启 硬盘空间监测 v2.8 添加
 ```
 
 ## KoKo 参数说明
@@ -95,11 +98,13 @@ HTTPD_PORT=5000                  # 监听的 HTTP/WS 端口号
 ACCESS_KEY_FILE=data/keys/.access_key  # ACCESS KEY 保存的地址, 默认注册后会保存到该文件中
 LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL] debug 模式会自动把用后手动登录填写的密码打印，info 级别不需要
 SSH_TIMEOUT=15                   # SSH 连接超时时间(单位=秒)  如果用户服务器启用了 useDNS 这些参数，有可能登录时间超过 15S，需要修改此参数
-LANG=zh                          # 可选 [en, zh]  切换 KOKO 登录界面中英文
+LANG=zh                          # 可选 [en, zh]  切换 KOKO 登录界面中英文 (v2.0之前的版本)
+LANGUAGE_CODE=zh                 # 可选 [en, zh]	切换 KOKO 登录界面中英文 (v2.0之后的版本)
+UPLOAD_FAILED_REPLAY_ON_START=true  # 未上传录像遗留文件，启动时是否上传
 SFTP_ROOT=/tmp                   # SFTP 的根目录, 可选 /tmp, Home 其他自定义目录  1.5.7起已弃用这个选项，需要在在 core 的系统用户页面上配置
 SFTP_SHOW_HIDDEN_FILE=false      # SFTP 是否显示隐藏文件
 REUSE_CONNECTION=true            # 是否复用同一用户的 SSH 连接
-# ASSET_LOAD_POLICY=             # all 则用户资产缓存本地搜索分页；默认异步加载资产, 异步搜索分页;   
+# ASSET_LOAD_POLICY=all          # all 则用户资产缓存本地搜索分页；默认异步加载资产, 异步搜索分页;   
 ZIP_MAX_SIZE=1024M               # web sftp 文件下载，zip 支持压缩的最大额度 (单位=M)
 ZIP_TMP_PATH=/tmp                # web sftp 文件下载，zip压缩文件存放的临时目录
 CLIENT_ALIVE_INTERVAL=30         # 用户 SSH 登陆 koko 之后，Koko 给 SSH client 发送的心跳间隔，默认 30，0 则表示不发送  保持登陆用户连接不断开
@@ -110,6 +115,8 @@ REDIS_PORT=6379                  # redis 配置
 REDIS_PASSWORD=                  # redis 配置
 REDIS_CLUSTERS=                  # redis 配置
 REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
+ENABLE_LOCAL_PORT_FORWARD=true   # 是否开启本地转发 (目前仅对 vscode remote ssh 有效果) v2.11 新增
+ENABLE_VSCODE_SUPPORT=true       # 是否开启 针对 vscode 的 remote-ssh 远程开发支持 ( 前置条件: 必须开启 ENABLE_LOCAL_PORT_FORWARD ) v2.11 新增。( 注意: vscode 的连接操作，无审计功能 )
 ```
 
 ## lion 参数说明
