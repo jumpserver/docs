@@ -12,6 +12,12 @@
     ```sh
     vncpasswd
     ```
+    ```
+    Password: ******
+    Verify: ******
+    Would you like to enter a view-only password (y/n)? n
+    A view-only password is not used
+    ```
 
     !!! info "安装提示设置密码, 这个密码填在 `JumpServer` `系统用户` 上, `用户名` 为空不需要填写"
 
