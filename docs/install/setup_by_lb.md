@@ -16,8 +16,8 @@
 | MySQL         |  192.168.100.11  |  3306  |  Core             | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
 | Redis         |  192.168.100.11  |  6379  |  Core, Koko, lion | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
 | Tengine       |  192.168.100.100 | 80,443 |  All              | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
-| Core Web 01   |  192.168.100.21  |  8080  |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Web 02   |  192.168.100.22  |  8080  |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 01   |  192.168.100.21  |  80    |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 02   |  192.168.100.22  |  80    |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
 | Core Task     |  192.168.100.31  |        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
 | MinIO         |  192.168.100.41  |  9000  |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
@@ -286,8 +286,7 @@
     更多还有一些命令, 你可以 ./jmsctl.sh --help 来了解
 
     3. Web 访问
-    http://192.168.100.248:8080
-    https://192.168.100.248:8443
+    http://192.168.100.248:80
     默认用户: admin  默认密码: admin
 
     4. SSH/SFTP 访问
@@ -517,14 +516,14 @@
     ```nginx
     upstream core_web {
         # 用户连接时使用 ip_hash 负载
-        server 192.168.100.21:8080;
-        server 192.168.100.22:8080;
+        server 192.168.100.21:80;
+        server 192.168.100.22:80;
         session_sticky;
     }
 
     upstream core_task {
         # use_task = 1 的任务服务器, 目前只能单任务运行
-        server 192.168.100.31:8080;
+        server 192.168.100.31:80;
     }
 
     server {
