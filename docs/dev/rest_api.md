@@ -35,6 +35,7 @@
 
     === "Session"
         用户通过页面后登录，cookie 中会存在 sessionid, 请求时同样把 sessionid 放到 cookie 中
+
     === "Token"
         ```sh
         curl -X POST http://localhost/api/v1/authentication/auth/ \
@@ -45,13 +46,15 @@
         # pip install requests
         import requests, json
 
-        jms_url = https://demo.jumpserver.org
+        jms_url  = 'https://demo.jumpserver.org'
+        username = 'admin'
+        password = 'admin'
 
         def get_token():
             url        = jms_url + '/api/v1/authentication/auth/'
             query_args = {
-                "username": "admin",
-                "password": "admin"
+                "username": username,
+                "password": password
             }
             response = requests.post(url, data=query_args)
             return json.loads(response.text)['token']
@@ -88,7 +91,7 @@
         # pip install requests
         import requests, json
 
-        jms_url   = https://demo.jumpserver.org
+        jms_url   = 'https://demo.jumpserver.org'
         jms_token = '937b38011acf499eb474e2fecb424ab3'
 
         def get_user_info():
@@ -116,22 +119,31 @@
 
         ```python
         # pip install requests drf-httpsig
-        import requests, datetime
+        import requests, datetime, json
         from httpsig.requests_auth import HTTPSignatureAuth
 
-        KEY_ID = 'AccessKeyID'
-        SECRET = 'AccessKeySecret'
-        GMT_FORMAT = '%a, %d %b %Y %H:%M:%S GMT'
+        jms_url         = 'https://demo.jumpserver.org'
+        AccessKeyID     = 'AccessKeyID'
+        AccessKeySecret = 'AccessKeySecret'
+        GMT_FORMAT      = '%a, %d %b %Y %H:%M:%S GMT'
 
-        signature_headers = ['(request-target)', 'accept', 'date']
-        headers = {
-            'Accept': 'application/json',
-            'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
-        }
+        def get_auth():
+            signature_headers = ['(request-target)', 'accept', 'date']
+            auth              = HTTPSignatureAuth(key_id=AccessKeyID, secret=AccessKeySecret, algorithm='hmac-sha256', headers=signature_headers)
+            return auth
 
-        auth = HTTPSignatureAuth(key_id=KEY_ID, secret=SECRET, algorithm='hmac-sha256', headers=signature_headers)
-        req = requests.get('http://localhost/api/v1/users/users/', auth=auth, headers=headers)
-        print(req.text)
+        def get_user_info():
+            url     = jms_url + '/api/v1/users/users/'
+            auth    = get_auth()
+            headers = {
+                'Accept': 'application/json',
+                'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
+            }
+
+            response = requests.get(url, auth=auth, headers=headers)
+            print(json.loads(response.text))
+
+        get_user_info()
         ```
 
 ## 示例
