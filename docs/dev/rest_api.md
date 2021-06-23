@@ -60,10 +60,10 @@
             return json.loads(response.text)['token']
 
         def get_user_info():
-            url         = jms_url + '/api/v1/users/users/'
-            token       = get_token()
-            header_info = { "Authorization": 'Bearer ' + token }
-            response    = requests.get(url, headers=header_info)
+            url      = jms_url + '/api/v1/users/users/'
+            token    = get_token()
+            headers  = { "Authorization": 'Bearer ' + token }
+            response = requests.get(url, headers=headers)
             print(json.loads(response.text))
 
         get_user_info()
@@ -95,9 +95,9 @@
         jms_token = '937b38011acf499eb474e2fecb424ab3'
 
         def get_user_info():
-            url         = jms_url + '/api/v1/users/users/'
-            header_info = { "Authorization": 'Token ' + jms_token }
-            response    = requests.get(url, headers=header_info)
+            url      = jms_url + '/api/v1/users/users/'
+            headers  = { "Authorization": 'Token ' + jms_token }
+            response = requests.get(url, headers=headers)
             print(json.loads(response.text))
 
         get_user_info()
