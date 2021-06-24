@@ -5,6 +5,19 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.11.2
+------------------------
+2021年06月24日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复`OpenID`登录跳转的问题
+    - fix: 修复`登录页面`部分中文未翻译的问题
+    - fix: 修复`Luna`页面使用`Token`登录失败的问题
+    - fix: 修复`第三方用户`登录成功后在用户列表不显示的问题
+    - fix: 修复关联了`网域`(网域中没有网关)的资产登录失败的问题
+
+!!! summary "🚀 功能优化 Optimization"
+    - perf: 通过`LDAP`导入的用户默认加入到`当前组织`
 
 v2.11.1
 ------------------------
