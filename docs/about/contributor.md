@@ -4,7 +4,7 @@
 
 !!! tip ""
     - **[老广 <广宏伟>][ibuler]** JumpServer 创始人
-    - **[halcyon <王墉>][halcyon]** DevOps 资深开发者, 0.3.2 核心开发者之一
+    - **[halcyon <王墉>][halcyon]** DevOps 资深开发者, JumpServer 第二号开发者
     - **[jiaxiangkong <陈尚委>][jiaxiangkong]** JumpServer 测试运营
     - **[liuz <刘正>][liuz]** 全栈工程师, 编写了 Web Terminal 大部分代码
     - **[yumaojun03 <喻茂峻>][yumaojun03]** DevOps 资深开发者, 擅长 Python、Go 以及 PaaS 平台开发
