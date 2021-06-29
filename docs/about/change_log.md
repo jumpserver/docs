@@ -5,6 +5,17 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.11.3
+------------------------
+2021年06月09日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复`MySQL`数据库命令行连接方式命令无记录问题
+    - fix: 修复通过`MySQL命令行`连接数据库失败的问题
+    - fix: 修复`Windows会话`不能全屏的问题
+    - fix: 修复`系统设置`中邮件没有更改就无法更新的问题
+    - fix: 修复`改密任务`自动生成的密码中包含 `{{` 双字符的问题（改密任务会执行失败)
+
 v2.11.2
 ------------------------
 2021年06月24日
