@@ -32,7 +32,7 @@ theme:
 nav:
   - 总体介绍: index.md
   - 安装配置:
-    - 极速部署: install/setup_by_fast.md
+    - 安装部署: install/setup_by_fast.md
     - 负载均衡: install/setup_by_lb.md
     - 升级文档: install/upgrade/upgrade.md
     - 迁移文档: install/migration.md

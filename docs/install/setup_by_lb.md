@@ -522,7 +522,7 @@
     }
 
     upstream core_task {
-        # use_task = 1 的任务服务器, 目前只能单任务运行
+        # use_task = 1 的任务服务器, 多节点请用 NFS 共享持久化 jumpserver/core/data 目录
         server 192.168.100.31:80;
     }
 
