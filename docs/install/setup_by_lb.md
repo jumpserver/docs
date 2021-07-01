@@ -98,13 +98,13 @@
     ```sh
     yum -y install epel-release wget make gcc-c++
     cd /opt
-    wget https://download.redis.io/releases/redis-6.2.3.tar.gz
+    wget https://download.redis.io/releases/redis-6.2.4.tar.gz
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    tar -xf redis-6.2.3.tar.gz
-    cd redis-6.2.3
+    tar -xf redis-6.2.4.tar.gz
+    cd redis-6.2.4
     make
     make install PREFIX=/usr/local/redis
     ```
