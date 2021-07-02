@@ -668,7 +668,7 @@
     ```vim
     ## 请自行修改账号密码并牢记, 丢失后可以删掉容器后重新用新密码创建, 数据不会丢失
     # 9000                                  # 访问端口
-    # MINIO_ROOT_USER=minio                 # minip 账号
+    # MINIO_ROOT_USER=minio                 # minio 账号
     # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
     ```
     ```sh
@@ -691,4 +691,4 @@
 | 桶名称 (Bucket) | jumpserver                 | Bucket Name         |
 | Access key      | minio                      | MINIO_ROOT_USER     |
 | Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
-| 端点 (Endpoint) | http://192.168.184.41:9000 | minio 服务访问地址   |
+| 端点 (Endpoint) | http://192.168.100.41:9000 | minio 服务访问地址   |
