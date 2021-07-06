@@ -5,6 +5,17 @@
     - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
 
+v2.11.4
+------------------------
+2021年07月06日
+
+!!! success "🐛 Bug修复 Bug Fixes"
+    - fix: 修复 Gateway Private Key 包含 passphrase 无法连接的问题
+    - fix: 修复 Windows 安装的 Visual Studio Code 客户端无法使用 remote-ssh 插件的问题
+
+!!! summary "🚀 功能优化 Optimization"
+    - perf: 优化KoKo异步加载时取消自动补全
+
 v2.11.3
 ------------------------
 2021年06月29日
