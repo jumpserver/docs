@@ -40,13 +40,15 @@
         ```sh
         cd /opt/koko
         ./koko -s stop
-        # 更老的版本使用的 coco
+        # 更老的版本使用的 coco guacamole
         # cd /opt/coco
         # ./cocod stop
+        # /etc/init.d/guacd stop
+        # sh /config/tomcat9/bin/shutdown.sh
         ```
         ```sh
-        /etc/init.d/guacd stop
-        sh /config/tomcat9/bin/shutdown.sh
+        cd /opt/lion
+        ps aux | grep lion | awk '{print $2}' | xargs kill -9
         ```
         ```sh
         cd /opt/jumpserver
@@ -65,9 +67,9 @@
         ```sh
         docker stop jms_koko jms_lion     
         docker rm jms_koko jms_lion     
-        # 更老的版本使用的 coco
-        # docker stop jms_coco
-        # docker rm jms_coco
+        # 更老的版本使用的 coco guacamole
+        # docker stop jms_coco jms_guacamole
+        # docker rm jms_coco jms_guacamole
         ```
         ```sh
         cd /opt/jumpserver
@@ -86,7 +88,7 @@
         ```sh
         cd /opt/setuptools
         ./jmsctl.sh stop
-        docker rm jms_koko jms_lion     
+        docker rm jms_koko jms_guacamole
         systemctl disable jms_core
         mv /opt/jumpserver /opt/jumpserver_bak
         ```
