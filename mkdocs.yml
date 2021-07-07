@@ -41,7 +41,7 @@ nav:
   - 管理文档:
     - 快速入门: admin-guide/quick_start.md
     - 资产要求:
-        - Tetnet: admin-guide/assets/telnet.md
+        - Telnet: admin-guide/assets/telnet.md
         - Linux SSH: admin-guide/assets/linux_ssh.md
         - Linux VNC: admin-guide/assets/linux_vnc.md
         - Windows SSH: admin-guide/assets/windows_ssh.md
