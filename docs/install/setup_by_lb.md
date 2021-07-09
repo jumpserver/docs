@@ -21,6 +21,13 @@
 | Core Task     |  192.168.100.31  |        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
 | MinIO         |  192.168.100.41  |  9000  |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
+| Server Name   | Check Health                  | Example                                  |
+| ------------- | ----------------------------- | ---------------------------------------- |
+| Core          | http://core:8080/api/health/  | https://demo.jumpserver.org/api/health/  |
+| KoKo          | http://koko:5000/koko/health/ | https://demo.jumpserver.org/koko/health/ |
+| Lion          | http://lion:8081/lion/health/ | https://demo.jumpserver.org/lion/health/ |
+
+
 ## 部署 MySQL 服务
 
     服务器: 192.168.100.11
