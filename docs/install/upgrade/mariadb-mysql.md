@@ -125,14 +125,14 @@
     - 将导出的 /opt/jumpserver.sql 拷贝要新的服务器上面
     - 下面以迁移到其他 CentOS7 服务器为例, 实际操作过程中请自行替换对应的命令
 
-    === "迁移到 MariaDB 10.5"
+    === "迁移到 MariaDB 10.6"
         ```sh
         vi /etc/yum.repos.d/MariaDB.repo
         ```
         ```vim
         [mariadb]
         name = MariaDB
-        baseurl = http://mirrors.ustc.edu.cn/mariadb/yum/10.5/centos7-amd64
+        baseurl = http://mirrors.ustc.edu.cn/mariadb/yum/10.6/centos7-amd64
         gpgkey=http://mirrors.ustc.edu.cn/mariadb/yum/RPM-GPG-KEY-MariaDB
         gpgcheck=1
         ```
@@ -155,6 +155,7 @@
         use jumpserver;
         source /opt/jumpserver.sql;
         exit;
+        mysql_upgrade -uroot
         ```
 
     === "迁移到 MySQL 5.7"
@@ -179,6 +180,7 @@
         use jumpserver;
         source /opt/jumpserver.sql;
         exit;
+        mysql_upgrade -uroot
         ```
 
     === "迁移到 MySQL 8.0"
