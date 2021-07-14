@@ -165,7 +165,7 @@
 
             `AUTH_OPENID_SHARE_SESSION`: 是否共享 session（控制用户是否可以单点退出）
 
-    === "标准 OICD 配置方式"
+    === "标准 OIDC 配置方式"
         ```sh
         vi /opt/jumpserver/config/config.txt
         ```
