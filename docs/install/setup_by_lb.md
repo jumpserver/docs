@@ -193,7 +193,7 @@
     ```sh
     ./jmsctl.sh install
     ```
-    ```nginx hl_lines="19 23 59 68 72-77 81-84"
+    ```nginx hl_lines="19 23 57 66 70-75 79-82"
 
            ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
            ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
@@ -223,10 +223,8 @@
     >>> 加载 Docker 镜像
     Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+    Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
@@ -311,11 +309,7 @@
     ```
     ```nginx
     Creating network "jms_net" with driver "bridge"
-    Creating jms_mysql     ... done
-    Creating jms_redis     ... done
     Creating jms_core      ... done
-    Creating jms_luna      ... done
-    Creating jms_lina      ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
@@ -366,11 +360,7 @@
     ```
     ```nginx
     Creating network "jms_net" with driver "bridge"
-    Creating jms_mysql     ... done
-    Creating jms_redis     ... done
     Creating jms_core      ... done
-    Creating jms_luna      ... done
-    Creating jms_lina      ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
@@ -421,12 +411,8 @@
     ```
     ```nginx
     Creating network "jms_net" with driver "bridge"
-    Creating jms_mysql     ... done
-    Creating jms_redis     ... done
     Creating jms_core      ... done
     Creating jms_celery    ... done
-    Creating jms_luna      ... done
-    Creating jms_lina      ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done

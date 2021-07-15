@@ -168,7 +168,7 @@
         ```sh
         ./jmsctl.sh install
         ```
-        ```nginx hl_lines="19 23 59 68 72 75"
+        ```nginx hl_lines="19 23 57 66 70 73"
 
                ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
                ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
@@ -198,10 +198,8 @@
         >>> 加载 Docker 镜像
         Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+        Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
         Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
@@ -274,7 +272,7 @@
         ```sh
         ./jmsctl.sh install
         ```
-        ```nginx hl_lines="19 23 59 68 72-77 81-84"
+        ```nginx hl_lines="19 23 59 68 70-75 79-82"
 
                ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
                ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
@@ -304,10 +302,8 @@
         >>> 加载 Docker 镜像
         Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+        Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-        Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
         Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
@@ -364,6 +360,7 @@
 
         >>> 安装完成了
         1. 可以使用如下命令启动, 然后访问
+        cd /opt/jumpserver-installer-{{ jumpserver.version }}
         ./jmsctl.sh start
 
         2. 其它一些管理命令
@@ -399,8 +396,6 @@
     Creating jms_core      ... done
     Creating jms_celery    ... done
     Creating jms_luna      ... done
-    Creating jms_lina      ... done
-    Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
     ```
@@ -446,32 +441,34 @@
     ```sh
     ./jmsctl.sh upgrade
     ```
-    ```nginx hl_lines="1 35"
+    ```nginx hl_lines="1 37 66"
     是否将版本更新至 {{ jumpserver.version }} ? (y/n)  (默认为 n): y
 
     1. 检查配置变更
+    配置文件位置: /opt/jumpserver/config
+    /opt/jumpserver/config/config.txt  [ √ ]
+    /opt/jumpserver/config/core/config.yml  [ √ ]
+    /opt/jumpserver/config/koko/config.yml  [ √ ]
+    /opt/jumpserver/config/mariadb/mariadb.cnf  [ √ ]
+    /opt/jumpserver/config/mysql/my.cnf  [ √ ]
     /opt/jumpserver/config/nginx/lb_http_server.conf  [ √ ]
-    /opt/jumpserver/config/nginx/lb_ssh_server.conf   [ √ ]
-    /opt/jumpserver/config/core/config.yml   [ √ ]
-    /opt/jumpserver/config/koko/config.yml   [ √ ]
-    /opt/jumpserver/config/mysql/my.cnf      [ √ ]
+    /opt/jumpserver/config/nginx/lb_rdp_server.conf  [ √ ]
+    /opt/jumpserver/config/nginx/lb_ssh_server.conf  [ √ ]
     /opt/jumpserver/config/redis/redis.conf  [ √ ]
+    /opt/jumpserver/config/nginx/cert/server.crt  [ √ ]
+    /opt/jumpserver/config/nginx/cert/server.key  [ √ ]
     完成
 
     2. 检查程序文件变更
-    完成
     完成
 
     3. 升级镜像文件
     Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/luna:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:alpine2   	[ OK ]
+    Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
-    Docker: Pulling from jumpserver/lina:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
-
     完成
 
     4. 备份数据库
@@ -481,9 +478,19 @@
 
     5. 进行数据库变更
     表结构变更可能需要一段时间, 请耐心等待
-    检测到 jms_core 正在运行, 是否需要关闭 jms_core 并继续升级? (y/n)  (默认为 n): y
-    jms_core
-    jms_core
+    检测到 JumpServer 正在运行, 是否需要关闭并继续升级? (y/n)  (默认为 n): y
+
+    Stopping jms_core ... done
+    Stopping jms_koko ... done
+    Stopping jms_lion ... done
+    Stopping jms_nginx ... done
+    Stopping jms_celery ... done
+    Removing jms_core ... done
+    Removing jms_koko ... done
+    Removing jms_lion ... done
+    Removing jms_nginx ... done
+    Removing jms_celery ... done
+
     2021-03-19 08:32:44 Collect static files
     2021-03-19 08:32:44 Collect static files done
     2021-03-19 08:32:44 Check database structure change ...
@@ -499,9 +506,20 @@
       Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
     完成
 
-    6. 升级成功, 可以重启程序了
-    ./jmsctl.sh restart
+    6. 清理镜像
+    是否需要清理旧版本镜像文件? (y/n)  (默认为 n): y
+    Untagged: jumpserver/core:v2.11.3
+    Untagged: jumpserver/luna:v2.11.3
+    Untagged: jumpserver/lina:v2.11.3
+    Untagged: jumpserver/koko:v2.11.3
+    Untagged: jumpserver/lion:v2.11.3
+    完成
+
+    7. 升级成功, 可以重新启动程序了
+    cd /opt/jumpserver-installer-{{ jumpserver.version }}
+    ./jmsctl.sh start
     ```
+
     ```sh
     ./jmsctl.sh restart
     ```
