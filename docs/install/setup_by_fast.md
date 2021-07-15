@@ -5,21 +5,19 @@
     需要连接 互联网  
     使用 root 用户执行  
 
-- 可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }
-- arm64 架构目前无法使用华为云镜像加速, 请注释掉 # DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
-
-| 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                |
-| :----------- | :----------------------------------- | -------------------------------------------------------- |
-| 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     |
-| 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com     |
-| 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com     |
-| 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      |
-| 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com |
-| 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-3.myhuaweicloud.com |
+??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
+    | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                |
+    | :----------- | :----------------------------------- | -------------------------------------------------------- |
+    | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     |
+    | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com     |
+    | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com     |
+    | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      |
+    | 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com |
+    | 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-3.myhuaweicloud.com |
 
 ## 安装方式
 
-- 可以参考 [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
+- [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! info "外置环境要求"
     - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
@@ -32,6 +30,8 @@
 === "自动部署"
     !!! tip ""
         ```sh
+        # 默认会安装到 /opt/jumpserver-installer-{{ jumpserver.version }} 目录
+        # 配置文件 /opt/jumpserver/config/config.txt
         curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
         ```
 
@@ -111,16 +111,20 @@
 
 ## 使用方式
 
-- 安装目录 /opt/jumpserver-installer-{{ jumpserver.version }}
-- 配置文件 /opt/jumpserver/config/config.txt
-
-!!! tip "Install"
+!!! tip ""
     ```sh
-    ./jmsctl.sh install
-    ```
+    cd /opt/jumpserver-installer-{{ jumpserver.version }}
 
-!!! tip "Help"
-    ```sh
+    # 启动
+    ./jmsctl.sh start
+
+    # 停止
+    ./jmsctl.sh down
+
+    # 卸载
+    ./jmsctl.sh uninstall
+
+    # 帮助
     ./jmsctl.sh -h
     ```
 

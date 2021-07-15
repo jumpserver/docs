@@ -59,7 +59,7 @@
     ```sh
     mysql -uroot
     ```
-    ```mysql hl_lines="13 16 19 22"
+    ```mysql hl_lines="13 16 19 22 25 28"
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 2
     Server version: 5.7.32 MySQL Community Server (GPL)
@@ -193,31 +193,43 @@
     ```sh
     ./jmsctl.sh install
     ```
-    ```nginx hl_lines="19 23 57 66 70-75 79-82"
+    ```nginx hl_lines="31 48 57 61-66 70-73 77"
 
            ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗
            ██║██║   ██║████╗ ████║██╔══██╗██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
            ██║██║   ██║██╔████╔██║██████╔╝███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
       ██   ██║██║   ██║██║╚██╔╝██║██╔═══╝ ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
       ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
-       ╚════╝  ╚═════╝ ╚═╝    ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+       ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-    								                             Version:  {{ jumpserver.version }}
+    								                                     Version:  {{ jumpserver.version }}
 
+
+    1. 检查配置文件
+    配置文件位置: /opt/jumpserver/config
+    /opt/jumpserver/config/config.txt  [ √ ]
+    /opt/jumpserver/config/nginx/lb_rdp_server.conf  [ √ ]
+    /opt/jumpserver/config/nginx/lb_ssh_server.conf  [ √ ]
+    /opt/jumpserver/config/nginx/cert/server.crt  [ √ ]
+    /opt/jumpserver/config/nginx/cert/server.key  [ √ ]
+    完成
+
+    2. 备份配置文件
+    备份至 /opt/jumpserver/config/backup/config.txt.2021-07-15_22-26-13
+    完成
 
     >>> 安装配置 Docker
     1. 安装 Docker
     开始下载 Docker 程序 ...
-    完成
     开始下载 Docker Compose 程序 ...
     完成
 
     2. 配置 Docker
-    是否需要自定义 Docker 数据目录, 默认将使用 /var/lib/docker 目录? (y/n)  (默认为 n): n
+    是否需要自定义 docker 存储目录, 默认将使用目录 /var/lib/docker? (y/n)  (默认为 n): n
     完成
 
     3. 启动 Docker
-    Docker 版本发生改变 或 Docker 配置文件发生变化，是否要重启? (y/n)  (默认为 y): y
+    Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /etc/systemd/system/docker.service.
     完成
 
     >>> 加载 Docker 镜像
@@ -229,58 +241,75 @@
     Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
 
     >>> 安装配置 JumpServer
-    1. 检查配置文件
-    配置文件位置: /opt/jumpserver/config
-    /opt/jumpserver/config/config.txt                 [ √ ]
-    /opt/jumpserver/config/nginx/lb_http_server.conf  [ √ ]
-    /opt/jumpserver/config/nginx/lb_ssh_server.conf   [ √ ]
-    /opt/jumpserver/config/core/config.yml   [ √ ]
-    /opt/jumpserver/config/koko/config.yml   [ √ ]
-    /opt/jumpserver/config/mysql/my.cnf      [ √ ]
-    /opt/jumpserver/config/redis/redis.conf  [ √ ]
-    完成
-
-    2. 配置 Nginx
-    配置文件位置: /opt/jumpserver/config/nginx/cert
-    /opt/jumpserver/config/nginx/cert/server.crt  [ √ ]
-    /opt/jumpserver/config/nginx/cert/server.key  [ √ ]
-    完成
-
-    3. 备份配置文件
-    备份至 /opt/jumpserver/config/backup/config.txt.2021-03-19_08-01-51
-    完成
-
-    4. 配置网络
+    1. 配置网络
     是否需要支持 IPv6? (y/n)  (默认为 n): n
     完成
 
-    5. 配置加密密钥
-    SECRETE_KEY:     ICAgIGluZXQ2IDI0MDk6OGE0ZDpjMjg6ZjkwMTo6ZDRjLzEyO
-    BOOTSTRAP_TOKEN: ICAgIGluZXQ2IDI0
+    2. 配置加密密钥
+    SECRETE_KEY:     YTE2YTVkMTMtMGE3MS00YzI5LWFlOWEtMTc2OWJlMmIyMDE2
+    BOOTSTRAP_TOKEN: YTE2YTVkMTMtMGE3
     完成
 
-    6. 配置持久化目录
+    3. 配置持久化目录
     是否需要自定义持久化存储, 默认将使用目录 /opt/jumpserver? (y/n)  (默认为 n): n
     完成
 
-    7. 配置 MySQL
-    是否使用外部mysql (y/n)  (默认为n): y
-    请输入mysql的主机地址 (无默认值): 192.168.100.11
-    请输入mysql的端口 (默认为3306): 3306
-    请输入mysql的数据库(事先做好授权) (默认为jumpserver): jumpserver
-    请输入mysql的用户名 (无默认值): jumpserver
-    请输入mysql的密码 (无默认值): weakPassword
+    4. 配置 MySQL
+    是否使用外部 MySQL? (y/n)  (默认为 n): y
+    请输入 MySQL 的主机地址 (无默认值): 192.168.100.11
+    请输入 MySQL 的端口 (默认为3306): 3306
+    请输入 MySQL 的数据库(事先做好授权) (默认为jumpserver): jumpserver
+    请输入 MySQL 的用户名 (无默认值): jumpserver
+    请输入 MySQL 的密码 (无默认值): weakPassword
     完成
 
-    8. 配置 Redis
-    是否使用外部redis  (y/n)  (默认为n): y
-    请输入redis的主机地址 (无默认值): 192.168.100.11
-    请输入redis的端口 (默认为6379): 6379
-    请输入redis的密码 (无默认值): weakPassword
+    5. 配置 Redis
+    是否使用外部 Redis? (y/n)  (默认为 n): y
+    请输入 Redis 的主机地址 (无默认值): 192.168.100.11
+    请输入 Redis 的端口 (默认为6379): 6379
+    请输入 Redis 的密码 (无默认值): weakPassword
     完成
+
+    6. 配置对外端口
+    是否需要配置 JumpServer 对外访问端口? (y/n)  (默认为 n): n
+    完成
+
+    7. 初始化数据库
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_redis ... done
+    2021-07-15 22:39:52 Collect static files
+    2021-07-15 22:39:52 Collect static files done
+    2021-07-15 22:39:52 Check database structure change ...
+    2021-07-15 22:39:52 Migrate model change to database ...
+
+    475 static files copied to '/opt/jumpserver/data/static'.
+    Operations to perform:
+      Apply all migrations: acls, admin, applications, assets, audits, auth, authentication, captcha, common, contenttypes, django_cas_ng, django_celery_beat, jms_oidc_rp, notifications, ops, orgs, perms, sessions, settings, terminal, tickets, users
+    Running migrations:
+      Applying contenttypes.0001_initial... OK
+      Applying contenttypes.0002_remove_content_type_name... OK
+      Applying auth.0001_initial... OK
+      Applying auth.0002_alter_permission_name_max_length... OK
+      Applying auth.0003_alter_user_email_max_length... OK
+      Applying auth.0004_alter_user_username_opts... OK
+      Applying auth.0005_alter_user_last_login_null... OK
+      Applying auth.0006_require_contenttypes_0002... OK
+      Applying auth.0007_alter_validators_add_error_messages... OK
+      Applying auth.0008_alter_user_username_max_length... OK
+      ...
+      Applying sessions.0001_initial... OK
+      Applying terminal.0032_auto_20210302_1853... OK
+      Applying terminal.0033_auto_20210324_1008... OK
+      Applying terminal.0034_auto_20210406_1434... OK
+      Applying terminal.0035_auto_20210517_1448... OK
+      Applying terminal.0036_auto_20210604_1124... OK
+      Applying terminal.0037_auto_20210623_1748... OK
+      Applying tickets.0008_auto_20210311_1113... OK
+      Applying tickets.0009_auto_20210426_1720... OK
 
     >>> 安装完成了
     1. 可以使用如下命令启动, 然后访问
+    cd /root/jumpserver-installer-{{ jumpserver.version }}
     ./jmsctl.sh start
 
     2. 其它一些管理命令
@@ -291,12 +320,12 @@
     更多还有一些命令, 你可以 ./jmsctl.sh --help 来了解
 
     3. Web 访问
-    http://192.168.100.248:80
+    http://192.168.100.212:80
     默认用户: admin  默认密码: admin
 
     4. SSH/SFTP 访问
-    ssh admin@192.168.100.248 -p2222
-    sftp -P2222 admin@192.168.100.248
+    ssh -p2222 admin@192.168.100.212
+    sftp -P2222 admin@192.168.100.212
 
     5. 更多信息
     我们的官网: https://www.jumpserver.org/
@@ -438,7 +467,7 @@
 
 !!! tip "安装 Tengine"
     ```sh
-    yum install -y policycoreutils-python https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.2/tengine-2.3.2-1.el7.ngx.x86_64.rpm
+    yum install -y policycoreutils-python https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.3/tengine-2.3.3-2.el7.ngx.x86_64.rpm
     ```
 
 !!! tip "配置 Nginx"
