@@ -110,6 +110,7 @@
         CURRENT_VERSION=
         ```
         ```sh
+        ./jmsctl.sh install
         ./jmsctl.sh start
         ```
 
