@@ -31,7 +31,6 @@
     !!! tip ""
         ```sh
         # 默认会安装到 /opt/jumpserver-installer-{{ jumpserver.version }} 目录
-        # 配置文件 /opt/jumpserver/config/config.txt
         curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
         ```
 
@@ -42,6 +41,9 @@
         wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
         tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
         cd jumpserver-installer-{{ jumpserver.version }}
+        ```
+        ```sh
+        # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
         cat config-example.txt
         ```
 
@@ -107,11 +109,17 @@
         # 额外的配置
         CURRENT_VERSION=
         ```
+        ```sh
+        ./jmsctl.sh start
+        ```
 
 
 ## 使用方式
 
 !!! tip ""
+    ```sh
+    # 安装完成后配置文件 /opt/jumpserver/config/config.txt
+    ```
     ```sh
     cd /opt/jumpserver-installer-{{ jumpserver.version }}
 
@@ -126,6 +134,13 @@
 
     # 帮助
     ./jmsctl.sh -h
+    ```
+
+!!! tip ""
+    ```sh
+    # 重新安装
+    ./jmsctl.sh uninstall
+    ./jmsctl.sh install
     ```
 
 后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  
