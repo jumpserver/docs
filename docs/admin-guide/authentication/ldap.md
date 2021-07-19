@@ -7,7 +7,8 @@
     |             |                                                   |
     | :---------- | :------------------------------------------------ |
     | LDAP地址    | ldap://serverurl:389                               |
-    | 绑定DN      | cn=administrator,cn=Users,dc=jumpserver,dc=org     |
+    | 绑定DN      | administrator@jumpserver.org                       |
+    | 密码        | ********                                           |
     | 用户OU      | ou=jumpserver,dc=jumpserver,dc=org                 |
     | 用户过滤器   | (cn=%(user)s)                                     |
     | LADP属性映射 | {"username": "cn", "name": "sn", "email": "mail"} |
@@ -20,7 +21,8 @@
     |             |                                                   |
     | :---------- | :------------------------------------------------ |
     | LDAP地址    | ldaps://serverurl:636                              |
-    | 绑定DN      | cn=administrator,cn=Users,dc=jumpserver,dc=org     |
+    | 绑定DN      | administrator@jumpserver.org                       |
+    | 密码        | ********                                           |
     | 用户OU      | ou=jumpserver,dc=jumpserver,dc=org                 |
     | 用户过滤器   | (cn=%(user)s)                                     |
     | LADP属性映射 | {"username": "cn", "name": "sn", "email": "mail"} |
