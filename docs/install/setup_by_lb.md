@@ -689,17 +689,18 @@
 !!! tip "启动 MinIO"
     ```vim
     ## 请自行修改账号密码并牢记, 丢失后可以删掉容器后重新用新密码创建, 数据不会丢失
-    # 9000                                  # 访问端口
+    # 9000                                  # api     访问端口
+    # 9001                                  # console 访问端口
     # MINIO_ROOT_USER=minio                 # minio 账号
     # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
     ```
     ```sh
-    docker run --name jms_minio -d -p 9000:9000 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio --restart=always minio/minio:latest server /data
+    docker run --name jms_minio -d -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio --restart=always minio/minio:latest server /data --console-address ":9001"
     ```
 
 !!! tip "设置 MinIO"
     - 访问 http://192.168.100.41:9000, 输入刚才设置的 MinIO 账号密码登录
-    - 点击右下角的 + 号, 选择 Create bucket 创建桶, Bucket Name 输入 jumpserver 回车确认
+    - 点击左侧菜单的 Buckets, 选择 Create Bucket 创建桶, Bucket Name 输入 jumpserver, 然后点击 Save 保存
 
 !!! tip "设置 JumpServer"
     - 访问 JumpServer Web 页面并使用管理员账号进行登录
@@ -714,3 +715,4 @@
 | Access key      | minio                      | MINIO_ROOT_USER     |
 | Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
 | 端点 (Endpoint) | http://192.168.100.41:9000 | minio 服务访问地址   |
+| 默认存储        |                            | 新组件将自动使用该存储 |

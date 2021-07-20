@@ -5,6 +5,13 @@
 {{ super() }}
 {% endblock %}
 
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}
+
 {% block styles %}
     <link rel="stylesheet" href="{{ base_url }}/css/lightgallery.min.css">
 
