@@ -134,8 +134,8 @@
     # 如果你不需要或不想处理数据库字符集可以跳过此步骤, 保证迁移前后的数据库字符集一样即可.
     if grep -q 'COLLATE=utf8_bin' /opt/jumpserver.sql; then
         cp /opt/jumpserver.sql /opt/jumpserver_bak.sql
-        sed -i 's@COLLATE=utf8_bin@@g' /opt/jumpserver.sql
-        sed -i 's@COLLATE utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@ COLLATE=utf8_bin@@g' /opt/jumpserver.sql
+        sed -i 's@ COLLATE utf8_bin@@g' /opt/jumpserver.sql
     else
         echo "备份数据库字符集正确";
     fi
