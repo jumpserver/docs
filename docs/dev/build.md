@@ -219,10 +219,10 @@ REDIS_PASSWORD: ********
 
 ### 启动 Core
 
-后台运行可以加 -d，`./jms.sh start all -d`
+后台运行可以加 -d，`./jms start all -d`
 
 ```bash
-./jms.sh start all
+./jms start all
 ```
 
 ## Lina
@@ -299,7 +299,7 @@ yarn serve
 ### 构建 Lina
 构建完成后的 lina 包为 html 文件，可以直接移到到 nginx 服务器。
 ```bash
-yarn build
+yarn build:prod
 ```
 
 ## Luna
