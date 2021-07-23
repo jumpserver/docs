@@ -11,15 +11,15 @@
 | MySQL   | >= 5.7  |    | Redis | >= 6.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port  |     Use           |   Minimize Hardware   |   Standard Hardware    |
-| ------------- | ---------------- | ------ | ----------------- | --------------------- | ---------------------- |
-| MySQL         |  192.168.100.11  |  3306  |  Core             | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
-| Redis         |  192.168.100.11  |  6379  |  Core, Koko, lion | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
-| Tengine       |  192.168.100.100 | 80,443 |  All              | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
-| Core Web 01   |  192.168.100.21  |  80    |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Web 02   |  192.168.100.22  |  80    |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Task     |  192.168.100.31  |        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
-| MinIO         |  192.168.100.41  |  9000  |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
+| Server Name   |        IP        |  Port     |     Use           |   Minimize Hardware   |   Standard Hardware    |
+| ------------- | ---------------- | --------- | ----------------- | --------------------- | ---------------------- |
+| MySQL         |  192.168.100.11  | 3306      |  Core             | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
+| Redis         |  192.168.100.11  | 6379      |  Core, Koko, lion | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
+| Tengine       |  192.168.100.100 | 80,443    |  All              | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
+| Core Web 01   |  192.168.100.21  | 80        |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Web 02   |  192.168.100.22  | 80        |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
+| Core Task     |  192.168.100.31  | 80        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
+| MinIO         |  192.168.100.41  | 9000,9001 |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
 
 | Server Name   | Check Health                  | Example                                  |
 | ------------- | ----------------------------- | ---------------------------------------- |
