@@ -1,8 +1,9 @@
-# Windows VNC 资产要求
+# macOS VNC 资产要求
 
 !!! warning "VNC 目前不支持加密的连接"
 
 !!! tip ""
+    自带的 vnc 无法使用, 需要单独安装 `RealVNC Server`  
     正常安装好 `RealVNC Server`, 注意安装过程中允许放行防火墙  
     在 `RealVNC Server`-`Options`-`Security` 选项里面设置 `Encryption` 为 `Prefer off`  
     在 `RealVNC Server`-`Options`-`Security` 选项里面选择 `Authentication` 为 `VNC password`  

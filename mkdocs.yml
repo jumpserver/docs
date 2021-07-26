@@ -44,6 +44,7 @@ nav:
         - Telnet: admin-guide/assets/telnet.md
         - Linux SSH: admin-guide/assets/linux_ssh.md
         - Linux VNC: admin-guide/assets/linux_vnc.md
+        - macOS VNC: admin-guide/assets/macos_vnc.md
         - Windows SSH: admin-guide/assets/windows_ssh.md
         - Windows VNC: admin-guide/assets/windows_vnc.md
         - Windows RDP: admin-guide/assets/windows_rdp.md
