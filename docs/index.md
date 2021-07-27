@@ -278,3 +278,8 @@
 !!! tip ""
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html)
     - [JumpServer 一体机](https://jumpserver.org/hardware.html)
+
+## 技术白皮书
+
+!!! tip ""
+    - [新一代堡垒机建设指南](https://jinshuju.net/f/E0qAl8)
