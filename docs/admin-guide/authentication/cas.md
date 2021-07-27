@@ -27,7 +27,7 @@
 | `CAS_VERSION`                  | The CAS protocol version to use. |
 | `CAS_USERNAME_ATTRIBUTE`       | The CAS user name attribute from response. If set with a value other than uid when CAS_VERSION is not 'CAS_2_SAML_1_0', this will be handled by the CASBackend, in which case if the user lacks that attribute then authentication will fail. Note that the attribute is checked before CAS_RENAME_ATTRIBUTES is applied. |
 | `CAS_APPLY_ATTRIBUTES_TO_USER` | If True any attributes returned by the CAS provider included in the ticket will be applied to the User model returned by authentication. This is useful if your provider is including details about the User which should be reflected in your model. |
-| `CAS_RENAME_ATTRIBUTES`        | 	A dict used to rename the (key of the) attributes that the CAS server may retrun. For example, if CAS_RENAME_ATTRIBUTES = {'ln':'last_name'} the ln attribute returned by the cas server will be renamed as last_name. Used with CAS_APPLY_ATTRIBUTES_TO_USER = True, this provides an easy way to fill in Django Users’ info independently from the attributes’ keys returned by the CAS server. |
+| `CAS_RENAME_ATTRIBUTES`        | 	A dict used to rename the (key of the) attributes that the CAS server may retrun. For example, if CAS_RENAME_ATTRIBUTES = {"casUserUid": "username", "casUser": "name", "casUserEmail", "email"} the ln attribute returned by the cas server will be renamed as last_name. Used with CAS_APPLY_ATTRIBUTES_TO_USER = True, this provides an easy way to fill in Django Users’ info independently from the attributes’ keys returned by the CAS server. |
 | `CAS_CREATE_USER`              | Create a user when the CAS authentication is successful. The default is True. |
 
 
