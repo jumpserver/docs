@@ -716,3 +716,23 @@
 | Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
 | 端点 (Endpoint) | http://192.168.100.41:9000 | minio 服务访问地址   |
 | 默认存储        |                            | 新组件将自动使用该存储 |
+
+## 升级 注意事项
+
+!!! warning "更新前请一定要做好备份工作"
+    - 升级前请关闭所有 JumpServer 节点
+    - 在任意一个 JumpServer 节点按照升级文档完成升级操作
+    - 仔细检查该节点升级过程确保无异常
+    - 然后按照升级文档对其他 JumpServer 节点升级即可
+
+    ```sh
+    cd /opt
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
+    ```
+    ```sh
+    # 额外节点可以设置 SKIP_BACKUP_DB=1 跳过数据库备份, 第一个升级节点不要跳过备份
+    export SKIP_BACKUP_DB=1
+    ./jmsctl.sh upgrade
+    ```
