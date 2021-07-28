@@ -5,6 +5,10 @@
 
 !!! tip ""
     ```sh
+    cd /opt/jumpserver-installerer-{{ jumpserver.version }}
+    ./jmsctl.sh down
+    ```
+    ```sh
     vi /opt/jumpserver/config/config.txt
     ```
     ```vim hl_lines="3"
@@ -13,11 +17,9 @@
     USE_IPV6=1
     ```
     ```sh
-    cd /opt/jumpserver-installerer-{{ jumpserver.version }}
-    ./jmsctl.sh down
-    ```
-    ```sh
-    firewall-cmd --add-masquerade --permanent
+    firewall-cmd --permanent --zone=public --add-port=80/tcp
+    firewall-cmd --permanent --zone=public --add-port=443/tcp
+    firewall-cmd --permanent --zone=public --add-port=2222/tcp
     firewall-cmd --reload
     ```
     ```sh
