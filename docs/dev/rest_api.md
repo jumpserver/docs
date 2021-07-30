@@ -27,9 +27,9 @@
 
 !!! tip "JumpServer API 支持的认证有以下几种方式"
     ```
-    Session         登录后可以直接使用 session_id 作为认证方式  
-    Token           获取一次性 Token，该 Token 有有效期, 过期作废  
-    Private Token   永久 Token  
+    Session         登录后可以直接使用 session_id 作为认证方式
+    Token           获取一次性 Token，该 Token 有有效期, 过期作废
+    Private Token   永久 Token
     Access Key      对 Http Header 进行签名
     ```
 
@@ -77,59 +77,63 @@
             package main
 
             import (
-            	"encoding/json"
-            	"fmt"
-            	"io/ioutil"
-            	"log"
-            	"net/http"
-            	"strings"
+                "encoding/json"
+                "fmt"
+                "io/ioutil"
+                "log"
+                "net/http"
+                "strings"
             )
 
             func GetUser(jms_url, token string) {
-            	url := jms_url + "/api/v1/users/users/"
-            	client := &http.Client{}
-            	req, err := http.NewRequest("GET", url, nil)
-            	req.Header.Add("Authorization", "Bearer "+token)
-            	resp, err := client.Do(req)
-            	if err != nil {
-            		log.Fatal(err)
-            	}
-            	defer resp.Body.Close()
-            	body, err := ioutil.ReadAll(resp.Body)
-            	if err != nil {
-            		log.Fatal(err)
-            	}
-            	fmt.Println(string(body))
+                url := jms_url + "/api/v1/users/users/"
+                client := &http.Client{}
+                req, err := http.NewRequest("GET", url, nil)
+                req.Header.Add("Authorization", "Bearer "+token)
+                resp, err := client.Do(req)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                defer resp.Body.Close()
+                body, err := ioutil.ReadAll(resp.Body)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                fmt.Println(string(body))
             }
 
             func GetToken(jms_url, username, password string) (string, error) {
-            	url := jms_url + "/api/v1/authentication/auth/"
-            	client := &http.Client{}
-            	req, err := http.NewRequest("POST", url, strings.NewReader(`{"username": "`+username+`", "password": "`+password+`"}`))
-            	req.Header.Add("Content-Type", "application/json")
-            	resp, err := client.Do(req)
-            	if err != nil {
-            		return "", err
-            	}
-            	defer resp.Body.Close()
-            	body, err := ioutil.ReadAll(resp.Body)
-            	if err != nil {
-            		return "", err
-            	}
-            	response := map[string]interface{}{}
-            	json.Unmarshal(body, &response)
-            	return response["token"].(string), nil
+                url := jms_url + "/api/v1/authentication/auth/"
+                query_args := strings.NewReader(`{
+                    "username": "`+username+`",
+                    "password": "`+password+`"
+                }`)
+                client := &http.Client{}
+                req, err := http.NewRequest("POST", url, query_args)
+                req.Header.Add("Content-Type", "application/json")
+                resp, err := client.Do(req)
+                if err != nil {
+                    return "", err
+                }
+                defer resp.Body.Close()
+                body, err := ioutil.ReadAll(resp.Body)
+                if err != nil {
+                    return "", err
+                }
+                response := map[string]interface{}{}
+                json.Unmarshal(body, &response)
+                return response["token"].(string), nil
             }
 
             func main() {
-            	jms_url := "https://demo.jumpserver.org"
-            	username := "admin"
-            	password := "admin"
-            	token, err := GetToken(jms_url, username, password)
-            	if err != nil {
-            		log.Fatal(err)
-            	}
-            	GetUser(jms_url, token)
+                jms_url := "https://demo.jumpserver.org"
+                username := "admin"
+                password := "admin"
+                token, err := GetToken(jms_url, username, password)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                GetUser(jms_url, token)
             }
             ```
 
@@ -175,35 +179,35 @@
             package main
 
             import (
-            	"encoding/json"
-            	"fmt"
-            	"io/ioutil"
-            	"log"
-            	"net/http"
-            	"strings"
+                "encoding/json"
+                "fmt"
+                "io/ioutil"
+                "log"
+                "net/http"
+                "strings"
             )
 
             func GetUser(jms_url, token string) {
-            	url := jms_url + "/api/v1/users/users/"
-            	client := &http.Client{}
-            	req, err := http.NewRequest("GET", url, nil)
-            	req.Header.Add("Authorization", "Token "+token)
-            	resp, err := client.Do(req)
-            	if err != nil {
-            		log.Fatal(err)
-            	}
-            	defer resp.Body.Close()
-            	body, err := ioutil.ReadAll(resp.Body)
-            	if err != nil {
-            		log.Fatal(err)
-            	}
-            	fmt.Println(string(body))
+                url := jms_url + "/api/v1/users/users/"
+                client := &http.Client{}
+                req, err := http.NewRequest("GET", url, nil)
+                req.Header.Add("Authorization", "Token "+token)
+                resp, err := client.Do(req)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                defer resp.Body.Close()
+                body, err := ioutil.ReadAll(resp.Body)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                fmt.Println(string(body))
             }
 
             func main() {
-            	jms_url := "https://demo.jumpserver.org"
-            	token := "937b38011acf499eb474e2fecb424ab3"
-            	GetUser(jms_url, token)
+                jms_url := "https://demo.jumpserver.org"
+                token := "937b38011acf499eb474e2fecb424ab3"
+                GetUser(jms_url, token)
             }
             ```
 
