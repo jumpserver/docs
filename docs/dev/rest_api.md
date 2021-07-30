@@ -103,7 +103,7 @@
             }
 
             func GetToken(jms_url, username, password string) (string, error) {
-            	url = jms_url + "/api/v1/authentication/auth/"
+            	url := jms_url + "/api/v1/authentication/auth/"
             	client := &http.Client{}
             	req, err := http.NewRequest("POST", url, strings.NewReader(`{"username": "`+username+`", "password": "`+password+`"}`))
             	req.Header.Add("Content-Type", "application/json")
