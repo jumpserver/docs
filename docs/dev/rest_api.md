@@ -48,7 +48,7 @@
             # pip install requests
             import requests, json
 
-            def get_token():
+            def get_token(jms_url, username, password):
                 url = jms_url + '/api/v1/authentication/auth/'
                 query_args = {
                     "username": username,
@@ -57,18 +57,18 @@
                 response = requests.post(url, data=query_args)
                 return json.loads(response.text)['token']
 
-            def get_user_info():
+            def get_user_info(jms_url, token):
                 url = jms_url + '/api/v1/users/users/'
-                token = get_token()
                 headers = { "Authorization": 'Bearer ' + token }
                 response = requests.get(url, headers=headers)
                 print(json.loads(response.text))
 
             if __name__ == '__main__':
                 jms_url = 'https://demo.jumpserver.org'
-                username = 'test'
-                password = 'test01'
-                get_user_info()
+                username = 'admin'
+                password = 'admin'
+                token = get_token(jms_url, username, password)
+                get_user_info(jms_url, token)
             ```
 
         === "Golang"
@@ -102,8 +102,8 @@
             	fmt.Println(string(body))
             }
 
-            func GetToken(url, username, password string) (string, error) {
-            	url = url + "/api/v1/authentication/auth/"
+            func GetToken(jms_url, username, password string) (string, error) {
+            	url = jms_url + "/api/v1/authentication/auth/"
             	client := &http.Client{}
             	req, err := http.NewRequest("POST", url, strings.NewReader(`{"username": "`+username+`", "password": "`+password+`"}`))
             	req.Header.Add("Content-Type", "application/json")
@@ -157,7 +157,7 @@
             # pip install requests
             import requests, json
 
-            def get_user_info():
+            def get_user_info(jms_url, token):
                 url = jms_url + '/api/v1/users/users/'
                 headers = { "Authorization": 'Token ' + token }
                 response = requests.get(url, headers=headers)
@@ -166,7 +166,7 @@
             if __name__ == '__main__':
                 jms_url = 'https://demo.jumpserver.org'
                 token = '937b38011acf499eb474e2fecb424ab3'
-                get_user_info()
+                get_user_info(jms_url, token)
             ```
 
         === "Golang"
@@ -215,14 +215,13 @@
         import requests, datetime, json
         from httpsig.requests_auth import HTTPSignatureAuth
 
-        def get_auth():
+        def get_auth(AccessKeyID, AccessKeySecret):
             signature_headers = ['(request-target)', 'accept', 'date']
             auth = HTTPSignatureAuth(key_id=AccessKeyID, secret=AccessKeySecret, algorithm='hmac-sha256', headers=signature_headers)
             return auth
 
-        def get_user_info():
+        def get_user_info(jms_url, auth):
             url = jms_url + '/api/v1/users/users/'
-            auth = get_auth()
             gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
             headers = {
                 'Accept': 'application/json',
@@ -236,7 +235,8 @@
             jms_url = 'https://demo.jumpserver.org'
             AccessKeyID = 'AccessKeyID'
             AccessKeySecret = 'AccessKeySecret'
-            get_user_info()
+            auth = get_auth(AccessKeyID, AccessKeySecret)
+            get_user_info(jms_url, auth)
         ```
 
 ## 示例
