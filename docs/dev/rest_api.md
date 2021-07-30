@@ -42,32 +42,96 @@
              -H 'Content-Type: application/json' \
              -d '{"username": "admin", "password": "admin"}'
         ```
-        ```python
-        # pip install requests
-        import requests, json
+        === "Python"
+            ```python
+            # Python 示例
+            # pip install requests
+            import requests, json
 
-        jms_url  = 'https://demo.jumpserver.org'
-        username = 'admin'
-        password = 'admin'
+            def get_token():
+                url = jms_url + '/api/v1/authentication/auth/'
+                query_args = {
+                    "username": username,
+                    "password": password
+                }
+                response = requests.post(url, data=query_args)
+                return json.loads(response.text)['token']
 
-        def get_token():
-            url        = jms_url + '/api/v1/authentication/auth/'
-            query_args = {
-                "username": username,
-                "password": password
+            def get_user_info():
+                url = jms_url + '/api/v1/users/users/'
+                token = get_token()
+                headers = { "Authorization": 'Bearer ' + token }
+                response = requests.get(url, headers=headers)
+                print(json.loads(response.text))
+
+            if __name__ == '__main__':
+                jms_url = 'https://demo.jumpserver.org'
+                username = 'test'
+                password = 'test01'
+                get_user_info()
+            ```
+
+        === "Golang"
+            ```go
+            // Golang 示例
+            package main
+
+            import (
+            	"encoding/json"
+            	"fmt"
+            	"io/ioutil"
+            	"log"
+            	"net/http"
+            	"strings"
+            )
+
+            func GetUser(jms_url, token string) {
+            	url := jms_url + "/api/v1/users/users/"
+            	client := &http.Client{}
+            	req, err := http.NewRequest("GET", url, nil)
+            	req.Header.Add("Authorization", "Bearer "+token)
+            	resp, err := client.Do(req)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	defer resp.Body.Close()
+            	body, err := ioutil.ReadAll(resp.Body)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	fmt.Println(string(body))
             }
-            response = requests.post(url, data=query_args)
-            return json.loads(response.text)['token']
 
-        def get_user_info():
-            url      = jms_url + '/api/v1/users/users/'
-            token    = get_token()
-            headers  = { "Authorization": 'Bearer ' + token }
-            response = requests.get(url, headers=headers)
-            print(json.loads(response.text))
+            func GetToken(url, username, password string) (string, error) {
+            	url = url + "/api/v1/authentication/auth/"
+            	client := &http.Client{}
+            	req, err := http.NewRequest("POST", url, strings.NewReader(`{"username": "`+username+`", "password": "`+password+`"}`))
+            	req.Header.Add("Content-Type", "application/json")
+            	resp, err := client.Do(req)
+            	if err != nil {
+            		return "", err
+            	}
+            	defer resp.Body.Close()
+            	body, err := ioutil.ReadAll(resp.Body)
+            	if err != nil {
+            		return "", err
+            	}
+            	response := map[string]interface{}{}
+            	json.Unmarshal(body, &response)
+            	return response["token"].(string), nil
+            }
 
-        get_user_info()
-        ```
+            func main() {
+            	jms_url := "https://demo.jumpserver.org"
+            	username := "admin"
+            	password := "admin"
+            	token, err := GetToken(jms_url, username, password)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	GetUser(jms_url, token)
+            }
+            ```
 
     === "Private Token"
         ```sh
@@ -87,51 +151,92 @@
         curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' \
              -H "Content-Type:application/json" http://demo.jumpserver.org/api/v1/users/users/
         ```
-        ```python
-        # pip install requests
-        import requests, json
+        === "Python"
+            ```python
+            # Python 示例
+            # pip install requests
+            import requests, json
 
-        jms_url   = 'https://demo.jumpserver.org'
-        jms_token = '937b38011acf499eb474e2fecb424ab3'
+            def get_user_info():
+                url = jms_url + '/api/v1/users/users/'
+                headers = { "Authorization": 'Token ' + token }
+                response = requests.get(url, headers=headers)
+                print(json.loads(response.text))
 
-        def get_user_info():
-            url      = jms_url + '/api/v1/users/users/'
-            headers  = { "Authorization": 'Token ' + jms_token }
-            response = requests.get(url, headers=headers)
-            print(json.loads(response.text))
+            if __name__ == '__main__':
+                jms_url = 'https://demo.jumpserver.org'
+                token = '937b38011acf499eb474e2fecb424ab3'
+                get_user_info()
+            ```
 
-        get_user_info()
-        ```
+        === "Golang"
+            ```go
+            // Golang 示例
+            package main
+
+            import (
+            	"encoding/json"
+            	"fmt"
+            	"io/ioutil"
+            	"log"
+            	"net/http"
+            	"strings"
+            )
+
+            func GetUser(jms_url, token string) {
+            	url := jms_url + "/api/v1/users/users/"
+            	client := &http.Client{}
+            	req, err := http.NewRequest("GET", url, nil)
+            	req.Header.Add("Authorization", "Token "+token)
+            	resp, err := client.Do(req)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	defer resp.Body.Close()
+            	body, err := ioutil.ReadAll(resp.Body)
+            	if err != nil {
+            		log.Fatal(err)
+            	}
+            	fmt.Println(string(body))
+            }
+
+            func main() {
+            	jms_url := "https://demo.jumpserver.org"
+            	token := "937b38011acf499eb474e2fecb424ab3"
+            	GetUser(jms_url, token)
+            }
+            ```
 
     === "Access Key"
         在 Web 页面 API Key 列表创建或获取 AccessKeyID AccessKeySecret
         ```python
+        # Python 示例
         # pip install requests drf-httpsig
         import requests, datetime, json
         from httpsig.requests_auth import HTTPSignatureAuth
 
-        jms_url         = 'https://demo.jumpserver.org'
-        AccessKeyID     = 'AccessKeyID'
-        AccessKeySecret = 'AccessKeySecret'
-        GMT_FORMAT      = '%a, %d %b %Y %H:%M:%S GMT'
-
         def get_auth():
             signature_headers = ['(request-target)', 'accept', 'date']
-            auth              = HTTPSignatureAuth(key_id=AccessKeyID, secret=AccessKeySecret, algorithm='hmac-sha256', headers=signature_headers)
+            auth = HTTPSignatureAuth(key_id=AccessKeyID, secret=AccessKeySecret, algorithm='hmac-sha256', headers=signature_headers)
             return auth
 
         def get_user_info():
-            url     = jms_url + '/api/v1/users/users/'
-            auth    = get_auth()
+            url = jms_url + '/api/v1/users/users/'
+            auth = get_auth()
+            gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
             headers = {
                 'Accept': 'application/json',
-                'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
+                'Date': datetime.datetime.utcnow().strftime(gmt_form)
             }
 
             response = requests.get(url, auth=auth, headers=headers)
             print(json.loads(response.text))
 
-        get_user_info()
+        if __name__ == '__main__':
+            jms_url = 'https://demo.jumpserver.org'
+            AccessKeyID = 'AccessKeyID'
+            AccessKeySecret = 'AccessKeySecret'
+            get_user_info()
         ```
 
 ## 示例
