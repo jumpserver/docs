@@ -85,23 +85,6 @@
                 "strings"
             )
 
-            func GetUser(jms_url, token string) {
-                url := jms_url + "/api/v1/users/users/"
-                client := &http.Client{}
-                req, err := http.NewRequest("GET", url, nil)
-                req.Header.Add("Authorization", "Bearer "+token)
-                resp, err := client.Do(req)
-                if err != nil {
-                    log.Fatal(err)
-                }
-                defer resp.Body.Close()
-                body, err := ioutil.ReadAll(resp.Body)
-                if err != nil {
-                    log.Fatal(err)
-                }
-                fmt.Println(string(body))
-            }
-
             func GetToken(jms_url, username, password string) (string, error) {
                 url := jms_url + "/api/v1/authentication/auth/"
                 query_args := strings.NewReader(`{
@@ -125,6 +108,23 @@
                 return response["token"].(string), nil
             }
 
+            func GetUserInfo(jms_url, token string) {
+                url := jms_url + "/api/v1/users/users/"
+                client := &http.Client{}
+                req, err := http.NewRequest("GET", url, nil)
+                req.Header.Add("Authorization", "Bearer "+token)
+                resp, err := client.Do(req)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                defer resp.Body.Close()
+                body, err := ioutil.ReadAll(resp.Body)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                fmt.Println(string(body))
+            }
+
             func main() {
                 jms_url := "https://demo.jumpserver.org"
                 username := "admin"
@@ -133,7 +133,7 @@
                 if err != nil {
                     log.Fatal(err)
                 }
-                GetUser(jms_url, token)
+                GetUserInfo(jms_url, token)
             }
             ```
 
@@ -187,7 +187,7 @@
                 "strings"
             )
 
-            func GetUser(jms_url, token string) {
+            func GetUserInfo(jms_url, token string) {
                 url := jms_url + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
@@ -207,41 +207,106 @@
             func main() {
                 jms_url := "https://demo.jumpserver.org"
                 token := "937b38011acf499eb474e2fecb424ab3"
-                GetUser(jms_url, token)
+                GetUserInfo(jms_url, token)
             }
             ```
 
     === "Access Key"
         在 Web 页面 API Key 列表创建或获取 AccessKeyID AccessKeySecret
-        ```python
-        # Python 示例
-        # pip install requests drf-httpsig
-        import requests, datetime, json
-        from httpsig.requests_auth import HTTPSignatureAuth
+        === "Python"
+            ```python
+            # Python 示例
+            # pip install requests drf-httpsig
+            import requests, datetime, json
+            from httpsig.requests_auth import HTTPSignatureAuth
 
-        def get_auth(AccessKeyID, AccessKeySecret):
-            signature_headers = ['(request-target)', 'accept', 'date']
-            auth = HTTPSignatureAuth(key_id=AccessKeyID, secret=AccessKeySecret, algorithm='hmac-sha256', headers=signature_headers)
-            return auth
+            def get_auth(KeyID, SecretID):
+                signature_headers = ['(request-target)', 'accept', 'date']
+                auth = HTTPSignatureAuth(key_id=KeyID, secret=SecretID, algorithm='hmac-sha256', headers=signature_headers)
+                return auth
 
-        def get_user_info(jms_url, auth):
-            url = jms_url + '/api/v1/users/users/'
-            gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
-            headers = {
-                'Accept': 'application/json',
-                'Date': datetime.datetime.utcnow().strftime(gmt_form)
+            def get_user_info(jms_url, auth):
+                url = jms_url + '/api/v1/users/users/'
+                gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
+                headers = {
+                    'Accept': 'application/json',
+                    'Date': datetime.datetime.utcnow().strftime(gmt_form)
+                }
+
+                response = requests.get(url, auth=auth, headers=headers)
+                print(json.loads(response.text))
+
+            if __name__ == '__main__':
+                jms_url = 'https://demo.jumpserver.org'
+                KeyID = 'AccessKeyID'
+                SecretID = 'AccessKeySecret'
+                auth = get_auth(KeyID, SecretID)
+                get_user_info(jms_url, auth)
+            ```
+        
+        === "Golang"
+            ```go
+            // Golang 示例
+            package main
+
+            import (
+                "fmt"
+                "io/ioutil"
+                "log"
+                "net/http"
+                "time"
+                "gopkg.in/twindagger/httpsig.v1"
+            )
+
+            type SigAuth string {
+                KeyID    string
+                SecretID string
             }
 
-            response = requests.get(url, auth=auth, headers=headers)
-            print(json.loads(response.text))
+            func (auth *SigAuth) Sign(r *http.Request) error {
+                headers := []string{"(request-target)", "date"}
+                signer, err := httpsig.NewRequestSigner(auth.KeyID, auth.SecretID, "hmac-sha256")
+                if err != nil {
+                    return err
+                }
+                return signer.SignRequest(r, headers, nil)
+            }
 
-        if __name__ == '__main__':
-            jms_url = 'https://demo.jumpserver.org'
-            AccessKeyID = 'AccessKeyID'
-            AccessKeySecret = 'AccessKeySecret'
-            auth = get_auth(AccessKeyID, AccessKeySecret)
-            get_user_info(jms_url, auth)
-        ```
+            func GetUserInfo(jms_url string, auth *SigAuth) {
+                url := jms_url + "/api/v1/users/users/"
+                gmt_fmt := "Mon, 02 Jan 2006 15:04:05 GMT"
+                client := &http.Client{}
+                req, err := http.NewRequest("GET", url, nil)
+                req.Header.Add("Date", time.Now().Format(gmt_fmt))
+                req.Header.Add("Accept", "application/json")
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if err := auth.Sign(req); err != nil {
+                    log.Fatal(err)
+                }
+                resp, err := client.Do(req)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                defer resp.Body.Close()
+                body, err := ioutil.ReadAll(resp.Body)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                fmt.Println(string(body))
+            }
+
+            func main() {
+                jms_url := "https://demo.jumpserver.org"
+                auth := SigAuth{
+                    KeyID:    "AccessKeyID",
+                    SecretID: "AccessKeySecret",
+                }
+                GetUserInfo(jms_url, &auth)
+            }
+            ```
+
 
 ## 示例
 
