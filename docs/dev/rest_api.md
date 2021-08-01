@@ -96,12 +96,12 @@
                 req.Header.Add("Content-Type", "application/json")
                 resp, err := client.Do(req)
                 if err != nil {
-                    return "", err
+                    log.Fatal(err)
                 }
                 defer resp.Body.Close()
                 body, err := ioutil.ReadAll(resp.Body)
                 if err != nil {
-                    return "", err
+                    log.Fatal(err)
                 }
                 response := map[string]interface{}{}
                 json.Unmarshal(body, &response)
