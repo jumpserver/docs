@@ -32,7 +32,7 @@
     ```
     动态密码认证:
     ```vim
-    AUTH_RADIUS=False
+    AUTH_RADIUS=True
     RADIUS_SERVER=47.98.186.18
     RADIUS_PORT=1812
     RADIUS_SECRET=testing123
