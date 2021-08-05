@@ -5,4 +5,3 @@ mkdocs-material-extensions>=1.0
 pymdown-extensions>=7.0
 mkdocs-macros-plugin>=0.5
 mike>=1.0.1
-# mkpdfs-mkdocs>=1.0.1

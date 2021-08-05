@@ -1,9 +1,9 @@
 site_name: 'JumpServer 文档'
-site_url: 'https://jumpserver.org'
-site_description: 'JumpServer 文档'
+site_url: 'https://docs.jumpserver.org'
 site_author: 'wojiushixiaobai'
+site_description: "JumpServer 是全球首款开源的堡垒机"
 
-repo_name: 'GitHub Star'
+repo_name: 'jumpserver/jumpserver'
 repo_url: 'https://github.com/jumpserver/jumpserver'
 edit_uri: ''
 
@@ -12,22 +12,30 @@ theme:
   logo: 'img/logo.png'
   favicon: 'img/facio.ico'
   language: 'zh'
-  highlightjs: true
-  feature:
-    tabs: true
-  hljs_languages:
-    - yaml
-    - django
   palette:
-    accent: 'red'
+    - scheme: default
+      accent: 'red'
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      accent: 'red'
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
   features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
     - search.suggest
     - search.highlight
     - search.share
-    - navigation.instant
     - header.autohide
   font: false
   custom_dir: 'theme'
+  icon:
+    repo: fontawesome/brands/github
 
 nav:
   - 总体介绍: index.md
@@ -80,9 +88,10 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
+  - 更新说明: about/change_log.md
+  - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 关于:
     - 贡献列表: about/contributor.md
-    - 更新说明: about/change_log.md
     - 联系方式: about/contact.md
 
 markdown_extensions:
@@ -130,6 +139,7 @@ extra:
     separator: '[\s\-\.]+'
     language: 'zh'
     Content-Encoding: gzip
+    boost: 100
   generator: false
   version:
     default: master
@@ -152,8 +162,6 @@ extra_css:
   - css/extra.css
 
 copyright: Copyright &copy; 2014-2021 <a href="https://www.fit2cloud.com">杭州飞致云信息科技有限公司</a>, All Rights Reserved. <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备15023818号</a>
-google_analytics: ['UA-147297392-3','docs.jumpserver.org']
 plugins:
   - search
   - macros
-#   - mkpdfs
