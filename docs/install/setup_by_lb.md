@@ -2,8 +2,8 @@
 
 !!! info "环境说明"
     - 除 JumpServer 自身组件外, 其他组件的高可用请参考对应的官方文档进行部署
-    - 按照此方式部署后, 后续只需要根据需要扩容 core web 节点然后添加节点到 tengine 即可
-    - 如果已经有 HLB 或者 SLB 可以跳过 Tengine 部署, 第三方 LB 要注意 session 和 websocket 问题
+    - 按照此方式部署后, 后续只需要根据需要扩容 JumpServer 节点然后添加节点到 HAProxy 即可
+    - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署, 第三方 LB 要注意 session 和 websocket 问题
     - 如果已经有 云存储(* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署, MySQL Redis 也一样
 
 | DB      | Version |    | Cache | Version |
@@ -11,22 +11,68 @@
 | MySQL   | >= 5.7  |    | Redis | >= 6.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port     |     Use           |   Minimize Hardware   |   Standard Hardware    |
-| ------------- | ---------------- | --------- | ----------------- | --------------------- | ---------------------- |
-| MySQL         |  192.168.100.11  | 3306      |  Core             | 2Core/4GB RAM/1T  HDD | 4Core/16GB RAM/1T  SSD |  
-| Redis         |  192.168.100.11  | 6379      |  Core, Koko, lion | 2Core/4GB RAM/60G HDD | 2Core/8GB  RAM/60G SSD |
-| Tengine       |  192.168.100.100 | 80,443    |  All              | 2Core/4GB RAM/60G HDD | 4Core/8GB  RAM/60G SSD |
-| Core Web 01   |  192.168.100.21  | 80        |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Web 02   |  192.168.100.22  | 80        |  Tengine          | 2Core/8GB RAM/60G HDD | 4Core/8GB  RAM/90G SSD |
-| Core Task     |  192.168.100.31  | 80        |  Tengine          | 4Core/8GB RAM/60G HDD | 4Core/16GB RAM/90G SSD |
-| MinIO         |  192.168.100.41  | 9000,9001 |  KoKo, Lion       | 2Core/4GB RAM/1T  HDD | 4Core/8GB  RAM/1T  SSD |
+| Server Name   |        IP        |  Port       |     Use          |   Minimize Hardware    |   Standard Hardware    |
+| ------------- | ---------------- | ----------- | ---------------- | ---------------------- | ---------------------- |
+| NFS           |  192.168.100.11  |             | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |
+| MySQL         |  192.168.100.11  | 3306        | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |  
+| Redis         |  192.168.100.11  | 6379        | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |
+| HAProxy       |  192.168.100.100 | 80,443,2222 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G SSD |
+| JumpServer 01 |  192.168.100.21  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
+| JumpServer 02 |  192.168.100.22  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
+| JumpServer 03 |  192.168.100.23  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
+| JumpServer 04 |  192.168.100.24  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
+| MinIO         |  192.168.100.41  | 9000,9001   | Core, KoKo, Lion | 2Core/4GB RAM/90G  HDD | 4Core/8GB  RAM/1T  SSD |
 
-| Server Name   | Check Health                  | Example                                  |
-| ------------- | ----------------------------- | ---------------------------------------- |
-| Core          | http://core:8080/api/health/  | https://demo.jumpserver.org/api/health/  |
-| KoKo          | http://koko:5000/koko/health/ | https://demo.jumpserver.org/koko/health/ |
-| Lion          | http://lion:8081/lion/health/ | https://demo.jumpserver.org/lion/health/ |
+| Server Name   | Check Health                   | Example                                   |
+| ------------- | ------------------------------ | ----------------------------------------- |
+| Core          | http://core:8080/api/health/   | https://demo.jumpserver.org/api/health/   |
+| KoKo          | http://koko:5000/koko/health/  | https://demo.jumpserver.org/koko/health/  |
+| Lion          | http://lion:8081/lion/health/  | https://demo.jumpserver.org/lion/health/  |
 
+
+## 部署 NFS 服务
+
+    服务器: 192.168.100.11
+
+!!! tip "安装依赖"
+    ```sh
+    yum -y install epel-release
+    ```
+
+!!! tip "安装 NFS"
+    ```sh
+    yum -y install nfs-utils rpcbind
+    ```
+
+!!! tip "启动 NFS"
+    ```sh
+    systemctl enable rpcbind nfs-server nfs-lock nfs-idmap
+    systemctl start rpcbind nfs-server nfs-lock nfs-idmap
+    ```
+
+!!! tip "配置防火墙"
+    ```sh
+    firewall-cmd --add-service=nfs --permanent --zone=public
+    firewall-cmd --add-service=mountd --permanent --zone=public
+    firewall-cmd --add-service=rpc-bind --permanent --zone=public
+    firewall-cmd --reload
+    ```
+
+!!! tip "配置 NFS"
+    ```sh
+    mkdir /data
+    chmod 777 -R /data
+
+    vi /etc/exports
+    ```
+    ```vim
+    # 设置 NFS 访问权限, /data 是刚才创建的将被共享的目录, 192.168.100.* 表示整个 192.168.100.* 的资产都有括号里面的权限
+    # 也可以写具体的授权对象 /data 192.168.100.30(rw,sync,no_root_squash) 192.168.100.31(rw,sync,no_root_squash)
+    /data 192.168.100.*(rw,sync,all_squash,anonuid=0,anongid=0)
+    ```
+    ```sh
+    exportfs -a
+    ```
 
 ## 部署 MySQL 服务
 
@@ -78,7 +124,7 @@
     mysql> set global validate_password_policy=LOW;
     Query OK, 0 rows affected (0.00 sec)
 
-    mysql> create user 'jumpserver'@'%' identified by 'weakPassword';
+    mysql> create user 'jumpserver'@'%' identified by 'KXOeyNgDeTdpeu9q';
     Query OK, 0 rows affected (0.00 sec)
 
     mysql> grant all on jumpserver.* to 'jumpserver'@'%';
@@ -105,13 +151,13 @@
     ```sh
     yum -y install epel-release wget make gcc-c++
     cd /opt
-    wget https://download.redis.io/releases/redis-6.2.4.tar.gz
+    wget https://download.redis.io/releases/redis-6.2.5.tar.gz
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    tar -xf redis-6.2.4.tar.gz
-    cd redis-6.2.4
+    tar -xf redis-6.2.5.tar.gz
+    cd redis-6.2.5
     make
     make install PREFIX=/usr/local/redis
     ```
@@ -121,8 +167,9 @@
     cp redis.conf /etc/redis.conf
     sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis.conf
     sed -i "s/daemonize no/daemonize yes/g" /etc/redis.conf
+    sed -i "s@pidfile /var/run/redis_6379.pid@pidfile /var/run/redis.pid@g" /etc/redis.conf
     sed -i "561i maxmemory-policy allkeys-lru" /etc/redis.conf
-    sed -i "481i requirepass weakPassword" /etc/redis.conf
+    sed -i "481i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
     vi /etc/systemd/system/redis.service
     ```
     ```vim
@@ -134,7 +181,7 @@
 
     [Service]
     Type=forking
-    PIDFile=/var/run/redis_6379.pid
+    PIDFile=/var/run/redis.pid
     ExecStart=/usr/local/redis/bin/redis-server /etc/redis.conf
     ExecReload=/bin/kill -s HUP $MAINPID
     ExecStop=/bin/kill -s QUIT $MAINPID
@@ -155,9 +202,27 @@
     firewall-cmd --reload
     ```
 
-## 部署 Core Web 01
+## 部署 JumpServer 01
 
     服务器: 192.168.100.21
+
+!!! tip "配置 NFS"
+    ```sh
+    yum -y install nfs-utils
+    showmount -e 192.168.100.11
+    ```
+    ```sh
+    # 将 Core 持久化目录挂载到 NFS, 默认 /opt/jumpserver/core/data, 请根据实际情况修改
+    # JumpServer 持久化目录定义相关参数为 VOLUME_DIR, 在安装 JumpServer 过程中会提示
+    mkdir /opt/jumpserver/core/data
+    mount -t nfs 192.168.100.11:/data /opt/jumpserver/core/data
+    ```
+
+!!! warning ""
+    ```sh
+    # 可以写入到 /etc/fstab, 重启自动挂载. 注意: 设置后如果 nfs 损坏或者无法连接该服务器将无法启动
+    echo "192.168.100.11:/data /opt/jumpserver/core/data nfs defaults 0 0" >> /etc/fstab
+    ```
 
 !!! tip "下载 jumpserver-install"
     ```sh
@@ -172,23 +237,39 @@
     ```sh
     vi config-example.txt
     ```
-    ```vim hl_lines="5 9-10 16"
-    # 修改下面选项, 其他保持默认
+    ```vim hl_lines="6 11-15 18-23 26-29 32"
+    # 修改下面选项, 其他保持默认, 请勿直接复制此处内容
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
 
-    ## Task 配置
-    USE_TASK=0                                                     # 不启动 jms_celery
+    # 安装配置
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    VOLUME_DIR=/opt/jumpserver
+    DOCKER_DIR=/var/lib/docker
 
     # Core 配置
-    ### 启动后不能再修改，否则密码等等信息无法解密
-    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW  # 要其他 JumpServer 服务器一致 (*)
-    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                               # 要其他 JumpServer 服务器一致 (*)
-    LOG_LEVEL=ERROR
-    # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+    ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
+    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW    # 要其他 JumpServer 服务器一致 (*)
+    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                                 # 要其他 JumpServer 服务器一致 (*)
+    LOG_LEVEL=ERROR                                                  # 日志等级
+    # SESSION_COOKIE_AGE=86400                
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=true                             # 关闭浏览器 session 过期
+
+    # MySQL 配置
+    USE_EXTERNAL_MYSQL=1                                             # 使用外置 MySQL
+    DB_HOST=192.168.100.11
+    DB_PORT=3306
+    DB_USER=jumpserve
+    DB_PASSWORD=KXOeyNgDeTdpeu9q
+    DB_NAME=jumpserver
+
+    # Redis 配置
+    USE_EXTERNAL_REDIS=1                                             # 使用外置 Redis
+    REDIS_HOST=192.168.100.11
+    REDIS_PORT=6379
+    REDIS_PASSWORD=KXOeyNgDeTdpeu9q
 
     # KoKo Lion 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
+    SHARE_ROOM_TYPE=redis                                            # KoKo Lion 使用 redis 共享
     ```
     ```sh
     ./jmsctl.sh install
@@ -260,14 +341,14 @@
     请输入 MySQL 的端口 (默认为3306): 3306
     请输入 MySQL 的数据库(事先做好授权) (默认为jumpserver): jumpserver
     请输入 MySQL 的用户名 (无默认值): jumpserver
-    请输入 MySQL 的密码 (无默认值): weakPassword
+    请输入 MySQL 的密码 (无默认值): KXOeyNgDeTdpeu9q
     完成
 
     5. 配置 Redis
     是否使用外部 Redis? (y/n)  (默认为 n): y
     请输入 Redis 的主机地址 (无默认值): 192.168.100.11
     请输入 Redis 的端口 (默认为6379): 6379
-    请输入 Redis 的密码 (无默认值): weakPassword
+    请输入 Redis 的密码 (无默认值): KXOeyNgDeTdpeu9q
     完成
 
     6. 配置对外端口
@@ -339,65 +420,34 @@
     ```nginx
     Creating network "jms_net" with driver "bridge"
     Creating jms_core      ... done
+    Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
-    ```    
+    ```
 
-## 部署 Core Web 02
+
+## 部署 JumpServer 02
 
     服务器: 192.168.100.22
 
-!!! tip "下载 jumpserver-install"
+!!! tip "配置 NFS"
     ```sh
-    cd /opt
-    yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
-    ```
-
-!!! tip "修改配置文件"
-    ```sh
-    vi config-example.txt
-    ```
-    ```vim hl_lines="5 9-10 16"
-    # 修改下面选项, 其他保持默认
-    ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
-
-    ## Task 配置
-    USE_TASK=0                                                     # 不启动 jms_celery
-
-    # Core 配置
-    ### 启动后不能再修改，否则密码等等信息无法解密
-    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW  # 要其他 JumpServer 服务器一致 (*)
-    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                               # 要其他 JumpServer 服务器一致 (*)
-    LOG_LEVEL=ERROR
-    # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
-
-    # KoKo Lion 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
+    yum -y install nfs-utils
+    showmount -e 192.168.100.11
     ```
     ```sh
-    ./jmsctl.sh install
+    # 将 Core 持久化目录挂载到 NFS, 默认 /opt/jumpserver/core/data, 请根据实际情况修改
+    # JumpServer 持久化目录定义相关参数为 VOLUME_DIR, 在安装 JumpServer 过程中会提示
+    mkdir /opt/jumpserver/core/data
+    mount -t nfs 192.168.100.11:/data /opt/jumpserver/core/data
     ```
 
-!!! tip "启动 JumpServer"
+!!! warning ""
     ```sh
-    ./jmsctl.sh start
+    # 可以写入到 /etc/fstab, 重启自动挂载. 注意: 设置后如果 nfs 损坏或者无法连接该服务器将无法启动
+    echo "192.168.100.11:/data /opt/jumpserver/core/data nfs defaults 0 0" >> /etc/fstab
     ```
-    ```nginx
-    Creating network "jms_net" with driver "bridge"
-    Creating jms_core      ... done
-    Creating jms_lion      ... done
-    Creating jms_koko      ... done
-    Creating jms_nginx     ... done
-    ```    
-
-## 部署 Core Task
-
-    服务器: 192.168.100.31
 
 !!! tip "下载 jumpserver-install"
     ```sh
@@ -412,23 +462,39 @@
     ```sh
     vi config-example.txt
     ```
-    ```vim hl_lines="5 9-10 16"
-    # 修改下面选项, 其他保持默认
+    ```vim hl_lines="6 11-15 18-23 26-29 32"
+    # 修改下面选项, 其他保持默认, 请勿直接复制此处内容
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
 
-    ## Task 配置
-    USE_TASK=1                                                     # 启动 jms_celery
+    # 安装配置
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    VOLUME_DIR=/opt/jumpserver
+    DOCKER_DIR=/var/lib/docker
 
     # Core 配置
-    ### 启动后不能再修改，否则密码等等信息无法解密
-    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW  # 要其他 JumpServer 服务器一致 (*)
-    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                               # 要其他 JumpServer 服务器一致 (*)
+    ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
+    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW
+    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true
 
+    # MySQL 配置
+    USE_EXTERNAL_MYSQL=1
+    DB_HOST=192.168.100.11
+    DB_PORT=3306
+    DB_USER=jumpserver
+    DB_PASSWORD=KXOeyNgDeTdpeu9q
+    DB_NAME=jumpserver
+
+    # Redis 配置
+    USE_EXTERNAL_REDIS=1
+    REDIS_HOST=192.168.100.11
+    REDIS_PORT=6379
+    REDIS_PASSWORD=KXOeyNgDeTdpeu9q
+
     # KoKo Lion 配置
-    SHARE_ROOM_TYPE=redis                                          # KoKo Lion 使用 redis 共享
+    SHARE_ROOM_TYPE=redis
     ```
     ```sh
     ./jmsctl.sh install
@@ -445,181 +511,296 @@
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_nginx     ... done
-    ```        
+    ```
 
-## 部署 Tengine 服务
+
+## 部署 JumpServer 03
+
+    服务器: 192.168.100.23
+
+!!! tip "配置 NFS"
+    ```sh
+    yum -y install nfs-utils
+    showmount -e 192.168.100.11
+    ```
+    ```sh
+    # 将 Core 持久化目录挂载到 NFS, 默认 /opt/jumpserver/core/data, 请根据实际情况修改
+    # JumpServer 持久化目录定义相关参数为 VOLUME_DIR, 在安装 JumpServer 过程中会提示
+    mkdir /opt/jumpserver/core/data
+    mount -t nfs 192.168.100.11:/data /opt/jumpserver/core/data
+    ```
+
+!!! warning ""
+    ```sh
+    # 可以写入到 /etc/fstab, 重启自动挂载. 注意: 设置后如果 nfs 损坏或者无法连接该服务器将无法启动
+    echo "192.168.100.11:/data /opt/jumpserver/core/data nfs defaults 0 0" >> /etc/fstab
+    ```
+
+!!! tip "下载 jumpserver-install"
+    ```sh
+    cd /opt
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
+    ```
+
+!!! tip "修改配置文件"
+    ```sh
+    vi config-example.txt
+    ```
+    ```vim hl_lines="6 11-15 18-23 26-29 32"
+    # 修改下面选项, 其他保持默认, 请勿直接复制此处内容
+    ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
+
+    # 安装配置
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    VOLUME_DIR=/opt/jumpserver
+    DOCKER_DIR=/var/lib/docker
+
+    # Core 配置
+    ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
+    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW
+    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
+    LOG_LEVEL=ERROR
+    # SESSION_COOKIE_AGE=86400
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+
+    # MySQL 配置
+    USE_EXTERNAL_MYSQL=1
+    DB_HOST=192.168.100.11
+    DB_PORT=3306
+    DB_USER=jumpserver
+    DB_PASSWORD=KXOeyNgDeTdpeu9q
+    DB_NAME=jumpserver
+
+    # Redis 配置
+    USE_EXTERNAL_REDIS=1
+    REDIS_HOST=192.168.100.11
+    REDIS_PORT=6379
+    REDIS_PASSWORD=KXOeyNgDeTdpeu9q
+
+    # KoKo Lion 配置
+    SHARE_ROOM_TYPE=redis
+    ```
+    ```sh
+    ./jmsctl.sh install
+    ```
+
+!!! tip "启动 JumpServer"
+    ```sh
+    ./jmsctl.sh start
+    ```
+    ```nginx
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_core      ... done
+    Creating jms_lion      ... done
+    Creating jms_koko      ... done
+    Creating jms_celery    ... done
+    Creating jms_nginx     ... done
+    ```
+
+
+## 部署 JumpServer 04
+
+    服务器: 192.168.100.24
+
+!!! tip "配置 NFS"
+    ```sh
+    yum -y install nfs-utils
+    showmount -e 192.168.100.11
+    ```
+    ```sh
+    # 将 Core 持久化目录挂载到 NFS, 默认 /opt/jumpserver/core/data, 请根据实际情况修改
+    # JumpServer 持久化目录定义相关参数为 VOLUME_DIR, 在安装 JumpServer 过程中会提示
+    mkdir /opt/jumpserver/core/data
+    mount -t nfs 192.168.100.11:/data /opt/jumpserver/core/data
+    ```
+
+!!! warning ""
+    ```sh
+    # 可以写入到 /etc/fstab, 重启自动挂载. 注意: 设置后如果 nfs 损坏或者无法连接该服务器将无法启动
+    echo "192.168.100.11:/data /opt/jumpserver/core/data nfs defaults 0 0" >> /etc/fstab
+    ```
+
+!!! tip "下载 jumpserver-install"
+    ```sh
+    cd /opt
+    yum -y install wget
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.version }}
+    ```
+
+!!! tip "修改配置文件"
+    ```sh
+    vi config-example.txt
+    ```
+    ```vim hl_lines="6 11-15 18-23 26-29 32"
+    # 修改下面选项, 其他保持默认, 请勿直接复制此处内容
+    ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
+
+    # 安装配置
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    VOLUME_DIR=/opt/jumpserver
+    DOCKER_DIR=/var/lib/docker
+
+    # Core 配置
+    ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
+    SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW
+    BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
+    LOG_LEVEL=ERROR
+    # SESSION_COOKIE_AGE=86400
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+
+    # MySQL 配置
+    USE_EXTERNAL_MYSQL=1
+    DB_HOST=192.168.100.11
+    DB_PORT=3306
+    DB_USER=jumpserver
+    DB_PASSWORD=KXOeyNgDeTdpeu9q
+    DB_NAME=jumpserver
+
+    # Redis 配置
+    USE_EXTERNAL_REDIS=1
+    REDIS_HOST=192.168.100.11
+    REDIS_PORT=6379
+    REDIS_PASSWORD=KXOeyNgDeTdpeu9q
+
+    # KoKo Lion 配置
+    SHARE_ROOM_TYPE=redis
+    ```
+    ```sh
+    ./jmsctl.sh install
+    ```
+
+!!! tip "启动 JumpServer"
+    ```sh
+    ./jmsctl.sh start
+    ```
+    ```nginx
+    Creating network "jms_net" with driver "bridge"
+    Creating jms_core      ... done
+    Creating jms_celery    ... done
+    Creating jms_lion      ... done
+    Creating jms_koko      ... done
+    Creating jms_nginx     ... done
+    ```
+
+
+## 部署 HAProxy 服务
 
     服务器: 192.168.100.100
 
-!!! tip "配置 Repo"
+!!! tip "安装依赖"
     ```sh
-    vi /etc/yum.repos.d/nginx.repo
-    ```
-    ```vim
-    [nginx-stable]
-    name=nginx stable repo
-    baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
-    gpgcheck=1
-    enabled=1
-    gpgkey=https://nginx.org/keys/nginx_signing.key
-    module_hotfixes=true
+    yum -y install epel-release
     ```
 
-!!! tip "安装 Tengine"
+!!! tip "安装 HAProxy"
     ```sh
-    yum install -y policycoreutils-python https://github.com/wojiushixiaobai/tengine-rpm/releases/download/2.3.3/tengine-2.3.3-2.el7.ngx.x86_64.rpm
+    yum install -y haproxy
     ```
 
-!!! tip "配置 Nginx"
+!!! tip "配置 HAProxy"
     ```sh
-    vi /etc/nginx/nginx.conf
+    vi /etc/haproxy/haproxy.cfg
     ```
     ```nginx
-    user  nginx;
-    worker_processes  auto;
+    global
+        # to have these messages end up in /var/log/haproxy.log you will
+        # need to:
+        #
+        # 1) configure syslog to accept network log events.  This is done
+        #    by adding the '-r' option to the SYSLOGD_OPTIONS in
+        #    /etc/sysconfig/syslog
+        #
+        # 2) configure local2 events to go to the /var/log/haproxy.log
+        #   file. A line like the following can be added to
+        #   /etc/sysconfig/syslog
+        #
+        #    local2.*                       /var/log/haproxy.log
+        #
+        log         127.0.0.1 local2
 
-    error_log  /var/log/nginx/error.log warn;
-    pid        /var/run/nginx.pid;
+        chroot      /var/lib/haproxy
+        pidfile     /var/run/haproxy.pid
+        maxconn     4000
+        user        haproxy
+        group       haproxy
+        daemon
 
+        # turn on stats unix socket
+        stats socket /var/lib/haproxy/stats
 
-    events {
-        worker_connections  1024;
-    }
+    #---------------------------------------------------------------------
+    # common defaults that all the 'listen' and 'backend' sections will
+    # use if not designated in their block
+    #---------------------------------------------------------------------
+    defaults
+        mode                    http
+        log                     global
+        option                  dontlognull
+        option                  redispatch
+        retries                 3
+        timeout http-request    10s
+        timeout queue           1m
+        timeout connect         10s
+        timeout client          1m
+        timeout server          1m
+        timeout http-keep-alive 10s
+        timeout check           10s
+        maxconn                 3000
 
-    stream {
-        log_format  proxy  '$remote_addr [$time_local] '
-                           '$protocol $status $bytes_sent $bytes_received '
-                           '$session_time "$upstream_addr" '
-                           '"$upstream_bytes_sent" "$upstream_bytes_received" "$upstream_connect_time"';
+    listen stats
+        bind *:8080
+        stats enable
+        stats uri /haproxy                 # 监控页面, 请自行修改. 访问地址为 http://192.168.100.100:8080/haproxy
+        stats refresh 5s
+        stats realm haproxy-status
+        stats auth admin:KXOeyNgDeTdpeu9q  # 账户密码, 请自行修改. 访问 http://192.168.100.100:8080/haproxy 会要求输入
 
-        access_log /var/log/nginx/tcp-access.log  proxy;
-        open_log_file_cache off;
+    listen jms-web
+        bind *:80                          # 监听 80 端口
 
-        upstream kokossh {
-            # core web 节点
-            server 192.168.100.21:2222;
-            server 192.168.100.22:2222;
-            least_conn;
-        }
+        # redirect scheme https if !{ ssl_fc }  # 重定向到 https
+        # bind *:443 ssl crt /opt/ssl.pem       # https 设置
 
-        server {
-            # 对外 ssh 端口
-            listen 2222;
-            proxy_pass kokossh;
-            proxy_protocol on;
-            proxy_connect_timeout 1s;
-        }
-    }
+        option httplog
+        option httpclose
+        option forwardfor
+        option httpchk GET /api/health/         # JumpServer 检活接口
 
-    http {
-        include       /etc/nginx/mime.types;
-        default_type  application/octet-stream;
+        cookie SERVERID insert indirect
+        hash-type consistent
+        fullconn 500
+        balance leastconn
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5  # JumpServer 服务器
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
 
-        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                          '$status $body_bytes_sent "$http_referer" '
-                          '"$http_user_agent" "$http_x_forwarded_for"';
+    listen jms-ssh
+        bind *:2222
+        mode tcp
 
-        access_log  /var/log/nginx/access.log  main;
+        option tcp-check
 
-        sendfile        on;
-        #tcp_nopush     on;
-
-        keepalive_timeout  65;
-
-        #gzip  on;
-
-        include /etc/nginx/conf.d/*.conf;
-    }
-    ```
-    ```sh
-    echo > /etc/nginx/conf.d/default.conf
-    vi /etc/nginx/conf.d/jumpserver.conf
-    ```
-    ```nginx
-    upstream core_web {
-        # 用户连接时使用 ip_hash 负载
-        server 192.168.100.21:80;
-        server 192.168.100.22:80;
-        session_sticky;
-    }
-
-    upstream core_task {
-        # use_task = 1 的任务服务器, 多节点请用 NFS 共享持久化 jumpserver/core/data 目录
-        server 192.168.100.31:80;
-    }
-
-    server {
-        listen 80;
-        server_name demo.jumpserver.org;  # 自行修改成你的域名
-        return 301 https://$server_name$request_uri;
-    }
-
-    server {
-        listen 443 ssl;
-        server_name          demo.jumpserver.org;  # 自行修改成你的域名
-        ssl_certificate      /etc/nginx/sslkey/1_jumpserver.org.crt;  # 自行设置证书
-        ssl_certificate_key  /etc/nginx/sslkey/2_jumpserver.org.key;  # 自行设置证书
-        ssl_session_timeout  5m;
-        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-        ssl_prefer_server_ciphers on;
-
-        client_max_body_size 4096m;  # 录像上传大小限制
-
-        location ~ /replay/ {
-            proxy_pass http://core_web;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location ~ /(ops|task|tasks|flower)/ {
-            proxy_pass http://core_task;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location /ws/ {
-            proxy_pass http://core_task/ws/;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-
-        location / {
-            proxy_pass http://core_web;
-            proxy_buffering  off;
-            proxy_request_buffering off;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        }
-    }
-    ```
-    ```sh
-    nginx -t
+        fullconn 500
+        balance leastconn
+        server 192.168.100.21 192.168.100.21:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
+        server 192.168.100.22 192.168.100.22:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
+        server 192.168.100.23 192.168.100.23:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
     ```
 
 !!! tip "配置 Selinux"
     ```sh
-    setsebool -P httpd_can_network_connect 1
-    semanage port -a -t http_port_t -p tcp 2222
+    setsebool -P haproxy_connect_any 1
     ```
 
-!!! tip "启动 Tengine"
+!!! tip "启动 HAProxy"
     ```sh
-    systemctl enable nginx
-    systemctl start nginx
+    systemctl enable haproxy
+    systemctl start haproxy
     ```
 
 !!! tip "配置防火墙"
