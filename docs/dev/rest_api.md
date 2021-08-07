@@ -59,7 +59,10 @@
 
             def get_user_info(jms_url, token):
                 url = jms_url + '/api/v1/users/users/'
-                headers = { "Authorization": 'Bearer ' + token }
+                headers = {
+                    "Authorization": 'Bearer ' + token,
+                    'X-JMS-ORG': '00000000-0000-0000-0000-000000000002'
+                }
                 response = requests.get(url, headers=headers)
                 print(json.loads(response.text))
 
@@ -113,6 +116,7 @@
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Bearer "+token)
+                req.Header.Add("X-JMS-ORG", "00000000-0000-0000-0000-000000000002")
                 resp, err := client.Do(req)
                 if err != nil {
                     log.Fatal(err)
@@ -163,7 +167,10 @@
 
             def get_user_info(jms_url, token):
                 url = jms_url + '/api/v1/users/users/'
-                headers = { "Authorization": 'Token ' + token }
+                headers = {
+                    "Authorization": 'Token ' + token,
+                    'X-JMS-ORG': '00000000-0000-0000-0000-000000000002'
+                }
                 response = requests.get(url, headers=headers)
                 print(json.loads(response.text))
 
@@ -192,6 +199,7 @@
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Token "+token)
+                req.Header.Add("X-JMS-ORG", "00000000-0000-0000-0000-000000000002")
                 resp, err := client.Do(req)
                 if err != nil {
                     log.Fatal(err)
@@ -230,6 +238,7 @@
                 gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
                 headers = {
                     'Accept': 'application/json',
+                    'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
                     'Date': datetime.datetime.utcnow().strftime(gmt_form)
                 }
 
@@ -279,6 +288,7 @@
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Date", time.Now().Format(gmt_fmt))
                 req.Header.Add("Accept", "application/json")
+                req.Header.Add("X-JMS-ORG", "00000000-0000-0000-0000-000000000002")
                 if err != nil {
                     log.Fatal(err)
                 }
@@ -338,7 +348,8 @@
         def get(cls, url, params=None, **kwargs):
             url               = cls.server + url
             headers           = {
-                'Authorization': "Bearer {}".format(cls.token)
+                'Authorization': "Bearer {}".format(cls.token),
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002'
             }
             kwargs['headers'] = headers
             res               = requests.get(url, params, **kwargs)
@@ -348,7 +359,8 @@
         def post(cls, url, data=None, json=None, **kwargs):
             url               = cls.server + url
             headers           = {
-                'Authorization': "Bearer {}".format(cls.token)
+                'Authorization': "Bearer {}".format(cls.token),
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002'
             }
             kwargs['headers'] = headers
             res               = requests.post(url, data, json, **kwargs)
