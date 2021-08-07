@@ -5,6 +5,7 @@
     - 按照此方式部署后, 后续只需要根据需要扩容 JumpServer 节点然后添加节点到 HAProxy 即可
     - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署, 第三方 LB 要注意 session 和 websocket 问题
     - 如果已经有 云存储(* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署, MySQL Redis 也一样
+    - [Redis 高可用快速部署可以参考此项目](https://github.com/wojiushixiaobai/redis-sentinel)
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
