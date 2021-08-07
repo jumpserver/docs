@@ -2,7 +2,6 @@
 /*! CSS Used from: https://metersphere.io/css/bootstrap.min.css */
 *,::after,::before{box-sizing:border-box;}
 h4,h5{margin-top:0;margin-bottom:.5rem;}
-p{margin-top:0;margin-bottom:1rem;}
 img{vertical-align:middle;border-style:none;}
 svg{overflow:hidden;vertical-align:middle;}
 button{border-radius:0;}
@@ -142,7 +141,6 @@ h4,h5{font-family:"Nunito", sans-serif;line-height:1.5;font-weight:600;}
 ::-moz-selection{background:rgba(47, 85, 212, 0.9);color:#ffffff;}
 ::selection{background:rgba(47, 85, 212, 0.9);color:#ffffff;}
 a{text-decoration:none!important;}
-p{line-height:1.6;}
 @media (max-width: 991px){
 #topnav .container{width:auto;}
 }
