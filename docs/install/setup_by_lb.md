@@ -739,7 +739,6 @@
     # use if not designated in their block
     #---------------------------------------------------------------------
     defaults
-        mode                    http
         log                     global
         option                  dontlognull
         option                  redispatch
@@ -755,14 +754,16 @@
 
     listen stats
         bind *:8080
+        mode http
         stats enable
-        stats uri /haproxy                 # 监控页面, 请自行修改. 访问地址为 http://192.168.100.100:8080/haproxy
+        stats uri /haproxy                      # 监控页面, 请自行修改. 访问地址为 http://192.168.100.100:8080/haproxy
         stats refresh 5s
         stats realm haproxy-status
-        stats auth admin:KXOeyNgDeTdpeu9q  # 账户密码, 请自行修改. 访问 http://192.168.100.100:8080/haproxy 会要求输入
+        stats auth admin:KXOeyNgDeTdpeu9q       # 账户密码, 请自行修改. 访问 http://192.168.100.100:8080/haproxy 会要求输入
 
     listen jms-web
-        bind *:80                          # 监听 80 端口
+        bind *:80                               # 监听 80 端口
+        mode http
 
         # redirect scheme https if !{ ssl_fc }  # 重定向到 https
         # bind *:443 ssl crt /opt/ssl.pem       # https 设置
@@ -770,7 +771,7 @@
         option httplog
         option httpclose
         option forwardfor
-        option httpchk GET /api/health/         # JumpServer 检活接口
+        option httpchk GET /api/health/         # Core 检活接口
 
         cookie SERVERID insert indirect
         hash-type consistent
@@ -779,11 +780,13 @@
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5  # JumpServer 服务器
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.23 192.168.100.24:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
 
     listen jms-ssh
         bind *:2222
         mode tcp
 
+        option tcplog
         option tcp-check
 
         fullconn 500
@@ -791,6 +794,41 @@
         server 192.168.100.21 192.168.100.21:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
         server 192.168.100.22 192.168.100.22:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
         server 192.168.100.23 192.168.100.23:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
+        server 192.168.100.24 192.168.100.23:2222 weight 1 check port 2222 inter 2000 rise 2 fall 5 send-proxy
+
+    listen jms-koko
+        mode http
+
+        option httplog
+        option httpclose
+        option forwardfor
+        option httpchk GET /koko/health/ HTTP/1.1\r\nHost:\ 192.168.100.100  # KoKo 检活接口, host 填写 HAProxy 的 ip 地址
+
+        cookie SERVERID insert indirect
+        hash-type consistent
+        fullconn 500
+        balance leastconn
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+
+    listen jms-lion
+        mode http
+
+        option httplog
+        option httpclose
+        option forwardfor
+        option httpchk GET /lion/health/ HTTP/1.1\r\nHost:\ 192.168.100.100  # Lion 检活接口, host 填写 HAProxy 的 ip 地址
+
+        cookie SERVERID insert indirect
+        hash-type consistent
+        fullconn 500
+        balance leastconn
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
     ```
 
 !!! tip "配置 Selinux"
