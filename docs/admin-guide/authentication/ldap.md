@@ -41,7 +41,7 @@
     `LADP属性映射` username name email 这三项不可修改删除  
     `{"username": "uid", "name": "sn", "email": "mail"}` 或 `{"username": "sAMAccountName", "name": "cn", "email": "mail"}`
 
-    注意: 用户过滤器用什么筛选，LDAP属性映射字段要与其一致，过滤器用 uid，LDAP属性映射也要用 uid
+    注意：用户过滤器用什么筛选，LDAP属性映射字段要与其一致，过滤器用 uid，LDAP属性映射也要用 uid
 
 
 !!! tip "LDAP 的部分功能在 jumpserver/config/config.txt 进行设置"

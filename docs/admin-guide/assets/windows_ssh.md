@@ -1,7 +1,7 @@
 # Windows SSH 资产要求
 
 !!! info "Windows 资产测试连接，获取硬件，自动推送需要进行相关设置"
-    注意: 按照下面的文档部署好 openssh 后，在 web 的资产列表里面找到你的 windows 资产，在协议组里面加入 rdp 3389，再添加一个 ssh 22，然后就可以使用 测试连接，获取硬件，自动推送 功能了
+    注意：按照下面的文档部署好 openssh 后，在 web 的资产列表里面找到你的 windows 资产，在协议组里面加入 rdp 3389，再添加一个 ssh 22，然后就可以使用 测试连接，获取硬件，自动推送 功能了
 
 !!! tip "Win7/Win2008 需要升级 `powershell` 到 3.0 以上，详情请参考 [ansible 客户端需求](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html)"
 
