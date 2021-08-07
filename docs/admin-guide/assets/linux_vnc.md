@@ -19,7 +19,7 @@
     A view-only password is not used
     ```
 
-    !!! info "安装提示设置密码, 这个密码填在 `JumpServer` `系统用户` 上, `用户名` 为空不需要填写"
+    !!! info "安装提示设置密码，这个密码填在 `JumpServer` `系统用户` 上，`用户名` 为空不需要填写"
 
     ```sh
     firewall-cmd --permanent --add-service vnc-server
@@ -29,4 +29,4 @@
     vncserver :1
     ```
 
-    !!! info "`:1` 为 `5901` 端口, 同理 `:2` 为 `5902`"
+    !!! info "`:1` 为 `5901` 端口，同理 `:2` 为 `5902`"

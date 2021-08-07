@@ -29,19 +29,19 @@
     | 启动LDAP认证 | ☑️                                                 |
 
 !!! tip "选项说明"
-    `DN` 一定要是完整的DN, 不能跳过OU, 可以使用其他工具查询  
+    `DN` 一定要是完整的DN，不能跳过OU，可以使用其他工具查询  
     `cn=admin,ou=aaa,dc=jumpserver,dc=org` 或者用 `user@domain.com` 形式
 
-    `用户OU` 用户OU可以只写顶层OU, 不写子OU  
-    `ou=aaa,ou=bbb,ou=ccc,dc=jumpserver,dc=org`, 可以只写 `ou=ccc,dc=jumpserver,dc=org`
+    `用户OU` 用户OU可以只写顶层OU，不写子OU  
+    `ou=aaa,ou=bbb,ou=ccc,dc=jumpserver,dc=org`，可以只写 `ou=ccc,dc=jumpserver,dc=org`
 
-    `用户过滤器` 根据规则到 `用户OU` 里面去检索用户, 支持 memberof  
+    `用户过滤器` 根据规则到 `用户OU` 里面去检索用户，支持 memberof  
     `(uid=%(user)s)` 或 `(sAMAccountName=%(user)s)`
 
     `LADP属性映射` username name email 这三项不可修改删除  
     `{"username": "uid", "name": "sn", "email": "mail"}` 或 `{"username": "sAMAccountName", "name": "cn", "email": "mail"}`
 
-    注意: 用户过滤器用什么筛选, LDAP属性映射字段要与其一致, 过滤器用 uid, LDAP属性映射也要用 uid
+    注意: 用户过滤器用什么筛选，LDAP属性映射字段要与其一致，过滤器用 uid，LDAP属性映射也要用 uid
 
 
 !!! tip "LDAP 的部分功能在 jumpserver/config/config.txt 进行设置"

@@ -8,7 +8,7 @@
     ```vim
     AUTH_SSO=true
     ```
-    修改完成后保存, 重启 jumpserver 即可
+    修改完成后保存，重启 jumpserver 即可
 
 !!! info "使用方法"
     通过 api 获取 token
@@ -44,5 +44,5 @@
     }
     # 直接访问这个链接即可使用 admin 用户的身份免密登陆 luna 页面  
     # 用户和要登陆页面设置: {"username": "admin", "next": "/luna/"}  
-    # 这里的 admin 是 JumpServer 用户列表里面的用户 username, 可以改成其他的用户
+    # 这里的 admin 是 JumpServer 用户列表里面的用户 username，可以改成其他的用户
     ```

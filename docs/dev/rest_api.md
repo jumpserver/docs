@@ -1,6 +1,6 @@
 # API 文档
 
-!!! info "API 文档默认已经集成在代码里面, 部署完成后可以通过下面的方式进行访问"
+!!! info "API 文档默认已经集成在代码里面，部署完成后可以通过下面的方式进行访问"
 
 ## API 访问
 
@@ -34,7 +34,7 @@
     ```
 
     === "Session"
-        用户通过页面后登录，cookie 中会存在 sessionid, 请求时同样把 sessionid 放到 cookie 中
+        用户通过页面后登录，cookie 中会存在 sessionid，请求时同样把 sessionid 放到 cookie 中
 
     === "Token"
         ```sh
@@ -146,7 +146,7 @@
         u = User.objects.get(username='admin')
         u.create_private_token()
         ```
-        已经存在 private_token, 可以直接获取即可
+        已经存在 private_token，可以直接获取即可
         ```python
         u.private_token
         ```
@@ -243,7 +243,7 @@
                 auth = get_auth(KeyID, SecretID)
                 get_user_info(jms_url, auth)
             ```
-        
+
         === "Golang"
             ```go
             // Golang 示例

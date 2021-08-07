@@ -8,7 +8,7 @@
 JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [nginx][nginx] 整合。
 
 ## Core
-[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来, 内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
+[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 
 ### 环境要求
 
@@ -227,7 +227,7 @@ REDIS_PASSWORD: ********
 
 ## Lina
 
-[Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue], [Element UI][element_ui] 完成。
+[Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue]，[Element UI][element_ui] 完成。
 
 ### 环境要求
 
@@ -304,7 +304,7 @@ yarn build:prod
 
 ## Luna
 
-[Luna][luna] 是 JumpServer 的前端 UI 项目, 主要使用 [Angular CLI][angular_cli] 完成。
+[Luna][luna] 是 JumpServer 的前端 UI 项目，主要使用 [Angular CLI][angular_cli] 完成。
 
 ### 环境要求
 
@@ -502,7 +502,7 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 ### 启动 KoKo
 
-后台运行可以加 -d, `./koko -d`
+后台运行可以加 -d，`./koko -d`
 
 ```bash
 ./koko
@@ -528,7 +528,7 @@ tar -xzf guacamole-server-1.3.0.tar.gz
 cd guacamole-server-1.3.0/
 ```
 
-参考 [building-guacamole-server][building-guacamole-server] 官方文档, 安装对应操作系统的依赖包。
+参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
 
 ### 构建 Guacd
 
@@ -583,7 +583,7 @@ HTTPD_PORT: 8081
 # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
 LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
 
-# Guacamole Server ip， 默认127.0.0.1
+# Guacamole Server ip，默认127.0.0.1
 # GUA_HOST: 127.0.0.1
 
 # Guacamole Server 端口号，默认4822

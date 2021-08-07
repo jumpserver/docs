@@ -20,7 +20,7 @@
 - [安装演示视频](https://www.bilibili.com/video/bv19a4y1i7i9)
 
 !!! info "外置环境要求"
-    - 推荐使用外置 数据库 和 Redis, 方便日后扩展升级
+    - 推荐使用外置 数据库 和 Redis，方便日后扩展升级
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |

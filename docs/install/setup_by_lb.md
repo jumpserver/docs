@@ -1,10 +1,10 @@
 # 负载均衡
 
 !!! info "环境说明"
-    - 除 JumpServer 自身组件外, 其他组件的高可用请参考对应的官方文档进行部署
-    - 按照此方式部署后, 后续只需要根据需要扩容 JumpServer 节点然后添加节点到 HAProxy 即可
-    - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署, 第三方 LB 要注意 session 和 websocket 问题
-    - 如果已经有 云存储(* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署, MySQL Redis 也一样
+    - 除 JumpServer 自身组件外，其他组件的高可用请参考对应的官方文档进行部署
+    - 按照此方式部署后，后续只需要根据需要扩容 JumpServer 节点然后添加节点到 HAProxy 即可
+    - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署，第三方 LB 要注意 session 和 websocket 问题
+    - 如果已经有 云存储 (* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署，MySQL Redis 也一样
     - [Redis 高可用快速部署可以参考此项目](https://github.com/wojiushixiaobai/redis-sentinel)
 
 | DB      | Version |    | Cache | Version |
@@ -870,7 +870,7 @@
 
 !!! tip "启动 MinIO"
     ```vim
-    ## 请自行修改账号密码并牢记, 丢失后可以删掉容器后重新用新密码创建, 数据不会丢失
+    ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
     # 9000                                  # api     访问端口
     # 9001                                  # console 访问端口
     # MINIO_ROOT_USER=minio                 # minio 账号
@@ -881,13 +881,13 @@
     ```
 
 !!! tip "设置 MinIO"
-    - 访问 http://192.168.100.41:9000, 输入刚才设置的 MinIO 账号密码登录
-    - 点击左侧菜单的 Buckets, 选择 Create Bucket 创建桶, Bucket Name 输入 jumpserver, 然后点击 Save 保存
+    - 访问 http://192.168.100.41:9000，输入刚才设置的 MinIO 账号密码登录
+    - 点击左侧菜单的 Buckets，选择 Create Bucket 创建桶，Bucket Name 输入 jumpserver，然后点击 Save 保存
 
 !!! tip "设置 JumpServer"
     - 访问 JumpServer Web 页面并使用管理员账号进行登录
-    - 点击左侧菜单栏的 [终端管理], 在页面的上方选择 [存储配置], 在 [录像存储] 下方选择 [创建] 选择 [Ceph]
-    - 根据下方的说明进行填写, 保存后在 [终端管理] 页面对所有组件进行 [更新], 录像存储选择 [jms-mino], 提交
+    - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [录像存储] 下方选择 [创建] 选择 [Ceph]
+    - 根据下方的说明进行填写，保存后在 [终端管理] 页面对所有组件进行 [更新]，录像存储选择 [jms-mino]，提交
 
 | 选项            | 参考值                      | 说明                |
 | :-------------  | :------------------------- | :------------------ |

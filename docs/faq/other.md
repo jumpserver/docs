@@ -100,9 +100,9 @@ cat logs/jumpserver.log
 
 ### 3. Web 登录失败
 
-!!! question "忘记密码, 密码过期"
-    如果忘了密码或者密码过期, 可以点击找回密码通过邮件找回  
-    如果无法通过邮件找回, 可以通过控制台重置
+!!! question "忘记密码，密码过期"
+    如果忘了密码或者密码过期，可以点击找回密码通过邮件找回  
+    如果无法通过邮件找回，可以通过控制台重置
 
 ```sh
 docker exec -it jms_core /bin/bash
@@ -116,10 +116,10 @@ u.reset_password('password')
 u.save()
 ```
 
-!!! tip "admin 为你要修改的账户名称, password 为你要修改的密码"
+!!! tip "admin 为你要修改的账户名称，password 为你要修改的密码"
 
 !!! question "登录频繁账号被锁定"
-    找管理员重置, 管理员可以在对应用户的个人页面重置  
+    找管理员重置，管理员可以在对应用户的个人页面重置  
     或者通过下面的 shell 解决
 
 ```bash
@@ -141,7 +141,7 @@ cd /opt/jumpserver/apps
 python manage.py createsuperuser --username=user --email=user@domain.com
 ```
 
-!!! question "如果是设置了 LDAP 后无法登录, 请登录数据库禁用 ldap 登录, 然后重新设置 LDAP"
+!!! question "如果是设置了 LDAP 后无法登录，请登录数据库禁用 ldap 登录，然后重新设置 LDAP"
 
 ```sh
 mysql -uroot -p
@@ -159,7 +159,7 @@ keys *LDAP*
 del :1:_SETTING_AUTH_LDAP
 ```
 
-!!! question "如果是设置 其他身份认证 后无法登录, 注释掉 jumpserver/config/config.txt 里面的身份认证设置重启即可"
+!!! question "如果是设置 其他身份认证 后无法登录，注释掉 jumpserver/config/config.txt 里面的身份认证设置重启即可"
 
 ### 4. 管理用户 和 系统用户
 
@@ -167,11 +167,11 @@ del :1:_SETTING_AUTH_LDAP
     一般都是管理用户账户密码不正确
 
 !!! question "资产测试可连接性、更新硬件信息 报 /usr/bin/python: not found"
-    在一般是资产 python 未安装或者 python 异常, 一般出现在 ubuntu 资产上
+    在一般是资产 python 未安装或者 python 异常，一般出现在 ubuntu 资产上
 
 !!! question "系统用户测试资产可连接性错误"
-    确定系统用户是否正确, 如果系统用户使用了自动推送, 确保管理用户正确  
-    系统用户设置为 root 的情况下, 请关闭自动推送, 并输入正确的 root 密码
+    确定系统用户是否正确，如果系统用户使用了自动推送，确保管理用户正确  
+    系统用户设置为 root 的情况下，请关闭自动推送，并输入正确的 root 密码
 
 !!! question "提示 timeout"
 
@@ -189,4 +189,4 @@ docker restart jms_koko
 ```
 
 !!! question "Connect websocket server error"
-    一般情况下 nginx 未配置 websocket 导致, 根据反向代理文档进行修改后重启 nginx 即可
+    一般情况下 nginx 未配置 websocket 导致，根据反向代理文档进行修改后重启 nginx 即可
