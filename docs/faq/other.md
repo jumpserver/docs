@@ -1,5 +1,205 @@
 # 常见问题
 
+## 查询日志方法
+
+!!! tip "JumpServer 各组件查询日志方法"
+    - 默认日志已经挂载到了持久化目录里面，也可以直接到持久化目录里面进行查看
+    ```sh
+    # 默认持久化目录 /opt/jumpserver
+    ls -al /opt/jumpserver/core/logs
+    ls -al /opt/jumpserver/koko/data/logs
+    ls -al /opt/jumpserver/lion/data/logs
+    ls -al /opt/jumpserver/nginx/log
+    ```
+
+    === "Core"
+        ```sh
+        docker exec -it jms_core bash
+        cd /opt/jumpserver/logs
+        ls -al
+        ```
+        ```nginx
+        total 25160
+        drwxr-xr-x 9 root root     4096 8月   7 23:59 .
+        drwxr-xr-x 1 root root     4096 7月  21 17:09 ..
+        drwxr-xr-x 2 root root     4096 8月   7 23:59 2021-08-07  # 历史日志, 按天切割
+        -rw-r--r-- 1 root root    22738 8月   8 12:54 beat.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 celery_ansible.log
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_check_asset_perm_expired.log
+        -rw-r--r-- 1 root root    50921 8月   8 12:53 celery_default.log
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_heavy_tasks.log
+        -rw-r--r-- 1 root root        1 8月   7 19:51 celery.log
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_node_tree.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 daphne.log
+        -rw-r--r-- 1 root root 16679320 8月   8 09:34 drf_exception.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 flower.log
+        -rw-r--r-- 1 root root   834058 8月   8 12:57 gunicorn.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 jms.log
+        -rw-r--r-- 1 root root  4964863 8月   6 22:56 jumpserver.log  # core 日志主要看这个
+        -rw-r--r-- 1 root root  3129115 8月   6 22:50 unexpected_exception.log
+        ```
+        ```bash
+        tail -f jumpserver.log -n 200
+        # 如果无异常也可以查看其他的 log 是否有异常, 注意 log 的时间
+        ```
+        ```nginx hl_lines="2-14"
+        # 在发日志给其他人员协助排错时，注意需要完整的日志，参考此处：
+        2021-08-07 22:55:20 [ERROR]              <---- 注意开始时间一定要有
+        Traceback (most recent call last):
+          File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 497, in dispatch
+            self.initial(request, *args, **kwargs)
+          File "/opt/jumpserver/apps/assets/api/node.py", line 115, in initial
+            return super().initial(request, *args, **kwargs)
+          File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 415, in initial
+            self.check_permissions(request)
+          File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 333, in check_permissions
+            self.permission_denied(
+          File "/usr/local/lib/python3.8/site-packages/rest_framework/views.py", line 175, in permission_denied
+            raise exceptions.PermissionDenied(detail=message, code=code)
+        rest_framework.exceptions.PermissionDenied: 您没有执行该操作的权限。     <---- 有些用户会只发这一条，这是错误的
+        2021-08-08 09:34:30 [ERROR]              <---- 到下一个时间这中间的所有报错都要完整的发送
+        # 给其他人发送诊断日志时，请遵循此规则，如果是同一时间段内出现的多个报错，请根据时间点完整发送。
+        # 如果是重复的日志，请先自行去重。
+        ```
+
+    === "Celery"
+        ```sh
+        docker exec -it jms_celery bash
+        cd /opt/jumpserver/logs
+        ls -al
+        ```
+        ```nginx
+        total 25160
+        drwxr-xr-x 9 root root     4096 8月   7 23:59 .
+        drwxr-xr-x 1 root root     4096 7月  21 17:09 ..
+        drwxr-xr-x 2 root root     4096 8月   7 23:59 2021-08-07
+        -rw-r--r-- 1 root root    22738 8月   8 12:54 beat.log                                # 这个也是
+        -rw-r--r-- 1 root root        0 8月   7 23:59 celery_ansible.log                      # celery 日志看 celery_ 开头的
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_check_asset_perm_expired.log
+        -rw-r--r-- 1 root root    50921 8月   8 12:53 celery_default.log
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_heavy_tasks.log
+        -rw-r--r-- 1 root root        1 8月   7 19:51 celery.log
+        -rw-r--r-- 1 root root        0 3月  18 23:59 celery_node_tree.log                    # 到此结束, core 和 celery 日志目录是共用的
+        -rw-r--r-- 1 root root        0 8月   7 23:59 daphne.log
+        -rw-r--r-- 1 root root 16679320 8月   8 09:34 drf_exception.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 flower.log
+        -rw-r--r-- 1 root root   834058 8月   8 12:57 gunicorn.log
+        -rw-r--r-- 1 root root        0 8月   7 23:59 jms.log
+        -rw-r--r-- 1 root root  4964863 8月   6 22:56 jumpserver.log
+        -rw-r--r-- 1 root root  3129115 8月   6 22:50 unexpected_exception.log
+        ```
+        ```sh
+        tail -f celery_default.log -n 200
+        ```
+        ```nginx
+        # celery 日志
+        KeyError: 'assets.tasks.admin_user_connectivity.test_admin_user_connectivity_period'
+        Received unregistered task of type 'assets.tasks.test_admin_user_connectivity_period'.
+        The message has been ignored and discarded.
+
+        Did you remember to import the module containing this task?
+        Or maybe you're using relative imports?
+
+        Please see
+        http://docs.celeryq.org/en/latest/internals/protocol.html
+        for more information.
+
+        The full contents of the message body was:
+        b'\x80\x02)}q\x00}q\x01(X\t\x00\x00\x00callbacksq\x02NX\x08\x00\x00\x00errbacksq\x03NX\x05\x00\x00\x00chainq\x04NX\x05\x00\x00\x00chordq\x05Nu\x87q\x06.' (74b)
+        Traceback (most recent call last):
+          File "/usr/local/lib/python3.8/site-packages/celery/worker/consumer/consumer.py", line 562, in on_task_received
+            strategy = strategies[type_]
+        ```
+
+    === "KoKo"
+        ```sh
+        docker logs -f jms_koko --tail 200
+        ```
+        ```sh
+        # 如果需要进入容器操作
+        docker exec -it jms_koko bash
+        cd /opt/koko/data/logs
+        ls -al
+        ```
+        ```nginx
+        total 69040
+        drwxr--r-- 2 root root     4096 7月  19 22:09 .
+        drwxr-xr-x 5 root root     4096 12月 18 2020 ..
+        -rw-r--r-- 1 root root 52428600 7月  19 22:09 koko-2021-07-19T22-09-53.213.log
+        -rw-r--r-- 1 root root 18248268 8月   8 12:46 koko.log      # koko 日志
+        ```
+        ```sh
+        tail -f koko.log -n 200
+        ```
+        ```nginx
+        # koko 日志
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        2021-07-19 22:09:51 [ERRO] User root Authenticate err: POST http://core:8080/api/v1/authentication/tokens/ failed, get code: 400, {"error":"block_login","msg":"账号已被锁定（请联系管理员解锁 或 30分钟后重试）"}
+        ```
+
+    === "Lion"
+        ```sh
+        docker logs -f jms_lion --tail 200
+        ```
+        ```sh
+        # 如果需要进入容器操作
+        docker exec -it jms_lion bash
+        cd /opt/lion/data/logs
+        ls -al
+        ```
+        ```nginx
+        total 116
+        drwxr-xr-x 2 root root   4096 7月  15 22:37 .
+        drwxr-xr-x 9 root root   4096 7月  15 21:32 ..
+        -rw-r--r-- 1 root root 103103 8月   7 19:38 lion.log
+        ```
+        ```sh
+        tail -f lion.log -n 200
+        ```
+        ```nginx
+        # lion 日志
+        2021-07-15 10:06:31 tunnel conn.go [ERROR] Session[e8b56e52-d7a4-47e1-b5a1-5f6ec59e2a83] receive web client disconnect opcode
+        2021-07-15 10:06:31 tunnel conn.go [ERROR] Session[e8b56e52-d7a4-47e1-b5a1-5f6ec59e2a83] web client read err: websocket: close 1005 (no status)
+        2021-07-15 10:06:31 tunnel conn.go [ERROR] Session[e8b56e52-d7a4-47e1-b5a1-5f6ec59e2a83] send web client err: websocket: close sent
+        2021-07-15 10:06:32 session server.go [ERROR] 录像文件小于1024字节，可判断连接失败，未能产生有效的录像文件
+        ```
+
+    === "Nginx"
+        ```sh
+        docker logs -f jms_nginx --tail 200
+        ```
+        ```sh
+        # 如果需要进入容器操作
+        docker exec -it jms_lion sh
+        cd /var/log/nginx
+        ls -al
+        ```
+        ```nginx
+        total 84652
+        -rw-r--r-- 1 root root 53237275 8月   8 13:46 access.log
+        -rw-r--r-- 1 root root    83858 8月   8 12:03 error.log
+        -rw-r--r-- 1 root root 12870135 8月   8 12:46 tcp-access.log
+        ```
+        ```sh
+        tail -f error.log -n 200
+        ```
+        ```nginx
+        # nginx 日志
+        2021/08/07 16:01:19 [error] 1113#1113: *395030 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.250.1, server: , request: "GET /ws/notifications/site-msg/ HTTP/1.1", upstream: "http://192.168.250.2:8070/ws/notifications/site-msg/", host: "192.168.100.100"
+        2021/08/07 17:51:55 [error] 1113#1113: *397564 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.250.1, server: , request: "GET /ws/notifications/site-msg/ HTTP/1.1", upstream: "http://192.168.250.2:8070/ws/notifications/site-msg/", host: "192.168.100.100"
+        2021/08/07 17:52:19 [error] 1113#1113: *413161 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.250.1, server: , request: "GET /ws/notifications/site-msg/ HTTP/1.1", upstream: "http://192.168.250.2:8070/ws/notifications/site-msg/", host: "192.168.100.100"
+        2021/08/07 22:31:31 [warn] 1113#1113: *416920 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/6/01/0000000016 while reading upstream, client: 192.168.250.1, server: , request: "GET /api/docs/?format=openapi HTTP/1.1", upstream: "http://192.168.250.2:8080/api/docs/?format=openapi", host: "192.168.100.100", referrer: "https://192.168.100.100/api/docs/"
+        2021/08/08 12:03:28 [error] 1113#1113: *410227 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.250.1, server: , request: "GET /ws/notifications/site-msg/ HTTP/1.1", upstream: "http://192.168.250.2:8070/ws/notifications/site-msg/", host: "192.168.100.100"
+        ```
+
+
 ### 1. Core 启动异常
 
 ```sh
