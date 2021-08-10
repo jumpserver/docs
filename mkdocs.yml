@@ -88,6 +88,7 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
+    - 数据解密: faq/decryption.md
   - 更新说明: about/change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 关于:
