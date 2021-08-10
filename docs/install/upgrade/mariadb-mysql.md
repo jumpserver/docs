@@ -189,6 +189,11 @@
         yum -y install mysql-community-server mysql-community-devel
         ```
         ```sh
+        if ! grep -q "sql_mode=" /etc/my.cnf; then
+          echo "sql_mode=''" >> /etc/my.cnf
+        fi
+        ```
+        ```sh
         sed -i "s@--initialize @--initialize-insecure @g" /usr/bin/mysqld_pre_systemd
         systemctl enable mysqld
         systemctl start mysqld
@@ -199,7 +204,7 @@
         ```mysql
         create database jumpserver default charset 'utf8';
         set global validate_password.policy=LOW;
-        create user 'jumpserver'@'%' identified by 'rBi41SrDqlX4zsx9e1L0cqTP';
+        create user 'jumpserver'@'%' identified with mysql_native_password by 'rBi41SrDqlX4zsx9e1L0cqTP';
         grant all on jumpserver.* to 'jumpserver'@'%';
         flush privileges;
         use jumpserver;
