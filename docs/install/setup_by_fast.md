@@ -114,6 +114,11 @@
         ./jmsctl.sh start
         ```
 
+=== "[源码部署](../dev/build.md)"
+
+=== "[Allinone](https://github.com/jumpserver/Dockerfile/tree/master/allinone)"
+
+=== "[Kubernetes](https://github.com/jumpserver/helm)"
 
 ## 使用方式
 
