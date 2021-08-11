@@ -253,7 +253,7 @@
     SECRET_KEY=kWQdmdCQKjaWlHYpPhkNQDkfaRulM6YnHctsHLlSPs8287o2kW    # 要其他 JumpServer 服务器一致 (*)
     BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                                 # 要其他 JumpServer 服务器一致 (*)
     LOG_LEVEL=ERROR                                                  # 日志等级
-    # SESSION_COOKIE_AGE=86400                
+    # SESSION_COOKIE_AGE=86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE=true                             # 关闭浏览器 session 过期
 
     # MySQL 配置
@@ -762,6 +762,23 @@
         stats realm haproxy-status
         stats auth admin:KXOeyNgDeTdpeu9q       # 账户密码, 请自行修改. 访问 http://192.168.100.100:8080/haproxy 会要求输入
 
+    #---------------------------------------------------------------------
+    # check  检活参数说明
+    # inter  间隔时间, 单位: 毫秒
+    # rise   连续成功的次数, 单位: 次
+    # fall   连续失败的次数, 单位: 次
+    # 例: inter 2s rise 2 fall 3
+    # 表示 2 秒检查一次状态, 连续成功 2 次服务正常, 连续失败 3 次服务异常
+    #
+    # server 服务参数说明
+    # server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01
+    # 第一个 192.168.100.21 做为页面展示的标识, 可以修改为其他任意字符串
+    # 第二个 192.168.100.21:80 是实际的后端服务端口
+    # weight 为权重, 多节点时安装权重进行负载均衡
+    # cookie 用户侧的 cookie 会包含此标识, 便于区分当前访问的后端节点
+    # 例: server db01 192.168.100.21:3306 weight 1 cookie db_01
+    #---------------------------------------------------------------------
+
     listen jms-web
         bind *:80                               # 监听 80 端口
         mode http
@@ -778,10 +795,10 @@
         hash-type consistent
         fullconn 500
         balance leastconn
-        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5  # JumpServer 服务器
-        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
-        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
-        server 192.168.100.23 192.168.100.24:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3  # JumpServer 服务器
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.23 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     listen jms-ssh
         bind *:2222
@@ -792,10 +809,10 @@
 
         fullconn 500
         balance leastconn
-        server 192.168.100.21 192.168.100.21:2222 weight 1 check inter 2000 rise 2 fall 5 send-proxy
-        server 192.168.100.22 192.168.100.22:2222 weight 1 check inter 2000 rise 2 fall 5 send-proxy
-        server 192.168.100.23 192.168.100.23:2222 weight 1 check inter 2000 rise 2 fall 5 send-proxy
-        server 192.168.100.24 192.168.100.23:2222 weight 1 check inter 2000 rise 2 fall 5 send-proxy
+        server 192.168.100.21 192.168.100.21:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.22 192.168.100.22:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.23 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
 
     listen jms-koko
         mode http
@@ -809,10 +826,10 @@
         hash-type consistent
         fullconn 500
         balance leastconn
-        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5
-        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
-        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
-        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     listen jms-lion
         mode http
@@ -826,10 +843,10 @@
         hash-type consistent
         fullconn 500
         balance leastconn
-        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2000 rise 2 fall 5
-        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2000 rise 2 fall 5
-        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
-        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2000 rise 2 fall 5
+        server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3
+        server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
+        server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     #---------------------------------------------------------------------
     # Redis 主从或 Sentinel, 可以使用下面的方式检活
@@ -847,7 +864,7 @@
         # tcp-check send PING\r\n
         # tcp-check expect string +PONG
         # tcp-check send info\ replication\r\n
-        # tcp-check expect string role: master
+        # tcp-check expect string role:master
         # tcp-check send QUIT\r\n
         # tcp-check expect string +OK
         # server redis01 192.168.100.11:6379 check inter 3s  # Redis 服务器
