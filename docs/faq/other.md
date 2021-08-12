@@ -171,9 +171,9 @@
         2021-07-15 10:06:32 session server.go [ERROR] 录像文件小于1024字节，可判断连接失败，未能产生有效的录像文件
         ```
 
-    === "Nginx"
+    === "Web"
         ```sh
-        docker logs -f jms_nginx --tail 200
+        docker logs -f jms_web --tail 200
         ```
         ```sh
         # 如果需要进入容器操作

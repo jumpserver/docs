@@ -32,7 +32,7 @@
     # Todo: May be can auto discovery
     upstream http_server {
       sticky name=jms_route;
-      server nginx:80;
+      server web:80;
       # server HOST2:80;  # 多节点
     }
 

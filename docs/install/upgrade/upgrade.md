@@ -61,7 +61,7 @@
     3. 升级镜像文件
     Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/web:{{ jumpserver.version }}  	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
@@ -79,12 +79,12 @@
     Stopping jms_core ... done
     Stopping jms_koko ... done
     Stopping jms_lion ... done
-    Stopping jms_nginx ... done
+    Stopping jms_web ... done
     Stopping jms_celery ... done
     Removing jms_core ... done
     Removing jms_koko ... done
     Removing jms_lion ... done
-    Removing jms_nginx ... done
+    Removing jms_web ... done
     Removing jms_celery ... done
 
     2021-03-19 08:32:44 Collect static files

@@ -318,7 +318,7 @@
     >>> 加载 Docker 镜像
     Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-    Docker: Pulling from jumpserver/nginx:{{ jumpserver.version }} 	    [ OK ]
+    Docker: Pulling from jumpserver/web:{{ jumpserver.version }} 	    [ OK ]
     Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
     Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
     Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
@@ -425,7 +425,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
-    Creating jms_nginx     ... done
+    Creating jms_web       ... done
     ```
 
 
@@ -512,7 +512,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
-    Creating jms_nginx     ... done
+    Creating jms_web       ... done
     ```
 
 
@@ -599,7 +599,7 @@
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_celery    ... done
-    Creating jms_nginx     ... done
+    Creating jms_web       ... done
     ```
 
 
@@ -686,7 +686,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
-    Creating jms_nginx     ... done
+    Creating jms_web       ... done
     ```
 
 
