@@ -76,6 +76,7 @@ nav:
   - 开发文档:
     - API 文档: dev/rest_api.md
     - 编译文档: dev/build.md
+    - 交互命令: dev/shell.md
   - 用户文档:
     - 我的资产: user-guide/assets/user-asset.md
     - 我的应用:
@@ -88,7 +89,6 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
-    - 数据解密: faq/decryption.md
   - 更新说明: about/change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 关于:

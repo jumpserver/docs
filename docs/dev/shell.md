@@ -1,4 +1,123 @@
-# 数据解密
+# 交互命令
+
+!!! warning "操作不当将导致数据丢失，操作前请仔细确认"
+
+- [Django 文档](https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial02/)
+
+## 操作方法
+
+!!! tip ""
+    ```sh
+    docker exec -it jms_core bash
+    cd /opt/jumpserver/apps
+    python manage.py shell
+    ```
+    ```python
+    # 新版本操作之前均需要切换到对应组织, 默认为 Default
+    from orgs.models import *
+    Organization.objects.all()
+    org = Organization.objects.get(name='Default')
+    org.change_to()
+    ```
+
+=== "User"
+    !!! tip ""
+        ```python
+        from users.models import *
+
+        # 用户
+        User.objects.all()
+        User.objects.count()  # 数量
+
+        # 指定用户查询
+        user = User.objects.get(username = 'admin')
+
+        # 查询用户邮箱
+        user.email
+
+        # 修改用户邮箱
+        user.email='test@jumpserver.org'
+
+        # 修改密码
+        user.reset_password('test01')
+
+        # 保存修改
+        user.save
+
+        # 删除用户 MFA key
+        user.otp_secret_key=''
+        user.save
+
+        # 创建新用户
+        User.objects.create(name = '测试用户', username = 'test', email = 'test@jumpserver.org')
+
+        # 测试用户是否重名, 不存在就创建
+        User.objects.get_or_create(name = '测试用户', username = 'test', email = 'test@jumpserver.org')
+
+        user = User.objects.get(username = 'test')
+        user.delete()
+
+        # 更优雅的删除方法
+        User.objects.all().filter(username='test').delete()
+        ```
+        ```python
+        # 用户组
+        UserGroup.objects.all()
+        UserGroup.objects.count()
+
+        # 创建用户组
+        UserGroup.objects.create(name = 'Test')
+        group = UserGroup.objects.get(name = 'Test')
+
+        # 用户组添加用户
+        user = User.objects.get(username='test')
+        group.users.add(user)
+        group.save
+
+        # 用户组删除用户
+        user = User.objects.get(username='test')
+        group.users.remove(user)
+        group.save
+
+        # 删除用户组
+        UserGroup.objects.all().filter(name='Test').delete()
+        ```
+
+=== "Asset"
+    !!! tip ""
+        ```python
+        from assets.models import *
+
+        # 资产
+        Asset.objects.all()
+        Asset.objects.count()
+
+        # 创建
+        asset = Asset.objects.create(hostname = 'test', ip = '172.16.0.1')
+
+        # 删除
+        asset = Asset.objects.get(hostname = 'test')
+        asset.delete()
+        ```
+        ```python
+        # 节点
+        Node.objects.all()
+        Node.objects.count()
+
+        node = Node.objects.get(value = 'Test')
+
+        asset = Asset.objects.get(hostname = 'test')
+        # 添加资产到节点
+        node.assets.add(asset)
+
+        # 从节点删除资产
+        node.assets.remove(asset)
+
+        node.delete()
+        ```
+
+
+## 数据解密
 
 === "系统用户"
     !!! tip ""
