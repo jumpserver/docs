@@ -786,7 +786,6 @@
         # redirect scheme https if !{ ssl_fc }  # 重定向到 https
         # bind *:443 ssl crt /opt/ssl.pem       # https 设置
 
-        option httplog
         option httpclose
         option forwardfor
         option httpchk GET /api/health/         # Core 检活接口
@@ -804,7 +803,6 @@
         bind *:2222
         mode tcp
 
-        option tcplog
         option tcp-check
 
         fullconn 500
@@ -817,7 +815,6 @@
     listen jms-koko
         mode http
 
-        option httplog
         option httpclose
         option forwardfor
         option httpchk GET /koko/health/ HTTP/1.1\r\nHost:\ 192.168.100.100  # KoKo 检活接口, host 填写 HAProxy 的 ip 地址
@@ -834,7 +831,6 @@
     listen jms-lion
         mode http
 
-        option httplog
         option httpclose
         option forwardfor
         option httpchk GET /lion/health/ HTTP/1.1\r\nHost:\ 192.168.100.100  # Lion 检活接口, host 填写 HAProxy 的 ip 地址
@@ -857,16 +853,14 @@
         # timeout connect 3s
         # timeout server 6s
         # timeout client 6s
-        # option tcplog
         # option tcp-check
         # tcp-check connect
         # tcp-check send AUTH\ KXOeyNgDeTdpeu9q\r\n           # Redis 连接密码
         # tcp-check send PING\r\n
-        # tcp-check expect string +PONG
+        # tcp-check expect string PONG
         # tcp-check send info\ replication\r\n
         # tcp-check expect string role:master
         # tcp-check send QUIT\r\n
-        # tcp-check expect string +OK
         # server redis01 192.168.100.11:6379 check inter 3s  # Redis 服务器
         # server redis02 192.168.100.12:6379 check inter 3s
         # server redis03 192.168.100.13:6379 check inter 3s
