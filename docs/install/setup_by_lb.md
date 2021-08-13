@@ -843,27 +843,6 @@
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
         server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
-
-    #---------------------------------------------------------------------
-    # Redis 主从或 Sentinel, 可以使用下面的方式检活
-    #---------------------------------------------------------------------
-    # listen redis
-        # bind *:6379
-        # mode tcp
-        # timeout connect 3s
-        # timeout server 6s
-        # timeout client 6s
-        # option tcp-check
-        # tcp-check connect
-        # tcp-check send AUTH\ KXOeyNgDeTdpeu9q\r\n           # Redis 连接密码
-        # tcp-check send PING\r\n
-        # tcp-check expect string PONG
-        # tcp-check send info\ replication\r\n
-        # tcp-check expect string role:master
-        # tcp-check send QUIT\r\n
-        # server redis01 192.168.100.11:6379 check inter 3s  # Redis 服务器
-        # server redis02 192.168.100.12:6379 check inter 3s
-        # server redis03 192.168.100.13:6379 check inter 3s
     ```
 
 !!! tip "配置 Selinux"
