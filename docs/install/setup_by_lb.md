@@ -13,17 +13,18 @@
 | MySQL   | >= 5.7  |    | Redis | >= 6.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port       |     Use          |   Minimize Hardware    |   Standard Hardware    |
-| ------------- | ---------------- | ----------- | ---------------- | ---------------------- | ---------------------- |
-| NFS           |  192.168.100.11  |             | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |
-| MySQL         |  192.168.100.11  | 3306        | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |  
-| Redis         |  192.168.100.11  | 6379        | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T  SSD |
-| HAProxy       |  192.168.100.100 | 80,443,2222 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G SSD |
-| JumpServer 01 |  192.168.100.21  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
-| JumpServer 02 |  192.168.100.22  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
-| JumpServer 03 |  192.168.100.23  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
-| JumpServer 04 |  192.168.100.24  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G SSD |
-| MinIO         |  192.168.100.41  | 9000,9001   | Core, KoKo, Lion | 2Core/4GB RAM/90G  HDD | 4Core/8GB  RAM/1T  SSD |
+| Server Name   |        IP        |  Port       |     Use          |   Minimize Hardware    |   Standard Hardware     |
+| ------------- | ---------------- | ----------- | ---------------- | ---------------------- | ----------------------- |
+| NFS           |  192.168.100.11  |             | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
+| MySQL         |  192.168.100.11  | 3306        | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
+| Redis         |  192.168.100.11  | 6379        | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
+| HAProxy       |  192.168.100.100 | 80,443,2222 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
+| JumpServer 01 |  192.168.100.21  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 02 |  192.168.100.22  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 03 |  192.168.100.23  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 04 |  192.168.100.24  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| MinIO         |  192.168.100.41  | 9000,9001   | Core, KoKo, Lion | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
+| Elasticsearch |  192.168.100.51  | 9200,9300   | Core, KoKo       | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
 
 | Server Name   | Check Health                   | Example                                   |
 | ------------- | ------------------------------ | ----------------------------------------- |
@@ -864,9 +865,12 @@
     firewall-cmd --reload
     ```
 
+
 ## 部署 MinIO 服务
 
     服务器: 192.168.100.41
+
+    # 集群部署请参考 (http://docs.minio.org.cn/docs/master/minio-erasure-code-quickstart-guide)
 
 !!! tip "安装 Docker"
     ```sh
@@ -950,6 +954,94 @@
 | Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
 | 端点 (Endpoint) | http://192.168.100.41:9000 | minio 服务访问地址   |
 | 默认存储        |                            | 新组件将自动使用该存储 |
+
+
+## 部署 Elasticsearch 服务
+
+    服务器: 192.168.100.51
+
+    # 集群部署请参考 (https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+
+!!! tip "安装 Docker"
+    ```sh
+    yum install -y yum-utils device-mapper-persistent-data lvm2
+    yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+    yum makecache fast
+    yum -y install docker-ce
+    ```
+
+!!! tip "配置 Docker"
+    ```sh
+    mkdir /etc/docker/
+    vi /etc/docker/daemon.json
+    ```
+    ```json
+    {
+      "live-restore": true,
+      "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
+      "log-driver": "json-file",
+      "log-opts": {"max-file": "3", "max-size": "10m"}
+    }
+    ```
+
+!!! tip "启动 Docker"
+    ```sh
+    systemctl enable docker
+    systemctl start docker
+    ```
+
+!!! tip "下载 Elasticsearch 镜像"
+    ```sh
+    docker pull elasticsearch:7.14.0
+    ```
+    ```vim
+    7a0437f04f83: Pull complete
+    7718d2f58c47: Pull complete
+    cc5c16bd8bb9: Pull complete
+    e3d829b4b297: Pull complete
+    1ad944c92c79: Pull complete
+    373fb8fbaf74: Pull complete
+    5908d3eb2989: Pull complete
+    Digest: sha256:81c126e4eddbc5576285670cb3e23d7ef7892ee5e757d6d9ba870b6fe99f1219
+    Status: Downloaded newer image for elasticsearch:7.14.0
+    docker.io/library/elasticsearch:7.14.0
+    ```
+!!! tip "持久化数据目录"
+    ```sh
+    mkdir -p /opt/jumpserver/elasticsearch/data /opt/jumpserver/elasticsearch/logs
+    ```
+!!! tip "启动 Elasticsearch"
+    ```vim
+    ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
+    # 9200                                  # Web 访问端口
+    # 9300                                  # 集群通信
+    # discovery.type=single-node            # 单节点
+    # bootstrap.memory_lock="true"          # 锁定物理内存, 不使用 swap
+    # xpack.security.enabled="true"         # 开启安全模块
+    # TAKE_FILE_OWNERSHIP="true"            # 自动修改挂载文件夹的所属用户
+    # ES_JAVA_OPTS="-Xms512m -Xmx512m"      # JVM 内存大小, 推荐设置为主机内存的一半
+    # elastic                               # Elasticsearch 账号
+    # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
+    ```
+    ```sh
+    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always elasticsearch:7.14.0
+    ```
+
+!!! tip "设置 JumpServer"
+    - 访问 JumpServer Web 页面并使用管理员账号进行登录
+    - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [命令存储] 下方选择 [创建] 选择 [Elasticsearch]
+    - 根据下方的说明进行填写，保存后在 [终端管理] 页面对所有组件进行 [更新]，录像存储选择 [jms-mino]，提交
+
+| 选项            | 参考值                                               | 说明                   |
+| :-------------  | :-------------------------------------------------  | :--------------------- |
+| 名称 (Name)     | jms-es                                              | 标识, 不可重复          |
+| 类型 (Type)     | Elasticsearch                                       | 固定, 不可更改          |
+| 主机 (Hosts)    | http://elastic:KXOeyNgDeTdpeu9q@192.168.100.51:9200 | http://es_host:es_port |
+| 索引 (Index)    | jumpserver                                          | 索引                   |
+| 忽略证书认证    |                                                     | https 自签 ssl 需要勾选 |
+| 默认存储        |                                                     | 新组件将自动使用该存储   |
+
 
 ## 升级 注意事项
 
