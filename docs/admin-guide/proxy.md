@@ -3,7 +3,7 @@
 !!! info "反向代理 JumpServer 要求说明"
     - rdp 协议复制粘贴需要部署可信任的 ssl 证书
     - 通过 https 协议访问就能在 rdp 资产里面使用复制粘贴
-    - 遵循 [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/) 建议
+    - 遵循 [Mozilla SSL Configuration Generator](https://ssl-config.mozilla.org/){:target="_blank"} 建议
 
 ### 1. nginx ssl 部署
 

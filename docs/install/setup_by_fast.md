@@ -116,9 +116,9 @@
 
 === "[源码部署](../dev/build.md)"
 
-=== "[Allinone](https://github.com/jumpserver/Dockerfile/tree/master/allinone)"
+=== "[Allinone](https://github.com/jumpserver/Dockerfile/tree/master/allinone){:target="_blank"}"
 
-=== "[Kubernetes](https://github.com/jumpserver/helm)"
+=== "[Kubernetes](https://github.com/jumpserver/helm){:target="_blank"}"
 
 ## 使用方式
 

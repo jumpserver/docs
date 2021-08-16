@@ -1,9 +1,9 @@
 # 更新日志
 
 !!! tip ""
-    - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/)
-    - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html)
-    - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761)
+    - [下载离线播放器](https://github.com/jumpserver/VideoPlayer/releases/){:target="_blank"}
+    - [申请试用JumpServer 企业版](https://jumpserver.org/enterprise.html){:target="_blank"}
+    - [JumpServer 漏洞通知及修复方案](https://blog.fit2cloud.com/?p=1761){:target="_blank"}
 
 v2.12.2
 ------------------------
