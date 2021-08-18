@@ -171,8 +171,8 @@
     sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis.conf
     sed -i "s/daemonize no/daemonize yes/g" /etc/redis.conf
     sed -i "s@pidfile /var/run/redis_6379.pid@pidfile /var/run/redis.pid@g" /etc/redis.conf
-    sed -i "561i maxmemory-policy allkeys-lru" /etc/redis.conf
-    sed -i "481i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
+    sed -i "902i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
+    sed -i "1023i maxmemory-policy allkeys-lru" /etc/redis.conf
     vi /etc/systemd/system/redis.service
     ```
     ```vim
