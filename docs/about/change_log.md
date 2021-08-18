@@ -10,10 +10,10 @@ v2.12.2
 2021年08月12日
 
 !!! success "🐛 Bug修复 Bug Fixes"
-    - fix: 修复访问API文档页面失败的问题
-    - fix: 修复使用es存储时，搜索命令不准确的问题
-    - fix: 修复SshPrivateKey错误导致系统用户列表加载失败的问题
-    - fix: 修复由于installer不包含nginx:alpine2镜像导致启用LB失败的问题
+    - fix: 修复访问`API文档`页面失败的问题
+    - fix: 修复使用`es`存储时，搜索命令不准确的问题
+    - fix: 修复`SshPrivateKey`错误导致系统用户列表加载失败的问题
+    - fix: 修复由于`installer`不包含`nginx:alpine2`镜像导致`启用LB`失败的问题
     - fix: 修复云管中心同步资产时相同实例会重复创建的问题【企业版】
 
 v2.12.1
