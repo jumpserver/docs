@@ -145,6 +145,9 @@ extra:
   version:
     default: master
     provider: mike
+  analytics:
+    provider: google
+    property: UA-147297392-3
   social:
     - icon: Bilibili_Logo_Blue
       link: https://www.bilibili.com/video/BV19D4y1S7s4
