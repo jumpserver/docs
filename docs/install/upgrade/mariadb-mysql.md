@@ -240,6 +240,17 @@
         ./jmsctl.sh stop
         ```
         ```sh
+        docker exec -it jms_mysql /bin/bash
+        # arm64 请使用 $MARIADB_ROOT_PASSWORD
+        mysql -uroot -p$MYSQL_ROOT_PASSWORD
+        ```
+        ```mysql
+        drop database jumpserver;
+        create database jumpserver default charset 'utf8';
+        exit
+        exit
+        ```
+        ```sh
         ./jmsctl.sh restore_db /opt/jumpserver.sql
         ```
 
