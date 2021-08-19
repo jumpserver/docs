@@ -89,6 +89,7 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
+  - 资源下载: about/download.md
   - 更新说明: about/change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 关于我们:
@@ -113,7 +114,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_generator: !!python/name:materialx.emoji.to_svg
       options:
         custom_icons:
           - theme/.icons

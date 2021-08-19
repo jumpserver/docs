@@ -4,7 +4,7 @@
 
 === "LDAP"
 
-    |             |                                                   |
+    | name        | explain                                           |
     | :---------- | :------------------------------------------------ |
     | LDAP地址    | ldap://serverurl:389                               |
     | 绑定DN      | administrator@jumpserver.org                       |
@@ -16,9 +16,7 @@
 
 === "LDAPS"
 
-    - ldap ssl 证书需要放到持久化目录 `jumpserver/core/data/certs/ldap_ca.pem`
-
-    |             |                                                   |
+    | name        | explain                                           |
     | :---------- | :------------------------------------------------ |
     | LDAP地址    | ldaps://serverurl:636                              |
     | 绑定DN      | administrator@jumpserver.org                       |
@@ -27,6 +25,8 @@
     | 用户过滤器   | (cn=%(user)s)                                     |
     | LADP属性映射 | {"username": "cn", "name": "sn", "email": "mail"} |
     | 启动LDAP认证 | ☑️                                                 |
+
+    !!! warning "ldap ssl 证书需要放到持久化目录 `jumpserver/core/data/certs/ldap_ca.pem`"
 
 !!! tip "选项说明"
     `DN` 一定要是完整的DN，不能跳过OU，可以使用其他工具查询  
