@@ -1,6 +1,6 @@
 # 编译文档
 
-!!! warning "目前 JumpServer 部分组件不支持在 Windows 平台编译"
+!!! warning "Windows 平台推荐使用 VSCode 的 Remote SSH 功能在 Linux 上进行编译"
 
 ## 架构图
 ![!架构图](../img/architecture.png)
@@ -30,7 +30,7 @@ cd jumpserver-{{ jumpserver.version }}
 ```bash
 ls -l requirements/
 ```
-```bash
+```vim
 requirements/                     # 对应操作系统需要的依赖包
 ├── alpine_requirements.txt       # Alpine
 ├── deb_buster_requirements.txt   # Debian 10
@@ -41,16 +41,31 @@ requirements/                     # 对应操作系统需要的依赖包
 └── rpm_requirements.txt          # 基于 RedHat 的发行版(如: CentOS)
 ```
 
-| OS              | Command                                        |
-| :-------------- | :--------------------------------------------- |
-| macOS           | brew install -y $(cat mac_requirements.txt)    |
-| Alpine          | apk add $(cat alpine_requirements.txt)         |
-| Ubuntu / Debian | apt-get install -y $(cat deb_requirements.txt) |
-| CentOS / RedHat | yum install -y $(cat rpm_requirements.txt)     |
+=== "CentOS 7"
+    ```bash
+    yum install -y epel-release mariadb-devel openldap-devel gcc make
+    ```
+
+=== "Ubuntu 20.04"
+    ```bash
+    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass gcc make
+    ```
+
+!!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
 
 ### 安装 Python3
 
 从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
+
+=== "CentOS 7"
+    ```bash
+    yum install -y python36 python36-devel
+    ```
+
+=== "Ubuntu 20.04"
+    ```bash
+    apt-get install -y python3.8 python3.8-dev python3-venv
+    ```
 
 ```bash
 python3
@@ -74,7 +89,7 @@ source /opt/py3/bin/activate
 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements/requirements.txt
 ```
 
 ### 修改配置文件
@@ -86,12 +101,13 @@ vi config.yml
 ```yaml
 # SECURITY WARNING: keep the secret key used in production secret!
 # 加密秘钥 生产环境中请修改为随机字符串，请勿外泄, 可使用命令生成
-# $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 49;echo
-SECRET_KEY: ****************  # 必填项
+# $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 48;echo
+SECRET_KEY: ****************  # 必填项, 长度推荐 50 位以上
 
 # SECURITY WARNING: keep the bootstrap token used in production secret!
 # 预共享Token koko 和 lion 用来注册服务账号，不在使用原来的注册接受机制
-BOOTSTRAP_TOKEN: ***********  # 必填项
+# $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24;echo
+BOOTSTRAP_TOKEN: ***********  # 必填项, 长度推荐 20 位以上
 
 # Development env open this, when error occur display the full process track, Production disable it
 # DEBUG 模式 开启DEBUG后遇到错误时可以看到更多日志
@@ -219,10 +235,10 @@ REDIS_PASSWORD: ********
 
 ### 启动 Core
 
-后台运行可以加 -d，`./jms start all -d`
+后台运行可以加 -d，`./jms start -d`
 
 ```bash
-./jms start all
+./jms start
 ```
 
 ## Lina
@@ -249,10 +265,37 @@ cd lina-{{ jumpserver.version }}
 ### 安装 Node
 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
 
+=== "CentOS 7"
+    ```bash
+    wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
+    tar -xf node-v10.24.1-linux-x64.tar.xz
+    mv node-v10.24.1-linux-x64 /usr/local/node
+    chown -R root:root /usr/local/node
+    export PATH=/usr/local/node/bin:$PATH
+    echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
+    ```
+
+=== "Ubuntu 20.04"
+    ```bash
+    wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
+    tar -xf node-v10.24.1-linux-x64.tar.xz
+    mv node-v10.24.1-linux-x64 /usr/local/node
+    chown -R root:root /usr/local/node
+    export PATH=/usr/local/node/bin:$PATH
+    echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
+    ```
+
 ```bash
 node -v
 ```
 `v10.24.1`
+
+```bash
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+npm config set registry https://registry.npm.taobao.org
+npm install -g yarn
+yarn config set registry https://registry.npm.taobao.org
+```
 
 ### 安装依赖
 
@@ -288,6 +331,7 @@ VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
 
 # Dev server for core proxy
 VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
+VUE_APP_CORE_WS = 'ws://localhost:8070'
 VUE_APP_ENV = 'development'
 ```
 
@@ -301,6 +345,8 @@ yarn serve
 ```bash
 yarn build:prod
 ```
+
+!!! tip "构建完成后, 生成在 build 目录下"
 
 ## Luna
 
@@ -343,26 +389,45 @@ vi proxy.conf.json
 ```
 ```yaml
 {
-  "/api": {
-    "target": "http://127.0.0.1:8080",  # Core 地址
-    "secure": false                     # https ssl 需要开启
-  },
   "/koko": {
-    "target": "http://127.0.0.1:5000",  # KoKo 地址
+    "target": "http://localhost:5000",  # KoKo 地址
     "secure": false,
     "ws": true
   },
   "/media/": {
-    "target": "http://127.0.0.1:8080",  # Core 地址
-    "secure": false
+    "target": "http://localhost:8080",  # Core 地址
+    "secure": false,
+    "changeOrigin": true
   },
-  "/lion/": {
-    "target": "http://127.0.0.1:8081",  # Lion 地址
+  "/api/": {
+    "target": "http://localhost:8080",  # Core 地址
+    "secure": false,                    # https ssl 需要开启
+    "changeOrigin": true
+  },
+  "/core": {
+    "target": "http://localhost:8080",  # Core 地址
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/static": {
+    "target": "http://localhost:8080",  # Core 地址
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/lion": {
+    "target": "http://localhost:9529",  # Lion 地址
+    "secure": false,
+    "pathRewrite": {
+      "^/lion/monitor": "/monitor"
+    },
+    "ws": true,
+    "changeOrigin": true
+  },
+  "/omnidb": {
+    "target": "http://localhost:8082",
     "secure": false,
     "ws": true,
-    "pathRewrite": {
-      "^/lion": ""
-    }
+    "changeOrigin": true
   }
 }
 ```
@@ -377,6 +442,8 @@ ng serve
 ```bash
 ng build
 ```
+
+!!! tip "构建完成后, 生成在 build 目录下"
 
 ## KoKo
 
@@ -407,6 +474,24 @@ cd koko-{{ jumpserver.version }}
 ### 安装 Go
 从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
 
+=== "CentOS 7"
+    ```bash
+    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
+    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
+    chown -R root:root /usr/local/go
+    export PATH=/usr/local/go/bin:$PATH
+    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+    ```
+
+=== "Ubuntu 20.04"
+    ```bash
+    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
+    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
+    chown -R root:root /usr/local/go
+    export PATH=/usr/local/go/bin:$PATH
+    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+    ```
+
 ```bash
 go version
 ```
@@ -422,6 +507,8 @@ go version
 ```bash
 make
 ```
+
+!!! tip "构建完成后, 生成在 build 目录下"
 
 ### 修改配置文件
 
