@@ -68,6 +68,7 @@ nav:
         - Radius: admin-guide/authentication/radius.md
         - 钉钉: admin-guide/authentication/dingtalk.md
         - 微信: admin-guide/authentication/wechat.md
+        - 飞书: admin-guide/authentication/feishu.md
     - 导入导出:
         - CSV 导入: admin-guide/data-import/csv_import.md
     - 反向代理: admin-guide/proxy.md
