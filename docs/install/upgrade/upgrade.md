@@ -26,19 +26,42 @@
 
 ## 升级步骤
 
-!!! tip "操作步骤"
-    ```sh
-    cd /opt
-    yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
-    ```
+=== "在线升级"
+    !!! tip ""
+        ```sh
+        cd /opt
+        yum -y install wget
+        wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.version }}
+        ```
+
+=== "离线升级(amd64)"
+    !!! tip ""
+        ```sh
+        cd /opt
+        yum -y install wget
+        wget https://test.jumpserver.org/jumpserver/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
+        ```
+
+=== "离线升级(arm64)"
+    !!! tip ""
+        ```sh
+        cd /opt
+        yum -y install wget
+        wget https://test.jumpserver.org/jumpserver/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
+        ```
+
+!!! tip ""
     ```sh
     ./jmsctl.sh upgrade
     ```
     ```nginx hl_lines="1 37 66"
-    是否将版本更新至 {{ jumpserver.version }} ? (y/n)  (默认为 n): y
+    是否将版本更新至 {{ jumpserver.version }} ? (y/n)  (默认为 y): y
 
     1. 检查配置变更
     配置文件位置: /opt/jumpserver/config
@@ -74,7 +97,7 @@
 
     5. 进行数据库变更
     表结构变更可能需要一段时间, 请耐心等待
-    检测到 JumpServer 正在运行, 是否需要关闭并继续升级? (y/n)  (默认为 n): y
+    检测到 JumpServer 正在运行, 是否需要关闭并继续升级? (y/n)  (默认为 y): y
 
     Stopping jms_core ... done
     Stopping jms_koko ... done
@@ -103,7 +126,7 @@
     完成
 
     6. 清理镜像
-    是否需要清理旧版本镜像文件? (y/n)  (默认为 n): y
+    是否需要清理旧版本镜像文件? (y/n)  (默认为 y): y
     Untagged: jumpserver/core:v2.11.3
     Untagged: jumpserver/luna:v2.11.3
     Untagged: jumpserver/lina:v2.11.3
