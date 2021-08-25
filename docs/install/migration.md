@@ -31,7 +31,7 @@
         ./jmsctl.sh backup_db
         ```
 
-    === "手动部署"
+    === "源码部署"
         ```sh
         cd /opt/koko
         ./koko -s stop

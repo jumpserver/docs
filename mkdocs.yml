@@ -139,8 +139,8 @@ extra:
   jumpserver:
     version: v2.13.1
   installer:
-    amd64: 6
-    arm64: 9
+    amd64: 8
+    arm64: 11
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
