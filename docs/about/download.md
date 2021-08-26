@@ -36,9 +36,9 @@ JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 
 无法访问 GitHub 可以使用此地址下载离线安装包
 
-| version                  | linux/amd64                                                                   | linux/arm64                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| {{ jumpserver.version }} | jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.zip | jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.zip |
+| version                  | linux/amd64                                                                              | linux/arm64                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| {{ jumpserver.version }} | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz |
 
 !!! tip ""
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads

@@ -161,8 +161,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        unzip jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.zip
-        cd jumpserver-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
+        unzip jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -263,8 +263,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        unzip jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.zip
-        cd jumpserver-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
+        unzip jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
