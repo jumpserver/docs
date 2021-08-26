@@ -25,7 +25,7 @@
     点击左侧菜单 安全设置，添加重定向 URL 和 IP 白名单
 
     - https://<jumpserver_host>/core/auth/feishu/qr/bind/callback/
-    - https://<jumpserver_host>/core/auth/feishu/login/callbak/
+    - https://<jumpserver_host>/core/auth/feishu/qr/login/callback/
     - IP 白名单填写 JumpServer 服务器的公网 IP
 
 !!! warning "jumpserver_host 改成你自己的 JumpServer 域名"
