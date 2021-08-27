@@ -152,4 +152,5 @@ JUMPSERVER_ENABLE_MENU_ANIMATIONS=false      # 启用菜单开关动画 true, fa
 JUMPSERVER_DISABLE_BITMAP_CACHING=true       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
 JUMPSERVER_DISABLE_OFFSCREEN_CACHING=true    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
 JUMPSERVER_DISABLE_GLYPH_CACHING=true        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
+JUMPSERVER_CLEAN_DRIVE_SCHEDULE_TIME=1       # 定时清理挂载盘文件的时间间隔 (单位：小时)，如果设置值 0，则不清理。（ v2.13新增 ）
 ```
