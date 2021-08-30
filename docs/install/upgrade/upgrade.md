@@ -20,8 +20,7 @@
 ## 升级说明
 
 !!! tip "要求说明"
-    - jumpserver 版本 >= v2.6.0
-    - jumpserver 版本 <  v2.6.0 的请先参考上面的迁移文档迁移到最新版本
+    - [未使用 installer 部署的用户请参考迁移说明迁移到最新版本](../migration.md){:target="_blank"}
 
 ## 升级步骤
 
