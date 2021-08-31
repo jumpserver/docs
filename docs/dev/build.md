@@ -59,11 +59,13 @@ requirements/                     # 对应操作系统需要的依赖包
 
 === "CentOS 7"
     ```bash
+    yum install -y gcc epel-release openldap-devel mariadb-devel libffi-devel sshpass
     yum install -y python36 python36-devel
     ```
 
 === "Ubuntu 20.04"
     ```bash
+    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion make
     apt-get install -y python3.8 python3.8-dev python3-venv
     ```
 
