@@ -106,7 +106,8 @@
         ```
         ```sh
         ./jmsctl.sh backup_db
-        gunzip /opt/jumpserver/db_backup/jumpserver-2021-01-22_19:28:24.sql.gz
+
+        # 如果是 gz 格式的需要先解压: gunzip /opt/jumpserver/db_backup/jumpserver-2021-01-22_19:28:24.sql.gz
         mv /opt/jumpserver/db_backup/jumpserver-2021-01-22_19:28:24.sql /opt/jumpserver.sql
         ```
 

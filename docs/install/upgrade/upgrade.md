@@ -46,7 +46,7 @@
         ```sh
         # 获取离线包: https://community.fit2cloud.com/#/products/jumpserver/downloads
         cd /opt
-        unzip jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
         cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
         ```
         ```sh
@@ -61,7 +61,7 @@
     !!! tip ""
         ```sh
         cd /opt
-        unzip jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
         cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
         ```
         ```sh

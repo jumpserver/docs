@@ -161,7 +161,7 @@
     !!! tip ""
         ```sh
         cd /opt
-        unzip jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
         cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
         ```
         ```sh
@@ -263,7 +263,7 @@
     !!! tip ""
         ```sh
         cd /opt
-        unzip jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
         cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
         ```
         ```sh
