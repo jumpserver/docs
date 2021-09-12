@@ -77,10 +77,6 @@
         cp values.yaml values.yaml.bak
         ```
         ```sh
-        # 卸载旧版本
-        helm uninstall jumpserver -n default
-        ```
-        ```sh
         # 获取最新代码
         git pull
         ```

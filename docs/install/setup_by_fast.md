@@ -364,7 +364,7 @@
         cd /opt
         git clone https://github.com/jumpserver/helm
         cd /opt/helm
-        vi values.yaml
+        cat values.yaml
         ```
         ```yaml
         # Default values for jumpserver.
@@ -374,15 +374,45 @@
         nameOverride: ""
         fullnameOverride: ""
 
+        ## @param global.imageRegistry Global Docker image registry
+        ## @param global.imagePullSecrets Global Docker registry secret names as an array
+        ## @param global.storageClass Global StorageClass for Persistent Volume(s)
+        ## @param global.redis.password Global Redis&trade; password (overrides `auth.password`)
+        ##
+        global:
+          imageRegistry: "docker.io"    # 国内可以使用华为云加速
+          ## E.g.
+          #  imagePullSecrets:
+          #  - myRegistryKeySecretName
+          ##
+          imagePullSecrets: []
+          storageClass: ""              # NFS SC
+
+        ## If the Redis database included in the chart is disabled, JumpServer will
+        ## use below parameters to connect to an external Redis server.
+        ##
+        externalDatabase:               # 数据库相关设置
+          engine: mysql
+          host: localhost
+          port: 3306
+          user: root
+          password: ""
+          database: jumpserver
+
+        ## If the MySQL database included in the chart is disabled, JumpServer will
+        ## use below parameters to connect to an external MySQL server.
+        ##
+        externalRedis:                  # Redis 设置
+          host: localhost
+          port: 6379
+          password: ""
+
         serviceAccount:
           # Specifies whether a service account should be created
           create: false
           # The name of the service account to use.
           # If not set and create is true, a name is generated using the fullname template
           name:
-
-        imagePullSecrets: []
-        # - name: yourImagePullSecret
 
         ingress:
           enabled: true
@@ -395,7 +425,7 @@
                proxy_set_header Upgrade "websocket";
                proxy_set_header Connection "Upgrade";
           hosts:
-            - "test.jumpserver.org"  # 通过 ingress 暴露对外域名, 自行修改成你的域名
+            - "test.jumpserver.org"                 # 对外域名
           tls: []
           #  - secretName: chart-example-tls
           #    hosts:
@@ -409,32 +439,20 @@
 
           config:
             # Generate a new random secret key by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`
-            secretKey: "*************"  # 加密 key, 随机生成保管好
+            secretKey: ""
             # Generate a new random bootstrap token by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`
-            bootstrapToken: "********"  # 组件组成使用 token
+            bootstrapToken: ""
             # Enabled it for debug
             debug: false
             log:
               level: ERROR
-            # Fill it with your mysql config
-            db:
-              engine: mysql         # mysql 相关, 自行搭建后填写对应信息
-              host: "192.168.1.1"
-              port: 3306
-              user: jumpserver
-              password: "*******"
-              name: jumpserver
-            # Fill it with your redis config
-            redis:
-              host: "192.168.1.1"  # redis 相关, 自行搭建后填写对应信息
-              port: 6379
-              password: "*******"
 
-          replicaCount: 1          # 副本数, 可以通过 kebuctl scale 实时扩容
+          replicaCount: 1
 
           image:
-            repository: docker.io/jumpserver/core  # 镜像地址, 默认使用 docker.io
-            tag: v2.13.1
+            registry: docker.io
+            repository: jumpserver/core
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
@@ -484,10 +502,10 @@
             #   memory: 1024Mi
 
           persistence:
-            storageClassName: jumpserver-data  # 请先自行创建 SC, 然后将名称填入此处, 其他组件也要修改
+            storageClassName: jumpserver-data
             accessModes:
-              - ReadWriteMany                  # 规则必须为 RWM, 多 pod 需要共同读写
-            size: 10Gi                         # 生产环境推荐 100G 以上
+              - ReadWriteMany
+            size: 10Gi
             # annotations: {}
             finalizers:
               - kubernetes.io/pvc-protection
@@ -517,8 +535,9 @@
           replicaCount: 1
 
           image:
-            repository: docker.io/jumpserver/koko
-            tag: v2.13.1
+            registry: docker.io
+            repository: jumpserver/koko
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
@@ -569,7 +588,7 @@
             #   memory: 128Mi
 
           persistence:
-            storageClassName: jumpserver-data  # custom
+            storageClassName: jumpserver-data
             accessModes:
               - ReadWriteMany
             size: 10Gi
@@ -600,8 +619,9 @@
           replicaCount: 1
 
           image:
-            repository: docker.io/jumpserver/lion
-            tag: v2.13.1
+            registry: docker.io
+            repository: jumpserver/lion
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
@@ -649,7 +669,7 @@
             #   memory: 512Mi
 
           persistence:
-            storageClassName: jumpserver-data  # custom
+            storageClassName: jumpserver-data
             accessModes:
               - ReadWriteMany
             size: 10Gi
@@ -668,7 +688,7 @@
           affinity: {}
 
         xpack:
-          enabled: false    # 企业版 xpack, 开源版本修改无效, 请保持默认
+          enabled: false      # 企业版本打开此选项
 
         omnidb:
           labels:
@@ -681,8 +701,9 @@
           replicaCount: 1
 
           image:
-            repository: registry.fit2cloud.com/jumpserver/omnidb
-            tag: v2.13.1
+            registry: registry.fit2cloud.com
+            repository: jumpserver/omnidb
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
@@ -759,8 +780,9 @@
           replicaCount: 1
 
           image:
-            repository: registry.fit2cloud.com/jumpserver/xrdp
-            tag: v2.13.1
+            registry: registry.fit2cloud.com
+            repository: jumpserver/xrdp
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
@@ -833,8 +855,9 @@
           replicaCount: 1
 
           image:
-            repository: docker.io/jumpserver/web
-            tag: v2.13.1
+            registry: docker.io
+            repository: jumpserver/web
+            tag: v2.13.2
             pullPolicy: IfNotPresent
 
           command: []
