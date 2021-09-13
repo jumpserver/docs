@@ -46,8 +46,8 @@
       listen 443 ssl;
       server_name demo.jumpserver.org;      # 自行修改成你自己的域名
       server_tokens off;
-      ssl_certificate cert/server.crt;      # 修改成你自己的证书
-      ssl_certificate_key cert/server.key;  # 修改成你自己的证书
+      ssl_certificate cert/server.crt;      # 修改 server.crt 为你的证书 (pem, crt 格式均可), 不要改路径 certs/
+      ssl_certificate_key cert/server.key;  # 修改 server.crt 为你的证书密钥文件, 不要改路径 certs/
       ssl_session_timeout 1d;
       ssl_session_cache shared:MozSSL:10m;
       ssl_session_tickets off;
