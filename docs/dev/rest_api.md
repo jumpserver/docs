@@ -657,6 +657,7 @@
             GMT_FORMAT        = '%a, %d %b %Y %H:%M:%S GMT'
             headers           = {
                 'Accept': 'application/json',
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
                 'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
             }
             kwargs['auth']    = cls.auth
@@ -670,6 +671,7 @@
             GMT_FORMAT        = '%a, %d %b %Y %H:%M:%S GMT'
             headers           = {
                 'Accept': 'application/json',
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
                 'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
             }
             kwargs['auth']    = cls.auth
