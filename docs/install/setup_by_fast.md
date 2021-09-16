@@ -24,7 +24,7 @@
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
-| MySQL   | >= 5.7  |    | Redis | >= 6.0  |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
 === "一键部署"
