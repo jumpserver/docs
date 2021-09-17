@@ -1,5 +1,58 @@
 # 更新日志
 
+v2.14.0
+------------------------
+2021年09月16日
+
+!!! info "新增功能 🌱"
+    - feat: 新增 会话活动页面（记录用户加入/离开共享会话的日志）
+    - feat: 新增 个人信息页面用户可以开启消息接受方式（如：企业微信、钉钉等）
+    - feat: 新增 Web Terminal 终端主题设置功能 (仅支持 SSH/Telnet 会话)
+    - feat: 新增 会话共享、协同操作功能（目前仅支持通过 Web Terminal 连接的 SSH/Telnet 会话）
+    - feat: 新增 数据库改密功能【企业版】
+    - feat: 新增 工单二级审批功能【企业版】
+    - feat: 新增 XRDP Windows 会话全屏的功能【企业版】
+    - feat: 新增 XRDP Windows 会话可挂载本地磁盘的功能【企业版】
+    - feat: 新增 Google Cloud Platform (谷歌云) 资产同步功能【企业版】
+    - feat: 新增 短信 MFA 认证方式 (目前支持阿里云、腾讯云短信服务)【企业版】
+
+!!! summary "功能优化 🚀"
+    - perf: 优化 配置文件内容进行可视化
+    - perf: 优化 Windows 会话支持移动端操作
+    - perf: 优化 Windows 会话页面增加快捷键 Shift+Alt+Ctrl，可以快速呼出右侧栏
+    - perf: 优化 针对第三方认证的用户 (如 OpenID、CAS 等) 登录时也进行 MFA 校验
+    - perf: 优化 授权列表显示创建方式（如手动、工单）
+    - perf: 优化 优化终端注册时名称长度处理逻辑
+    - perf: 优化 XRDP 连接方式可以在配置中进行开启或关闭【企业版】
+    - perf: 优化 创建授权时 (资产/应用) 系统用户字段不必填
+    - perf: 优化 测试网关端口错误时的提示信息
+    - perf: 优化 用户不能禁用或启用自己
+    - perf: 优化 第三方认证的用户也可以通过企业微信、钉钉等扫码登录
+    - perf: 优化 LDAP 同步提示信息
+    - perf: 优化 终端注册的名称（包含宿主机 Hostname）
+    - perf: 优化 资产选择列表显示 protocols 字段
+    - perf: 优化 授权规则动作上传下载复制粘贴选择时，连接动作不可取消
+
+!!! success "问题修复 🐛"
+    - fix: 修复 XRDP Windows 会话偶尔终端失败的问题
+    - fix: 修复 磁盘、内存等偶尔未告警的问题
+    - fix: 修复 应用账号不能通过用户名过滤的问题
+    - fix: 修复 已关联资产的特权用户删除失败的问题
+    - fix: 修复 WebSocket 引起的 Redis 连接持续增加的问题
+    - fix: 修复 设置未分组节点显示单独授权资产的配置时，用户授权树没有变化的问题
+    - fix: 修复 资产和特权用户关系发生变化时，资产特权用户没有及时更新的问题
+    - fix: 修复 批量更新组织失败的问题【企业版】
+
+!!! tip "依赖升级 🧰"
+    - PyYAML==5.2
+    - PyMySQL==1.0.2
+    - cx-Oracle==8.2.1
+    - psycopg2-binary==2.9.1
+    - google-cloud-compute==0.5.0
+    - tencentcloud-sdk-python==3.0.477
+    - jumpserver-django-oidc-rp==0.3.7.7
+    - alibabacloud_dysmsapi20170525==2.0.2
+
 v2.13.2
 ------------------------
 2021年08月27日
