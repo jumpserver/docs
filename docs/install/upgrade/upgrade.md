@@ -44,7 +44,6 @@
 
     !!! tip ""
         ```sh
-        # 获取离线包: https://community.fit2cloud.com/#/products/jumpserver/downloads
         cd /opt
         tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
         cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
