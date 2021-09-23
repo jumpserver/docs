@@ -379,7 +379,8 @@ node -v
 
 ### 安装依赖
 ```bash
-npm -i
+npm install
+npm install --dev
 npm rebuild node-sass
 ```
 
