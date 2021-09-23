@@ -43,12 +43,12 @@ requirements/                     # 对应操作系统需要的依赖包
 
 === "CentOS 7"
     ```bash
-    yum install -y epel-release mariadb-devel openldap-devel gcc make
+    yum install -y epel-release mariadb-devel openldap-devel gcc-c++ make sshpass
     ```
 
 === "Ubuntu 20.04"
     ```bash
-    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass gcc make
+    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
     ```
 
 !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
@@ -59,13 +59,11 @@ requirements/                     # 对应操作系统需要的依赖包
 
 === "CentOS 7"
     ```bash
-    yum install -y gcc epel-release openldap-devel mariadb-devel libffi-devel sshpass
     yum install -y python36 python36-devel
     ```
 
 === "Ubuntu 20.04"
     ```bash
-    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion make
     apt-get install -y python3.8 python3.8-dev python3-venv
     ```
 
@@ -619,6 +617,19 @@ cd guacamole-server-1.3.0/
 
 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
 
+=== "CentOS 7"
+    ```bash
+    yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm
+    yum install -y cairo-devel libjpeg-turbo-devel libpng-devel libtool uuid-devel
+    yum install -y ffmpeg-devel freerdp-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel libwebsockets-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
+    ```
+
+=== "Ubuntu 20.04"
+    ```bash
+    apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin libossp-uuid-dev
+    apt-get install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
+    ```
+
 ### 构建 Guacd
 
 ```bash
@@ -627,6 +638,8 @@ make
 make install
 ldconfig
 ```
+
+!!! tip "如果希望使用 systemd 管理, 可以使用 ./configure --with-systemd-dir=/etc/systemd/system/"
 
 ### 下载 Lion
 
