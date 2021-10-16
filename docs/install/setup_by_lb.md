@@ -245,7 +245,7 @@
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
 
     # 安装配置
-    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到 /data/jumpserver/core/data, 则 VOLUME_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
     DOCKER_DIR=/var/lib/docker
 
