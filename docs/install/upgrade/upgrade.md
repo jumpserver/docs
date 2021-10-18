@@ -9,7 +9,7 @@
 
 !!! tip "环境说明"
     - 从 v2.5 开始，要求 MySQL >= 5.7
-    - 从 v2.6 开始，要求 Redis >= 6
+    - 从 v2.6 开始，要求 Redis >= 5
     - 推荐使用外置 数据库 和 Redis，方便日后扩展升级
 
 | DB      | Version |    | Cache | Version |
