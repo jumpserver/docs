@@ -44,12 +44,12 @@ requirements/                     # 对应操作系统需要的依赖包
 
 === "CentOS 7"
     ```bash
-    yum install -y epel-release mariadb-devel openldap-devel gcc-c++ make sshpass
+    yum install -y epel-release postgresql-devel mariadb-devel openldap-devel gcc-c++ make sshpass
     ```
 
 === "Ubuntu 20.04"
     ```bash
-    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
+    apt-get install -y libpq-dev libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
     ```
 
 !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
