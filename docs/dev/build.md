@@ -90,7 +90,11 @@ source /opt/py3/bin/activate
 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
 ```bash
+pip install -U pip
 pip install -r requirements/requirements.txt
+rm -f apps/locale/zh/LC_MESSAGES/django.mo
+python apps/manage.py makemessages -a
+python apps/manage.py compilemessages
 ```
 
 ### 修改配置文件
