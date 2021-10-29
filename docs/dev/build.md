@@ -92,9 +92,6 @@ source /opt/py3/bin/activate
 ```bash
 pip install -U pip
 pip install -r requirements/requirements.txt
-rm -f apps/locale/zh/LC_MESSAGES/django.mo
-python apps/manage.py makemessages -a
-python apps/manage.py compilemessages
 ```
 
 ### 修改配置文件
@@ -236,6 +233,14 @@ REDIS_PASSWORD: ********
 #
 # Windows 登录跳过手动输入密码
 # WINDOWS_SKIP_ALL_MANUAL_PASSWORD: False
+```
+
+处理国际化
+
+```bash
+rm -f apps/locale/zh/LC_MESSAGES/django.mo
+python apps/manage.py makemessages -a
+python apps/manage.py compilemessages
 ```
 
 ### 启动 Core
