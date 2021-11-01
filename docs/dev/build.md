@@ -14,7 +14,7 @@ JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][l
 
 | Name    | Core                     | Python | MySQL  | MariaDB | Redis |
 | :------ | :----------------------- | :----- | :----- | :------ | :---- |
-| Version | {{ jumpserver.version }} | >= 3.6 | >= 5.7 | >= 10.2 | >= 6  |
+| Version | {{ jumpserver.version }} | >= 3.6 | >= 5.7 | >= 10.2 | >= 5  |
 
 ### 下载源代码
 
