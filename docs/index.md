@@ -24,7 +24,8 @@
     - 多租户：一套系统，多个子公司和部门同时使用；
     - 多应用支持：数据库，Windows远程应用，Kubernetes。
 
-## [功能列表](https://www.jumpserver.org/features.html)
+## 功能列表
+    - [JumpServer 堡垒机功能列表](https://www.jumpserver.org/features.html)
 
 ## 案例研究
 
