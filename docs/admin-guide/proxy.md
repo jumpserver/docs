@@ -65,9 +65,9 @@
         proxy_request_buffering off;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection $http_connection;
+        proxy_set_header X-Forwarded-For $remote_addr;
 
         proxy_ignore_client_abort on;
         proxy_connect_timeout 600;
@@ -108,9 +108,8 @@
                 proxy_request_buffering off;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
-                proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-For $remote_addr;
         }
     }
     ```
@@ -145,9 +144,8 @@
             proxy_request_buffering off;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-For $remote_addr;
         }
     }
     ```
