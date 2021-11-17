@@ -238,8 +238,6 @@ REDIS_PASSWORD: ********
 处理国际化
 
 ```bash
-rm -f apps/locale/zh/LC_MESSAGES/django.mo
-python apps/manage.py makemessages -a
 python apps/manage.py compilemessages
 ```
 
