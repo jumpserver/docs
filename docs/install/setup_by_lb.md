@@ -150,47 +150,21 @@
 
     服务器: 192.168.100.11
 
-!!! tip "下载源码"
+!!! tip "设置 Repo"
     ```sh
-    yum -y install epel-release wget make gcc-c++
-    cd /opt
-    wget https://download.redis.io/releases/redis-6.2.5.tar.gz
+    yum -y install epel-release https://repo.ius.io/ius-release-el7.rpm
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    tar -xf redis-6.2.5.tar.gz
-    cd redis-6.2.5
-    make
-    make install PREFIX=/usr/local/redis
+    yum install -y redis5
     ```
 
 !!! tip "配置 Redis"
     ```sh
-    cp redis.conf /etc/redis.conf
     sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis.conf
-    sed -i "s/daemonize no/daemonize yes/g" /etc/redis.conf
-    sed -i "s@pidfile /var/run/redis_6379.pid@pidfile /var/run/redis.pid@g" /etc/redis.conf
-    sed -i "902i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
-    sed -i "1023i maxmemory-policy allkeys-lru" /etc/redis.conf
-    vi /etc/systemd/system/redis.service
-    ```
-    ```vim
-    [Unit]
-    Description=Redis persistent key-value database
-    After=network.target
-    After=network-online.target
-    Wants=network-online.target
-
-    [Service]
-    Type=forking
-    PIDFile=/var/run/redis.pid
-    ExecStart=/usr/local/redis/bin/redis-server /etc/redis.conf
-    ExecReload=/bin/kill -s HUP $MAINPID
-    ExecStop=/bin/kill -s QUIT $MAINPID
-
-    [Install]
-    WantedBy=multi-user.target
+    sed -i "561i maxmemory-policy allkeys-lru" /etc/redis.conf
+    sed -i "481i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
     ```
 
 !!! tip "启动 Redis"
