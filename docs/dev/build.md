@@ -8,7 +8,7 @@
 JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [nginx][nginx] 整合。
 
 ## Core
-[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
+[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 
 ### 环境要求
 
