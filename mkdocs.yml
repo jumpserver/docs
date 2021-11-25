@@ -137,10 +137,10 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.16.2
+    version: v2.16.3
   installer:
-    amd64: 53
-    arm64: 53
+    amd64: 54
+    arm64: 54
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
