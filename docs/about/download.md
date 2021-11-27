@@ -43,6 +43,6 @@ JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 !!! tip ""
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads
 
-[win-client]: https://download.jumpserver.org/public/jumpserver-client.msi.zip
-[mac-client]: https://download.jumpserver.org/public/jumpserver-client.dmg
+[win-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer.msi
+[mac-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer.dmg
 [mac-mrd]: https://download.jumpserver.org/public/Microsoft_Remote_Desktop_10.6.7_installer.pkg
