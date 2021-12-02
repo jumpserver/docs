@@ -1,10 +1,9 @@
 # 国密改造
 
 !!! info "应相关单位要求，本文以沃通证书为例"
+    - [国密SSL证书试用申请指南](https://www.wotrus.com/support/freetestv1_apply_guide.htm)
 
-### 配置 JumpServer
-
-!!! tip ""
+!!! tip "配置 JumpServer"
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
@@ -20,11 +19,7 @@
     ./jmsctl.sh restart
     ```
 
-### 配置 Nginx
-
-- [国密SSL证书试用申请指南](https://www.wotrus.com/support/freetestv1_apply_guide.htm)
-
-!!! tip ""
+!!! tip "配置 Nginx"
     ```sh
     docker pull wojiushixiaobai/wotrus_nginx:v1.20.2
     docker tag wojiushixiaobai/wotrus_nginx:v1.20.2 jumpserver/wotrus_nginx:v1.20.2
