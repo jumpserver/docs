@@ -940,4 +940,4 @@
 
 
 
-更多内容参考 [https 配置](../../admin-guide/gmssl/) [快速入门](../../admin-guide/quick_start/)  
+更多内容参考 [https 配置](../../admin-guide/proxy/) [快速入门](../../admin-guide/quick_start/)  

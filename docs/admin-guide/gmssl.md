@@ -2,6 +2,7 @@
 
 !!! info "应相关单位要求，本文以沃通证书为例"
     - [国密SSL证书试用申请指南](https://www.wotrus.com/support/freetestv1_apply_guide.htm)
+    - 并非所有浏览器都支持国密，请做好相应的准备工作
 
 !!! tip "配置 JumpServer"
     ```sh
