@@ -940,4 +940,4 @@
 
 
 
-后续的使用请参考 [安全建议](install_security.md) [快速入门](../../admin-guide/quick_start/)  
+更多内容参考 [https 配置](../../admin-guide/gmssl/) [快速入门](../../admin-guide/quick_start/)  
