@@ -331,7 +331,6 @@
         Creating jms_redis     ... done
         Creating jms_core      ... done
         Creating jms_celery    ... done
-        Creating jms_luna      ... done
         Creating jms_koko      ... done
         Creating jms_web       ... done
         ```
@@ -527,7 +526,6 @@
         Creating network "jms_net" with driver "bridge"
         Creating jms_core      ... done
         Creating jms_celery    ... done
-        Creating jms_luna      ... done
         Creating jms_koko      ... done
         Creating jms_web       ... done
         ```
@@ -687,7 +685,6 @@
         Creating network "jms_net" with driver "bridge"
         Creating jms_core      ... done
         Creating jms_celery    ... done
-        Creating jms_luna      ... done
         Creating jms_koko      ... done
         Creating jms_web       ... done
         ```
