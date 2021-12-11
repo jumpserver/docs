@@ -328,6 +328,15 @@
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
 
+        ## Lion 开启字体平滑
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+
+        ## Nginx 文件上传大小
+        CLIENT_MAX_BODY_SIZE=4096m
+
+        ## 终端使用宿主 HOSTNAME 标识
+        SERVER_HOSTNAME=${HOSTNAME}
+
         # 额外的配置
         CURRENT_VERSION=
         ```
