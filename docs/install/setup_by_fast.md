@@ -370,12 +370,12 @@
 === "Kubernetes"
     !!! tip ""
         ```sh
-        cd /opt
-        git clone https://github.com/jumpserver/helm
-        cd /opt/helm
-        cat values.yaml
+        helm repo add jumpserver https://jumpserver.github.io/helm-charts
+        helm repo list
+        vi values.yaml
         ```
         ```yaml
+        # 模板 https://github.com/jumpserver/helm-charts/blob/main/charts/jumpserver/values.yaml
         # Default values for jumpserver.
         # This is a YAML-formatted file.
         # Declare variables to be passed into your templates.
@@ -389,12 +389,14 @@
         ## @param global.redis.password Global Redis&trade; password (overrides `auth.password`)
         ##
         global:
-          imageRegistry: "docker.io"    # 国内可以使用华为云加速
+          imageRegistry: "docker.io"    # 国内可以使用华为云加速 swr.cn-south-1.myhuaweicloud.com
+          imageTag: v2.16.3             # 版本号
           ## E.g.
           #  imagePullSecrets:
           #  - myRegistryKeySecretName
           ##
           imagePullSecrets: []
+              # - name: yourSecretKey
           storageClass: ""              # NFS SC
 
         ## If the Redis database included in the chart is disabled, JumpServer will
@@ -934,13 +936,10 @@
         ```
         ```sh
         # 安装
-        helm install jumpserver ./ -n default
+        helm install jms-k8s jumpserver/jumpserver -n default -f values.yaml
 
         # 卸载
-        helm uninstall jumpserver -n default
-
-        # 查看
-        helm list -n default
+        helm uninstall jms-k8s -n default
         ```
 
 === "[源码部署](../dev/build.md)"

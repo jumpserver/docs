@@ -72,18 +72,8 @@
     !!! tip ""
         ```sh
         # 请先手动备份好数据库, 然后继续操作
-        cd /opt/helm
-        cp values.yaml values.yaml.bak
+        # values.yaml 从 https://github.com/jumpserver/helm-charts/blob/main/charts/jumpserver/values.yaml 获取
+        helm repo update
+        helm upgrade jms-k8s jumpserver/jumpserver -n default -f values.yaml
         ```
-        ```sh
-        # 获取最新代码
-        git pull
-        ```
-        ```sh
-        # 修改配置文件, 将设置还原
-        vi values.yaml
-        ```
-        ```sh
-        # 执行升级操作
-        helm upgrade --install jumpserver ./ -n default
-        ```
+    !!! warning "或者使用 --set key=value 的方式传参"
