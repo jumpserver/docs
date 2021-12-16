@@ -967,7 +967,7 @@
 
 !!! tip "下载 Elasticsearch 镜像"
     ```sh
-    docker pull elasticsearch:7.14.0
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
     ```vim
     7a0437f04f83: Pull complete
@@ -978,8 +978,8 @@
     373fb8fbaf74: Pull complete
     5908d3eb2989: Pull complete
     Digest: sha256:81c126e4eddbc5576285670cb3e23d7ef7892ee5e757d6d9ba870b6fe99f1219
-    Status: Downloaded newer image for elasticsearch:7.14.0
-    docker.io/library/elasticsearch:7.14.0
+    Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
 !!! tip "持久化数据目录"
     ```sh
@@ -999,7 +999,7 @@
     # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
     ```
     ```sh
-    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always elasticsearch:7.14.0
+    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
 
 !!! tip "设置 JumpServer"
