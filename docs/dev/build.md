@@ -463,7 +463,7 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 | Name    | KoKo                     | Go   |
 | :------ | :----------------------- | :--  |
-| Version | {{ jumpserver.version }} | 1.15 |
+| Version | {{ jumpserver.version }} | 1.17 |
 
 ### 下载源代码
 
