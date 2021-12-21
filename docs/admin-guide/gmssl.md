@@ -31,11 +31,11 @@
     ll /opt/sslkey
 
     总用量 24
-    -rw-r--r--. 1 root root 6281 12月  2 19:34 gm.wuxiaobai.win_bundle.crt
-    -rw-r--r--. 1 root root 1675 12月  2 19:34 gm.wuxiaobai.win_RSA.key
-    -rw-r--r--. 1 root root 3048 12月  2 19:11 gm.wuxiaobai.win_sm2_encrypt_bundle.crt
-    -rw-r--r--. 1 root root  227 12月  2 19:11 gm.wuxiaobai.win_SM2.key
-    -rw-r--r--. 1 root root 3048 12月  2 19:11 gm.wuxiaobai.win_sm2_sign_bundle.crt
+    -rw-r--r--. 1 root root 6281 12月  2 19:34 test.domain.localhost_bundle.crt
+    -rw-r--r--. 1 root root 1675 12月  2 19:34 test.domain.localhost_RSA.key
+    -rw-r--r--. 1 root root 3048 12月  2 19:11 test.domain.localhost_sm2_encrypt_bundle.crt
+    -rw-r--r--. 1 root root  227 12月  2 19:11 test.domain.localhost_SM2.key
+    -rw-r--r--. 1 root root 3048 12月  2 19:11 test.domain.localhost_sm2_sign_bundle.crt
     ```
     ```sh
     # 配置 nginx
