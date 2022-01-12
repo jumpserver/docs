@@ -60,7 +60,6 @@ AUTH_LDAP_OPTIONS_OPT_REFERRALS=-1         # LDAP 认证时如果日志中出现
 HTTP_BIND_HOST=0.0.0.0           # http 监听 Host
 HTTP_LISTEN_PORT=8080            # http 监听端口
 WS_LISTEN_PORT=8070              # websocket 监听端口
-LOGIN_LOG_KEEP_DAYS=90           # 登录日志保留时长
 ASSETS_PERM_CACHE_TIME=86400     # 资产授权缓存时间
 SECURITY_MFA_VERIFY_TTL=3600     # 需要 MFA 确认时，确认后多少时间内不用再次确认
 ASSETS_PERM_CACHE_ENABLE=FALSE   # 是否启用资产缓存
