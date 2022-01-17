@@ -11,7 +11,7 @@ Jumpserver 离线录像播放器。
 
 ## [Clients](https://github.com/jumpserver/clients/releases){:target="_blank"}
 
-JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
+JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 
 | 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple:   | Linux :fontawesome-brands-linux: |
 | ------- | ------------------------------------ | ----------------------------------- | -------------------------------- |
@@ -19,9 +19,9 @@ JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 | 企业版本 | :material-check:                     | :material-check:                    | :material-close:                 |
 
 !!! tip ""
-    - [Windows 客户端][win-client]
-    - [macOS 客户端][mac-client]
-    - [macOS Remote_Desktop 客户端][mac-mrd]
+    - Windows 客户端：http://<your_jms_host>/download/JumpServer-Client-Installer.msi
+    - macOS 客户端：http://<your_jms_host>/download/JumpServer-Client-Installer.dmg
+    - macOS Remote_Desktop 客户端：http://<your_jms_host>/download/Microsoft_Remote_Desktop_10.6.7_installer.pkg
 
 ## [Jmservisor](https://github.com/jumpserver/Jmservisor/releases){:target="_blank"}
 
@@ -31,6 +31,9 @@ JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 | ------- | ------------------------------------ | --------------------------------- | -------------------------------- |
 | 开源版本 | :material-close:                     | :material-close:                  | :material-close:                 |
 | 企业版本 | :material-check:                     | :material-close:                  | :material-close:                 |
+
+!!! tip ""
+    - Jmservisor: http://<your_jms_host>/download/Jmservisor.msi
 
 ## Installer
 
@@ -42,7 +45,3 @@ JumpServer 客户端，支持 RDP 的本地拉起，后续会支持拉起 ssh。
 
 !!! tip ""
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads
-
-[win-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer.msi
-[mac-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer.dmg
-[mac-mrd]: https://download.jumpserver.org/public/Microsoft_Remote_Desktop_10.6.7_installer.pkg
