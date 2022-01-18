@@ -19,9 +19,9 @@ JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的
 | 企业版本 | :material-check:                     | :material-check:                    | :material-close:                 |
 
 !!! tip ""
-    - Windows 客户端：http://<your_jms_host>/download/JumpServer-Client-Installer.msi
-    - macOS 客户端：http://<your_jms_host>/download/JumpServer-Client-Installer.dmg
-    - macOS Remote_Desktop 客户端：http://<your_jms_host>/download/Microsoft_Remote_Desktop_10.6.7_installer.pkg
+    - [Windows 客户端][win-client]
+    - [macOS 客户端][mac-client]
+    - [macOS Remote_Desktop 客户端][mac-mrd]
 
 ## [Jmservisor](https://github.com/jumpserver/Jmservisor/releases){:target="_blank"}
 
@@ -33,7 +33,7 @@ JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的
 | 企业版本 | :material-check:                     | :material-close:                  | :material-close:                 |
 
 !!! tip ""
-    - Jmservisor: http://<your_jms_host>/download/Jmservisor.msi
+    - [Jmservisor 安装包][jmservisor]
 
 ## Installer
 
@@ -45,3 +45,8 @@ JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的
 
 !!! tip ""
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads
+
+[jmservisor]: https://download.jumpserver.org/public/Jmservisor-{{ jumpserver.jmservisor }}.msi
+[win-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer-{{ jumpserver.client }}.msi
+[mac-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer-{{ jumpserver.client }}.dmg
+[mac-mrd]: https://download.jumpserver.org/public/Microsoft_Remote_Desktop_10.6.7_installer.pkg
