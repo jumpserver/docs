@@ -39,14 +39,14 @@
 !!! tip "修改完成后的 daemon.json 供参考"
     ```json
     {
-        "data-root": "/var/lib/docker",
-        "experimental": true,
-        "fixed-cidr-v6": "fc00:1010:1111:100::/64",
-        "ip6tables": true,
-        "ipv6": true,
-        "live-restore": true,
-        "log-driver": "json-file",
-        "log-opts": { "max-file": "3", "max-size": "10m" },
-        "registry-mirrors": [ "https://hub-mirror.c.163.com", "http://f1361db2.m.daocloud.io" ]
+      "data-root": "/var/lib/docker",
+      "experimental": true,
+      "fixed-cidr-v6": "fc00:1010:1111:100::/64",
+      "ip6tables": true,
+      "ipv6": true,
+      "live-restore": true,
+      "log-driver": "json-file",
+      "log-opts": { "max-file": "3", "max-size": "10m" },
+      "registry-mirrors": [ "https://hub-mirror.c.163.com", "http://f1361db2.m.daocloud.io" ]
     }
     ```
