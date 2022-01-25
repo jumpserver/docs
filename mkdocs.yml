@@ -64,6 +64,7 @@ nav:
         - CAS: admin-guide/authentication/cas.md
         - MFA: admin-guide/authentication/mfa.md
         - LDAP: admin-guide/authentication/ldap.md
+        - SAML2: admin-guide/authentication/saml2.md
         - OpenID: admin-guide/authentication/openid.md
         - Radius: admin-guide/authentication/radius.md
         - 钉钉: admin-guide/authentication/dingtalk.md
