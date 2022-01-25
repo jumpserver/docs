@@ -24,7 +24,7 @@
     # 加入下面内容，注意不要覆盖已有的内容
     {
       "ipv6": true,
-      "fixed-cidr-v6": "fc00:100::/24",
+      "fixed-cidr-v6": "fc00:1010:1111:100::/64",
       "experimental": true,
       "ip6tables": true,
     }
