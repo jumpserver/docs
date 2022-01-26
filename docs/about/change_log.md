@@ -19,7 +19,7 @@ v2.18.0
     - feat: 支持对资产、应用账号进行定时备份【企业版】
     - feat: 支持复核人审批同意资产登录复核工单后直接对会话发起控制【企业版】
     - feat: 支持对SQL Server数据库的批量改密【企业版】
-    - feat: 支持查看Kubernetes的Namespace和Pod，并且支持对Pod内的Container进行连接和审计(Web Terminal连接方式)【企业版】
+    - feat: 支持查看Kubernetes的Namespace和Pod，并且支持对Pod内的Container进行连接和审计(Web Terminal连接方式)
     - feat: 支持导入SQL文件和导出查询数据集(支持CSV、XLSX格式)(Web数据库可视化页面)【企业版】
     - feat: 支持对Windows RemoteApp应用权限动作的单独控制，包括文件上传、下载、复制、粘贴(Web Terminal连接方式)【企业版】
     - feat: 支持显示License中的Copyright信息【企业版】
