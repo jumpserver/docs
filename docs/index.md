@@ -1,7 +1,7 @@
 # 总体介绍
 
 !!! tip ""
-    JumpServer 是全球首款开源的堡垒机，使用 GNU GPL v2.0 开源协议，是符合 4A 规范的运维安全审计系统。  
+    JumpServer 是全球首款开源的堡垒机，使用 GNU GPL v3.0 开源协议，是符合 4A 规范的运维安全审计系统。  
 
     JumpServer 使用 Python / Django 为主进行开发，遵循 Web 2.0 规范，配备了业界领先的 Web Terminal 方案，交互界面美观、用户体验好。  
 
@@ -25,6 +25,7 @@
     - 多应用支持：数据库，Windows远程应用，Kubernetes。
 
 ## 功能列表
+!!! tip ""
     - [JumpServer 堡垒机功能列表](https://www.jumpserver.org/features.html)
 
 ## 案例研究
