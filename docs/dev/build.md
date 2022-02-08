@@ -14,7 +14,7 @@ JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][l
 
 | Name    | Core                     | Python | MySQL  | MariaDB | Redis |
 | :------ | :----------------------- | :----- | :----- | :------ | :---- |
-| Version | {{ jumpserver.version }} | >= 3.6 | >= 5.7 | >= 10.2 | >= 5  |
+| Version | {{ jumpserver.version }} | >= 3.8 | >= 5.7 | >= 10.2 | >= 5  |
 
 ### 下载源代码
 
@@ -42,11 +42,6 @@ requirements/                     # 对应操作系统需要的依赖包
 └── rpm_requirements.txt          # 基于 RedHat 的发行版(如: CentOS)
 ```
 
-=== "CentOS 7"
-    ```bash
-    yum install -y epel-release postgresql-devel mariadb-devel openldap-devel gcc-c++ make sshpass
-    ```
-
 === "Ubuntu 20.04"
     ```bash
     apt-get install -y libpq-dev libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
@@ -58,11 +53,6 @@ requirements/                     # 对应操作系统需要的依赖包
 
 从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
 
-=== "CentOS 7"
-    ```bash
-    yum install -y python36 python36-devel
-    ```
-
 === "Ubuntu 20.04"
     ```bash
     apt-get install -y python3.8 python3.8-dev python3-venv
@@ -72,8 +62,8 @@ requirements/                     # 对应操作系统需要的依赖包
 python3
 ```
 ```python
-Python 3.6.8 (default, Nov 16 2020, 16:55:22)
-[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux
+Python 3.8.12 (default, Dec 21 2021, 10:55:30)
+[GCC 10.2.1 20210110] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -273,16 +263,6 @@ cd lina-{{ jumpserver.version }}
 
 ### 安装 Node
 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
-
-=== "CentOS 7"
-    ```bash
-    wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
-    tar -xf node-v10.24.1-linux-x64.tar.xz
-    mv node-v10.24.1-linux-x64 /usr/local/node
-    chown -R root:root /usr/local/node
-    export PATH=/usr/local/node/bin:$PATH
-    echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
-    ```
 
 === "Ubuntu 20.04"
     ```bash
@@ -484,15 +464,6 @@ cd koko-{{ jumpserver.version }}
 ### 安装 Go
 从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
 
-=== "CentOS 7"
-    ```bash
-    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
-    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
-    chown -R root:root /usr/local/go
-    export PATH=/usr/local/go/bin:$PATH
-    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
-    ```
-
 === "Ubuntu 20.04"
     ```bash
     wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
@@ -626,13 +597,6 @@ cd guacamole-server-1.3.0/
 ```
 
 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
-
-=== "CentOS 7"
-    ```bash
-    yum -y localinstall --nogpgcheck https://mirrors.aliyun.com/rpmfusion/free/el/rpmfusion-free-release-7.noarch.rpm
-    yum install -y cairo-devel libjpeg-turbo-devel libpng-devel libtool uuid-devel
-    yum install -y ffmpeg-devel freerdp-devel pango-devel libssh2-devel libtelnet-devel libvncserver-devel libwebsockets-devel pulseaudio-libs-devel openssl-devel libvorbis-devel libwebp-devel
-    ```
 
 === "Ubuntu 20.04"
     ```bash
