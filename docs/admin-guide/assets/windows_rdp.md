@@ -28,3 +28,7 @@
     - RDP security: RDP  
     - RDP console: 默认  
     - 提交后, 修改资产的系统平台为 Windows-RDP
+
+!!! warning "域账号注意事项"
+    - 如果 域账号 配置了特定的 登录工作站, 则需要在 DC域控制器 的 域用户 属性 登录工作站 里面添加 lion 的 CONTAINER ID
+    - 如不确定, 请配置为 此用户可以登录到: 所有计算机(C)
