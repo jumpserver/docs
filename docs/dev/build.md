@@ -466,8 +466,8 @@ cd koko-{{ jumpserver.version }}
 
 === "Ubuntu 20.04"
     ```bash
-    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
-    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
+    wget https://golang.google.cn/dl/go1.17.7.linux-amd64.tar.gz
+    tar -xf go1.17.7.linux-amd64.tar.gz -C /usr/local/
     chown -R root:root /usr/local/go
     export PATH=/usr/local/go/bin:$PATH
     echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -476,7 +476,7 @@ cd koko-{{ jumpserver.version }}
 ```bash
 go version
 ```
-`go version go1.15 linux/amd64`
+`go version go1.17.7 linux/amd64`
 
 ### 编译
 
