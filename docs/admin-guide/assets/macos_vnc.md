@@ -1,7 +1,11 @@
 # macOS VNC 资产要求
 
-!!! tip "支持原生的 macOS VNC"
+### 屏幕共享
+
+!!! tip ""
     在 `系统偏好设置` `共享` 配置 `屏幕共享` 即可, 默认端口 `5900`  
+
+### RealVNC
 
 !!! tip ""
     如果不使用自带的 vnc，可以单独安装 `RealVNC Server`  
