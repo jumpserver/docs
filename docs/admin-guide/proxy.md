@@ -9,7 +9,7 @@
 
 ### 1. nginx ssl 部署
 
-!!! tip "请准备好 ssl 证书"
+!!! tip "请准备好 ssl 证书 (注意需要使用 pem 格式证书)"
     - 将证书放到 /opt/jumpserver/config/nginx/cert 里面
 
 !!! tip ""
@@ -19,14 +19,23 @@
     ```vim
     ...
 
-    ## Nginx 配置, USE_LB=1 表示开启, 为 0 的情况下, HTTPS_PORT 定义不生效
+    ## Nginx 配置
     HTTP_PORT=80
     SSH_PORT=2222
     RDP_PORT=3389
 
-    USE_LB=1           # 1 表示开启此选项
-    HTTPS_PORT=443     # 对外 https 端口
+    ## HTTPS 配置
+    USE_LB=1                     # 1 表示开启此选项
+    HTTPS_PORT=443               # 对外 https 端口, 默认 443
+    SERVER_NAME=www.domain.com   # 你的 https 域名
+    SSL_CERTIFICATE=xxx.pem      # /opt/jumpserver/config/nginx/cert 目录下你的证书文件
+    SSL_CERTIFICATE_KEY=xxx.key  # /opt/jumpserver/config/nginx/cert 目录下你的 key 文件
     ```
+    ```sh
+    ./jmsctl.sh restart
+    ```
+
+??? warning "如果需要自定义 Nginx 配置文件, 可以参考此处"
     ```sh
     vi /opt/jumpserver/config/nginx/lb_http_server.conf
     ```
