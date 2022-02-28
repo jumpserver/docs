@@ -60,7 +60,6 @@ AUTH_LDAP_OPTIONS_OPT_REFERRALS=-1         # LDAP 认证时如果日志中出现
 HTTP_BIND_HOST=0.0.0.0           # http 监听 Host
 HTTP_LISTEN_PORT=8080            # http 监听端口
 WS_LISTEN_PORT=8070              # websocket 监听端口
-LOGIN_LOG_KEEP_DAYS=90           # 登录日志保留时长
 ASSETS_PERM_CACHE_TIME=86400     # 资产授权缓存时间
 SECURITY_MFA_VERIFY_TTL=3600     # 需要 MFA 确认时，确认后多少时间内不用再次确认
 ASSETS_PERM_CACHE_ENABLE=FALSE   # 是否启用资产缓存
@@ -152,4 +151,5 @@ JUMPSERVER_ENABLE_MENU_ANIMATIONS=false      # 启用菜单开关动画 true, fa
 JUMPSERVER_DISABLE_BITMAP_CACHING=true       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
 JUMPSERVER_DISABLE_OFFSCREEN_CACHING=true    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
 JUMPSERVER_DISABLE_GLYPH_CACHING=true        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
+JUMPSERVER_CLEAN_DRIVE_SCHEDULE_TIME=1       # 定时清理挂载盘文件的时间间隔 (单位：小时)，如果设置值 0，则不清理。（ v2.13新增 ）
 ```

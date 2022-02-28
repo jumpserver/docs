@@ -10,7 +10,7 @@
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
-| MySQL   | >= 5.7  |    | Redis | >= 6.0  |
+| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
 | Server Name   |        IP        |  Port       |     Use          |   Minimize Hardware    |   Standard Hardware     |
@@ -150,47 +150,21 @@
 
     服务器: 192.168.100.11
 
-!!! tip "下载源码"
+!!! tip "设置 Repo"
     ```sh
-    yum -y install epel-release wget make gcc-c++
-    cd /opt
-    wget https://download.redis.io/releases/redis-6.2.5.tar.gz
+    yum -y install epel-release https://repo.ius.io/ius-release-el7.rpm
     ```
 
 !!! tip "安装 Redis"
     ```sh
-    tar -xf redis-6.2.5.tar.gz
-    cd redis-6.2.5
-    make
-    make install PREFIX=/usr/local/redis
+    yum install -y redis5
     ```
 
 !!! tip "配置 Redis"
     ```sh
-    cp redis.conf /etc/redis.conf
     sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis.conf
-    sed -i "s/daemonize no/daemonize yes/g" /etc/redis.conf
-    sed -i "s@pidfile /var/run/redis_6379.pid@pidfile /var/run/redis.pid@g" /etc/redis.conf
-    sed -i "902i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
-    sed -i "1023i maxmemory-policy allkeys-lru" /etc/redis.conf
-    vi /etc/systemd/system/redis.service
-    ```
-    ```vim
-    [Unit]
-    Description=Redis persistent key-value database
-    After=network.target
-    After=network-online.target
-    Wants=network-online.target
-
-    [Service]
-    Type=forking
-    PIDFile=/var/run/redis.pid
-    ExecStart=/usr/local/redis/bin/redis-server /etc/redis.conf
-    ExecReload=/bin/kill -s HUP $MAINPID
-    ExecStop=/bin/kill -s QUIT $MAINPID
-
-    [Install]
-    WantedBy=multi-user.target
+    sed -i "561i maxmemory-policy allkeys-lru" /etc/redis.conf
+    sed -i "481i requirepass KXOeyNgDeTdpeu9q" /etc/redis.conf
     ```
 
 !!! tip "启动 Redis"
@@ -245,7 +219,7 @@
     ### 注意: SECRET_KEY 和要其他 JumpServer 服务器一致, 加密的数据将无法解密
 
     # 安装配置
-    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
+    ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到 /data/jumpserver/core/data, 则 VOLUME_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
     DOCKER_DIR=/var/lib/docker
 
@@ -273,6 +247,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis                                            # KoKo Lion 使用 redis 共享
+    REUSE_CONNECTION=false                                           # Koko 禁用连接复用
     ```
     ```sh
     ./jmsctl.sh install
@@ -585,6 +560,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis
+    REUSE_CONNECTION=false
     ```
     ```sh
     ./jmsctl.sh install
@@ -672,6 +648,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis
+    REUSE_CONNECTION=false
     ```
     ```sh
     ./jmsctl.sh install
@@ -993,7 +970,7 @@
 
 !!! tip "下载 Elasticsearch 镜像"
     ```sh
-    docker pull elasticsearch:7.14.0
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
     ```vim
     7a0437f04f83: Pull complete
@@ -1004,8 +981,8 @@
     373fb8fbaf74: Pull complete
     5908d3eb2989: Pull complete
     Digest: sha256:81c126e4eddbc5576285670cb3e23d7ef7892ee5e757d6d9ba870b6fe99f1219
-    Status: Downloaded newer image for elasticsearch:7.14.0
-    docker.io/library/elasticsearch:7.14.0
+    Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
 !!! tip "持久化数据目录"
     ```sh
@@ -1025,13 +1002,13 @@
     # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
     ```
     ```sh
-    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always elasticsearch:7.14.0
+    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always docker.elastic.co/elasticsearch/elasticsearch:7.16.1
     ```
 
 !!! tip "设置 JumpServer"
     - 访问 JumpServer Web 页面并使用管理员账号进行登录
     - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [命令存储] 下方选择 [创建] 选择 [Elasticsearch]
-    - 根据下方的说明进行填写，保存后在 [终端管理] 页面对所有组件进行 [更新]，录像存储选择 [jms-mino]，提交
+    - 根据下方的说明进行填写，保存后在 [终端管理] 页面对所有组件进行 [更新]，命令存储选择 [jms-es]，提交
 
 | 选项            | 参考值                                               | 说明                   |
 | :-------------  | :-------------------------------------------------  | :--------------------- |

@@ -8,13 +8,13 @@
 JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [nginx][nginx] 整合。
 
 ## Core
-[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Lion][lion] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
+[Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 
 ### 环境要求
 
 | Name    | Core                     | Python | MySQL  | MariaDB | Redis |
 | :------ | :----------------------- | :----- | :----- | :------ | :---- |
-| Version | {{ jumpserver.version }} | >= 3.6 | >= 5.7 | >= 10.2 | >= 6  |
+| Version | {{ jumpserver.version }} | >= 3.8 | >= 5.7 | >= 10.2 | >= 5  |
 
 ### 下载源代码
 
@@ -25,6 +25,7 @@ mkdir /opt/jumpserver-{{ jumpserver.version }}
 wget -O /opt/jumpserver-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/jumpserver/archive/refs/tags/{{ jumpserver.version }}.tar.gz
 tar -xf jumpserver-{{ jumpserver.version }}.tar.gz -C /opt/jumpserver-{{ jumpserver.version }} --strip-components 1
 cd jumpserver-{{ jumpserver.version }}
+wget https://download.jumpserver.org/files/GeoLite2-City.mmdb -O apps/common/utils/geoip/GeoLite2-City.mmdb
 ```
 
 ```bash
@@ -41,14 +42,9 @@ requirements/                     # 对应操作系统需要的依赖包
 └── rpm_requirements.txt          # 基于 RedHat 的发行版(如: CentOS)
 ```
 
-=== "CentOS 7"
-    ```bash
-    yum install -y epel-release mariadb-devel openldap-devel gcc make
-    ```
-
 === "Ubuntu 20.04"
     ```bash
-    apt-get install -y libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass gcc make
+    apt-get install -y pkg-config libpq-dev libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
     ```
 
 !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
@@ -56,11 +52,6 @@ requirements/                     # 对应操作系统需要的依赖包
 ### 安装 Python3
 
 从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
-
-=== "CentOS 7"
-    ```bash
-    yum install -y python36 python36-devel
-    ```
 
 === "Ubuntu 20.04"
     ```bash
@@ -71,8 +62,8 @@ requirements/                     # 对应操作系统需要的依赖包
 python3
 ```
 ```python
-Python 3.6.8 (default, Nov 16 2020, 16:55:22)
-[GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux
+Python 3.8.12 (default, Dec 21 2021, 10:55:30)
+[GCC 10.2.1 20210110] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -89,6 +80,7 @@ source /opt/py3/bin/activate
 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
 ```bash
+pip install -U pip
 pip install -r requirements/requirements.txt
 ```
 
@@ -233,6 +225,13 @@ REDIS_PASSWORD: ********
 # WINDOWS_SKIP_ALL_MANUAL_PASSWORD: False
 ```
 
+处理国际化
+
+```bash
+rm -f apps/locale/zh/LC_MESSAGES/django.mo
+python apps/manage.py compilemessages
+```
+
 ### 启动 Core
 
 后台运行可以加 -d，`./jms start -d`
@@ -264,16 +263,6 @@ cd lina-{{ jumpserver.version }}
 
 ### 安装 Node
 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
-
-=== "CentOS 7"
-    ```bash
-    wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
-    tar -xf node-v10.24.1-linux-x64.tar.xz
-    mv node-v10.24.1-linux-x64 /usr/local/node
-    chown -R root:root /usr/local/node
-    export PATH=/usr/local/node/bin:$PATH
-    echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
-    ```
 
 === "Ubuntu 20.04"
     ```bash
@@ -379,7 +368,8 @@ node -v
 
 ### 安装依赖
 ```bash
-npm -i
+npm install
+npm install --dev
 npm rebuild node-sass
 ```
 
@@ -453,7 +443,7 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 | Name    | KoKo                     | Go   |
 | :------ | :----------------------- | :--  |
-| Version | {{ jumpserver.version }} | 1.15 |
+| Version | {{ jumpserver.version }} | 1.17 |
 
 ### 下载源代码
 
@@ -474,19 +464,10 @@ cd koko-{{ jumpserver.version }}
 ### 安装 Go
 从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
 
-=== "CentOS 7"
-    ```bash
-    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
-    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
-    chown -R root:root /usr/local/go
-    export PATH=/usr/local/go/bin:$PATH
-    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
-    ```
-
 === "Ubuntu 20.04"
     ```bash
-    wget https://golang.google.cn/dl/go1.15.linux-amd64.tar.gz
-    tar -xf go1.15.linux-amd64.tar.gz -C /usr/local/
+    wget https://golang.google.cn/dl/go1.17.7.linux-amd64.tar.gz
+    tar -xf go1.17.7.linux-amd64.tar.gz -C /usr/local/
     chown -R root:root /usr/local/go
     export PATH=/usr/local/go/bin:$PATH
     echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -495,7 +476,7 @@ cd koko-{{ jumpserver.version }}
 ```bash
 go version
 ```
-`go version go1.15 linux/amd64`
+`go version go1.17.7 linux/amd64`
 
 ### 编译
 
@@ -617,6 +598,12 @@ cd guacamole-server-1.3.0/
 
 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
 
+=== "Ubuntu 20.04"
+    ```bash
+    apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin libossp-uuid-dev
+    apt-get install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
+    ```
+
 ### 构建 Guacd
 
 ```bash
@@ -625,6 +612,8 @@ make
 make install
 ldconfig
 ```
+
+!!! tip "如果希望使用 systemd 管理, 可以使用 ./configure --with-systemd-dir=/etc/systemd/system/"
 
 ### 下载 Lion
 

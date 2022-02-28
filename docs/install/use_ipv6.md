@@ -2,6 +2,7 @@
 
 !!! info "说明"
     - 基于 NAT
+    - 请使用最新版本的 Docker
 
 !!! tip ""
     ```sh
@@ -13,14 +14,20 @@
     ```
     ```vim hl_lines="3"
     ## IPV6
-    DOCKER_SUBNET_IPV6=2001:db8:10::/64
+    DOCKER_SUBNET_IPV6=fc00:200::/24
     USE_IPV6=1
     ```
     ```sh
-    firewall-cmd --permanent --zone=public --add-port=80/tcp
-    firewall-cmd --permanent --zone=public --add-port=443/tcp
-    firewall-cmd --permanent --zone=public --add-port=2222/tcp
-    firewall-cmd --reload
+    vi /etc/docker/daemon.json
+    ```
+    ```json
+    # 加入下面内容，注意不要覆盖已有的内容
+    {
+      "ipv6": true,
+      "fixed-cidr-v6": "fc00:1010:1111:100::/64",
+      "experimental": true,
+      "ip6tables": true,
+    }
     ```
     ```sh
     systemctl restart docker
@@ -29,11 +36,23 @@
     ./jmsctl.sh start
     ```
 
-??? warning "如果按照这样设置后无法正常连接 ipv6 资产，请查看此处的帮助文档"
-    - VMware 虚拟机可能会出现此问题，可以先通过关闭防火墙的形式解决
-    - 我们会继续查找原因，后续会更新在文档里面
-
-    ```sh
-    systemctl stop firewalld
-    systemctl restart docker
+!!! tip "修改完成后的 daemon.json 供参考"
+    ```json
+    {
+      "data-root": "/var/lib/docker",
+      "experimental": true,
+      "fixed-cidr-v6": "fc00:1010:1111:100::/64",
+      "ip6tables": true,
+      "ipv6": true,
+      "live-restore": true,
+      "log-driver": "json-file",
+      "log-opts": {
+        "max-file": "3",
+        "max-size": "10m"
+      },
+      "registry-mirrors": [
+        "https://hub-mirror.c.163.com",
+        "http://f1361db2.m.daocloud.io"
+      ]
+    }
     ```

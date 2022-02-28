@@ -1,5 +1,7 @@
 # 反向代理
 
+- [国产密码应用改造方案](gmssl.md)
+
 !!! info "反向代理 JumpServer 要求说明"
     - rdp 协议复制粘贴需要部署可信任的 ssl 证书
     - 通过 https 协议访问就能在 rdp 资产里面使用复制粘贴
@@ -46,8 +48,8 @@
       listen 443 ssl;
       server_name demo.jumpserver.org;      # 自行修改成你自己的域名
       server_tokens off;
-      ssl_certificate cert/server.crt;      # 修改成你自己的证书
-      ssl_certificate_key cert/server.key;  # 修改成你自己的证书
+      ssl_certificate cert/server.crt;      # 修改 server.crt 为你的证书 (pem, crt 格式均可), 不要改路径 certs/
+      ssl_certificate_key cert/server.key;  # 修改 server.crt 为你的证书密钥文件, 不要改路径 certs/
       ssl_session_timeout 1d;
       ssl_session_cache shared:MozSSL:10m;
       ssl_session_tickets off;
@@ -65,9 +67,9 @@
         proxy_request_buffering off;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection $http_connection;
+        proxy_set_header X-Forwarded-For $remote_addr;
 
         proxy_ignore_client_abort on;
         proxy_connect_timeout 600;
@@ -108,9 +110,8 @@
                 proxy_request_buffering off;
                 proxy_set_header Upgrade $http_upgrade;
                 proxy_set_header Connection "upgrade";
-                proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-For $remote_addr;
         }
     }
     ```
@@ -145,9 +146,8 @@
             proxy_request_buffering off;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
-            proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-For $remote_addr;
         }
     }
     ```

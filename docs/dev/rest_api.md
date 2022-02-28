@@ -156,8 +156,10 @@
         ```
         以 PrivateToken: 937b38011acf499eb474e2fecb424ab3 为例:
         ```sh
-        curl -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' \
-             -H "Content-Type:application/json" http://demo.jumpserver.org/api/v1/users/users/
+        curl http://demo.jumpserver.org/api/v1/users/users/ \
+             -H 'Authorization: Token 937b38011acf499eb474e2fecb424ab3' \
+             -H 'Content-Type: application/json' \
+             -H 'X-JMS-ORG: 00000000-0000-0000-0000-000000000002'
         ```
         === "Python"
             ```python
@@ -657,6 +659,7 @@
             GMT_FORMAT        = '%a, %d %b %Y %H:%M:%S GMT'
             headers           = {
                 'Accept': 'application/json',
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
                 'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
             }
             kwargs['auth']    = cls.auth
@@ -670,6 +673,7 @@
             GMT_FORMAT        = '%a, %d %b %Y %H:%M:%S GMT'
             headers           = {
                 'Accept': 'application/json',
+                'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
                 'Date': datetime.datetime.utcnow().strftime(GMT_FORMAT)
             }
             kwargs['auth']    = cls.auth
