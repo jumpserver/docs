@@ -88,6 +88,12 @@
                 "strings"
             )
 
+            const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                UserName = "admin"
+                Password = "password"
+            )
+
             func GetToken(jms_url, username, password string) (string, error) {
                 url := jms_url + "/api/v1/authentication/auth/"
                 query_args := strings.NewReader(`{
@@ -111,7 +117,7 @@
                 return response["token"].(string), nil
             }
 
-            func GetUserInfo(jms_url, token string) {
+            func GetUserInfo(jms_url string, token string) {
                 url := jms_url + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
@@ -130,14 +136,11 @@
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
-                username := "admin"
-                password := "admin"
-                token, err := GetToken(jms_url, username, password)
+                token, err := GetToken(JmsServerURL, UserName, Password)
                 if err != nil {
                     log.Fatal(err)
                 }
-                GetUserInfo(jms_url, token)
+                GetUserInfo(JmsServerURL, token)
             }
             ```
 
@@ -196,6 +199,11 @@
                 "strings"
             )
 
+           const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                JMSToken = "adminToken"
+            )
+
             func GetUserInfo(jms_url, token string) {
                 url := jms_url + "/api/v1/users/users/"
                 client := &http.Client{}
@@ -215,9 +223,7 @@
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
-                token := "937b38011acf499eb474e2fecb424ab3"
-                GetUserInfo(jms_url, token)
+                GetUserInfo(JmsServerURL, JMSToken)
             }
             ```
 
