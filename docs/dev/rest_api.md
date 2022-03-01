@@ -94,8 +94,8 @@
                 Password = "password"
             )
 
-            func GetToken(jms_url, username, password string) (string, error) {
-                url := jms_url + "/api/v1/authentication/auth/"
+            func GetToken(jmsurl, username, password string) (string, error) {
+                url := jmsurl + "/api/v1/authentication/auth/"
                 query_args := strings.NewReader(`{
                     "username": "`+username+`",
                     "password": "`+password+`"
@@ -117,8 +117,8 @@
                 return response["token"].(string), nil
             }
 
-            func GetUserInfo(jms_url string, token string) {
-                url := jms_url + "/api/v1/users/users/"
+            func GetUserInfo(jmsurl, token string) {
+                url := jmsurl + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Bearer "+token)
@@ -204,8 +204,8 @@
                 JMSToken = "adminToken"
             )
 
-            func GetUserInfo(jms_url, token string) {
-                url := jms_url + "/api/v1/users/users/"
+            func GetUserInfo(jmsurl, token string) {
+                url := jmsurl + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Token "+token)
@@ -295,8 +295,8 @@
                 return signer.SignRequest(r, headers, nil)
             }
 
-            func GetUserInfo(jmsUrl string, auth *SigAuth) {
-                url := jmsUrl + "/api/v1/users/users/"
+            func GetUserInfo(jmsurl string, auth *SigAuth) {
+                url := jmsurl + "/api/v1/users/users/"
                 gmtFmt := "Mon, 02 Jan 2006 15:04:05 GMT"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
