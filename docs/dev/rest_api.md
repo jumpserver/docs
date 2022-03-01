@@ -199,7 +199,7 @@
                 "strings"
             )
 
-           const (
+            const (
                 JmsServerURL = "https://demo.jumpserver.org"
                 JMSToken = "adminToken"
             )
