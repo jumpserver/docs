@@ -269,7 +269,13 @@
                 "gopkg.in/twindagger/httpsig.v1"
             )
 
-            type SigAuth string {
+            const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                AccessKeyID = "f7373851-ea61-47bb-8357-xxxxxxxxxxx"
+                AccessKeySecret = "d6ed1a06-66f7-4584-af18-xxxxxxxxxxxx"
+            )
+
+            type SigAuth struct {
                 KeyID    string
                 SecretID string
             }
@@ -283,12 +289,12 @@
                 return signer.SignRequest(r, headers, nil)
             }
 
-            func GetUserInfo(jms_url string, auth *SigAuth) {
-                url := jms_url + "/api/v1/users/users/"
-                gmt_fmt := "Mon, 02 Jan 2006 15:04:05 GMT"
+            func GetUserInfo(jmsUrl string, auth *SigAuth) {
+                url := jmsUrl + "/api/v1/users/users/"
+                gmtFmt := "Mon, 02 Jan 2006 15:04:05 GMT"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
-                req.Header.Add("Date", time.Now().Format(gmt_fmt))
+                req.Header.Add("Date", time.Now().Format(gmtFmt))
                 req.Header.Add("Accept", "application/json")
                 req.Header.Add("X-JMS-ORG", "00000000-0000-0000-0000-000000000002")
                 if err != nil {
@@ -306,16 +312,16 @@
                 if err != nil {
                     log.Fatal(err)
                 }
+                json.MarshalIndent(body, "", "    ")
                 fmt.Println(string(body))
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
                 auth := SigAuth{
-                    KeyID:    "AccessKeyID",
-                    SecretID: "AccessKeySecret",
+                    KeyID:    AccessKeyID,
+                    SecretID: AccessKeySecret,
                 }
-                GetUserInfo(jms_url, &auth)
+                GetUserInfo(JmsServerURL, &auth)
             }
             ```
 
