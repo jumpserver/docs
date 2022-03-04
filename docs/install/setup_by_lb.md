@@ -756,47 +756,67 @@
     # cookie 用户侧的 cookie 会包含此标识, 便于区分当前访问的后端节点
     # 例: server db01 192.168.100.21:3306 weight 1 cookie db_01
     #---------------------------------------------------------------------
+c
+	frontend jms_http
+		bind *:80
+		bind *:443 ssl crt /etc/haproxy/haproxy.pem
+		redirect scheme https if !{ ssl_fc }
+		mode http
+		option httpclose
+		default_backend jms_https
 
-    listen jms-web
-        bind *:80                               # 监听 80 端口
-        mode http
-
-        # redirect scheme https if !{ ssl_fc }  # 重定向到 https
-        # bind *:443 ssl crt /opt/ssl.pem       # https 设置
-
-        option httpclose
-        option forwardfor
-        option httpchk GET /api/health/         # Core 检活接口
-
-        cookie SERVERID insert indirect
-        hash-type consistent
-        fullconn 500
-        balance leastconn
+	backend jms_https
+		mode http
+		option httpclose
+		stats hide-version
+		option forwardfor
+		option httpchk GET /api/health/         # Core 检活接口
+		option httplog
+		cookie SERVERID insert indirect
+		hash-type consistent
+		fullconn 500
+		balance leastconn
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3  # JumpServer 服务器
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+	
+	listen jms-ssh
+		bind *:2222
+		balance source #如使用默认leastconn会导致sftp下载时使用xftp等工具的异常断开问题
+		mode tcp
+		option tcp-check
+		timeout connect 3600000  #超时连接设置
+		timeout client  3600000  #超时连接设置
+		timeout server 3600000   #超时连接设置
+        server 192.168.100.21 192.168.100.21:2222 check inter 10s rise 1
+        server 192.168.100.22 192.168.100.22:2222 check inter 10s rise 1
+        server 192.168.100.23 192.168.100.23:2222 check inter 10s rise 1
+        server 192.168.100.24 192.168.100.23:2222 check inter 10s rise 1
 
-    listen jms-ssh
-        bind *:2222
-        mode tcp
-
-        option tcp-check
-
-        fullconn 500
-        balance leastconn
-        server 192.168.100.21 192.168.100.21:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.22 192.168.100.22:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.23 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
-
+	listen jms-xrdp
+		bind *:3389
+		mode tcp
+		log global
+		option tcplog
+		option tcp-check
+		tcp-request content accept if RDP_COOKIE
+		persist rdp-cookie
+		balance rdp-cookie #rdp专门的轮询方式，默认leastconn会导致连接时的异常断开
+		fullconn 500
+		timeout connect 3600000  #超时连接设置
+		timeout client  3600000  #超时连接设置
+		timeout server 3600000   #超时连接设置
+		server 192.168.100.21 192.168.100.21:3389 weight 1 check inter 2s rise 2 fall 3
+		server 192.168.100.22 192.168.100.22:3389 weight 1 check inter 2s rise 2 fall 3
+		server 192.168.100.23 192.168.100.24:3389 weight 1 check inter 2s rise 2 fall 3		
+		server 192.168.100.23 192.168.100.24:3389 weight 1 check inter 2s rise 2 fall 3
+		
     listen jms-koko
         mode http
-
         option httpclose
         option forwardfor
         option httpchk GET /koko/health/ HTTP/1.1\r\nHost:\ 192.168.100.100  # KoKo 检活接口, host 填写 HAProxy 的 ip 地址
-
         cookie SERVERID insert indirect
         hash-type consistent
         fullconn 500
