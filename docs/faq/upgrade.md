@@ -46,10 +46,9 @@ Creating jms_mysql ... done
 Creating jms_redis ... done
 Creating jms_core  ... done
 ERROR: for celery  Container "76b2e315f69d" is unhealthy.
-ERROR: for lina  Container "76b2e315f69d" is unhealthy.
-ERROR: for luna  Container "76b2e315f69d" is unhealthy.
 ERROR: for lion  Container "76b2e315f69d" is unhealthy.
 ERROR: for koko  Container "76b2e315f69d" is unhealthy.
+ERROR: for web   Container "76b2e315f69d" is unhealthy.
 ERROR: Encountered errors while bringing up the project.
 ```
 ```sh
