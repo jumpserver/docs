@@ -746,8 +746,6 @@
             type: ClusterIP
             web:
               port: 8082
-            ws:
-              port: 8071
 
           resources: {}
             # We usually recommend not to specify default resources and to leave this as a conscious
