@@ -88,8 +88,14 @@
                 "strings"
             )
 
-            func GetToken(jms_url, username, password string) (string, error) {
-                url := jms_url + "/api/v1/authentication/auth/"
+            const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                UserName = "admin"
+                Password = "password"
+            )
+
+            func GetToken(jmsurl, username, password string) (string, error) {
+                url := jmsurl + "/api/v1/authentication/auth/"
                 query_args := strings.NewReader(`{
                     "username": "`+username+`",
                     "password": "`+password+`"
@@ -111,8 +117,8 @@
                 return response["token"].(string), nil
             }
 
-            func GetUserInfo(jms_url, token string) {
-                url := jms_url + "/api/v1/users/users/"
+            func GetUserInfo(jmsurl, token string) {
+                url := jmsurl + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Bearer "+token)
@@ -130,14 +136,11 @@
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
-                username := "admin"
-                password := "admin"
-                token, err := GetToken(jms_url, username, password)
+                token, err := GetToken(JmsServerURL, UserName, Password)
                 if err != nil {
                     log.Fatal(err)
                 }
-                GetUserInfo(jms_url, token)
+                GetUserInfo(JmsServerURL, token)
             }
             ```
 
@@ -196,8 +199,13 @@
                 "strings"
             )
 
-            func GetUserInfo(jms_url, token string) {
-                url := jms_url + "/api/v1/users/users/"
+            const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                JMSToken = "adminToken"
+            )
+
+            func GetUserInfo(jmsurl, token string) {
+                url := jmsurl + "/api/v1/users/users/"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
                 req.Header.Add("Authorization", "Token "+token)
@@ -215,9 +223,7 @@
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
-                token := "937b38011acf499eb474e2fecb424ab3"
-                GetUserInfo(jms_url, token)
+                GetUserInfo(JmsServerURL, JMSToken)
             }
             ```
 
@@ -269,7 +275,13 @@
                 "gopkg.in/twindagger/httpsig.v1"
             )
 
-            type SigAuth string {
+            const (
+                JmsServerURL = "https://demo.jumpserver.org"
+                AccessKeyID = "f7373851-ea61-47bb-8357-xxxxxxxxxxx"
+                AccessKeySecret = "d6ed1a06-66f7-4584-af18-xxxxxxxxxxxx"
+            )
+
+            type SigAuth struct {
                 KeyID    string
                 SecretID string
             }
@@ -283,12 +295,12 @@
                 return signer.SignRequest(r, headers, nil)
             }
 
-            func GetUserInfo(jms_url string, auth *SigAuth) {
-                url := jms_url + "/api/v1/users/users/"
-                gmt_fmt := "Mon, 02 Jan 2006 15:04:05 GMT"
+            func GetUserInfo(jmsurl string, auth *SigAuth) {
+                url := jmsurl + "/api/v1/users/users/"
+                gmtFmt := "Mon, 02 Jan 2006 15:04:05 GMT"
                 client := &http.Client{}
                 req, err := http.NewRequest("GET", url, nil)
-                req.Header.Add("Date", time.Now().Format(gmt_fmt))
+                req.Header.Add("Date", time.Now().Format(gmtFmt))
                 req.Header.Add("Accept", "application/json")
                 req.Header.Add("X-JMS-ORG", "00000000-0000-0000-0000-000000000002")
                 if err != nil {
@@ -306,16 +318,16 @@
                 if err != nil {
                     log.Fatal(err)
                 }
+                json.MarshalIndent(body, "", "    ")
                 fmt.Println(string(body))
             }
 
             func main() {
-                jms_url := "https://demo.jumpserver.org"
                 auth := SigAuth{
-                    KeyID:    "AccessKeyID",
-                    SecretID: "AccessKeySecret",
+                    KeyID:    AccessKeyID,
+                    SecretID: AccessKeySecret,
                 }
-                GetUserInfo(jms_url, &auth)
+                GetUserInfo(JmsServerURL, &auth)
             }
             ```
 
