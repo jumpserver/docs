@@ -390,7 +390,7 @@
         ##
         global:
           imageRegistry: "docker.io"    # 国内可以使用华为云加速 swr.cn-south-1.myhuaweicloud.com
-          imageTag: v2.16.3             # 版本号
+          imageTag: {{ jumpserver.version }}             # 版本号
           ## E.g.
           #  imagePullSecrets:
           #  - myRegistryKeySecretName
@@ -463,7 +463,7 @@
           image:
             registry: docker.io
             repository: jumpserver/core
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -548,7 +548,7 @@
           image:
             registry: docker.io
             repository: jumpserver/koko
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -632,7 +632,7 @@
           image:
             registry: docker.io
             repository: jumpserver/lion
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -714,7 +714,7 @@
           image:
             registry: registry.fit2cloud.com
             repository: jumpserver/omnidb
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -793,7 +793,7 @@
           image:
             registry: registry.fit2cloud.com
             repository: jumpserver/xrdp
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -868,7 +868,7 @@
           image:
             registry: docker.io
             repository: jumpserver/web
-            tag: v2.13.2
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
