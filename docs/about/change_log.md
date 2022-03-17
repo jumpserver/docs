@@ -1,5 +1,52 @@
 # 更新日志
 
+v2.20.0
+------------------------
+2022年03月17日
+
+!!! info "新增功能 🌱"
+    - feat: 支持基于角色的权限访问控制（Role-based access control, RBAC）
+    - feat: 支持使用腾讯云对象存储（COS）存放录像文件
+
+!!! summary "功能优化 🚀"
+    - perf: 优化资产授权创建时默认选中了点击的资产和节点问题
+    - perf: 优化命令过滤器关联的系统用户包含rdp/vnc协议的问题
+    - perf: 优化命令过滤器关联的应用不包含Kubernetes的问题
+    - perf: 优化云管中心增加同步实例关联的资产IP字段【企业版】
+    - perf: 优化通过XRDP连接的Windows资产默认全屏打开【企业版】
+
+!!! success "问题修复 🐛"
+    - fix: 修复手动登录的系统用户登录失败的问题
+    - fix: 修复用户页面点击资产树节点提示对象找不到的问题
+    - fix: 修复通过API创建节点不能指定ID的问题
+    - fix: 修复Keycloak配置转换为OpenID不生效的问题
+    - fix: 修复资产账号列表点击更新时弹窗不出现的问题
+    - fix: 修复AWS（亚马逊云）未立即释放的实例获取私有IP失败的问题【企业版】
+    - fix: 修复云管中心同步任务详情中同步实例状态不准确的问题【企业版】
+    - fix: 修复改密计划执行显示失败实际已经修改成功的问题(安全模式关闭的情况)【企业版】
+    - fix: 修复XRDP会话录像记录时间显示不准确的问题【企业版】
+    - fix: 修复XRDP会话录像播放出现黑屏的问题【企业版】
+
+!!! tip "依赖升级 🧰"
+    - amqp==5.0.9
+    - ansible==2.10
+    - celery==5.2.2
+    - cryptography==36.0.1
+    - Django==3.1.14
+    - django-celery-beat==2.2.1
+    - django-timezone-field==4.1.0
+    - kombu==5.2.2
+    - Pillow==9.0.0
+    - pycryptodome==3.12.0
+    - pycryptodomex==3.12.0
+    - PyNaCl==1.5.0
+    - jms-storage==0.0.42
+    - vine==5.0.0
+    - python-ldap==3.4.0
+    - flower==1.0.0
+    - pyjwkest==1.4.2
+    - jsonfield2==4.0.0.post0
+
 v2.19.1
 ------------------------
 2022年02月18日
