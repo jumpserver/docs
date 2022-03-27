@@ -14,8 +14,8 @@
     ```
     ```vim hl_lines="3"
     ## IPV6
-    DOCKER_SUBNET_IPV6=fc00:200::/24
     USE_IPV6=1
+    DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
     ```
     ```sh
     vi /etc/docker/daemon.json
