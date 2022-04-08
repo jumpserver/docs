@@ -340,6 +340,21 @@ cd /opt/jumpserver/apps
 python manage.py createsuperuser --username=user --email=user@domain.com
 ```
 
+!!! info "如果是管理员忘记了 MFA，可以通过控制台重置"
+
+```sh
+docker exec -it jms_core /bin/bash
+cd /opt/jumpserver/apps
+python manage.py shell
+```
+```python
+from users.models import User
+u = User.objects.get(username='admin')
+u.mfa_level='0'
+u.otp_secret_key=''
+u.save()
+```
+
 !!! question "如果是设置了 LDAP 后无法登录，请登录数据库禁用 ldap 登录，然后重新设置 LDAP"
 
 ```sh
@@ -348,6 +363,7 @@ mysql -uroot -p
 ```mysql
 use jumpserver;
 update settings_setting set value='false' where name='AUTH_LDAP';
+update settings_setting set enabled='0' where name='AUTH_LDAP';
 ```
 ```sh
 redis-cli -a $REDIS_PASSWORD
@@ -358,7 +374,7 @@ keys *LDAP*
 del :1:_SETTING_AUTH_LDAP
 ```
 
-!!! question "如果是设置 其他身份认证 后无法登录，注释掉 jumpserver/config/config.txt 里面的身份认证设置重启即可"
+!!! question "如果是设置 其他身份认证 后无法登录，可以使用本地用户登录 Web 后在设置里面重新配置"
 
 ### 4. 管理用户 和 系统用户
 

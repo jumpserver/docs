@@ -1,19 +1,12 @@
 # 安装文档
 
-!!! info "说明"
-    全新安装的 Linux(内核推荐大于 4.0)  
-    需要连接 互联网  
-    使用 root 用户执行  
+- [在 Windows/macOS 部署说明](setup_by_desktop.md)
 
-??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
-    | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                | Kubernetes values.yaml                          |
-    | :----------- | :----------------------------------- | -------------------------------------------------------- | ----------------------------------------------- |
-    | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     | repository: swr.cn-north-1.myhuaweicloud.com    |
-    | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com     | repository: swr.cn-north-4.myhuaweicloud.com    |
-    | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com     | repository: swr.cn-south-1.myhuaweicloud.com    |
-    | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      | repository: swr.cn-east-3.myhuaweicloud.com      |
-    | 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com | repository: swr.ap-southeast-1.myhuaweicloud.com |
-    | 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-3.myhuaweicloud.com | repository: swr.ap-southeast-3.myhuaweicloud.com |
+!!! info "环境要求"
+
+| OS Version    | Linux Kerner  | Soft Requirement                      |
+| :------------ | :------------ | :------------------------------------ |
+| Linux Release | >= 4.0        | wget curl tar gettext iptables python |
 
 ## 安装方式
 
@@ -26,6 +19,16 @@
 | :------ | :------ | :- | :---- | :------ |
 | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
+
+??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
+    | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                | Kubernetes values.yaml                          | OS/ARCH      |
+    | :----------- | :----------------------------------- | -------------------------------------------------------- | ----------------------------------------------- | ------------ |
+    | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     | repository: swr.cn-north-1.myhuaweicloud.com    | linux/amd64  |
+    | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-4.myhuaweicloud.com     | repository: swr.cn-north-4.myhuaweicloud.com    | linux/amd64  |
+    | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com     | repository: swr.cn-south-1.myhuaweicloud.com    | linux/amd64  |
+    | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      | repository: swr.cn-east-3.myhuaweicloud.com      | linux/amd64 |
+    | 亚太-香港     | swr.ap-southeast-1.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com | repository: swr.ap-southeast-1.myhuaweicloud.com | linux/amd64 |
+    | 亚太-新加坡   | swr.ap-southeast-3.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-3.myhuaweicloud.com | repository: swr.ap-southeast-3.myhuaweicloud.com | linux/amd64 |
 
 === "一键部署"
     !!! tip ""
