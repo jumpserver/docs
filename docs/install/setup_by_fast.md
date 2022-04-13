@@ -455,8 +455,10 @@
 
           config:
             # Generate a new random secret key by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`
+            # secretKey: "B3f2w8P2PfxIAS7s4URrD9YmSbtqX4vXdPUL217kL9XPUOWrmy"
             secretKey: ""                            #  (*必填) 加密敏感信息的 secret_key, 长度推荐大于 50 位
             # Generate a new random bootstrap token by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`
+            # bootstrapToken: "7Q11Vz6R2J6BLAdO"
             bootstrapToken: ""                       #  (*必填) 组件认证使用的 token, 长度推荐大于 24 位
             # Enabled it for debug
             debug: false
