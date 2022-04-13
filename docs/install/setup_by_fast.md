@@ -396,16 +396,18 @@
           imageTag: {{ jumpserver.version }}             # 版本号
           ## E.g.
           #  imagePullSecrets:
-          #  - myRegistryKeySecretName
+          #    - name: harborsecret
+          #
+          #  storageClass: "jumpserver-data"
           ##
           imagePullSecrets: []
-              # - name: yourSecretKey
-          storageClass: ""              # NFS SC
+            # - name: yourSecretKey
+          storageClass: ""              # (*必填) NFS SC
 
-        ## If the Redis database included in the chart is disabled, JumpServer will
-        ## use below parameters to connect to an external Redis server.
+        ## Please configure your MySQL server first
+        ## Jumpserver will not start the external MySQL server.
         ##
-        externalDatabase:               # 数据库相关设置
+        externalDatabase:               #  (*必填) 数据库相关设置
           engine: mysql
           host: localhost
           port: 3306
@@ -413,10 +415,10 @@
           password: ""
           database: jumpserver
 
-        ## If the MySQL database included in the chart is disabled, JumpServer will
-        ## use below parameters to connect to an external MySQL server.
+        ## Please configure your Redis server first
+        ## Jumpserver will not start the external Redis server.
         ##
-        externalRedis:                  # Redis 设置
+        externalRedis:                  #  (*必填) Redis 设置
           host: localhost
           port: 6379
           password: ""
@@ -429,7 +431,7 @@
           name:
 
         ingress:
-          enabled: true
+          enabled: true                             # 不使用 ingress 可以关闭
           annotations:
             # kubernetes.io/tls-acme: "true"
             compute-full-forwarded-for: "true"
@@ -453,9 +455,9 @@
 
           config:
             # Generate a new random secret key by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 50`
-            secretKey: ""                            # 加密敏感信息的 secret_key, 长度推荐大于 50 位
+            secretKey: ""                            #  (*必填) 加密敏感信息的 secret_key, 长度推荐大于 50 位
             # Generate a new random bootstrap token by execute `cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 16`
-            bootstrapToken: ""                       # 组件认证使用的 token, 长度推荐大于 24 位
+            bootstrapToken: ""                       #  (*必填) 组件认证使用的 token, 长度推荐大于 24 位
             # Enabled it for debug
             debug: false
             log:
@@ -471,7 +473,11 @@
 
           command: []
 
-          env: []
+          env:
+            # See: https://docs.jumpserver.org/zh/master/admin-guide/env/#core
+            SESSION_EXPIRE_AT_BROWSER_CLOSE: true
+            # SESSION_COOKIE_AGE: 86400
+            # SECURITY_VIEW_AUTH_NEED_MFA: true
 
           livenessProbe:
             failureThreshold: 30
@@ -557,6 +563,11 @@
           command: []
 
           env: []
+            # See: https://docs.jumpserver.org/zh/master/admin-guide/env/#koko
+            # LANGUAGE_CODE: zh
+            # REUSE_CONNECTION: true
+            # ENABLE_LOCAL_PORT_FORWARD: true
+            # ENABLE_VSCODE_SUPPORT: true
 
           livenessProbe:
             failureThreshold: 30
@@ -640,7 +651,15 @@
 
           command: []
 
-          env: []
+          env:
+            # See: https://docs.jumpserver.org/zh/master/admin-guide/env/#lion
+            JUMPSERVER_ENABLE_FONT_SMOOTHING: true
+            # JUMPSERVER_COLOR_DEPTH: 32
+            # JUMPSERVER_ENABLE_WALLPAPER: true
+            # JUMPSERVER_ENABLE_THEMING: true
+            # JUMPSERVER_ENABLE_FULL_WINDOW_DRAG: true
+            # JUMPSERVER_ENABLE_DESKTOP_COMPOSITION: true
+            # JUMPSERVER_ENABLE_MENU_ANIMATIONS: true
 
           livenessProbe:
             failureThreshold: 30
@@ -799,7 +818,16 @@
 
           command: []
 
-          env: []
+          env:
+            # tcp_send_buffer_bytes and tcp_recv_buffer_bytes See: https://github.com/neutrinolabs/xrdp/issues/1483
+            TCP_SEND_BUFFER_BYTES: 4194304
+            TCP_RECV_BUFFER_BYTES: 6291456
+            JUMPSERVER_ENABLE_FONT_SMOOTHING: true
+            # JUMPSERVER_ENABLE_WALLPAPER: true
+            # JUMPSERVER_ENABLE_THEMING: true
+            # JUMPSERVER_ENABLE_FULL_WINDOW_DRAG: true
+            # JUMPSERVER_ENABLE_DESKTOP_COMPOSITION: true
+            # JUMPSERVER_ENABLE_MENU_ANIMATIONS: true
 
           livenessProbe:
             failureThreshold: 30
@@ -875,6 +903,8 @@
           command: []
 
           env: []
+            # nginx client_max_body_size, default 4G
+            # CLIENT_MAX_BODY_SIZE: 4096m
 
           livenessProbe:
             failureThreshold: 30
