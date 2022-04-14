@@ -79,25 +79,38 @@ nav:
     - 编译文档: dev/build.md
     - 交互命令: dev/shell.md
   - 用户文档:
-    - 个人页面:
-      - 首次登录: user-guide/login/login-first.md
-      - 概览页面: user-guide/login/dashboard.md
-      - 个人信息: user-guide/users/profile.md
-    - 终端登录: user-guide/login/terminal-login-SSH.md
+    - 堡垒机登录:
+      - Web登录: 
+        - 首次登录: user-guide/login/web.md
+        - 登录后首页: user-guide/login/fisrt-page.md
+        - 个人信息: user-guide/users/profile.md
+      - 终端登录: 
+        - SSH终端登录: user-guide/login/terminal-login-SSH.md
+        - 终端工具登录: user-guide/login/terminal-login-tools.md
     - 我的资产: user-guide/assets/user-asset.md
     - 我的应用:
-      - 远程应用: user-guide/apps/user-remoteapp.md
+      - 远程应用[企业版]: user-guide/apps/user-remoteapp.md
       - 数据库: user-guide/apps/user-database.md
       - Kubernetes: user-guide/apps/user-kubernetes.md
     - 批量命令: user-guide/ops/command-executions/create.md
-    - Web 终端:
+    - Web终端: 
+      - 使用简介: user-guide/terminal/web-terminal.md
       - 主题设置: user-guide/terminal/web-terminal-theme.md
       - 会话分享: user-guide/terminal/web-terminal-share.md
-      - 文件管理:
-        - SSH 协议: user-guide/terminal/filemanagement/ssh/filemanagement.md
-        - RDP 协议: user-guide/terminal/filemanagement/rdp/webgui.md
+      - 文件管理: 
+        - Linux文件上传下载: 
+          - 文件管理方式: user-guide/terminal/filemanagement/linux/filemanagement.md
+          - SFTP工具方式: user-guide/terminal/filemanagement/linux/sftptools.md
+        - Windows文件上传下载:
+          - Web GUI方式: user-guide/terminal/filemanagement/windows/webgui.md
+          - RDP方式[企业版]: user-guide/terminal/filemanagement/windows/rdp.md
+        - Windows WebGUI复制粘贴: user-guide/terminal/filemanagement/copypaste.md
+      - 视图: user-guide/terminal/web-terminal-view.md
+      - 语言: user-guide/terminal/web-terminal-language.md
       - 设置: user-guide/terminal/web-terminal-config.md
-    - 文件管理: user-guide/terminal/filemanagement/ssh/filemanagement.md
+      - 帮助: user-guide/terminal/web-terminal-help.md
+      - 窗口列表: user-guide/terminal/web-terminal-window-list.md
+    - 文件管理: user-guide/terminal/web-sftp.md
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
