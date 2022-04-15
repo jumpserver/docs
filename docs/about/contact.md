@@ -1,6 +1,6 @@
 # 联系方式
 
-!!! tip "QQ 群链接在屏幕右下方"
+!!! tip "[QQ 群链接](https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi){:target="_blank"}"
 
 ---
 

@@ -70,8 +70,6 @@ nav:
         - 钉钉: admin-guide/authentication/dingtalk.md
         - 微信: admin-guide/authentication/wechat.md
         - 飞书: admin-guide/authentication/feishu.md
-    - 导入导出:
-        - CSV 导入: admin-guide/data-import/csv_import.md
     - 反向代理: admin-guide/proxy.md
     - 国密改造: admin-guide/gmssl.md
     - 参数说明: admin-guide/env.md
@@ -81,14 +79,25 @@ nav:
     - 编译文档: dev/build.md
     - 交互命令: dev/shell.md
   - 用户文档:
+    - 个人页面:
+      - 首次登录: user-guide/login/login-first.md
+      - 概览页面: user-guide/login/dashboard.md
+      - 个人信息: user-guide/users/profile.md
+    - 终端登录: user-guide/login/terminal-login-SSH.md
     - 我的资产: user-guide/assets/user-asset.md
     - 我的应用:
+      - 远程应用: user-guide/apps/user-remoteapp.md
       - 数据库: user-guide/apps/user-database.md
       - Kubernetes: user-guide/apps/user-kubernetes.md
-    - 命令执行: user-guide/ops/command-executions/create.md
-    - 个人信息: user-guide/users/profile.md
-    - Web终端: user-guide/terminal/web-terminal.md
-    - 文件管理: user-guide/terminal/web-sftp.md
+    - 批量命令: user-guide/ops/command-executions/create.md
+    - Web 终端:
+      - 主题设置: user-guide/terminal/web-terminal-theme.md
+      - 会话分享: user-guide/terminal/web-terminal-share.md
+      - 文件管理:
+        - SSH 协议: user-guide/terminal/filemanagement/ssh/filemanagement.md
+        - RDP 协议: user-guide/terminal/filemanagement/rdp/webgui.md
+      - 设置: user-guide/terminal/web-terminal-config.md
+    - 文件管理: user-guide/terminal/filemanagement/ssh/filemanagement.md
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
