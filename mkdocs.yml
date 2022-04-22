@@ -152,8 +152,8 @@ extra:
     jmservisor: v1.2.3
     client: v1.1.4
   installer:
-    amd64: 183
-    arm64: 183
+    amd64: 186
+    arm64: 186
   search:
     separator: '[\s\-\.]+'
     language: 'zh'

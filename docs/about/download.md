@@ -15,7 +15,7 @@ JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的
 
 | 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple:   | Linux :fontawesome-brands-linux: |
 | ------- | ------------------------------------ | ----------------------------------- | -------------------------------- |
-| 开源版本 | :material-close:                     | :material-close:                    | :material-close:                 |
+| 开源版本 | :material-check:                     | :material-check:                    | :material-close:                 |
 | 企业版本 | :material-check:                     | :material-check:                    | :material-close:                 |
 
 !!! tip ""
