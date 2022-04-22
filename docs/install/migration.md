@@ -332,6 +332,7 @@
         Creating jms_core      ... done
         Creating jms_celery    ... done
         Creating jms_koko      ... done
+        Creating jms_magnus    ... done
         Creating jms_web       ... done
         ```
         ```sh
@@ -527,6 +528,7 @@
         Creating jms_core      ... done
         Creating jms_celery    ... done
         Creating jms_koko      ... done
+        Creating jms_magnus    ... done
         Creating jms_web       ... done
         ```
 
@@ -686,5 +688,6 @@
         Creating jms_core      ... done
         Creating jms_celery    ... done
         Creating jms_koko      ... done
+        Creating jms_magnus    ... done
         Creating jms_web       ... done
         ```

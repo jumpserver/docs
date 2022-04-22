@@ -104,21 +104,33 @@
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
         USE_IPV6=0
-        DOCKER_SUBNET_IPV6=2001:db8:10::/64
+        DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
 
-        ## Nginx 配置, USE_LB=1 表示开启, 为 0 的情况下, HTTPS_PORT 定义不生效
+        ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        RDP_PORT=3389
+        MAGNUS_MYSQL_PORT=33060
+        MAGNUS_MARIADB_PORT=33061
 
-        USE_LB=0
-        HTTPS_PORT=443
+        ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
+        # USE_LB=1
+        # HTTPS_PORT=443
+        # SERVER_NAME=your_domain_name
+        # SSL_CERTIFICATE=your_cert
+        # SSL_CERTIFICATE_KEY=your_cert_key
+
+        ## Nginx 文件上传大小
+        CLIENT_MAX_BODY_SIZE=4096m
 
         ## Task 配置, 是否启动 jms_celery 容器, 单节点必须开启
         USE_TASK=1
 
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
+        RDP_PORT=3389
+        MAGNUS_POSTGRE_PORT=54320
+        TCP_SEND_BUFFER_BYTES=4194304
+        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -126,6 +138,10 @@
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+
+        ## 终端使用宿主 HOSTNAME 标识
+        SERVER_HOSTNAME=${HOSTNAME}
 
         # 额外的配置
         CURRENT_VERSION=
@@ -206,21 +222,33 @@
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
         USE_IPV6=0
-        DOCKER_SUBNET_IPV6=2001:db8:10::/64
+        DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
 
-        ## Nginx 配置, USE_LB=1 表示开启, 为 0 的情况下, HTTPS_PORT 定义不生效
+        ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        RDP_PORT=3389
+        MAGNUS_MYSQL_PORT=33060
+        MAGNUS_MARIADB_PORT=33061
 
-        USE_LB=0
-        HTTPS_PORT=443
+        ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
+        # USE_LB=1
+        # HTTPS_PORT=443
+        # SERVER_NAME=your_domain_name
+        # SSL_CERTIFICATE=your_cert
+        # SSL_CERTIFICATE_KEY=your_cert_key
+
+        ## Nginx 文件上传大小
+        CLIENT_MAX_BODY_SIZE=4096m
 
         ## Task 配置, 是否启动 jms_celery 容器, 单节点必须开启
         USE_TASK=1
 
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
+        RDP_PORT=3389
+        MAGNUS_POSTGRE_PORT=54320
+        TCP_SEND_BUFFER_BYTES=4194304
+        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -228,6 +256,10 @@
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+
+        ## 终端使用宿主 HOSTNAME 标识
+        SERVER_HOSTNAME=${HOSTNAME}
 
         # 额外的配置
         CURRENT_VERSION=
@@ -308,21 +340,33 @@
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
         USE_IPV6=0
-        DOCKER_SUBNET_IPV6=2001:db8:10::/64
+        DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
 
-        ## Nginx 配置, USE_LB=1 表示开启, 为 0 的情况下, HTTPS_PORT 定义不生效
+        ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        RDP_PORT=3389
+        MAGNUS_MYSQL_PORT=33060
+        MAGNUS_MARIADB_PORT=33061
 
-        USE_LB=0
-        HTTPS_PORT=443
+        ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
+        # USE_LB=1
+        # HTTPS_PORT=443
+        # SERVER_NAME=your_domain_name
+        # SSL_CERTIFICATE=your_cert
+        # SSL_CERTIFICATE_KEY=your_cert_key
+
+        ## Nginx 文件上传大小
+        CLIENT_MAX_BODY_SIZE=4096m
 
         ## Task 配置, 是否启动 jms_celery 容器, 单节点必须开启
         USE_TASK=1
 
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
+        RDP_PORT=3389
+        MAGNUS_POSTGRE_PORT=54320
+        TCP_SEND_BUFFER_BYTES=4194304
+        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -330,12 +374,7 @@
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
-
-        ## Lion 开启字体平滑
         JUMPSERVER_ENABLE_FONT_SMOOTHING=true
-
-        ## Nginx 文件上传大小
-        CLIENT_MAX_BODY_SIZE=4096m
 
         ## 终端使用宿主 HOSTNAME 标识
         SERVER_HOSTNAME=${HOSTNAME}
@@ -527,7 +566,7 @@
             storageClassName: jumpserver-data
             accessModes:
               - ReadWriteMany
-            size: 10Gi
+            size: 100Gi
             # annotations: {}
             finalizers:
               - kubernetes.io/pvc-protection
@@ -690,6 +729,89 @@
             type: ClusterIP
             web:
               port: 8081
+
+          resources: {}
+            # We usually recommend not to specify default resources and to leave this as a conscious
+            # choice for the user. This also increases chances charts run on environments with little
+            # resources, such as Minikube. If you do want to specify resources, uncomment the following
+            # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+            # limits:
+            #   cpu: 100m
+            #   memory: 512Mi
+            # requests:
+            #   cpu: 100m
+            #   memory: 512Mi
+
+          persistence:
+            storageClassName: jumpserver-data
+            accessModes:
+              - ReadWriteMany
+            size: 50Gi
+            # annotations: {}
+            finalizers:
+              - kubernetes.io/pvc-protection
+
+          volumeMounts: []
+
+          volumes: []
+
+          nodeSelector: {}
+
+          tolerations: []
+
+          affinity: {}
+
+        magnus:
+          enabled: true
+
+          labels:
+            app.jumpserver.org/name: jms-magnus
+
+          config:
+            log:
+              level: ERROR
+
+          replicaCount: 1
+
+          image:
+            registry: docker.io
+            repository: jumpserver/magnus
+            tag: v2.21.0
+            pullPolicy: IfNotPresent
+
+          command: []
+
+          env: []
+
+          livenessProbe:
+            failureThreshold: 30
+            tcpSocket:
+              port: mysql
+
+          readinessProbe:
+            failureThreshold: 30
+            tcpSocket:
+              port: mysql
+
+          podSecurityContext: {}
+            # fsGroup: 2000
+
+          securityContext: {}
+            # capabilities:
+            #   drop:
+            #   - ALL
+            # readOnlyRootFilesystem: true
+            # runAsNonRoot: true
+            # runAsUser: 1000
+
+          service:
+            type: ClusterIP
+            mysql:
+              port: 33060
+            mariadb:
+              port: 33061
+            postgre:
+              port: 54320
 
           resources: {}
             # We usually recommend not to specify default resources and to leave this as a conscious
@@ -873,7 +995,7 @@
             storageClassName: jumpserver-data
             accessModes:
               - ReadWriteMany
-            size: 10Gi
+            size: 50Gi
             # annotations: {}
             finalizers:
               - kubernetes.io/pvc-protection

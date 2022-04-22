@@ -13,18 +13,18 @@
 | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-| Server Name   |        IP        |  Port       |     Use          |   Minimize Hardware    |   Standard Hardware     |
-| ------------- | ---------------- | ----------- | ---------------- | ---------------------- | ----------------------- |
-| NFS           |  192.168.100.11  |             | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
-| MySQL         |  192.168.100.11  | 3306        | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
-| Redis         |  192.168.100.11  | 6379        | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
-| HAProxy       |  192.168.100.100 | 80,443,2222 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
-| JumpServer 01 |  192.168.100.21  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-| JumpServer 02 |  192.168.100.22  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-| JumpServer 03 |  192.168.100.23  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-| JumpServer 04 |  192.168.100.24  | 80,2222     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-| MinIO         |  192.168.100.41  | 9000,9001   | Core, KoKo, Lion | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
-| Elasticsearch |  192.168.100.51  | 9200,9300   | Core, KoKo       | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
+| Server Name   |        IP        |  Port                   |     Use          |   Minimize Hardware    |   Standard Hardware     |
+| ------------- | ---------------- | ----------------------- | ---------------- | ---------------------- | ----------------------- |
+| NFS           |  192.168.100.11  |                         | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
+| MySQL         |  192.168.100.11  | 3306                    | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
+| Redis         |  192.168.100.11  | 6379                    | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
+| HAProxy       |  192.168.100.100 | 80,443,2222,33060,33061 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
+| JumpServer 01 |  192.168.100.21  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 02 |  192.168.100.22  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 03 |  192.168.100.23  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| JumpServer 04 |  192.168.100.24  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
+| MinIO         |  192.168.100.41  | 9000,9001               | Core, KoKo, Lion | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
+| Elasticsearch |  192.168.100.51  | 9200,9300               | Core, KoKo       | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
 
 | Server Name   | Check Health                   | Example                                   |
 | ------------- | ------------------------------ | ----------------------------------------- |
@@ -401,6 +401,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
+    Creating jms_magnus    ... done
     Creating jms_web       ... done
     ```
 
@@ -488,6 +489,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
+    Creating jms_magnus    ... done
     Creating jms_web       ... done
     ```
 
@@ -576,6 +578,7 @@
     Creating jms_lion      ... done
     Creating jms_koko      ... done
     Creating jms_celery    ... done
+    Creating jms_magnus    ... done
     Creating jms_web       ... done
     ```
 
@@ -664,6 +667,7 @@
     Creating jms_celery    ... done
     Creating jms_lion      ... done
     Creating jms_koko      ... done
+    Creating jms_magnus    ... done
     Creating jms_web       ... done
     ```
 
@@ -821,6 +825,32 @@
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
         server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+
+    listen jms-mysql
+        bind *:33060
+        mode tcp
+
+        option tcp-check
+
+        fullconn 500
+        balance source
+        server 192.168.100.21 192.168.100.21:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.22 192.168.100.22:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.23 192.168.100.23:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.23:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
+
+    listen jms-mariadb
+        bind *:33061
+        mode tcp
+
+        option tcp-check
+
+        fullconn 500
+        balance source
+        server 192.168.100.21 192.168.100.21:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.22 192.168.100.22:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.23 192.168.100.23:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.23:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
     ```
 
 !!! tip "配置 Selinux"
@@ -839,6 +869,8 @@
     firewall-cmd --permanent --zone=public --add-port=80/tcp
     firewall-cmd --permanent --zone=public --add-port=443/tcp
     firewall-cmd --permanent --zone=public --add-port=2222/tcp
+    firewall-cmd --permanent --zone=public --add-port=33060/tcp
+    firewall-cmd --permanent --zone=public --add-port=33061/tcp
     firewall-cmd --reload
     ```
 
