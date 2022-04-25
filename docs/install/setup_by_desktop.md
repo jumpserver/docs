@@ -48,7 +48,7 @@
         # Core, 自行修改 SECRET_KEY 和 BOOTSTRAP_TOKEN
         SECRET_KEY=B3f2w8P2PfxIAS7s4URrD9YmSbtqX4vXdPUL217kL9XPUOWrmy
         BOOTSTRAP_TOKEN=7Q11Vz6R2J6BLAdO
-        DEBUG=FALSE
+        DEBUG=False
         LOG_LEVEL=ERROR
 
         ##
@@ -94,7 +94,7 @@
         # Core, 自行修改 SECRET_KEY 和 BOOTSTRAP_TOKEN
         SECRET_KEY=B3f2w8P2PfxIAS7s4URrD9YmSbtqX4vXdPUL217kL9XPUOWrmy
         BOOTSTRAP_TOKEN=7Q11Vz6R2J6BLAdO
-        DEBUG=FALSE
+        DEBUG=False
         LOG_LEVEL=ERROR
 
         ##
