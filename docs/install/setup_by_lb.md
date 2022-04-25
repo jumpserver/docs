@@ -247,7 +247,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis                                            # KoKo Lion 使用 redis 共享
-    REUSE_CONNECTION=false                                           # Koko 禁用连接复用
+    REUSE_CONNECTION=False                                           # Koko 禁用连接复用
     ```
     ```sh
     ./jmsctl.sh install
@@ -562,7 +562,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis
-    REUSE_CONNECTION=false
+    REUSE_CONNECTION=False
     ```
     ```sh
     ./jmsctl.sh install
@@ -651,7 +651,7 @@
 
     # KoKo Lion 配置
     SHARE_ROOM_TYPE=redis
-    REUSE_CONNECTION=false
+    REUSE_CONNECTION=False
     ```
     ```sh
     ./jmsctl.sh install
