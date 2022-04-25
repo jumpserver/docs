@@ -19,8 +19,8 @@
 ## 数据库 SSL 连接
 
 !!! tip ""
-    - 准备好数据库 ca 文件, 当前不支持私钥认证
     ```bash
+    # 准备好数据库 ca 文件, 当前不支持私钥认证
     . /opt/jumpserver/config.txt
     mkdir $VOLUME_DIR/core/data/certs -p
     cp db_ca.pem $VOLUME_DIR/core/certs/db_ca.pem
@@ -42,8 +42,8 @@
 
 === "公钥认证"
     !!! tip ""
-        - 准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
         ```bash
+        准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
         . /opt/jumpserver/config.txt
         mkdir $VOLUME_DIR/core/data/certs -p
         cp redis_ca.crt $VOLUME_DIR/core/data/certs/redis_ca.crt
@@ -55,8 +55,8 @@
 
 === "私钥认证"
     !!! tip ""
-        - 准备好 Redis ca 文件、私钥和证书 (自签证书)
         ```bash
+        # 准备好 Redis ca 文件、私钥和证书 (自签证书)
         . /opt/jumpserver/config.txt
         mkdir $VOLUME_DIR/core/data/certs -p
         cp redis_ca.crt $VOLUME_DIR/core/data/certs/redis_ca.crt
