@@ -22,7 +22,7 @@
     ```bash
     # 准备好数据库 ca 文件, 当前不支持私钥认证
     . /opt/jumpserver/config.txt
-    mkdir $VOLUME_DIR/core/data/certs -p
+    mkdir -p $VOLUME_DIR/core/data/certs
     cp db_ca.pem $VOLUME_DIR/core/certs/db_ca.pem
     ```
     ```bash
@@ -45,7 +45,7 @@
         ```bash
         # 准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
         . /opt/jumpserver/config.txt
-        mkdir $VOLUME_DIR/core/data/certs -p
+        mkdir -p $VOLUME_DIR/core/data/certs
         cp redis_ca.crt $VOLUME_DIR/core/data/certs/redis_ca.crt
         ```
         ```bash
@@ -58,7 +58,7 @@
         ```bash
         # 准备好 Redis ca 文件、私钥和证书 (自签证书)
         . /opt/jumpserver/config.txt
-        mkdir $VOLUME_DIR/core/data/certs -p
+        mkdir -p $VOLUME_DIR/core/data/certs
         cp redis_ca.crt $VOLUME_DIR/core/data/certs/redis_ca.crt
         cp redis_client.crt $VOLUME_DIR/core/data/certs/redis_client.crt
         cp redis_client.key $VOLUME_DIR/core/data/certs/redis_client.key
