@@ -43,7 +43,7 @@
 === "公钥认证"
     !!! tip ""
         ```bash
-        准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
+        # 准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
         . /opt/jumpserver/config.txt
         mkdir $VOLUME_DIR/core/data/certs -p
         cp redis_ca.crt $VOLUME_DIR/core/data/certs/redis_ca.crt
