@@ -11,7 +11,7 @@ vi /opt/jumpserver/config/config.txt
 ```vim
 SECRET_KEY=****           # 用来加密解密的 KEY
 BOOTSTRAP_TOKEN=****      # koko/lion 用来向jms注册使用的 token
-DEBUG=TRUE                # 是否开启 debug 模式，显示更多信息  开启以后，界面可以显示API调用信息
+DEBUG=True                # 是否开启 debug 模式，显示更多信息  开启以后，界面可以显示API调用信息
 SITE_URL= http://1.2.3.4  # 网站的地址，发邮件时使用该地址来做 连接 跳转
 LOG_LEVEL=DEBUG           # 日志级别
 DB_ENGINE=mysql           # 数据库配置
@@ -31,7 +31,7 @@ TOKEN_EXPIRATION=86400    # api 生成 token 的有效期  调用API会使用到
 SESSION_COOKIE_DOMAIN=None   # session 生效域名，多个 jumpserver 共享 session 时使用
 CSRF_COOKIE_DOMAIN=None      # csrftoken 生效域名，多个 jumpserver 共享 session 时使用
 SESSION_COOKIE_AGE=86400     # session 有效期  默认界面用户不需要密码自动化登录时间
-SESSION_EXPIRE_AT_BROWSER_CLOSE=FALSE  # 关闭浏览器失效登录的 session
+SESSION_EXPIRE_AT_BROWSER_CLOSE=False  # 关闭浏览器失效登录的 session
 
 # AUTH_OPENID  -  -  查看 Core 配置 AUTH_OPENID 文档
 # AUTH_CAS - - 查看 Core 配置 AUTH_CAS 文档
@@ -43,11 +43,11 @@ EMAIL_SUFFIX=jumpserver.org   # 邮箱后缀，ldap 用户时，如果没有邮�
 # AUTH_RADIUS  - - 查看 Core 配置 AUTH_RADIUS 文档
 
 AUTH_LDAP_SEARCH_PAGED_SIZE=1000   # LDAP 搜索分页数量
-AUTH_LDAP_SYNC_IS_PERIODIC=FALSE   # 是否定时同步 ldap 用户
+AUTH_LDAP_SYNC_IS_PERIODIC=False   # 是否定时同步 ldap 用户
 AUTH_LDAP_SYNC_INTERVAL=None       # 同步间隔（单位：时）（优先）
 AUTH_LDAP_SYNC_CRONTAB=None        # 同步 Crontab 表达式
 
-AUTH_LDAP_USER_LOGIN_ONLY_IN_USERS=FALSE   # LDAP 用户登录时仅允许在用户列表中的用户执行 LDAP Server 认证
+AUTH_LDAP_USER_LOGIN_ONLY_IN_USERS=False   # LDAP 用户登录时仅允许在用户列表中的用户执行 LDAP Server 认证
 AUTH_LDAP_OPTIONS_OPT_REFERRALS=-1         # LDAP 认证时如果日志中出现以下信息将参数设置为 0
 # In order to perform this operation a successful bind must be completed on the connection (详情参见：https://www.python-ldap.org/en/latest/faq.html) 一般用于LDAP配置正确，但是就是无法登录
 
@@ -62,14 +62,14 @@ HTTP_LISTEN_PORT=8080            # http 监听端口
 WS_LISTEN_PORT=8070              # websocket 监听端口
 ASSETS_PERM_CACHE_TIME=86400     # 资产授权缓存时间
 SECURITY_MFA_VERIFY_TTL=3600     # 需要 MFA 确认时，确认后多少时间内不用再次确认
-ASSETS_PERM_CACHE_ENABLE=FALSE   # 是否启用资产缓存
+ASSETS_PERM_CACHE_ENABLE=False   # 是否启用资产缓存
 SYSLOG_ADDR=192.168.0.1          # syslog 的地址，多个地址逗号隔开(,)
 SYSLOG_FACILITY=user
 
-PERM_SINGLE_ASSET_TO_UNGROUP_NODE=FALSE  # 单独授权的资产(没有授权其所在节点)将该资产放入到未分组节点下
+PERM_SINGLE_ASSET_TO_UNGROUP_NODE=False  # 单独授权的资产(没有授权其所在节点)将该资产放入到未分组节点下
 WINDOWS_SSH_DEFAULT_SHELL=cmd            # windows 支持 ansible 时，使用的 shell
-PERIOD_TASK_ENABLED=TRUE                 # (1.5.2之后版本) 启用内部任务  内部自动推送用户，获取资产信息等任务
-PERIOD_TASK=TRUE                         # (1.5.2及之前版本) 启用内部任务
+PERIOD_TASK_ENABLED=True                 # (1.5.2之后版本) 启用内部任务  内部自动推送用户，获取资产信息等任务
+PERIOD_TASK=True                         # (1.5.2及之前版本) 启用内部任务
 
 LOGIN_LOG_KEEP_DAYS=90                   # 登陆日志保存默认保存时间  登陆日志保存时间，单位天。超过这个时间，后台将自动清理相应的登录信息，即使在页面中设置的审计周期超过对应的的配置参数，也只能查看最近配置（90天）的登录日志。
 

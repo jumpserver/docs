@@ -40,7 +40,7 @@
 
 ## Redis SSL 连接
 
-=== "公钥认证"
+=== "方式一"
     !!! tip ""
         ```bash
         # 准备好 Redis ca 文件 (云服务商一般只提供 ca 文件)
@@ -53,7 +53,7 @@
         # redis-cli --tls --cacert $VOLUME_DIR/core/data/certs/redis_ca.crt -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASSWORD info
         ```
 
-=== "私钥认证"
+=== "方式二"
     !!! tip ""
         ```bash
         # 准备好 Redis ca 文件、私钥和证书 (自签证书)
