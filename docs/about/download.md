@@ -11,7 +11,7 @@ Jumpserver 离线录像播放器。
 
 ## [Clients](https://github.com/jumpserver/clients/releases){:target="_blank"}
 
-JumpServer 客户端默认已经集成到 jumpserver/web 镜像，支持 RDP 的本地拉起，后续会支持拉起 ssh。
+JumpServer 客户端默认已经集成到 jumpserver/web 镜像，开源版本支持 SSH 的本地拉起，企业版本还支持 RDP 拉起。
 
 | 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple:   | Linux :fontawesome-brands-linux: |
 | ------- | ------------------------------------ | ----------------------------------- | -------------------------------- |
