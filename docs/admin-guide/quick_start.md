@@ -42,7 +42,7 @@
 | 172.16.80.21 |    test_rdp01   |    3389    | Windows 10 | administrator |  Test2020.W   |
 | 172.16.80.31 |   test_mysql01  |    3306    |   MySQL 5  |      root     |  Test2020.M   |
 
-!!! warning "Windows 资产先进行 [Windows SSH 设置](assets/windows_ssh.md)"
+!!! warning "Windows 资产如需执行更新资产信息、可连接性测试等自动化任务，需先进行 [Windows SSH 设置](assets/windows_ssh.md)，此非登录 Windows 资产的必填项！"
 
 !!! warning "MySQL 应用需要授权 Core 和 KoKo 的远程访问的权限 [MySQL 应用要求](app/mysql.md)"
 
