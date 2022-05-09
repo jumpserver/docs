@@ -229,7 +229,7 @@
     BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q                                 # 要其他 JumpServer 服务器一致 (*)
     LOG_LEVEL=ERROR                                                  # 日志等级
     # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true                             # 关闭浏览器 session 过期
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=True                             # 关闭浏览器 session 过期
 
     # MySQL 配置
     USE_EXTERNAL_MYSQL=1                                             # 使用外置 MySQL
@@ -456,7 +456,7 @@
     BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
     USE_EXTERNAL_MYSQL=1
@@ -544,7 +544,7 @@
     BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
     USE_EXTERNAL_MYSQL=1
@@ -633,7 +633,7 @@
     BOOTSTRAP_TOKEN=KXOeyNgDeTdpeu9q
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
     USE_EXTERNAL_MYSQL=1

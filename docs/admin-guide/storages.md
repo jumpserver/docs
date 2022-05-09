@@ -41,7 +41,7 @@
     ```
     ```vim
     # 加入 syslog 相关设置
-    SYSLOG_ENABLE=true
+    SYSLOG_ENABLE=True
     SYSLOG_ADDR=192.168.100.215:514
     ```
     ```sh
