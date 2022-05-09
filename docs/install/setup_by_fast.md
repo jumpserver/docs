@@ -4,7 +4,7 @@
 
 !!! info "环境要求"
 
-| OS Version    | Linux Kerner  | Soft Requirement                      |
+| OS Version    | Linux Kernel  | Soft Requirement                      |
 | :------------ | :------------ | :------------------------------------ |
 | Linux Release | >= 4.0        | wget curl tar gettext iptables python |
 
