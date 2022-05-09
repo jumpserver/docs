@@ -138,14 +138,14 @@
     ```vim
     # OPENID配置
     # version <= 1.5.8
-    AUTH_OPENID=true
+    AUTH_OPENID=True
     BASE_SITE_URL=http://demo.jumpserver.org/
     AUTH_OPENID_SERVER_URL=https://id.jumpserver.org/auth
     AUTH_OPENID_REALM_NAME=jumpserver
     AUTH_OPENID_CLIENT_ID=jumpserver
     AUTH_OPENID_CLIENT_SECRET=****************
-    AUTH_OPENID_SHARE_SESSION=true
-    AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
+    AUTH_OPENID_SHARE_SESSION=True
+    AUTH_OPENID_IGNORE_SSL_VERIFICATION=True
     ```
 
     !!! question "设置参数说明"
@@ -167,7 +167,7 @@
     ```
     ```vim
     # OPENID配置
-    AUTH_OPENID=true
+    AUTH_OPENID=True
     BASE_SITE_URL=https://demo.jumpserver.org/
     AUTH_OPENID_CLIENT_ID=jumpserver
     AUTH_OPENID_CLIENT_SECRET=****************
@@ -181,11 +181,11 @@
     AUTH_OPENID_PROVIDER_SIGNATURE_KEY=null
     AUTH_OPENID_SCOPES=openid profile email
     AUTH_OPENID_ID_TOKEN_MAX_AGE=60
-    AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS=true
-    AUTH_OPENID_USE_STATE=true
-    AUTH_OPENID_USE_NONCE=true
-    AUTH_OPENID_SHARE_SESSION=true
-    AUTH_OPENID_IGNORE_SSL_VERIFICATION=true
+    AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS=True
+    AUTH_OPENID_USE_STATE=True
+    AUTH_OPENID_USE_NONCE=True
+    AUTH_OPENID_SHARE_SESSION=True
+    AUTH_OPENID_IGNORE_SSL_VERIFICATION=True
     ```
 
     !!! question "设置参数说明"

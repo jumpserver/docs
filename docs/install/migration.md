@@ -177,7 +177,7 @@
     BOOTSTRAP_TOKEN=                      # 从旧版本的配置文件获取后填入 (*)
     LOG_LEVEL=ERROR
     # SESSION_COOKIE_AGE=86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE=true  # 关闭浏览器后 session 过期
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=True  # 关闭浏览器后 session 过期
     ```
 
 !!! tip "开始部署 JumpServer"

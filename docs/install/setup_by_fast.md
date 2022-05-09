@@ -132,13 +132,13 @@
         TCP_SEND_BUFFER_BYTES=4194304
         TCP_RECV_BUFFER_BYTES=6291456
 
-        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
+        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
-        SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+        SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
-        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=True
 
         ## 终端使用宿主 HOSTNAME 标识
         SERVER_HOSTNAME=${HOSTNAME}
@@ -250,13 +250,13 @@
         TCP_SEND_BUFFER_BYTES=4194304
         TCP_RECV_BUFFER_BYTES=6291456
 
-        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
+        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
-        SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+        SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
-        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=True
 
         ## 终端使用宿主 HOSTNAME 标识
         SERVER_HOSTNAME=${HOSTNAME}
@@ -368,13 +368,13 @@
         TCP_SEND_BUFFER_BYTES=4194304
         TCP_RECV_BUFFER_BYTES=6291456
 
-        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=true 表示关闭浏览器即 session 过期
+        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
-        SESSION_EXPIRE_AT_BROWSER_CLOSE=true
+        SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
         # Koko Lion XRDP 组件配置
         CORE_HOST=http://core:8080
-        JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=True
 
         ## 终端使用宿主 HOSTNAME 标识
         SERVER_HOSTNAME=${HOSTNAME}

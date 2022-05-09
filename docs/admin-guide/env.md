@@ -99,10 +99,10 @@ LOG_LEVEL=DEBUG                  # 可选 [DEBUG, INFO, WARN, ERROR, FATAL, CRIT
 SSH_TIMEOUT=15                   # SSH 连接超时时间(单位=秒)  如果用户服务器启用了 useDNS 这些参数，有可能登录时间超过 15S，需要修改此参数
 LANG=zh                          # 可选 [en, zh]  切换 KOKO 登录界面中英文 (v2.0之前的版本)
 LANGUAGE_CODE=zh                 # 可选 [en, zh]	切换 KOKO 登录界面中英文 (v2.0之后的版本)
-UPLOAD_FAILED_REPLAY_ON_START=true  # 未上传录像遗留文件，启动时是否上传
+UPLOAD_FAILED_REPLAY_ON_START=True  # 未上传录像遗留文件，启动时是否上传
 SFTP_ROOT=/tmp                   # SFTP 的根目录, 可选 /tmp, Home 其他自定义目录  1.5.7起已弃用这个选项，需要在在 core 的系统用户页面上配置
 SFTP_SHOW_HIDDEN_FILE=False      # SFTP 是否显示隐藏文件
-REUSE_CONNECTION=true            # 是否复用同一用户的 SSH 连接
+REUSE_CONNECTION=True            # 是否复用同一用户的 SSH 连接
 # ASSET_LOAD_POLICY=all          # all 则用户资产缓存本地搜索分页；默认异步加载资产, 异步搜索分页;   
 ZIP_MAX_SIZE=1024M               # web sftp 文件下载，zip 支持压缩的最大额度 (单位=M)
 ZIP_TMP_PATH=/tmp                # web sftp 文件下载，zip压缩文件存放的临时目录
@@ -114,8 +114,8 @@ REDIS_PORT=6379                  # redis 配置
 REDIS_PASSWORD=                  # redis 配置
 REDIS_CLUSTERS=                  # redis 配置
 REDIS_DB_ROOM=0                  # redis 配置  选择的 redis 库索引
-ENABLE_LOCAL_PORT_FORWARD=true   # 是否开启本地转发 (目前仅对 vscode remote ssh 有效果) v2.11 新增
-ENABLE_VSCODE_SUPPORT=true       # 是否开启 针对 vscode 的 remote-ssh 远程开发支持 ( 前置条件: 必须开启 ENABLE_LOCAL_PORT_FORWARD ) v2.11 新增。( 注意: vscode 的连接操作，无审计功能 )
+ENABLE_LOCAL_PORT_FORWARD=True   # 是否开启本地转发 (目前仅对 vscode remote ssh 有效果) v2.11 新增
+ENABLE_VSCODE_SUPPORT=True       # 是否开启 针对 vscode 的 remote-ssh 远程开发支持 ( 前置条件: 必须开启 ENABLE_LOCAL_PORT_FORWARD ) v2.11 新增。( 注意: vscode 的连接操作，无审计功能 )
 ```
 
 ## lion 参数说明
@@ -148,8 +148,8 @@ JUMPSERVER_ENABLE_FONT_SMOOTHING=False       # 启用平滑字体 true, false  �
 JUMPSERVER_ENABLE_FULL_WINDOW_DRAG=False     # 启用拖拽窗口时渲染全部内容 true, false  无（禁用）
 JUMPSERVER_ENABLE_DESKTOP_COMPOSITION=False  # 启用透明窗口和阴影等图形效果 true, false  无（禁用）
 JUMPSERVER_ENABLE_MENU_ANIMATIONS=False      # 启用菜单开关动画 true, false  无（禁用）
-JUMPSERVER_DISABLE_BITMAP_CACHING=true       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
-JUMPSERVER_DISABLE_OFFSCREEN_CACHING=true    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
-JUMPSERVER_DISABLE_GLYPH_CACHING=true        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
+JUMPSERVER_DISABLE_BITMAP_CACHING=True       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
+JUMPSERVER_DISABLE_OFFSCREEN_CACHING=True    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
+JUMPSERVER_DISABLE_GLYPH_CACHING=True        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
 JUMPSERVER_CLEAN_DRIVE_SCHEDULE_TIME=1       # 定时清理挂载盘文件的时间间隔 (单位：小时)，如果设置值 0，则不清理。（ v2.13新增 ）
 ```
