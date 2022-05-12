@@ -54,7 +54,7 @@
     }
 
     server {
-      listen 443 ssl;
+      listen 443 ssl http2;
       server_name demo.jumpserver.org;      # 自行修改成你自己的域名
       server_tokens off;
       ssl_certificate cert/server.crt;      # 修改 server.crt 为你的证书 (pem, crt 格式均可), 不要改路径 certs/
@@ -135,7 +135,7 @@
         return 301 https://$server_name$request_uri;
     }
     server {
-        listen 443 ssl;
+        listen 443 ssl http2;
         server_name          demo.jumpserver.org;  # 自行修改成你的域名
         ssl_certificate      sslkey/1_jumpserver.org_bundle.crt;  # 自行设置证书
         ssl_certificate_key  sslkey/2_jumpserver.org_bundle.key;  # 自行设置证书
