@@ -1079,6 +1079,8 @@ nginx -s reload
 [luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.version }}
 [koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
 [go]: https://golang.google.cn/
+[koko]: https://github.com/jumpserver/koko
+[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
 [lion]: https://github.com/jumpserver/lion-release
 [lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.version }}
 [guacamole]: http://guacamole.apache.org/
