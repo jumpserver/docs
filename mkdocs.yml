@@ -151,6 +151,7 @@ extra:
     version: v2.21.4
     jmservisor: v1.2.3
     client: v1.1.4
+    wisp: v0.0.6
   installer:
     amd64: 194
     arm64: 194
