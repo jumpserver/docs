@@ -349,6 +349,10 @@ python apps/manage.py compilemessages
 
     从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。这些版本是最新代码的稳定快照
 
+    | OS     | Arch  | Name                                                                  |
+    | :----- | :---- | :-------------------------------------------------------------------- |
+    | All    | All   | [lina-{{ jumpserver.version }}.tar.gz][lina-{{ jumpserver.version }}] |
+
     ```bash
     cd /opt
     wget https://github.com/jumpserver/lina/releases/download/{{ jumpserver.version }}/lina-{{ jumpserver.version }}.tar.gz
@@ -461,6 +465,10 @@ python apps/manage.py compilemessages
 
     ### 下载 Release 文件
 
+    | OS     | Arch  | Name                                                                  |
+    | :----- | :---- | :-------------------------------------------------------------------- |
+    | All    | All   | [luna-{{ jumpserver.version }}.tar.gz][luna-{{ jumpserver.version }}] |
+
     从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。这些版本是最新代码的稳定快照
 
     ```bash
@@ -558,12 +566,12 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
     从 [Github][koko] 网站上获取最新的 [Release][koko_release] 副本。这些版本是最新代码的稳定快照。
 
-    | OS     | Arch  | Name                                              |
-    | :----- | :---- | :------------------------------------------------ |
-    | Linux  | amd64 | koko-{{ jumpserver.version }}-linux-amd64.tar.gz  |
-    | Linux  | arm64 | koko-{{ jumpserver.version }}-linux-arm64.tar.gz  |
-    | Darwin | amd64 | koko-{{ jumpserver.version }}-darwin-amd64.tar.gz |
-    | Darwin | arm64 | koko-{{ jumpserver.version }}-darwin-arm64.tar.gz |
+    | OS     | Arch  | Name                                                                                            |
+    | :----- | :---- | :---------------------------------------------------------------------------------------------- |
+    | Linux  | amd64 | [koko-{{ jumpserver.version }}-linux-amd64.tar.gz][koko-{{ jumpserver.version }}-linux-amd64]   |
+    | Linux  | arm64 | [koko-{{ jumpserver.version }}-linux-arm64.tar.gz][koko-{{ jumpserver.version }}-linux-arm64]   |
+    | Darwin | amd64 | [koko-{{ jumpserver.version }}-darwin-amd64.tar.gz][koko-{{ jumpserver.version }}-darwin-amd64] |
+    | Darwin | arm64 | [koko-{{ jumpserver.version }}-darwin-arm64.tar.gz][koko-{{ jumpserver.version }}-darwin-arm64] |
 
     ```bash
     cd /opt
@@ -706,12 +714,12 @@ ldconfig
 
 可以从 [Github][lion] 网站上获取最新的 [Release][lion_release] 副本。
 
-| OS      | Arch  | Name                                               |
-| :------ | :---- | :------------------------------------------------- |
-| Linux   | amd64 | lion-{{ jumpserver.version }}-linux-amd64.tar.gz   |
-| Linux   | arm64 | lion-{{ jumpserver.version }}-linux-arm64.tar.gz   |
-| Darwin  | amd64 | lion-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
-| Windows | amd64 | lion-{{ jumpserver.version }}-windows-amd64.tar.gz |
+| OS      | Arch  | Name                                                                                              |
+| :------ | :---- | :------------------------------------------------------------------------------------------------ |
+| Linux   | amd64 | [lion-{{ jumpserver.version }}-linux-amd64.tar.gz][lion-{{ jumpserver.version }}-linux-amd64]     |
+| Linux   | arm64 | [lion-{{ jumpserver.version }}-linux-arm64.tar.gz][lion-{{ jumpserver.version }}-linux-arm64]     |
+| Darwin  | amd64 | [lion-{{ jumpserver.version }}-darwin-amd64.tar.gz][lion-{{ jumpserver.version }}-darwin-amd64]   |
+| Windows | amd64 | [lion-{{ jumpserver.version }}-windows-amd64.tar.gz][lion-{{ jumpserver.version }}-windows-amd64] |
 
 ```bash
 cd /opt
@@ -778,12 +786,12 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 可以从 [Github][magnus] 网站上获取最新的 [Release][magnus_release] 副本。
 
-| OS      | Arch  | Name                                                 |
-| :------ | :---- | :--------------------------------------------------- |
-| Linux   | amd64 | magnus-{{ jumpserver.version }}-linux-amd64.tar.gz   |
-| Linux   | arm64 | magnus-{{ jumpserver.version }}-linux-arm64.tar.gz   |
-| Darwin  | amd64 | magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
-| Darwin  | arm64 | magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz  |
+| OS      | Arch  | Name                                                                                                 |
+| :------ | :---- | :--------------------------------------------------------------------------------------------------- |
+| Linux   | amd64 | [magnus-{{ jumpserver.version }}-linux-amd64.tar.gz][magnus-{{ jumpserver.version }}-linux-amd64]    |
+| Linux   | arm64 | [magnus-{{ jumpserver.version }}-linux-arm64.tar.gz][magnus-{{ jumpserver.version }}-linux-arm64]    |
+| Darwin  | amd64 | [magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz][magnus-{{ jumpserver.version }}-darwin-amd64]  |
+| Darwin  | arm64 | [magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz][magnus-{{ jumpserver.version }}-darwin-arm64]  |
 
 ```bash
 cd /opt
@@ -794,13 +802,13 @@ cd lion-{{ jumpserver.version }}-magnus-amd64
 
 Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获取最新的 [Release][wisp_release] 副本。
 
-| OS      | Arch  | Name                                            |
-| :------ | :---- | :---------------------------------------------- |
-| Linux   | amd64 | wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz   |
-| Linux   | arm64 | wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz   |
-| Darwin  | amd64 | wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz  |
-| Darwin  | arm64 | wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz  |
-| Windows | amd64 | wisp-{{ jumpserver.wisp }}-windows-arm64.tar.gz |
+| OS      | Arch  | Name                                                                                        |
+| :------ | :---- | :------------------------------------------------------------------------------------------ |
+| Linux   | amd64 | [wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-amd64]     |
+| Linux   | arm64 | [wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-arm64]     |
+| Darwin  | amd64 | [wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-darwin-amd64]   |
+| Darwin  | arm64 | [wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz][wisp-{{ jumpserver.wisp }}-darwin-arm64]   |
+| Windows | amd64 | [wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-windows-amd64] |
 
 ```bash
 wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
@@ -1093,3 +1101,22 @@ nginx -s reload
 [wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.version }}
+[lina-{{ jumpserver.version }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.version }}/lina-{{ jumpserver.version }}.tar.gz
+[luna-{{ jumpserver.version }}]: https://github.com/jumpserver/luna/releases/download/{{ jumpserver.version }}/luna-{{ jumpserver.version }}.tar.gz
+[koko-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
+[koko-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-arm64.tar.gz
+[koko-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-darwin-amd64.tar.gz
+[koko-{{ jumpserver.version }}-darwin-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-darwin-arm64.tar.gz
+[lion-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-amd64.tar.gz
+[lion-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-arm64.tar.gz
+[lion-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-darwin-amd64.tar.gz
+[lion-{{ jumpserver.version }}-windows-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-windows-amd64.tar.gz
+[magnus-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-amd64.tar.gz
+[magnus-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-arm64.tar.gz
+[magnus-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz
+[magnus-{{ jumpserver.version }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz
+[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
+[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
+[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
+[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
+[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
