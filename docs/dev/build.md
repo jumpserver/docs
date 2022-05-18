@@ -29,6 +29,7 @@ JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][l
 可以从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载的源将采用 .tar.gz 存档的形式，通过命令行中提取该存档：
 
 ```bash
+cd /opt
 mkdir /opt/jumpserver-{{ jumpserver.version }}
 wget -O /opt/jumpserver-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/jumpserver/archive/refs/tags/{{ jumpserver.version }}.tar.gz
 tar -xf jumpserver-{{ jumpserver.version }}.tar.gz -C /opt/jumpserver-{{ jumpserver.version }} --strip-components 1
@@ -265,10 +266,10 @@ python apps/manage.py compilemessages
     从 [Github][lina] 下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
     ```bash
+    cd /opt
     mkdir /opt/lina-{{ jumpserver.version }}
     wget -O /opt/lina-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.version }}.tar.gz
     tar -xf lina-{{ jumpserver.version }}.tar.gz -C /opt/lina-{{ jumpserver.version }} --strip-components 1
-    cd lina-{{ jumpserver.version }}
     ```
 
     ### 安装 Node
@@ -276,6 +277,7 @@ python apps/manage.py compilemessages
 
     === "Ubuntu 20.04"
         ```bash
+        cd /opt
         wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
         tar -xf node-v10.24.1-linux-x64.tar.xz
         mv node-v10.24.1-linux-x64 /usr/local/node
@@ -289,16 +291,9 @@ python apps/manage.py compilemessages
     ```
     `v10.24.1`
 
-    ```bash
-    npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
-    npm config set registry https://registry.npm.taobao.org
-    npm install -g yarn
-    yarn config set registry https://registry.npm.taobao.org
-    ```
-
     ### 安装依赖
-
     ```bash
+    cd /opt/lina-{{ jumpserver.version }}
     npm install -g yarn
     yarn install
     ```
@@ -340,12 +335,13 @@ python apps/manage.py compilemessages
     ```
 
     ### 构建 Lina
-    构建完成后的 lina 包为 html 文件，可以直接移到到 nginx 服务器。
     ```bash
     yarn build:prod
+    cp -rf lina lina-{{ jumpserver.version }}
+    tar -czf lina-{{ jumpserver.version }}.tar.gz lina-{{ jumpserver.version }}
     ```
 
-    !!! tip "构建完成后, 生成在 build 目录下"
+    !!! tip "构建完成后, 生成在 lina 目录下"
 
 === "使用 Release"
 
@@ -357,7 +353,6 @@ python apps/manage.py compilemessages
     cd /opt
     wget https://github.com/jumpserver/lina/releases/download/{{ jumpserver.version }}/lina-{{ jumpserver.version }}.tar.gz
     tar -xf lina-{{ jumpserver.version }}.tar.gz
-    mv lina-{{ jumpserver.version }} lina
     ```
 
 ## Luna
@@ -377,10 +372,10 @@ python apps/manage.py compilemessages
     可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
     ```bash
+    cd /opt
     mkdir /opt/luna-{{ jumpserver.version }}
     wget -O /opt/luna-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.version }}.tar.gz
     tar -xf luna-{{ jumpserver.version }}.tar.gz -C /opt/luna-{{ jumpserver.version }} --strip-components 1
-    cd luna-{{ jumpserver.version }}
     ```
 
     ### 安装 Node
@@ -393,6 +388,7 @@ python apps/manage.py compilemessages
 
     ### 安装依赖
     ```bash
+    cd /opt/luna-{{ jumpserver.version }}
     npm install
     npm install --dev
     npm rebuild node-sass
@@ -449,16 +445,17 @@ python apps/manage.py compilemessages
 
     ### 运行 Luna
     ```bash
-    ng serve
+    ./node_modules/.bin/ng serve
     ```
 
     ### 构建 Luna
-    可以加 -prod 来进行生产构建 `ng build -prod`
     ```bash
-    ng build
+    ./node_modules/.bin/ng build
+    mv dist /opt/luna-{{ jumpserver.version }}
+    tar -czf luna-{{ jumpserver.version }}.tar.gz luna-{{ jumpserver.version }}
     ```
 
-    !!! tip "构建完成后, 生成在 build 目录下"
+    !!! tip "构建完成后, 生成在 dist 目录下"
 
 === "使用 Release"
 
@@ -470,7 +467,6 @@ python apps/manage.py compilemessages
     cd /opt
     wget https://github.com/jumpserver/luna/releases/download/{{ jumpserver.version }}/luna-{{ jumpserver.version }}.tar.gz
     tar -xf luna-{{ jumpserver.version }}.tar.gz
-    mv luna-{{ jumpserver.version }} luna
     ```
 
 ## KoKo
@@ -490,10 +486,10 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
     从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
     ```bash
+    cd /opt
     mkdir /opt/koko-{{ jumpserver.version }}
     wget -O /opt/koko-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.version }}.tar.gz
     tar -xf koko-{{ jumpserver.version }}.tar.gz -C /opt/koko-{{ jumpserver.version }} --strip-components 1
-    cd koko-{{ jumpserver.version }}
     ```
 
     ### 安装 Node
@@ -969,14 +965,14 @@ vi jumpserver.conf
       # 前端 Lina
       location /ui/ {
         try_files $uri / /index.html;
-        alias /opt/lina/;
+        alias /opt/lina-{{ jumpserver.version }}/;
         expires 24h;
       }
 
       # Luna 配置
       location /luna/ {
         try_files $uri / /index.html;
-        alias /opt/luna/;
+        alias /opt/luna-{{ jumpserver.version }}/;
         expires 24h;
       }
 
