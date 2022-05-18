@@ -516,11 +516,6 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
         apt install software-properties-common
         add-apt-repository -y ppa:redislabs/redis
         apt-get install -y mariadb-client bash-completion redis-tools
-        cd /opt/koko-{{ jumpserver.version }}
-        wget https://download.jumpserver.org/public/kubectl-linux-amd64.tar.gz -O kubectl.tar.gz
-        tar -xzf kubectl.tar.gz
-        chmod +x kubectl
-        mv kubectl /usr/local/bin/rawkubectl
         cd /opt
         mkdir /opt/kubectl-aliases
         wget http://download.jumpserver.org/public/kubectl_aliases.tar.gz -O kubectl_aliases.tar.gz
@@ -573,18 +568,31 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
     | Darwin | amd64 | [koko-{{ jumpserver.version }}-darwin-amd64.tar.gz][koko-{{ jumpserver.version }}-darwin-amd64] |
     | Darwin | arm64 | [koko-{{ jumpserver.version }}-darwin-arm64.tar.gz][koko-{{ jumpserver.version }}-darwin-arm64] |
 
-    ```bash
-    cd /opt
-    wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
-    ```
+    === "Linux/amd64"
+        ```bash
+        cd /opt
+        wget https://download.jumpserver.org/public/kubectl-linux-amd64.tar.gz -O kubectl.tar.gz
+        tar -xzf kubectl.tar.gz
+        chmod +x kubectl
+        mv kubectl /usr/local/bin/rawkubectl
+        wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
+        tar -xf koko-{{ jumpserver.version }}-linux-amd64.tar.gz -C /opt
+        cd koko-{{ jumpserver.version }}-linux-amd64
+        mv kubectl /usr/local/bin/kubectl
+        ```
 
-### 解压缩包
-
-```bash
-tar -xf koko-{{ jumpserver.version }}-linux-amd64.tar.gz -C /opt
-cd koko-{{ jumpserver.version }}-linux-amd64
-mv kubectl /usr/local/bin/kubectl
-```
+    === "Linux/arm64"
+        ```bash
+        cd /opt
+        wget https://download.jumpserver.org/public/kubectl-linux-arm64.tar.gz -O kubectl.tar.gz
+        tar -xzf kubectl.tar.gz
+        chmod +x kubectl
+        mv kubectl /usr/local/bin/rawkubectl
+        wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-arm64.tar.gz
+        tar -xf koko-{{ jumpserver.version }}-linux-arm64.tar.gz -C /opt
+        cd koko-{{ jumpserver.version }}-linux-arm64
+        mv kubectl /usr/local/bin/kubectl
+        ```
 
 ### 修改配置文件
 
@@ -721,12 +729,21 @@ ldconfig
 | Darwin  | amd64 | [lion-{{ jumpserver.version }}-darwin-amd64.tar.gz][lion-{{ jumpserver.version }}-darwin-amd64]   |
 | Windows | amd64 | [lion-{{ jumpserver.version }}-windows-amd64.tar.gz][lion-{{ jumpserver.version }}-windows-amd64] |
 
-```bash
-cd /opt
-wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-amd64.tar.gz
-tar -xf lion-{{ jumpserver.version }}-linux-amd64.tar.gz
-cd lion-{{ jumpserver.version }}-linux-amd64
-```
+=== "Linux/amd64"
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-amd64.tar.gz
+    tar -xf lion-{{ jumpserver.version }}-linux-amd64.tar.gz
+    cd lion-{{ jumpserver.version }}-linux-amd64
+    ```
+
+=== "Linux/arm64"
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-arm64.tar.gz
+    tar -xf lion-{{ jumpserver.version }}-linux-arm64.tar.gz
+    cd lion-{{ jumpserver.version }}-linux-arm64
+    ```
 
 ### 修改配置文件
 
@@ -793,13 +810,6 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 | Darwin  | amd64 | [magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz][magnus-{{ jumpserver.version }}-darwin-amd64]  |
 | Darwin  | arm64 | [magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz][magnus-{{ jumpserver.version }}-darwin-arm64]  |
 
-```bash
-cd /opt
-wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-amd64.tar.gz
-tar -xf lion-{{ jumpserver.version }}-magnus-amd64.tar.gz
-cd lion-{{ jumpserver.version }}-magnus-amd64
-```
-
 Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获取最新的 [Release][wisp_release] 副本。
 
 | OS      | Arch  | Name                                                                                        |
@@ -810,45 +820,105 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
 | Darwin  | arm64 | [wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz][wisp-{{ jumpserver.wisp }}-darwin-arm64]   |
 | Windows | amd64 | [wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-windows-amd64] |
 
-```bash
-wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-tar -xf wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-mv wisp-{{ jumpserver.wisp }}-linux-amd64/wisp /usr/local/bin/
-chown root:root /usr/local/bin/wisp
-chmod 755 /usr/local/bin/wisp
-```
+=== "Linux/amd64"
 
-### 修改配置文件
+    ### 解压缩包
 
-```bash
-cp config_example.yml config.yml
-vi config.yml
-```
-```yaml
-# 服务 bind 地址
-BIND_HOST: "0.0.0.0"
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-amd64.tar.gz
+    tar -xf lion-{{ jumpserver.version }}-magnus-amd64.tar.gz
+    cd lion-{{ jumpserver.version }}-magnus-amd64
+    ```
+    ```bash
+    wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
+    tar -xf wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
+    mv wisp-{{ jumpserver.wisp }}-linux-amd64/wisp /usr/local/bin/
+    chown root:root /usr/local/bin/wisp
+    chmod 755 /usr/local/bin/wisp
+    ```
 
-# 数据库代理暴露的端口
-MYSQL_PORT: 33060
-MARIA_DB_PORT: 33061
-POSTGRESQL_PORT: 54320
+    ### 修改配置文件
 
-# 日志级别
-LOG_LEVEL: "info"
+    ```bash
+    cp config_example.yml config.yml
+    vi config.yml
+    ```
+    ```yaml
+    # 服务 bind 地址
+    BIND_HOST: "0.0.0.0"
 
-# jumpserver api grpc 组件地址
-WISP_HOST: "localhost"
-WISP_PORT: 9090
-```
+    # 数据库代理暴露的端口
+    MYSQL_PORT: 33060
+    MARIA_DB_PORT: 33061
+    POSTGRESQL_PORT: 54320
 
-### 启动 Wisp
+    # 日志级别
+    LOG_LEVEL: "info"
 
-```bash
-export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-amd64"
-export COMPONENT_NAME="magnus"
-export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-amd64/magnus"
-wisp
-```
+    # jumpserver api grpc 组件地址
+    WISP_HOST: "localhost"
+    WISP_PORT: 9090
+    ```
+
+    ### 启动 Wisp
+
+    ```bash
+    export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-amd64"
+    export COMPONENT_NAME="magnus"
+    export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-amd64/magnus"
+    wisp
+    ```
+
+=== "Linux/arm64"
+
+    ### 解压缩包
+
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-arm64.tar.gz
+    tar -xf lion-{{ jumpserver.version }}-magnus-arm64.tar.gz
+    cd lion-{{ jumpserver.version }}-magnus-arm64
+    ```
+    ```bash
+    wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
+    tar -xf wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
+    mv wisp-{{ jumpserver.wisp }}-linux-arm64/wisp /usr/local/bin/
+    chown root:root /usr/local/bin/wisp
+    chmod 755 /usr/local/bin/wisp
+    ```
+
+    ### 修改配置文件
+
+    ```bash
+    cp config_example.yml config.yml
+    vi config.yml
+    ```
+    ```yaml
+    # 服务 bind 地址
+    BIND_HOST: "0.0.0.0"
+
+    # 数据库代理暴露的端口
+    MYSQL_PORT: 33060
+    MARIA_DB_PORT: 33061
+    POSTGRESQL_PORT: 54320
+
+    # 日志级别
+    LOG_LEVEL: "info"
+
+    # jumpserver api grpc 组件地址
+    WISP_HOST: "localhost"
+    WISP_PORT: 9090
+    ```
+
+    ### 启动 Wisp
+    
+    ```bash
+    export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-arm64"
+    export COMPONENT_NAME="magnus"
+    export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-arm64/magnus"
+    wisp
+    ```
 
 ## Nginx
 
