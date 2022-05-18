@@ -7,14 +7,22 @@
 
 JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [nginx][nginx] 整合。
 
+### 数据库要求
+
+| Name    | Core                     | MySQL  | MariaDB | Redis |
+| :------ | :----------------------- | :----- | :------ | :---- |
+| Version | {{ jumpserver.version }} | >= 5.7 | >= 10.2 | >= 6  |
+
+!!! warning "MySQL 和 MariaDB 二选一即可, JumpServer 需要使用 MySQL 或 MariaDB 存储数据"
+
 ## Core
 [Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 
 ### 环境要求
 
-| Name    | Core                     | Python | MySQL  | MariaDB | Redis |
-| :------ | :----------------------- | :----- | :----- | :------ | :---- |
-| Version | {{ jumpserver.version }} | >= 3.8 | >= 5.7 | >= 10.2 | >= 5  |
+| Name    | Core                     | Python |
+| :------ | :----------------------- | :----- |
+| Version | {{ jumpserver.version }} | >= 3.8 |
 
 ### 下载源代码
 
@@ -80,7 +88,7 @@ source /opt/py3/bin/activate
 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
 ```bash
-pip install -U pip
+pip install -U pip setuptools wheel
 pip install -r requirements/requirements.txt
 ```
 
@@ -250,92 +258,107 @@ python apps/manage.py compilemessages
 | :------ | :----------------------- | :--- |
 | Version | {{ jumpserver.version }} | 10   |
 
-### 下载源代码
+=== "源代码部署"
 
-可以从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    ### 下载源代码
 
-```bash
-mkdir /opt/lina-{{ jumpserver.version }}
-wget -O /opt/lina-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.version }}.tar.gz
-tar -xf lina-{{ jumpserver.version }}.tar.gz -C /opt/lina-{{ jumpserver.version }} --strip-components 1
-cd lina-{{ jumpserver.version }}
-```
+    从 [Github][lina] 下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
-### 安装 Node
-从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
-
-=== "Ubuntu 20.04"
     ```bash
-    wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
-    tar -xf node-v10.24.1-linux-x64.tar.xz
-    mv node-v10.24.1-linux-x64 /usr/local/node
-    chown -R root:root /usr/local/node
-    export PATH=/usr/local/node/bin:$PATH
-    echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
+    mkdir /opt/lina-{{ jumpserver.version }}
+    wget -O /opt/lina-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.version }}.tar.gz
+    tar -xf lina-{{ jumpserver.version }}.tar.gz -C /opt/lina-{{ jumpserver.version }} --strip-components 1
+    cd lina-{{ jumpserver.version }}
     ```
 
-```bash
-node -v
-```
-`v10.24.1`
+    ### 安装 Node
+    从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：
 
-```bash
-npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
-npm config set registry https://registry.npm.taobao.org
-npm install -g yarn
-yarn config set registry https://registry.npm.taobao.org
-```
+    === "Ubuntu 20.04"
+        ```bash
+        wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
+        tar -xf node-v10.24.1-linux-x64.tar.xz
+        mv node-v10.24.1-linux-x64 /usr/local/node
+        chown -R root:root /usr/local/node
+        export PATH=/usr/local/node/bin:$PATH
+        echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
+        ```
 
-### 安装依赖
+    ```bash
+    node -v
+    ```
+    `v10.24.1`
 
-```bash
-npm install -g yarn
-yarn install
-```
+    ```bash
+    npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass
+    npm config set registry https://registry.npm.taobao.org
+    npm install -g yarn
+    yarn config set registry https://registry.npm.taobao.org
+    ```
 
-### 修改配置文件
-```bash
-vi .env.development
-```
-```yaml
-# 全局环境变量 请勿随意改动
-ENV = 'development'
+    ### 安装依赖
 
-# base api
-VUE_APP_BASE_API = ''
-VUE_APP_PUBLIC_PATH = '/ui/'
+    ```bash
+    npm install -g yarn
+    yarn install
+    ```
 
-# vue-cli uses the VUE_CLI_BABEL_TRANSPILE_MODULES environment variable,
-# to control whether the babel-plugin-dynamic-import-node plugin is enabled.
-# It only does one thing by converting all import() to require().
-# This configuration can significantly increase the speed of hot updates,
-# when you have a large number of pages.
-# Detail:  https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/babel-preset-app/index.js
+    ### 修改配置文件
+    ```bash
+    vi .env.development
+    ```
+    ```yaml
+    # 全局环境变量 请勿随意改动
+    ENV = 'development'
 
-VUE_CLI_BABEL_TRANSPILE_MODULES = true
+    # base api
+    VUE_APP_BASE_API = ''
+    VUE_APP_PUBLIC_PATH = '/ui/'
 
-# External auth
-VUE_APP_LOGIN_PATH = '/core/auth/login/'
-VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
+    # vue-cli uses the VUE_CLI_BABEL_TRANSPILE_MODULES environment variable,
+    # to control whether the babel-plugin-dynamic-import-node plugin is enabled.
+    # It only does one thing by converting all import() to require().
+    # This configuration can significantly increase the speed of hot updates,
+    # when you have a large number of pages.
+    # Detail:  https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/babel-preset-app/index.js
 
-# Dev server for core proxy
-VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
-VUE_APP_CORE_WS = 'ws://localhost:8070'
-VUE_APP_ENV = 'development'
-```
+    VUE_CLI_BABEL_TRANSPILE_MODULES = true
 
-### 运行 Lina
-```bash
-yarn serve
-```
+    # External auth
+    VUE_APP_LOGIN_PATH = '/core/auth/login/'
+    VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
 
-### 构建 Lina
-构建完成后的 lina 包为 html 文件，可以直接移到到 nginx 服务器。
-```bash
-yarn build:prod
-```
+    # Dev server for core proxy
+    VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
+    VUE_APP_CORE_WS = 'ws://localhost:8070'
+    VUE_APP_ENV = 'development'
+    ```
 
-!!! tip "构建完成后, 生成在 build 目录下"
+    ### 运行 Lina
+    ```bash
+    yarn serve
+    ```
+
+    ### 构建 Lina
+    构建完成后的 lina 包为 html 文件，可以直接移到到 nginx 服务器。
+    ```bash
+    yarn build:prod
+    ```
+
+    !!! tip "构建完成后, 生成在 build 目录下"
+
+=== "使用 Release"
+
+    ### 下载 Release 文件
+
+    从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。这些版本是最新代码的稳定快照
+
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/lina/releases/download/{{ jumpserver.version }}/lina-{{ jumpserver.version }}.tar.gz
+    tar -xf lina-{{ jumpserver.version }}.tar.gz
+    mv lina-{{ jumpserver.version }} lina
+    ```
 
 ## Luna
 
@@ -347,93 +370,108 @@ yarn build:prod
 | :------ | :----------------------- | :--- |
 | Version | {{ jumpserver.version }} | 10   |
 
-### 下载源代码
+=== "源代码部署"
 
-可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    ### 下载源代码
 
-```bash
-mkdir /opt/luna-{{ jumpserver.version }}
-wget -O /opt/luna-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.version }}.tar.gz
-tar -xf luna-{{ jumpserver.version }}.tar.gz -C /opt/luna-{{ jumpserver.version }} --strip-components 1
-cd luna-{{ jumpserver.version }}
-```
+    可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
-### 安装 Node
-从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
+    ```bash
+    mkdir /opt/luna-{{ jumpserver.version }}
+    wget -O /opt/luna-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.version }}.tar.gz
+    tar -xf luna-{{ jumpserver.version }}.tar.gz -C /opt/luna-{{ jumpserver.version }} --strip-components 1
+    cd luna-{{ jumpserver.version }}
+    ```
 
-```bash
-node -v
-```
-`v10.24.1`
+    ### 安装 Node
+    从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
 
-### 安装依赖
-```bash
-npm install
-npm install --dev
-npm rebuild node-sass
-```
+    ```bash
+    node -v
+    ```
+    `v10.24.1`
 
-### 修改配置文件
-```bash
-vi proxy.conf.json
-```
-```yaml
-{
-  "/koko": {
-    "target": "http://localhost:5000",  # KoKo 地址
-    "secure": false,
-    "ws": true
-  },
-  "/media/": {
-    "target": "http://localhost:8080",  # Core 地址
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/api/": {
-    "target": "http://localhost:8080",  # Core 地址
-    "secure": false,                    # https ssl 需要开启
-    "changeOrigin": true
-  },
-  "/core": {
-    "target": "http://localhost:8080",  # Core 地址
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/static": {
-    "target": "http://localhost:8080",  # Core 地址
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/lion": {
-    "target": "http://localhost:9529",  # Lion 地址
-    "secure": false,
-    "pathRewrite": {
-      "^/lion/monitor": "/monitor"
-    },
-    "ws": true,
-    "changeOrigin": true
-  },
-  "/omnidb": {
-    "target": "http://localhost:8082",
-    "secure": false,
-    "ws": true,
-    "changeOrigin": true
-  }
-}
-```
+    ### 安装依赖
+    ```bash
+    npm install
+    npm install --dev
+    npm rebuild node-sass
+    ```
 
-### 运行 Luna
-```bash
-ng serve
-```
+    ### 修改配置文件
+    ```bash
+    vi proxy.conf.json
+    ```
+    ```yaml
+    {
+      "/koko": {
+        "target": "http://localhost:5000",  # KoKo 地址
+        "secure": false,
+        "ws": true
+      },
+      "/media/": {
+        "target": "http://localhost:8080",  # Core 地址
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/api/": {
+        "target": "http://localhost:8080",  # Core 地址
+        "secure": false,                    # https ssl 需要开启
+        "changeOrigin": true
+      },
+      "/core": {
+        "target": "http://localhost:8080",  # Core 地址
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/static": {
+        "target": "http://localhost:8080",  # Core 地址
+        "secure": false,
+        "changeOrigin": true
+      },
+      "/lion": {
+        "target": "http://localhost:9529",  # Lion 地址
+        "secure": false,
+        "pathRewrite": {
+          "^/lion/monitor": "/monitor"
+        },
+        "ws": true,
+        "changeOrigin": true
+      },
+      "/omnidb": {
+        "target": "http://localhost:8082",
+        "secure": false,
+        "ws": true,
+        "changeOrigin": true
+      }
+    }
+    ```
 
-### 构建 Luna
-可以加 -prod 来进行生产构建 `ng build -prod`
-```bash
-ng build
-```
+    ### 运行 Luna
+    ```bash
+    ng serve
+    ```
 
-!!! tip "构建完成后, 生成在 build 目录下"
+    ### 构建 Luna
+    可以加 -prod 来进行生产构建 `ng build -prod`
+    ```bash
+    ng build
+    ```
+
+    !!! tip "构建完成后, 生成在 build 目录下"
+
+=== "使用 Release"
+
+    ### 下载 Release 文件
+
+    从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。这些版本是最新代码的稳定快照
+
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/luna/releases/download/{{ jumpserver.version }}/luna-{{ jumpserver.version }}.tar.gz
+    tar -xf luna-{{ jumpserver.version }}.tar.gz
+    mv luna-{{ jumpserver.version }} luna
+    ```
 
 ## KoKo
 
@@ -441,55 +479,108 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 ### 环境要求
 
-| Name    | KoKo                     | Go   |
-| :------ | :----------------------- | :--  |
-| Version | {{ jumpserver.version }} | 1.17 |
+| Name    | KoKo                     | Go   | Node | Redis Client |
+| :------ | :----------------------- | :--  | :--- | :----------- |
+| Version | {{ jumpserver.version }} | 1.17 | 10   | >= 6.0       |
 
-### 下载源代码
+=== "源代码部署"
 
-可以从 [Github][koko] 网站上获取最新的 [Release][koko_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    ### 下载源代码
 
-| OS    | Arch  | Name                                              |
-| :---- | :---- | :------------------------------------------------ |
-| Linux | amd64 | koko-{{ jumpserver.version }}-linux-amd64.tar.gz  |
-| macOS | amd64 | koko-{{ jumpserver.version }}-darwin-amd64.tar.gz |
+    从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
-```bash
-mkdir /opt/koko-{{ jumpserver.version }}
-wget -O /opt/koko-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.version }}.tar.gz
-tar -xf koko-{{ jumpserver.version }}.tar.gz -C /opt/koko-{{ jumpserver.version }} --strip-components 1
-cd koko-{{ jumpserver.version }}
-```
-
-### 安装 Go
-从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
-
-=== "Ubuntu 20.04"
     ```bash
-    wget https://golang.google.cn/dl/go1.17.7.linux-amd64.tar.gz
-    tar -xf go1.17.7.linux-amd64.tar.gz -C /usr/local/
-    chown -R root:root /usr/local/go
-    export PATH=/usr/local/go/bin:$PATH
-    echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+    mkdir /opt/koko-{{ jumpserver.version }}
+    wget -O /opt/koko-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.version }}.tar.gz
+    tar -xf koko-{{ jumpserver.version }}.tar.gz -C /opt/koko-{{ jumpserver.version }} --strip-components 1
+    cd koko-{{ jumpserver.version }}
     ```
 
+    ### 安装 Node
+    从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
+
+    ```bash
+    node -v
+    ```
+    `v10.24.1`
+
+    ### 安装 Client 依赖
+
+    === "Ubuntu 20.04"
+        ```bash
+        apt-get update
+        apt install software-properties-common
+        add-apt-repository -y ppa:redislabs/redis
+        apt-get install -y mariadb-client bash-completion redis-tools
+        cd /opt/koko-{{ jumpserver.version }}
+        wget https://download.jumpserver.org/public/kubectl-linux-amd64.tar.gz -O kubectl.tar.gz
+        tar -xzf kubectl.tar.gz
+        chmod +x kubectl
+        mv kubectl /usr/local/bin/rawkubectl
+        cd /opt
+        mkdir /opt/kubectl-aliases
+        wget http://download.jumpserver.org/public/kubectl_aliases.tar.gz -O kubectl_aliases.tar.gz
+        tar -xf kubectl_aliases.tar.gz -C /opt/kubectl-aliases
+        ```
+
+    ### 安装 Go
+    从 [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
+
+    === "Ubuntu 20.04"
+        ```bash
+        cd /opt
+        wget https://golang.google.cn/dl/go1.17.7.linux-amd64.tar.gz
+        tar -xf go1.17.7.linux-amd64.tar.gz -C /usr/local/
+        chown -R root:root /usr/local/go
+        export PATH=/usr/local/go/bin:$PATH
+        echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+        ```
+
+    ```bash
+    go version
+    ```
+    `go version go1.17.7 linux/amd64`
+
+    ### 编译
+
+    | OS    | Arch  | Command     |
+    | :---- | :---- | :---------- |
+    | Linux | amd64 | make linux  |
+    | macOS | amd64 | make darwin |
+
+    ```bash
+    cd /opt/koko-{{ jumpserver.version }}
+    make
+    cp build/koko-{{ jumpserver.version }}-linux-amd64.tar.gz /opt
+    ```
+
+    !!! tip "构建完成后, 生成在 build 目录下"
+
+=== "使用 Release"
+
+    ### 下载 Release 文件
+
+    从 [Github][koko] 网站上获取最新的 [Release][koko_release] 副本。这些版本是最新代码的稳定快照。
+
+    | OS     | Arch  | Name                                              |
+    | :----- | :---- | :------------------------------------------------ |
+    | Linux  | amd64 | koko-{{ jumpserver.version }}-linux-amd64.tar.gz  |
+    | Linux  | arm64 | koko-{{ jumpserver.version }}-linux-arm64.tar.gz  |
+    | Darwin | amd64 | koko-{{ jumpserver.version }}-darwin-amd64.tar.gz |
+    | Darwin | arm64 | koko-{{ jumpserver.version }}-darwin-arm64.tar.gz |
+
+    ```bash
+    cd /opt
+    wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
+    ```
+
+### 解压缩包
+
 ```bash
-go version
+tar -xf koko-{{ jumpserver.version }}-linux-amd64.tar.gz -C /opt
+cd koko-{{ jumpserver.version }}-linux-amd64
+mv kubectl /usr/local/bin/kubectl
 ```
-`go version go1.17.7 linux/amd64`
-
-### 编译
-
-| OS    | Arch  | Command     |
-| :---- | :---- | :---------- |
-| Linux | amd64 | make linux  |
-| macOS | amd64 | make darwin |
-
-```bash
-make
-```
-
-!!! tip "构建完成后, 生成在 build 目录下"
 
 ### 修改配置文件
 
@@ -623,7 +714,7 @@ ldconfig
 | :------ | :---- | :------------------------------------------------- |
 | Linux   | amd64 | lion-{{ jumpserver.version }}-linux-amd64.tar.gz   |
 | Linux   | arm64 | lion-{{ jumpserver.version }}-linux-arm64.tar.gz   |
-| macOS   | amd64 | lion-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
+| Darwin  | amd64 | lion-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
 | Windows | amd64 | lion-{{ jumpserver.version }}-windows-amd64.tar.gz |
 
 ```bash
@@ -687,6 +778,74 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 ./lion
 ```
 
+## Magnus
+
+可以从 [Github][magnus] 网站上获取最新的 [Release][magnus_release] 副本。
+
+| OS      | Arch  | Name                                                 |
+| :------ | :---- | :--------------------------------------------------- |
+| Linux   | amd64 | magnus-{{ jumpserver.version }}-linux-amd64.tar.gz   |
+| Linux   | arm64 | magnus-{{ jumpserver.version }}-linux-arm64.tar.gz   |
+| Darwin  | amd64 | magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz  |
+| Darwin  | arm64 | magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz  |
+
+```bash
+cd /opt
+wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-amd64.tar.gz
+tar -xf lion-{{ jumpserver.version }}-magnus-amd64.tar.gz
+cd lion-{{ jumpserver.version }}-magnus-amd64
+```
+
+Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获取最新的 [Release][wisp_release] 副本。
+
+| OS      | Arch  | Name                                            |
+| :------ | :---- | :---------------------------------------------- |
+| Linux   | amd64 | wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz   |
+| Linux   | arm64 | wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz   |
+| Darwin  | amd64 | wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz  |
+| Darwin  | arm64 | wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz  |
+| Windows | amd64 | wisp-{{ jumpserver.wisp }}-windows-arm64.tar.gz |
+
+```bash
+wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
+tar -xf wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
+mv wisp-{{ jumpserver.wisp }}-linux-amd64/wisp /usr/local/bin/
+chown root:root /usr/local/bin/wisp
+chmod 755 /usr/local/bin/wisp
+```
+
+### 修改配置文件
+
+```bash
+cp config_example.yml config.yml
+vi config.yml
+```
+```yaml
+# 服务 bind 地址
+BIND_HOST: "0.0.0.0"
+
+# 数据库代理暴露的端口
+MYSQL_PORT: 33060
+MARIA_DB_PORT: 33061
+POSTGRESQL_PORT: 54320
+
+# 日志级别
+LOG_LEVEL: "info"
+
+# jumpserver api grpc 组件地址
+WISP_HOST: "localhost"
+WISP_PORT: 9090
+```
+
+### 启动 Wisp
+
+```bash
+export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-amd64"
+export COMPONENT_NAME="magnus"
+export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-amd64/magnus"
+wisp
+```
+
 ## Nginx
 
 从 [Nginx][nginx] 官方网站上获取 Nginx 的最新发行版本 [linux_packages][linux_packages]，通过命令行验证安装是否完成：
@@ -701,99 +860,201 @@ nginx -v
 ```bash
 vi jumpserver.conf
 ```
-```nginx
-server {
-  listen 80;
-  # server_name _;
 
-  client_max_body_size 5000m; 文件大小限制
+=== "源代码部署"
 
-  # Luna 配置
-  location /luna/ {
-    proxy_pass http://luna:4200;
-  }
+    ```nginx
+    server {
+      listen 80;
+      # server_name _;
 
-  # Core data 静态资源
-  location /media/replay/ {
-    add_header Content-Encoding gzip;
-    root /opt/jumpserver-{{ jumpserver.version }}/data/;
-  }
+      client_max_body_size 5000m; 文件大小限制
 
-  location /media/ {
-    root /opt/jumpserver-{{ jumpserver.version }}/data/;
-  }
+      # Luna 配置
+      location /luna/ {
+        proxy_pass http://luna:4200;
+      }
 
-  location /static/ {
-    root /opt/jumpserver-{{ jumpserver.version }}/data/;
-  }
+      # Core data 静态资源
+      location /media/replay/ {
+        add_header Content-Encoding gzip;
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+      }
 
-  # KoKo Lion 配置
-  location /koko/ {
-    proxy_pass       http://koko:5000;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_http_version 1.1;
-    proxy_buffering off;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-  }
+      location /media/ {
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+      }
 
-  # lion 配置
-  location /lion/ {
-    proxy_pass http://lion:8081;
-    proxy_buffering off;
-    proxy_request_buffering off;
-    proxy_http_version 1.1;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $http_connection;
-    proxy_ignore_client_abort on;
-    proxy_connect_timeout 600;
-    proxy_send_timeout 600;
-    proxy_read_timeout 600;
-    send_timeout 6000;
-  }
+      location /static/ {
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+      }
 
-  # Core 配置
-  location /ws/ {
-    proxy_pass http://core:8070;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_http_version 1.1;
-    proxy_buffering off;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-  }
+      # KoKo Lion 配置
+      location /koko/ {
+        proxy_pass       http://koko:5000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
 
-  location /api/ {
-    proxy_pass http://core:8080;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
+      # lion 配置
+      location /lion/ {
+        proxy_pass http://lion:8081;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_http_version 1.1;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+        proxy_ignore_client_abort on;
+        proxy_connect_timeout 600;
+        proxy_send_timeout 600;
+        proxy_read_timeout 600;
+        send_timeout 6000;
+      }
 
-  location /core/ {
-    proxy_pass http://core:8080;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
+      # Core 配置
+      location /ws/ {
+        proxy_pass http://core:8070;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
 
-  # 前端 Lina
-  location /ui/ {
-    proxy_pass http://lina:9528;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
+      location /api/ {
+        proxy_pass http://core:8080;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
 
-  location / {
-    rewrite ^/(.*)$ /ui/$1 last;
-  }
-}
-```
+      location /core/ {
+        proxy_pass http://core:8080;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+
+      # 前端 Lina
+      location /ui/ {
+        proxy_pass http://lina:9528;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+
+      location / {
+        rewrite ^/(.*)$ /ui/$1 last;
+      }
+    }
+    ```
+
+=== "使用 Release"
+
+    ```nginx
+    server {
+      listen 80;
+      # server_name _;
+
+      client_max_body_size 5000m; 文件大小限制
+
+      # 前端 Lina
+      location /ui/ {
+        try_files $uri / /index.html;
+        alias /opt/lina/;
+        expires 24h;
+      }
+
+      # Luna 配置
+      location /luna/ {
+        try_files $uri / /index.html;
+        alias /opt/luna/;
+        expires 24h;
+      }
+
+      # Core data 静态资源
+      location /media/replay/ {
+        add_header Content-Encoding gzip;
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+      }
+
+      location /media/ {
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+      }
+
+      location /static/ {
+        root /opt/jumpserver-{{ jumpserver.version }}/data/;
+        expires 24h;
+      }
+
+      # KoKo Lion 配置
+      location /koko/ {
+        proxy_pass       http://koko:5000;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
+
+      # lion 配置
+      location /lion/ {
+        proxy_pass http://lion:8081;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_http_version 1.1;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $http_connection;
+        proxy_ignore_client_abort on;
+        proxy_connect_timeout 600;
+        proxy_send_timeout 600;
+        proxy_read_timeout 600;
+        send_timeout 6000;
+      }
+
+      # Core 配置
+      location /ws/ {
+        proxy_pass http://core:8070;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+      }
+
+      location /api/ {
+        proxy_pass http://core:8080;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+
+      location /core/ {
+        proxy_pass http://core:8080;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+
+      location / {
+        rewrite ^/(.*)$ /ui/$1 last;
+      }
+    }
+    ```
+
 ```bash
 nginx -t
 ```
@@ -830,3 +1091,7 @@ nginx -s reload
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
 [guacd-1.3.0]: http://download.jumpserver.org/public/guacamole-server-1.3.0.tar.gz
 [guacamole-{{ jumpserver.version }}]: http://download.jumpserver.org/release/{{ jumpserver.version }}/guacamole-client-{{ jumpserver.version }}.tar.gz
+[wisp]: https://github.com/jumpserver/wisp
+[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
+[magnus]: https://github.com/jumpserver/magnus-release
+[magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.version }}
