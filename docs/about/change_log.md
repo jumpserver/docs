@@ -1,4 +1,66 @@
 # 更新日志
+v2.22.0
+------------------------
+2022年05月19日
+
+!!! info "新增功能 🌱"
+    - feat: ⽀持记录查看资产账号密码⽇志
+    - feat: 支持 Elasticsearch 命令存储根据日期建立索引
+    - feat: 支持 LDAP 同步用户组（Windows AD）
+    - feat: 支持通过本地客户端直连 Redis 数据库（Magnus）
+    - feat: 支持 AIX 系统平台进行批量改密【企业版】
+    - feat: 支持 Fusion Compute 私有云资产同步【企业版】
+    - feat: 支持通过 Web CLI 方式连接 PostgreSQL 数据库 (KoKo)【企业版】
+    - feat: 支持企业微信、钉钉直接审批工单【企业版】
+
+!!! summary "功能优化 🚀"
+    - perf: 优化前后端敏感信息传输使用 AES 进行加密传输
+    - perf: 优化日志记录中登录 IP 城市查询不准确的问题
+    - perf: 优化用户 Session 在浏览器关闭后失效
+    - perf: 优化 SAML2 metadata 文件内容及属性映射后台处理逻辑
+    - perf: 优化 OpenID 认证可以选择认证方式，如：client_secret_basic、client_secret_post
+    - perf: 优化拆分 Connection Token API 和 Super Connection Token API
+    - perf: 优化拆分 Public Setting API 和 Open Public Setting API
+    - perf: 优化视图切换提示
+    - perf: 优化支持资产账号管理进行批量删除
+    - perf: 优化 Luna 页面 ESC 快捷键冲突问题，支持长按 ESC 键可退出全屏模式
+    - perf: 优化 Luna 页面加载 iFrame 组件的超时时间从 10s 延长至 30s
+    - perf: 优化 SSH 终端方式的国际化语言
+    - perf: 优化 Web GUI / CLI 方式连接 Windows、Linux 资产右侧操作菜单的样式（KoKo、Lion）
+    - perf: 优化 Lion 组件向第三方存储上传录像失败后，尝试保存至本地默认存储（Lion）
+    - perf: 优化一些已知翻译问题
+    - perf: 优化开启 http2（Installer）
+    - perf: 优化部署/卸载脚本（Installer）
+    - perf: 优化恢复工单启用全局配置项【企业版】
+    - feat: 优化工单审批人中排除当前工单的申请人【企业版】
+    - perf: 优化资产数量超过 License 数量限制后进行提示【企业版】
+    - perf: 优化通过原生客户端连接 Windows 资产时，支持控制是否记录录像功能（XRDP）【企业版】
+
+!!! success "问题修复 🐛"
+    - fix: 修复开源版登录后页面跳转问题
+    - fix: 修复组织管理员无查看系统平台的权限问题【企业版】
+    - fix: 修复 Windows 执行 Ansible 任务显示 sudo 命令执行失败的问题
+    - fix: 修复指定系统/组织角色获取关联用户失败的问题
+    - fix: 修复获取类型为 null 的命令存储日志中显示不支持的问题
+    - fix: 修复 LDAP 同步用户后仪表盘总数没有更新的问题
+    - fix: 修复兼容 AWS 上 redis[ssl] 无证书无法部署的问题
+    - fix: 修复未开启 MFA 二次认证时的企业微信、钉钉、飞书登录跳转问题
+    - fix: 修改组织资源统计时 org 为 None 的问题
+    - fix: 修复公告不显示的问题
+    - fix: 修复资产树移动资产时右击菜单无法关闭问题
+    - fix: 修复 SSH Client 连接方式的选项不能关闭的问题
+    - fix: 修复公钥情况下通过 VSCode 连接 Linux 资产失败的问题
+    - fix: 修复 Luna 页面快速连接多个 Linux 资产出现卡住的问题
+    - fix: 修复 SSH 终端登录后数据库列表不显示 IP 问题
+    - fix: 修复 SSH 共享会话在线人数不准确问题
+    - fix: 修复日志级别不生效的问题（Magnus）
+    - fix: 修复 Kill 命令执行不生效的问题（Magnus）
+    - fix: 修复 Azure MySQL 无法认证的问题（Magnus）
+    - fix: 修复工单详情跳转资产授权、应用授权权限位判断问题【企业版】
+
+!!! tip "依赖升级 🧰"
+    - ipip-ipdb==1.6.1
+
 v2.21.4
 ------------------------
 2022年05月11日
