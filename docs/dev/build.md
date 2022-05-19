@@ -877,8 +877,8 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     ```bash
     cd /opt
     wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-arm64.tar.gz
-    tar -xf lion-{{ jumpserver.version }}-magnus-arm64.tar.gz
-    cd lion-{{ jumpserver.version }}-magnus-arm64
+    tar -xf magnus-{{ jumpserver.version }}-linux-arm64.tar.gz
+    cd magnus-{{ jumpserver.version }}-linux-arm64
     ```
     ```bash
     wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
