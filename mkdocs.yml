@@ -150,7 +150,7 @@ extra:
   jumpserver:
     version: v2.22.0
     jmservisor: v1.2.3
-    client: v1.1.4
+    client: v1.1.5
     wisp: v0.0.6
   installer:
     amd64: 203
