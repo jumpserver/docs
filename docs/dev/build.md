@@ -34,7 +34,7 @@ mkdir /opt/jumpserver-{{ jumpserver.version }}
 wget -O /opt/jumpserver-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/jumpserver/archive/refs/tags/{{ jumpserver.version }}.tar.gz
 tar -xf jumpserver-{{ jumpserver.version }}.tar.gz -C /opt/jumpserver-{{ jumpserver.version }} --strip-components 1
 cd jumpserver-{{ jumpserver.version }}
-wget https://download.jumpserver.org/files/GeoLite2-City.mmdb -O apps/common/utils/geoip/GeoLite2-City.mmdb
+wget https://download.jumpserver.org/files/GeoLite2-City.mmdb -O apps/common/utils/ip/geoip/GeoLite2-City.mmdb
 ```
 
 ```bash
