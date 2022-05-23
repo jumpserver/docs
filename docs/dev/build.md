@@ -875,9 +875,9 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     ```bash
     export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
     export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
-    export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-amd64"
+    export WORK_DIR="/opt/magnus-{{ jumpserver.version }}-linux-amd64"
     export COMPONENT_NAME="magnus"
-    export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-amd64/magnus"
+    export EXECUTE_PROGRAM="/opt/magnus-{{ jumpserver.version }}-linux-amd64/magnus"
     wisp
     ```
 
@@ -895,8 +895,8 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
     tar -xf wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
     mv wisp-{{ jumpserver.wisp }}-linux-arm64/wisp /usr/local/bin/
-    chown root:root /usr/local/bin/wisp
-    chmod 755 /usr/local/bin/wisp
+    chown root:root /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-arm64/magnus
+    chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-arm64/magnus
     ```
 
     ### 修改配置文件
@@ -906,6 +906,13 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     vi config.yml
     ```
     ```yaml
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+
+    # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
+    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+
     # 服务 bind 地址
     BIND_HOST: "0.0.0.0"
 
@@ -925,9 +932,11 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     ### 启动 Wisp
 
     ```bash
-    export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-arm64"
+    export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
+    export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
+    export WORK_DIR="/opt/magnus-{{ jumpserver.version }}-linux-arm64"
     export COMPONENT_NAME="magnus"
-    export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-arm64/magnus"
+    export EXECUTE_PROGRAM="/opt/magnus-{{ jumpserver.version }}-linux-arm64/magnus"
     wisp
     ```
 
@@ -935,15 +944,25 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
 
 从 [Nginx][nginx] 官方网站上获取 Nginx 的最新发行版本 [linux_packages][linux_packages]，通过命令行验证安装是否完成：
 
+=== "Ubuntu 20.04"
+    ```bash
+    apt-get install -y curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+    echo "deb http://nginx.org/packages/ubuntu focal nginx" > /etc/apt/sources.list.d/nginx.list
+    curl -o /etc/apt/trusted.gpg.d/nginx_signing.asc https://nginx.org/keys/nginx_signing.key
+    apt-get update
+    apt-get install -y nginx
+    echo > /etc/nginx/conf.d/default.conf
+    ```
+
 ```bash
 nginx -v
 ```
-`nginx version: nginx/1.18.0`
+`nginx version: nginx/1.20.2`
 
 ### 整合 JumpServer
 
 ```bash
-vi jumpserver.conf
+vi /etc/nginx/conf.d/jumpserver.conf
 ```
 
 === "源代码部署"
