@@ -847,6 +847,13 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     vi config.yml
     ```
     ```yaml
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+
+    # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
+    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+
     # 服务 bind 地址
     BIND_HOST: "0.0.0.0"
 
@@ -866,6 +873,8 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     ### 启动 Wisp
 
     ```bash
+    export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
+    export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
     export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-amd64"
     export COMPONENT_NAME="magnus"
     export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-amd64/magnus"
