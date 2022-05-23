@@ -836,8 +836,8 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     wget https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
     tar -xf wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
     mv wisp-{{ jumpserver.wisp }}-linux-amd64/wisp /usr/local/bin/
-    chown root:root /usr/local/bin/wisp
-    chmod 755 /usr/local/bin/wisp
+    chown root:root /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-amd64/magnus
+    chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-amd64/magnus
     ```
 
     ### 修改配置文件
