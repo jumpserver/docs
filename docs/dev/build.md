@@ -840,6 +840,47 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-amd64/magnus
     ```
 
+    ### 修改配置文件
+
+    ```bash
+    cp config_example.yml config.yml
+    vi config.yml
+    ```
+    ```yaml
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+
+    # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
+    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+
+    # 服务 bind 地址
+    BIND_HOST: "0.0.0.0"
+
+    # 数据库代理暴露的端口
+    MYSQL_PORT: 33060
+    MARIA_DB_PORT: 33061
+    POSTGRESQL_PORT: 54320
+
+    # 日志级别
+    LOG_LEVEL: "info"
+
+    # jumpserver api grpc 组件地址
+    WISP_HOST: "localhost"
+    WISP_PORT: 9090
+    ```
+
+    ### 启动 Wisp
+
+    ```bash
+    export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
+    export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
+    export WORK_DIR="/opt/magnus-{{ jumpserver.version }}-linux-amd64"
+    export COMPONENT_NAME="magnus"
+    export EXECUTE_PROGRAM="/opt/magnus-{{ jumpserver.version }}-linux-amd64/magnus"
+    wisp
+    ```
+
 === "Linux/arm64"
 
     ### 解压缩包
@@ -858,46 +899,46 @@ Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获
     chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.version }}-linux-arm64/magnus
     ```
 
-### 修改配置文件
+    ### 修改配置文件
 
-```bash
-cp config_example.yml config.yml
-vi config.yml
-```
-```yaml
-# Jumpserver项目的url, api请求注册会使用
-CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+    ```bash
+    cp config_example.yml config.yml
+    vi config.yml
+    ```
+    ```yaml
+    # Jumpserver项目的url, api请求注册会使用
+    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
 
-# Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
-# 请和jumpserver 配置文件中保持一致，注册完成后可以删除
-BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+    # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
+    # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
+    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
 
-# 服务 bind 地址
-BIND_HOST: "0.0.0.0"
+    # 服务 bind 地址
+    BIND_HOST: "0.0.0.0"
 
-# 数据库代理暴露的端口
-MYSQL_PORT: 33060
-MARIA_DB_PORT: 33061
-POSTGRESQL_PORT: 54320
+    # 数据库代理暴露的端口
+    MYSQL_PORT: 33060
+    MARIA_DB_PORT: 33061
+    POSTGRESQL_PORT: 54320
 
-# 日志级别
-LOG_LEVEL: "info"
+    # 日志级别
+    LOG_LEVEL: "info"
 
-# jumpserver api grpc 组件地址
-WISP_HOST: "localhost"
-WISP_PORT: 9090
-```
+    # jumpserver api grpc 组件地址
+    WISP_HOST: "localhost"
+    WISP_PORT: 9090
+    ```
 
-### 启动 Wisp
+    ### 启动 Wisp
 
-```bash
-export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
-export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
-export WORK_DIR="/opt/lion-{{ jumpserver.version }}-magnus-arm64"
-export COMPONENT_NAME="magnus"
-export EXECUTE_PROGRAM="/opt/lion-{{ jumpserver.version }}-magnus-arm64/magnus"
-wisp
-```
+    ```bash
+    export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
+    export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
+    export WORK_DIR="/opt/magnus-{{ jumpserver.version }}-linux-arm64"
+    export COMPONENT_NAME="magnus"
+    export EXECUTE_PROGRAM="/opt/magnus-{{ jumpserver.version }}-linux-arm64/magnus"
+    wisp
+    ```
 
 ## Nginx
 
