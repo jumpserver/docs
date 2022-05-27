@@ -1,4 +1,4 @@
-site_name: 'JumpServer 文档'
+ssite_name: 'JumpServer 文档'
 site_url: 'https://docs.jumpserver.org'
 site_author: 'wojiushixiaobai'
 site_description: "JumpServer 是全球首款开源的堡垒机"
@@ -101,10 +101,10 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
-  - 教学视频: https://jumpserver.org/video.html
   - 资源下载: about/download.md
   - 更新说明: about/change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
+  - 教学视频: https://jumpserver.org/video.html
   - 关于我们:
     - 贡献列表: about/contributor.md
     - 联系方式: about/contact.md

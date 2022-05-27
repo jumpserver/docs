@@ -1,6 +1,6 @@
 # 快速入门
 
-- 视频教程 [JumpServer 从入门到精通](https://www.bilibili.com/video/BV19D4y1S7s4){:target="_blank"}
+- 视频教程 [JumpServer 从入门到精通](https://jumpserver.org/video.html){:target="_blank"}
 
 !!! info "以下操作均在 Web 页面完成，请使用 admin 用户登陆，默认密码 admin"
 
