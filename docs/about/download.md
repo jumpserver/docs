@@ -11,26 +11,21 @@ Jumpserver 离线录像播放器。
 
 ## [Clients](https://github.com/jumpserver/clients/releases){:target="_blank"}
 
-JumpServer 客户端默认已经集成到 jumpserver/web 镜像，开源版本支持 SSH 的本地拉起，企业版本还支持 RDP 拉起。
+JumpServer 客户端默认已经集成到 jumpserver 镜像，可以从 luna `帮助菜单` - `工具下载` 里下载安装，开源版本支持 SSH 的本地拉起，企业版本还支持 RDP 拉起。
 
 | 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple:   | Linux :fontawesome-brands-linux: |
 | ------- | ------------------------------------ | ----------------------------------- | -------------------------------- |
-| 开源版本 | :material-check:                     | :material-check:                    | :material-close:                 |
-| 企业版本 | :material-check:                     | :material-check:                    | :material-close:                 |
-
-!!! tip ""
-    - [Windows 客户端][win-client]
-    - [macOS 客户端][mac-client]
-    - [macOS Remote_Desktop 客户端][mac-mrd]
+| 开源版本 | :material-check:                     | :material-check:                    | :material-check:                 |
+| 企业版本 | :material-check:                     | :material-check:                    | :material-check:                 |
 
 ## [Jmservisor](https://github.com/jumpserver/Jmservisor/releases){:target="_blank"}
 
 配合 Jumpserver 企业版本使用拉起 Windows Server RemoteApp 功能使用的客户端。
 
-| 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple: | Linux :fontawesome-brands-linux: |
-| ------- | ------------------------------------ | --------------------------------- | -------------------------------- |
-| 开源版本 | :material-close:                     | :material-close:                  | :material-close:                 |
-| 企业版本 | :material-check:                     | :material-close:                  | :material-close:                 |
+| 版本     | Windows Server 2012/2016/2019 :fontawesome-brands-windows: |
+| ------- | ----------------------------------------------------------- |
+| 开源版本 | :material-close:                                           |
+| 企业版本 | :material-check:                                           |
 
 !!! tip ""
     - [Jmservisor 安装包][jmservisor]
@@ -47,6 +42,3 @@ JumpServer 客户端默认已经集成到 jumpserver/web 镜像，开源版本�
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads
 
 [jmservisor]: https://download.jumpserver.org/public/Jmservisor-{{ jumpserver.jmservisor }}.msi
-[win-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer-{{ jumpserver.client }}.msi
-[mac-client]: https://download.jumpserver.org/public/JumpServer-Client-Installer-{{ jumpserver.client }}.dmg
-[mac-mrd]: https://download.jumpserver.org/public/Microsoft_Remote_Desktop_10.6.7_installer.pkg
