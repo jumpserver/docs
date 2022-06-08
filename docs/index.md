@@ -56,6 +56,8 @@
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html){:target="_blank"}
     - [JumpServer 一体机](https://jumpserver.org/hardware.html){:target="_blank"}
 
+## [教学视频](https://jumpserver.org/video.html){:target="_blank"}
+
 ## 技术白皮书
 
 !!! tip ""

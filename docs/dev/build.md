@@ -55,29 +55,30 @@ requirements/                     # 对应操作系统需要的依赖包
 
 === "Ubuntu 20.04"
     ```bash
-    apt-get install -y pkg-config libxmlsec1-dev libpq-dev libffi-dev libxml2 libxslt-dev libmariadb-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
+    apt-get install -y pkg-config libxmlsec1-dev libpq-dev libffi-dev libxml2 libxslt-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
     ```
 
-!!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
+    !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
+    ```bash
+    apt-get install -y libmariadb-dev
+    ```
 
-### 安装 Python3
+    ### 安装 Python3
 
-从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
+    从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
 
-=== "Ubuntu 20.04"
     ```bash
     apt-get install -y python3.8 python3.8-dev python3-venv
     ```
-
-```bash
-python3
-```
-```python
-Python 3.8.12 (default, Dec 21 2021, 10:55:30)
-[GCC 10.2.1 20210110] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
+    ```bash
+    python3
+    ```
+    ```python
+    Python 3.8.12 (default, Dec 21 2021, 10:55:30)
+    [GCC 10.2.1 20210110] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+    ```
 
 ### 安装 python 依赖
 
