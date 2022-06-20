@@ -405,3 +405,37 @@ docker restart jms_koko
 
 !!! question "Connect websocket server error"
     一般情况下 nginx 未配置 websocket 导致，根据反向代理文档进行修改后重启 nginx 即可
+
+### 5. 二级目录，代理 jumpserver 服务
+
+> 这里演示的是 /jms 二级目录，代理到 http://192.168.10.125 ( jumpserver ) 服务上
+
+```text
+    location /jms {
+        # 将 proxy_pass 替换成对应服务地址即可
+        proxy_pass http://192.168.10.125;
+        rewrite "/jms/(.*)$" /$1 break;
+        proxy_http_version 1.1;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect ~^/(.*) https://$http_host/jms/$1;
+
+        sub_filter_types *;
+        sub_filter_once off;
+        sub_filter '/static/' '/jms\/static/';
+        sub_filter '/ui/' '/jms/';
+        sub_filter '/api/' '/jms/api/';
+        sub_filter '/core/' '/jms/core/';
+        sub_filter '/ws/notifications/' '/jms/ws/notifications/';
+        sub_filter '/luna/' '/jms/luna/';
+        sub_filter '/koko/' '/jms/koko/';
+        sub_filter '/lion' '/jms/lion';
+        sub_filter '/media/' '/jms/media/';
+        sub_filter '/omnidb/' '/jms/omnidb/';
+    }
+```
