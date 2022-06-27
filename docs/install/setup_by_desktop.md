@@ -106,10 +106,14 @@
     === "内置数据库启动"
         ```sh
         cd ~/jumpserver
-        docker-compose -f docker-compose-redis.yml -f docker-compose-mariadb.yml -f docker-compose.yml up -d
+        docker-compose -f docker-compose-network.yml -f docker-compose-redis.yml -f docker-compose-mariadb.yml -f docker-compose-init-db.yml up -d
+        docker exec -i jms_core bash -c './jms upgrade_db'
+        docker-compose -f docker-compose-network.yml -f docker-compose-redis.yml -f docker-compose-mariadb.yml -f docker-compose.yml up -d
         ```
     === "外置数据库启动"
         ```sh
         cd ~/jumpserver
-        docker-compose up -d
+        docker-compose -f docker-compose-network.yml -f docker-compose-init-db.yml up -d
+        docker exec -i jms_core bash -c './jms upgrade_db'
+        docker-compose -f docker-compose-network.yml -f docker-compose.yml up -d
         ```
