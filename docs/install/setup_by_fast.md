@@ -860,11 +860,11 @@
 
 ### 离线安装
 
-| OS      | Architecture | Arch    | Offline Name                                                                                 |
-| :------ | :----------- | :------ | :------------------------------------------------------------------------------------------- |
-| Linux   | x86_64       | amd64   | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz   |
-| Linux   | aarch64      | arm64   | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz   |
-| Linux   | loongarch64  | loong64 | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
+| OS      | Arch    | Architecture | Offline Name                                                                                 |
+| :------ | :------ | :----------- | :------------------------------------------------------------------------------------------- |
+| Linux   | amd64   | x86_64       | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz   |
+| Linux   | arm64   | aarch64      | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz   |
+| Linux   | loong64 | loongarch64  | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
 
 === "linux/amd64"
     !!! tip ""
