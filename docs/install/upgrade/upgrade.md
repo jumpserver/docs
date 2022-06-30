@@ -38,30 +38,45 @@
         ./jmsctl.sh start
         ```
 
-=== "离线升级(amd64)"
+=== "离线升级(linux/amd64)"
     !!! tip ""
         从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
 
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}
         ```
         ```sh
         ./jmsctl.sh upgrade
         ./jmsctl.sh start
         ```
 
-=== "离线升级(arm64)"
+=== "离线升级(linux/arm64)"
     !!! tip ""
         从飞致云社区 [下载最新的 linux/arm64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
 
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}
+        ```
+        ```sh
+        ./jmsctl.sh upgrade
+        ./jmsctl.sh start
+        ```
+
+=== "离线升级(linux/loong64)"
+    !!! tip ""
+        从飞致云社区 [下载最新的 linux/loong64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
+
+    !!! tip ""
+        ```sh
+        cd /opt
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}
         ```
         ```sh
         ./jmsctl.sh upgrade
@@ -77,3 +92,5 @@
         helm upgrade jms-k8s jumpserver/jumpserver -n default -f values.yaml
         ```
     !!! warning "或者使用 --set key=value 的方式传参"
+
+=== "[Allinone 升级](https://github.com/jumpserver/Dockerfile/tree/master/allinone){:target="_blank"}"

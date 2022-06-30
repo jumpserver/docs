@@ -152,8 +152,7 @@ extra:
     jmservisor: v1.2.3
     wisp: v0.0.7
   installer:
-    amd64: 26
-    arm64: 26
+    version: 26
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
