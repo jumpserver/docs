@@ -173,15 +173,15 @@
         ./jmsctl.sh -h
         ```
 
-=== "离线部署(amd64)"
+=== "离线部署(linux/amd64)"
     !!! tip ""
         从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
 
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -276,7 +276,7 @@
         # 安装完成后配置文件 /opt/jumpserver/config/config.txt
         ```
         ```sh
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
+        cd jumpserver-offline-release-{{ jumpserver.version }}-amd64-{{ installer.version }}
 
         # 启动
         ./jmsctl.sh start
@@ -291,15 +291,15 @@
         ./jmsctl.sh -h
         ```
 
-=== "离线部署(arm64)"
+=== "离线部署(linux/arm64)"
     !!! tip ""
         从飞致云社区 [下载最新的 linux/arm64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
 
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -394,7 +394,7 @@
         # 安装完成后配置文件 /opt/jumpserver/config/config.txt
         ```
         ```sh
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
+        cd jumpserver-offline-release-{{ jumpserver.version }}-arm64-{{ installer.version }}
 
         # 启动
         ./jmsctl.sh start
@@ -409,7 +409,125 @@
         ./jmsctl.sh -h
         ```
 
-=== "Kubernetes"
+=== "离线部署(linux/loong64)"
+    !!! tip ""
+        从飞致云社区 [下载最新的 linux/loong64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
+
+    !!! tip ""
+        ```sh
+        cd /opt
+        tar -xf jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}
+        ```
+        ```sh
+        # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
+        cat config-example.txt
+        ```
+        ```vim
+        # 以下设置如果为空系统会自动生成随机字符串填入
+        ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
+        ## 完整参数文档 https://docs.jumpserver.org/zh/master/admin-guide/env/
+
+        ## 安装配置, amd64 默认使用华为云加速下载, arm64 请注释掉 DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
+        # DOCKER_IMAGE_PREFIX=swr.cn-south-1.myhuaweicloud.com
+        VOLUME_DIR=/opt/jumpserver
+        DOCKER_DIR=/var/lib/docker
+        SECRET_KEY=
+        BOOTSTRAP_TOKEN=
+        LOG_LEVEL=ERROR
+
+        ##  MySQL 配置, USE_EXTERNAL_MYSQL=1 表示使用外置数据库, 请输入正确的 MySQL 信息
+        USE_EXTERNAL_MYSQL=0
+        DB_HOST=mysql
+        DB_PORT=3306
+        DB_USER=root
+        DB_PASSWORD=
+        DB_NAME=jumpserver
+
+        ##  Redis 配置, USE_EXTERNAL_REDIS=1 表示使用外置数据库, 请输入正确的 Redis 信息
+        USE_EXTERNAL_REDIS=0
+        REDIS_HOST=redis
+        REDIS_PORT=6379
+        REDIS_PASSWORD=
+
+        ## Compose 项目设置, 如果 192.168.250.0/24 网段与你现有网段冲突, 请修改然后重启 JumpServer
+        COMPOSE_PROJECT_NAME=jms
+        COMPOSE_HTTP_TIMEOUT=3600
+        DOCKER_CLIENT_TIMEOUT=3600
+        DOCKER_SUBNET=192.168.250.0/24
+
+        ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
+        USE_IPV6=0
+        DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
+
+        ## 访问配置
+        HTTP_PORT=80
+        SSH_PORT=2222
+        MAGNUS_MYSQL_PORT=33060
+        MAGNUS_MARIADB_PORT=33061
+
+        ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
+        # USE_LB=1
+        # HTTPS_PORT=443
+        # SERVER_NAME=your_domain_name
+        # SSL_CERTIFICATE=your_cert
+        # SSL_CERTIFICATE_KEY=your_cert_key
+
+        ## Nginx 文件上传大小
+        CLIENT_MAX_BODY_SIZE=4096m
+
+        ## Task 配置, 是否启动 jms_celery 容器, 单节点必须开启
+        USE_TASK=1
+
+        ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
+        USE_XPACK=0
+        RDP_PORT=3389
+        MAGNUS_POSTGRE_PORT=54320
+        TCP_SEND_BUFFER_BYTES=4194304
+        TCP_RECV_BUFFER_BYTES=6291456
+
+        # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
+        # SESSION_COOKIE_AGE=86400
+        SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+
+        # Koko Lion XRDP 组件配置
+        CORE_HOST=http://core:8080
+        JUMPSERVER_ENABLE_FONT_SMOOTHING=True
+
+        ## 终端使用宿主 HOSTNAME 标识
+        SERVER_HOSTNAME=${HOSTNAME}
+
+        # 额外的配置
+        CURRENT_VERSION=
+        ```
+        ```sh
+        # 安装
+        ./jmsctl.sh install
+
+        # 启动
+        ./jmsctl.sh start
+        ```
+    !!! tip ""
+        ```sh
+        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
+        ```
+        ```sh
+        cd jumpserver-offline-release-{{ jumpserver.version }}-loong64-{{ installer.version }}
+
+        # 启动
+        ./jmsctl.sh start
+
+        # 停止
+        ./jmsctl.sh down
+
+        # 卸载
+        ./jmsctl.sh uninstall
+
+        # 帮助
+        ./jmsctl.sh -h
+        ```
+
+=== "Helm"
     !!! tip ""
         ```sh
         helm repo add jumpserver https://jumpserver.github.io/helm-charts
@@ -924,9 +1042,9 @@
 
           affinity: {}
 
-        xrdp:
+        razor:
           labels:
-            app.jumpserver.org/name: jms-xrdp
+            app.jumpserver.org/name: jms-razor
 
           config:
             log:
@@ -936,22 +1054,13 @@
 
           image:
             registry: registry.fit2cloud.com
-            repository: jumpserver/xrdp
+            repository: jumpserver/razor
             tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
 
-          env:
-            # tcp_send_buffer_bytes and tcp_recv_buffer_bytes See: https://github.com/neutrinolabs/xrdp/issues/1483
-            TCP_SEND_BUFFER_BYTES: 4194304
-            TCP_RECV_BUFFER_BYTES: 6291456
-            JUMPSERVER_ENABLE_FONT_SMOOTHING: true
-            # JUMPSERVER_ENABLE_WALLPAPER: true
-            # JUMPSERVER_ENABLE_THEMING: true
-            # JUMPSERVER_ENABLE_FULL_WINDOW_DRAG: true
-            # JUMPSERVER_ENABLE_DESKTOP_COMPOSITION: true
-            # JUMPSERVER_ENABLE_MENU_ANIMATIONS: true
+          env: []
 
           livenessProbe:
             failureThreshold: 30

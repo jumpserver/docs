@@ -34,9 +34,9 @@ JumpServer 客户端默认已经集成到 jumpserver 镜像，可以从 luna `�
 
 无法访问 GitHub 可以使用此地址下载离线安装包
 
-| version                  | linux/amd64                                                                              | linux/arm64                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| {{ jumpserver.version }} | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.amd64 }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.arm64 }}.tar.gz |
+| version                  | linux/amd64                                                                                | linux/arm64                                                                              |
+| ------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| {{ jumpserver.version }} | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
 
 !!! tip ""
     - 链接: https://community.fit2cloud.com/#/products/jumpserver/downloads
