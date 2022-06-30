@@ -79,9 +79,10 @@ SECURITY_LOGIN_CAPTCHA_ENABLED=True      # 登录页面是否开启验证码
 AUTH_SSO=False                           # 是否开启其他系统到 JumpServer 的单点登录
 AUTH_SSO_AUTHKEY_TTL=900                 # 单点登录 token 有效时长 (单位：秒)
 USER_LOGIN_SINGLE_MACHINE_ENABLED=False  # 只允许用户一个浏览器登录
-ONLY_ALLOW_AUTH_FROM_SOURCE=False        # 是否仅允许从 用户来源 处登录，默认是 v2.8 添加
+ONLY_ALLOW_AUTH_FROM_SOURCE=False        # 是否仅允许从 用户来源 处登录 v2.8 添加
 ONLY_ALLOW_EXIST_USER_AUTH=False         # 是否仅允许 已创建 的用户登录，如果是，则 ldap 需先导入再登录 v2.8 添加
-DISK_CHECK_ENABLED=True                  # 	是否开启 硬盘空间监测 v2.8 添加
+DISK_CHECK_ENABLED=True                  # 是否开启 硬盘空间监测 v2.8 添加
+CONNECTION_TOKEN_EXPIRATION=300          # client token 连接过期时间 (koko magnus 等组件) v2.23 添加
 ```
 
 ## KoKo 参数说明
