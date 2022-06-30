@@ -161,6 +161,9 @@
     }
     ```
 
+!!! warning ""
+    - 二级代理可以参考 (https://github.com/jumpserver/docs/pull/213/files)
+
 ### 3. 其他 slb
 
 !!! tip ""
