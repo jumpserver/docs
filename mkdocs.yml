@@ -148,11 +148,11 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.23.2
+    version: v2.23.3
     jmservisor: v1.2.3
     wisp: v0.0.7
   installer:
-    version: 26
+    version: 30
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
