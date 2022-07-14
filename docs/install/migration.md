@@ -441,8 +441,8 @@
         4. 配置 MySQL
         是否使用外部 MySQL? (y/n)  (默认为 n): y
         请输入 MySQL 的主机地址 (无默认值): 192.168.100.11
-        请输入 MySQL 的端口 (默认为3306): 3306
-        请输入 MySQL 的数据库(事先做好授权) (默认为jumpserver): jumpserver
+        请输入 MySQL 的端口 (默认为 3306): 3306
+        请输入 MySQL 的数据库 (默认为 jumpserver): jumpserver
         请输入 MySQL 的用户名 (无默认值): jumpserver
         请输入 MySQL 的密码 (无默认值): weakPassword
         完成
@@ -450,7 +450,7 @@
         5. 配置 Redis
         是否使用外部 Redis? (y/n)  (默认为 n): y
         请输入 Redis 的主机地址 (无默认值): 192.168.100.11
-        请输入 Redis 的端口 (默认为6379): 6379
+        请输入 Redis 的端口 (默认为 6379): 6379
         请输入 Redis 的密码 (无默认值): weakPassword
         完成
 
@@ -601,8 +601,8 @@
         4. 配置 MySQL
         是否使用外部 MySQL? (y/n)  (默认为 n): y
         请输入 MySQL 的主机地址 (无默认值): 192.168.100.11
-        请输入 MySQL 的端口 (默认为3306): 3306
-        请输入 MySQL 的数据库(事先做好授权) (默认为jumpserver): jumpserver
+        请输入 MySQL 的端口 (默认为 3306): 3306
+        请输入 MySQL 的数据库 (默认为 jumpserver): jumpserver
         请输入 MySQL 的用户名 (无默认值): jumpserver
         请输入 MySQL 的密码 (无默认值): weakPassword
         完成
@@ -610,7 +610,7 @@
         5. 配置 Redis
         是否使用外部 Redis? (y/n)  (默认为 n): y
         请输入 Redis 的主机地址 (无默认值): 192.168.100.11
-        请输入 Redis 的端口 (默认为6379): 6379
+        请输入 Redis 的端口 (默认为 6379): 6379
         请输入 Redis 的密码 (无默认值): weakPassword
         完成
 
