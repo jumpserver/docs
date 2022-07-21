@@ -576,9 +576,14 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
         ```bash
         cd /opt
         wget https://download.jumpserver.org/public/kubectl-linux-amd64.tar.gz -O kubectl.tar.gz
-        tar -xzf kubectl.tar.gz
-        chmod +x kubectl
+        tar -xf kubectl.tar.gz
         mv kubectl /usr/local/bin/rawkubectl
+        wget https://download.jumpserver.org/public/helm-v3.9.0-linux-amd64.tar.gz
+        tar -xf helm-v3.9.0-linux-amd64.tar.gz
+        mv linux-amd64/helm /usr/local/bin/rawhelm
+        chmod 755 /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
+        chown root:root /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
+        rm -rf linux-amd64
         wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
         tar -xf koko-{{ jumpserver.version }}-linux-amd64.tar.gz -C /opt
         cd koko-{{ jumpserver.version }}-linux-amd64
@@ -590,8 +595,13 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
         cd /opt
         wget https://download.jumpserver.org/public/kubectl-linux-arm64.tar.gz -O kubectl.tar.gz
         tar -xzf kubectl.tar.gz
-        chmod +x kubectl
         mv kubectl /usr/local/bin/rawkubectl
+        wget https://download.jumpserver.org/public/helm-v3.9.0-linux-arm64.tar.gz
+        tar -xf helm-v3.9.0-linux-arm64.tar.gz
+        mv linux-arm64/helm /usr/local/bin/rawhelm
+        chmod 755 /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
+        chown root:root /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
+        rm -rf linux-arm64
         wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-arm64.tar.gz
         tar -xf koko-{{ jumpserver.version }}-linux-arm64.tar.gz -C /opt
         cd koko-{{ jumpserver.version }}-linux-arm64

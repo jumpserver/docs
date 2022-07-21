@@ -148,9 +148,9 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.23.4
+    version: v2.24.0
     jmservisor: v1.2.3
-    wisp: v0.0.7
+    wisp: v0.0.8
   installer:
     version: 31
   search:
