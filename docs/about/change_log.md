@@ -18,7 +18,7 @@ v2.23.3
     - perf: 增加 OmniDB Enabled 配置项【企业版】
 
 !!! success "问题修复 🐛"
-    - fix: 修改 jumpserver.js 版本号，避免文件免缓存导致的登录失败问题
+    - fix: 修改 jumpserver.js 版本号，避免缓存导致的登录失败问题
     - fix: 修复部署无证书的 Redis 时，定时任务不执行的问题
     - fix: 修复创建共享会话链接时 created_by 字段长度问题
     - fix: 修复 ES 存储 config 信息被修改的问题
