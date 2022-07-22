@@ -318,27 +318,6 @@
         我们的文档: https://docs.jumpserver.org/
         ```
         ```sh
-        # 在持久化目录创建 core 目录, 将旧版本录像文件拷贝到持久化目录下面
-        mkdir -p /opt/jumpserver/core/
-        mv /opt/jumpserver_bak/data /opt/jumpserver/core/
-        ```
-        ```sh
-        ./jmsctl.sh start
-        ```
-        ```nginx
-        Creating network "jms_net" with driver "bridge"
-        Creating jms_mysql     ... done
-        Creating jms_redis     ... done
-        Creating jms_core      ... done
-        Creating jms_celery    ... done
-        Creating jms_koko      ... done
-        Creating jms_magnus    ... done
-        Creating jms_web       ... done
-        ```
-        ```sh
-        ./jmsctl.sh stop
-        ```
-        ```sh
         docker exec -it jms_mysql /bin/bash
         # arm64 请使用 $MARIADB_ROOT_PASSWORD
         mysql -uroot -p$MYSQL_ROOT_PASSWORD
@@ -359,7 +338,7 @@
         数据库恢复成功！
         ```
         ```sh
-        ./jmsctl.sh restart
+        ./jmsctl.sh start
         ```
 
     === "使用新的外置数据库"
@@ -516,11 +495,6 @@
         我们的文档: https://docs.jumpserver.org/
         ```
         ```sh
-        # 在持久化目录创建 core 目录, 将旧版本录像文件拷贝到持久化目录下面
-        mkdir -p /opt/jumpserver/core/
-        mv /opt/jumpserver_bak/data /opt/jumpserver/core/
-        ```
-        ```sh
         ./jmsctl.sh start
         ```
         ```nginx
@@ -674,11 +648,6 @@
         5. 更多信息
         我们的官网: https://www.jumpserver.org/
         我们的文档: https://docs.jumpserver.org/
-        ```
-        ```sh
-        # 在持久化目录创建 core 目录, 将旧版本录像文件拷贝到持久化目录下面
-        mkdir -p /opt/jumpserver/core/
-        mv /opt/jumpserver_bak/data /opt/jumpserver/core/
         ```
         ```sh
         ./jmsctl.sh start
