@@ -20,7 +20,8 @@ read unix @->ar/run/docker.sock: read: connection reset by peer
 docker exec -it jms_mysql /bin/bash
 ```
 ```sh
-mysql -uroot -p$MYSQL_ROOT_PASSWORD
+# 如果变量 $MARIADB_ROOT_PASSWORD 不存在，请使用 $MYSQL_ROOT_PASSWORD
+mysql -uroot -p$MARIADB_ROOT_PASSWORD
 ```
 ```mysql
 drop database jumpserver;
@@ -325,7 +326,8 @@ fi
 docker exec -it jms_mysql /bin/bash
 ```
 ```sh
-mysql -uroot -p$MYSQL_ROOT_PASSWORD
+# 如果变量 $MARIADB_ROOT_PASSWORD 不存在，请使用 $MYSQL_ROOT_PASSWORD
+mysql -uroot -p$MARIADB_ROOT_PASSWORD
 ```
 ```mysql
 drop database jumpserver;

@@ -319,8 +319,8 @@
         ```
         ```sh
         docker exec -it jms_mysql /bin/bash
-        # arm64 请使用 $MARIADB_ROOT_PASSWORD
-        mysql -uroot -p$MYSQL_ROOT_PASSWORD
+        # 如果变量 $MARIADB_ROOT_PASSWORD 不存在，请使用 $MYSQL_ROOT_PASSWORD
+        mysql -uroot -p$MARIADB_ROOT_PASSWORD
         ```
         ```mysql
         drop database jumpserver;
