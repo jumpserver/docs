@@ -63,7 +63,7 @@ exit
       MySQLdb._exceptions.OperationalError: (1050, "Table 'tickets_approvalrule' already exists")
     ```
     !!! warning ""
-        此错误通常于手动导入备份数据库后启动出现，原因一般为新的数据库名称与旧数据库名称不一致或者导入数据库过程有错误导致
+        此错误通常于手动导入备份数据库后启动出现，原因一般为新的数据库名称与旧数据库名称不一致或者导入数据库过程有错误导致。如果升级过程中异常终止，第二次执行升级也可能会出现此错误，可以尝试还原数据库后重新升级。
 
 === "Cannot add foreign key constraint"
     ```vim
@@ -86,7 +86,7 @@ exit
     MySQLdb._exceptions.IntegrityError: (1215, 'Cannot add foreign key constraint')
     ```
     !!! warning ""
-        如果数据库里面包含多种不一样的排序规则依旧会报错
+        如果数据库里面包含多种不一样的排序规则依旧会报错。
 
     ```sh
     # 通过 grep 检查 sql 文件
