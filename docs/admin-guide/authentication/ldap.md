@@ -25,8 +25,9 @@
     | 用户过滤器   | (cn=%(user)s)                                     |
     | LADP属性映射 | {"username": "cn", "name": "sn", "email": "mail"} |
     | 启动LDAP认证 | ☑️                                                 |
+    | CA 证书     | /opt/jumpserver/core/data/certs/ldap_ca.pem        |
 
-    !!! warning "ldap ssl 证书需要放到持久化目录 `jumpserver/core/data/certs/ldap_ca.pem`"
+    !!! warning "部分 LDAP 如 ldap.google.com, 需要开启账号密码认证且 [配置 stunnel 代理](https://support.google.com/a/answer/9089736?hl=en#stunnel){:target="_blank"}"
 
 !!! tip "选项说明"
     `DN` 一定要是完整的DN，不能跳过OU，可以使用其他工具查询  
@@ -44,7 +45,7 @@
     注意：用户过滤器用什么筛选，LDAP属性映射字段要与其一致，过滤器用 uid，LDAP属性映射也要用 uid
 
 
-!!! tip "LDAP 的部分功能在 jumpserver/config/config.txt 进行设置"
+??? tip "LDAP 的部分功能在 jumpserver/config/config.txt 进行设置"
     ```vim
     # LDAP/AD settings
     # LDAP 搜索分页数量

@@ -43,14 +43,13 @@ wget https://download.jumpserver.org/files/ip/ipipfree.ipdb -O apps/common/utils
 ls -l requirements/
 ```
 ```vim
-requirements/                     # 对应操作系统需要的依赖包
-├── alpine_requirements.txt       # Alpine
-├── deb_buster_requirements.txt   # Debian 10
-├── deb_requirements.txt          # 基于 Debian 的发行版(如: Ubuntu)
-├── issues.txt                    # macOS 一些问题及解决方案
-├── mac_requirements.txt          # macOS
-├── requirements.txt              # python
-└── rpm_requirements.txt          # 基于 RedHat 的发行版(如: CentOS)
+requirements/           # 对应操作系统需要的依赖包
+├── apk_pkg.sh          # Alpine
+├── deb_pkg.sh          # 基于 Debian 的发行版(如: Ubuntu)
+├── issues.txt          # macOS 一些问题及解决方案
+├── mac_pkg.sh          # macOS
+├── requirements.txt    # python
+└── rpm_pkg.sh          # 基于 RedHat 的发行版(如: CentOS)
 ```
 
 === "Ubuntu 20.04"
