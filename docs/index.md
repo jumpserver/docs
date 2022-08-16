@@ -31,6 +31,9 @@
 ## 案例研究
 
 !!! tip ""
+    - [腾讯海外游戏：基于JumpServer构建游戏安全运营能力](https://blog.fit2cloud.com/?p=3704){:target="_blank"}
+    - [万华化学：通过JumpServer管理全球化分布式IT资产，并且实现与云管平台的联动](https://blog.fit2cloud.com/?p=3504){:target="_blank"}
+    - [雪花啤酒：JumpServer堡垒机使用体会](https://blog.fit2cloud.com/?p=3412){:target="_blank"}
     - [JumpServer 堡垒机护航顺丰科技超大规模资产安全运维](https://blog.fit2cloud.com/?p=1147){:target="_blank"}
     - [JumpServer 堡垒机让“大智慧”的混合 IT 运维更智慧](https://blog.fit2cloud.com/?p=882){:target="_blank"}
     - [携程 JumpServer 堡垒机部署与运营实战](https://blog.fit2cloud.com/?p=851){:target="_blank"}
