@@ -2,7 +2,7 @@
 
 - https://docs.jumpserver.org
 
-[![Python3](https://img.shields.io/badge/python-3.6-green.svg?style=plastic)](https://www.python.org/)
+[![Python3](https://img.shields.io/badge/python-3.8-green.svg?style=plastic)](https://www.python.org/)
 
 ## 开始
 
