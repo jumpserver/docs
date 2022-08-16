@@ -6,12 +6,15 @@
     - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署，第三方 LB 要注意 session 和 websocket 问题
     - 如果已经有 云存储 (* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署，MySQL Redis 也一样
     - 生产环境中，应该使用 Ceph 等替代 NFS，或者部署高可用的 NFS 防止单点故障
-    - [Redis 高可用快速部署可以参考此项目](https://github.com/wojiushixiaobai/redis-sentinel){:target="_blank"}
 
-| DB      | Version |    | Cache | Version |
-| :------ | :------ | :- | :---- | :------ |
-| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
-| MariaDB | >= 10.2 |    |       |         |
+| Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
+| :------ | :------ | :--------------- | :----------------- | :--------------- |
+| MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
+| MariaDB | >= 10.2 | utf8mb3          | utf8mb3_general_ci | :material-check: |
+
+| Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
+| :------ | :------ | :--------------- | :----------------- | :--------------- |
+| Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
 
 | Server Name   |        IP        |  Port                   |     Use          |   Minimize Hardware    |   Standard Hardware     |
 | ------------- | ---------------- | ----------------------- | ---------------- | ---------------------- | ----------------------- |
@@ -31,7 +34,6 @@
 | Core          | http://core:8080/api/health/   | https://demo.jumpserver.org/api/health/   |
 | KoKo          | http://koko:5000/koko/health/  | https://demo.jumpserver.org/koko/health/  |
 | Lion          | http://lion:8081/lion/health/  | https://demo.jumpserver.org/lion/health/  |
-
 
 ## 部署 NFS 服务
 

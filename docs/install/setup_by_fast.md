@@ -4,21 +4,27 @@
 
 !!! info "环境要求"
 
-| OS Version    | Linux Kernel  | Soft Requirement                      |
-| :------------ | :------------ | :------------------------------------ |
-| Linux Release | >= 4.0        | wget curl tar gettext iptables python |
-
-## 安装方式
-
-- [安装演示视频](https://www.bilibili.com/video/av635028005)
+| OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      |
+| :------------ | :----------- | :------------ | :------------------------------------ |
+| linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python |
+| linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python |
+| linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python |
 
 !!! info "外置环境要求"
     - 推荐使用外置 数据库 和 Redis，方便日后扩展升级
 
-| DB      | Version |    | Cache | Version |
-| :------ | :------ | :- | :---- | :------ |
-| MySQL   | >= 5.7  |    | Redis | >= 5.0  |
-| MariaDB | >= 10.2 |    |       |         |
+| Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
+| :------ | :------ | :--------------- | :----------------- | :--------------- |
+| MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
+| MariaDB | >= 10.2 | utf8mb3          | utf8mb3_general_ci | :material-check: |
+
+| Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
+| :------ | :------ | :--------------- | :----------------- | :--------------- |
+| Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
+
+## 安装方式
+
+根据实机环境选择安装方式，支持 [在线安装](#_3) 和 [离线安装](#_4)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
 
 ### 在线安装
 
@@ -860,11 +866,11 @@
 
 ### 离线安装
 
-| OS      | Arch    | Architecture | Offline Name                                                                                 |
-| :------ | :------ | :----------- | :------------------------------------------------------------------------------------------- |
-| Linux   | amd64   | x86_64       | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz   |
-| Linux   | arm64   | aarch64      | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz   |
-| Linux   | loong64 | loongarch64  | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
+| OS/Arch       | Architecture | Linux Kernel | Offline Name                                                                                 |
+| :------------ | :----------- | :----------- | :------------------------------------------------------------------------------------------- |
+| linux/amd64   | x86_64       | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz   |
+| linux/arm64   | aarch64      | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz   |
+| linux/loong64 | loongarch64  | == 4.19      | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
 
 === "linux/amd64"
     !!! tip ""
