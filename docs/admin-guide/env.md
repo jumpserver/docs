@@ -1,6 +1,6 @@
 # 参数列表
 
-!!! info "JumpServer 参数说明文档"
+!!! warning "修改配置文件前请先关闭 JumpServer 服务"
 
 ## Core 参数说明
 
