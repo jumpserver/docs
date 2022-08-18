@@ -11,8 +11,12 @@
 
 !!! tip "请准备好 ssl 证书 (注意需要使用 pem 格式证书)"
     - 将证书放到 /opt/jumpserver/config/nginx/cert 里面
+    - 修改配置文件前需要先关闭 JumpServer 服务
 
 !!! tip ""
+    ```sh
+    ./jmsctl.sh stop
+    ```
     ```sh
     vi /opt/jumpserver/config/config.txt
     ```
@@ -32,7 +36,7 @@
     SSL_CERTIFICATE_KEY=xxx.key  # /opt/jumpserver/config/nginx/cert 目录下你的 key 文件
     ```
     ```sh
-    ./jmsctl.sh restart
+    ./jmsctl.sh start
     ```
 
 ??? warning "如果需要自定义 Nginx 配置文件, 可以参考此处"
@@ -87,9 +91,6 @@
         send_timeout 6000;
       }
     }
-    ```
-    ```sh
-    ./jmsctl.sh restart
     ```
 
 ### 2. 多层 nginx 反向代理
