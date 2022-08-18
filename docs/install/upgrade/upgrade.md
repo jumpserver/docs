@@ -17,10 +17,6 @@
 | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
 | MariaDB | >= 10.2 |    |       |         |
 
-## 升级说明
-
-!!! tip "要求说明"
-    - [未使用 installer 部署的用户请参考迁移说明迁移到最新版本](../migration.md){:target="_blank"}
 
 ## 升级步骤
 
