@@ -2,6 +2,10 @@
 
 - [在 Windows/macOS 部署说明](setup_by_desktop.md)
 
+## 安装方式
+
+根据实机环境选择安装方式，支持 [在线安装](#_3) 和 [离线安装](#_4)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
+
 !!! info "环境要求"
 
 | OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      |
@@ -21,10 +25,6 @@
 | Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
 | Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
-
-## 安装方式
-
-根据实机环境选择安装方式，支持 [在线安装](#_3) 和 [离线安装](#_4)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
 
 ### 在线安装
 
