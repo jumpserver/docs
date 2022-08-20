@@ -1,4 +1,4 @@
-:root {
+:root > * {
   --md-primary-fg-color: #2b937c;
 }
 
@@ -12,22 +12,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
 .md-header{
-  background-color: #2b937c;
   top: 48px;
 }
+
 .md-main__inner {
   margin-top: 3rem;
 }
-.md-footer{
-  background-color: #2b937c;
-}
-.md-nav__item .md-nav__link--active {
-  color: #2b937c;
-}
-.md-typeset a {
-  color: #2b937c;
-}
+
 .progress-bar {
   height: 1.2rem;
   float: left;
@@ -137,4 +130,12 @@
 
 .md-top {
   margin-top: 2rem;
+}
+
+.md-footer {
+  background-color: #2b937c;
+}
+
+.md-nav--primary .md-nav__title .md-logo {
+  display: none;
 }
