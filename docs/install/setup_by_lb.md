@@ -237,7 +237,7 @@
     USE_EXTERNAL_MYSQL=1                                             # 使用外置 MySQL
     DB_HOST=192.168.100.11
     DB_PORT=3306
-    DB_USER=jumpserve
+    DB_USER=jumpserver
     DB_PASSWORD=KXOeyNgDeTdpeu9q
     DB_NAME=jumpserver
 
