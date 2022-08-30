@@ -81,8 +81,8 @@
         ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
         ## 完整参数文档 https://docs.jumpserver.org/zh/master/admin-guide/env/
 
-        ## 配置 Docker 镜像加速, 不同的架构请参考安装文档
-        # DOCKER_IMAGE_PREFIX=
+        ## Docker 镜像配置
+        # DOCKER_IMAGE_MIRROR=1
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
@@ -892,8 +892,8 @@
         ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
         ## 完整参数文档 https://docs.jumpserver.org/zh/master/admin-guide/env/
 
-        ## 配置 Docker 镜像加速, 不同的架构请参考安装文档
-        # DOCKER_IMAGE_PREFIX=
+        ## Docker 镜像配置
+        # DOCKER_IMAGE_MIRROR=1
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
@@ -1012,8 +1012,8 @@
         ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
         ## 完整参数文档 https://docs.jumpserver.org/zh/master/admin-guide/env/
 
-        ## 配置 Docker 镜像加速, 不同的架构请参考安装文档
-        # DOCKER_IMAGE_PREFIX=
+        ## Docker 镜像配置
+        # DOCKER_IMAGE_MIRROR=1
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
@@ -1132,8 +1132,8 @@
         ## 迁移请修改 SECRET_KEY 和 BOOTSTRAP_TOKEN 为原来的设置
         ## 完整参数文档 https://docs.jumpserver.org/zh/master/admin-guide/env/
 
-        ## 配置 Docker 镜像加速, 不同的架构请参考安装文档
-        # DOCKER_IMAGE_PREFIX=
+        ## Docker 镜像配置
+        # DOCKER_IMAGE_MIRROR=1
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
