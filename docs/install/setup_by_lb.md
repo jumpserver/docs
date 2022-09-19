@@ -223,7 +223,7 @@
     # 安装配置
     ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到 /data/jumpserver/core/data, 则 VOLUME_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
-    DOCKER_DIR=/var/lib/docker
+
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
@@ -450,7 +450,7 @@
     # 安装配置
     ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
-    DOCKER_DIR=/var/lib/docker
+
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
@@ -538,7 +538,7 @@
     # 安装配置
     ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
-    DOCKER_DIR=/var/lib/docker
+
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
@@ -627,7 +627,7 @@
     # 安装配置
     ### 注意持久化目录 VOLUME_DIR, 如果上面 NFS 挂载其他目录, 此处也要修改. 如: NFS 挂载到/data/jumpserver/core/data, 则 DOCKER_DIR=/data/jumpserver
     VOLUME_DIR=/opt/jumpserver
-    DOCKER_DIR=/var/lib/docker
+
 
     # Core 配置
     ### 启动后不能再修改，否则密码等等信息无法解密, 请勿直接复制下面的字符串
