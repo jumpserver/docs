@@ -86,7 +86,6 @@
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
-        DOCKER_DIR=/var/lib/docker
         SECRET_KEY=
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
@@ -897,7 +896,6 @@
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
-        DOCKER_DIR=/var/lib/docker
         SECRET_KEY=
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
@@ -1017,7 +1015,6 @@
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
-        DOCKER_DIR=/var/lib/docker
         SECRET_KEY=
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
@@ -1137,7 +1134,6 @@
 
         ## 安装配置
         VOLUME_DIR=/opt/jumpserver
-        DOCKER_DIR=/var/lib/docker
         SECRET_KEY=
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
