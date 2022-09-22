@@ -5,41 +5,14 @@
 
 !!! tip "Win7/Win2008 需要升级 `powershell` 到 3.0 以上，详情请参考 [ansible 客户端需求](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html){:target="_blank"}"
 
-!!! tip ""
-    [下载最新的 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases/latest){:target="_blank"}  
-    解压后，重命名到 C:\Program Files\OpenSSH  
-    通过管理员身份的方式打开 powershell，并在 powershell 里面执行下面命令
-
-### 1. 安装 OpenSSH
+### 安装 OpenSSH
 
 !!! tip ""
-    ```powershell
-    cd "C:\Program Files\OpenSSH"
-    powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
-    ```
+    [下载最新的 OpenSSH-Win64.msi](https://github.com/PowerShell/Win32-OpenSSH/releases/latest){:target="_blank"}  
+    通过管理员身份的直接运行即可，安装过程无需交互，安装完成后不需要任何配置即可直接使用
 
-### 2. 设置 Firewalld
 
-!!! tip ""
-    ```powershell
-    New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
-    ```
-
-!!! question ""
-    ```powershell
-    # 如果 win7/win2008 执行上面的命令报错请执行此处的命令
-    netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=22
-    ```
-
-### 3. 启动 OpenSSH
-
-!!! tip ""
-    ```powershell
-    net start sshd
-    Set-Service sshd -StartupType Automatic
-    ```
-
-### 4. 使用 Private Key
+### 使用 Private Key
 
 !!! tip ""
     - [Setup public key based authentication for windows](https://github.com/PowerShell/Win32-OpenSSH/wiki/Setup-public-key-based-authentication-for-windows){:target="_blank"}
