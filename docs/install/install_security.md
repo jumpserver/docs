@@ -1,20 +1,20 @@
 # 安全建议
 
+## 基本安全要求
+
 !!! tip ""
-    - JumpServer 对外需要开放 80 443 2222 33060 33061 63790 端口  
+    - JumpServer 对外最低需要开放 80 443 2222 端口  
     - JumpServer 所在服务器操作系统应该升级到最新  
-    - JumpServer 依赖的软件升级到最新版本  
+    - JumpServer 依赖的软件应该升级到最新版本  
     - 服务器、数据库、Redis 等依赖组件请勿使用弱口令密码  
     - 不推荐关闭 Firewalld 和 Selinux  
     - 只开放必要的端口，必要的话请通过 VPN 或者 SSLVPN 访问 JumpServer  
-    - 如果必须开放到外网使用，你应该部署 web 应用防火墙做安全过滤  
+    - 如果必须开放到外网使用，你应该部署 Web 应用防火墙做安全过滤  
     - 请部署 SSL 证书通过 HTTPS 协议来访问 JumpServer  
-    - JumpServer 不要使用弱口令密码  
-    - 推荐开启 MFA 功能，避免因密码泄露导致的安全问题
+    - JumpServer 应该在安全设置强密码规则，禁用用户使用弱口令密码  
+    - 应该开启 JumpServer MFA 认证功能，避免因密码泄露导致的安全问题
 
-!!! tip ""
-    关注官方更新，及时更新修复漏洞的版本  
-    如发现 JumpServer 安全问题，请反馈给我们 ibuler@fit2cloud.com
+!!! warning "如发现 JumpServer 安全问题，请反馈给我们 ibuler@fit2cloud.com"
 
 ## 数据库 SSL 连接
 
