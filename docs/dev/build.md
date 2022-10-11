@@ -11,7 +11,7 @@ JumpServer 分为多个组件，大致的架构如上图所示。其中 [Lina][l
 
 | Name    | Core                     | MySQL  | MariaDB | Redis |
 | :------ | :----------------------- | :----- | :------ | :---- |
-| Version | {{ jumpserver.version }} | >= 5.7 | >= 10.2 | >= 6  |
+| Version | {{ jumpserver.version }} | >= 5.7 | >= 10.3 | >= 6  |
 
 !!! warning "MySQL 和 MariaDB 二选一即可, JumpServer 需要使用 MySQL 或 MariaDB 存储数据"
 
@@ -257,9 +257,9 @@ python apps/manage.py compilemessages
 
 ### 环境要求
 
-| Name    | Lina                     | Node |
-| :------ | :----------------------- | :--- |
-| Version | {{ jumpserver.version }} | 10   |
+| Name    | Lina                     | Node  |
+| :------ | :----------------------- | :---- |
+| Version | {{ jumpserver.version }} | 14.16 |
 
 === "源代码部署"
 
@@ -280,9 +280,9 @@ python apps/manage.py compilemessages
     === "Ubuntu 20.04"
         ```bash
         cd /opt
-        wget https://npm.taobao.org/mirrors/node/v10.24.1/node-v10.24.1-linux-x64.tar.xz
-        tar -xf node-v10.24.1-linux-x64.tar.xz
-        mv node-v10.24.1-linux-x64 /usr/local/node
+        wget https://nodejs.org/download/release/v14.16.1/node-v14.16.1-linux-x64.tar.xz
+        tar -xf node-v14.16.1-linux-x64.tar.xz
+        mv node-v14.16.1-linux-x64 /usr/local/node
         chown -R root:root /usr/local/node
         export PATH=/usr/local/node/bin:$PATH
         echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
@@ -291,7 +291,7 @@ python apps/manage.py compilemessages
     ```bash
     node -v
     ```
-    `v10.24.1`
+    `v14.16.1`
 
     ### 安装依赖
     ```bash
@@ -302,6 +302,7 @@ python apps/manage.py compilemessages
 
     ### 修改配置文件
     ```bash
+    sed -i "s@Version <strong>.*</strong>@Version <strong>{{ jumpserver.version }}</strong>@g" src/layout/components/Footer/index.vue
     vi .env.development
     ```
     ```yaml
@@ -338,7 +339,7 @@ python apps/manage.py compilemessages
 
     ### 构建 Lina
     ```bash
-    yarn build:prod
+    yarn build
     cp -rf lina lina-{{ jumpserver.version }}
     tar -czf lina-{{ jumpserver.version }}.tar.gz lina-{{ jumpserver.version }}
     ```
@@ -367,9 +368,9 @@ python apps/manage.py compilemessages
 
 ### 环境要求
 
-| Name    | Luna                     | Node |
-| :------ | :----------------------- | :--- |
-| Version | {{ jumpserver.version }} | 10   |
+| Name    | Luna                     | Node  |
+| :------ | :----------------------- | :---- |
+| Version | {{ jumpserver.version }} | 14.16 |
 
 === "源代码部署"
 
@@ -390,18 +391,17 @@ python apps/manage.py compilemessages
     ```bash
     node -v
     ```
-    `v10.24.1`
+    `v14.16.1`
 
     ### 安装依赖
     ```bash
     cd /opt/luna-{{ jumpserver.version }}
-    npm install
-    npm install --dev
-    npm rebuild node-sass
+    yarn install
     ```
 
     ### 修改配置文件
     ```bash
+    sed -i "s@[0-9].[0-9].[0-9]@{{ jumpserver.version }}@g" src/environments/environment.prod.ts
     vi proxy.conf.json
     ```
     ```yaml
@@ -456,8 +456,9 @@ python apps/manage.py compilemessages
 
     ### 构建 Luna
     ```bash
-    ./node_modules/.bin/ng build
-    mv dist /opt/luna-{{ jumpserver.version }}
+    yarn build
+    cp -R src/assets/i18n luna/
+    cp -rf luna luna-{{ jumpserver.version }}
     tar -czf luna-{{ jumpserver.version }}.tar.gz luna-{{ jumpserver.version }}
     ```
 
@@ -485,9 +486,9 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
 
 ### 环境要求
 
-| Name    | KoKo                     | Go   | Node | Redis Client |
-| :------ | :----------------------- | :--  | :--- | :----------- |
-| Version | {{ jumpserver.version }} | 1.17 | 10   | >= 6.0       |
+| Name    | KoKo                     | Go   | Node  | Redis Client |
+| :------ | :----------------------- | :--  | :---- | :----------- |
+| Version | {{ jumpserver.version }} | 1.18 | 14.16 | >= 6.0       |
 
 === "源代码部署"
 
@@ -508,7 +509,7 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
     ```bash
     node -v
     ```
-    `v10.24.1`
+    `v14.16.1`
 
     ### 安装 Client 依赖
 
@@ -530,8 +531,8 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
     === "Ubuntu 20.04"
         ```bash
         cd /opt
-        wget https://golang.google.cn/dl/go1.17.7.linux-amd64.tar.gz
-        tar -xf go1.17.7.linux-amd64.tar.gz -C /usr/local/
+        wget https://golang.google.cn/dl/go1.18.7.linux-amd64.tar.gz
+        tar -xf go1.18.7.linux-amd64.tar.gz -C /usr/local/
         chown -R root:root /usr/local/go
         export PATH=/usr/local/go/bin:$PATH
         echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -540,7 +541,7 @@ Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 
     ```bash
     go version
     ```
-    `go version go1.17.7 linux/amd64`
+    `go version go1.18.7 linux/amd64`
 
     ### 编译
 
@@ -700,16 +701,16 @@ LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 
 
 | Name    | JumpServer               | Guacd                  |  Lion                    |
 | :------ | :----------------------- | :--------------------- | :----------------------- |
-| Version | {{ jumpserver.version }} | [1.3.0][guacd-1.3.0]   | {{ jumpserver.version }} |
+| Version | {{ jumpserver.version }} | [1.4.0][guacd-1.4.0]   | {{ jumpserver.version }} |
 
 可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
 ```bash
 mkdir /opt/guacamole-{{ jumpserver.version }}
 cd /opt/guacamole-{{ jumpserver.version }}
-wget http://download.jumpserver.org/public/guacamole-server-1.3.0.tar.gz
-tar -xzf guacamole-server-1.3.0.tar.gz
-cd guacamole-server-1.3.0/
+wget http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
+tar -xzf guacamole-server-1.4.0.tar.gz
+cd guacamole-server-1.4.0/
 ```
 
 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
