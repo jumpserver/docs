@@ -4,9 +4,9 @@
 
 ## 安装方式
 
-根据实机环境选择安装方式，支持 [在线安装](#_3) 和 [离线安装](#_4)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
+根据实机环境选择安装方式，支持 [在线安装](#_4) 和 [离线安装](#_5)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
 
-!!! info "环境要求"
+## 环境要求
 
 | OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      |
 | :------------ | :----------- | :------------ | :------------------------------------ |
@@ -14,8 +14,22 @@
 | linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python |
 | linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python |
 
-!!! info "外置环境要求"
-    - 推荐使用外置 数据库 和 Redis，方便日后扩展升级
+=== "Debian / Ubuntu"
+    !!! tip ""
+        ```sh
+        apt-get update
+        apt-get install -y wget curl tar gettext iptables
+        ```
+
+=== "RedHat / CentOS"
+    !!! tip ""
+        ```sh
+        yum update
+        yum install -y wget curl tar gettext iptables
+        ```
+
+JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据，如果希望使用自建数据库或云数据库请参考此处的要求  
+支持 [数据库 SSL 连接](./install_security/#ssl) 和 [Redis SSL 连接](./install_security/#redis-ssl)
 
 | Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
@@ -26,9 +40,39 @@
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
 | Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
 
-### 在线安装
+=== "MySQL"
+    !!! tip ""
+        ```mysql
+        create database jumpserver default charset 'utf8';
+        ```
+        ```mysql
+        mysql> show create database jumpserver;
+        +------------+---------------------------------------------------------------------+
+        | Database   | Create Database                                                     |
+        +------------+---------------------------------------------------------------------+
+        | jumpserver | CREATE DATABASE `jumpserver` /*!40100 DEFAULT CHARACTER SET utf8 */ |
+        +------------+---------------------------------------------------------------------+
+        1 row in set (0.00 sec)
+        ```
 
-??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
+=== "MariaDB"
+    !!! tip ""
+        ```mysql
+        create database jumpserver default charset 'utf8';
+        ```
+        ```mysql
+        MariaDB> show create database jumpserver;
+        +------------+--------------------------------------------------------------------------------------------+
+        | Database   | Create Database                                                                            |
+        +------------+--------------------------------------------------------------------------------------------+
+        | jumpserver | CREATE DATABASE `jumpserver` /*!40100 DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_bin */ |
+        +------------+--------------------------------------------------------------------------------------------+
+        1 row in set (0.001 sec)
+        ```
+
+## 在线安装
+
+??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
     | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                | Kubernetes values.yaml                           | OS/ARCH        |
     | :----------- | :----------------------------------- | -------------------------------------------------------- | ------------------------------------------------ | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     | repository: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
@@ -864,7 +908,9 @@
 
 === "[Allinone](https://github.com/jumpserver/Dockerfile/tree/master/allinone){:target="_blank"}"
 
-### 离线安装
+## 离线安装
+
+!!! info "离线包解压需要 tar 命令, 参考 [环境要求](#_3) 手动安装"
 
 | OS/Arch       | Architecture | Linux Kernel | Offline Name                                                                                 |
 | :------------ | :----------- | :----------- | :------------------------------------------------------------------------------------------- |

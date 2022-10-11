@@ -101,12 +101,12 @@ nav:
   - 帮助文档:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
-  - 资源下载: about/download.md
-  - 更新说明: about/change_log.md
-  - 技术咨询: https://jinshuju.net/f/sQ91MK
+    - 资源下载: about/download.md
+  - 更新说明: https://github.com/jumpserver/jumpserver/releases
   - 关于我们:
     - 贡献列表: about/contributor.md
     - 联系方式: about/contact.md
+    - 技术咨询: https://jinshuju.net/f/sQ91MK
 
 markdown_extensions:
   - admonition
@@ -154,7 +154,7 @@ markdown_extensions:
 extra:
   jumpserver:
     version: v2.26.1
-    jmservisor: v1.2.3
+    jmservisor: v1.2.5
     wisp: v0.0.8
   installer:
     version: 91
