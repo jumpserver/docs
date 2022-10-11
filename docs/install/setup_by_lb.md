@@ -781,7 +781,7 @@
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3  # JumpServer 服务器
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
-        server 192.168.100.23 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.24 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     listen jms-ssh
         bind *:2222
@@ -794,7 +794,7 @@
         server 192.168.100.21 192.168.100.21:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.22 192.168.100.22:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.23 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.23:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.24:2222 weight 1 check inter 2s rise 2 fall 3 send-proxy
 
     listen jms-koko
         mode http
@@ -810,7 +810,7 @@
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
-        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.24 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     listen jms-lion
         mode http
@@ -826,7 +826,7 @@
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
-        server 192.168.100.24 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
+        server 192.168.100.24 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
     listen jms-mysql
         bind *:33060
@@ -839,7 +839,7 @@
         server 192.168.100.21 192.168.100.21:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.22 192.168.100.22:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.23 192.168.100.23:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.23:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.24:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
 
     listen jms-mariadb
         bind *:33061
@@ -852,7 +852,7 @@
         server 192.168.100.21 192.168.100.21:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.22 192.168.100.22:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
         server 192.168.100.23 192.168.100.23:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.23:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.24:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
     ```
 
 !!! tip "配置 Selinux"
@@ -1004,7 +1004,7 @@
 
 !!! tip "下载 Elasticsearch 镜像"
     ```sh
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.6
     ```
     ```vim
     7a0437f04f83: Pull complete
@@ -1015,8 +1015,8 @@
     373fb8fbaf74: Pull complete
     5908d3eb2989: Pull complete
     Digest: sha256:81c126e4eddbc5576285670cb3e23d7ef7892ee5e757d6d9ba870b6fe99f1219
-    Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch:7.16.1
-    docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch:7.17.6
+    docker.elastic.co/elasticsearch/elasticsearch:7.17.6
     ```
 !!! tip "持久化数据目录"
     ```sh
@@ -1036,7 +1036,7 @@
     # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
     ```
     ```sh
-    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always docker.elastic.co/elasticsearch/elasticsearch:7.17.6
     ```
 
 !!! tip "设置 JumpServer"
