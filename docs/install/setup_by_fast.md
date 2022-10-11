@@ -29,7 +29,7 @@
         ```
 
 JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据，如果希望使用自建数据库或云数据库请参考此处的要求  
-支持 [数据库 SSL 连接](./install_security/#ssl) 和 [Redis SSL 连接](./install_security/#redis-ssl)
+支持 [数据库 SSL 连接](../install_security/#ssl) 和 [Redis SSL 连接](../install_security/#redis-ssl)
 
 | Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
