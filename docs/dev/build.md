@@ -462,7 +462,7 @@ python apps/manage.py compilemessages
     tar -czf luna-{{ jumpserver.version }}.tar.gz luna-{{ jumpserver.version }}
     ```
 
-    !!! tip "构建完成后, 生成在 dist 目录下"
+    !!! tip "构建完成后, 生成在 luna 目录下"
 
 === "使用 Release"
 
