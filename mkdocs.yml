@@ -44,7 +44,6 @@ nav:
     - 负载均衡: install/setup_by_lb.md
     - 升级文档: install/upgrade/upgrade.md
     - 迁移文档: install/migration.md
-    - 使用 IPv6: install/use_ipv6.md
     - 安全建议: install/install_security.md
   - 管理文档:
     - 快速入门: admin-guide/quick_start.md
