@@ -234,7 +234,7 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=True                             # 关闭浏览器 session 过期
 
     # MySQL 配置
-    USE_EXTERNAL_MYSQL=1                                             # 使用外置 MySQL
+
     DB_HOST=192.168.100.11
     DB_PORT=3306
     DB_USER=jumpserver
@@ -242,7 +242,7 @@
     DB_NAME=jumpserver
 
     # Redis 配置
-    USE_EXTERNAL_REDIS=1                                             # 使用外置 Redis
+
     REDIS_HOST=192.168.100.11
     REDIS_PORT=6379
     REDIS_PASSWORD=KXOeyNgDeTdpeu9q
@@ -461,7 +461,7 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
-    USE_EXTERNAL_MYSQL=1
+
     DB_HOST=192.168.100.11
     DB_PORT=3306
     DB_USER=jumpserver
@@ -549,7 +549,7 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
-    USE_EXTERNAL_MYSQL=1
+
     DB_HOST=192.168.100.11
     DB_PORT=3306
     DB_USER=jumpserver
@@ -638,7 +638,7 @@
     SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
     # MySQL 配置
-    USE_EXTERNAL_MYSQL=1
+
     DB_HOST=192.168.100.11
     DB_PORT=3306
     DB_USER=jumpserver

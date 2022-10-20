@@ -218,9 +218,6 @@
         vi /opt/jumpserver/config/config.txt
         ```
         ```vim
-        ## 是否使用外部MYSQL和REDIS
-        USE_EXTERNAL_MYSQL=1
-
         ## MySQL数据库配置
         DB_ENGINE=mysql
         DB_HOST=mysql
@@ -228,10 +225,6 @@
         DB_USER=root
         DB_PASSWORD=rBi41SrDqlX4zsx9e1L0cqTP
         DB_NAME=jumpserver
-
-        # MySQL 容器配置
-        MYSQL_ROOT_PASSWORD=rBi41SrDqlX4zsx9e1L0cqTP
-        MYSQL_DATABASE=jumpserver
         ```
         ```sh
         cd /opt/jumpserver-installerer-{{ jumpserver.version }}
