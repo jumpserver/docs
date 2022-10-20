@@ -134,16 +134,14 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
 
-        ##  MySQL 配置, USE_EXTERNAL_MYSQL=1 表示使用外置数据库, 请输入正确的 MySQL 信息
-        USE_EXTERNAL_MYSQL=0
+        ##  MySQL 配置, 如果使用外置数据库, 请输入正确的 MySQL 信息
         DB_HOST=mysql
         DB_PORT=3306
         DB_USER=root
         DB_PASSWORD=
         DB_NAME=jumpserver
 
-        ##  Redis 配置, USE_EXTERNAL_REDIS=1 表示使用外置数据库, 请输入正确的 Redis 信息
-        USE_EXTERNAL_REDIS=0
+        ##  Redis 配置, 如果使用外置数据库, 请输入正确的 Redis 信息
         REDIS_HOST=redis
         REDIS_PORT=6379
         REDIS_PASSWORD=
@@ -161,8 +159,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        MAGNUS_MYSQL_PORT=33060
-        MAGNUS_MARIADB_PORT=33061
+        MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
         # USE_LB=1
@@ -180,9 +177,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
         RDP_PORT=3389
-        MAGNUS_POSTGRE_PORT=54320
-        TCP_SEND_BUFFER_BYTES=4194304
-        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -946,16 +940,14 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
 
-        ##  MySQL 配置, USE_EXTERNAL_MYSQL=1 表示使用外置数据库, 请输入正确的 MySQL 信息
-        USE_EXTERNAL_MYSQL=0
+        ##  MySQL 配置, 如果使用外置数据库, 请输入正确的 MySQL 信息
         DB_HOST=mysql
         DB_PORT=3306
         DB_USER=root
         DB_PASSWORD=
         DB_NAME=jumpserver
 
-        ##  Redis 配置, USE_EXTERNAL_REDIS=1 表示使用外置数据库, 请输入正确的 Redis 信息
-        USE_EXTERNAL_REDIS=0
+        ##  Redis 配置, 如果使用外置数据库, 请输入正确的 Redis 信息
         REDIS_HOST=redis
         REDIS_PORT=6379
         REDIS_PASSWORD=
@@ -973,8 +965,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        MAGNUS_MYSQL_PORT=33060
-        MAGNUS_MARIADB_PORT=33061
+        MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
         # USE_LB=1
@@ -992,9 +983,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
         RDP_PORT=3389
-        MAGNUS_POSTGRE_PORT=54320
-        TCP_SEND_BUFFER_BYTES=4194304
-        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -1065,16 +1053,14 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
 
-        ##  MySQL 配置, USE_EXTERNAL_MYSQL=1 表示使用外置数据库, 请输入正确的 MySQL 信息
-        USE_EXTERNAL_MYSQL=0
+        ##  MySQL 配置, 如果使用外置数据库, 请输入正确的 MySQL 信息
         DB_HOST=mysql
         DB_PORT=3306
         DB_USER=root
         DB_PASSWORD=
         DB_NAME=jumpserver
 
-        ##  Redis 配置, USE_EXTERNAL_REDIS=1 表示使用外置数据库, 请输入正确的 Redis 信息
-        USE_EXTERNAL_REDIS=0
+        ##  Redis 配置, 如果使用外置数据库, 请输入正确的 Redis 信息
         REDIS_HOST=redis
         REDIS_PORT=6379
         REDIS_PASSWORD=
@@ -1092,8 +1078,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        MAGNUS_MYSQL_PORT=33060
-        MAGNUS_MARIADB_PORT=33061
+        MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
         # USE_LB=1
@@ -1111,9 +1096,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
         RDP_PORT=3389
-        MAGNUS_POSTGRE_PORT=54320
-        TCP_SEND_BUFFER_BYTES=4194304
-        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
@@ -1184,16 +1166,14 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         BOOTSTRAP_TOKEN=
         LOG_LEVEL=ERROR
 
-        ##  MySQL 配置, USE_EXTERNAL_MYSQL=1 表示使用外置数据库, 请输入正确的 MySQL 信息
-        USE_EXTERNAL_MYSQL=0
+        ##  MySQL 配置, 如果使用外置数据库, 请输入正确的 MySQL 信息
         DB_HOST=mysql
         DB_PORT=3306
         DB_USER=root
         DB_PASSWORD=
         DB_NAME=jumpserver
 
-        ##  Redis 配置, USE_EXTERNAL_REDIS=1 表示使用外置数据库, 请输入正确的 Redis 信息
-        USE_EXTERNAL_REDIS=0
+        ##  Redis 配置, 如果使用外置数据库, 请输入正确的 Redis 信息
         REDIS_HOST=redis
         REDIS_PORT=6379
         REDIS_PASSWORD=
@@ -1211,8 +1191,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## 访问配置
         HTTP_PORT=80
         SSH_PORT=2222
-        MAGNUS_MYSQL_PORT=33060
-        MAGNUS_MARIADB_PORT=33061
+        MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
         # USE_LB=1
@@ -1230,9 +1209,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         ## XPack, USE_XPACK=1 表示开启, 开源版本设置无效
         USE_XPACK=0
         RDP_PORT=3389
-        MAGNUS_POSTGRE_PORT=54320
-        TCP_SEND_BUFFER_BYTES=4194304
-        TCP_RECV_BUFFER_BYTES=6291456
 
         # Core 配置, Session 定义, SESSION_COOKIE_AGE 表示闲置多少秒后 session 过期, SESSION_EXPIRE_AT_BROWSER_CLOSE=True 表示关闭浏览器即 session 过期
         # SESSION_COOKIE_AGE=86400
