@@ -146,10 +146,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         REDIS_PORT=6379
         REDIS_PASSWORD=
 
-        ## Compose 项目设置, 如果 192.168.250.0/24 网段与你现有网段冲突, 请修改然后重启 JumpServer
-        COMPOSE_PROJECT_NAME=jms
-        COMPOSE_HTTP_TIMEOUT=3600
-        DOCKER_CLIENT_TIMEOUT=3600
+        # JumpServer 容器使用的网段, 请勿与现有的网络冲突, 根据实际情况自行修改
         DOCKER_SUBNET=192.168.250.0/24
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
@@ -945,10 +942,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         REDIS_PORT=6379
         REDIS_PASSWORD=
 
-        ## Compose 项目设置, 如果 192.168.250.0/24 网段与你现有网段冲突, 请修改然后重启 JumpServer
-        COMPOSE_PROJECT_NAME=jms
-        COMPOSE_HTTP_TIMEOUT=3600
-        DOCKER_CLIENT_TIMEOUT=3600
+        # JumpServer 容器使用的网段, 请勿与现有的网络冲突, 根据实际情况自行修改
         DOCKER_SUBNET=192.168.250.0/24
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
@@ -1055,10 +1049,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         REDIS_PORT=6379
         REDIS_PASSWORD=
 
-        ## Compose 项目设置, 如果 192.168.250.0/24 网段与你现有网段冲突, 请修改然后重启 JumpServer
-        COMPOSE_PROJECT_NAME=jms
-        COMPOSE_HTTP_TIMEOUT=3600
-        DOCKER_CLIENT_TIMEOUT=3600
+        # JumpServer 容器使用的网段, 请勿与现有的网络冲突, 根据实际情况自行修改
         DOCKER_SUBNET=192.168.250.0/24
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
@@ -1165,10 +1156,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         REDIS_PORT=6379
         REDIS_PASSWORD=
 
-        ## Compose 项目设置, 如果 192.168.250.0/24 网段与你现有网段冲突, 请修改然后重启 JumpServer
-        COMPOSE_PROJECT_NAME=jms
-        COMPOSE_HTTP_TIMEOUT=3600
-        DOCKER_CLIENT_TIMEOUT=3600
+        # JumpServer 容器使用的网段, 请勿与现有的网络冲突, 根据实际情况自行修改
         DOCKER_SUBNET=192.168.250.0/24
 
         ## IPV6 设置, 容器是否开启 ipv6 nat, USE_IPV6=1 表示开启, 为 0 的情况下 DOCKER_SUBNET_IPV6 定义不生效
