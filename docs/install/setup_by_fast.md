@@ -567,7 +567,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
 
         # v2.27.0 版本 magnus 做了大改，需要开放很多端口，等待后续优化
         magnus:
-          enabled: false
+          enabled: true
 
           labels:
             app.jumpserver.org/name: jms-magnus
@@ -581,22 +581,22 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
           image:
             registry: docker.io
             repository: jumpserver/magnus
-            tag: v2.21.0
+            tag: v2.27.0
             pullPolicy: IfNotPresent
 
           command: []
 
           env: []
 
-          livenessProbe:
-            failureThreshold: 30
-            tcpSocket:
-              port: 30000
+          livenessProbe: {}
+            # failureThreshold: 30
+            # tcpSocket:
+              # port: 30000
 
-          readinessProbe:
-            failureThreshold: 30
-            tcpSocket:
-              port: 30000
+          readinessProbe: {}
+            # failureThreshold: 30
+            # tcpSocket:
+              # port: 30000
 
           podSecurityContext: {}
             # fsGroup: 2000
