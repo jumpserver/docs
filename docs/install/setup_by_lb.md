@@ -828,31 +828,18 @@
         server 192.168.100.23 192.168.100.23:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
         server 192.168.100.24 192.168.100.24:80 weight 1 cookie web03 check inter 2s rise 2 fall 3
 
-    listen jms-mysql
-        bind *:33060
+    listen jms-magnus
+        bind *:30000
         mode tcp
 
         option tcp-check
 
         fullconn 500
         balance source
-        server 192.168.100.21 192.168.100.21:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.22 192.168.100.22:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.23 192.168.100.23:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.24:33060 weight 1 check inter 2s rise 2 fall 3 send-proxy
-
-    listen jms-mariadb
-        bind *:33061
-        mode tcp
-
-        option tcp-check
-
-        fullconn 500
-        balance source
-        server 192.168.100.21 192.168.100.21:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.22 192.168.100.22:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.23 192.168.100.23:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
-        server 192.168.100.24 192.168.100.24:33061 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.21 192.168.100.21:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.22 192.168.100.22:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.23 192.168.100.23:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
+        server 192.168.100.24 192.168.100.24:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
     ```
 
 !!! tip "配置 Selinux"
