@@ -588,12 +588,12 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
 
           env: []
 
-          livenessProbe: {}
+          livenessProbe:
             failureThreshold: 30
             tcpSocket:
               port: 9090
 
-          readinessProbe: {}
+          readinessProbe:
             failureThreshold: 30
             tcpSocket:
               port: 9090
