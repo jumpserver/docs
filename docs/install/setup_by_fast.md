@@ -581,7 +581,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
           image:
             registry: docker.io
             repository: jumpserver/magnus
-            tag: v2.27.0
+            tag: {{ jumpserver.version }}
             pullPolicy: IfNotPresent
 
           command: []
@@ -589,14 +589,14 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
           env: []
 
           livenessProbe: {}
-            # failureThreshold: 30
-            # tcpSocket:
-              # port: 30000
+            failureThreshold: 30
+            tcpSocket:
+              port: 9090
 
           readinessProbe: {}
-            # failureThreshold: 30
-            # tcpSocket:
-              # port: 30000
+            failureThreshold: 30
+            tcpSocket:
+              port: 9090
 
           podSecurityContext: {}
             # fsGroup: 2000
