@@ -29,7 +29,6 @@
     RDP_PORT=3389
 
     ## HTTPS 配置
-    USE_LB=1                     # 1 表示开启此选项
     HTTPS_PORT=443               # 对外 https 端口, 默认 443
     SERVER_NAME=www.domain.com   # 你的 https 域名
     SSL_CERTIFICATE=xxx.pem      # /opt/jumpserver/config/nginx/cert 目录下你的证书文件
