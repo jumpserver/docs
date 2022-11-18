@@ -160,7 +160,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
-        # USE_LB=1
         # HTTPS_PORT=443
         # SERVER_NAME=your_domain_name
         # SSL_CERTIFICATE=your_cert
@@ -956,7 +955,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
-        # USE_LB=1
         # HTTPS_PORT=443
         # SERVER_NAME=your_domain_name
         # SSL_CERTIFICATE=your_cert
@@ -1063,7 +1061,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
-        # USE_LB=1
         # HTTPS_PORT=443
         # SERVER_NAME=your_domain_name
         # SSL_CERTIFICATE=your_cert
@@ -1170,7 +1167,6 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         MAGNUS_PORTS=30000-30100
 
         ## HTTPS 配置, 参考 https://docs.jumpserver.org/zh/master/admin-guide/proxy/ 配置
-        # USE_LB=1
         # HTTPS_PORT=443
         # SERVER_NAME=your_domain_name
         # SSL_CERTIFICATE=your_cert
