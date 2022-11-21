@@ -8,11 +8,11 @@
 
 ## 环境要求
 
-| OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      |
-| :------------ | :----------- | :------------ | :------------------------------------ |
-| linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python |
-| linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python |
-| linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python |
+| OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      | Minimize Hardware     |
+| :------------ | :----------- | :------------ | :------------------------------------ | --------------------- |
+| linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+| linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+| linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 
 === "Debian / Ubuntu"
     !!! tip ""
