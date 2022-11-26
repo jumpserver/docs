@@ -9,7 +9,7 @@
 ## 环境要求
 
 | OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      | Minimize Hardware     |
-| :------------ | :----------- | :------------ | :------------------------------------ | --------------------- |
+| :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
 | linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 | linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 | linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
@@ -72,7 +72,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
 
 ## 在线安装
 
-??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
+??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
     | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                | Kubernetes values.yaml                           | OS/ARCH        |
     | :----------- | :----------------------------------- | -------------------------------------------------------- | ------------------------------------------------ | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     | repository: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
