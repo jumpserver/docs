@@ -30,6 +30,8 @@
 
 ## 一键安装
 
+支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）。Gentoo / Arch Linux 请通过 [源码安装](../dev/build.md)
+
 <div class="termy">
 ```console
 // root@localhost:/opt#
