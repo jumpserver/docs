@@ -119,7 +119,7 @@ ENABLE_LOCAL_PORT_FORWARD=True   # 是否开启本地转发 (目前仅对 vscode
 ENABLE_VSCODE_SUPPORT=True       # 是否开启 针对 vscode 的 remote-ssh 远程开发支持 ( 前置条件: 必须开启 ENABLE_LOCAL_PORT_FORWARD ) v2.11 新增。( 注意: vscode 的连接操作，无审计功能 )
 ```
 
-## lion 参数说明
+## Lion 参数说明
 
 ```vim
 NAME=hostname                    # 默认是主机名

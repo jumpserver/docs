@@ -4,12 +4,12 @@
 
 ## 安装方式
 
-根据实机环境选择安装方式，支持 [在线安装](#_4) 和 [离线安装](#_5)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
+根据实机环境选择安装方式，支持 [在线安装](#_5) 和 [离线安装](#_6)，安装过程可以参考 [安装演示视频](https://www.bilibili.com/video/av635028005){:target="_blank"}
 
 ## 环境要求
 
 | OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      | Minimize Hardware     |
-| :------------ | :----------- | :------------ | :------------------------------------ | --------------------- |
+| :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
 | linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 | linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 | linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
@@ -27,6 +27,24 @@
         yum update
         yum install -y wget curl tar gettext iptables
         ```
+
+## 一键安装
+
+<div class="termy">
+```console
+// root@localhost:/opt#
+$ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
+
+---> 100%
+<span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{ jumpserver.version }}
+[Info]: Start executing the installation script.
+[Info]: In an automated script deployment, note the message prompts on the screen.
+---> 100%
+<span style="color: green;">[Success]</span>: The Installation is Complete.
+
+For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
+```
+</div>
 
 JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据，如果希望使用自建数据库或云数据库请参考此处的要求  
 支持 [数据库 SSL 连接](../install_security/#ssl) 和 [Redis SSL 连接](../install_security/#redis-ssl)
@@ -70,9 +88,9 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         1 row in set (0.001 sec)
         ```
 
-## 在线安装
+## 标准部署
 
-??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务 :heart:{: .heart }"
+??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
     | 区域          | 镜像仓库地址                         | 配置文件 /opt/jumpserver/config/config.txt                | Kubernetes values.yaml                           | OS/ARCH        |
     | :----------- | :----------------------------------- | -------------------------------------------------------- | ------------------------------------------------ | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_PREFIX=swr.cn-north-1.myhuaweicloud.com     | repository: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
@@ -81,34 +99,7 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
     | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_PREFIX=swr.cn-east-3.myhuaweicloud.com      | repository: swr.cn-east-3.myhuaweicloud.com      | linux/arm64    |
     | 西南-贵阳一   | swr.cn-southwest-2.myhuaweicloud.com | DOCKER_IMAGE_PREFIX=swr.ap-southeast-1.myhuaweicloud.com | repository: swr.ap-southeast-1.myhuaweicloud.com | linux/loong64  |
 
-=== "一键部署"
-    !!! tip ""
-        ```sh
-        # 默认会安装到 /opt/jumpserver-installer-{{ jumpserver.version }} 目录
-        curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
-        ```
-    !!! tip ""
-        ```sh
-        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
-        ```
-        ```sh
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
-
-        # 启动
-        ./jmsctl.sh start
-
-        # 停止
-        ./jmsctl.sh down
-
-        # 卸载
-        ./jmsctl.sh uninstall
-
-        # 帮助
-        ./jmsctl.sh -h
-        ```
-
-=== "手动部署"
+=== "Installer"
     !!! tip ""
         ```sh
         cd /opt
@@ -887,11 +878,11 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         helm uninstall jms-k8s -n default
         ```
 
-=== "[源码部署](../dev/build.md)"
+=== "[Source](../dev/build.md)"
 
 === "[Allinone](https://github.com/jumpserver/Dockerfile/tree/master/allinone){:target="_blank"}"
 
-## 离线安装
+## 离线部署
 
 !!! info "离线包解压需要 tar 命令, 参考 [环境要求](#_3) 手动安装"
 
