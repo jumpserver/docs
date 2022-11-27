@@ -24,7 +24,6 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
   features:
-    - navigation.instant
     - navigation.tracking
     - navigation.indexes
     - navigation.top
@@ -184,8 +183,9 @@ extra:
       link: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
 
 extra_css:
-  - css/termynal.css
   - css/extra.css
+  - css/termynal.css
+  - css/custom.css
 
 extra_javascript:
   - js/termynal.js
