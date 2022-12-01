@@ -193,5 +193,9 @@ extra_javascript:
 
 copyright: Copyright &copy; 2014-2022 <a href="https://www.fit2cloud.com">杭州飞致云信息科技有限公司</a>, All Rights Reserved. <a href="http://www.beian.miit.gov.cn" target="_blank">京ICP备15023818号</a>
 plugins:
-  - search
-  - macros
+    - search:
+        lang:
+          - en
+          - ja
+        separator: '[\s\-\.]+'
+    - macros
