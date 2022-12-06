@@ -28,26 +28,6 @@
         yum install -y wget curl tar gettext iptables
         ```
 
-## 一键安装
-
-支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）。Gentoo / Arch Linux 请通过 [源码安装](../dev/build.md)
-
-<div class="termy">
-```console
-// root@localhost:/opt#
-$ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
-
----> 100%
-<span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{ jumpserver.version }}
-[Info]: Start executing the installation script.
-[Info]: In an automated script deployment, note the message prompts on the screen.
----> 100%
-<span style="color: green;">[Success]</span>: The Installation is Complete.
-
-For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
-```
-</div>
-
 JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据，如果希望使用自建数据库或云数据库请参考此处的要求  
 支持 [数据库 SSL 连接](../install_security/#ssl) 和 [Redis SSL 连接](../install_security/#redis-ssl)
 
@@ -89,6 +69,28 @@ JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数�
         +------------+-----------------------------------------------------------------------+
         1 row in set (0.001 sec)
         ```
+
+
+## 一键安装
+
+支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）。Gentoo / Arch Linux 请通过 [源码安装](../dev/build.md)
+
+<div class="termy">
+```console
+// root@localhost:/opt#
+$ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.version }}/quick_start.sh | bash
+
+---> 100%
+<span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{ jumpserver.version }}
+[Info]: Start executing the installation script.
+[Info]: In an automated script deployment, note the message prompts on the screen.
+---> 100%
+<span style="color: green;">[Success]</span>: The Installation is Complete.
+
+For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
+```
+</div>
+
 
 ## 标准部署
 
