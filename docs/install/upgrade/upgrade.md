@@ -8,9 +8,9 @@
     - [未使用 installer 部署的用户请参考迁移说明迁移到最新版本](../migration.md){:target="_blank"}
 
 !!! tip "环境说明"
-    - 从 v2.5 开始，要求 MySQL >= 5.7
-    - 从 v2.6 开始，要求 Redis >= 5
-    - 推荐使用外置 数据库 和 Redis，方便日后扩展升级
+    - 从 v2.5 版本开始，要求 MySQL Server >= 5.7
+    - 从 v2.6 版本开始，要求 Redis Server >= 5
+    - 推荐使用外置 DB Server 和 Redis Server，方便日后扩展升级
 
 | DB      | Version |    | Cache | Version |
 | :------ | :------ | :- | :---- | :------ |
