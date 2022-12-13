@@ -187,10 +187,10 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
         # 启动
         ./jmsctl.sh start
         ```
+        
+    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+
     !!! tip ""
-        ```sh
-        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
-        ```
         ```sh
         cd /opt/jumpserver-installer-{{ jumpserver.version }}
 
@@ -982,10 +982,10 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
         # 启动
         ./jmsctl.sh start
         ```
+
+    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+
     !!! tip ""
-        ```sh
-        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
-        ```
         ```sh
         cd jumpserver-offline-release-{{ jumpserver.version }}-amd64-{{ installer.version }}
 
@@ -1088,10 +1088,10 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
         # 启动
         ./jmsctl.sh start
         ```
+
+    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+
     !!! tip ""
-        ```sh
-        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
-        ```
         ```sh
         cd jumpserver-offline-release-{{ jumpserver.version }}-arm64-{{ installer.version }}
 
@@ -1194,10 +1194,10 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
         # 启动
         ./jmsctl.sh start
         ```
+
+    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+
     !!! tip ""
-        ```sh
-        # 安装完成后配置文件 /opt/jumpserver/config/config.txt
-        ```
         ```sh
         cd jumpserver-offline-release-{{ jumpserver.version }}-loong64-{{ installer.version }}
 
