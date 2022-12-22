@@ -155,7 +155,7 @@ extra:
     jmservisor: v1.2.5
     wisp: v0.0.10
   installer:
-    version: 178
+    version: 179
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
