@@ -143,15 +143,15 @@ nav:
     #    - Mac 单机部署: 02_jms_install/pc_install/mac_install.md
     #    - 环境升级: 02_jms_install/pc_install/pc_upgrade.md
     - 源码部署: 
-        - 环境说明: 02_jms_install/build/requirements.md
-        - Core 环境部署: 02_jms_install/build/core_install.md
-        - Lina 环境部署: 02_jms_install/build/lina_install.md
-        - Luna 环境部署: 02_jms_install/build/luna_install.md
-        - KoKo 环境部署: 02_jms_install/build/koko_install.md
-        - Lion 环境部署: 02_jms_install/build/lion_install.md
-        - Magnus 环境部署: 02_jms_install/build/magnus_install.md
-        - Nginx 环境部署: 02_jms_install/build/nginx_install.md
-        - JumpServer 环境整合: 02_jms_install/build/merge_jumpserver.md
+        - 环境说明: 02_jms_install/source_install/requirements.md
+        - Core 环境部署: 02_jms_install/source_install/core_install.md
+        - Lina 环境部署: 02_jms_install/source_install/lina_install.md
+        - Luna 环境部署: 02_jms_install/source_install/luna_install.md
+        - KoKo 环境部署: 02_jms_install/source_install/koko_install.md
+        - Lion 环境部署: 02_jms_install/source_install/lion_install.md
+        - Magnus 环境部署: 02_jms_install/source_install/magnus_install.md
+        - Nginx 环境部署: 02_jms_install/source_install/nginx_install.md
+        - JumpServer 环境整合: 02_jms_install/source_install/merge_jumpserver.md
     - 迁移文档: 02_jms_install/migration.md
     - 升级须知: 02_jms_install/upgrade_notice.md
     - 国密改造: 02_jms_install/gmssl.md
@@ -263,7 +263,7 @@ nav:
   - 开发文档:
     - API 文档: 05_dev/rest_api.md
     - 交互命令: 05_dev/shell.md
-    - 开发过程实践: dev/shell.md
+    # - 开发过程实践: dev/shell.md
   - 用户案例: 01_primary_directory/user_stories.md
   - 更新日志: 06_changelog/change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
