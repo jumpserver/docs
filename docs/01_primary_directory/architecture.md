@@ -22,4 +22,4 @@
 
 
 ## 3 逻辑架构
-!!! tip "详见 [源码部署](../02_jms_install/build/requirements.md)"
+!!! tip "详见 [源码部署](../02_jms_install/source_install/requirements.md)"
