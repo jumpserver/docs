@@ -107,7 +107,7 @@ nav:
 #    - 技术咨询: https://jinshuju.net/f/sQ91MK
 #  - 20230207: index.md
   - 产品介绍: 01_primary_directory/index.md
-  - 快速入门: 01_primary_directory/quickstart.md
+  - 快速入门: 01_primary_directory/quick_start.md
   - 系统架构: 01_primary_directory/architecture.md
   - 安装部署:
     - Linux 单机部署: 
@@ -163,7 +163,7 @@ nav:
         - Redis SSL 连接: 02_jms_install/db_ssl/redis_ssl.md
   - 功能手册:
     - 页面说明: 03_guide/index_description.md
-    - 通用功能: admin-guide/assets/telnet.md
+    - 通用功能: 03_guide/currency.md
     - 资产要求:
         - Telnet: 03_guide/asset_requirements/telnet.md
         - Linux SSH: 03_guide/asset_requirements/linux_ssh.md
@@ -199,6 +199,7 @@ nav:
         - 任务中心: 
             - 任务列表: 03_guide/admin/task/task_list.md
             - 任务监控: 03_guide/admin/task/task_monitor.md
+        - 工单-管理员: 03_guide/admin/admin_work_order.md
     - 审计手册: 
         - 仪表盘: 03_guide/audit/dashboard.md
         - 会话审计: 
@@ -215,7 +216,7 @@ nav:
         - 个人信息:
             - 账号信息: 03_guide/user/personal_information/account_information.md
             - 个人信息: 03_guide/user/personal_information/personal_information.md
-            - 临时密码: 03_guide/user/personal_information/temporary_passwd.md
+           # - 临时密码: 03_guide/user/personal_information/temporary_passwd.md
             - 连接令牌: 03_guide/user/personal_information/connect_token.md
         - 我的资产: 03_guide/user/my_asset.md
         - Web 终端: 03_guide/user/web_terminal.md
@@ -225,6 +226,7 @@ nav:
             - 作业管理: 03_guide/user/job/job_management.md
             - 模版管理: 03_guide/user/job/template_management.md
             - 执行历史: 03_guide/user/job/execution_history.md
+        - 工单-用户: 03_guide/user/user_work_order.md
     - 系统设置: 
         - 概览页: 03_guide/system/index_overview.md
         - 基本设置: 03_guide/system/basic.md
@@ -250,8 +252,6 @@ nav:
         - 组织管理: 03_guide/system/organization.md
         - 其他设置: 03_guide/system/othen.md
         - 系统工具: 03_guide/system/telnet_ping.md
-        # - 许可证: 
-        - 工单: 03_guide/system/work_order.md
     - 参数说明: 03_guide/env.md
     - 存储说明: 03_guide/storages.md
   - 最佳实践: 01_primary_directory/best_practices.md
