@@ -10,7 +10,9 @@
 ![account_densification01](../../../img/account_densification01.png)
 
 !!! tip ""
-    - 详细参数说明
+    - 详细参数说明：
+
+!!! tip ""
 
     | 参数    |                说明                  |
     | ------- | ------------------------------------ |

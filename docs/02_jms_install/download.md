@@ -20,7 +20,7 @@
 
 ## [Jmservisor](https://github.com/jumpserver/Jmservisor/releases){:target="_blank"}
 !!! tip ""
-    - 配合 Jumpserver 企业版本使用拉起 Windows Server RemoteApp 功能使用的客户端，企业版本用户可以从 JumpServer 页面 `帮助菜单` - `工具下载` 里下载安装。
+    - Jumpserver 拉起 Windows Server RemoteApp 功能使用的客户端，用户可以从 JumpServer 页面 `帮助菜单` - `工具下载` 里下载安装。
 
     | 版本     | :fontawesome-brands-windows: Windows Server 2012 | :fontawesome-brands-windows: Windows Server 2016 | :fontawesome-brands-windows: Windows Server 2019 | :fontawesome-brands-windows: Windows Server 2022 |
     | ------- | ------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------ |
