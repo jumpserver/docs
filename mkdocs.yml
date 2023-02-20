@@ -199,7 +199,7 @@ nav:
         - 任务中心: 
             - 任务列表: 03_guide/admin/task/task_list.md
             - 任务监控: 03_guide/admin/task/task_monitor.md
-        - 工单-管理员: 03_guide/admin/admin_work_order.md
+        - 工单: 03_guide/admin/admin_work_order.md
     - 审计手册: 
         - 仪表盘: 03_guide/audit/dashboard.md
         - 会话审计: 
@@ -226,7 +226,7 @@ nav:
             - 作业管理: 03_guide/user/job/job_management.md
             - 模版管理: 03_guide/user/job/template_management.md
             - 执行历史: 03_guide/user/job/execution_history.md
-        - 工单-用户: 03_guide/user/user_work_order.md
+        - 工单: 03_guide/user/user_work_order.md
     - 系统设置: 
         - 概览页: 03_guide/system/index_overview.md
         - 基本设置: 03_guide/system/basic.md

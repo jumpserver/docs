@@ -70,14 +70,14 @@
 
     | 数据库类型\连接方式 | Web CLI | Web GUI | DB Client | 远程应用方式 |
     | -------| :-------: | :-------: | :-------: | :-------: |
-    | MySQL | √ | √ | √ | √ |
-    | MariaDB | √ | √ | √ | √ |
-    | PostgreSQL | √ | √ | √ | √ |
-    | Oracle |  | √ | √ | √ |
-    | SQL Server | √ |  |  |  |
-    | Redis | √ |  | √ | √ |
-    | MongoDB | √ |  |  | √ |
-    | ClickHouse | √ |  |  | √ |
+    | MySQL | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
+    | MariaDB | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
+    | PostgreSQL | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
+    | Oracle | :material-close: | :material-check:  | :material-check:  | :material-check:  |
+    | SQL Server | :material-check:  | :material-close: | :material-close: | :material-close: |
+    | Redis | :material-check:  | :material-close: | :material-check:  | :material-check:  |
+    | MongoDB | :material-check:  | :material-close: | :material-close: | :material-check:  |
+    | ClickHouse | :material-check:  | :material-close: | :material-close: | :material-check:  |
 
 ## 5 文件管理
 !!! tip ""
