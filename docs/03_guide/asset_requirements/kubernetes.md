@@ -1,6 +1,6 @@
 # Kubernetes 应用要求
 
-## 1 K8S 的集群地址
+## 1 Kubernetes 的集群地址
 !!! tip ""
     - 集群填写的是 K8S 的集群地址。
     - 直接访问集群地址页面可以显示如下信息(如: https://172.16.8.8:8443)，一般是 master 节点的 8443 端口。
@@ -22,7 +22,7 @@
     }
     ```
 
-## 2 获取 TOKEN 方法
+## 2 获取 Token 方法
 !!! tip ""
     - 下面以 ko-admin 为例，如果你的系统中没有此账户可以使用其他有权限的账户或者新建。
 
@@ -92,4 +92,4 @@
     token:      eyJhbGciOiJSUzI1NiIsImtpZCI6ImlCVkhHTlhHem9idXNtYmtsaVpDZXRESVFMSHRFNUdsOFJWOXc0MnRZTG8ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvsA50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmAxbmV0ZXMuaW8vc6VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrby1hZG1pbi10b2tlbi1rcHJsOSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2AxdmljZS1hY2NvdW50Lm5hbQAiOiJrby1hZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFiQ291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhiZTA1YWQ2LTgzY2UtNDgzYi05MzI0LTdjM2YwNDFjNmRhMSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprby1hZG1pbiJ9.qP04Yd6sTf5IDbQ_9lF_VdoyBEN5UCBmp1P7tvv9Fn9ibZFOGsupXjzbxCMhu3HhkGSE1pUuu1NNmcJUCUb_pFi5x5Bvo2xkF1_SfQACo40kzrUQ9ATTX8wuDzpiNw9sjf-_1l7rwnseOC4WJYNQIOs9i9FOeyRPYbKvkwsysJBVCq_XkoqvZt9xPp-LtsMUdWKHhLKUkBBM5F1NpVyahSrrsgH2lRuNsGALGb0FGIwYfMWN6KaHim2eeOaH4nqnVJ0WGCVJNx9-_PJQXfFWZtnceF_IiTUGwC7fqrA7T-5vOafPvG7c6PgjPzgMyEo4ade1bRV3fM98gHs_5v-oVw
     ```
 
-!!! info "上面 token: 后面的内容就是我们需要的 token，把这个内容填写到 JumpServer 系统用户里面即可。"
+!!! info "上面 token: 后面的内容就是我们需要的 token，把这个内容填写到 JumpServer 账号列表中即可。"

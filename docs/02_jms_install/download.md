@@ -22,10 +22,10 @@
 !!! tip ""
     - Jumpserver 拉起 Windows Server RemoteApp 功能使用的客户端，用户可以从 JumpServer 页面 `帮助菜单` - `工具下载` 里下载安装。
 
-    | 版本     | :fontawesome-brands-windows: Windows Server 2012 | :fontawesome-brands-windows: Windows Server 2016 | :fontawesome-brands-windows: Windows Server 2019 | :fontawesome-brands-windows: Windows Server 2022 |
-    | ------- | ------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------ |
-    | 开源版本 | :material-close:                                 | :material-close:                                  | :material-close:                                | :material-close:                                 |
-    | 企业版本 | :material-check:                                 | :material-check:                                  | :material-check:                                | :material-check:                                 |
+    | 版本     | :fontawesome-brands-windows: Windows Server 2016 | :fontawesome-brands-windows: Windows Server 2019 | :fontawesome-brands-windows: Windows Server 2022 |
+    | ------- | ------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------ |
+    | 开源版本 | :material-check:                                  | :material-check:                                | :material-check:                                 |
+    | 企业版本 | :material-check:                                  | :material-check:                                | :material-check:                                 |
 
 ## [Installer](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}
 !!! tip ""

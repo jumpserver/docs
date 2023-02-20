@@ -3,7 +3,7 @@
 ## 1 功能简述
 !!! tip ""
     - 文件管理是传输文件的一种方式，上传下载默认 SFTP 目录默认为/tmp 路径。
-    - SFTP 目录与资产平台进行绑定，JumpServer 默认平台的 SFTP 目录无法修改（需连接管理员操作修改）
+    - SFTP 目录与资产平台进行绑定，JumpServer 默认平台的 SFTP 目录无法修改（需联系管理员操作修改）
 ![file_management04](../../img/file_management04.png)
 ![file_management01](../../img/file_management01.png)
 
@@ -15,5 +15,5 @@
 
 !!! tip ""
     - 进入 SFTP 目录后，即可对文件夹或文件对应操作。
-    - 操作方式支持两种，第一种方式：直接在右侧页面右击唤出选择项信息；第二种方式：上方黑色部分的按钮进行对应的操作。
+    - 操作方式支持两种，第一种方式：直接在右侧页面右击唤出操作菜单；第二种方式：上方黑色部分的按钮进行对应的操作。
 ![file_management03](../../img/file_management03.png)
