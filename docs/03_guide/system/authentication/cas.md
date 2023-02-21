@@ -1,14 +1,13 @@
 # CAS 认证
 !!! tip "阿里云 IDaaS 对接参考资料"
     - [阿里云新 IDaaS 对接](https://help.aliyun.com/document_detail/409903.html)
-    - [阿里云旧 IDaaS 对接](https://help.aliyun.com/document_detail/271783.html)
 
 !!! tip "提示"
     - 使用 CAS 的用户作为 JumpServer 登录用户。
 
 ## 1 操作过程
 !!! tip ""
-    - 修改 JumpServer 配置文件启用 CAS 认证
+    - 修改 JumpServer 配置文件启用 CAS 认证。
 
     ```sh
     vi /opt/jumpserver/config/config.txt

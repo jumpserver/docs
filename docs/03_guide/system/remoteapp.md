@@ -1,4 +1,5 @@
 # 远程应用
+!!! note "注：社区版只支持 Website 方式。"
 
 ## 1 功能简述
 !!! tip ""
@@ -114,3 +115,131 @@
     - 当前为远程应用页面访问效果图：
 ![remoteapp06](../../img/remoteapp07.png)
 
+## 4 自定义 Applet
+### 4.1 Applet 介绍
+!!! tip ""
+    - Applet 是一个包含 Python 脚本的目录，必须至少包含以下文件：
+    
+    ```sh
+    ├── i18n.yml
+    ├── icon.png
+    ├── main.py
+    ├── manifest.yml
+    └── setup.yml
+    ```
+
+!!! tip ""
+    - 文件名称作用说明：
+
+!!! tip ""
+
+    | 文件名称 | 说明                  |
+    | ------- | --------------------- |
+    | main.py | Python 代填的执行脚本。 |
+    | icon.png | Applet 的图标 |
+    | manifest.yml | Applet 的元数据。 |
+    | setup.yml | 拉起程序的安装描述。 |
+    | i18n.yml | 对 manifest.yml 的国际化文件。 |
+
+
+### 4.2 元数据 manifest.yml
+!!! tip ""
+    - manifes.yml 定义了 Applet 的元数据，如名称、作者、版本、支持的协议。
+
+    ```yml
+    name: mysql_workbench8 （required）
+    display_name: MySQL Workbench8
+    comment: A tool for working with MySQL, to execute SQL and design tables (required）
+    version: 0.1 (required）
+    exec_type: python (reserved，暂未使用)
+    author: Eric (required）
+    type: general (required）
+    update_policy: none (暂未使用)
+    tags: (required）
+      - database
+    protocols: (required）
+      - mysql
+    ```
+
+!!! tip ""
+    - 详细字段说明：
+
+!!! tip ""
+
+    | 字段 | 说明                  |
+    | ------- | --------------------- |
+    | name | 名称最好是字母数字，不要包含特殊字符。 |
+    | protocols | 此 Applet 脚本支持的协议。 |
+    | tags | 一些标签。 |
+    | type | 主要是 General 或 Web。 |
+    | i18n.yml | 对 manifest.yml 的国际化文件。 |
+
+### 4.3 安装条件 setup.yml
+!!! tip ""
+    - setup.yml 定义了 Applet 拉起程序的安装方式。
+
+    ```yml
+    type: msi # exe, zip, manual
+    source: https://jms-pkg.oss-cn-beijing.aliyuncs.com/windows-pkgs/mysql-workbench-community-8.0.31-winx64.msi
+    arguments:
+      - /qn
+      - /norestart
+    destination: C:\Program Files\MySQL\MySQL Workbench 8.0 CE
+    program: C:\Program Files\MySQL\MySQL Workbench 8.0 CE\MySQLWorkbench.exe
+    md5: d628190252133c06dad399657666974a
+    ```
+
+!!! tip ""
+    - 详细字段说明：
+
+!!! tip ""
+
+    | 字段 | 说明                  |
+    | ------- | --------------------- |
+    | type | 是软件安装的方式。 <br> msi：安装软件。 <br> exe：安装软件。 <br> zip：解压安装方式。 <br> manual：手动安装方式。  |
+    | source | 软件下载地址。 |
+    | arguments | msi 或者 exe 安装程序需要的参数，使用静默安装。 |
+    | destination | 程序安装目录地址。 |
+    | program | 具体的软件地址。 |
+    | md5 | program 软件的 md5 值，主要用于校验安装是否成功。 |
+
+!!! tip ""
+    - 如果选择 manual 的方式，source 等保持为空，可不校验 MD5 值，需要手动登录 Applet host（应用发布机）上安装软件。
+
+### 4.4 脚本执行 main.py
+!!! tip ""
+    - main.py 是 Python 脚本主程序。
+    - JumpServer 的 Remoteapp 程序 tinker 将通过调用 python main.py base64_json_data 的方式执行。
+    - base64_json_data 是 JSON 数据进行 base64 之后的字符串，包含资产、账号等认证信息。数据格式大致如下，依据 api 变化做相应调整：
+
+    ```py
+    {
+      "app_name": "mysql_workbench8",
+      "protocol": "mysql",
+      "user": {
+        "id": "2647CA35-5CAD-4DDF-8A88-6BD88F39BB30",
+        "name": "Administrator",
+        "username": "admin"
+      },
+      "asset": {
+        "asset_id": "46EE5F50-F1C1-468C-97EE-560E3436754C",
+        "asset_name": "test_mysql",
+        "address": "192.168.1.1",
+        "protocols": [
+          {
+            "id": 2,
+            "name": "mysql",
+            "port": 3306
+          }
+        ]
+      },
+      "account": {
+        "account_id": "9D5585DE-5132-458C-AABE-89A83C112A83",
+        "username": "root",
+        "secret": "test"
+      },
+      "platform": {
+        "charset": "UTF-8"
+      }
+    }
+    ```

@@ -116,7 +116,7 @@ nav:
         - 离线安装: 02_jms_install/linux_stand-alone/off_line_install.md
         - 在线升级: 02_jms_install/linux_stand-alone/on_line_upgrade.md
         - 离线升级: 02_jms_install/linux_stand-alone/off_line_upgrade.md
-    - Linux LB 模式部署: 
+    - Linux 集群模式部署:
         - 准备工作: 02_jms_install/linux_lb/requirements.md
         - 部署 NFS 服务: 02_jms_install/linux_lb/nfs_install.md
         - 部署 MySQL 服务: 02_jms_install/linux_lb/mysql_install.md
@@ -129,10 +129,10 @@ nav:
         - 部署 MinIO 服务: 02_jms_install/linux_lb/minio_install.md
         - 部署 Elasticsearch 服务: 02_jms_install/linux_lb/elasticsearch_install.md
         - 注意事项: 02_jms_install/linux_lb/linux_lb_upgrade.md
-    - Docker Allinone 模式部署: 
-        - 快速启动: 02_jms_install/docker_allinone/quick_start.md
-        - 标准启动: 02_jms_install/docker_allinone/standard_start.md
-        - 升级操作: 02_jms_install/docker_allinone/allinone_upgrade.md
+   # - Docker Allinone 模式部署:
+   #     - 快速启动: 02_jms_install/docker_allinone/quick_start.md
+   #     - 标准启动: 02_jms_install/docker_allinone/standard_start.md
+   #     - 升级操作: 02_jms_install/docker_allinone/allinone_upgrade.md
     - Kubernetes  Helm 模式部署: 
         - 在线安装: 02_jms_install/k8s_helm/helm_on_line_install.md
       #  - 离线安装: 02_jms_install/k8s_helm/helm_off_line_install.md
@@ -189,17 +189,17 @@ nav:
             - 账号列表: 03_guide/admin/account/account_list.md
             - 账号模版: 03_guide/admin/account/account_template.md
             - 账号推送: 03_guide/admin/account/account_push.md
-            - 账号收集: 03_guide/admin/account/account_collect.md
-            - 账号改密: 03_guide/admin/account/account_densification.md
-            - 账号备份: 03_guide/admin/account/account_backup.md
+            - 账号收集 (X-Pack): 03_guide/admin/account/account_collect.md
+            - 账号改密 (X-Pack): 03_guide/admin/account/account_densification.md
+            - 账号备份 (X-Pack): 03_guide/admin/account/account_backup.md
         - 权限管理:
             - 资产授权: 03_guide/admin/permission/asset_authorization.md
-            - 资产登陆: 03_guide/admin/permission/asset_login.md
+            - 资产登陆 (X-Pack): 03_guide/admin/permission/asset_login.md
             - 命令过滤: 03_guide/admin/permission/command_filter.md
         - 任务中心: 
             - 任务列表: 03_guide/admin/task/task_list.md
             - 任务监控: 03_guide/admin/task/task_monitor.md
-        - 工单: 03_guide/admin/admin_work_order.md
+        - 工单 (X-Pack): 03_guide/admin/admin_work_order.md
     - 审计手册: 
         - 仪表盘: 03_guide/audit/dashboard.md
         - 会话审计: 
@@ -226,30 +226,30 @@ nav:
             - 作业管理: 03_guide/user/job/job_management.md
             - 模版管理: 03_guide/user/job/template_management.md
             - 执行历史: 03_guide/user/job/execution_history.md
-        - 工单: 03_guide/user/user_work_order.md
+        - 工单 (X-Pack): 03_guide/user/user_work_order.md
     - 系统设置: 
         - 概览页: 03_guide/system/index_overview.md
         - 基本设置: 03_guide/system/basic.md
         - 邮件设置: 03_guide/system/email.md
-        - 认证设置: 
-            - SSO: 03_guide/system/authentication/sso.md
-            - CAS: 03_guide/system/authentication/cas.md
+        - 认证设置:
             - MFA: 03_guide/system/authentication/mfa.md
-            - LDAP: 03_guide/system/authentication/ldap.md
-            - SAML2: 03_guide/system/authentication/saml2.md
             - OpenID: 03_guide/system/authentication/openid.md
-            - Radius: 03_guide/system/authentication/radius.md
-            - 钉钉: 03_guide/system/authentication/dingtalk.md
-            - 微信: 03_guide/system/authentication/wechat.md
-            - 飞书: 03_guide/system/authentication/feishu.md
+            - SSO (X-Pack): 03_guide/system/authentication/sso.md
+            - CAS (X-Pack): 03_guide/system/authentication/cas.md
+            - LDAP (X-Pack): 03_guide/system/authentication/ldap.md
+            - SAML2 (X-Pack): 03_guide/system/authentication/saml2.md
+            - Radius (X-Pack): 03_guide/system/authentication/radius.md
+            - 钉钉 (X-Pack): 03_guide/system/authentication/dingtalk.md
+            - 微信 (X-Pack): 03_guide/system/authentication/wechat.md
+            - 飞书 (X-Pack): 03_guide/system/authentication/feishu.md
         - 消息订阅: 03_guide/system/message.md
-        - 短信设置: 03_guide/system/sms.md
+        - 短信设置 (X-Pack): 03_guide/system/sms.md
         - 终端设置: 03_guide/system/terminal.md
-        - 远程应用: 03_guide/system/remoteapp.md
+        - 远程应用 (X-Pack): 03_guide/system/remoteapp.md
         - 安全设置: 03_guide/system/security.md
         - 定期清理: 03_guide/system/regular_clean.md
-        - 界面设置: 03_guide/system/index_logo.md
-        - 组织管理: 03_guide/system/organization.md
+        - 界面设置 (X-Pack): 03_guide/system/index_logo.md
+        - 组织管理 (X-Pack): 03_guide/system/organization.md
         - 其他设置: 03_guide/system/othen.md
         - 系统工具: 03_guide/system/telnet_ping.md
     - 参数说明: 03_guide/env.md
@@ -316,7 +316,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    version: v2.28.6
+    version: v3.0.0
     jmservisor: v1.2.5
     wisp: v0.0.10
   installer:

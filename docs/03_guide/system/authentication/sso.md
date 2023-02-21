@@ -1,4 +1,5 @@
 # SSO 认证
+!!! note "注：SSO 认证为 JumpServer 企业版功能。"
 
 !!! tip "提示"
     - 使用 SSO 对接第三方系统。

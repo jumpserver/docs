@@ -1,4 +1,5 @@
 # 钉钉认证
+!!! note "注：钉钉认证为 JumpServer 企业版功能。"
 
 !!! tip "提示"
     - 使用 阿里钉钉 的用户作为 JumpServer 登录用户

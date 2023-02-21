@@ -13,7 +13,7 @@
 
     | Name    | Core                     | MySQL  | MariaDB | Redis |
     | :------ | :----------------------- | :----- | :------ | :---- |
-    | Version | {{ jumpserver.version }} | >= 5.7 | >= 10.3 | >= 6  |
+    | Version | {{ jumpserver.version }} | >= 5.7 | >= 10.3 | >= 6.0  |
 
 ## 3 部署顺序
 !!! tip ""

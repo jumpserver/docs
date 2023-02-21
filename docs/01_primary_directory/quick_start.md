@@ -33,15 +33,15 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
 
 !!! tip ""
 
-    |      IP      |    Host name    |    Port    | Operating System |  Admin User   |    Password   |
+    |   IP 地址     |    主机名    |    端口    | 操作系统 |  管理员用户   |    密码   |
     | ------------ | --------------- | ---------- | ---------------- |--- ---------- |--- ---------- |
     | 172.16.80.11 |    test_ssh01   |     22     |     Centos 7     |      root     |  Test2020.L   |
     | 172.16.80.21 |    test_rdp01   |    3389    |    Windows 10    | administrator |  Test2020.W   |
     | 172.16.80.31 |   test_mysql01  |    3306    |      MySQL 5     |      root     |  Test2020.M   |
 
 !!! warning "注意"
-    - Windows 资产如需执行 `更新资产` 信息、`可连接性测试` 等自动化任务，需先进行 [Windows SSH 设置](assets/windows_ssh.md)，此非登录 Windows 资产的必填项。
-    - MySQL 应用需要授权 `Core` 和 `KoKo` 的远程访问的权限 [MySQL 应用要求](app/mysql.md)
+    - Windows 资产如需执行 `更新资产` 信息、`可连接性测试` 等自动化任务，需先进行 [Windows SSH 设置](../03_guide/asset_requirements/windows_ssh.md)，此非登录 Windows 资产的必填项。
+    - MySQL 应用需要授权 `Core` 和 `KoKo` 的远程访问的权限 [MySQL 应用要求](../03_guide/asset_requirements/mysql.md)
 
 ### 2.2 编辑资产树
 !!! tip ""
@@ -57,11 +57,12 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
     ```
 
 !!! warning "注意"
-    - 根节点 `Default` 不能重名，右击节点可以 `添加`、`删除` 和 `重命名` 节点，以及进行资产相关的操作。  
+    - 根节点 `Default` 不能重命名，右击节点可以 `添加`、`删除` 和 `重命名` 节点，以及进行资产相关的操作。  
 
 ### 2.3 创建资产
 !!! tip ""
-    - 点击页面左侧的 `资产管理` - `资产列表` - `创建` - `主机` 创建一台 Linux 服务器，并在创建资产过程中，创建特权用户，内容就是上面表单的 `Admin User` 和 `Password`。Windows 资产的创建流程同样如此。
+    - 点击页面左侧的 `资产管理` - `资产列表` - `主机` - `创建` 创建一台 Linux 服务器，并在创建资产过程中，创建特权用户，内容就是上面表单的 `管理员用户` 和 `密码`。
+    - Windows 资产的创建流程同样如此。
 
 !!! tip ""
     - 创建 Linux 资产样式如下：
@@ -77,9 +78,9 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
 
 !!! tip ""
 
-    | 名称              | 用户名 | 特权用户 | 密文类型     | 密码          | 立即推送          |
-    | ----------------- | ---- | ------- | ---------- | ---------------- | ---------------- |
-    | 172.16.80.11_root | root  | 是 | 密码 |Test2020.L |                  |
+    | 名称              | 用户名 | 特权用户 | 密文类型     | 密码          |
+    | ----------------- | ---- | ------- | ---------- | ---------------- |
+    | 172.16.80.11_root | root  | 是 | 密码 |Test2020.L |
 
 !!! warning "注意"
     - `名称` 不能重名，`密码` 或者 `密钥` 二选一即可，一些资产不允许通过 `密码` 认证可以改用 `私钥` 认证。  
@@ -107,9 +108,9 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
 
 !!! tip ""
 
-    | 名称                        | 用户名 | 特权用户        | 密文类型       | 密码          | 立即推送          |
-    | -------------------------- | ---- | ------------- | ---------- | ---------------- | ---------------- |
-    | 172.16.80.23_root          | root  | root          | 密码 |Test2020.M                  |                  |
+    |        名称       | 用户名 | 特权用户 | 密文类型 | 密码      |
+    | ----------------- | ----- | ------ | ------- | -------- |
+    | 172.16.80.23_root | root | root | 密码 |Test2020.M |
     
 !!! warning "注意"
     - 名称、主机、数据库选项为必填项。
@@ -126,7 +127,7 @@ For more commands, you can enter <span style="color: red;">jmsctl --help</span> 
 
     | 名称             | 用户                 | 用户组 | 资产                     | 节点 | 账号                                  | 动作                  |
     | ---------------- | -------------------- | ----- | ------------------------ | --- | ----------------------------------------- | -------------------- |
-    | admin_ssh01 | Administrator(admin) |       | test_ssh01(172.16.80.11) |     | 所有账号                  | :material-check: 全部 |
+    | admin_ssh01 | Administrator(admin) |   -    | test_ssh01(172.16.80.11) |  -   | 所有账号                  | :material-check: 全部 |
 
 !!! warning "注意"
     - `名称`，授权的名称，不能重复。  

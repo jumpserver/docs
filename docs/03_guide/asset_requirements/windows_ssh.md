@@ -1,7 +1,7 @@
 # Windows SSH 资产要求
 
 !!! info "Windows 资产的测试连接、硬件信息获取、用户自动推送功能需要进行以下相关设置"
-    注意：按照下面的文档部署好 Openssh 后，在 Web 的资产列表里面找到你的 Windows 资产，在协议组中加入 rdp 3389和 ssh 22协议，然后就可以使用资产测试连接、硬件信息获取、用户自动推送的功能
+    注意：按照下面的文档部署好 Openssh 后，在 Web 的资产列表里面找到您的 Windows 资产，在协议组中加入 rdp 3389和 ssh 22协议，然后就可以使用资产测试连接、硬件信息获取、用户自动推送的功能。
 
 !!! tip "Win7/Win2008 需要升级 `powershell` 到 3.0 以上，详情请参考 [ansible 客户端需求](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html){:target="_blank"}"
 
@@ -9,7 +9,7 @@
 
 !!! tip ""
     [下载最新的 OpenSSH-Win64.msi](https://github.com/PowerShell/Win32-OpenSSH/releases/latest){:target="_blank"}  
-    - 通过管理员身份的直接运行即可，安装过程无需交互，安装完成后不需要任何配置即可直接使用
+    - 通过管理员身份的直接运行即可，安装过程无需交互，安装完成后不需要任何配置即可直接使用。
 
 
 ## 2 使用 Private Key

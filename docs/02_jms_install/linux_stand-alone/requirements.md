@@ -3,11 +3,11 @@
 !!! tip ""
     **JumpServer 的操作系统环境要求如下：**
 !!! tip ""
-    | OS/Arch       | Architecture | Linux Kernel  | Soft Requirement                      | Minimize Hardware     |
+    | 操作系统   | 架构 | Linux 内核  | 软件要求       | 最小化硬件配置     |
     | :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
-    | linux/amd64   | x86_64       | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
-    | linux/arm64   | aarch64      | >= 4.0        | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
-    | linux/loong64 | loongarch64  | == 4.19       | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+    | linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+    | linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+    | linux/loong64 | loongarch64  | == 4.19   | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 
 === "Debian / Ubuntu"
     !!! tip ""
@@ -28,14 +28,14 @@
 !!! tip "我们支持[数据库 SSL 连接](../db_ssl/mysql_ssl.md) 和 [Redis SSL 连接](../db_ssl/redis_ssl.md)"
 
 !!! tip ""
-    | Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
+    | 名称    | 版本 | 默认字符集  | 默认字符编码  | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
     | MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
     | MariaDB | >= 10.2 | utf8mb3          | utf8mb3_general_ci | :material-check: |
 
-    | Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
+    | 名称    | 版本 | Sentinel         | Cluster            | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
-    | Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
+    | Redis   | >= 6.0  | :material-check: | :material-close:   | :material-check: |
 
 
 !!! tip "数据库建库语句参考"
