@@ -178,7 +178,7 @@
         server 192.168.100.24 192.168.100.24:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
     ```
 
-### 2.3 配置 Selinux
+### 2.3 配置 SELinux
 !!! tip ""
     ```sh
     setsebool -P haproxy_connect_any 1

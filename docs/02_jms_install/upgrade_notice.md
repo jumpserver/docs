@@ -8,7 +8,7 @@
 
 !!! tip "环境说明"
     - 从 v2.5 版本开始，要求 MySQL Server >= 5.7
-    - 从 v2.6 版本开始，要求 Redis Server >= 5
+    - 从 v2.6 版本开始，要求 Redis Server >= 6.0
     - 推荐使用外置 DB Server 和 Redis Server，方便日后扩展升级
 
 !!! tip ""
@@ -16,5 +16,5 @@
 
     | DB      | Version |    | Cache | Version |
     | :------ | :------ | :- | :---- | :------ |
-    | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
+    | MySQL   | >= 5.7  |    | Redis | >= 6.0  |
     | MariaDB | >= 10.2 |    |       |         |

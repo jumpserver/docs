@@ -4,7 +4,7 @@
     - 除 JumpServer 自身组件外，其他组件的高可用请参考对应的官方文档进行部署。
     - 按照此方式部署后，后续只需要根据需要扩容 JumpServer 节点然后添加节点到 HAProxy 即可。
     - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署，第三方 LB 要注意 session 和 websocket 问题。
-    - 如果已经有 云存储 (* S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署，MySQL Redis 也一样。
+    - 如果已经有 云存储 (S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署，MySQL、Redis 也一样。
     - 生产环境中，应该使用 Ceph 等替代 NFS，或者部署高可用的 NFS 防止单点故障。
 
 ### 1.1 数据库要求

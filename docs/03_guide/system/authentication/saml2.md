@@ -1,4 +1,5 @@
 # SAML2 认证
+!!! note "注：SAML2 认证为 JumpServer 企业版功能。"
 
 !!! tip "提示"
     - SAML2 协议的单点登录。

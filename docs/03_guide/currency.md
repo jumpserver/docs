@@ -25,7 +25,7 @@
 
 ## 4 数据导入导出
 !!! tip ""
-    - JumpServer 支持通过模版来对数据进行导入导出操作。
+    - JumpServer 支持通过 excel、csv 模版来对数据进行导入导出操作。
     - 数据类型：资产、账号、授权规则。
 ![currency05](../img/currency05.png)
 
