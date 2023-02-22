@@ -1,7 +1,7 @@
 # 在线升级
 
 !!! warning "注意"
-    - [JumpServer 在做升级或迁移操作前，请先阅读升级须知](../linux_stand-alone/upgrade_notice.md)
+    - [JumpServer 在做升级或迁移操作前，请先阅读升级须知](../upgrade_notice.md)
     - 升级前做好数据库的备份工作是一个良好的习惯。
 !!! tip ""
     - 如果您的服务器可以访问互联网，可以通过以下命令直接升级 JumpServer 至最新版本。

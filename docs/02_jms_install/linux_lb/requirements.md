@@ -10,7 +10,7 @@
 ### 1.1 数据库要求
 !!! tip ""
 
-    | Name    | Version | Default Charset  | Default collation  | TLS/SSL          |
+    | 名称    | 版本 | 默认字符集  | 默认字符编码  | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
     | MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
     | MariaDB | >= 10.2 | utf8mb3          | utf8mb3_general_ci | :material-check: |
@@ -22,9 +22,9 @@
 ### 1.2 服务器要求
 !!! tip ""
 
-    | Server Name   |        IP        |  Port                   |     Use          |   Minimize Hardware    |   Standard Hardware     |
+    | 服务名称   |      IP 地址        |  端口                   |     使用涉及组件/服务     |   最小化硬件配置    |   标准化硬件配置     |
     | ------------- | ---------------- | ----------------------- | ---------------- | ---------------------- | ----------------------- |
-    | NFS           |  192.168.100.11  |                         | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
+    | NFS           |  192.168.100.11  |  -                      | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
     | MySQL         |  192.168.100.11  | 3306                    | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
     | Redis         |  192.168.100.11  | 6379                    | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
     | HAProxy       |  192.168.100.100 | 80,443,2222,33060,33061 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
@@ -38,7 +38,7 @@
 ### 1.3 组件容器健康检查
 !!! tip ""
 
-    | Server Name   | Check Health                   | Example                                   |
+    | 服务名称   | 健康检查                   | 实例                                   |
     | ------------- | ------------------------------ | ----------------------------------------- |
     | Core          | http://core:8080/api/health/   | https://demo.jumpserver.org/api/health/   |
     | KoKo          | http://koko:5000/koko/health/  | https://demo.jumpserver.org/koko/health/  |

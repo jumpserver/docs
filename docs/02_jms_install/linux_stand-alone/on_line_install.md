@@ -6,6 +6,7 @@
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
     - Gentoo / Arch Linux 请通过 [源码安装](../build.md)
+
 <div class="termy">
 ```console
 // root@localhost:/opt#
@@ -18,9 +19,10 @@ $ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpse
 ---> 100%
 <span style="color: green;">[Success]</span>: The Installation is Complete.
 
-For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
+For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information. 
 ```
 </div>
+
 
 !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
