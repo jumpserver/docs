@@ -4,7 +4,7 @@
 !!! tip ""
     - 可以从 [Github][magnus] 网站上获取最新的 [Release][magnus_release] 副本。
 
-    | OS      | Arch    | Name                                                                                                  |
+    | 操作系统      | 架构类型    | 名称                                                                                                  |
     | :------ | :------ | :---------------------------------------------------------------------------------------------------- |
     | Linux   | amd64   | [magnus-{{ jumpserver.version }}-linux-amd64.tar.gz][magnus-{{ jumpserver.version }}-linux-amd64]     |
     | Linux   | arm64   | [magnus-{{ jumpserver.version }}-linux-arm64.tar.gz][magnus-{{ jumpserver.version }}-linux-arm64]     |
@@ -15,7 +15,7 @@
 !!! tip ""
     - Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获取最新的 [Release][wisp_release] 副本。
 
-    | OS      | Arch    | Name                                                                                        |
+    | 操作系统      | 架构类型    | 名称                                                                                        |
     | :------ | :------ | :------------------------------------------------------------------------------------------ |
     | Linux   | amd64   | [wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-amd64]     |
     | Linux   | arm64   | [wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-arm64]     |

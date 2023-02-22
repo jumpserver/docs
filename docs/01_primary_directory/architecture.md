@@ -1,6 +1,7 @@
 # 系统架构
 ## 1 应用架构
 !!! tip ""
+    - JumpServer 采用分层架构，分别是负载层、接入层、核心层、数据层、存储层。
     - JumpServer 应用架构图如下：
 ![architecture_01](../img/architecture_01.png)
 
