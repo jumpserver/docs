@@ -1,6 +1,6 @@
 site_name: 'JumpServer 文档'
 site_url: 'https://docs.jumpserver.org'
-site_author: 'FIT2CLOUD 飞致云'
+site_author: 'jumpserver'
 site_description: "JumpServer 开源堡垒机的在线文档"
 
 repo_name: 'jumpserver/jumpserver'
@@ -234,9 +234,9 @@ extra:
   jumpserver:
     version: v3.0.0
     jmservisor: v1.2.5
-    wisp: v0.0.10
+    wisp: v0.1.6
   installer:
-    version: 179
+    version: 236
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
