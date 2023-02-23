@@ -1,7 +1,7 @@
 site_name: 'JumpServer 文档'
 site_url: 'https://docs.jumpserver.org'
-site_author: 'wojiushixiaobai'
-site_description: "JumpServer 是全球首款开源的堡垒机"
+site_author: 'FIT2CLOUD 飞致云'
+site_description: "JumpServer 开源堡垒机的在线文档"
 
 repo_name: 'jumpserver/jumpserver'
 repo_url: 'https://github.com/jumpserver/jumpserver'
@@ -60,19 +60,9 @@ nav:
         - 部署 MinIO 服务: jms_install/linux_lb/minio_install.md
         - 部署 Elasticsearch 服务: jms_install/linux_lb/elasticsearch_install.md
         - 注意事项: jms_install/linux_lb/linux_lb_upgrade.md
-   # - Docker Allinone 模式部署:
-   #     - 快速启动: jms_install/docker_allinone/quick_start.md
-   #     - 标准启动: jms_install/docker_allinone/standard_start.md
-   #     - 升级操作: jms_install/docker_allinone/allinone_upgrade.md
     - Kubernetes  Helm 模式部署:
         - 在线安装: jms_install/k8s_helm/helm_on_line_install.md
-      #  - 离线安装: jms_install/k8s_helm/helm_off_line_install.md
         - 在线升级: jms_install/k8s_helm/helm_on_line_upgrade.md
-      #  - 离线升级: jms_install/k8s_helm/helm_off_line_upgrade.md
-    # - Pc 端环境部署:
-    #    - Windows 单机部署: jms_install/pc_install/win_install.md
-    #    - Mac 单机部署: jms_install/pc_install/mac_install.md
-    #    - 环境升级: jms_install/pc_install/pc_upgrade.md
     - 源码部署:
         - 环境说明: jms_install/source_install/requirements.md
         - Core 环境部署: jms_install/source_install/core_install.md
@@ -147,7 +137,6 @@ nav:
         - 个人信息:
             - 账号信息: guide/user/personal_information/account_information.md
             - 个人信息: guide/user/personal_information/personal_information.md
-           # - 临时密码: guide/user/personal_information/temporary_passwd.md
             - 连接令牌: guide/user/personal_information/connect_token.md
         - 我的资产: guide/user/my_asset.md
         - Web 终端: guide/user/web_terminal.md
@@ -186,7 +175,6 @@ nav:
     - 参数说明: guide/env.md
     - 存储说明: guide/storages.md
   - 最佳实践: best_practices.md
-  # - 教学视频: teaching_video.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
@@ -194,13 +182,10 @@ nav:
   - 开发文档:
     - API 文档: dev/rest_api.md
     - 交互命令: dev/shell.md
-    # - 开发过程实践: dev/shell.md
   - 用户案例: user_stories.md
   - 更新日志: change_log.md
   - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 联系我们: contact.md
-  # - 关于我们:
-   #  - 贡献者名单: about_us/contributor.md
 
 markdown_extensions:
   - admonition
