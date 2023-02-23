@@ -1,10 +1,9 @@
 # 交互命令
 
 !!! warning "操作不当将导致数据丢失，操作前请仔细确认"
+!!! tip "参考 [Django 文档](https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial02/)"
 
-- [Django 文档](https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial02/)
-
-## 操作方法
+## 1 操作方法
 
 !!! tip ""
     ```sh
@@ -20,8 +19,10 @@
     org.change_to()
     ```
 
-=== "User"
-    !!! tip ""
+!!! tip ""
+    - 选择交互命令对象查看
+
+    === "User"
         ```python
         from users.models import *
 
@@ -82,9 +83,8 @@
         # 删除用户组
         UserGroup.objects.all().filter(name='Test').delete()
         ```
-
-=== "Asset"
-    !!! tip ""
+    
+    === "Asset"
         ```python
         from assets.models import *
 
@@ -117,10 +117,11 @@
         ```
 
 
-## 数据解密
+## 2 数据解密
+!!! tip ""
+    - 选择系统用户类型进行数据解密
 
-=== "系统用户"
-    !!! tip ""
+    === "系统用户"
         ```sh
         docker exec -it jms_core bash
         cd /opt/jumpserver/apps
@@ -169,9 +170,8 @@
         LQMMI90AWvU3Cx9aAbl1bLSIT0qRoc5FGwmLEL12yDBZA2l3vYhnaw==
         -----END RSA PRIVATE KEY-----'
         ```
-
-=== "指定资产的系统用户"
-    !!! tip ""
+    
+    === "指定资产的系统用户"
         ```sh
         docker exec -it jms_core bash
         cd /opt/jumpserver/apps
