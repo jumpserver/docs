@@ -1,16 +1,18 @@
 # API 文档
 
-!!! info "API 文档默认已经集成在代码里面，部署完成后可以通过下面的方式进行访问"
+!!! info "提示"
+    API 文档默认已经集成在代码里面，部署完成后可以通过下面的方式进行访问
 
-## API 访问
+## 1 API 访问
+!!! tip ""
 
-|  Version  |       Access method      |               example              |
-| --------- | ------------------------ | ---------------------------------- |
-|  < 2.0.0  |   `http://<url>/docs`    |   `http://192.168.244.144/docs`    |
-|  >=2.0.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
-|  >=2.6.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
+    |  Version  |       Access method      |               example              |
+    | --------- | ------------------------ | ---------------------------------- |
+    |  < 2.0.0  |   `http://<url>/docs`    |   `http://192.168.244.144/docs`    |
+    |  >=2.0.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
+    |  >=2.6.0  | `http://<url>/api/docs/` | `http://192.168.244.144/api/docs/` |
 
-!!! tip "版本小于 v2.6 需要打开 debug 模式"
+!!! tip "版本小于 v2.6 需要打开 DEBUG 模式"
     ```sh
     vi config.yml
     ```
@@ -21,9 +23,10 @@
     DEBUG: true
     ```
 
-![api_swagger](../img/api_swagger.jpg)
+### 1.2 页面效果
+![api_swagger](../img/api_swagger.png)
 
-## API 认证
+## 2 API 认证
 
 !!! tip "JumpServer API 支持的认证有以下几种方式"
     ```
@@ -143,6 +146,7 @@
                 GetUserInfo(JmsServerURL, token)
             }
             ```
+
 
     === "Private Token"
         ```sh

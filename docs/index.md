@@ -20,8 +20,8 @@
 
 ## 安全说明
 !!! tip ""
+    JumpServer是一款安全产品，请参考 [基本安全建议](faq/security.md) 部署安装.  
 
-    JumpServer是一款安全产品，请参考 [基本安全建议](04_faq/security.md) 部署安装.  
     如果你发现安全问题，可以直接联系我们：
 
     - ibuler@fit2cloud.com
