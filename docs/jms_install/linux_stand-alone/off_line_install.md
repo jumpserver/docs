@@ -18,7 +18,6 @@
 !!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
     tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
     cd jumpserver-installer-{{ jumpserver.version }}
     ```

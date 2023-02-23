@@ -3,16 +3,13 @@
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
     - Gentoo / Arch Linux 请通过 [源码安装](jms_install/source_install/requirements.md)
-
-- 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](jms_install/source_install/requirements.md)
  
 !!! tip ""
     === "中国大陆"
         <div class="termy">
         ```console
         // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/installer/releases/download/{{jumpserver.version}}/quick_start.sh ｜ bash
+        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh ｜ bash
 
         ---> 100%
         <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
@@ -28,7 +25,7 @@
         <div class="termy">
         ```console
         // root@localhost:/opt#
-        $ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{jumpserver.version}}/quick_start.sh | bash
+        $ https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
         <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
