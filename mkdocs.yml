@@ -106,7 +106,7 @@ nav:
 #    - 联系方式: about/contact.md
 #    - 技术咨询: https://jinshuju.net/f/sQ91MK
 #  - 20230207: index.md
-  - 产品介绍: 01_primary_directory/index.md
+  - 产品介绍: index.md
   - 快速入门: 01_primary_directory/quick_start.md
   - 系统架构: 01_primary_directory/architecture.md
   - 安装部署:
