@@ -12,7 +12,7 @@
         <div class="termy">
         ```console
         // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh ｜ bash
+        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
         <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
