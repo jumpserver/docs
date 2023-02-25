@@ -153,10 +153,10 @@ nav:
         - 邮件设置: guide/system/email.md
         - 认证设置:
             - MFA: guide/system/authentication/mfa.md
-            - OpenID: guide/system/authentication/openid.md
+            - LDAP: guide/system/authentication/ldap.md
+            - CAS: guide/system/authentication/cas.md
             - SSO (X-Pack): guide/system/authentication/sso.md
-            - CAS (X-Pack): guide/system/authentication/cas.md
-            - LDAP (X-Pack): guide/system/authentication/ldap.md
+            - OpenID (X-Pack): guide/system/authentication/openid.md
             - SAML2 (X-Pack): guide/system/authentication/saml2.md
             - Radius (X-Pack): guide/system/authentication/radius.md
             - 钉钉 (X-Pack): guide/system/authentication/dingtalk.md
