@@ -22,7 +22,7 @@
     ```
     ```vim
     # 修改版本号为你要升级的版本, 其他选项保持默认
-    Version={{ jumpserver.version }}
+    Version={{ jumpserver.tag }}
     ```
 
 ### 2.2 数据库升级

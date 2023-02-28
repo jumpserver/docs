@@ -102,7 +102,7 @@
         ```
     === "jumpserver-installer"
         ```sh
-        cd /opt/jumpserver-installer-{{ jumpserver.version }}
+        cd /opt/jumpserver-installer-{{ jumpserver.tag }}
         ./jmsctl.sh stop
         ```
         ```sh
@@ -228,7 +228,7 @@
         DB_NAME=jumpserver
         ```
         ```sh
-        cd /opt/jumpserver-installerer-{{ jumpserver.version }}
+        cd /opt/jumpserver-installerer-{{ jumpserver.tag }}
         ./jmsctl.sh start
         ```
         ```sh

@@ -8,9 +8,9 @@
 
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.tag }}
     ```
     ```sh
     # 额外节点可以设置 SKIP_BACKUP_DB=1 跳过数据库备份, 第一个升级节点不要跳过备份

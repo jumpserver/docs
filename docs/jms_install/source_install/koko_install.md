@@ -8,7 +8,7 @@
 
     | Name    | KoKo                     | Go   | Node  | Redis Client |
     | :------ | :----------------------- | :--  | :---- | :----------- |
-    | Version | {{ jumpserver.version }} | 1.18 | 14.16 | >= 6.0       |
+    | Version | {{ jumpserver.tag }} | 1.18 | 14.16 | >= 6.0       |
 
 ### 1.2 选择部署方式
 !!! tip ""
@@ -19,9 +19,9 @@
     
         ```bash
         cd /opt
-        mkdir /opt/koko-{{ jumpserver.version }}
-        wget -O /opt/koko-{{ jumpserver.version }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.version }}.tar.gz
-        tar -xf koko-{{ jumpserver.version }}.tar.gz -C /opt/koko-{{ jumpserver.version }} --strip-components 1
+        mkdir /opt/koko-{{ jumpserver.tag }}
+        wget -O /opt/koko-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
+        tar -xf koko-{{ jumpserver.tag }}.tar.gz -C /opt/koko-{{ jumpserver.tag }} --strip-components 1
         ```
     
         - 安装 Node。
@@ -72,9 +72,9 @@
         | macOS | amd64 | make darwin |
     
         ```bash
-        cd /opt/koko-{{ jumpserver.version }}
+        cd /opt/koko-{{ jumpserver.tag }}
         make
-        cp build/koko-{{ jumpserver.version }}-linux-amd64.tar.gz /opt
+        cp build/koko-{{ jumpserver.tag }}-linux-amd64.tar.gz /opt
         ```
     
         !!! tip "构建完成后, 生成在 build 目录下"
@@ -86,11 +86,11 @@
     
         | OS     | Arch    | Name                                                                                              |
         | :----- | :------ | :------------------------------------------------------------------------------------------------ |
-        | Linux  | amd64   | [koko-{{ jumpserver.version }}-linux-amd64.tar.gz][koko-{{ jumpserver.version }}-linux-amd64]     |
-        | Linux  | arm64   | [koko-{{ jumpserver.version }}-linux-arm64.tar.gz][koko-{{ jumpserver.version }}-linux-arm64]     |
-        | linux  | loong64 | [koko-{{ jumpserver.version }}-linux-loong64.tar.gz][koko-{{ jumpserver.version }}-linux-loong64] |
-        | Darwin | amd64   | [koko-{{ jumpserver.version }}-darwin-amd64.tar.gz][koko-{{ jumpserver.version }}-darwin-amd64]   |
-        | Darwin | arm64   | [koko-{{ jumpserver.version }}-darwin-arm64.tar.gz][koko-{{ jumpserver.version }}-darwin-arm64]   |
+        | Linux  | amd64   | [koko-{{ jumpserver.tag }}-linux-amd64.tar.gz][koko-{{ jumpserver.tag }}-linux-amd64]     |
+        | Linux  | arm64   | [koko-{{ jumpserver.tag }}-linux-arm64.tar.gz][koko-{{ jumpserver.tag }}-linux-arm64]     |
+        | linux  | loong64 | [koko-{{ jumpserver.tag }}-linux-loong64.tar.gz][koko-{{ jumpserver.tag }}-linux-loong64] |
+        | Darwin | amd64   | [koko-{{ jumpserver.tag }}-darwin-amd64.tar.gz][koko-{{ jumpserver.tag }}-darwin-amd64]   |
+        | Darwin | arm64   | [koko-{{ jumpserver.tag }}-darwin-arm64.tar.gz][koko-{{ jumpserver.tag }}-darwin-arm64]   |
     
         === "Linux/amd64"
             ```bash
@@ -104,9 +104,9 @@
             chmod 755 /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
             chown root:root /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
             rm -rf linux-amd64
-            wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
-            tar -xf koko-{{ jumpserver.version }}-linux-amd64.tar.gz -C /opt
-            cd koko-{{ jumpserver.version }}-linux-amd64
+            wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-amd64.tar.gz
+            tar -xf koko-{{ jumpserver.tag }}-linux-amd64.tar.gz -C /opt
+            cd koko-{{ jumpserver.tag }}-linux-amd64
             mv kubectl /usr/local/bin/kubectl
             ```
     
@@ -122,9 +122,9 @@
             chmod 755 /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
             chown root:root /usr/local/bin/rawkubectl /usr/local/bin/rawhelm
             rm -rf linux-arm64
-            wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-arm64.tar.gz
-            tar -xf koko-{{ jumpserver.version }}-linux-arm64.tar.gz -C /opt
-            cd koko-{{ jumpserver.version }}-linux-arm64
+            wget https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-arm64.tar.gz
+            tar -xf koko-{{ jumpserver.tag }}-linux-arm64.tar.gz -C /opt
+            cd koko-{{ jumpserver.tag }}-linux-arm64
             mv kubectl /usr/local/bin/kubectl
             ```
 
@@ -226,18 +226,18 @@
 [flower]: https://github.com/mher/flower/
 [daphne]: https://github.com/django/daphne/
 [github]: https://github.com/
-[core_release]: https://github.com/jumpserver/jumpserver/releases/tag/{{ jumpserver.version }}
+[core_release]: https://github.com/jumpserver/jumpserver/releases/tag/{{ jumpserver.tag }}
 [python]: https://www.python.org/downloads/
 [linux_packages]: http://nginx.org/en/linux_packages.html
-[lina_release]: https://github.com/jumpserver/lina/releases/tag/{{ jumpserver.version }}
+[lina_release]: https://github.com/jumpserver/lina/releases/tag/{{ jumpserver.tag }}
 [node]: https://nodejs.org/
-[luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.version }}
-[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
+[luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.tag }}
+[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.tag }}
 [go]: https://golang.google.cn/
 [koko]: https://github.com/jumpserver/koko
-[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.version }}
+[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.tag }}
 [lion]: https://github.com/jumpserver/lion-release
-[lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.version }}
+[lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.tag }}
 [guacamole]: http://guacamole.apache.org/
 [apache]: http://www.apache.org/
 [guacamole-server]: https://github.com/apache/guacamole-server
@@ -246,24 +246,24 @@
 [wisp]: https://github.com/jumpserver/wisp
 [wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
-[magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.version }}
-[lina-{{ jumpserver.version }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.version }}/lina-{{ jumpserver.version }}.tar.gz
-[luna-{{ jumpserver.version }}]: https://github.com/jumpserver/luna/releases/download/{{ jumpserver.version }}/luna-{{ jumpserver.version }}.tar.gz
-[koko-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-amd64.tar.gz
-[koko-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-arm64.tar.gz
-[koko-{{ jumpserver.version }}-linux-loong64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-linux-loong64.tar.gz
-[koko-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-darwin-amd64.tar.gz
-[koko-{{ jumpserver.version }}-darwin-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.version }}/koko-{{ jumpserver.version }}-darwin-arm64.tar.gz
-[lion-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-amd64.tar.gz
-[lion-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-arm64.tar.gz
-[lion-{{ jumpserver.version }}-linux-loong64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-linux-loong64.tar.gz
-[lion-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-darwin-amd64.tar.gz
-[lion-{{ jumpserver.version }}-windows-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.version }}/lion-{{ jumpserver.version }}-windows-amd64.tar.gz
-[magnus-{{ jumpserver.version }}-linux-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-amd64.tar.gz
-[magnus-{{ jumpserver.version }}-linux-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-arm64.tar.gz
-[magnus-{{ jumpserver.version }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-linux-loong64.tar.gz
-[magnus-{{ jumpserver.version }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-darwin-amd64.tar.gz
-[magnus-{{ jumpserver.version }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.version }}/magnus-{{ jumpserver.version }}-darwin-arm64.tar.gz
+[magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
+[lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
+[luna-{{ jumpserver.tag }}]: https://github.com/jumpserver/luna/releases/download/{{ jumpserver.tag }}/luna-{{ jumpserver.tag }}.tar.gz
+[koko-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-amd64.tar.gz
+[koko-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-arm64.tar.gz
+[koko-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-loong64.tar.gz
+[koko-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-darwin-amd64.tar.gz
+[koko-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-darwin-arm64.tar.gz
+[lion-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
+[lion-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
+[lion-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-loong64.tar.gz
+[lion-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-darwin-amd64.tar.gz
+[lion-{{ jumpserver.tag }}-windows-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-windows-amd64.tar.gz
+[magnus-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-amd64.tar.gz
+[magnus-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-arm64.tar.gz
+[magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
+[magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
+[magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
 [wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
 [wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
 [wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz

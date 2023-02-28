@@ -29,7 +29,7 @@
     ```
     ```vim
     # 版本号可以自己根据项目的版本修改
-    Version={{ jumpserver.version }}
+    Version={{ jumpserver.tag }}
 
     # 构建参数, 支持 amd64/arm64
     TARGETARCH=amd64
