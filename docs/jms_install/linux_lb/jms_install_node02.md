@@ -39,9 +39,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.tag }}
     ```
 
 ### 3.2 修改临时配置文件

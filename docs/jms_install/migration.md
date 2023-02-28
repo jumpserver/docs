@@ -164,9 +164,9 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.version }}/jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
+    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.tag }}
     ```
 
 ### 2.4 编辑临时配置文件
@@ -207,7 +207,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                                     Version:  {{ jumpserver.version }}
+        								                                     Version:  {{ jumpserver.tag }}
 
 
         1. 检查配置文件
@@ -238,12 +238,12 @@
         完成
 
         >>> 加载 Docker 镜像
-        Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/web:{{ jumpserver.version }}  	    [ OK ]
+        Docker: Pulling from jumpserver/core:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/web:{{ jumpserver.tag }}  	    [ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/lion:{{ jumpserver.tag }} 	    [ OK ]
 
         >>> 安装配置 JumpServer
         1. 配置网络
@@ -307,7 +307,7 @@
 
         >>> 安装完成了
         1. 可以使用如下命令启动, 然后访问
-        cd /root/jumpserver-installer-{{ jumpserver.version }}
+        cd /root/jumpserver-installer-{{ jumpserver.tag }}
         ./jmsctl.sh start
 
         2. 其它一些管理命令
@@ -377,7 +377,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                                     Version:  {{ jumpserver.version }}
+        								                                     Version:  {{ jumpserver.tag }}
 
 
         1. 检查配置文件
@@ -408,12 +408,12 @@
         完成
 
         >>> 加载 Docker 镜像
-        Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/web:{{ jumpserver.version }}  	    [ OK ]
+        Docker: Pulling from jumpserver/core:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/web:{{ jumpserver.tag }}  	    [ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/lion:{{ jumpserver.tag }} 	    [ OK ]
 
         >>> 安装配置 JumpServer
         1. 配置网络
@@ -484,7 +484,7 @@
 
         >>> 安装完成了
         1. 可以使用如下命令启动, 然后访问
-        cd /root/jumpserver-installer-{{ jumpserver.version }}
+        cd /root/jumpserver-installer-{{ jumpserver.tag }}
         ./jmsctl.sh start
 
         2. 其它一些管理命令
@@ -532,7 +532,7 @@
           ╚█████╔╝╚██████╔╝██║ ╚═╝ ██║██║     ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
            ╚════╝  ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
-        								                                     Version:  {{ jumpserver.version }}
+        								                                     Version:  {{ jumpserver.tag }}
 
 
         1. 检查配置文件
@@ -563,12 +563,12 @@
         完成
 
         >>> 加载 Docker 镜像
-        Docker: Pulling from jumpserver/core:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/koko:{{ jumpserver.version }} 	    [ OK ]
-        Docker: Pulling from jumpserver/web:{{ jumpserver.version }}  	    [ OK ]
+        Docker: Pulling from jumpserver/core:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/koko:{{ jumpserver.tag }} 	    [ OK ]
+        Docker: Pulling from jumpserver/web:{{ jumpserver.tag }}  	    [ OK ]
         Docker: Pulling from jumpserver/redis:6-alpine      [ OK ]
         Docker: Pulling from jumpserver/mysql:5 	        [ OK ]
-        Docker: Pulling from jumpserver/lion:{{ jumpserver.version }} 	    [ OK ]
+        Docker: Pulling from jumpserver/lion:{{ jumpserver.tag }} 	    [ OK ]
 
         >>> 安装配置 JumpServer
         1. 配置网络
@@ -639,7 +639,7 @@
 
         >>> 安装完成了
         1. 可以使用如下命令启动, 然后访问
-        cd /root/jumpserver-installer-{{ jumpserver.version }}
+        cd /root/jumpserver-installer-{{ jumpserver.tag }}
         ./jmsctl.sh start
 
         2. 其它一些管理命令

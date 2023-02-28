@@ -18,8 +18,8 @@
 !!! tip ""
     ```sh
     cd /opt
-    tar -xf jumpserver-installer-{{ jumpserver.version }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.version }}
+    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    cd jumpserver-installer-{{ jumpserver.tag }}
     ```
     ```sh
     # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -102,7 +102,7 @@
 
 !!! tip ""
     ```sh
-    cd /opt/jumpserver-installer-{{ jumpserver.version }}
+    cd /opt/jumpserver-installer-{{ jumpserver.tag }}
 
     # 启动
     ./jmsctl.sh start

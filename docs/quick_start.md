@@ -12,7 +12,7 @@
         $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
+        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
         [Info]: Start executing the installation script.
         [Info]: In an automated script deployment, note the message prompts on the screen.
         ---> 100%
@@ -28,7 +28,7 @@
         $ https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
+        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
         [Info]: Start executing the installation script.
         [Info]: In an automated script deployment, note the message prompts on the screen.
         ---> 100%
