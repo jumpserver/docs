@@ -19,7 +19,7 @@
 ### 2.1 Yum 方式安装 Redis
 !!! tip ""
     ```sh
-    yum install -y redis5
+    yum install -y redis6
     ```
 
 ### 2.2 配置 Redis

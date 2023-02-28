@@ -1,4 +1,5 @@
 # CAS 认证
+
 !!! tip "阿里云 IDaaS 对接参考资料"
     - [阿里云新 IDaaS 对接](https://help.aliyun.com/document_detail/409903.html)
 
@@ -19,7 +20,7 @@
     CAS_LOGOUT_COMPLETELY=False
     CAS_VERSION=3
     CAS_USERNAME_ATTRIBUTE=uid
-    CAS_APPLY_ATTRIBUTES_TO_USER=Flase
+    CAS_APPLY_ATTRIBUTES_TO_USER=False
     CAS_CREATE_USER=True
     ```
 !!! tip ""

@@ -54,7 +54,7 @@
 ### 1.3 重启 JumpServer 服务
 !!! tip ""
     ```bash
-    cd /opt/jumpserver-installer-{{ jumpserver.version }}
+    cd /opt/jumpserver-installer-{{ jumpserver.tag }}
     ./jmsctl.sh down
     ./jmsctl.sh start
     ```

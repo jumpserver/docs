@@ -11,7 +11,7 @@
 
 !!! tip "提示"
     - 查看账号详细信息例如账号密码时需要验证用户的MFA。
-    - JumpServer 为提高安全性，默认查看密码需要校验MFA；如需取消验证MFA，可以在JumpServer的配置文件（默认为/opt/jumpserver/config/config.txt）中添加配置项`SECURITY_VIEW_AUTH_NEED_MFA=Flase`并重启 JumpServer 服务。
+    - JumpServer 为提高安全性，默认查看密码需要校验MFA；如需取消验证MFA，可以在JumpServer的配置文件（默认为/opt/jumpserver/config/config.txt）中添加配置项`SECURITY_VIEW_AUTH_NEED_MFA=False`并重启 JumpServer 服务。
 
 ### 2.2 账号信息导入/导出
 !!! tip ""

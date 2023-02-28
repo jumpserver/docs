@@ -1,5 +1,4 @@
 # LDAP 认证
-!!! note "注：LDAP 认证为 JumpServer 企业版功能。"
 
 !!! tip "提示"
     - LDAP 支持 使用 LDAP 与 Windows AD 的用户作为 JumpServer 登录用户。

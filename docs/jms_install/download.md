@@ -12,7 +12,7 @@
 ## [Clients](https://github.com/jumpserver/clients/releases){:target="_blank"}
 !!! tip ""
     - JumpServer 客户端默认已经集成到 JumpServer 镜像，可以从 JumpServer 页面 `帮助菜单` - `工具下载` 里下载安装，开源版本支持 SSH 的本地拉起，企业版本还支持 RDP 拉起。
-    
+
     | 版本     | Windows :fontawesome-brands-windows: |  macOS :fontawesome-brands-apple:   | Linux :fontawesome-brands-linux: |
     | ------- | ------------------------------------ | ----------------------------------- | -------------------------------- |
     | 开源版本 | :material-check:                     | :material-check:                    | :material-check:                 |
@@ -33,4 +33,4 @@
 
     | 版本                     | :fontawesome-brands-linux: linux/amd64                                                     | :fontawesome-brands-linux: linux/arm64                                                     | :fontawesome-brands-linux: linux/loong64                                                     |
     | ------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-    | {{ jumpserver.version }} | jumpserver-offline-installer-{{ jumpserver.version }}-amd64-{{ installer.version }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-arm64-{{ installer.version }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.version }}-loong64-{{ installer.version }}.tar.gz |
+    | {{ jumpserver.tag }} | jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}.tar.gz |

@@ -28,15 +28,15 @@
           # Core data 静态资源
           location /media/replay/ {
             add_header Content-Encoding gzip;
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
           }
     
           location /media/ {
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
           }
     
           location /static/ {
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
           }
     
           # KoKo Lion 配置
@@ -131,29 +131,29 @@
           # 前端 Lina
           location /ui/ {
             try_files $uri / /index.html;
-            alias /opt/lina-{{ jumpserver.version }}/;
+            alias /opt/lina-{{ jumpserver.tag }}/;
             expires 24h;
           }
     
           # Luna 配置
           location /luna/ {
             try_files $uri / /index.html;
-            alias /opt/luna-{{ jumpserver.version }}/;
+            alias /opt/luna-{{ jumpserver.tag }}/;
             expires 24h;
           }
     
           # Core data 静态资源
           location /media/replay/ {
             add_header Content-Encoding gzip;
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
           }
     
           location /media/ {
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
           }
     
           location /static/ {
-            root /opt/jumpserver-{{ jumpserver.version }}/data/;
+            root /opt/jumpserver-{{ jumpserver.tag }}/data/;
             expires 24h;
           }
     

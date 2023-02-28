@@ -1,4 +1,5 @@
 # OpenID 认证
+!!! note "注：OpenId 认证为 JumpServer 企业版功能。"
 
 ## 1 Keycloak 对接
 

@@ -9,10 +9,10 @@
         <div class="termy">
         ```console
         // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh ｜ bash
+        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
+        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
         [Info]: Start executing the installation script.
         [Info]: In an automated script deployment, note the message prompts on the screen.
         ---> 100%
@@ -28,7 +28,7 @@
         $ https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.version}}
+        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
         [Info]: Start executing the installation script.
         [Info]: In an automated script deployment, note the message prompts on the screen.
         ---> 100%
@@ -201,7 +201,7 @@
 [通过 SFTP 上传下载]: https://kb.fit2cloud.com/?p=115
 [Windows 上传下载]: https://kb.fit2cloud.com/?p=87
 [限制 IP 登录]: https://kb.fit2cloud.com/?p=199
-[Redis 数据库纳管]: https://kb.fit2cloud.com/?p=179
+[Redis 数据库纳管]: https://kb.fit2cloud.com/?p=91
 [纳管数据库应用]: https://kb.fit2cloud.com/?p=79
 
 

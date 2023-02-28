@@ -224,7 +224,7 @@ docker logs -f jms_core --tail 200  # 如果没有报错就等表结构合并完
 === "初始化超时"
     ```yaml
     2021-02-08 14:58:53 Mon Feb  8 14:58:53 2021
-    2021-02-08 14:58:53 JumpServer version {{ jumpserver.version }}, more see https://www.jumpserver.org
+    2021-02-08 14:58:53 JumpServer version {{ jumpserver.tag }}, more see https://www.jumpserver.org
 
     - Start Gunicorn WSGI HTTP Server
     2021-02-08 14:58:53 Check database connection ...
