@@ -1,6 +1,6 @@
 # 在线安装
 
-!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand-alone/requirements.md)"
+!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand_alone/requirements.md)"
 
 ## 1 安装部署
 !!! tip ""
@@ -41,11 +41,11 @@
         ```
         </div>
 
-!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
+!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt。 此处以 x86_64 系统为例，其它架构请下载对应安装包。"
 
 !!! tip ""
     ```sh
-    cd /opt/jumpserver-installer-{{ jumpserver.tag }}
+    cd /opt/jumpserver-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
 
     # 启动
     ./jmsctl.sh start

@@ -42,11 +42,11 @@ nav:
   - 系统架构: architecture.md
   - 安装部署:
     - Linux 单机部署:
-        - 环境要求: jms_install/linux_stand-alone/requirements.md
-        - 在线安装: jms_install/linux_stand-alone/on_line_install.md
-        - 离线安装: jms_install/linux_stand-alone/off_line_install.md
-        - 在线升级: jms_install/linux_stand-alone/on_line_upgrade.md
-        - 离线升级: jms_install/linux_stand-alone/off_line_upgrade.md
+        - 环境要求: jms_install/linux_stand_alone/requirements.md
+        - 在线安装: jms_install/linux_stand_alone/on_line_install.md
+        - 离线安装: jms_install/linux_stand_alone/off_line_install.md
+        - 在线升级: jms_install/linux_stand_alone/on_line_upgrade.md
+        - 离线升级: jms_install/linux_stand_alone/off_line_upgrade.md
     - Linux 集群模式部署:
         - 准备工作: jms_install/linux_lb/requirements.md
         - 部署 NFS 服务: jms_install/linux_lb/nfs_install.md
@@ -100,7 +100,7 @@ nav:
         - 用户管理:
             - 用户列表: guide/admin/user/user_list.md
             - 用户组: guide/admin/user/user_group.md
-            - 角色列表: guide/admin/user/role_list.md
+            - 角色列表 (X-Pack): guide/admin/user/role_list.md
         - 资产管理:
             - 资产列表: guide/admin/asset/asset_list.md
             - 网域列表: guide/admin/asset/domain_list.md

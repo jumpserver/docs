@@ -1,6 +1,6 @@
 # 离线安装
 
-!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand-alone/requirements.md)"
+!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand_alone/requirements.md)"
 
 ## 1 安装部署
 ??? info "国内可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
@@ -16,10 +16,13 @@
     - 从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录。
 
 !!! tip ""
+    - 此处以 x86_64 系统为例，其它架构请下载对应安装包进行安装。
+  
+!!! tip ""
     ```sh
     cd /opt
-    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.tag }}
+    tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
+    cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
     ```
     ```sh
     # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -98,11 +101,11 @@
     ./jmsctl.sh start
     ```
         
-!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
+!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt。 此处以 x86_64 系统为例，其它架构请下载对应安装包。"
 
 !!! tip ""
     ```sh
-    cd /opt/jumpserver-installer-{{ jumpserver.tag }}
+    cd /opt/jumpserver-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
 
     # 启动
     ./jmsctl.sh start

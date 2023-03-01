@@ -27,7 +27,7 @@
     ##
     global:
       imageRegistry: "docker.io"    # 国内可以使用华为云加速
-      imageTag: v2.28.6             # 版本号
+      imageTag: {{ jumpserver.tag }}             # 版本号
       ## E.g.
       #  imagePullSecrets:
       #    - name: harborsecret
@@ -104,7 +104,7 @@
       image:
         registry: docker.io
         repository: jumpserver/core
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []
@@ -193,7 +193,7 @@
       image:
         registry: docker.io
         repository: jumpserver/koko
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []
@@ -282,7 +282,7 @@
       image:
         registry: docker.io
         repository: jumpserver/lion
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []
@@ -356,7 +356,6 @@
     
       affinity: {}
     
-    # v2.27.0 版本 magnus 做了大改，需要开放很多端口，等待后续优化
     magnus:
       enabled: true
     
@@ -372,7 +371,7 @@
       image:
         registry: docker.io
         repository: jumpserver/magnus
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []
@@ -402,6 +401,15 @@
     
       service:
         type: ClusterIP
+        mysql:
+          port: 33061
+        mariadb:
+          port: 33062
+        redis:
+          port: 63790
+        postgresql:
+          port: 54320
+        oracle:
           ports: 30000-30100
     
       resources: {}
@@ -451,7 +459,7 @@
       image:
         registry: registry.fit2cloud.com
         repository: jumpserver/omnidb
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []
@@ -603,7 +611,7 @@
       image:
         registry: docker.io
         repository: jumpserver/web
-        tag: v2.28.6
+        tag: {{ jumpserver.tag }}
         pullPolicy: IfNotPresent
     
       command: []

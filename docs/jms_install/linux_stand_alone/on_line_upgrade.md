@@ -9,7 +9,7 @@
     ```sh
     cd /opt
     yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+    wget https://cdn0-download-offline-installer.fit2cloud.com/jumpserver/jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
     tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
     cd jumpserver-installer-{{ jumpserver.tag }}
     ```
