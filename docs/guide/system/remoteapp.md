@@ -108,7 +108,7 @@
 !!! tip ""
     - 通过 `Web终端` 选中目标 Website 资产访问。
     - 访问 Website 资产需要本地客户端安装 JumpServer 客户端程序，可在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到安装包。
-![remoteapp10](../../img/remoteapp10.png)
+![remoteapp11](../../img/remoteapp11.png)
 
 ### 3.4 页面效果
 !!! tip ""

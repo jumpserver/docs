@@ -5,10 +5,14 @@
     - 推荐使用外置 数据库，方便日后扩展升级。
 
 ## 1 数据库要求
-    | DB      | Version |    | Cache | Version |
-    | :------ | :------ | :- | :---- | :------ |
-    | MySQL   | >= 5.7  |    | Redis | >= 5.0  |
-    | MariaDB | >= 10.2 |    |       |         |
+!!! tip ""
+    - 针对 MySQL/MariaDB 和 Redis 的版本要求如下：
+  
+!!! tip ""
+    | DB      | Version | Cache | Version |
+    | :------ | :------ | :---- | :------ |
+    | MySQL   | >= 5.7  | Redis | >= 6.0  |
+    | MariaDB | >= 10.2 |  -    |   -     |
 
 ## 2 操作过程
 !!! tip "备份数据库"
