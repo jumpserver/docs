@@ -1,14 +1,11 @@
 # 在线安装
 
-!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand_alone/requirements.md)"
+!!! info "安装前请先参考 [部署环境要求](../linux_stand_alone/requirements.md)"
 
-## 1 安装部署
-!!! tip ""
-    - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](../source_install/requirements.md)
+## 1. 安装部署
 
-!!! tip ""
-    === "中国大陆"
+=== "中国大陆"
+    !!! tip ""
         <div class="termy">
         ```console
         // root@localhost:/opt#
@@ -24,7 +21,8 @@
         For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
         ```
         </div>
-    === "其他地区"
+=== "其他地区"
+    !!! tip ""
         <div class="termy">
         ```console
         // root@localhost:/opt#
@@ -41,11 +39,11 @@
         ```
         </div>
 
-!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt。 此处以 x86_64 系统为例，其它架构请下载对应安装包。"
+!!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
 !!! tip ""
     ```sh
-    cd /opt/jumpserver-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
+    cd /opt/jumpserver-installer-{{ jumpserver.tag }}
 
     # 启动
     ./jmsctl.sh start
@@ -60,13 +58,14 @@
     ./jmsctl.sh -h
     ```
 
-## 2 环境访问
-!!! tip ""
-    **安装成功后，通过浏览器访问如下信息登录 JumpServer：**
+## 2. 环境访问
+!!! info "安装成功后，通过浏览器访问登录 JumpServer"
 
+!!! tip ""
     ```sh
-    地址: http://目标服务器IP地址:服务运行端口
+    地址: http://<JumpServer服务器IP地址>:<服务运行端口>
     用户名: admin
-    密码: admin #第一次登陆需要修改密码
+    密码: admin
     ```
+
 ![登陆页面](../../img/on_line_install_01.png)

@@ -4,8 +4,8 @@
 !!! tip ""
     - 可以从 [Github][magnus] 网站上获取最新的 [Release][magnus_release] 副本。
 
-    | 操作系统      | 架构类型    | 名称                                                                                                  |
-    | :------ | :------ | :---------------------------------------------------------------------------------------------------- |
+    | 操作系统 | 架构类型 | 名称                                                                                         |
+    | :------ | :------ | :-------------------------------------------------------------------------------------------- |
     | Linux   | amd64   | [magnus-{{ jumpserver.tag }}-linux-amd64.tar.gz][magnus-{{ jumpserver.tag }}-linux-amd64]     |
     | Linux   | arm64   | [magnus-{{ jumpserver.tag }}-linux-arm64.tar.gz][magnus-{{ jumpserver.tag }}-linux-arm64]     |
     | Linux   | loong64 | [magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz][magnus-{{ jumpserver.tag }}-linux-loong64] |
@@ -15,7 +15,7 @@
 !!! tip ""
     - Magnus 需要使用 Wisp 与 JumpServer 通信，从 [Github][wisp] 网站上获取最新的 [Release][wisp_release] 副本。
 
-    | 操作系统      | 架构类型    | 名称                                                                                        |
+    | 操作系统 | 架构类型 | 名称                                                                                       |
     | :------ | :------ | :------------------------------------------------------------------------------------------ |
     | Linux   | amd64   | [wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-amd64]     |
     | Linux   | arm64   | [wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz][wisp-{{ jumpserver.wisp }}-linux-arm64]     |
@@ -27,9 +27,9 @@
 ### 1.2 选择部署方式
 !!! tip ""
     === "Linux/amd64"
-    
+
         - 解压缩包。
-    
+
         ```bash
         cd /opt
         wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-amd64.tar.gz
@@ -43,9 +43,9 @@
         chown root:root /usr/local/bin/wisp /opt/magnus-{{ jumpserver.tag }}-linux-amd64/magnus
         chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.tag }}-linux-amd64/magnus
         ```
-    
+
         - 修改配置文件。
-    
+
         ```bash
         cp config_example.yml config.yml
         vi config.yml
@@ -53,29 +53,29 @@
         ```yaml
         # Jumpserver项目的url, api请求注册会使用
         CORE_HOST: http://127.0.0.1:8080   # Core 的地址
-    
+
         # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
         # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
         BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
-    
+
         # 服务 bind 地址
         BIND_HOST: "0.0.0.0"
-    
+
         # 数据库代理暴露的端口
         MYSQL_PORT: 33060
         MARIA_DB_PORT: 33061
         POSTGRESQL_PORT: 54320
-    
+
         # 日志级别
         LOG_LEVEL: "info"
-    
+
         # jumpserver api grpc 组件地址
         WISP_HOST: "localhost"
         WISP_PORT: 9090
         ```
-    
+
         - 启动 Wisp。
-    
+
         ```bash
         export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
         export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致
@@ -84,11 +84,11 @@
         export EXECUTE_PROGRAM="/opt/magnus-{{ jumpserver.tag }}-linux-amd64/magnus"
         wisp
         ```
-    
+
     === "Linux/arm64"
-    
+
         - 解压缩包。
-    
+
         ```bash
         cd /opt
         wget https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-arm64.tar.gz
@@ -102,9 +102,9 @@
         chown root:root /usr/local/bin/wisp /opt/magnus-{{ jumpserver.tag }}-linux-arm64/magnus
         chmod 755 /usr/local/bin/wisp /opt/magnus-{{ jumpserver.tag }}-linux-arm64/magnus
         ```
-    
+
         - 修改配置文件。
-    
+
         ```bash
         cp config_example.yml config.yml
         vi config.yml
@@ -112,29 +112,29 @@
         ```yaml
         # Jumpserver项目的url, api请求注册会使用
         CORE_HOST: http://127.0.0.1:8080   # Core 的地址
-    
+
         # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
         # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
         BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
-    
+
         # 服务 bind 地址
         BIND_HOST: "0.0.0.0"
-    
+
         # 数据库代理暴露的端口
         MYSQL_PORT: 33060
         MARIA_DB_PORT: 33061
         POSTGRESQL_PORT: 54320
-    
+
         # 日志级别
         LOG_LEVEL: "info"
-    
+
         # jumpserver api grpc 组件地址
         WISP_HOST: "localhost"
         WISP_PORT: 9090
         ```
-    
+
         - 启动 Wisp。
-    
+
         ```bash
         export CORE_HOST="http://127.0.0.1:8080"   # Core 的地址
         export BOOTSTRAP_TOKEN=********            # 和 Core config.yml 的值保持一致

@@ -2,8 +2,8 @@
 ## 1 一键安装
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](jms_install/source_install/requirements.md)
- 
+    - Gentoo / Arch Linux 请通过 [源码安装](install/source_install/requirements.md)
+
 !!! tip ""
     === "中国大陆"
         <div class="termy">
@@ -48,7 +48,7 @@
 
 !!! tip ""
 
-    |   IP 地址     |    主机名    |    端口    | 操作系统 |  管理员用户   |    密码   |
+    |   IP 地址     |    主机名       |    端口    | 操作系统         |  管理员用户    |    密码       |
     | ------------ | --------------- | ---------- | ---------------- |--- ---------- |--- ---------- |
     | 172.16.80.11 |    test_ssh01   |     22     |     Centos 7     |      root     |  Test2020.L   |
     | 172.16.80.21 |    test_rdp01   |    3389    |    Windows 10    | administrator |  Test2020.W   |
@@ -108,7 +108,7 @@
 ### 2.4 创建数据库应用
 !!! tip ""
     - 点击页面左侧的 `资产管理` - `资产列表` - `创建` - `数据库下选择 MySQL 数据库`。
-    
+
 !!! tip ""
     - 创建 MySQL 数据库应用样式如下：
 
@@ -123,10 +123,10 @@
 
 !!! tip ""
 
-    |        名称       | 用户名 | 特权用户 | 密文类型 | 密码      |
+    |        名称       | 用户名 | 特权用户 | 密文类型 | 密码   |
     | ----------------- | ----- | ------ | ------- | -------- |
-    | 172.16.80.23_root | root | root | 密码 |Test2020.M |
-    
+    | 172.16.80.23_root | root  | root   | 密码    |Test2020.M |
+
 !!! warning "注意"
     - 名称、主机、数据库选项为必填项。
 
@@ -137,7 +137,7 @@
 
 !!! tip ""
     - 创建登陆授权规则（例如 Linux 资产），样式如下：
-  
+
 !!! tip ""
 
     | 名称             | 用户                 | 用户组 | 资产                     | 节点 | 账号                                  | 动作                  |
@@ -203,8 +203,3 @@
 [限制 IP 登录]: https://kb.fit2cloud.com/?p=199
 [Redis 数据库纳管]: https://kb.fit2cloud.com/?p=91
 [纳管数据库应用]: https://kb.fit2cloud.com/?p=79
-
-
-
-
-

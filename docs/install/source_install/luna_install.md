@@ -1,116 +1,125 @@
-# Lina 环境部署
-## 1 Lina 组件简述
+# Luna 环境部署
+## 1 Luna 组件简述
 !!! tip ""
-    - [Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue]，[Element UI][element_ui] 完成。
+    [Luna][luna] 是 JumpServer 的前端 UI 项目，主要使用 [Angular CLI][angular_cli] 完成。
 
 ### 1.1 环境要求
 !!! tip ""
 
-    | Name    | Lina                     | Node  |
+    | Name    | Luna                     | Node  |
     | :------ | :----------------------- | :---- |
-    | Version | {{ jumpserver.tag }} | 14.16 |
+    | Version | {{ jumpserver.tag }}     | 16.5 |
 
 ### 1.2 选择部署方式
 !!! tip ""
-    === "源代码部署"  
+    === "源代码部署"
+
         - 下载源代码。
-        - 从 [Github][lina] 下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+        - 可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
         ```bash
         cd /opt
-        mkdir /opt/lina-{{ jumpserver.tag }}
-        wget -O /opt/lina-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-        tar -xf lina-{{ jumpserver.tag }}.tar.gz -C /opt/lina-{{ jumpserver.tag }} --strip-components 1
+        mkdir /opt/luna-{{ jumpserver.tag }}
+        wget -O /opt/luna-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
+        tar -xf luna-{{ jumpserver.tag }}.tar.gz -C /opt/luna-{{ jumpserver.tag }} --strip-components 1
         ```
-    
-        - 安装 Node。
-        - 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：   
 
-        === "Ubuntu 20.04"
-            ```bash
-            cd /opt
-            wget https://nodejs.org/download/release/v14.16.1/node-v14.16.1-linux-x64.tar.xz
-            tar -xf node-v14.16.1-linux-x64.tar.xz
-            mv node-v14.16.1-linux-x64 /usr/local/node
-            chown -R root:root /usr/local/node
-            export PATH=/usr/local/node/bin:$PATH
-            echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
-            ```
+        - 安装 Node。
+        - 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
+
         ```bash
         node -v
         ```
-        `v14.16.1`
-    
+        `v16.5`
+
         - 安装依赖。
 
         ```bash
-        cd /opt/lina-{{ jumpserver.tag }}
-        npm install -g yarn
+        cd /opt/luna-{{ jumpserver.tag }}
         yarn install
         ```
-    
+
         - 修改配置文件。
 
         ```bash
-        sed -i "s@Version <strong>.*</strong>@Version <strong>{{ jumpserver.tag }}</strong>@g" src/layout/components/Footer/index.vue
-        vi .env.development
+        sed -i "s@[0-9].[0-9].[0-9]@{{ jumpserver.tag }}@g" src/environments/environment.prod.ts
+        vi proxy.conf.json
         ```
         ```yaml
-        # 全局环境变量 请勿随意改动
-        ENV = 'development'
-    
-        # base api
-        VUE_APP_BASE_API = ''
-        VUE_APP_PUBLIC_PATH = '/ui/'
-    
-        # vue-cli uses the VUE_CLI_BABEL_TRANSPILE_MODULES environment variable,
-        # to control whether the babel-plugin-dynamic-import-node plugin is enabled.
-        # It only does one thing by converting all import() to require().
-        # This configuration can significantly increase the speed of hot updates,
-        # when you have a large number of pages.
-        # Detail:  https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/babel-preset-app/index.js
-    
-        VUE_CLI_BABEL_TRANSPILE_MODULES = true
-    
-        # External auth
-        VUE_APP_LOGIN_PATH = '/core/auth/login/'
-        VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
-    
-        # Dev server for core proxy
-        VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
-        VUE_APP_CORE_WS = 'ws://localhost:8070'
-        VUE_APP_ENV = 'development'
+        {
+          "/koko": {
+            "target": "http://localhost:5000",  # KoKo 地址
+            "secure": false,
+            "ws": true
+          },
+          "/media/": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/api/": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,                    # https ssl 需要开启
+            "changeOrigin": true
+          },
+          "/core": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/static": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/lion": {
+            "target": "http://localhost:9529",  # Lion 地址
+            "secure": false,
+            "pathRewrite": {
+              "^/lion/monitor": "/monitor"
+            },
+            "ws": true,
+            "changeOrigin": true
+          },
+          "/omnidb": {
+            "target": "http://localhost:8082",
+            "secure": false,
+            "ws": true,
+            "changeOrigin": true
+          }
+        }
         ```
-    
-        - 运行 Lina。
+
+        - 运行 Luna。
 
         ```bash
-        yarn serve
+        ./node_modules/.bin/ng serve
         ```
-    
-        - 构建 Lina。
+
+        - 构建 Luna。
 
         ```bash
         yarn build
-        cp -rf lina lina-{{ jumpserver.tag }}
-        tar -czf lina-{{ jumpserver.tag }}.tar.gz lina-{{ jumpserver.tag }}
+        cp -R src/assets/i18n luna/
+        cp -rf luna luna-{{ jumpserver.tag }}
+        tar -czf luna-{{ jumpserver.tag }}.tar.gz luna-{{ jumpserver.tag }}
         ```
-    
-        !!! tip "构建完成后, 生成在 lina 目录下"
-    
+
+        !!! tip "构建完成后, 生成在 luna 目录下"
+
     === "使用 Release"
-    
-        - 下载 Release 文件，从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。
+
+        - 下载 Release 文件，从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。
         - 这些版本是最新代码的稳定快照。
-    
-        | OS     | Arch  | Name                                                                  |
-        | :----- | :---- | :-------------------------------------------------------------------- |
-        | All    | All   | [lina-{{ jumpserver.tag }}.tar.gz][lina-{{ jumpserver.tag }}] |
+
+        | OS     | Arch  | Name                                                          |
+        | :----- | :---- | :------------------------------------------------------------ |
+        | All    | All   | [luna-{{ jumpserver.tag }}.tar.gz][luna-{{ jumpserver.tag }}] |
 
         ```bash
         cd /opt
-        wget https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
-        tar -xf lina-{{ jumpserver.tag }}.tar.gz
+        wget https://github.com/jumpserver/luna/releases/download/{{ jumpserver.tag }}/luna-{{ jumpserver.tag }}.tar.gz
+        tar -xf luna-{{ jumpserver.tag }}.tar.gz
         ```
 
 
