@@ -6,12 +6,11 @@
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
     - Gentoo / Arch Linux 请通过 [源码安装](../source_install/requirements.md)
 
-!!! tip ""
-    | 操作系统   | 架构 | Linux 内核  | 软件要求       | 最小化硬件配置     |
-    | :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
-    | linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
-    | linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
-    | linux/loong64 | loongarch64  | == 4.19   | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+| 操作系统   | 架构 | Linux 内核  | 软件要求       | 最小化硬件配置     |
+| :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
+| linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+| linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
+| linux/loong64 | loongarch64  | == 4.19   | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 
 === "Debian / Ubuntu"
     !!! tip ""
