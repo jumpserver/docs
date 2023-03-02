@@ -8,7 +8,7 @@
 
     | Name    | JumpServer               | Guacd                  |  Lion                    |
     | :------ | :----------------------- | :--------------------- | :----------------------- |
-    | Version | {{ jumpserver.tag }} | [1.4.0][guacd-1.4.0]   | {{ jumpserver.tag }} |
+    | Version | {{ jumpserver.tag }}     | [1.4.0][guacd-1.4.0]   | {{ jumpserver.tag }} |
 
     - 可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 

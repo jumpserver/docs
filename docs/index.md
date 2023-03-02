@@ -1,6 +1,5 @@
+
 # 产品介绍
-!!! warning "注意: "
-    - V3版本与V2.*版本存在一定的差异，如需V2版本升级至V3版本请参考 [升级说明文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}
 
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 的产品特色包括：

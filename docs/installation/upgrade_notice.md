@@ -1,5 +1,9 @@
 # 升级须知
-!!! warning "升级及迁移请保持 SECRET_KEY 与旧版本一致，否则会导致数据库加密数据无法解密"
+!!! warning "v3 版本与 v2 版本存在一定的差异，如需 v2 版本升级至 v3 版本 [请先阅读此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}"
+
+!!! info "在进行升级或者迁移操作前，请先做好备份工作"
+
+!!! warning "注意"
     - 更新前请一定要做好备份工作
     - [V2版本升级至V3版本请参考此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}
     - [数据库迁移请先参考此文档](previous_version_upgrade/mariadb-mysql.md){:target="_blank"}
@@ -12,10 +16,9 @@
     - 从 v2.6 版本开始，要求 Redis Server >= 6.0
     - 推荐使用外置 DB Server 和 Redis Server，方便日后扩展升级
 
-!!! tip ""
-    - 外置数据库要求：
+!!! tip "外置数据库要求"
 
-    | 名称     | 版本 |
+    | 名称     | 版本   |
     | :------ | :------ |
     | MySQL   | >= 5.7  |
     | MariaDB | >= 10.2 |    

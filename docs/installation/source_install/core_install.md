@@ -8,7 +8,7 @@
 
     | Name    | Core                     | Python |
     | :------ | :----------------------- | :----- |
-    | Version | {{ jumpserver.tag }} | >= 3.8 |
+    | Version | {{ jumpserver.tag }}     | 3.9    |
 
 ### 1.2 下载源代码
 !!! tip ""
@@ -25,7 +25,7 @@
     wget https://download.jumpserver.org/files/ip/GeoLite2-City.mmdb -O apps/common/utils/ip/geoip/GeoLite2-City.mmdb
     wget https://download.jumpserver.org/files/ip/ipipfree.ipdb -O apps/common/utils/ip/ipip/ipipfree.ipdb
     ```
-    
+
     ```bash
     ls -l requirements/
     ```
@@ -38,51 +38,51 @@
     ├── requirements.txt    # python
     └── rpm_pkg.sh          # 基于 RedHat 的发行版(如: CentOS)
     ```
-!!! tip "" 
+!!! tip ""
     === "Ubuntu 20.04"
         ```bash
         apt-get install -y pkg-config libxmlsec1-dev libpq-dev libffi-dev libxml2 libxslt-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
         ```
-    
+
         !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
         ```bash
         apt-get install -y libmariadb-dev
         ```
 
 ### 1.3 安装 Python3
-!!! tip "" 
+!!! tip ""
     - 从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
 
-!!! tip "" 
+!!! tip ""
     ```bash
-    apt-get install -y python3.8 python3.8-dev python3-venv
+    apt-get install -y python3.9 python3.9-dev python3-venv
     ```
     ```bash
-    python3
+    python3.9
     ```
     ```python
-    Python 3.8.12 (default, Dec 21 2021, 10:55:30)
-    [GCC 10.2.1 20210110] on linux
+    Python 3.9.5 (default, Nov 23 2021, 15:27:38)
+    [GCC 9.3.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
     ```
 
 ### 1.4 安装 Python 依赖
-!!! tip "" 
+!!! tip ""
     - 为 JumpServer 项目单独创建 python3 虚拟环境。
 
     ```bash
-    python3 -m venv /opt/py3
+    python3.9 -m venv /opt/py3
     source /opt/py3/bin/activate
     ```
-    
+
     - 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
     ```bash
     pip install -U pip setuptools wheel
     pip install -r requirements/requirements.txt
     ```
-    
+
     - 修改配置文件。
 
     ```bash
@@ -94,30 +94,30 @@
     # 加密秘钥 生产环境中请修改为随机字符串，请勿外泄, 可使用命令生成
     # $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 48;echo
     SECRET_KEY: ****************  # 必填项, 长度推荐 50 位以上
-    
+
     # SECURITY WARNING: keep the bootstrap token used in production secret!
     # 预共享Token koko 和 lion 用来注册服务账号，不在使用原来的注册接受机制
     # $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24;echo
     BOOTSTRAP_TOKEN: ***********  # 必填项, 长度推荐 20 位以上
-    
+
     # Development env open this, when error occur display the full process track, Production disable it
     # DEBUG 模式 开启DEBUG后遇到错误时可以看到更多日志
     DEBUG: true                   # 开发建议打开 DEBUG, 生产环境应该关闭
-    
+
     # DEBUG, INFO, WARNING, ERROR, CRITICAL can set. See https://docs.djangoproject.com/en/1.10/topics/logging/
     # 日志级别
     LOG_LEVEL: DEBUG              # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
     # LOG_DIR:
-    
+
     # Session expiration setting, Default 24 hour, Also set expired on on browser close
     # 浏览器Session过期时间，默认24小时, 也可以设置浏览器关闭则过期
     # SESSION_COOKIE_AGE: 86400
     SESSION_EXPIRE_AT_BROWSER_CLOSE: true  # 浏览器关闭 session 过期
-    
+
     # Database setting, Support sqlite3, mysql, postgres ....
     # 数据库设置
     # See https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-    
+
     # SQLite setting:
     # 使用单文件sqlite数据库
     # DB_ENGINE: sqlite3
@@ -130,14 +130,14 @@
     DB_USER: jumpserver
     DB_PASSWORD: ********
     DB_NAME: jumpserver
-    
+
     # When Django start it will bind this host and port
     # ./manage.py runserver 127.0.0.1:8080
     # 运行时绑定端口, 将会使用 0.0.0.0:8080 0.0.0.0:8070 端口
     HTTP_BIND_HOST: 0.0.0.0
     HTTP_LISTEN_PORT: 8080
     WS_LISTEN_PORT: 8070
-    
+
     # Use Redis as broker for celery and web socket
     # Redis配置
     REDIS_HOST: 127.0.0.1    # 自行配置 Redis 相关
@@ -145,7 +145,7 @@
     REDIS_PASSWORD: ********
     # REDIS_DB_CELERY: 3
     # REDIS_DB_CACHE: 4
-    
+
     # Use OpenID Authorization
     # 使用 OpenID 进行认证设置
     # AUTH_OPENID: False # True or False
@@ -168,21 +168,21 @@
     # AUTH_OPENID_SHARE_SESSION: True
     # AUTH_OPENID_IGNORE_SSL_VERIFICATION: True
     # AUTH_OPENID_ALWAYS_UPDATE_USER: True
-    
+
     # Use Radius authorization
     # 使用Radius来认证
     # AUTH_RADIUS: false
     # RADIUS_SERVER: localhost
     # RADIUS_PORT: 1812
     # RADIUS_SECRET:
-    
+
     # CAS 配置
     # AUTH_CAS': False,
     # CAS_SERVER_URL': "http://host/cas/",
     # CAS_ROOT_PROXIED_AS': 'http://jumpserver-host:port',  
     # CAS_LOGOUT_COMPLETELY': True,
     # CAS_VERSION': 3,
-    
+
     # LDAP/AD settings
     # LDAP 搜索分页数量
     # AUTH_LDAP_SEARCH_PAGED_SIZE: 1000
@@ -201,12 +201,12 @@
     # LDAP 认证时如果日志中出现以下信息将参数设置为 0 (详情参见：https://www.python-ldap.org/en/latest/faq.html)
     # In order to perform this operation a successful bind must be completed on the connection
     # AUTH_LDAP_OPTIONS_OPT_REFERRALS: -1
-    
+
     # OTP settings
     # OTP/MFA 配置
     # OTP_VALID_WINDOW: 0
     # OTP_ISSUER_NAME: Jumpserver
-    
+
     # Perm show single asset to ungrouped node
     # 是否把未授权节点资产放入到 未分组 节点中
     # PERM_SINGLE_ASSET_TO_UNGROUP_NODE: False

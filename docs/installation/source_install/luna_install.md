@@ -8,37 +8,37 @@
 
     | Name    | Luna                     | Node  |
     | :------ | :----------------------- | :---- |
-    | Version | {{ jumpserver.tag }} | 14.16 |
+    | Version | {{ jumpserver.tag }}     | 16.5 |
 
 ### 1.2 选择部署方式
 !!! tip ""
     === "源代码部署"
-    
+
         - 下载源代码。
         - 可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
-    
+
         ```bash
         cd /opt
         mkdir /opt/luna-{{ jumpserver.tag }}
         wget -O /opt/luna-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
         tar -xf luna-{{ jumpserver.tag }}.tar.gz -C /opt/luna-{{ jumpserver.tag }} --strip-components 1
         ```
-    
+
         - 安装 Node。
         - 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_10)，通过命令行中判断是否安装完成：
-    
+
         ```bash
         node -v
         ```
-        `v14.16.1`
-    
+        `v16.5`
+
         - 安装依赖。
 
         ```bash
         cd /opt/luna-{{ jumpserver.tag }}
         yarn install
         ```
-    
+
         - 修改配置文件。
 
         ```bash
@@ -89,13 +89,13 @@
           }
         }
         ```
-    
+
         - 运行 Luna。
 
         ```bash
         ./node_modules/.bin/ng serve
         ```
-    
+
         - 构建 Luna。
 
         ```bash
@@ -104,18 +104,18 @@
         cp -rf luna luna-{{ jumpserver.tag }}
         tar -czf luna-{{ jumpserver.tag }}.tar.gz luna-{{ jumpserver.tag }}
         ```
-    
+
         !!! tip "构建完成后, 生成在 luna 目录下"
-    
+
     === "使用 Release"
-    
+
         - 下载 Release 文件，从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。
         - 这些版本是最新代码的稳定快照。
-    
-        | OS     | Arch  | Name                                                                  |
-        | :----- | :---- | :-------------------------------------------------------------------- |
+
+        | OS     | Arch  | Name                                                          |
+        | :----- | :---- | :------------------------------------------------------------ |
         | All    | All   | [luna-{{ jumpserver.tag }}.tar.gz][luna-{{ jumpserver.tag }}] |
-    
+
         ```bash
         cd /opt
         wget https://github.com/jumpserver/luna/releases/download/{{ jumpserver.tag }}/luna-{{ jumpserver.tag }}.tar.gz
