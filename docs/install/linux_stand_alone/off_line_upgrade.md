@@ -1,8 +1,8 @@
 # 离线升级
 
-!!! warning "注意"
-    - [JumpServer 在做升级或迁移操作前，请先阅读升级须知](../upgrade_notice.md)
-    - 升级前做好数据库的备份工作是一个良好的习惯。
+!!! warning "v3 版本与 v2 版本存在一定的差异，如需 v2 版本升级至 v3 版本 [请先阅读此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}"
+
+!!! info "升级前请先参考 [升级或迁移须知](../upgrade_notice.md)"
 
 === "离线升级(linux/amd64)"
     !!! tip ""
@@ -48,5 +48,3 @@
         ./jmsctl.sh upgrade
         ./jmsctl.sh start
         ```
-
-

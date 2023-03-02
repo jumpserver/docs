@@ -1,127 +1,117 @@
-# Lion 环境部署
-## 1 Lion 组件简述
+# Lina 环境部署
+## 1 Lina 组件简述
 !!! tip ""
-    [Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole]，JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能。
+    - [Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue]，[Element UI][element_ui] 完成。
 
 ### 1.1 环境要求
 !!! tip ""
 
-    | Name    | JumpServer               | Guacd                  |  Lion                    |
-    | :------ | :----------------------- | :--------------------- | :----------------------- |
-    | Version | {{ jumpserver.tag }} | [1.4.0][guacd-1.4.0]   | {{ jumpserver.tag }} |
+    | Name    | Lina                     | Node  |
+    | :------ | :----------------------- | :---- |
+    | Version | {{ jumpserver.tag }}     | 16.5  |
 
-    - 可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
-
-    ```bash
-    mkdir /opt/guacamole-{{ jumpserver.tag }}
-    cd /opt/guacamole-{{ jumpserver.tag }}
-    wget http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
-    tar -xzf guacamole-server-1.4.0.tar.gz
-    cd guacamole-server-1.4.0/
-    ```
-
-    - 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
-
-    === "Ubuntu 20.04"
-        ```bash
-        apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin libossp-uuid-dev
-        apt-get install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev     libpulse-dev libssl-dev libvorbis-dev libwebp-dev
-        ```
-
-### 1.2 构建 Guacd
+### 1.2 选择部署方式
 !!! tip ""
-    ```bash
-    ./configure --with-init-dir=/etc/init.d
-    make
-    make install
-    ldconfig
-    ```
+    === "源代码部署"  
+        - 下载源代码。
+        - 从 [Github][lina] 下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
-    !!! tip ""
-    - 如果希望使用 systemd 管理, 可以使用 ./configure --with-systemd-dir=/etc/systemd/system/
-
-### 1.3 下载 Lion
-!!! tip ""
-    - 可以从 [Github][lion] 网站上获取最新的 [Release][lion_release] 副本。
-
-    | OS      | Arch    | Name                                                                                              |
-    | :------ | :------ | :------------------------------------------------------------------------------------------------ |
-    | Linux   | amd64   | [lion-{{ jumpserver.tag }}-linux-amd64.tar.gz][lion-{{ jumpserver.tag }}-linux-amd64]     |
-    | Linux   | arm64   | [lion-{{ jumpserver.tag }}-linux-arm64.tar.gz][lion-{{ jumpserver.tag }}-linux-arm64]     |
-    | Linux   | loong64 | [lion-{{ jumpserver.tag }}-linux-loong64.tar.gz][lion-{{ jumpserver.tag }}-linux-loong64] |
-    | Darwin  | amd64   | [lion-{{ jumpserver.tag }}-darwin-amd64.tar.gz][lion-{{ jumpserver.tag }}-darwin-amd64]   |
-    | Windows | amd64   | [lion-{{ jumpserver.tag }}-windows-amd64.tar.gz][lion-{{ jumpserver.tag }}-windows-amd64] |
-
-!!! tip ""
-    === "Linux/amd64"
         ```bash
         cd /opt
-        wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
-        tar -xf lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
-        cd lion-{{ jumpserver.tag }}-linux-amd64
+        mkdir /opt/lina-{{ jumpserver.tag }}
+        wget -O /opt/lina-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
+        tar -xf lina-{{ jumpserver.tag }}.tar.gz -C /opt/lina-{{ jumpserver.tag }} --strip-components 1
         ```
 
-    === "Linux/arm64"
+        - 安装 Node。
+        - 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：   
+
+        === "Ubuntu 20.04"
+            ```bash
+            cd /opt
+            wget https://nodejs.org/download/release/v16.5/node-v16.5-linux-x64.tar.xz
+            tar -xf node-v16.5-linux-x64.tar.xz
+            mv node-v16.5-linux-x64 /usr/local/node
+            chown -R root:root /usr/local/node
+            export PATH=/usr/local/node/bin:$PATH
+            echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
+            ```
+        ```bash
+        node -v
+        ```
+        `v16.5`
+
+        - 安装依赖。
+
+        ```bash
+        cd /opt/lina-{{ jumpserver.tag }}
+        npm install -g yarn
+        yarn install
+        ```
+
+        - 修改配置文件。
+
+        ```bash
+        sed -i "s@Version <strong>.*</strong>@Version <strong>{{ jumpserver.tag }}</strong>@g" src/layout/components/Footer/index.vue
+        vi .env.development
+        ```
+        ```yaml
+        # 全局环境变量 请勿随意改动
+        ENV = 'development'
+
+        # base api
+        VUE_APP_BASE_API = ''
+        VUE_APP_PUBLIC_PATH = '/ui/'
+
+        # vue-cli uses the VUE_CLI_BABEL_TRANSPILE_MODULES environment variable,
+        # to control whether the babel-plugin-dynamic-import-node plugin is enabled.
+        # It only does one thing by converting all import() to require().
+        # This configuration can significantly increase the speed of hot updates,
+        # when you have a large number of pages.
+        # Detail:  https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/babel-preset-app/index.js
+
+        VUE_CLI_BABEL_TRANSPILE_MODULES = true
+
+        # External auth
+        VUE_APP_LOGIN_PATH = '/core/auth/login/'
+        VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
+
+        # Dev server for core proxy
+        VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
+        VUE_APP_CORE_WS = 'ws://localhost:8070'
+        VUE_APP_ENV = 'development'
+        ```
+
+        - 运行 Lina。
+
+        ```bash
+        yarn serve
+        ```
+
+        - 构建 Lina。
+
+        ```bash
+        yarn build
+        cp -rf lina lina-{{ jumpserver.tag }}
+        tar -czf lina-{{ jumpserver.tag }}.tar.gz lina-{{ jumpserver.tag }}
+        ```
+
+        !!! tip "构建完成后, 生成在 lina 目录下"
+
+    === "使用 Release"
+
+        - 下载 Release 文件，从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。
+        - 这些版本是最新代码的稳定快照。
+
+        | OS     | Arch  | Name                                                          |
+        | :----- | :---- | :------------------------------------------------------------ |
+        | All    | All   | [lina-{{ jumpserver.tag }}.tar.gz][lina-{{ jumpserver.tag }}] |
+
         ```bash
         cd /opt
-        wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
-        tar -xf lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
-        cd lion-{{ jumpserver.tag }}-linux-arm64
+        wget https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
+        tar -xf lina-{{ jumpserver.tag }}.tar.gz
         ```
-
-### 1.4 修改配置文件
-!!! tip ""
-    ```bash
-    cp config_example.yml config.yml
-    vi config.yml
-    ```
-    ```yaml
-    # 项目名称, 会用来向Jumpserver注册, 识别而已, 不能重复
-    # NAME: {{ Hostname }}
-
-    # Jumpserver项目的url, api请求注册会使用
-    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
-
-    # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
-    # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
-    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
-
-    # 启动时绑定的ip, 默认 0.0.0.0
-    BIND_HOST: 0.0.0.0
-
-    # 监听的HTTP/WS端口号，默认8081
-    HTTPD_PORT: 8081
-
-    # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
-    LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
-
-    # Guacamole Server ip，默认127.0.0.1
-    # GUA_HOST: 127.0.0.1
-
-    # Guacamole Server 端口号，默认4822
-    # GUA_PORT: 4822
-
-    # 会话共享使用的类型 [local, redis], 默认local
-    # SHARE_ROOM_TYPE: local
-
-    # Redis配置
-    # REDIS_HOST: 127.0.0.1
-    # REDIS_PORT: 6379
-    # REDIS_PASSWORD:
-    # REDIS_DB_ROOM:
-    ```
-
-### 1.5 启动 Guacd
-!!! tip ""
-    ```bash
-    /etc/init.d/guacd start
-    ```
-
-### 1.6 启动 Lion
-!!! tip ""
-    ```bash
-    ./lion
-    ```
 
 
 [nginx]: http://nginx.org/

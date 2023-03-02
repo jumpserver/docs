@@ -3,9 +3,9 @@
 ## 1 准备工作
 ### 1.1 环境信息
 !!! tip ""
-    - JumpServer_Node_04 服务器信息如下: 
-    
-    ```sh 
+    - JumpServer_Node_04 服务器信息如下:
+
+    ```sh
     192.168.100.24
     ```
 
@@ -33,7 +33,7 @@
     echo "192.168.100.11:/data /opt/jumpserver/core/data nfs defaults 0 0" >> /etc/fstab
     ```
 
-## 3 安装 JumpServer 
+## 3 安装 JumpServer
 ### 3.1 下载 jumpserver-install 软件包
 !!! tip ""
     ```sh
