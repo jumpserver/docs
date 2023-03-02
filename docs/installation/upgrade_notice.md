@@ -2,9 +2,9 @@
 !!! warning "升级及迁移请保持 SECRET_KEY 与旧版本一致，否则会导致数据库加密数据无法解密"
     - 更新前请一定要做好备份工作
     - [V2版本升级至V3版本请参考此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}
-    - [数据库迁移请先参考此文档](old_version_upgrade/mariadb-mysql.md){:target="_blank"}
-    - [升级前版本小于 1.4.4 请先按照此文档操作](old_version_upgrade/1.0.0-1.4.3.md){:target="_blank"}
-    - [升级前版本小于 1.4.5 请先按照此文档操作](old_version_upgrade/1.4.4.md){:target="_blank"}
+    - [数据库迁移请先参考此文档](previous_version_upgrade/mariadb-mysql.md){:target="_blank"}
+    - [升级前版本小于 1.4.4 请先按照此文档操作](previous_version_upgrade/1.0.0-1.4.3.md){:target="_blank"}
+    - [升级前版本小于 1.4.5 请先按照此文档操作](previous_version_upgrade/1.4.4.md){:target="_blank"}
     - [未使用 installer 部署的用户请参考迁移说明迁移到最新版本](migration.md){:target="_blank"}
 
 !!! tip "环境说明"

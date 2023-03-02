@@ -9,6 +9,7 @@
     | linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
     | linux/loong64 | loongarch64  | == 4.19   | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 
+
 === "Debian / Ubuntu"
     !!! tip ""
         ```sh
@@ -25,7 +26,7 @@
 ## 2 数据库
 !!! tip ""
     **JumpServer 需要使用 MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据，如果有自建数据库或云数据库的使用需求请参考下列的数据库环境要求：**
-!!! tip "我们支持[数据库 SSL 连接](../db_ssl/mysql_ssl.md) 和 [Redis SSL 连接](../db_ssl/redis_ssl.md)"
+!!! tip "我们支持[数据库 SSL 连接](../security_setup/mysql_ssl.md) 和 [Redis SSL 连接](../security_setup/redis_ssl.md)"
 
 !!! tip ""
     | 名称    | 版本 | 默认字符集  | 默认字符编码  | TLS/SSL          |

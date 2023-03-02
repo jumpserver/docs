@@ -1,6 +1,6 @@
 # 在线安装
 
-!!! tip "[JumpServer 部署环境要求可点击后进行参考](../linux_stand_alone/requirements.md)"
+!!! tip "[JumpServer 部署环境要求可点击后进行参考](../setup_linux_standalone/requirements.md)"
 
 ## 1 安装部署
 !!! tip ""
@@ -69,4 +69,4 @@
     用户名: admin
     密码: admin #第一次登陆需要修改密码
     ```
-![登陆页面](../../img/on_line_install_01.png)
+![登陆页面](../../img/online_install_01.png)

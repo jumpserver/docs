@@ -2,7 +2,7 @@
 ## 1 一键安装
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](jms_install/source_install/requirements.md)
+    - Gentoo / Arch Linux 请通过 [源码安装](installation/source_install/requirements.md)
  
 !!! tip ""
     === "中国大陆"

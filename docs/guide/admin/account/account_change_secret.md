@@ -10,7 +10,7 @@
 ## 2 账号改密任务创建
 !!! tip ""
     - 点击`账号改密`页面的`创建`按钮，创建一个账号改密任务。
-![account_densification01](../../../img/account_densification01.png)
+![account_change_secret01](../../../img/account_change_secret01.png)
 
 !!! tip ""
     - 详细参数说明：
@@ -32,4 +32,4 @@
 ## 3 执行列表
 !!! tip ""
     - 点击切换至`账号改密`-`执行列表`页签，该页面主要查看账号改密任务的执行日志、任务详情等详细信息。
-![account_densification02](../../../img/account_densification02.png)
+![account_change_secret02](../../../img/account_change_secret02.png)
