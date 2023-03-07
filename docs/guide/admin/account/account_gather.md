@@ -4,12 +4,12 @@
 ## 1 功能简述
 !!! tip ""
     - JumpServer 可以收集资产上的账号，通过创建任务，定时或者手动的执行，去收集各个资产上的用户账号信息。 
-![account_collect01](../../../img/account_collect01.png)
+![account_gather01](../../../img/account_gather01.png)
 
 ## 2 收集任务创建
 !!! tip ""
     - 点击`账号收集`-`收集任务`页签的`创建`按钮，创建一个账号收集任务。
-![account_collect02](../../../img/account_collect02.png)
+![account_gather02](../../../img/account_gather02.png)
 
 !!! tip ""
     - 详细参数说明：
@@ -25,4 +25,4 @@
 ## 3 执行列表
 !!! tip ""
     - 点击切换至`账号收集`-`执行列表`页签，该页面主要查看账号收集任务的执行日志、任务详情等详细信息。
-![account_collect03](../../../img/account_collect03.png)
+![account_gather03](../../../img/account_gather03.png)

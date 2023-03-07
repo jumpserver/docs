@@ -39,3 +39,9 @@
 ## 5 版本相关
 !!! tip ""
     - [JumpServer V3 版本解读](https://mp.weixin.qq.com/s/ofN6KUyjabaWw4HVdvLQ8Q)
+
+## 6 升级问题
+!!! tip ""
+    - [JumpServer 升级问题](https://kb.fit2cloud.com/?p=9aaf5bc6-7071-4be0-96fd-98295feee3f2)
+
+

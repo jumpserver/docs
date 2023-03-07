@@ -17,7 +17,7 @@
     
     | Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
-    | Redis   | >= 5.0  | :material-check: | :material-close:   | :material-check: |
+    | Redis   | >= 6.0  | :material-check: | :material-close:   | :material-check: |
     
 ### 1.2 服务器要求
 !!! tip ""

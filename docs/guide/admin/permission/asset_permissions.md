@@ -17,7 +17,7 @@
 ## 2 创建资产授权规则
 !!! tip ""
     - 点击资产授权页面的`创建`按钮，即进入资产授权创建页面。
-![asset_authorization01](../../../img/asset_anthorization01.png)
+![asset_permissions01](../../../img/asset_permissions01.png)
 
 
 !!! tip ""
@@ -45,7 +45,7 @@
 
 !!! tip ""  
     - 授权规则截图如下：
-![asset_authorization02](../../../img/asset_anthorization02.png)
+![asset_permissions02](../../../img/asset_permissions02.png)
 
 ### 3.2 给某个用户组授权某资产
 !!! tip ""
@@ -54,11 +54,11 @@
 
 !!! tip ""
     - 用户组截图如下：
-![asset_authorization03](../../../img/asset_anthorization03.png)
+![asset_permissions03](../../../img/asset_permissions03.png)
 
 !!! tip ""
     - 授权规则截图如下：
-![asset_authorization04](../../../img/asset_anthorization04.png)
+![asset_permissions04](../../../img/asset_permissions04.png)
 
 !!! warning "注意"
     - 授权规则模块中的任何选项都为空的情况下，该授权规则不起任何作用。 
