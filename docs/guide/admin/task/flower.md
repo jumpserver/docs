@@ -8,5 +8,5 @@
 ## 2 页面展示
 !!! tip ""
     - 点击页面上部分的任务状态可查看成功任务的日志或失败任务的日志。
-![task_monitor01](../../../img/task_monitor01.png)
-![task_monitor02](../../../img/task_monitor02.png)
+![flower01](../../../img/flower01.png)
+![flower02](../../../img/flower02.png)

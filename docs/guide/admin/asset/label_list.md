@@ -6,7 +6,7 @@
 ## 2 标签的创建
 !!! tip ""
     - 点击标签管理页面左上角`创建`按钮，进入标签创建页面。
-![lable_list01](../../../img/lable_list01.png)
+![label_list01](../../../img/label_list01.png)
 
 !!! tip "提示"
     - 标签信息有名称和值。
@@ -18,8 +18,8 @@
 ## 3 标签的查询
 !!! tip ""
     - 在创建标签的页面中选择多个资产绑定。
-![lable_list02](../../../img/lable_list02.png)
+![label_list02](../../../img/label_list02.png)
 
 !!! tip ""
     - 切换至`资产列表`页面中，通过查询指定标签来访问多个资产信息。
-![lable_list03](../../../img/lable_list03.png)
+![label_list03](../../../img/label_list03.png)

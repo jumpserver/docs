@@ -6,14 +6,18 @@
     - 仔细检查该节点升级过程确保无异常。
     - 然后按照升级文档对其他 JumpServer 节点升级即可。
 
+!!! tip ""
+    - 从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录。
+
+!!! tip ""
     ```sh
     cd /opt
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.tag }}
+    tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
+    cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
     ```
     ```sh
     # 额外节点可以设置 SKIP_BACKUP_DB=1 跳过数据库备份, 第一个升级节点不要跳过备份
     export SKIP_BACKUP_DB=1
     ./jmsctl.sh upgrade
+    ./jmsctl.sh start
     ```
