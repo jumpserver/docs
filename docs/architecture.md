@@ -16,5 +16,4 @@
     - Razor 是服务于 RDP 协议组件，该组件主要功能是通过 JumpServer Client 方式访问 Windows 资产。
 
 ## 3 逻辑架构
-<<<<<<< HEAD
 !!! tip "详见 [源码部署](installation/source_install/requirements.md)"
