@@ -1,21 +1,29 @@
+<script>
+    $(document).ready(function () {
+        var currentOS = navigator.platform;
+        if (currentOS.match("iPhone" || "iPod" || "iPad" || "Andriod" || "ios")) {
+            const mainDom = document.getElementById('tmpspan');
+            mainDom.innerHTML = mainDom.innerHTML + '<br />'
+        }
+    });
+</script>
 <header id="topnav" class="defaultscroll sticky">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active alert alert-release alert-dismissible fade show text-center notice-phone" role="alert">
-                <span class="pr-4">《Jumpserver 实战训练营》线上课程即将开班，报名参加学习并通过考试，将获得飞致云官方认证！
-</span>
+            <div class="carousel-item active alert alert-release alert-dismissible fade show text-center" role="alert">
+                <span id="tmpspan" class="pr-4" style="white-space: pre-line">《JumpServer 实战训练营》线上课程即将开班，报名参加学习并通过考试，将获得飞致云官方认证！</span>
                 <a target="_blank" href="https://lkh.xet.tech/s/4htgv1" class="btn-outline-release  mr-2">
                     立即报名 </a>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+<!--        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">-->
+<!--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--            <span class="sr-only">Previous</span>-->
+<!--        </a>-->
+<!--        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">-->
+<!--            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--            <span class="sr-only">Next</span>-->
+<!--        </a>-->
     </div>
     <svg class="hidden-print" aria-hidden="true" style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
