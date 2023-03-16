@@ -18,7 +18,16 @@
 }
 
 .md-main__inner {
-  margin-top: 6rem;
+  margin-top: 5rem;
+}
+
+@media (max-width: 768px){
+  .md-header{
+    top: 131px;
+  }
+  .md-main__inner {
+    margin-top: 6rem;
+  }
 }
 
 .progress-bar {
