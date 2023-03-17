@@ -2,6 +2,8 @@
 ## 1 常见问题汇总
 !!! tip ""
     - [JumpServer 常见问题汇总](https://kb.fit2cloud.com/?p=73)
+    - [JumpServer 查询日志方法](https://kb.fit2cloud.com/?p=8b420906-c41e-417a-b171-8414213d8f8e)
+    - [JumpServer 组件相关的常见问题](https://kb.fit2cloud.com/?p=288bcfe2-c7f6-4954-984c-55c115b524e9)
 
 ## 2 系统管理相关
 !!! tip ""
