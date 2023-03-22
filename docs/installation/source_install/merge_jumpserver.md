@@ -67,6 +67,19 @@
             send_timeout 6000;
           }
 
+          location /ws/ {
+            # 注意将模板中的组件名称替换为服务实际 ip 地址， 如都在本机部署
+            # proxy_pass       http://127.0.0.1:8080;
+            proxy_pass http://core:8080;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          }
+
           location ~ ^/(core|api|media)/ {
             # 注意将模板中的组件名称替换为服务实际 ip 地址， 如都在本机部署
             # proxy_pass       http://127.0.0.1:8080;
@@ -156,6 +169,19 @@
             proxy_send_timeout 600;
             proxy_read_timeout 600;
             send_timeout 6000;
+          }
+
+          location /ws/ {
+            # 注意将模板中的组件名称替换为服务实际 ip 地址， 如都在本机部署
+            # proxy_pass       http://127.0.0.1:8080;
+            proxy_pass http://core:8080;
+            proxy_buffering off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           }
 
           location ~ ^/(core|api|media)/ {
