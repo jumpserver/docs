@@ -144,7 +144,7 @@
 
 ### 4.2 元数据 manifest.yml
 !!! tip ""
-    - manifes.yml 定义了 Applet 的元数据，如名称、作者、版本、支持的协议。
+    - manifest.yml 定义了 Applet 的元数据，如名称、作者、版本、支持的协议。
 
     ```yml
     name: mysql_workbench8 （required）
