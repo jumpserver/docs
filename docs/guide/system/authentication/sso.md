@@ -52,7 +52,7 @@
     {
         "login_url": "http://demo.jumpserver.org/api/v1/authentication/sso/login/?authkey=779e97cc-cd05-41a7-a3c3-0320896ba309&next=%2Fluna%2F"
     }
-    # 直接访问这个链接即可使用用户的身份免密登陆 luna 页面  
-    # 用户和要登陆页面设置: {"username": "zhangsan", "next": "/luna/"}  
+    # 直接访问这个链接即可使用用户的身份免密登录 luna 页面  
+    # 用户和要登录页面设置: {"username": "zhangsan", "next": "/luna/"}  
     # 这里的 zhangsan 是 JumpServer 用户列表里面的用户 username，可以改成其他的用户
     ```
