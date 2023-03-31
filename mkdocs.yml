@@ -115,7 +115,7 @@ nav:
             - 账号备份 (X-Pack): guide/admin/account/account_backup.md
         - 权限管理:
             - 资产授权: guide/admin/permission/asset_permissions.md
-            - 资产登陆 (X-Pack): guide/admin/permission/host_acls.md
+            - 资产登录 (X-Pack): guide/admin/permission/host_acls.md
             - 命令过滤: guide/admin/permission/cmd_acls.md
         - 任务中心:
             - 任务列表: guide/admin/task/task_list.md
