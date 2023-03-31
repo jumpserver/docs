@@ -11,9 +11,9 @@
     - Koko 是服务于类 Unix 系统平台的组件，通过 SSH、Telnet 协议提供字符型连接。
     - Lion 是服务于 Windows 系统平台的组件，用于 Web 端访问 Windows 资产。
     - Omnidb 是服务于数据库的组件，用于可视化界面纳管数据库。
-    - Celery 是处理异步任务的组件，用于执行 JumpServer 相关的自动化任务。
-    - Magnus 是服务于数据库的组件，用于通过客户端代理访问数据库。
     - Razor 是服务于 RDP 协议组件，该组件主要功能是通过 JumpServer Client 方式访问 Windows 资产。
+    - Magnus 是服务于数据库的组件，用于通过客户端代理访问数据库。
+    - Celery 是处理异步任务的组件，用于执行 JumpServer 相关的自动化任务。
 
 ## 3 逻辑架构
 !!! tip "详见 [源码部署](installation/source_install/requirements.md)"
