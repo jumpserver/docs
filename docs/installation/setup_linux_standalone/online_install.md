@@ -67,4 +67,4 @@
     用户名: admin
     密码: admin
     ```
-![登陆页面](../../img/online_install_01.png)
+![登录页面](../../img/online_install_01.png)

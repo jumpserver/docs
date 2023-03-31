@@ -76,7 +76,7 @@
     PERIOD_TASK_ENABLED=True                 # (1.5.2之后版本) 启用内部任务  内部自动推送用户，获取资产信息等任务
     PERIOD_TASK=True                         # (1.5.2及之前版本) 启用内部任务
     
-    LOGIN_LOG_KEEP_DAYS=90                   # 登陆日志保存默认保存时间  登陆日志保存时间，单位天。超过这个时间，后台将自动清理相应的登录信息，即使在页面中设置的审计周期超过对应的的配置参数，也只能查看最近配置（90天）的登录日志。
+    LOGIN_LOG_KEEP_DAYS=90                   # 登录日志保存默认保存时间  登录日志保存时间，单位天。超过这个时间，后台将自动清理相应的登录信息，即使在页面中设置的审计周期超过对应的的配置参数，也只能查看最近配置（90天）的登录日志。
     
     SECURITY_VIEW_AUTH_NEED_MFA=True         # 查看或导出密码，需要 MFA
     SECURITY_LOGIN_CHALLENGE_ENABLED=False   # 登录页面是否开启 CHALLENGE 输入框
@@ -114,8 +114,8 @@
     # ASSET_LOAD_POLICY=all          # all 则用户资产缓存本地搜索分页；默认异步加载资产, 异步搜索分页;   
     ZIP_MAX_SIZE=1024M               # web sftp 文件下载，zip 支持压缩的最大额度 (单位=M)
     ZIP_TMP_PATH=/tmp                # web sftp 文件下载，zip压缩文件存放的临时目录
-    CLIENT_ALIVE_INTERVAL=30         # 用户 SSH 登陆 koko 之后，Koko 给 SSH client 发送的心跳间隔，默认 30，0 则表示不发送  保持登陆用户连接不断开
-    RETRY_ALIVE_COUNT_MAX=3          # 登陆资产之后，Koko 向资产发送心跳包出现错误的重试次数，默认为3。  当网络不稳定时，可以数值可设置大一些。
+    CLIENT_ALIVE_INTERVAL=30         # 用户 SSH 登录 koko 之后，Koko 给 SSH client 发送的心跳间隔，默认 30，0 则表示不发送  保持登录用户连接不断开
+    RETRY_ALIVE_COUNT_MAX=3          # 登录资产之后，Koko 向资产发送心跳包出现错误的重试次数，默认为3。  当网络不稳定时，可以数值可设置大一些。
     SHARE_ROOM_TYPE=local            # 可选择 local 和 redis  会话监控和共享使用的方式
     REDIS_HOST=127.0.0.1             # redis 配置
     REDIS_PORT=6379                  # redis 配置
