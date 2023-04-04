@@ -2,32 +2,37 @@
     $(document).ready(function () {
         var currentOS = navigator.platform;
         if (currentOS.match("iPhone" || "iPod" || "iPad" || "Andriod" || "ios")) {
-            const mainDom1 = document.getElementById('tmpspan1');
-            mainDom1.innerHTML = mainDom1.innerHTML + '<br />'
-            const mainDom2 = document.getElementById('tmpspan2');
-            mainDom2.innerHTML = mainDom2.innerHTML + '<br />'
+            const mainDom = document.getElementById('tmpspan');
+            mainDom.innerHTML = mainDom.innerHTML + '<br />'
         }
     });
+
+    function closeDiv(){
+        document.getElementsByClassName('md-header')[0].style.top='48px';
+        document.getElementsByClassName('md-main__inner')[0].style.marginTop='3rem';
+        const leftButton = document.getElementById("leftButton");
+        leftButton.parentNode.removeChild(leftButton);
+        const rightButton = document.getElementById("rightButton");
+        rightButton.parentNode.removeChild(rightButton);
+    }
 </script>
 <header id="topnav" class="defaultscroll sticky">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active alert alert-release alert-dismissible fade show text-center" role="alert">
-                <span id="tmpspan1" class="pr-4" style="white-space: pre-line">2023年4月21日（周五下午），《JumpServer 城市体验营·上海站》宜山路光启城火热报名中，快来报名吧！</span>
-                <a target="_blank" href="https://doc.weixin.qq.com/forms/AFYAQAeUAAwAIUAAAZiAP01Dg3ebo3RDf" class="btn-outline-release  mr-2">
-                    立即报名 </a>
-            </div>
-            <div class="carousel-item alert alert-release alert-dismissible fade show text-center" role="alert">
-                <span id="tmpspan2" class="pr-4">《JumpServer v3.0 实战训练营》线上课程即将开班，报名参加学习并通过考试，将获得飞致云官方认证！</span>
+                <span id="tmpspan" class="pr-4" style="white-space: pre-line">《JumpServer v3.0 实战训练营》线上课程即将开班，报名参加学习并通过考试，将获得飞致云官方认证！</span>
                 <a target="_blank" href="https://lkh.xet.tech/s/2Pop50" class="btn-outline-release  mr-2">
                     立即报名 </a>
+                <button style="z-index: 99;position: relative;top: 7px" type="button" onclick="closeDiv()" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"> × </span>
+                </button>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <a id="leftButton" class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <a id="rightButton" class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
