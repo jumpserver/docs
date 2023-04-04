@@ -203,6 +203,8 @@ h4,h5{font-family:-apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro
 .alert{padding:8px 15px;border-radius:6px;font-size:14px;}
 .alert.alert-dismissible{padding-right:30px;}
 .alert.alert-dismissible .close{top:-6px;right:-10px;font-size:16px!important;}
+.close{float:right;font-size:1.5rem;font-weight:700;line-height:1;color:#fff;text-shadow:0 1px 0 #fff;opacity:.5;}
+.close:hover{color:#000;text-decoration:none;}
 .alert-release{padding:4px 16px;border-radius:0px;font-size:14px;margin-bottom:0px;background-color:rgba(43, 147, 124);color:#ffffff;border-color:rgba(43, 147, 124);}
 .fade{transition:opacity .15s linear;}
 @media (max-width: 768px){
