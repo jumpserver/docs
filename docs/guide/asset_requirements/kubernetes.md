@@ -3,23 +3,31 @@
 ## 1 Kubernetes 的集群地址
 !!! tip ""
     - 集群填写的是 K8S 的集群地址。
-    - 直接访问集群地址页面可以显示如下信息(如: https://172.16.8.8:8443)，一般是 master 节点的 8443 端口。
+    - 直接访问集群地址页面可以显示如下信息(如: https://10.1.13.67:6443)，一般是 master 节点的 6443或8443 端口。
 
-    ```json
-    {
-      "kind": "Status",
-      "apiVersion": "v1",
-      "metadata": {
-
-      },
-      "status": "Failure",
-      "message": "forbidden: User \"system:anonymous\" cannot get path \"/\"",
-      "reason": "Forbidden",
-      "details": {
-
-      },
-      "code": 403
-    }
+    ```sh
+    kubectl config view --minify
+    ```
+    ```vim hl_lines="5"
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: DATA+OMITTED
+        server: https://10.1.13.67:6443
+      name: kubernetes
+    contexts:
+    - context:
+        cluster: kubernetes
+        user: kubernetes-admin
+      name: kubernetes-admin@kubernetes
+    current-context: kubernetes-admin@kubernetes
+    kind: Config
+    preferences: {}
+    users:
+    - name: kubernetes-admin
+      user:
+        client-certificate-data: REDACTED
+        client-key-data: REDACTED
     ```
 
 ## 2 获取 Token 方法

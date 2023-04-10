@@ -165,7 +165,7 @@ nav:
         - 消息订阅: guide/system/message.md
         - 短信设置 (X-Pack): guide/system/sms.md
         - 终端设置: guide/system/terminal.md
-        - 远程应用 (X-Pack): guide/system/remoteapp.md
+        - 远程应用: guide/system/remoteapp.md
         - 安全设置: guide/system/security.md
         - 定期清理: guide/system/regular_clean.md
         - 界面设置 (X-Pack): guide/system/index_logo.md
@@ -232,10 +232,10 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v3.1.1
+    tag: v3.1.2
     jmservisor: v1.2.5
     wisp: v0.1.6
-    installer: 264
+    installer: 265
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
