@@ -37,7 +37,7 @@
     ```
 
     === "Session"
-        用户通过页面后登录，cookie 中会存在 sessionid，请求时同样把 sessionid 放到 cookie 中
+        用户通过页面后登录，cookie 中会存在  jms_sessionid，请求时同样把  jms_sessionid 放到 cookie 中
 
     === "Token"
         ```sh
