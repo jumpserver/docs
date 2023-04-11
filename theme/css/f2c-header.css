@@ -60,11 +60,22 @@ h5{font-size:1.25rem;}
 .mb-1{margin-bottom:.25rem!important;}
 .mt-3{margin-top:1rem!important;}
 .mt-4{margin-top:1.5rem!important;}
+.mb-2{margin-bottom: .5rem!important}
+.mt-2{margin-top: .5rem!important}
+.card-item {padding: 0.7rem !important}
+.title-weight400{font-weight: 400;}
 .pr-0{padding-right:0!important;}
 .pl-0{padding-left:0!important;}
 .pt-2{padding-top:.5rem!important;}
 .text-center{text-align:center!important;}
 .text-muted{color:#6c757d!important;}
+@media (min-width: 992px) {
+    .col-lg-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%
+    }
+}
 @media print{
 *,::after,::before{text-shadow:none!important;box-shadow:none!important;}
 a:not(.btn){text-decoration:underline;}
