@@ -6,7 +6,7 @@
 
 ## 2 微信群
 
-![wechat-group](img/weixin-group.jpg){ width="156px" }
+![wechat-group](img/weixin_group.png){ width="156px" }
 
 ## 3 学习认证
 ![contact01](img/contact01.png){ width="156px" }
