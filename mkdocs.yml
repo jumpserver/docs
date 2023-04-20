@@ -232,10 +232,10 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v3.1.2
+    tag: v3.2.0
     jmservisor: v1.2.5
     wisp: v0.1.6
-    installer: 272
+    installer: 286
   search:
     separator: '[\s\-\.]+'
     language: 'zh'

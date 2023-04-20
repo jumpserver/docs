@@ -9,7 +9,7 @@
     - 基本设置主要对四个方面进行设置：KoKo 组件、Razor 组件、Magnus 组件和 Luna 组件。
 
 !!! tip ""
-    - KoKo 组件是服务于类 Unix 系统平台的组件，该组件的功能主要是：命令行的方式纳管 Linux、数据库、K8S 等资产；
+    - KoKo 组件是服务于类 Unix 资产平台的组件，该组件的功能主要是：命令行的方式纳管 Linux、数据库、K8S 等资产；
     - 作为 SSH 服务，还可通过2222端口进行 SSH 或者 SFTP 操作资产。
 ![treminal01](../../img/terminal01.png)
 
