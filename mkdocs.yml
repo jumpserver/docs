@@ -235,7 +235,7 @@ extra:
     tag: v3.2.0
     jmservisor: v1.2.5
     wisp: v0.1.6
-    installer: 286
+    installer: 290
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
