@@ -151,15 +151,15 @@
     JUMPSERVER_REMOTE_APP_COPY_PASTE_ENABLE=False       # 开启Remote app的剪切板粘贴复制
     JUMPSERVER_COLOR_DEPTH=32                    # 颜色深度 低色 16位, 真彩 24位, 真彩 32位
     JUMPSERVER_DPI=120                           # 图像每英寸长度内的像素点数 120, 160, 240 等
-    JUMPSERVER_DISABLE_AUDIO=False               # 禁止声音 true, false  无(允许声音)
-    JUMPSERVER_ENABLE_WALLPAPER=False            # 启用墙纸 true, false  无（禁用）
-    JUMPSERVER_ENABLE_THEMING=False              # 启用主题 true, false  无（禁用）
-    JUMPSERVER_ENABLE_FONT_SMOOTHING=False       # 启用平滑字体 true, false  无（禁用）
-    JUMPSERVER_ENABLE_FULL_WINDOW_DRAG=False     # 启用拖拽窗口时渲染全部内容 true, false  无（禁用）
-    JUMPSERVER_ENABLE_DESKTOP_COMPOSITION=False  # 启用透明窗口和阴影等图形效果 true, false  无（禁用）
-    JUMPSERVER_ENABLE_MENU_ANIMATIONS=False      # 启用菜单开关动画 true, false  无（禁用）
-    JUMPSERVER_DISABLE_BITMAP_CACHING=True       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
-    JUMPSERVER_DISABLE_OFFSCREEN_CACHING=True    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
-    JUMPSERVER_DISABLE_GLYPH_CACHING=True        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
+    JUMPSERVER_DISABLE_AUDIO=false               # 禁止声音 true, false  无(允许声音)
+    JUMPSERVER_ENABLE_WALLPAPER=false            # 启用墙纸 true, false  无（禁用）
+    JUMPSERVER_ENABLE_THEMING=false              # 启用主题 true, false  无（禁用）
+    JUMPSERVER_ENABLE_FONT_SMOOTHING=false       # 启用平滑字体 true, false  无（禁用）
+    JUMPSERVER_ENABLE_FULL_WINDOW_DRAG=false     # 启用拖拽窗口时渲染全部内容 true, false  无（禁用）
+    JUMPSERVER_ENABLE_DESKTOP_COMPOSITION=false  # 启用透明窗口和阴影等图形效果 true, false  无（禁用）
+    JUMPSERVER_ENABLE_MENU_ANIMATIONS=false      # 启用菜单开关动画 true, false  无（禁用）
+    JUMPSERVER_DISABLE_BITMAP_CACHING=true       # 禁用RDP的内置位图缓存功能 true（禁用）, false(启用)  无（启用）
+    JUMPSERVER_DISABLE_OFFSCREEN_CACHING=true    # 禁用客户端中当前不可见的屏幕区域缓存 true（禁用）, false(启用)  无（启用）
+    JUMPSERVER_DISABLE_GLYPH_CACHING=true        # 禁用RDP会话中的字形缓存 true（禁用）, false(启用)  无（启用）
     JUMPSERVER_CLEAN_DRIVE_SCHEDULE_TIME=1       # 定时清理挂载盘文件的时间间隔 (单位：小时)，如果设置值 0，则不清理。（ v2.13新增 ）
     ```
