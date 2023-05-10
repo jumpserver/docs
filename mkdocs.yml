@@ -117,9 +117,6 @@ nav:
             - 资产授权: guide/admin/permission/asset_permissions.md
             - 资产登录 (X-Pack): guide/admin/permission/host_acls.md
             - 命令过滤: guide/admin/permission/cmd_acls.md
-        - 任务中心:
-            - 任务列表: guide/admin/task/task_list.md
-            - 任务监控: guide/admin/task/flower.md
         - 工单 (X-Pack): guide/admin/admin_tickets.md
     - 审计手册:
         - 仪表盘: guide/audit/dashboard.md
@@ -170,8 +167,9 @@ nav:
         - 定期清理: guide/system/regular_clean.md
         - 界面设置 (X-Pack): guide/system/index_logo.md
         - 组织管理 (X-Pack): guide/system/organization.md
-        - 其他设置: guide/system/other.md
         - 系统工具: guide/system/tools.md
+        - 系统任务: guide/system/tasks.md
+        - 其他设置: guide/system/other.md
     - 参数说明: guide/env.md
     - 存储说明: guide/storages.md
   - 最佳实践: best_practices.md
