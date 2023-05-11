@@ -6,12 +6,12 @@
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，包括：
 
-    - SSH  (Linux / Unix / 网络设备等)
+    - SSH  (Linux / Unix / 网络设备 等)
     - Windows (Web 方式连接 / 原生 RDP 连接)
-    - Databases (MySQL / Oracle / SQLServer / PostgressSQL 等各类数据库)
-    - Web 站点 (各类系统的 Web 管理后台)
+    - 数据库 (MySQL / Oracle / SQLServer / PostgreSQL 等)
     - Kubernetes (支持连接到 K8s 集群中的 Pods)
-    - Applications (通过 Remote App 连接各类应用)
+    - Web 站点 (各类系统的 Web 管理后台)
+    - 应用 (通过 Remote App 连接各类应用)
 
 ## 1 产品特色
 
