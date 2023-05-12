@@ -1,8 +1,6 @@
-
 # 产品介绍
 
-## JumpServer 是什么？
-
+## 1 JumpServer 是什么？
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，包括：
 
@@ -13,8 +11,7 @@
     - Web 站点 (各类系统的 Web 管理后台)
     - 应用 (通过 Remote App 连接各类应用)
 
-## 1 产品特色
-
+## 2 产品特色
 !!! tip ""
     JumpServer 的产品特色包括：
 
@@ -26,15 +23,14 @@
     - 多租户：一套系统，多个子公司和部门同时使用；
     - 多应用支持：数据库，Windows 远程应用，Kubernetes。
 
-## 2 页面展示
-
+## 3 页面展示
 ![!界面展示](img/dashboard.png)
 
-## 3 功能列表
+## 4 功能列表
 !!! tip ""
     - [JumpServer 堡垒机功能列表](https://www.jumpserver.org/features.html)
 
-## 4 安全说明
+## 5 安全说明
 !!! tip ""
     JumpServer 是一款安全产品，请参考 [基本安全建议](faq/security.md) 部署安装。
 
@@ -44,12 +40,12 @@
     - support@fit2cloud.com
     - 400-052-0755
 
-## 5 商业产品
+## 6 商业产品
 !!! tip ""
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html){:target="_blank"}
     - [JumpServer 一体机](https://jumpserver.org/hardware.html){:target="_blank"}
 
-## 6 了解更多
+## 7 了解更多
 !!! tip ""
     - [如何向团队介绍 JumpServer？](https://www.jumpserver.org/documents/introduce-jumpserver_202304.pdf)
     - [新一代堡垒机建设指南](https://jinshuju.net/f/E0qAl8){:target="_blank"}
