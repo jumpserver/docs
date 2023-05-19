@@ -1,7 +1,8 @@
 # CAS 认证
 
-!!! tip "阿里云 IDaaS 对接参考资料"
+!!! tip "对接参考资料"
     - [阿里云新 IDaaS 对接](https://help.aliyun.com/document_detail/409903.html)
+    - [Casdoor 对接](https://casdoor.org/zh/docs/integration/python/JumpServer)
 
 !!! tip "提示"
     - 使用 CAS 的用户作为 JumpServer 登录用户。
