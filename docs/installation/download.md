@@ -33,4 +33,4 @@
 
     | 版本                     | :fontawesome-brands-linux: linux/amd64                                                     | :fontawesome-brands-linux: linux/arm64                                                     | :fontawesome-brands-linux: linux/loong64                                                     |
     | ------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-    | {{ jumpserver.tag }} | jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}.tar.gz |
+    | {{ jumpserver.tag }} | jumpserver-offline-installer-{{ jumpserver.tag }}-amd64.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-arm64.tar.gz | jumpserver-offline-installer-{{ jumpserver.tag }}-loong64.tar.gz |

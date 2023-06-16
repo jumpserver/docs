@@ -12,8 +12,8 @@
 !!! tip ""
     ```sh
     cd /opt
-    tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
-    cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
+    tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64.tar.gz
+    cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64
     ```
     ```sh
     # 额外节点可以设置 SKIP_BACKUP_DB=1 跳过数据库备份, 第一个升级节点不要跳过备份
