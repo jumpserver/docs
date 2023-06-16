@@ -11,8 +11,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64
         ```
         ```sh
         ./jmsctl.sh upgrade
@@ -26,8 +26,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-arm64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-arm64
         ```
         ```sh
         ./jmsctl.sh upgrade
@@ -41,8 +41,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-loong64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-loong64
         ```
         ```sh
         ./jmsctl.sh upgrade
