@@ -2,7 +2,12 @@
 
 ## 1 JumpServer 是什么？
 !!! tip ""
-    JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，包括：
+    JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，实现事前授权、事中监察、事后审计，满足等保合规要求。
+
+![index_02](img/index_02.png)
+
+!!! tip ""
+    JumpServer 堡垒机支持的资产类型包括：
 
     - SSH  (Linux / Unix / 网络设备 等)
     - Windows (Web 方式连接 / 原生 RDP 连接)
