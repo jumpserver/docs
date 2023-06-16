@@ -4,9 +4,9 @@
 
 | OS/Arch       | Architecture | Linux Kernel | Offline Name                                                                                 |
 | :------------ | :----------- | :----------- | :------------------------------------------------------------------------------------------- |
-| linux/amd64   | x86_64       | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz   |
-| linux/arm64   | aarch64      | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}.tar.gz   |
-| linux/loong64 | loongarch64  | == 4.19      | jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}.tar.gz |
+| linux/amd64   | x86_64       | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.tag }}-amd64.tar.gz   |
+| linux/arm64   | aarch64      | >= 4.0       | jumpserver-offline-installer-{{ jumpserver.tag }}-arm64.tar.gz   |
+| linux/loong64 | loongarch64  | == 4.19      | jumpserver-offline-installer-{{ jumpserver.tag }}-loong64.tar.gz |
 
 ## 1. 安装部署
 
@@ -17,8 +17,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-amd64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-amd64
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -169,7 +169,7 @@
 
     !!! tip ""
         ```sh
-        cd jumpserver-offline-release-{{ jumpserver.tag }}-amd64-{{ jumpserver.installer }}
+        cd jumpserver-offline-release-{{ jumpserver.tag }}-amd64
 
         # 启动
         ./jmsctl.sh start
@@ -191,8 +191,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-arm64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-arm64
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -343,7 +343,7 @@
 
     !!! tip ""
         ```sh
-        cd jumpserver-offline-release-{{ jumpserver.tag }}-arm64-{{ jumpserver.installer }}
+        cd jumpserver-offline-release-{{ jumpserver.tag }}-arm64
 
         # 启动
         ./jmsctl.sh start
@@ -365,8 +365,8 @@
     !!! tip ""
         ```sh
         cd /opt
-        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}.tar.gz
-        cd jumpserver-offline-installer-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}
+        tar -xf jumpserver-offline-installer-{{ jumpserver.tag }}-loong64.tar.gz
+        cd jumpserver-offline-installer-{{ jumpserver.tag }}-loong64
         ```
         ```sh
         # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
@@ -517,7 +517,7 @@
 
     !!! tip ""
         ```sh
-        cd jumpserver-offline-release-{{ jumpserver.tag }}-loong64-{{ jumpserver.installer }}
+        cd jumpserver-offline-release-{{ jumpserver.tag }}-loong64
 
         # 启动
         ./jmsctl.sh start
