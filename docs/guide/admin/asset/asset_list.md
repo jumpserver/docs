@@ -62,6 +62,7 @@
 !!! tip ""
     - JumpServer 支持手动创建资产，资产的创建需要填入资产的基本信息、账号、节点信息等必要信息。
     - 点击资产分类进入具体的分类页面（以主机为例）。
+    - [Website 资产创建方式参考](https://docs.jumpserver.org/zh/v3/guide/system/remoteapp/#31-website)
     - 点击页面左上角的`创建`按钮，进入资产创建页面，填写资产详细信息。
 ![asset_list08](../../../img/asset_list08.png)
 
