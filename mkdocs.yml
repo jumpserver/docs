@@ -115,8 +115,10 @@ nav:
             - 账号备份 (X-Pack): guide/admin/account/account_backup.md
         - 权限管理:
             - 资产授权: guide/admin/permission/asset_permissions.md
-            - 资产登录 (X-Pack): guide/admin/permission/host_acls.md
+            - 用户登录: guide/admin/permission/user_acls.md
             - 命令过滤: guide/admin/permission/cmd_acls.md
+            - 资产登录 (X-Pack): guide/admin/permission/host_acls.md
+            - 连接方式（X-Pack）: guide/admin/permission/connect_method_acls.md
         - 工单 (X-Pack): guide/admin/admin_tickets.md
     - 审计手册:
         - 仪表盘: guide/audit/dashboard.md
