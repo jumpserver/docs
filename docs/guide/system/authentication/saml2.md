@@ -40,11 +40,13 @@
 ![导入 metadata](../../../img/saml2_06.png)
 
 !!! tip ""
-    - 在 `Client` 菜单的子菜单 `Settings` 界面 修改如下选项，切记前面的 id 不要修改，中间那个可以直接复制下面生成的那个。
+    - 点击 `Client` 菜单的子菜单 `Settings` 界面进行配置修改。
+    - `Client Signature Required` 修改为 `OFF`。
+    - `IDP Initiated SSO URL Name` 修改为 `Target IDP initiated SSO URL` 地址中提供的信息。
 ![配置 settings](../../../img/saml2_07.png)
 
 !!! tip ""
-    - 点击子菜单 `Roles`，并新建，名称可随意。
+    - 点击子菜单 `Roles` 中的 `Add Role`，其中名称可自定义。
 ![配置 Roles](../../../img/saml2_08.png)
 
 !!! tip ""
