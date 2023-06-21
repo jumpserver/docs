@@ -35,7 +35,11 @@
 !!! tip ""
     - [JumpServer 堡垒机功能列表](https://www.jumpserver.org/features.html)
 
-## 5 安全说明
+## 5 应用商店
+!!! tip ""
+    JumpServer 的远程应用功能，社区版默认支持 Chrome、DBeaver 应用，企业版支持更丰富的远程应用，可点击 [应用商店](https://apps.fit2cloud.com/jumpserver) 来获取更多远程应用。
+
+## 6 安全说明
 !!! tip ""
     JumpServer 是一款安全产品，请参考 [基本安全建议](faq/security.md) 部署安装。
 
@@ -45,12 +49,12 @@
     - support@fit2cloud.com
     - 400-052-0755
 
-## 6 商业产品
+## 7 商业产品
 !!! tip ""
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html){:target="_blank"}
     - [JumpServer 一体机](https://jumpserver.org/hardware.html){:target="_blank"}
 
-## 7 了解更多
+## 8 了解更多
 !!! tip ""
     - [如何向团队介绍 JumpServer？](https://www.jumpserver.org/documents/introduce-jumpserver_202304.pdf)
     - [新一代堡垒机建设指南](https://jinshuju.net/f/E0qAl8){:target="_blank"}
