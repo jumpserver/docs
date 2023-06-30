@@ -60,7 +60,7 @@
 ![web_terminal10](../../img/web_terminal10.png)
 
 !!! tip ""
-    - Web GUI 连接效果如下:
+    - Web GUI 连接效果如下 (X-Pack):
 ![web_terminal11](../../img/web_terminal11.png)
 
 !!! tip ""
@@ -68,16 +68,16 @@
 
 !!! tip "" 
 
-    | 数据库类型\连接方式 | Web CLI | Web GUI | DB Client | 远程应用方式 |
-    | -------| :-------: | :-------: | :-------: | :-------: |
-    | MySQL | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
-    | MariaDB | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
-    | PostgreSQL | :material-check:  | :material-check:  | :material-check:  | :material-check:  |
-    | Oracle | :material-close: | :material-check:  | :material-check:  | :material-check:  |
-    | SQL Server | :material-check:  | :material-close: | :material-close: | :material-close: |
-    | Redis | :material-check:  | :material-close: | :material-check:  | :material-check:  |
-    | MongoDB | :material-check:  | :material-close: | :material-close: | :material-check:  |
-    | ClickHouse | :material-check:  | :material-close: | :material-close: | :material-check:  |
+    | 数据库类型\连接方式 | Web CLI | Web GUI | DB Client |
+    | -------| ------- | ------- | ------- |
+    | MySQL | :material-check:  | :material-check: (X-Pack) | :material-check:  |
+    | MariaDB | :material-check:  | :material-check: (X-Pack) | :material-check:  |
+    | PostgreSQL | :material-check: (X-Pack) | :material-check: (X-Pack) | :material-check: (X-Pack) |
+    | Oracle | :material-close: | :material-check: (X-Pack) | :material-check: (X-Pack) |
+    | SQL Server | :material-check: (X-Pack) | :material-close: | :material-close: |
+    | Redis | :material-check:  | :material-close: | :material-check:  |
+    | MongoDB | :material-check:  | :material-close: | :material-close: |
+    | ClickHouse | :material-check: (X-Pack) | :material-close: | :material-close: |
 
 ## 5 文件管理
 !!! tip ""
