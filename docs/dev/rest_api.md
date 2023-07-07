@@ -334,3 +334,114 @@
                 GetUserInfo(JmsServerURL, &auth)
             }
             ```
+        === "Java"
+            ```java
+            // Java 示例
+            import com.google.common.net.MediaType;
+            import net.adamcin.httpsig.api.*;
+            import net.adamcin.httpsig.hmac.HmacKey;
+            import okhttp3.OkHttpClient;
+            import okhttp3.Request;
+            import okhttp3.Response;
+
+            import javax.net.ssl.SSLContext;
+            import javax.net.ssl.TrustManager;
+            import javax.net.ssl.X509TrustManager;
+            import java.io.IOException;
+            import java.security.KeyManagementException;
+            import java.security.NoSuchAlgorithmException;
+            import java.security.SecureRandom;
+            import java.security.cert.CertificateException;
+            import java.security.cert.X509Certificate;
+            import java.util.HashMap;
+            import java.util.Map;
+
+            public class JMSApiClient {
+                private static final String JMS_URL = "https://demo.jumpserver.org";
+                private static final String KEY_ID = "f7373851-ea61-47bb-8357-xxxxxxxxxxx";
+                private static final String SECRET_ID = "d6ed1a06-66f7-4584-af18-xxxxxxxxxxxx";
+                private static final String ORGANIZATION_ID = "00000000-0000-0000-0000-000000000002";
+
+                public static void main(String[] args) throws IOException {
+                    String apiKey = "";
+                    String keySecret = "";
+                    String endpoint = "";
+
+                    String uri = "/api/v1/users/users/";
+
+                    DefaultKeychain provider = new DefaultKeychain();
+                    HmacKey hmacKey = new HmacKey(apiKey, keySecret);
+                    provider.add(hmacKey);
+
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Accept", MediaType.JSON_UTF_8.toString());
+                    headers.put("keyId", apiKey);
+                    headers.put("secret", keySecret);
+                    headers.put("algorithm", Algorithm.HMAC_SHA256.name());
+                    RequestContent.Builder requestContentBuilder = new RequestContent.Builder();
+
+                    requestContentBuilder.setRequestTarget("GET", "/api/v1/users/users/");
+                    for (Map.Entry<String, String> header : headers.entrySet()) {
+                        requestContentBuilder.addHeader(header.getKey(), header.getValue());
+                    }
+                    if (requestContentBuilder.build().getDate() == null) {
+                        requestContentBuilder.addDateNow();
+                        String dateValue = requestContentBuilder.build().getDate();
+                        requestContentBuilder.addHeader("date", dateValue);
+                        headers.put("date", dateValue);
+                    }
+                    Signer signer = new Signer(provider, key -> hmacKey.getId());
+                    RequestContent requestContent = requestContentBuilder.build();
+                    Authorization authorization = signer.sign(requestContent);
+                    if (authorization != null) {
+                        headers.put("Authorization", authorization.getHeaderValue());
+                    }
+
+                    try {
+                        OkHttpClient.Builder builderClient = new OkHttpClient().newBuilder();
+                        disableCertificateValidation(builderClient);
+                        OkHttpClient client = builderClient.build();
+
+                        Request.Builder builder = new Request.Builder()
+                                .url(endpoint + uri)
+                                .method("GET", null);
+                        for (Map.Entry<String, String> header : headers.entrySet()) {
+                            builder.addHeader(header.getKey(), header.getValue());
+                        }
+                        Request request = builder.build();
+                        Response response = client.newCall(request).execute();
+                        System.out.println(response.body().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                public static void disableCertificateValidation(OkHttpClient.Builder builderClient) {
+                    // 创建信任所有证书的 TrustManager
+                    try {
+                        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+                            @Override
+                            public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                            }
+
+                            @Override
+                            public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                            }
+
+                            @Override
+                            public X509Certificate[] getAcceptedIssuers() {
+                                return new X509Certificate[0];
+                            }
+                        }};
+                        // 创建 SSLContext，并关联信任所有证书的 TrustManager
+                        SSLContext sslContext = SSLContext.getInstance("TLS");
+                        sslContext.init(null, trustAllCerts, new SecureRandom());
+                        // 创建 OkHttpClient.Builder，并设置 SSLContext builder
+                        builderClient.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0]);
+                        builderClient.hostnameVerifier((hostname, session) -> true);
+                    } catch (NoSuchAlgorithmException | KeyManagementException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            ```
