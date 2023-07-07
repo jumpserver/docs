@@ -146,7 +146,101 @@
                 GetUserInfo(JmsServerURL, token)
             }
             ```
+        === "Java"
+            ```java
+            // Java 示例
+            import com.alibaba.fastjson.JSONObject;
+            import org.apache.commons.lang3.StringUtils;
 
+            import javax.net.ssl.*;
+            import java.io.BufferedReader;
+            import java.io.IOException;
+            import java.io.InputStreamReader;
+            import java.io.OutputStream;
+            import java.net.URL;
+            import java.util.HashMap;
+            import java.util.Map;
+
+            public class HttpsClientTest {
+
+                private static final String JMS_URL = "hhttps://demo.jumpserver.org";
+                private static final String JS_USER = "admin";
+                private static final String JS_PASSWORD = "admin";
+
+                public static void main(String[] args) throws IOException {
+                    Map map = new HashMap();
+                    map.put("username", JS_USER);
+                    map.put("password", JS_PASSWORD);
+                    https(JSONObject.toJSONString(map), "", "/api/v1/authentication/auth/");
+                }
+
+                public static void https(String params, String token, String uri) throws IOException {
+
+                    // 创建 URL 对象
+                    URL obj = new URL(JMS_URL + uri);
+                    // 打开连接
+                    HttpsURLConnection conn = (HttpsURLConnection) obj.openConnection();
+
+                    // 忽略证书认证
+                    conn.setHostnameVerifier((hostname, session) -> true);
+                    conn.setSSLSocketFactory(getTrustedSSLSocketFactory());
+
+                    // 设置请求方法
+                    conn.setRequestMethod("GET");
+
+                    // 设置请求头部
+                    conn.setRequestProperty("Content-Type", "application/json");
+                    conn.setRequestProperty("x-jms-org", "00000000-0000-0000-0000-000000000002");
+
+
+                    if (StringUtils.isNotBlank(token)) {
+                        conn.setRequestProperty("Authorization", "Bearer " + token);
+                    }
+
+                    // 设置请求体数据
+                    conn.setDoOutput(true);
+                    if (StringUtils.isNotBlank(params)) {
+                        try (OutputStream outputStream = conn.getOutputStream()) {
+                            outputStream.write(params.getBytes("UTF-8"));
+                        }
+                    }
+                    // 发送请求并获取响应
+                    int responseCode = conn.getResponseCode();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    StringBuilder response = new StringBuilder();
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    String res = response.toString();
+                    in.close();
+                }
+
+                private static SSLSocketFactory getTrustedSSLSocketFactory() {
+                    try {
+                        SSLContext sslContext = SSLContext.getInstance("TLS");
+                        sslContext.init(null, new TrustManager[] { new X509TrustManager() {
+                            @Override
+                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+                            }
+
+                            @Override
+                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) {
+                            }
+
+                            @Override
+                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                                return null;
+                            }
+                        } }, new java.security.SecureRandom());
+                        return sslContext.getSocketFactory();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            }
+            ```
 
     === "Private Token"
         ```sh
