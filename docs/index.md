@@ -16,6 +16,33 @@
     - Web 站点 (各类系统的 Web 管理后台)
     - 应用 (通过 Remote App 连接各类应用)
 
+!!! tip "文档指引"
+    - **JumpServer 介绍**    
+
+         [**产品简介**](https://docs.jumpserver.org/zh/v3/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**安装部署**](https://docs.jumpserver.org/zh/v3/installation/setup_linux_standalone/requirements/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**体验环境**](https://demo.jumpserver.org/ ) &emsp;&emsp;&emsp;&emsp;&emsp;  [**企业试用**](https://jinshuju.net/f/kyOYpi) &emsp;&emsp;&emsp;&emsp;&emsp;  [**社区论坛**](https://bbs.fit2cloud.com/c/js/5)
+
+      - **功能指南**
+
+           [**用户管理**](https://docs.jumpserver.org/zh/v3/guide/admin/user/user_list/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**资产管理**](https://docs.jumpserver.org/zh/v3/guide/admin/asset/asset_list/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**帐号管理**](https://docs.jumpserver.org/zh/v3/guide/admin/account/account_list/) &emsp;&emsp;&emsp;&emsp;&emsp; [**权限管理**](https://docs.jumpserver.org/zh/v3/guide/admin/permission/asset_permissions/)
+
+           [**远程应用**](https://docs.jumpserver.org/zh/v3/guide/system/remoteapp/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**会话审计**](https://docs.jumpserver.org/zh/v3/guide/audit/session_audit/session_record/)  &emsp;&emsp;&emsp;&emsp;&emsp;  [**日志审计**](https://docs.jumpserver.org/zh/v3/guide/audit/log_audit/login_log/)
+
+           [**文件管理**](https://docs.jumpserver.org/zh/v3/guide/user/file_management/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**作业中心**](https://docs.jumpserver.org/zh/v3/guide/user/ops/quick_command/)   &emsp;&emsp;&emsp;&emsp;&emsp;  [**资产连接**](https://docs.jumpserver.org/zh/v3/guide/user/web_terminal/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**系统配置**](https://docs.jumpserver.org/zh/v3/guide/system/basic/)
+
+    - **企业应用（X-Pack）**
+
+           [**资产登录复核**](https://docs.jumpserver.org/zh/v3/guide/admin/permission/host_acls/)  &emsp;&emsp;&emsp; [**连接方式控制**](https://docs.jumpserver.org/zh/v3/guide/admin/permission/connect_method_acls/)
+
+           [**工单**](https://docs.jumpserver.org/zh/v3/guide/admin/admin_tickets/) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [**云同步**](https://docs.jumpserver.org/zh/v3/guide/admin/asset/asset_list/#33)  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  [**角色列表**](https://docs.jumpserver.org/zh/v3/guide/admin/user/role_list/)
+
+           [**帐号收集**](https://docs.jumpserver.org/zh/v3/guide/admin/account/account_gather/) &emsp;&emsp;&emsp;&emsp;&emsp; [**帐号改密**](https://docs.jumpserver.org/zh/v3/guide/admin/account/account_change_secret/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**帐号备份**](https://docs.jumpserver.org/zh/v3/guide/admin/account/account_backup/) 
+
+           [**短信设置**](https://docs.jumpserver.org/zh/v3/guide/system/sms/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**界面设置**](https://docs.jumpserver.org/zh/v3/guide/system/index_logo/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**组织管理**](https://docs.jumpserver.org/zh/v3/guide/system/organization/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**认证设置**](https://docs.jumpserver.org/zh/v3/faq/faq/#4)
+
+     - **进阶学习** 
+
+           [**客户案例**](https://docs.jumpserver.org/zh/v3/user_stories/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**视频学习**](https://space.bilibili.com/510493147/channel/collectiondetail?sid=1394720) &emsp;&emsp;&emsp;&emsp;&emsp;  [**更多实践**](https://kb.fit2cloud.com/categories/jumpserver)&emsp;
+
 ## 2 产品特色
 !!! tip ""
     JumpServer 的产品特色包括：

@@ -41,6 +41,7 @@ nav:
   - 快速入门: quick_start.md
   - 系统架构: architecture.md
   - 安装部署:
+    - 网络端口说明: installation/network_port.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 在线安装: installation/setup_linux_standalone/online_install.md
