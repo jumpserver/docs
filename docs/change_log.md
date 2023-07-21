@@ -1,4 +1,89 @@
 # 更新日志
+v3.5.0
+------------------------
+2023年7月20日
+!!! info "新增功能 🌱"
+    - feat: 新增 Web 可视化数据库连接组件 (Chen) - 替换原有的 OmniDB 组件
+    - feat: 新增 GPT 资产连接组件 (Kael) - 支持对 ChatGPT 资产进行纳管
+    - feat: 新增 Windows 资产连接组件 (XRDP) - 支持对 Windows 2003 版本的资产进行连接、审计【企业版】
+    - feat: 支持 AD 域用户登录 Windows 资产 (资产平台中配置 AD 域)
+    - feat: 支持命令过滤告警动作 (执行并告警)
+    - feat: 支持指定远程应用发布机连接某个远程应用 (使用资产标签匹配机制)
+    - feat: 支持授权匿名账号登录Web、自定义类型的资产 (只拉起远程应用不代填任何信息)
+    - feat: 支持对 SFTP 会话进行审计
+    - feat: 支持对 UCloud 公有云资产自动同步【企业版】
+
+!!! summary "功能优化 🚀" 
+    - perf: 优化 Web Luna 页面新窗口连接资产时顶部显示资产名称
+    - perf: 优化 SFTP 根目录配置支持使用 ${ACCOUNT} 和 ${USER} 变量
+    - perf: 优化 SSH 连接复用策略 (账号密码更新后不复用，提高安全性)
+    - perf: 优化新增 DEBUG_ANSIBLE 配置项支持打印 Ansible 任务执行的详细日志
+    - perf: 优化连接令牌超时时间配置项名称 (CONNECTION_TOKEN_ONETIME_EXPIRATION、CONNECTION_TOKEN_REUSABLE_EXPIRATION)
+    - perf: 优化终端端点规则支持快捷启用和禁用
+    - perf: 优化飞书接收到的工单审批链接无法点击的问题
+    - perf: 优化账号列表支持通过密钥类型进行搜索
+    - perf: 优化 Windows WinRM 采用 NTLM 方式认证 (安全性更高)
+    - perf: 优化连接令牌 RBAC 权限位位置
+    - perf: 优化 LDAP 用户导入、同步时支持 is_active 值为 -1 的情况
+    - perf: 优化 Core 服务默认启动 4 个 Worker 进程
+    - perf: 优化获取 Endpoint Oracle 协议端口的逻辑
+    - perf: 优化资产详情页面支持更新标签
+    - perf: 优化点击角色列表默认切换到全局组织【企业版】
+    - perf: 优化 Web 资产协议端口直接从 URL 中获取 (不允许在协议中修改)
+    - perf: 优化用户个人信息页面的认证方式和用户来源一致时不能解绑
+    - perf: 优化通过客户端方式连接数据库的描述信息
+    - perf: 优化使用 rz、sz 下载文件完成后终端卡住的问题
+    - perf: 优化通过 KoKo 组件连接的资产支持对粘贴的多行命令进行命令过滤器校验
+    - perf: 优化 Web SFTP 软链接目录的显示问题 [(Issue)](https://github.com/jumpserver/jumpserver/issues/10440)
+    - perf: 优化通过 Lion 组件连接资产时连接断开的提示信息
+    - perf: 优化通过 Lion 组件监控会话结束后弹框提示断开信息
+    - perf: 优化 Core 组件日志目录 (/data/jumpserver/core/logs -> /data/jumpserver/core/data/logs)
+
+!!! success "问题修复 🐛"
+    - fix: 修复定时任务偶尔会出现重复执行的问题
+    - fix: 修复手动切换到全局组织后点击菜单会回到上个非全局组织的问题【企业版】
+    - fix: 修复网络设备使用账号切换时连接失败的问题 [(Issue)](https://github.com/jumpserver/jumpserver/issues/10992)
+    - fix: 修复 Web SFTP 上传大文件失败的问题
+    - fix: 修复直连 SFTP 上传文件失败的问题
+    - fix: 修复创建 Endpoint 时 Host 被禁用的问题
+    - fix: 修复创建 Oracle 数据库时，数量超过 MAGNUS_ORACLE_PORTS 端口范围后报错的问题
+    - fix: 修复 ConnectionToken 过期时间相关配置项默认值类型没有转化的问题
+    - fix: 修复授权的账号用户名相同时 Web Luna 页面登录资产时只获取到一个的问题
+    - fix: 修复资产平台导入失败的问题 (ID 字段没有返回)
+    - fix: 修复资产平台创建时自动化配置项默认值设置不正确的问题
+    - fix: 修复客户端方式访问资产时，配置的 Endpoint 标签匹配策略不生效的问题
+    - fix: 修复批量执行命令时资产名称包含 [ 特殊字符时执行失败的问题 [(Issue)](https://github.com/jumpserver/jumpserver/issues/10986)
+    - fix: 修复创建工单时时区不同过期时间保存不正确的问题【企业版】
+    - fix: 修复邮件主题前缀设置不生效的问题
+    - fix: 修复账号推送任务中采用动态生成密钥策略时推送失败的问题
+    - fix: 修复忘记密码时由于 Token 失效导致发送验证码报错的问题
+    - fix: 修复通过 Ansible 测试资产可连接性报错的问题 (Connection to UNKNOWN port 65535 timed out)
+    - fix: 修复推送账号不填写 Home 信息推送失败的问题
+    - fix: 修复导入 LDAP 用户时数据库超时导致 Lock wait timeout 的问题
+    - fix: 修复导入用户手机号为字典类型时报错的问题
+    - fix: 修复终端端点不填写 Host 地址导致没有匹配的问题
+    - fix: 修复连接远程应用 Chrome 浏览器时偶尔闪退的问题
+    - fix: 修复连接自定义远程应用创建会话失败的问题
+    - fix: 修复账号改密任务报错导致密码保存失败的问题
+    - fix: 修复远程应用会话无法监控的问题
+    - fix: 修复迁移文件时触发信号记录操作日志导致迁移失败的问题
+    - fix: 修复用户登录规则迁移可能冲突的问题
+    - fix: 修复用户授权的资产根据协议搜索显示重复的问题
+    - fix: 修复自定义资产详情没有自动化配置选项的问题
+    - fix: 修复 RBAC 迁移可能导致用户没有用户角色的问题
+    - fix: 修复批量导入资产时如果指定账号模版可能会导致导入失败的问题
+    - fix: 修复手动输入的同名账号登录资产失败的问题
+    - fix: [修复一些 typos (感谢)](https://github.com/jumpserver/jumpserver/pull/10770)
+    - fix: 修复 v2 升级到 v3 版本后资产平台为网络设备时资产类型不正确的问题
+
+!!! example "应用市场【企业版】 🧰"
+    - feat: 新增远程应用 - IP-guard
+    - feat: 新增远程应用 - NoSQLBooster for MongoDB
+    - feat: 新增远程应用 - Redis Desktop Manager
+    - feat: 新增远程应用 - PL/SQL Developer 15
+    - feat: 新增远程应用 - Chrome 浏览器(v92)
+    - feat: 新增远程应用 - Firefox 浏览器
+
 v3.4.3
 ------------------------
 2023年7月6日
