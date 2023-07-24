@@ -11,8 +11,10 @@
 
     - SSH  (Linux / Unix / 网络设备 等)
     - Windows (Web 方式连接 / 原生 RDP 连接)
-    - 数据库 (MySQL / Oracle / SQLServer / PostgreSQL 等)
-    - Kubernetes (支持连接到 K8s 集群中的 Pods)
+    - 数据库 (MySQL / MariaDB / Oracle / SQLServer / PostgreSQL / ClickHouse 等)
+    - NoSQL (Redis / MongoDB 等)
+    - GPT (ChatGPT 等)
+    - 云服务 (Kubernetes / VMware vSphere 等)
     - Web 站点 (各类系统的 Web 管理后台)
     - 应用 (通过 Remote App 连接各类应用)
 
