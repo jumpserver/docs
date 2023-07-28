@@ -29,9 +29,9 @@
         === "Ubuntu 20.04"
             ```bash
             cd /opt
-            wget https://nodejs.org/download/release/v16.5/node-v16.5-linux-x64.tar.xz
-            tar -xf node-v16.5-linux-x64.tar.xz
-            mv node-v16.5-linux-x64 /usr/local/node
+            wget https://nodejs.org/download/release/v16.5.0/node-v16.5.0-linux-x64.tar.xz
+            tar -xf node-v16.5.0-linux-x64.tar.xz
+            mv node-v16.5.0-linux-x64 /usr/local/node
             chown -R root:root /usr/local/node
             export PATH=/usr/local/node/bin:$PATH
             echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc

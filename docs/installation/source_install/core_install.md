@@ -55,7 +55,7 @@
 
 !!! tip ""
     ```bash
-    apt-get install -y python3.9 python3.9-dev python3-venv
+    apt-get install -y python3.9 python3.9-dev python3.9-venv
     ```
     ```bash
     python3.9

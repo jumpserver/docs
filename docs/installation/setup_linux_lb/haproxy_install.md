@@ -106,13 +106,11 @@
         # redirect scheme https if !{ ssl_fc }  # 重定向到 https
         # bind *:443 ssl crt /opt/ssl.pem       # https 设置
 
-        option httpclose
-        option forwardfor
         option httpchk GET /api/health/         # Core 检活接口
+        
+        stick-table type ip size 200k expire 30m
+        stick on src
 
-        cookie SERVERID insert indirect
-        hash-type consistent
-        fullconn 500
         balance leastconn
         server 192.168.100.21 192.168.100.21:80 weight 1 cookie web01 check inter 2s rise 2 fall 3  # JumpServer 服务器
         server 192.168.100.22 192.168.100.22:80 weight 1 cookie web02 check inter 2s rise 2 fall 3

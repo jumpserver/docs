@@ -16,7 +16,7 @@
           listen 80;
           # server_name _;
 
-          client_max_body_size 5000m; 文件大小限制
+          client_max_body_size 5000m; # 文件大小限制
 
           # Luna 配置
           location /luna/ {
@@ -112,7 +112,7 @@
           listen 80;
           # server_name _;
 
-          client_max_body_size 5000m; 文件大小限制
+          client_max_body_size 5000m; # 文件大小限制
 
           # 前端 Lina
           location /ui/ {
