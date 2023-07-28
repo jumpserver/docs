@@ -100,6 +100,7 @@ nav:
     - 升级问题: faq/upgrade.md
     - 组件问题: faq/other.md
     - 资源下载: about/download.md
+    - 生命周期: faq/v2_timeline.md
   - 更新说明: https://github.com/jumpserver/jumpserver/releases
   - 关于我们:
     - 贡献列表: about/contributor.md
