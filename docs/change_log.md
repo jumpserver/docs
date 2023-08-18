@@ -1,11 +1,98 @@
 # 更新日志
+v3.6.0
+------------------------
+2023年8月17日
+!!! info "新增功能 🌱"
+    - feat: 支持批量连接资产（Web Terminal 页面）
+    - feat: 账号密钥支持使用 HashiCorp Vault 第三方密钥存储系统【企业版】
+    - feat: 云同步支持配置多种同步策略【企业版】
+    - feat: 重构 Kael 组件，提高响应速度（使用 Go 语言）
+    - feat: 重构 JumpServer Client 支持可视化配置和拉起原生客户端工具（升级版本后需要重新安装新版 Client 客户端）
+    - feat: 在线会话页面，支持管理员执行会话暂停和恢复操作
+    - feat: 资产登录复核工单详情页面，支持审批人对当前会话执行暂停和恢复动作【企业版】
+    - feat: 对于使用 Web GUI 方式连接的数据库，支持对表名和列名进行自动补全
+    - feat: 对于 Web Terminal 页面的会话 Tab，支持手动拖拽排放位置
+    - feat: 新增虚拟账号列表，支持查看同名账号、手动输入、匿名账号的相关描述信息，支持设置同名账号的密码使用策略
+    - feat: 账号备份支持将密钥分段发送给不同的接受人【企业版】
+    - feat: 支持配置会话的最大连接时长，超过最大时长系统自动强制断开会话
+    - feat: 创建会话分享支持发送消息通知到被分享者
+    - feat: 对于 Oracle 数据库支持通过 Web GUI 方式使用 sysdba 进行连接【企业版】
+    - feat: 系统工具新增 Nmap 和 tcpdump 工具
+    - feat: 支持自动禁用长时间未登录的用户，在 系统设置 > 安全设置 中进行配置检测时长（默认 30 天）
+    - feat: 作业中心支持对 MySQL、PostgreSQL、SQL Server 数据库进行批量命令执行
+    - feat: 对于 Web Terminal 页面，连接资产时提供 Guide 模式（显示资产连接密钥字符串）
+    - feat: 支持对单个远程应用批量部署到多台应用发布机
+    - feat: 应用发布机支持通过网域网关进行连接【企业版】
+
+!!! summary "功能优化 🚀"
+    - perf: 优化工作台最近会话列表支持一键连接资产
+    - perf: 移除 Web CLI 方式连接 MySQL、PostgreSQL、SQLServer、MariaDB 等数据库，建议通过 Web GUI 方式进行连接
+    - perf: 优化资产协议，支持对 ssh 和 sftp 进行单独配置
+    - perf: 优化用户授权账号 API 返回账号 ID 字段
+    - perf: 优化用户 Suggestion API 使用 POST 方法请求 
+    - perf: 优化应用发布机的创建，支持控制账号数量的是否自动创建
+    - perf: 优化应用连接的发布机账号选择策略，主机和应用都支持并发时使用私有账号，不支持并发时优先使用私有账号，其次使用公共账号
+    - perf: 优化工单管理支持批量审批功能【企业版】
+    - perf: 隐藏连接 Web 资产时的用户名、密码代填操作
+    - perf: 优化创建用户时，默认添加到 Default 组织的 Default 用户组
+    - perf: 优化通过 RDP File 连接 Windows 资产时支持多屏显示控制选项
+    - perf: 优化组件的操作行为不记录到操作日志列表中
+    - perf: 优化连接 Kubernetes 资产支持通过网域网关进行连接
+    - perf: 优化 Telnet 资产平台，支持自定义 Prompt 的提示信息
+    - perf: 优化资产测试可连接和账号改密，支持 sudo 和 su 切换用户（针对 Paramiko 方式）
+    - perf: 优化 Web 资产平台支持开启和关闭安全模式，用于控制连接 Web 资产后是否允许打开新的窗口和访问不同域的地址
+    - perf: 优化 Web Terminal 页面左侧用户授权资产树的右击操作，支持展开/折叠其子节点和节点下的所有资产
+    - perf: 优化组织列表增加 Internal 字段标识【企业版】
+    - perf: 优化 SYSTEM 组织不允许被删除【企业版】
+    - perf: 优化账号改密的密码校验逻辑，解决改密成功后可能导致未保存密码的问题【企业版】
+    - perf: 优化组件监控页面
+    - perf: 优化账号 API 支持通过 comment 字段进行模糊搜索
+    - perf: 优化任务日志页面的时间显示问题
+    - perf: 优化系统设置的菜单布局
+    - perf: [优化飞书信息消息通知文案](https://github.com/jumpserver/jumpserver/pull/11279) 【感谢 [@BoringCat](https://github.com/BoringCat)】
+    - perf: 升级 MySQL==8.0.34 和 MariaDB==11.0.3 版本号（Magnus）
+    - perf: 优化组件注册名称，避免名称重复导致启动失败的问题
+    - perf: 优化远程应用上传时校验 License 版本【企业版】
+    - perf: 优化账号列表默认显示激活状态
+    - perf: 优化远程应用页面增加应用市场链接
+    - perf: 优化命令列表页面的加载速度
+    - perf: 优化命令记录列表增加账号列的显示
+    - perf: 优化资产直连方式，支持使用资产 ID 进行连接（KoKo）
+    - perf: 优化校验 Kubernetes Token 的方式，解决自定义 Token 连接集群失败的问题
+    - perf: 优化文件管理上传文件时，如果存在同名文件则使用新名称进行保存
+    - perf: 优化资产详情页面，通过账号模版添加账号时支持搜索指定模版
+    - perf: 优化启动容器服务时设置容器名称为 Hostname
+    - perf: 优化固定 video-worker 组件的 CPU 使用数量为 2，解决录像转码过程中资源占用较高的问题
+    - perf: 优化云同步策略，由于资产名称太长导致同步任务执行失败的问题【企业版】
+    - perf: 优化组织角色中增加连接令牌的权限并关联到工作台权限位
+
+!!! success "问题修复 🐛"
+    - fix: 修复批量更新资产报错的问题
+    - fix: 修复使用同名账号登录 Web 资产时用户名代填失败问题
+    - fix: 修复执行 Ansible 任务报错的问题
+    - fix: 修复由于资产的名称太长导致资产连接失败的问题
+    - fix: 修复 MAX_LIMIT_PER_PAGE 配置项的默认值和数据类型转换失败的问题
+    - fix: 修复用户 SSH Public Key 的校验逻辑，解决用户个人信息页面上传公钥失败的问题
+    - fix: 修复忘记密码页面发送短信时包含手机号时区 + 字符显示用户未找到的问题
+    - fix: 修复应用发布机创建同名账号时包含组件名称用户的问题
+    - fix: 修复连接资产时删除上次连接的资产协议（如：vnc）导致连接报错的问题
+    - fix: 修复移除 Nginx 缓存配置，解决多台发布机之间获取账号列表不准确的问题
+    - fix: 修复系统设置 > 消息订阅 > 修改订阅人中用户名显示存在的 XSS 问题
+    - fix: 修复账号列表添加账号时会明文显示的问题 [(issue)](https://github.com/jumpserver/jumpserver/issues/11288)
+    - fix: 修复资产列表导出所选时不生效的问题
+    - fix: 修复标签列表页面点击关联资产数量跳转到空白页面的问题
+    - fix: 修复通过 Web GUI 方式连接 Windows 资产时窗口比例不正确的问题
+    - fix: 修复连接 SUSE 操作系统资产失败的问题（KoKo）
+    - fix: 修复 Web Terminal 页面登录资产时记住密码选型未勾选依然生效的问题
+    - fix: 修复通过 XRDP 组件使用远程客户端连接 Windows 资产，复制粘贴上传下载权限控制不生效的问题【企业版】
+
 v3.5.4
 ------------------------
 2023年8月15日
 !!! summary "功能优化 🚀"
     - perf: 优化任务日志页面时间显示问题
     - perf: 升级 MySQL==8.0.34 和 MariaDB==10.3.35 版本号
-    - perf: [优化飞书信息消息通知文案](https://github.com/jumpserver/jumpserver/pull/11279) 【感谢 [@BoringCat]】(https://github.com/BoringCat)
+    - perf: [优化飞书信息消息通知文案](https://github.com/jumpserver/jumpserver/pull/11279) 【感谢 [@BoringCat](https://github.com/BoringCat)】
 
 !!! success "问题修复 🐛"
     - fix: 修复忘记密码页面发送短信时包含时区的 + 字符显示用户未找到的问题

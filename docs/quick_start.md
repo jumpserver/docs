@@ -39,7 +39,32 @@
         </div>
 
 !!! tip "提示"
-    - 以下操作均在 Web 页面完成，请使用 admin 用户登录，默认密码 admin。
+    - 首次安装后需要修改配置文件后即可正常使用
+    - 如果服务器是一键安装并且旧版本就已经使用 JumpServer 开启了 HTTPS，则不需要进行任何更改。
+    - 需要使用 IP 地址来访问 JumpServer 的场景，可以根据自己的 IP 类型来填写 config.txt 配置文件中 DOMAINS 字段为公网 IP 还是内网 IP。
+
+    ```
+      # 打开config.txt 配置文件
+      vim /opt/jumpserver/config/config.txt 
+
+      # 如果你用 IP 地址访问，需要加入
+      DOMAINS="JumpServer 服务器 IP 地址"
+      比如：DOMAINS="172.16.80.11"
+
+      # 如果需要使用域名一起访问
+      DOMAINS="JumpServer 服务器网站地址"
+      比如：DOMAINS="demo.jumpserver.org"
+
+      # 如果需要使用 IP 和 域名一起访问
+      DOMAINS="172.16.80.11,demo.jumpserver.org"
+    ```
+
+!!! info "安装成功后，通过浏览器访问登录 JumpServer"
+    ```sh
+    地址: http://<JumpServer服务器IP地址>:<服务运行端口>
+    用户名: admin
+    密码: admin
+    ```
 
 ## 2 资产管理
 ### 2.1 准备工作
