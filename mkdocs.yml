@@ -235,7 +235,7 @@ extra:
   jumpserver:
     tag: v3.6.0
     jmservisor: v1.2.5
-    wisp: v0.1.13
+    wisp: v0.1.15
   search:
     separator: '[\s\-\.]+'
     language: 'zh'

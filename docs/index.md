@@ -1,5 +1,8 @@
 # 产品介绍
 
+!!! warning "注意"
+    **v3.6 版本为了安全，要求强制填写 DOMAINS 可信任域名才能正常访问服务，否则会提示错误码 400 无法访问，[查看 DOMAINS 配置说明。](installation/upgrade_notice.md)**
+
 ## 1 JumpServer 是什么？
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，实现事前授权、事中监察、事后审计，满足等保合规要求。
