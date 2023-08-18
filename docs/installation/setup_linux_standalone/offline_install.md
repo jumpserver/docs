@@ -137,6 +137,13 @@
         # SESSION_COOKIE_AGE=86400
         SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
+        # 可信任 DOMAINS 定义,
+        # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
+        # DOMAINS="demo.jumpserver.org"
+        # DOMAINS="172.17.200.191"
+        # DOMAINS="demo.jumpserver.org,172.17.200.191"
+        DOMAINS=
+
         # Lion 开启字体平滑, 优化体验
         #
         JUMPSERVER_ENABLE_FONT_SMOOTHING=True
@@ -165,7 +172,7 @@
         ./jmsctl.sh start
         ```
 
-    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+    !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
     !!! tip ""
         ```sh
@@ -311,6 +318,13 @@
         # SESSION_COOKIE_AGE=86400
         SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
+        # 可信任 DOMAINS 定义,
+        # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
+        # DOMAINS="demo.jumpserver.org"
+        # DOMAINS="172.17.200.191"
+        # DOMAINS="demo.jumpserver.org,172.17.200.191"
+        DOMAINS=
+
         # Lion 开启字体平滑, 优化体验
         #
         JUMPSERVER_ENABLE_FONT_SMOOTHING=True
@@ -339,7 +353,7 @@
         ./jmsctl.sh start
         ```
 
-    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+    !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
     !!! tip ""
         ```sh
@@ -485,6 +499,13 @@
         # SESSION_COOKIE_AGE=86400
         SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
+        # 可信任 DOMAINS 定义,
+        # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
+        # DOMAINS="demo.jumpserver.org"
+        # DOMAINS="172.17.200.191"
+        # DOMAINS="demo.jumpserver.org,172.17.200.191"
+        DOMAINS=
+
         # Lion 开启字体平滑, 优化体验
         #
         JUMPSERVER_ENABLE_FONT_SMOOTHING=True
@@ -513,7 +534,7 @@
         ./jmsctl.sh start
         ```
 
-    !!! info "安装完成后配置文件 /opt/jumpserver/config/config.txt"
+    !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
     !!! tip ""
         ```sh
@@ -534,8 +555,6 @@
 
 ## 2. 环境访问
 !!! info "安装成功后，通过浏览器访问登录 JumpServer"
-
-!!! tip ""
     ```sh
     地址: http://<JumpServer服务器IP地址>:<服务运行端口>
     用户名: admin
