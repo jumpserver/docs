@@ -40,24 +40,20 @@
         </div>
 
 !!! tip "提示"
-    - 首次安装后需要修改配置文件后即可正常使用
+    - 首次安装后需要修改配置文件，定义 DOMAINS 字段后即可正常使用
     - 如果服务器是一键安装并且旧版本就已经使用 JumpServer 开启了 HTTPS，则不需要进行任何更改。
     - 需要使用 IP 地址来访问 JumpServer 的场景，可以根据自己的 IP 类型来填写 config.txt 配置文件中 DOMAINS 字段为公网 IP 还是内网 IP。
 
     ```
-      # 打开config.txt 配置文件
+      # 打开config.txt 配置文件，定义 DOMAINS 字段
       vim /opt/jumpserver/config/config.txt 
 
-      # 如果你用 IP 地址访问，需要加入
-      DOMAINS="JumpServer 服务器 IP 地址"
-      比如：DOMAINS="172.16.80.11"
-
-      # 如果需要使用域名一起访问
-      DOMAINS="JumpServer 服务器网站地址"
-      比如：DOMAINS="demo.jumpserver.org"
-
-      # 如果需要使用 IP 和 域名一起访问
-      DOMAINS="172.16.80.11,demo.jumpserver.org"
+      # 可信任 DOMAINS 定义,
+      # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
+      # DOMAINS="demo.jumpserver.org"    # 使用域名访问
+      # DOMAINS="172.17.200.191"         # 使用 IP 访问
+      # DOMAINS="demo.jumpserver.org,172.17.200.191"    # 使用 IP 和 域名一起访问
+      DOMAINS=
     ```
 
 !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
