@@ -150,7 +150,9 @@ nav:
     - 系统设置:
         - 概览页: guide/system/index_overview.md
         - 基本设置: guide/system/basic.md
-        - 邮件设置: guide/system/email.md
+        - 组织管理 (X-Pack): guide/system/organization.md
+        - 消息通知: guide/system/message.md
+        - 功能设置: guide/system/function.md
         - 认证设置:
             - MFA: guide/system/authentication/mfa.md
             - LDAP: guide/system/authentication/ldap.md
@@ -162,17 +164,12 @@ nav:
             - 钉钉 (X-Pack): guide/system/authentication/dingtalk.md
             - 微信 (X-Pack): guide/system/authentication/wechat.md
             - 飞书 (X-Pack): guide/system/authentication/feishu.md
-        - 消息订阅: guide/system/message.md
-        - 短信设置 (X-Pack): guide/system/sms.md
-        - 终端设置: guide/system/terminal.md
+        - 组件设置: guide/system/component.md
         - 远程应用: guide/system/remoteapp.md
         - 安全设置: guide/system/security.md
-        - 定期清理: guide/system/regular_clean.md
         - 界面设置 (X-Pack): guide/system/index_logo.md
-        - 组织管理 (X-Pack): guide/system/organization.md
         - 系统工具: guide/system/tools.md
         - 系统任务: guide/system/tasks.md
-        - 其他设置: guide/system/other.md
     - 参数说明: guide/env.md
     - 存储说明: guide/storages.md
   - 最佳实践: best_practices.md

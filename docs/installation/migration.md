@@ -13,7 +13,7 @@
 ## 2 迁移步骤
 ### 2.1 数据库备份
 !!! tip ""
-    - 在 jumpserver/config.yml 文件中获取数据库信息如下：
+    - 在 jumpserver/config.txt 文件中获取数据库信息如下：
 
     ```yaml
     DB_HOST: 127.0.0.1   # 数据库服务器 IP

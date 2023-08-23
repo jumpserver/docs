@@ -1,8 +1,8 @@
-# 终端设置
+# 组件设置
 ## 1 功能简述
 !!! tip ""
-    - 点击页面左侧菜单的`终端设置`按钮，进入终端设置页面。
-    - 终端设置页面，可以配置 JumpServer 终端组件相关功能，例如 SSH Client 等连接方式开启、命令存储、录像存储等相关配置。
+    - 点击页面左侧菜单的`组件设置`按钮，进入组件设置页面。
+    - 组件设置页面，可以配置 JumpServer 终端组件相关功能，例如 SSH Client 等连接方式开启、命令存储、录像存储等相关配置。
 
 ## 2 基本设置
 !!! tip ""
@@ -11,12 +11,12 @@
 !!! tip ""
     - KoKo 组件是服务于类 Unix 资产平台的组件，该组件的功能主要是：命令行的方式纳管 Linux、数据库、K8S 等资产；
     - 作为 SSH 服务，还可通过2222端口进行 SSH 或者 SFTP 操作资产。
-![treminal01](../../img/terminal01.png)
+![component01](../../img/component01.png)
 
 !!! tip ""
     - Razor 组件是服务于 Windows 系统的组件，主要通过 JumpServer Client 连接 Windows 资产。
     - Magnus 组件是服务于数据库资产的组件，主要功能是以数据库代理的方式支持用户通过原生数据库客户端（例如 Navicat、SQLyog 等）对数据库进行直连操作。
-![treminal02](../../img/terminal02.png)
+![component02](../../img/component02.png)
 
 !!! tip ""
     - 详细参数说明：
@@ -25,6 +25,7 @@
 
     | 参数     | 说明                  |
     | ------- | --------------------- |
+    | 组件注册 | 是否允许其他外部的组件注册到本地的 Core 组件上。 |
     | 启用SSH Client | 开启时连接 Linux 资产时可选择 SSH Client 方式连接，即拉起 JumpServer Client 内置的 Putty 连接 Linux 资产。 |
     | 密码认证 | 该选项针对于命令行方式登录 JumpServer 堡垒机，关闭密码认证即不支持密码认证。 |
     | 密钥认证 | 该选项针对于命令行方式登录 JumpServer 堡垒机，关闭密钥认证即不支持密钥认证。 |
@@ -35,13 +36,13 @@
     | 启用数据库组件 | 是否启用 Magnus 服务即使用外部客户端连接数据库资产。 |
     | 默认图像化分辨率 | 设置在 Luna 页面中连接图形化资产时默认使用的分辨率。 |
 
-## 3 终端管理
+## 3 组件管理
 !!! tip ""
-    - 终端管理页面主要是查看 JumpServer 所有组件的使用状态，页面如下图所示：
-![treminal03](../../img/terminal03.png)
+    - 组件管理页面主要是查看 JumpServer 所有组件的使用状态，页面如下图所示：
+![component03](../../img/component03.png)
 
 !!! tip ""
-    - 终端管理页面主要可以查看的信息如下：
+    - 组件管理页面主要可以查看的信息如下：
     - 查看组件名，组件名命名时会取组件所在的 hostname 和随机字符串的组合，当有多节点集群或者分布式部署时，可以通过该信息确定组件所在主机，便于排错处理；
     - 查看 JumpServer 所有组件的 CPU 负载、内存使用率等性能信息；当使用率过高时，会产生监控告警，告警通知在消息订阅中进行配置；
     - 查看会话，可以看到每个组件上实时的会话数。
@@ -49,48 +50,48 @@
 !!! tip ""
     - 点击某个组件的`更新`按钮或选择多个组件，点击`更多操作`可进行更新。
     - 更新组件的命令存储与录像存储，录像记录默认存放在服务器本地；命令记录默认存放在数据库中，这里可以更改录像与命令记录到外部存储。
-![treminal04](../../img/terminal04.png)
+![component04](../../img/component04.png)
 
 ## 4 录像存储
 !!! tip ""
     - 录像存储页面可以对 JumpServer 连接资产的会话录像存储的位置进行自定义。
     - 目前支持的外部录像存储有亚马逊的 S3 云存储、Ceph、Swift、OSS、Azure、OBS、COS。
-![treminal05](../../img/terminal05.png)
+![component05](../../img/component05.png)
 
 !!! tip ""
     - 点击`创建`按钮，选择对应的存储类型，以华为云的 OBS 存储为例：
     - 以下图片中红框中的认证信息均在华为云控制台页面获取，输入对应的字段后点击提交。
     - 创建完成后，即在终端管理中更新录像存储将录像存储在华为的 OBS 存储桶中。
-![treminal06](../../img/terminal06.png)
+![component06](../../img/component06.png)
 
-!!! warning ""
+!!! warning "注意"
     - JumpServer 录像存储对接外部存储后，定期清理页面中的会话日志保存时间对录像存储失效。
 
 ## 5 命令存储
 !!! tip ""
     - 命令存储页面可以对 JumpServer 连接资产的会话命令记录存储的位置进行自定义。
     - 目前支持的外部命令存储有 Elasticsearch。
-![treminal07](../../img/terminal07.png)
+![component07](../../img/component07.png)
 
 !!! tip ""
     - 点击`创建`按钮，创建一个新的命令存储，将 JumpServer 连接资产产生的会话存储到外部，减少数据库的存储用量。
     - 输入对应的字段点击提交，即创建成功，创建成功需要点击 Elasticsearch `名称` 后的 `更多` - `测试`，来进行验证测试。
     - JumpServer 支持使用 Elasticsearch 存储日志并支持根据日期建立索引，索引名为：JumpServer 中配置的索引名+命令记录产生的日期，方便用户根据日期进行查询与管理。
-![treminal08](../../img/terminal08.png)
+![component08](../../img/component08.png)
 
-!!! warning ""
+!!! warning "注意"
     - JumpServer 命令存储对接外部存储后，定期清理页面中的会话日志保存时间对命令存储失效。
 
 ## 6 组件监控
 !!! tip ""
     - 组件监控页面可以查看每个组件的状态，具体信息包含：组件的负载状态与该组件目前在线会话数。
-![treminal09](../../img/terminal09.png)
+![component09](../../img/component09.png)
 
 ## 7 服务端点
 !!! tip ""
     - 服务端点页面主要是访问入口的相关设置，服务端点使用户访问服务的地址（端口），当用户在连接资产时，会根据端点规则和资产标签选择服务端点，作为访问入口建立连接，实现分布式连接资产。
     - 以下页面为 JumpServer 默认需要开通的端口，2222、3389以及数据库映射端口。
-![treminal10](../../img/terminal10.png)
+![component10](../../img/component10.png)
 
 ### 7.1 举例说明
 !!! tip "适用场景，例如："
@@ -100,11 +101,17 @@
 
 !!! tip ""
     - 创建一个上海区域的 JumpServer 端点。
-![treminal11](../../img/terminal11.png)
+![component11](../../img/component11.png)
 !!! tip ""
     - 创建一个北京区域的 JumpServer 端点。
-![treminal12](../../img/terminal12.png)
-![treminal13](../../img/terminal13.png)
+![component12](../../img/component12.png)
+!!! tip ""
+    - 创建好后，服务端点页面截图如下：
+![component13](../../img/component13.png)
+!!! tip ""
+    - 需要配合端点规则使用，如图将指定 IP 段的流量分配给指定的服务端点连接。
+![component14](../../img/component14.png)
+
 
 ## 8 端点规则
 !!! tip "提示"
@@ -115,6 +122,6 @@
 
 !!! tip ""
     - 在端点规则中，设置哪些 IP 段，资产将对应访问到哪个服务端点。
-![treminal14](../../img/terminal14.png)
+![component15](../../img/component15.png)
 
 
