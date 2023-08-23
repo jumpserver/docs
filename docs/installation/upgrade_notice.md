@@ -2,7 +2,7 @@
 !!! warning "v3 版本与 v2 版本存在一定的差异，如需 v2 版本升级至 v3 版本 [请先阅读此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}"
 
 !!! warning "注意"
-    **v3.6 版本为了安全，要求强制填写 DOMAINS 可信任域名才能正常访问服务，否则会提示错误码 400 无法访问，DOMAINS 配置如下。**
+    **v3.6 版本为了安全，要求强制填写 DOMAINS 可信任域名才能正常访问服务，否则会提示错误码 400/403 导致无法无法访问页面，DOMAINS 配置如下。**
 
     - 如果服务器是一键安装并且旧版本就已经使用 JumpServer 开启了 HTTPS，则不需要进行任何更改。
     - 需要使用 IP 地址来访问 JumpServer 的场景，可以根据自己的 IP 类型来填写 config.txt 配置文件中 DOMAINS 字段为公网 IP 还是内网 IP。
