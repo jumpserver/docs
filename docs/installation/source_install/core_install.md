@@ -79,8 +79,7 @@
     - 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
     ```bash
-    pip install -U pip setuptools wheel
-    pip install -r requirements/requirements.txt
+    poetry install
     ```
 
     - 修改配置文件。
