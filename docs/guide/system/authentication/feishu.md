@@ -32,8 +32,6 @@
 !!! tip ""
     - 详细参数说明：
 
-!!! tip ""
-
     | 参数     | 说明                  |
     | ------- | --------------------- |
     | 重定向 URL | 注：jumpserver_host 改成你自己的 JumpServer 域名。 <br> https://`jumpserver_host`/core/auth/feishu/qr/bind/callback/ <br> https://`jumpserver_host`/core/auth/feishu/qr/login/callback/ |
