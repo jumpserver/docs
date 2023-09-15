@@ -1,4 +1,16 @@
 # 产品介绍
+
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2023.09.15）"
+    **2023年9月11日，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
+
+    **漏洞信息：** <br> [JumpServer 的权限管理存在“未授权情况下可以访问录像文件”的漏洞。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-633x-3f4f-v9rw)
+
+    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.5.4版本 <br> JumpServer v3.6.0-v3.6.3版本
+
+    **安全版本为：** <br> JumpServer 版本 = v3.5.5版本 <br> JumpServer 版本 >= v3.6.4版本
+
+    **修复方案：** <br> 升级 JumpServer 软件至上述安全版本。
+
 ## 1 JumpServer 是什么？
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，实现事前授权、事中监察、事后审计，满足等保合规要求。
