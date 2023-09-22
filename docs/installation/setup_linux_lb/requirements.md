@@ -13,7 +13,7 @@
     | 名称    | 版本 | 默认字符集  | 默认字符编码  | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
     | MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
-    | MariaDB | >= 10.2 | utf8mb3          | utf8mb3_general_ci | :material-check: |
+    | MariaDB | >= 10.6 | utf8mb3          | utf8mb3_general_ci | :material-check: |
     
     | Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
