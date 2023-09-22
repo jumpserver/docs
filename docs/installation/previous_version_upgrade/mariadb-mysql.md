@@ -12,7 +12,7 @@
     | DB      | Version | Cache | Version |
     | :------ | :------ | :---- | :------ |
     | MySQL   | >= 5.7  | Redis | >= 6.0  |
-    | MariaDB | >= 10.2 |  -    |   -     |
+    | MariaDB | >= 10.6 |  -    |   -     |
 
 ## 2 操作过程
 !!! tip "备份数据库"

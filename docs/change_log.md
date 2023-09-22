@@ -1,4 +1,104 @@
 # 更新日志
+v3.7.0
+------------------------
+2023年9月21日
+!!! info "新增功能 🌱"
+    - feat: 新增个人设置功能
+    - feat: 新增资产连接分屏显示功能
+    - feat: 新增 Passkey 用户认证方式
+    - feat: 新增网络设备的批量命令执行功能
+    - feat: 新增查看在线用户信息功能
+    - feat: 新增 MySQL 数据库支持 SSL 方式连接（Web GUI）（Chen）
+    - feat: 新增管理员查看并解锁全局被限制登录的 IP 地址信息
+    - feat: 新增系统工具 Telnet、Ping 支持批量测试
+    - feat: 新增 Traceroute 系统工具
+    - feat: 新增公告内容支持 Markdown 语法
+    - feat: 新增Web 终端页面支持查看 RDP 协议账号的已连接数量
+    - feat: 新增Web 终端页面新增命令的选择、执行、保存功能
+    - feat: 新增数据库连接方式支持命令的选择、执行、保存功能（Web GUI）（Chen）
+    - feat: 回归数据库 Web CLI / CLI 方式的连接
+
+!!! summary "功能优化 🚀"
+    - perf: 数据库命令复核支持显示 SQL 影响行数（Chen）【企业版】
+    - perf: 优化特殊处理 SFTP 下 root 账号连接的目录权限问题
+    - perf: 优化 SSH 终端连接时账号列表使用用户名进行排序
+    - perf: 优化文件上传重命名问题，支持在个人设置中配置策略
+    - perf: 优化 redis-cli 连接支持中文显示
+    - perf: [优化 es 操作 bulk 为 create，支持写入数据流](https://github.com/jumpserver/koko/pull/1165)（KoKo）【感谢 [@BoringCat](https://github.com/BoringCat)】
+    - perf: 优化资产授权列表中指定账号字段不计算在账号数量中
+    - perf: 优化账号模版中密码策略选择组件
+    - perf: 优化创建资产时自动设置指定节点
+    - perf: 优化创建用户时的默认角色设置
+    - perf: 优化 Windows 资产账号密钥类型为 SSH-Key 时隐藏自动推送选项
+    - perf: 优化 Crontab 组件，周日的值默认为 0
+    - perf: 优化系统设置中邮件设置提交后页面空白的问题
+    - perf: 优化会话列表用户、资产字段支持点击跳转
+    - perf: 优化资产授权中用户、资产被选择之后下拉菜单选项中还能继续选择问题
+    - perf: 优化登录页面移动端布局
+    - perf: 优化 Elasticsearch host 中不允许包含 # 字符
+    - perf: 优化删除用户时同步删除发布机中对应的账号信息
+    - perf: 优化 Chrome 远程应用代填逻辑，不最小化窗口
+    - perf: 优化平台 ID 字段权限为可读写，解决平台无法批量导入更新的问题
+    - perf: 优化平台支持通过 Category、Type 进行搜索过滤
+    - perf: 优化禁用长时间未登录用户的处理逻辑
+    - perf: 优化新增限制超级权限的配置项
+    - perf: 优化网络设备默认启用 Ansible 功能
+    - perf: 优化 JumpServer Client 工具支持 msi 安装包
+    - perf: 优化 Chrome 代填进度条最大超时时间 30s
+    - perf: 优化日志相关表结构添加一些字段索引，提高查询速度
+    - perf: 优化 Magnus DB Port 的日志显示问题
+    - perf: 优化仪表盘数据不准确的问题
+    - perf: 优化查看、下载录像行为记录到操作日志中
+    - perf: 优化账号模版支持设置自动推送
+    - perf: 优化不允许管理员修改自己的角色
+    - perf: 优化网络设备支持配置 SFTP 协议
+    - perf: 优化 SQL Server 数据库添加驱动标识，解决不同版本的数据库连接失败的问题【企业版】
+    - perf: 优化发布机调度策略，避免多次调度到同一台发布机
+    - perf: 优化批量连接资产后保留原来的已选项
+    - perf: 优化域账号登录的域字符标识支持（domain\username、username@domain) 格式（Lion）
+    - perf: 优化远程应用无法使用 vnc 协议的问题（Lion）
+    - perf: 优化通过 Web GUI 连接 Windows 资产时的客户端名为 JumpServer-Lion（Lion）
+    - perf: 优化 Postgre SQL 数据库动态加载驱动库（Chen）
+    - perf: 优化日志循环打印问题（Kael）
+
+!!! success "问题修复 🐛"
+    - fix: 修复 Web GUI 连接数据库 long 类型精度丢失问题（Chen）
+    - fix: 修复 Web GUI 连接数据库日期格式显示问题（Chen）
+    - fix: 修复用户 SSH 公钥认证问题（KoKo）
+    - fix: 修复思科交换机 telnet 连接时命令过滤拦截失败的问题（KoKo）
+    - fix: 修复会话连接失败阻塞导致会话无法结束的问题（KoKo）
+    - fix: 修复 redis-cli 命令报错的问题（KoKo）
+    - fix: 修复 Luna 页面在 SYSTEM 组织下节点不能展开问题【企业版】
+    - fix: 修复 Luna 页面不记住密码导致无法登录的问题
+    - fix: 安全设置开启仅已存在用户登录，企业微信等扫描登录，如果用户不存在，还是会自动创建用户登录成功的问题【企业版】
+    - fix: 修复角色详情用户 Name 显示问题
+    - fix: 修复云同步所有资源都不执行同步策略的问题【企业版】
+    - fix: 修复信号未监听导致 License 没有及时更新的问题【企业版】
+    - fix: 修复依赖升级导致 Azure 云无法同步资产的问题【企业版】
+    - fix: 修复登录资产控制会全局生效的问题
+    - fix: 修复 SQL Server 数据库账号推送、改密失败的问题【企业版】
+    - fix: 修复工单回复报错的问题【企业版】
+    - fix: 修复 Private Storage Permission 访问权限问题
+    - fix: 修复工单审计员修改申请的资产后，原申请资产依然被授权的问题【企业版】
+    - fix: 修复账号推送定时任务不执行的问题
+    - fix: 修复 CAS 用户登录失败的问题
+    - fix: 修复用户绑定 MFA OTP 的二维码不显示的问题
+    - fix: [修复通过网域连接 k8s 时支持默认端口 443](https://github.com/jumpserver/jumpserver/pull/11410)【感谢 [@hoilc](https://github.com/hoilc)) 贡献】
+    - fix: [修复 KoKo 获取 SFTP 路径错误的问题](https://github.com/jumpserver/koko/pull/1180)【感谢 [@hoilc](https://github.com/hoilc) 贡献】
+    - fix: 修复 SAML2 认证用户无法登录的问题
+    - fix: 修复创建会话分享不填写用户报错的问题
+    - fix: 修复资产树创建子节点后没有获取到的问题
+    - fix: 修复账号密钥校验不支持包含 { 和 % 字符
+    - fix: 修复主机名中包含 [ 字符导致 Ansible 任务执行错误的问题
+
+v3.6.5
+------------------------
+2023年9月22日
+!!! success "问题修复 🐛"
+    - fix: 修复作业中心 Playbook 文件创建问题
+    - fix: 修复 random 随机数生成逻辑
+    - fix: 修复用户登录公钥认证问题（KoKo）
+
 v3.6.4
 ------------------------
 2023年9月11日
@@ -143,6 +243,14 @@ v3.6.0
     - fix: 修复连接 SUSE 操作系统资产失败的问题（KoKo）
     - fix: 修复 Web Terminal 页面登录资产时记住密码选型未勾选依然生效的问题
     - fix: 修复通过 XRDP 组件使用远程客户端连接 Windows 资产，复制粘贴上传下载权限控制不生效的问题【企业版】
+
+v3.5.6
+------------------------
+2023年9月21日
+!!! success "问题修复 🐛"
+    - fix:修复作业中心 Playbook 文件创建问题
+    - fix: 修复 random 随机数生成逻辑
+    - fix: 修复公钥认证问题（KoKo)
 
 v3.5.5
 ------------------------
