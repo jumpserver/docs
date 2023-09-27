@@ -1,15 +1,26 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2023.09.15）"
-    **2023年9月11日，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2023.09.27）"
+    **2023年9月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
 
-    **漏洞信息：** <br> [JumpServer 的权限管理存在“未授权情况下可以访问录像文件”的漏洞。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-633x-3f4f-v9rw)
+    **漏洞信息：** 
+    <br> [JumpServer 重置密码验证码可被计算推演的漏洞，CVE编号为CVE-2023-42820。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-7prv-g565-82qp)
+    <br> [JumpServer 重置密码验证码可被暴力破解的漏洞，CVE编号为CVE-2023-43650。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-mwx4-8fwc-2xvw)
+    <br> [JumpServer 认证用户跨目录任意文件读取漏洞，CVE编号为CVE-2023-42819。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-ghg2-2whp-6m33)
+    <br> [JumpServer 认证用户开启MFA后，可以使用SSH公钥认证的逻辑缺陷漏洞，CVE编号为CVE-2023-42818。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-jv3c-27cv-w8jv)
+    <br> [JumpServer 全局开启公钥认证后，用户可以使用公钥创建访问Token的漏洞，CVE编号为CVE-2023-43652。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-fr8h-xh5x-r8g9)
+    <br> [JumpServer 认证用户连接MongoDB数据库，可执行任意系统命令的远程执行漏洞，CVE编号为CVE-2023-43651。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-4r5x-x283-wm96)
 
-    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.5.4版本 <br> JumpServer v3.6.0-v3.6.3版本
+    **以上漏洞影响版本为：** <br> JumpServer v2.0.0-v2.28.19版本 <br> JumpServer v3.0.0-v3.7.0版本
 
-    **安全版本为：** <br> JumpServer 版本 = v3.5.5版本 <br> JumpServer 版本 >= v3.6.4版本
+    **安全版本为：** <br> JumpServer 版本 = v2.28.20版本 <br> JumpServer 版本 >= v3.7.1版本
 
     **修复方案：** <br> 升级 JumpServer 软件至上述安全版本。
+
+    **特别鸣谢：** <br> 感谢以下社区用户向 JumpServer 开源社区及时反馈上述漏洞。
+    <br> CVE-2023-42820、CVE-2023-42819：@KiruaLawliet & zhiniang peng（@edwardzpeng）with Sangfo
+    <br> CVE-2023-42818:  @pokerstarxy & Ethan Yang（@justlovediaodiao）& Hui Song（@songofhawk）
+    <br> CVE-2023-43650、CVE-2023-43652、CVE-2023-43651：OskarZeino-Mahmalat（Sonar）
 
 ## 1 JumpServer 是什么？
 !!! tip ""
