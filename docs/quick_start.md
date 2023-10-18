@@ -25,7 +25,7 @@
         <div class="termy">
         ```console
         // root@localhost:/opt#
-        $ https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
+        $ curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
 
         ---> 100%
         <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
