@@ -3,7 +3,8 @@
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
     - Gentoo / Arch Linux 请通过 [源码安装](installation/source_install/requirements.md)
- 
+    - 如用于生产环境，推荐使用 [离线安装包](https://community.fit2cloud.com/#/products/jumpserver/downloads) 进行部署
+
 !!! tip ""
     === "中国大陆"
         <div class="termy">
