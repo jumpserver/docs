@@ -55,7 +55,7 @@
     ```vim
     # Syslog 相关设置
     SYSLOG_ENABLE=True
-    SYSLOG_ADDR=192.168.100.215:514
+    SYSLOG_ADDR=192.168.100.215:514   # Syslog 服务器的IP以及端口
     ```
 
 !!! tip ""
