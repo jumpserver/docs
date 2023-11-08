@@ -17,9 +17,9 @@
 
 !!! tip ""
 
-    | :fontawesome-brands-windows: Windows Server 2016 | :fontawesome-brands-windows: Windows Server 2019 | :fontawesome-brands-windows: Windows Server 2022 |
-    | ------------------------------------------------ | ----------------------------------------------- | ------------------------------------------------ |
-    | :material-check:                                  | :material-check:                                | :material-check:                                 |
+    | :fontawesome-brands-windows: Windows Server 2016 | :fontawesome-brands-windows: Windows Server 2019 |
+    | ------------------------------------------------ | ----------------------------------------------- |
+    | :material-check:                                  | :material-check:                                |
 
 ### 2.2 创建应用发布机
 !!! tip ""
@@ -93,7 +93,7 @@
 
 ## 3 远程应用
 !!! tip ""
-    - 创建远程应用资源，实现远程访问目标资源，并实现密码代替功能。
+    - 创建远程应用资源，实现远程访问目标资源，并实现密码代填功能。
     - 当前举例访问 JumpServer 页面过程（实现密码代填）
 
 ### 3.1 创建 Website 资产
