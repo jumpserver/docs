@@ -164,6 +164,7 @@ nav:
             - 钉钉 (X-Pack): guide/system/authentication/dingtalk.md
             - 微信 (X-Pack): guide/system/authentication/wechat.md
             - 飞书 (X-Pack): guide/system/authentication/feishu.md
+        - 存储设置: guide/system/storages.md
         - 组件设置: guide/system/component.md
         - 远程应用: guide/system/remoteapp.md
         - 安全设置: guide/system/security.md
