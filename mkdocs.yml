@@ -160,6 +160,7 @@ nav:
             - SSO (X-Pack): guide/system/authentication/sso.md
             - OpenID (X-Pack): guide/system/authentication/openid.md
             - SAML2 (X-Pack): guide/system/authentication/saml2.md
+            - Slack (X-Pack): guide/system/authentication/slack.md
             - Radius (X-Pack): guide/system/authentication/radius.md
             - 钉钉 (X-Pack): guide/system/authentication/dingtalk.md
             - 微信 (X-Pack): guide/system/authentication/wechat.md
