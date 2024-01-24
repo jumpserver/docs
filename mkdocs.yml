@@ -77,7 +77,6 @@ nav:
         - JumpServer 环境整合: installation/source_install/merge_jumpserver.md
     - 迁移文档: installation/migration.md
     - 升级须知: installation/upgrade_notice.md
-    - 国密改造: installation/gmssl.md
     - 反向代理: installation/proxy.md
     - 资源下载: installation/download.md
     - 命令行工具: installation/jmsctl_sh.md
