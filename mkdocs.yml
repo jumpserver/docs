@@ -46,6 +46,7 @@ nav:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 离线安装: installation/setup_linux_standalone/offline_install.md
         - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
+        - 1Panel 安装: installation/setup_linux_standalone/1panel_install.md
         - 在线安装: installation/setup_linux_standalone/online_install.md
         - 在线升级: installation/setup_linux_standalone/online_upgrade.md
     - Linux 集群模式部署:
