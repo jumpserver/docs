@@ -43,11 +43,11 @@
         user.reset_password('test01')
 
         # 保存修改
-        user.save
+        user.save()
 
         # 删除用户 MFA key
         user.otp_secret_key=''
-        user.save
+        user.save()
 
         # 创建新用户
         User.objects.create(name = '测试用户', username = 'test', email = 'test@jumpserver.org')
@@ -73,12 +73,12 @@
         # 用户组添加用户
         user = User.objects.get(username='test')
         group.users.add(user)
-        group.save
+        group.save()
 
         # 用户组删除用户
         user = User.objects.get(username='test')
         group.users.remove(user)
-        group.save
+        group.save()
 
         # 删除用户组
         UserGroup.objects.all().filter(name='Test').delete()
