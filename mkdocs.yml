@@ -106,7 +106,6 @@ nav:
             - 资产列表: guide/admin/asset/asset_list.md
             - 网域列表: guide/admin/asset/domain_list.md
             - 平台列表: guide/admin/asset/platform_list.md
-            - 标签列表: guide/admin/asset/label_list.md
         - 账号管理:
             - 账号列表: guide/admin/account/account_list.md
             - 账号模版: guide/admin/account/account_template.md
@@ -120,6 +119,8 @@ nav:
             - 命令过滤: guide/admin/permission/cmd_acls.md
             - 资产登录 (X-Pack): guide/admin/permission/host_acls.md
             - 连接方式（X-Pack）: guide/admin/permission/connect_method_acls.md
+        - 更多选项:
+            - 标签列表: guide/admin/more_options/label_list.md
         - 工单 (X-Pack): guide/admin/admin_tickets.md
     - 审计手册:
         - 仪表盘: guide/audit/dashboard.md
@@ -135,9 +136,13 @@ nav:
     - 用户手册:
         - 概览页: guide/user/index_overview.md
         - 个人信息:
-            - 账号信息: guide/user/personal_information/account_information.md
-            - 个人信息: guide/user/personal_information/personal_information.md
+            - 用户信息: guide/user/personal_information/user_information.md
+            - 认证设置: guide/user/personal_information/authentication_settings.md
+            - 偏好设置: guide/user/personal_information/preference_settings.md
+            - API Key: guide/user/personal_information/api_key.md
+            - 临时密码: guide/user/personal_information/temporary_passwd.md
             - 连接令牌: guide/user/personal_information/connect_token.md
+            - Passkey: guide/user/personal_information/passkey.md
         - 我的资产: guide/user/my_asset.md
         - Web 终端: guide/user/web_terminal.md
         - 文件管理: guide/user/file_management.md
@@ -157,6 +162,7 @@ nav:
             - MFA: guide/system/authentication/mfa.md
             - LDAP: guide/system/authentication/ldap.md
             - CAS: guide/system/authentication/cas.md
+            - Passkey: guide/system/authentication/passkey.md
             - SSO (X-Pack): guide/system/authentication/sso.md
             - OpenID (X-Pack): guide/system/authentication/openid.md
             - SAML2 (X-Pack): guide/system/authentication/saml2.md
