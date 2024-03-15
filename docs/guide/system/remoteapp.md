@@ -93,6 +93,7 @@
 
 ## 3 远程应用
 !!! tip ""
+    - 支持 Windows-Server 系统作为远程应用发布机。
     - 创建远程应用资源，实现远程访问目标资源，并实现密码代填功能。
     - 当前举例访问 JumpServer 页面过程（实现密码代填）
 
@@ -118,17 +119,61 @@
 
 ### 3.3 访问 Website 资产
 !!! tip ""
-    - 通过 `Web终端` 选中目标 Website 资产访问。
-    - 访问 Website 资产需要本地客户端安装 JumpServer 客户端程序，可在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到安装包。
+    - 支持通过 `Web终端` 选中目标 Website 资产访问。
+    - 支持通过本地客户端方式访问 Website 资产，安装 JumpServer 客户端程序，可在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到安装包。
 ![remoteapp11](../../img/remoteapp11.png)
 
 ### 3.4 页面效果
 !!! tip ""
     - 当前为远程应用页面访问效果图：
-![remoteapp06](../../img/remoteapp07.png)
+![remoteapp07](../../img/remoteapp07.png)
 
-## 4 自定义 Applet
-### 4.1 Applet 介绍
+## 4 虚拟应用
+!!! tip ""
+    - 支持 Linux 系统作为远程应用发布机。
+    - 创建远程应用资源，实现远程访问目标资源，并实现密码代填功能。
+    - 当前举例访问 JumpServer 页面过程（实现密码代填）
+
+### 4.1 功能启用
+!!! tip ""
+    - 点击`系统设置` - `功能设置` - `虚拟应用`页签启用虚拟应用功能。
+![remoteapp12](../../img/remoteapp12.png)
+
+!!! tip ""
+    - 功能启用后，可以在`系统设置` - `远程应用`模块中看到`虚拟应用`和`应用提供者`页签。
+![remoteapp13](../../img/remoteapp13.png)
+
+### 4.2 上传应用
+!!! tip ""
+    - 点击`虚拟应用`的页签，上传需要发布的应用，当前举例应用为 Chrome。
+![remoteapp14](../../img/remoteapp14.png)
+
+!!! tip ""
+    - 上传虚拟应用后，Panda 组件会同步这个应用配置的镜像，目前同步方式为自动同步，默认每5分钟一次，支持修改时间间隔。
+    - 点击`应用提供者`页签中的列表名称后跳转同步状态页。
+![remoteapp15](../../img/remoteapp15.png)
+
+### 4.3 创建 Website 资产
+!!! tip ""
+    - 点击切换至`控制台`视图`资产管理` - `资产列表` 页面中。
+    - 选中 `Web` 页签，点击创建 Website 资产。
+![remoteapp08](../../img/remoteapp08.png)
+
+### 4.4 创建资产授权规则
+!!! tip ""
+    - 点击切换至`权限管理` - `资产授权` 页面中。
+    - 创建新的授权规则，如下图：
+![remoteapp10](../../img/remoteapp10.png)
+
+### 4.5 访问 Website 资产
+!!! tip ""
+    - 支持通过 `Web终端` 选中目标 Website 资产访问（如下图）。
+    - 支持通过本地客户端方式访问 Website 资产，安装 JumpServer 客户端程序，可在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到安装包。
+![remoteapp16](../../img/remoteapp16.png)
+![remoteapp17](../../img/remoteapp17.png)
+
+## 5 自定义 Applet
+### 5.1 Applet 介绍
 !!! tip ""
     - Applet 是一个包含 Python 脚本的目录，必须至少包含以下文件：
     
@@ -152,7 +197,7 @@
     | i18n.yml | 对 manifest.yml 的国际化文件。 |
 
 
-### 4.2 元数据 manifest.yml
+### 5.2 元数据 manifest.yml
 !!! tip ""
     - manifest.yml 定义了 Applet 的元数据，如名称、作者、版本、支持的协议。
 
@@ -182,7 +227,7 @@
     | type | 主要是 General 或 Web。 |
     | i18n.yml | 对 manifest.yml 的国际化文件。 |
 
-### 4.3 安装条件 setup.yml
+### 5.3 安装条件 setup.yml
 !!! tip ""
     - setup.yml 定义了 Applet 拉起程序的安装方式。
 
@@ -212,7 +257,7 @@
 !!! tip ""
     - 如果选择 manual 的方式，source 等保持为空，可不校验 MD5 值，需要手动登录 Applet host（应用发布机）上安装软件。
 
-### 4.4 脚本执行 main.py
+### 5.4 脚本执行 main.py
 !!! tip ""
     - main.py 是 Python 脚本主程序。
     - JumpServer 的 Remoteapp 程序 tinker 将通过调用 python main.py base64_json_data 的方式执行。
