@@ -73,12 +73,12 @@
         # 用户组添加用户
         user = User.objects.get(username='test')
         group.users.add(user)
-        group.save
+        group.save()
 
         # 用户组删除用户
         user = User.objects.get(username='test')
         group.users.remove(user)
-        group.save
+        group.save()
 
         # 删除用户组
         UserGroup.objects.all().filter(name='Test').delete()
