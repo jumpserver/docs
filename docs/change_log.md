@@ -1,4 +1,13 @@
 # 更新日志
+v3.10.7
+------------------------
+2024年3月27日
+!!! success "问题修复 🐛" 
+    - fix: 修复 Celery 定时任务偶尔不执行的问题
+    - fix: 修复 JumpServer 作业管理中 Ansible Playbook 文件存在 JinJa2 模版代码注入导致的 Celery 容器远程执行的漏洞
+    - fix: 修复 JumpServer 作业管理中 Ansible Playbook 文件存在参数验证缺陷导致的 Celery 容器远程执行的漏洞
+    - fix: 修复 Oracle 数据库使用 Service name 连接报错的问题（Chen）【企业版】
+
 v3.10.6
 ------------------------
 2024年3月19日
