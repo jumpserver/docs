@@ -21,7 +21,7 @@
 
 ## 3 功能模块相关
 !!! tip ""
-    - [v3版本远程应用发布与使用](https://kb.fit2cloud.com/?p=c207be97-6439-4d19-b228-4f1ac7da831e)
+    - [v3版本远程应用发布与使用](https://kb.fit2cloud.com/?p=9beffa46-3b58-456b-9db0-7a0b2a9cc665)
     - [Windows 资产无法连接](https://kb.fit2cloud.com/?p=13)
     - [Windows 资产测试可连接性](https://kb.fit2cloud.com/?p=11)
     - [批量改密、资产连接性测试等任务输出显示“....”](https://kb.fit2cloud.com/?p=16)

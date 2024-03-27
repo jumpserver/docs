@@ -99,7 +99,7 @@
     | SSH 端口 | SSH Client 方式使用终端工具连接 JumpServer，比如 Xshell、PuTTY、MobaXterm 等终端工具。 |
     | Magnus MySQL 端口 | DB Client 方式连接 MySQL 数据库资产。 |
     | Magnus Mariadb 端口 | DB Client 方式连接 MariaDB 数据库资产。 |
-    | DOMAINS | 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP。。 |
+    | DOMAINS | 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP。 |
     | 容器名称 | JumpServer 应用的容器名称。 |
     | 端口外部访问 | 允许端口外部访问回放开防火墙端口。 |
     | CPU 限制 | JumpServer 应用可以使用的 CPU 核心数。 |
