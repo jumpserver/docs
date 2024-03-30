@@ -1,26 +1,29 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2023.09.27）"
-    **2023年9月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.03.29）"
+    **2024年3月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
 
     **漏洞信息：** 
-    <br> [JumpServer 重置密码验证码可被计算推演的漏洞，CVE编号为CVE-2023-42820。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-7prv-g565-82qp)
-    <br> [JumpServer 重置密码验证码可被暴力破解的漏洞，CVE编号为CVE-2023-43650。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-mwx4-8fwc-2xvw)
-    <br> [JumpServer 认证用户跨目录任意文件读取漏洞，CVE编号为CVE-2023-42819。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-ghg2-2whp-6m33)
-    <br> [JumpServer 认证用户开启MFA后，可以使用SSH公钥认证的逻辑缺陷漏洞，CVE编号为CVE-2023-42818。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-jv3c-27cv-w8jv)
-    <br> [JumpServer 全局开启公钥认证后，用户可以使用公钥创建访问Token的漏洞，CVE编号为CVE-2023-43652。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-fr8h-xh5x-r8g9)
-    <br> [JumpServer 认证用户连接MongoDB数据库，可执行任意系统命令的远程执行漏洞，CVE编号为CVE-2023-43651。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-4r5x-x283-wm96)
+    <br> [Ansible Playbook 文件存在 JinJa2 模版代码注入导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29202。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-2vvr-vmvx-73ch)
+    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在参数验证缺陷导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29201。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-pjpp-cm9x-6rwj)
+    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在用户权限未隔离漏洞，CVE编号为CVE-2024-29020。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-7mqc-23hr-cr62)
+    <br> [JumpServer 作业管理中文件管理批量传输功能存在不安全直接对象引用（IDOR）漏洞，CVE编号为CVE-2024-29024。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-8wqm-rfc7-q27q)
 
-    **以上漏洞影响版本为：** <br> JumpServer v2.0.0-v2.28.19版本 <br> JumpServer v3.0.0-v3.7.0版本
+    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.10.6版本
 
-    **安全版本为：** <br> JumpServer 版本 = v2.28.20版本 <br> JumpServer 版本 >= v3.7.1版本
+    **安全版本为：** <br> JumpServer版本>=v3.10.7版本
 
-    **修复方案：** <br> 升级 JumpServer 软件至上述安全版本。
+    **修复方案：**
+    <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
+    <br>**临时修复方案：** 关闭作业中心功能。关闭作业中心功能的具体步骤为：
+        <br>以管理员身份登录至JumpServer堡垒机。依次选择“系统设置”→“功能设置”→“任务中心”，在打开的页面中关闭作业中心功能。
+        <br> ![close_job](img/close_job.png)
 
-    **特别鸣谢：** <br> 感谢以下社区用户向 JumpServer 开源社区及时反馈上述漏洞。
-    <br> CVE-2023-42820、CVE-2023-42819：@KiruaLawliet & zhiniang peng（@edwardzpeng）with Sangfo
-    <br> CVE-2023-42818:  @pokerstarxy & Ethan Yang（@justlovediaodiao）& Hui Song（@songofhawk）
-    <br> CVE-2023-43650、CVE-2023-43652、CVE-2023-43651：OskarZeino-Mahmalat（Sonar）
+    **特别鸣谢：** <br> 感谢以下社区用户向JumpServer开源社区及时反馈上述漏洞。
+    <br> CVE-2024-29202：@oskar-zeinomahmalat-sonarsource
+    <br> CVE-2024-29201：@oskar-zeinomahmalat-sonarsource
+    <br> CVE-2024-29020: @ilyazavyalov
+    <br> CVE-2024-29024: @secur30nly
 
 ## 1 JumpServer 是什么？
 !!! tip ""
