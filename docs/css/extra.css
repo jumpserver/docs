@@ -14,11 +14,11 @@
 }
 
 .md-header{
-  top: 91px;
+  top: 47px;
 }
 
 .md-main__inner {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px){
