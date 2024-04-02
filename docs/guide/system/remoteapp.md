@@ -32,7 +32,7 @@
 === "WinRM"
     !!! tip ""
         - 通过 WinRM 协议部署应用发布机，在创建应用发布机页面新增 WinRM 协议即可。
-    ![remoteapp12](../../img/remoteapp12.png)
+    ![remoteapp18](../../img/remoteapp18.png)
 
     !!! tip ""
         - WinRM 配置完成。
