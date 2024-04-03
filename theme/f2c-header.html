@@ -1,22 +1,3 @@
-<script>
-    $(document).ready(function () {
-        var currentOS = navigator.platform;
-        if (currentOS.match("iPhone" || "iPod" || "iPad" || "Andriod" || "ios")) {
-            const mainDom = document.getElementById('tmpspan');
-            mainDom.innerHTML = mainDom.innerHTML + '<br />'
-        }
-    });
-
-    function closeDiv(){
-        document.getElementsByClassName('md-header')[0].style.top='48px';
-        document.getElementsByClassName('md-main__inner')[0].style.marginTop='3rem';
-        const leftButton = document.getElementById("leftButton");
-        leftButton.parentNode.removeChild(leftButton);
-        const rightButton = document.getElementById("rightButton");
-        rightButton.parentNode.removeChild(rightButton);
-        document.getElementById("myCarousel").style.cssText += 'display: none !important';
-    }
-</script>
 <header id="topnav" class="defaultscroll sticky">
     <svg class="hidden-print" aria-hidden="true" style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
