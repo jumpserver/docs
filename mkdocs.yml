@@ -185,7 +185,6 @@ nav:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
     - 企业版: faq/enterprise.md
-    - 其他: faq/other.md
   - 开发文档:
     - API 文档: dev/rest_api.md
     - 交互命令: dev/shell.md
