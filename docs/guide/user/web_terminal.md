@@ -70,14 +70,15 @@
 
     | 数据库类型\连接方式 | Web CLI | Web GUI | DB Client |
     | -------| ------- | ------- | ------- |
-    | MySQL | :material-check:  | :material-check: (X-Pack) | :material-check:  |
-    | MariaDB | :material-check:  | :material-check: (X-Pack) | :material-check:  |
+    | MySQL | :material-check:  | :material-check: | :material-check:  |
+    | MariaDB | :material-check:  | :material-check: | :material-check:  |
     | PostgreSQL | :material-check: (X-Pack) | :material-check: (X-Pack) | :material-check: (X-Pack) |
     | Oracle | :material-close: | :material-check: (X-Pack) | :material-check: (X-Pack) |
-    | SQL Server | :material-check: (X-Pack) | :material-close: | :material-close: |
+    | SQL Server | :material-check: (X-Pack) | :material-check: (X-Pack) | :material-check: (X-Pack) |
     | Redis | :material-check:  | :material-close: | :material-check:  |
     | MongoDB | :material-check:  | :material-close: | :material-close: |
     | ClickHouse | :material-check: (X-Pack) | :material-close: | :material-close: |
+    | DB2 | :material-close: | :material-check: (X-Pack) | :material-close: |
 
 ## 5 文件管理
 !!! tip ""
