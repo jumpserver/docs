@@ -1,8 +1,6 @@
 # 在线升级
 
-!!! warning "v3 版本与 v2 版本存在一定的差异，如需 v2 版本升级至 v3 版本 [请先阅读此文档](https://kb.fit2cloud.com/?p=06638d69-f109-4333-b5bf-65b17b297ed9){:target="_blank"}"
-
-!!! info "升级前请先参考 [升级或迁移须知](../upgrade_notice.md)"
+!!! warning "升级到 v4 前需要先升级到 v3 最新版本，否则升级将会直接失败"
 
 === "中国大陆"
     !!! tip ""
