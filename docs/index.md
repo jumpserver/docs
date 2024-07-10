@@ -1,30 +1,5 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.03.29）"
-    **2024年3月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
-
-    **漏洞信息：** 
-    <br> [Ansible Playbook 文件存在 JinJa2 模版代码注入导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29202。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-2vvr-vmvx-73ch)
-    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在参数验证缺陷导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29201。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-pjpp-cm9x-6rwj)
-    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在用户权限未隔离漏洞，CVE编号为CVE-2024-29020。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-7mqc-23hr-cr62)
-    <br> [JumpServer 作业管理中文件管理批量传输功能存在不安全直接对象引用（IDOR）漏洞，CVE编号为CVE-2024-29024。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-8wqm-rfc7-q27q)
-
-    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.10.6版本
-
-    **安全版本为：** <br> JumpServer版本>=v3.10.7版本
-
-    **修复方案：**
-    <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
-    <br>**临时修复方案：** 关闭作业中心功能。关闭作业中心功能的具体步骤为：
-        <br>以管理员身份登录至JumpServer堡垒机。依次选择“系统设置”→“功能设置”→“任务中心”，在打开的页面中关闭作业中心功能。
-        <br> ![close_job](img/close_job.png)
-
-    **特别鸣谢：** <br> 感谢以下社区用户向JumpServer开源社区及时反馈上述漏洞。
-    <br> CVE-2024-29202：@oskar-zeinomahmalat-sonarsource
-    <br> CVE-2024-29201：@oskar-zeinomahmalat-sonarsource
-    <br> CVE-2024-29020: @ilyazavyalov
-    <br> CVE-2024-29024: @secur30nly
-
 ## 1 JumpServer 是什么？
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，实现事前授权、事中监察、事后审计，满足等保合规要求。
@@ -47,28 +22,6 @@
     - **JumpServer 介绍**    
 
          [**产品简介**](https://docs.jumpserver.org/zh/v3/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**安装部署**](installation/setup_linux_standalone/requirements/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**体验环境**](https://demo.jumpserver.org/ ) &emsp;&emsp;&emsp;&emsp;&emsp;  [**企业试用**](https://jinshuju.net/f/kyOYpi) &emsp;&emsp;&emsp;&emsp;&emsp;  [**社区论坛**](https://bbs.fit2cloud.com/c/js/5)
-
-      - **功能指南**
-
-           [**用户管理**](guide/admin/user/user_list/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**资产管理**](guide/admin/asset/asset_list/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**帐号管理**](guide/admin/account/account_list/) &emsp;&emsp;&emsp;&emsp;&emsp; [**权限管理**](guide/admin/permission/asset_permissions/)
-
-           [**远程应用**](guide/system/remoteapp/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**会话审计**](guide/audit/session_audit/session_record/)  &emsp;&emsp;&emsp;&emsp;&emsp;  [**日志审计**](guide/audit/log_audit/login_log/)
-
-           [**文件管理**](guide/user/file_management/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**作业中心**](guide/user/ops/quick_command/)   &emsp;&emsp;&emsp;&emsp;&emsp;  [**资产连接**](guide/user/web_terminal/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**系统设置**](guide/system/basic/)
-
-    - **企业应用（X-Pack）**
-
-           [**资产登录复核**](guide/admin/permission/host_acls/)  &emsp;&emsp;&emsp; [**连接方式控制**](guide/admin/permission/connect_method_acls/)
-
-           [**工单**](guide/admin/admin_tickets/) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [**云同步**](guide/admin/asset/asset_list/#33)  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  [**角色列表**](guide/admin/user/role_list/)
-
-           [**帐号收集**](guide/admin/account/account_gather/) &emsp;&emsp;&emsp;&emsp;&emsp; [**帐号改密**](guide/admin/account/account_change_secret/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**帐号备份**](guide/admin/account/account_backup/) 
-
-           [**短信设置**](guide/system/message/#2-x-pack)  &emsp;&emsp;&emsp;&emsp;&emsp; [**界面设置**](guide/system/index_logo/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**组织管理**](guide/system/organization/)  &emsp;&emsp;&emsp;&emsp;&emsp; [**认证设置**](faq/faq/#4)
-
-     - **进阶学习** 
-
-           [**客户案例**](user_stories/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**视频学习**](https://space.bilibili.com/510493147/channel/collectiondetail?sid=1394720) &emsp;&emsp;&emsp;&emsp;&emsp;  [**更多实践**](https://kb.fit2cloud.com/categories/jumpserver)&emsp;
 
 ## 2 产品特色
 !!! tip ""

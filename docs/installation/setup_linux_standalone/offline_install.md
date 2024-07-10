@@ -8,7 +8,7 @@
 
 ## 1. 安装部署
 
-!!! tip ""
+!!! warning ""
     - 离线安装目前只支持 linux/amd64 架构, 其他架构请参考 [在线安装](./online_install.md)
 
 === "linux/amd64"

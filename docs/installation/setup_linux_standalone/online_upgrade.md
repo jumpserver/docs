@@ -2,6 +2,14 @@
 
 !!! warning "升级到 v4 前需要先升级到 v3 最新版本，否则升级将会直接失败"
 
+| OS/Arch       | Architecture | Linux Kernel | Offline Name                                     |
+| :------------ | :----------- | :----------- | :----------------------------------------------- |
+| linux/amd64   | x86_64       | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
+| linux/arm64   | aarch64      | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
+| linux/s390x   | s390x        | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
+
+## 1. 升级部署
+
 === "中国大陆"
     !!! tip ""
         ```sh
