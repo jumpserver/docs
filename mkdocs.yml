@@ -238,7 +238,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v3.10.10
+    tag: v3.10.12
     jmservisor: v1.2.5
     wisp: v0.1.16
   search:
