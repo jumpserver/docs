@@ -1,17 +1,17 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.03.29）"
-    **2024年3月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.07.18）"
+    **2024年7月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向 JumpServer 开源项目组进行上报。**
 
     **漏洞信息：** 
-    <br> [Ansible Playbook 文件存在 JinJa2 模版代码注入导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29202。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-2vvr-vmvx-73ch)
-    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在参数验证缺陷导致的 Celery 容器远程执行漏洞，CVE编号为CVE-2024-29201。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-pjpp-cm9x-6rwj)
-    <br> [JumpServer 作业管理中 Ansible Playbook 文件存在用户权限未隔离漏洞，CVE编号为CVE-2024-29020。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-7mqc-23hr-cr62)
-    <br> [JumpServer 作业管理中文件管理批量传输功能存在不安全直接对象引用（IDOR）漏洞，CVE编号为CVE-2024-29024。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-8wqm-rfc7-q27q)
+    <br> [JumpServer作业管理中Ansible Playbook存在可读取任意文件的漏洞，CVE编号为CVE-2024-40628 ](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-rpf7-g4xh-84v9)
+    <br> [JumpServer作业管理中Ansible Playbook存在任意文件写入的远程执行漏洞，CVE编号为CVE-2024-40629。](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-3wgp-q8m7-v33v)
 
-    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.10.6版本
+    **以上漏洞影响版本为：** <br> JumpServer v3.0.0-v3.10.11版本
 
-    **安全版本为：** <br> JumpServer版本>=v3.10.7版本
+    **安全版本为：** <br> JumpServer版本>=v3.10.12版本 
+    <br> JumpServer版本>=v4.0.0版本
+    
 
     **修复方案：**
     <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
@@ -20,10 +20,8 @@
         <br> ![close_job](img/close_job.png)
 
     **特别鸣谢：** <br> 感谢以下社区用户向JumpServer开源社区及时反馈上述漏洞。
-    <br> CVE-2024-29202：@oskar-zeinomahmalat-sonarsource
-    <br> CVE-2024-29201：@oskar-zeinomahmalat-sonarsource
-    <br> CVE-2024-29020: @ilyazavyalov
-    <br> CVE-2024-29024: @secur30nly
+    <br> CVE-2024-40628：@oskar-zeinomahmalat-sonarsource
+    <br> CVE-2024-40629：@oskar-zeinomahmalat-sonarsource
 
 ## 1 JumpServer 是什么？
 !!! tip ""
