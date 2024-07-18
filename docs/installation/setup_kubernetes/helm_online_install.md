@@ -30,10 +30,10 @@
     | global.imageOwner         | Global Docker image owner                       | jumpserver              |
     | global.imagePullSecrets   | Global Docker registry secret names as an array | []                      |
     | global.storageClass       | Global StorageClass for Persistent Volume(s)    | ""                      |
-    | externalDatabase.engine   | External database engine                        | mysql                   |
+    | externalDatabase.engine   | External database engine                        | postgresql              |
     | externalDatabase.host     | External database host                          | localhost               |
-    | externalDatabase.port     | External database port                          | 3306                    |
-    | externalDatabase.user     | External database user                          | root                    |
+    | externalDatabase.port     | External database port                          | 5432                    |
+    | externalDatabase.user     | External database user                          | postgres                |
     | externalDatabase.password | External database password                      | ""                      |
     | externalDatabase.database | External database name                          | jumpserver              |
     | externalRedis.host        | External Redis host                             | localhost               |

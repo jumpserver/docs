@@ -207,6 +207,13 @@
     TZ=Asia/Shanghai
     CURRENT_VERSION=
     ```
+    ```sh
+    # 安装
+    ./jmsctl.sh install
+
+    # 启动
+    ./jmsctl.sh start
+    ```
 
 !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
 
