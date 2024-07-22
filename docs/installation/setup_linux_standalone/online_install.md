@@ -15,8 +15,6 @@
     | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-south-1.myhuaweicloud.com     | linux/amd64    |
     | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-north-4.myhuaweicloud.com     | linux/arm64    |
     | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-east-3.myhuaweicloud.com      | linux/arm64    |
-    | 西南-贵阳一   | swr.cn-southwest-2.myhuaweicloud.com | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.ap-southeast-1.myhuaweicloud.com | linux/loong64  |
-    | 拉美-圣保罗一 | swr.sa-brazil-1.myhuaweicloud.com    | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.sa-brazil-1.myhuaweicloud.com    | linux/s390x    |
 
 ## 1. 安装部署
 
