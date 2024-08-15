@@ -5,7 +5,6 @@
 | OS/Arch       | Architecture | Linux Kernel | Offline Name                                     |
 | :------------ | :----------- | :----------- | :----------------------------------------------- |
 | linux/amd64   | x86_64       | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
-| linux/arm64   | aarch64      | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
 
 ## 1. 升级部署
 

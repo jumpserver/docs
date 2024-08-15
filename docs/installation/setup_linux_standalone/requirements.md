@@ -7,7 +7,7 @@
     - Gentoo / Arch Linux 请通过源码安装
 
 | 操作系统   | 架构 | Linux 内核  | 软件要求       | 最小化硬件配置     |
-| :------------ | :----------- | :------------ | :------------------------------------ | :-------------------- |
+| :------------ | :----------- | :-------- | :------------------------------------ | :-------------------- |
 | linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 | linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 2Core/8GB RAM/60G HDD |
 

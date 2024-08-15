@@ -5,16 +5,13 @@
 | OS/Arch       | Architecture | Linux Kernel | Offline Name                                     |
 | :------------ | :----------- | :----------- | :----------------------------------------------- |
 | linux/amd64   | x86_64       | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
-| linux/arm64   | aarch64      | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
-| linux/s390x   | s390x        | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
+
 
 ??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
     | 区域          | 镜像仓库地址                         | /opt/jumpserver/config/config.txt  | Kubernetes values.yaml                              | OS/ARCH        |
     | :----------- | :----------------------------------- | ---------------------------------  | --------------------------------------------------- | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
     | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-south-1.myhuaweicloud.com     | linux/amd64    |
-    | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-north-4.myhuaweicloud.com     | linux/arm64    |
-    | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-east-3.myhuaweicloud.com      | linux/arm64    |
 
 ## 1. 安装部署
 

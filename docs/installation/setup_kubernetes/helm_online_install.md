@@ -5,8 +5,6 @@
     | :----------- | :----------------------------------- | --------------------------------------------------- | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | imageRegistry: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
     | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | imageRegistry: swr.cn-south-1.myhuaweicloud.com     | linux/amd64    |
-    | 华北-北京四   | swr.cn-north-4.myhuaweicloud.com     | imageRegistry: swr.cn-north-4.myhuaweicloud.com     | linux/arm64    |
-    | 华东-上海一   | swr.cn-east-3.myhuaweicloud.com      | imageRegistry: swr.cn-east-3.myhuaweicloud.com      | linux/arm64    |
 
 ## 1 环境要求
 
