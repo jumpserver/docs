@@ -8,7 +8,7 @@
 
     | Name    | Core                     | Python |
     | :------ | :----------------------- | :----- |
-    | Version | {{ jumpserver.tag }}     | 3.9    |
+    | Version | {{ jumpserver.tag }}     | 3.11    |
 
 ### 1.2 下载源代码
 !!! tip ""
@@ -55,13 +55,13 @@
 
 !!! tip ""
     ```bash
-    apt-get install -y python3.9 python3.9-dev python3.9-venv
+    apt-get install -y python3.11 python3.11-dev python3.11-venv
     ```
     ```bash
-    python3.9
+    python3.11
     ```
     ```python
-    Python 3.9.5 (default, Nov 23 2021, 15:27:38)
+    Python 3.11.10 (default, Nov 23 2021, 15:27:38)
     [GCC 9.3.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
@@ -72,7 +72,7 @@
     - 为 JumpServer 项目单独创建 python3 虚拟环境。
 
     ```bash
-    python3.9 -m venv /opt/py3
+    python3.11 -m venv /opt/py3
     source /opt/py3/bin/activate
     ```
 
