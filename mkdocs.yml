@@ -75,6 +75,8 @@ nav:
         - Magnus 环境部署: installation/source_install/magnus_install.md
         - Nginx 环境部署: installation/source_install/nginx_install.md
         - JumpServer 环境整合: installation/source_install/merge_jumpserver.md
+    - 云平台:
+        - 阿里云计算巢部署: installation/cloud_platform/alibaba-cloud-computenest.md
     - 迁移文档: installation/migration.md
     - 升级须知: installation/upgrade_notice.md
     - 反向代理: installation/proxy.md
