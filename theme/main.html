@@ -15,26 +15,6 @@
     {{ super() }}
 {% endblock styles %}
 
-{% block content %}
-  {{ super() }}
-  <footer class="mdx-content__footer">
-    <a href="{{ url }}">
-      <hr>
-      <span class="twemoji">
-        {% include ".icons/logo.svg" %}
-      </span>
-      <span class="twemoji">
-        {% include ".icons/material/plus.svg" %}
-      </span>
-      <span class="twemoji mdx-heart">
-        {% include ".icons/octicons/heart-fill-24.svg" %}
-      </span>
-      <hr>
-    </a>
-  </footer>
-{% endblock %}
-
-
 {% block footer %}
     <footer class="md-footer">
       <div class="md-footer-meta md-typeset">

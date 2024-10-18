@@ -1,7 +1,6 @@
 # 交互命令
 
 !!! warning "操作不当将导致数据丢失，操作前请仔细确认"
-!!! tip "参考 [Django 文档](https://docs.djangoproject.com/zh-hans/3.2/intro/tutorial02/)"
 
 ## 1 操作方法
 
