@@ -7,7 +7,7 @@
 | linux/amd64   | x86_64       | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
 
 
-??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
+??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务, 如果是用于生产环境，推荐使用离线安装方式进行部署"
     | 区域          | 镜像仓库地址                         | /opt/jumpserver/config/config.txt  | Kubernetes values.yaml                              | OS/ARCH        |
     | :----------- | :----------------------------------- | ---------------------------------  | --------------------------------------------------- | -------------- |
     | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
