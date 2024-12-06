@@ -2,8 +2,6 @@
 !!! note "注：OpenId 认证为 JumpServer 企业版功能。"
 
 !!! tip "对接参考资料"
-    - [阿里云新 IDaaS 对接](https://help.aliyun.com/document_detail/409903.html)
-    - [Casdoor 对接](https://casdoor.org/zh/docs/integration/python/JumpServer)
     - [TOPIAM 对接](https://topiam.cn/docs/use-cases/application/jumpserver-oidc/)
 
 ## 1 Keycloak 对接
