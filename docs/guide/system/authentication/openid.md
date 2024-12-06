@@ -1,6 +1,9 @@
 # OpenID 认证
 !!! note "注：OpenId 认证为 JumpServer 企业版功能。"
 
+!!! tip "对接参考资料"
+    - [TOPIAM 对接](https://topiam.cn/docs/use-cases/application/jumpserver-oidc/)
+
 ## 1 Keycloak 对接
 
 ### 1.1 创建设置 KeyCloak Client
