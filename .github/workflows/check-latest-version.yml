@@ -19,7 +19,7 @@ jobs:
             exit 1
           fi
           echo "version=${version}" >> $GITHUB_ENV
-          grep -q "tag: v${version}" mkdocs.yml || echo "update=true" >> $GITHUB_ENV
+          grep -q "tag: ${version}" mkdocs.yml || echo "update=true" >> $GITHUB_ENV
 
       - name: Update Version
         if: env.update == 'true'
