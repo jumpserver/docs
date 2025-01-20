@@ -39,29 +39,13 @@ theme:
 nav:
   - 产品介绍: index.md
   - 快速入门: quick_start.md
-  - 系统架构: architecture.md
   - 安装部署:
-    - 网络端口说明: installation/network_port.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 离线安装: installation/setup_linux_standalone/offline_install.md
-        - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
-        - 1Panel 安装: installation/setup_linux_standalone/1panel_install.md
         - 在线安装: installation/setup_linux_standalone/online_install.md
         - 在线升级: installation/setup_linux_standalone/online_upgrade.md
-    - Linux 集群模式部署:
-        - 准备工作: installation/setup_linux_lb/requirements.md
-        - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
-        - 部署 MySQL 服务: installation/setup_linux_lb/mysql_install.md
-        - 部署 Redis 服务: installation/setup_linux_lb/redis_install.md
-        - 部署 JumpServer 01 节点: installation/setup_linux_lb/installation_node01.md
-        - 部署 JumpServer 02 节点: installation/setup_linux_lb/installation_node02.md
-        - 部署 JumpServer 03 节点: installation/setup_linux_lb/installation_node03.md
-        - 部署 JumpServer 04 节点: installation/setup_linux_lb/installation_node04.md
-        - 部署 HAProxy 服务: installation/setup_linux_lb/haproxy_install.md
-        - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
-        - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
-        - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
+        - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
@@ -186,12 +170,12 @@ nav:
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
-    - 企业版: faq/enterprise.md
+    - 企业版: https://www.jumpserver.org/enterprise.html
   - 开发文档:
     - API 文档: dev/rest_api.md
     - 交互命令: dev/shell.md
   - 用户案例: user_stories.md
-  - 更新日志: change_log.md
+  - 更新日志: https://github.com/jumpserver/jumpserver/releases/latest
   - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 联系我们: contact.md
 
@@ -240,9 +224,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v3.10.10
-    jmservisor: v1.2.5
-    wisp: v0.1.16
+    tag: v4.1.0
   search:
     separator: '[\s\-\.]+'
     language: 'zh'

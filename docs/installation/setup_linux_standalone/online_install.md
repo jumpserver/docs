@@ -1,59 +1,213 @@
 # 在线安装
  
-!!! tip "[JumpServer 部署环境要求可点击后进行参考](../setup_linux_standalone/requirements.md)"
+!!! info "安装所需命令, 参考 [环境要求](./requirements.md) 手动安装"
+
+| OS/Arch       | Architecture | Linux Kernel | Offline Name                                     |
+| :------------ | :----------- | :----------- | :----------------------------------------------- |
+| linux/amd64   | x86_64       | >= 4.0       | jumpserver-installer-{{ jumpserver.tag }}.tar.gz |
+
+
+??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务, 如果是用于生产环境, 推荐使用离线安装方式进行部署"
+    | 区域          | 镜像仓库地址                         | /opt/jumpserver/config/config.txt  | Kubernetes values.yaml                              | OS/ARCH        |
+    | :----------- | :----------------------------------- | ---------------------------------  | --------------------------------------------------- | -------------- |
+    | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
+    | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | DOCKER_IMAGE_MIRROR=1              | imageRegistry: swr.cn-south-1.myhuaweicloud.com     | linux/amd64    |
 
 ## 1. 安装部署
 
 === "中国大陆"
     !!! tip ""
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
+        ```sh
+        cd /opt
+        wget https://resource.fit2cloud.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.tag }}
         ```
-        </div>
+
 === "其他地区"
     !!! tip ""
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
+        ```sh
+        cd /opt
+        wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+        tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
+        cd jumpserver-installer-{{ jumpserver.tag }}
         ```
-        </div>
 
-!!! tip "提示"
-    - 首次安装后需要修改配置文件，定义 DOMAINS 字段后即可正常使用
-    - 如果服务器是一键安装并且旧版本就已经使用 JumpServer 开启了 HTTPS，则不需要进行任何更改。
-    - 需要使用 IP 地址来访问 JumpServer 的场景，可以根据自己的 IP 类型来填写 config.txt 配置文件中 DOMAINS 字段为公网 IP 还是内网 IP。
-
+!!! tip ""
+    ```sh
+    # 根据需要修改配置文件模板, 如果不清楚用途可以跳过修改
+    cat config-example.txt
     ```
-      # 打开config.txt 配置文件，定义 DOMAINS 字段
-      vim /opt/jumpserver/config/config.txt 
+    ```vim
+    # JumpServer configuration file example.
+    #
+    # If you don't understand the purpose, you can skip modifying this configuration file, the system will automatically fill in
+    # Complete parameter documentation https://docs.jumpserver.org/zh/v3/guide/env/
 
-      # 可信任 DOMAINS 定义,
-      # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
-      # DOMAINS="demo.jumpserver.org"    # 使用域名访问
-      # DOMAINS="172.17.200.191"         # 使用 IP 访问
-      # DOMAINS="demo.jumpserver.org,172.17.200.191"    # 使用 IP 和 域名一起访问
-      DOMAINS=
+    ################################# Image Configuration #################################
+    #
+    # The connection to docker.io in China will timeout or the download speed will be slow, enable this option to use Huawei Cloud image acceleration
+    # Replace the old version DOCKER_IMAGE_PREFIX
+    #
+    # DOCKER_IMAGE_MIRROR=1
+
+    # Image pull policy Always, IfNotPresent
+    # Always means that the latest image will be pulled every time, IfNotPresent means that the image will be pulled only if it does not exist locally
+    #
+    # IMAGE_PULL_POLICY=Always
+
+    ############################## Installation Configuration #############################
+    #
+    # JumpServer database persistence directory, by default, recordings, task logs are in this directory
+    # Please modify according to the actual situation, the database file (.sql) and configuration file backed up during the upgrade will also be saved to this directory
+    #
+    VOLUME_DIR=/data/jumpserver
+
+    # Encryption key, please ensure that SECRET_KEY is consistent with the old environment when migrating, do not use special strings
+    # (*) Warning: Keep this value secret.
+    # (*) Do not disclose SECRET_KEY to anyone
+    #
+    SECRET_KEY=
+
+    # The token used by the component to register with core, please keep BOOTSTRAP_TOKEN consistent with the old environment when migrating,
+    # Do not use special strings
+    # (*) Warning: Keep this value secret.
+    # (*) Do not disclose BOOTSTRAP_TOKEN to anyone
+    #
+    BOOTSTRAP_TOKEN=
+
+    # Log level INFO, WARN, ERROR
+    #
+    LOG_LEVEL=ERROR
+
+    # The network segment used by the JumpServer container, please do not conflict with the existing network, modify according to the actual situation
+    #
+    DOCKER_SUBNET=192.168.250.0/24
+
+    # ipv6 nat, no need to enable under normal circumstances
+    # If the host does not support ipv6, enabling this option will prevent the real client ip address from being obtained
+    #
+    USE_IPV6=0
+    DOCKER_SUBNET_IPV6=fc00:1010:1111:200::/64
+
+    ################################# DB Configuration ####################################
+    # For external databases, you need to enter the correct database information, the system will automatically handle the built-in database
+    # (*) The password part must not contain single quotes and double quotes
+    #
+    DB_ENGINE=postgresql
+    DB_HOST=postgresql
+    DB_PORT=5432
+    DB_USER=postgres
+    DB_PASSWORD=
+    DB_NAME=jumpserver
+
+    # If external MySQL needs to enable TLS/SSL connection, refer to https://docs.jumpserver.org/zh/v3/installation/security_setup/mysql_ssl/
+    #
+    # DB_USE_SSL=true
+
+    ################################# Redis Configuration #################################
+    # For external Redis, please enter the correct Redis information, the system will automatically handle the built-in Redis
+    # (*) The password part must not contain single quotes and double quotes
+    #
+    REDIS_HOST=redis
+    REDIS_PORT=6379
+    REDIS_PASSWORD=
+
+    # If you are using external Redis Sentinel, please manually fill in the following content
+    #
+    # REDIS_SENTINEL_HOSTS=mymaster/192.168.100.1:26379,192.168.100.1:26380,192.168.100.1:26381
+    # REDIS_SENTINEL_PASSWORD=your_sentinel_password
+    # REDIS_PASSWORD=your_redis_password
+    # REDIS_SENTINEL_SOCKET_TIMEOUT=5
+
+    # If external Redis needs to enable TLS/SSL connection, refer to https://docs.jumpserver.org/zh/v3/installation/security_setup/redis_ssl/
+    #
+    # REDIS_USE_SSL=true
+
+    ################################# Access Configuration ################################
+    # The service port provided to the outside, if it conflicts with the existing service, please modify it yourself
+    #
+    HTTP_PORT=80
+
+    ################################# HTTPS Configuration #################################
+    # Refer to https://docs.jumpserver.org/zh/v3/installation/proxy/ for configuration
+    #
+    # HTTPS_PORT=443
+    # SERVER_NAME=your_domain_name
+    # SSL_CERTIFICATE=your_cert
+    # SSL_CERTIFICATE_KEY=your_cert_key
+    #
+
+    # Nginx file upload and download size limit
+    #
+    CLIENT_MAX_BODY_SIZE=4096m
+
+    ################################# Component Configuration #############################
+    # Component registration use, by default, register to the core container, the cluster environment needs to be modified to the cluster vip address
+    #
+    CORE_HOST=http://core:8080
+    PERIOD_TASK_ENABLED=true
+
+    # Core Session definition,
+    # SESSION_COOKIE_AGE indicates how many seconds the session expires after idling,
+    # SESSION_EXPIRE_AT_BROWSER_CLOSE=true means that the session expires as soon as the browser is closed
+    #
+    # SESSION_COOKIE_AGE=86400
+    SESSION_EXPIRE_AT_BROWSER_CLOSE=false
+
+    # Trusted DOMAINS definition,
+    # Define the trusted access IP, please modify according to the actual situation, if it is a public IP, please change to the corresponding public IP,
+    # DOMAINS="demo.jumpserver.org:443"
+    # DOMAINS="172.17.200.191:80"
+    # DOMAINS="demo.jumpserver.org:443,172.17.200.191:80"
+    DOMAINS=
+
+    # Configure the components that do not need to be started, by default all components will be started, if you do not need a certain component, you can set {component name}_ENABLED to 0 to turn it off
+    # CORE_ENABLED=0
+    # CELERY_ENABLED=0
+    # KOKO_ENABLED=0
+    # LION_ENABLED=0
+    # CHEN_ENABLED=0
+    # WEB_ENABLED=0
+
+    # Lion enables font smoothing to optimize the experience
+    #
+    JUMPSERVER_ENABLE_FONT_SMOOTHING=true
+
+    ################################# XPack Configuration #################################
+    # XPack package, invalid setting in open source version
+    #
+    SSH_PORT=2222
+    RDP_PORT=3389
+    XRDP_PORT=3390
+    MAGNUS_MYSQL_PORT=33061
+    MAGNUS_MARIADB_PORT=33062
+    MAGNUS_REDIS_PORT=63790
+    MAGNUS_POSTGRESQL_PORT=54320
+    MAGNUS_SQLSERVER_PORT=14330
+    MAGNUS_ORACLE_PORTS=30000-30030
+
+    ################################## Other Configuration ################################
+    # The terminal uses the host HOSTNAME as the identifier, automatically generated during the first installation
+    #
+    SERVER_HOSTNAME=${HOSTNAME}
+
+    # Use built-in SLB, if the client IP address obtained by the Web page is not correct, please set USE_LB to 0
+    # When USE_LB is set to 1, use the configuration proxy_set_header X-Forwarded-For $remote_addr
+    # When USE_LB is set to 0, use the configuration proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+    USE_LB=1
+
+    # The current running version number of JumpServer, automatically generated after installation and upgrade
+    #
+    TZ=Asia/Shanghai
+    CURRENT_VERSION=
+    ```
+    ```sh
+    # 安装
+    ./jmsctl.sh install
+
+    # 启动
+    ./jmsctl.sh start
     ```
 
 !!! info "安装完成后 JumpServer 配置文件路径为： /opt/jumpserver/config/config.txt"
@@ -80,6 +234,6 @@
     ```sh
     地址: http://<JumpServer服务器IP地址>:<服务运行端口>
     用户名: admin
-    密码: admin
+    密码: ChangeMe
     ```
 ![登录页面](../../img/online_install_01.png)
