@@ -330,33 +330,81 @@
         === "Python"
             ```python
             # Python 示例
-            # pip install requests drf-httpsig
-            import requests, datetime, json
-            from httpsig.requests_auth import HTTPSignatureAuth
-
-            def get_auth(KeyID, SecretID):
+            
+            # 安装依赖
+            # pip install requests
+            
+            import requests
+            import datetime
+            import json
+            import hmac
+            import hashlib
+            import base64
+            
+            def generate_signature(secret, string_to_sign):
+                """
+                生成 HMAC-SHA256 签名
+                :param secret: 密钥
+                :param string_to_sign: 待签名的字符串
+                :return: 签名后的字符串
+                """
+                h = hmac.new(secret.encode('utf-8'), string_to_sign.encode('utf-8'), hashlib.sha256)
+                return base64.b64encode(h.digest()).decode('utf-8')
+            
+            def get_auth_header(key_id, secret, method, path, headers):
+                """
+                生成签名认证头部
+                :param key_id: 访问密钥 ID
+                :param secret: 访问密钥
+                :param method: 请求方法
+                :param path: 请求路径
+                :param headers: 请求头部
+                :return: 包含签名的认证头部
+                """
+                # 定义需要签名的头部
                 signature_headers = ['(request-target)', 'accept', 'date']
-                auth = HTTPSignatureAuth(key_id=KeyID, secret=SecretID, algorithm='hmac-sha256', headers=signature_headers)
-                return auth
-
-            def get_user_info(jms_url, auth):
-                url = jms_url + '/api/v1/users/users/'
+                # 构建待签名的字符串
+                request_target = f"{method.lower()} {path}"
+                string_to_sign = f"(request-target): {request_target}\n"
+                for header in signature_headers[1:]:
+                    string_to_sign += f"{header}: {headers[header]}\n"
+                string_to_sign = string_to_sign.rstrip()
+                # 生成签名
+                signature = generate_signature(secret, string_to_sign)
+                # 构建认证头部
+                auth_header = f'Signature keyId="{key_id}",algorithm="hmac-sha256",headers="{" ".join(signature_headers)}",signature="{signature}"'
+                return auth_header
+            
+            def get_user_info(jms_url, key_id, secret):
+                """
+                获取用户信息
+                :param jms_url: Jumpserver 的 URL
+                :param key_id: 访问密钥 ID
+                :param secret: 访问密钥
+                """
+                url = jms_url + '/api/v1/users/profile/'
+                path = url.replace(jms_url, '')
                 gmt_form = '%a, %d %b %Y %H:%M:%S GMT'
                 headers = {
-                    'Accept': 'application/json',
+                    'accept': 'application/json',
                     'X-JMS-ORG': '00000000-0000-0000-0000-000000000002',
-                    'Date': datetime.datetime.utcnow().strftime(gmt_form)
+                    'date': datetime.datetime.utcnow().strftime(gmt_form)
                 }
-
-                response = requests.get(url, auth=auth, headers=headers)
-                print(json.loads(response.text))
-
+                # 生成认证头部
+                auth_header = get_auth_header(key_id, secret, 'GET', path, headers)
+                headers['Authorization'] = auth_header
+                # 发送请求
+                response = requests.get(url, headers=headers, verify=False)
+                try:
+                    print(json.loads(response.text))
+                except json.JSONDecodeError:
+                    print(f"Failed to decode JSON response: {response.text}")
+            
             if __name__ == '__main__':
                 jms_url = 'https://demo.jumpserver.org'
                 KeyID = 'AccessKeyID'
                 SecretID = 'AccessKeySecret'
-                auth = get_auth(KeyID, SecretID)
-                get_user_info(jms_url, auth)
+                get_user_info(jms_url, KeyID, SecretID)
             ```
 
         === "Golang"
