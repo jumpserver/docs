@@ -73,7 +73,12 @@
     - 把飞书获取到的应用凭据 `App ID` 与 `App Secret` 对应的值，填到 JumpServer 飞书认证中。
 ![查看凭据](../../../img/feishu_13.png)
 
-## 5 飞书账号登陆 JumpServer
+## 5 JumpServer 用户绑定飞书账号
 !!! tip ""
-    - 用户正常使用账号密码登录 JumpServer 后，在`个人信息`里面绑定飞书账号，绑定完成后就可以使用飞书账号登录 JumpServer。
+    - 在`个人信息`里面绑定飞书账号并开启消息订阅
+![查看凭据](../../../img/feishu_15.png)
+
+## 6 飞书账号登陆 JumpServer
+!!! tip ""
+    - 在登录页面选择飞书即可使用飞书账号登录 JumpServer。
 ![查看凭据](../../../img/feishu_14.png)
