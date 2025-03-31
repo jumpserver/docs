@@ -1,36 +1,23 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.03.28）"
-    **2025年3月有用户反馈发现JumpServer开源堡垒机在管理Kubernetes资产时存在安全漏洞，并向JumpServer开源项目组进行上报。**
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2024.03.31）"
+    **2025年3月，有用户反馈发现JumpServer开源堡垒机存在安全漏洞，并向JumpServer开源项目组进行上报。**
 
     **漏洞信息：** 
-    <br> JumpServer用户在连接Kubernetes资产时，可能存在Kubernetes认证信息泄漏的风险，CVE编号为CVE-2025-27095。
+    <br> [JumpServer用户在连接Kubernetes资产时，可能存在Kubernetes认证信息泄漏的风险，CVE编号为CVE-2025-27095 ](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-5q9w-f4wh-f535)
+    
+    **以上漏洞影响版本为：** <br> JumpServer V3版本: <= v3.10.17版本
+    <br> JumpServer V4版本: v4.4.0-v4.6.0版本
 
-    **以上漏洞影响版本为:**  <br> v2版本: <= 2.28.22版本。
-    <br> v3版本: <= 3.10.17版本。
-    <br> v4版本: <= v4.6.0版本。
-    <br> 注: 此中危漏洞只存在于堡垒机纳管Kubernetes资产的场景下。如未管理Kubernetes资产可忽略此漏洞。
-    <br> 
-    <br> **修复所有漏洞的安全版本如下：**
-    <br> v2版本: 升级至v3安全版本。 
-    <br> v3版本: >= v3.10.18。
-    <br> v4版本: >= v4.7.0。
+    **安全版本为：** <br> JumpServer V3版本 >= v3.10.18版本 
+    <br> JumpServer V4版本 >= v4.7.0版本
 
-    **修复方案：** 
-    <br>**升级 JumpServer 软件至上述安全版本。**
+    **修复方案：**
+    <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
+    <br>**临时修复方案：** 取消所有用户的Kubernetes资产授权。
 
-    **漏洞详述：** 
-    <br> **Kubernetes认证信息泄漏漏洞**
-    <br>
-    <br> **1 漏洞级别**
-    <br> 中，利用难度中，必须是JumpServer中有效的认证用户且具有Kubernetes资产授权。
-    <br> **2 漏洞复现**
-    <br> 用户在建立Kubernetes会话后，通过执行vim .kube/config修改APIServer地址将请求导向其他服务(此处以Nginx示例)。
-    ![k8s01](img/k8s1.png)
-    <br> 随后执行Kubernetes命令，在Nginx端输出的请求日志中即可看到带有认证信息的请求。
-    ![k8s02](img/k8s2.png)
-    <br> **3 漏洞影响**
-    <br> 攻击者认证信息泄漏后，用户可利用该认证信息直接访问Kubernetes集群。
+    **特别鸣谢：** <br> 感谢以下社区用户向JumpServer开源社区及时反馈上述漏洞。
+    <br> CVE-2025-27095: @paraddise
 
 ## 1 JumpServer 是什么？
 !!! tip ""
