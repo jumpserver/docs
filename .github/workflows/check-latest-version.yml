@@ -15,7 +15,7 @@ jobs:
         run: |
           version=$(curl -s https://api.github.com/repos/jumpserver/jumpserver/releases/latest | jq -r .tag_name)
           echo "Current Version: ${version}"
-          if [ -z "${version}" ]; then
+          if [[ -z "${version}" || "${version}" == "null" ]]; then
             exit 1
           fi
           echo "version=${version}" >> $GITHUB_ENV
