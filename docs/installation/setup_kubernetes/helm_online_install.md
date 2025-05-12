@@ -1,10 +1,10 @@
 # 在线安装
 
-??? info "可以使用由 [华为云](https://www.huaweicloud.com/) 提供的容器镜像服务"
+??? info "可以使用由 [阿里云](https://www.aliyun.com/) 提供的容器镜像服务"
     | 区域          | 镜像仓库地址                         | Kubernetes values.yaml                              | OS/ARCH        |
     | :----------- | :----------------------------------- | --------------------------------------------------- | -------------- |
-    | 华北-北京一   | swr.cn-north-1.myhuaweicloud.com     | imageRegistry: swr.cn-north-1.myhuaweicloud.com     | linux/amd64    |
-    | 华南-广州     | swr.cn-south-1.myhuaweicloud.com     | imageRegistry: swr.cn-south-1.myhuaweicloud.com     | linux/amd64    |
+    | 华北-北京一   | registry.cn-beijing.aliyuncs.com/jumpservice   | imageRegistry: egistry.cn-beijing.aliyuncs.com/jumpservice      | linux/amd64    |
+
 
 ## 1 环境要求
 
