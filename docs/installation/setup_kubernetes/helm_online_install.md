@@ -1,11 +1,5 @@
 # 在线安装
 
-??? info "可以使用由 [阿里云](https://www.aliyun.com/) 提供的容器镜像服务"
-    | 区域          | 镜像仓库地址                         | Kubernetes values.yaml                              | OS/ARCH        |
-    | :----------- | :----------------------------------- | --------------------------------------------------- | -------------- |
-    | 华北-北京一   | registry.cn-beijing.aliyuncs.com/jumpservice   | imageRegistry: egistry.cn-beijing.aliyuncs.com/jumpservice      | linux/amd64    |
-
-
 ## 1 环境要求
 
 - Kubernetes 1.20+
