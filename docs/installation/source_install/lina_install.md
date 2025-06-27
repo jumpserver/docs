@@ -80,6 +80,9 @@
         VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
         VUE_APP_CORE_WS = 'ws://localhost:8070'
         VUE_APP_ENV = 'development'
+
+        # Dev server for other components' proxy
+        VUE_APP_KAEL_HOST = 'http://localhost:8083' # 修改成 Kael 组件的 url 地址
         ```
 
         - 运行 Lina。
