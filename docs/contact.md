@@ -6,7 +6,7 @@
 ## 2 微信群
 ![wechat-group](img/weixin_group.png){ width="156px" }
 
-## 3 智能微信客服
+## 3 JumpServer 智能客服
 ![evo-bot](img/AI_helper.png){ width="156px" }
 
 ## 4 开源社区论坛
