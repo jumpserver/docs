@@ -21,7 +21,7 @@
     DB_USER: jumpserver  # 连接数据库的用户
     DB_PASSWORD: ******  # 连接数据库用户的密码
     DB_NAME: jumpserver  # JumpServer 使用的数据库
-    # mysqldump -h<DB_HOST> -P<DB_PORT> -u<DB_USER> -p<DB_PASSWORD> <DB_NAME> > /opt/<DB_NAME>.sql
+    # pg_dump -U postgres -d jumpserver -FC -f /opt/jumpserver.dump
     ```
 
 !!! tip ""
@@ -113,19 +113,19 @@
 
     === "docker 部署"
         ```sh
-        docker cp jms_all:/opt/jumpserver /opt/jumpserver_bak
+        docker cp jms_core:/opt/jumpserver /opt/jumpserver_bak
 
         # 记录 SECRET_KEY 和 BOOTSTRAP_TOKEN
-        docker exec -it jms_all env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
+        docker exec -it jms_core env | egrep "SECRET_KEY|BOOTSTRAP_TOKEN"
         ```
         ```sh
-        docker exec -it jms_all /bin/bash
-        mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD $DB_NAME > /opt/jumpserver.sql
+        docker exec -it jms_postgresql /bin/bash
+        pg_dump -U postgres -d jumpserver -FC -f /opt/jumpserver.dump
         exit
         ```
         ```sh
-        docker cp jms_all:/opt/jumpserver.sql /opt
-        docker stop jms_all
+        docker cp jms_postgresql:/opt/jumpserver.sql /opt
+        docker stop jms_core
         ```
 
     === "docker-compose 部署"
@@ -330,25 +330,17 @@
         我们的官网: https://www.jumpserver.org/
         我们的文档: https://docs.jumpserver.org/
         ```
-        ```sh
-        docker exec -it jms_mysql /bin/bash
-        # 如果变量 $MARIADB_ROOT_PASSWORD 不存在，请使用 $MYSQL_ROOT_PASSWORD
-        mysql -uroot -p$MARIADB_ROOT_PASSWORD
-        ```
-        ```mysql
-        drop database jumpserver;
-        create database jumpserver default charset 'utf8';
-        exit
-        exit
-        ```
+        
         ```sh
         # /opt/jumpserver.sql 为旧版本数据库
-        ./jmsctl.sh restore_db /opt/jumpserver.sql
+        ./jmsctl.sh restore_db /opt/jumpserver.dump 
         ```
-        ```nginx
-        开始还原数据库: /opt/jumpserver.sql
-        mysql: [Warning] Using a password on the command line interface can be insecure.
-        数据库恢复成功！
+        
+        ```sh
+        [ WARNING ] Make sure you have a backup of data, this operation is not reversible! 
+
+        Start restoring database: /opt/jumpserver.dump
+        [SUCCESS] Database recovered successfully!
         ```
         ```sh
         ./jmsctl.sh start
