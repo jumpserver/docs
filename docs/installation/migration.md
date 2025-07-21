@@ -332,7 +332,7 @@
         ```
         
         ```sh
-        # /opt/jumpserver.sql 为旧版本数据库
+        # /opt/jumpserver.dump 为旧版本数据库，需要上传至当前新服务器
         ./jmsctl.sh restore_db /opt/jumpserver.dump 
         ```
         
