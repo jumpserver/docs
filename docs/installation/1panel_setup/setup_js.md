@@ -14,11 +14,11 @@
 !!! tip ""
     - 打开应用商店菜单 在全部栏 右边搜索栏搜索 **JumpServer** 找到后点击 **安装**。
 
-![img](/img/V4_1Panel_setup1.png)
+![img](img/V4_1Panel_setup1.png)
 !!! tip ""
     - 在安装之前会弹出各种安装版本的信息以及数据库选择等信息，需要输入数据库密码等信息，输入完成后点击 **确认** 即可进行安装。
 
-![img](/img/V4_1Panel_setup2.png)
+![img](img/V4_1Panel_setup2.png)
 
 !!! tip "详细参数说明:"
 
@@ -48,7 +48,7 @@
 
 !!! info "弹出以下日志记录，出现 **TASK-END** 表示安装完成。"
 
-![img](/img/V4_1Panel_setup4.png)
+![img](img/V4_1Panel_setup4.png)
 
 ## 4. 访问 JumpServer
 !!! info "安装成功后，通过浏览器访问登录 JumpServer。"
