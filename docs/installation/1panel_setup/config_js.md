@@ -8,31 +8,31 @@
     - 在 1Panel 中部署的 JumpServer 不仅支持终端命令行配置 SSL 证书，还支持基于可视化操作面板上传个人的证书。
     - 打开 1Panel，在左侧导航栏中依次点击“网站”→“证书”→“上传证书”按钮，进入到“上传证书”模块，用户可通过粘贴代码/选择服务器文件两种方式配置证书的私钥（KEY）与证书（PEM 格式）信息。
 
-![img](/img/V4_1panel_config_js1.png)
+![img](/img/V4_1panel_config1.png)
 !!! tip ""
     当然也可以通过申请证书和自签证书的方式来创建证书
     系统会基于提交的私钥与证书文件自动识别域名、证书颁发组织等信息。
-![img](/img/V4_1panel_config_js2.png)
+![img](/img/V4_1panel_config2.png)
 !!! tip ""
     - 以下基于 OpenResty 实现在左侧导航栏中依次点击“网站”→“网站”→“创建网站”，在已装应用中选择“JumpServer”，并配置相关的域名信息，同时在最下方选择启用“HTTPS”，点击“确认”按钮，即可完成网站的创建。
 
 ## 2 config 配置文件里参数如何添加，重启
 !!! tip ""
     - 在左侧菜单栏找到  **容器** ，  点击上方的 **容器**  进入到具体的容器显示,然后找到 **jms_all** 对应的镜像， 在右侧 **操作** 栏中点击 **更多** ， 然后点击编辑
-![img](/img/V4_1panel_config_js3.png)
+![img](/img/V4_1panel_config3.png)
 !!! tip ""
     - 在编辑页面中下划到页面最底端， 默认在 **网络** 栏中， 我们点击该栏中的 **标签&环境变量**  进入到具体的文件配置栏目
-![img](/img/V4_1panel_config_js4.png)
+![img](/img/V4_1panel_config4.png)
 !!! tip ""
     - 下拉到 **环境变量** 部分， 可以修改，添加和删除各种环境变量的内容， 修改完毕后点击 **确认** 即可完成配置文件的修改
 
 ## 3 如何升级操作
 !!! tip ""
     - 首先在 1panel Linux 运维面板左侧导航栏中点击“容器”。然后在右侧上方导航栏中点击“容器”按钮，即可查询当前所有当前服务器正在管理的容器。
-![img](/img/V4_1panel_config_js5.png)
+![img](/img/V4_1panel_config5.png)
 !!! tip ""
     - 找到 jms_all 容器（JumpServer 服务提供者），在右侧操作按钮中依次点击“更多”→“升级”，在目标镜像中选择合适的新版本镜像，最后点击“确认”按钮，即可完成JumpServer的升级。 
-![img](/img/V4_1panel_config_js6.png)
+![img](/img/V4_1panel_config6.png)
 ## 4 如何查看日志
 !!! tip ""
     - 容器-->找到jumpserver容器 --> 操作 日志查看容器日志
