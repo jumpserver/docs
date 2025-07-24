@@ -42,7 +42,7 @@ nav:
   - 安装部署:
     - 1Panel 模式部署:
         - 部署过程: installation/1panel_setup_js/setup_js.md
-        - 运维配置: installation/1panel_setup_js/setup_js.md
+        - 运维配置: installation/1panel_setup_js/config_js.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 离线安装: installation/setup_linux_standalone/offline_install.md
