@@ -39,31 +39,31 @@
     - JumpServer 将主机、网络设备、数据库等等均归类于 JumpServer 资产。
     - 管理员用户可以自行在平台列表中自定义平台类型。
     - 主机类型中默认包含 Linux 资产、Windows 资产、Unix 资产等。
-
 ![alt text](../../../../img/V4_assets_type_3.png)
 
 !!! tip ""
-    - 网络设备类型中默认包含 General、Cisco 等。
-
+    - 网络设备类型中默认包含 General、Cisco、Huawei、H3C 等。
 ![V4_assets_build_4](../../../../img/V4_assets_type_4.png)
 
 !!! tip ""
     - 数据库类型中默认包含 MySQL、MariaDB、Oracle、Redis 等。
-
 ![V4_assets_build_5](../../../../img/V4_assets_type_5.png)
 
 !!! tip ""
-    - 云服务中默认包含siyouyun与Kubernetes。
-
+    - 云服务中默认包含私有云 VM 与 Kubernetes。
 ![V4_assets_build_6](../../../../img/V4_assets_type_6.png)
 
 !!! tip ""
-    - Web 类型中默认包含网站。
-
+    - Web 类型中默认包含网站。可在远程应用中自定义其他 Web 网站。
 ![V4_assets_build_7](../../../../img/V4_assets_type_7.png)
 
 !!! tip ""
-    - GPT 类型中默认包含 ChatGPT。
+    - 目录服务（DirectoryService）是一种用于集中存储、管理和查询网络资源信息的服务，常见实现包括LDAP和ActiveDirectory。
+![V4_assets_type_8](../../../../img/V4_assets_type_8.png)
+
+!!! tip ""
+    - 除堡垒机内置的资产类型之外，JumpServer支持以远程应用的方式自定义资产类型，例如：测试软件，笔记软件等等。
+![V4_assets_type_9](../../../../img/V4_assets_type_9.png)
 
 ## 3 资产创建
 ### 3.1 手动创建单个资产
@@ -94,6 +94,7 @@
     - JumpServer 提供两种模板信息，csv 与 xlsx 模板。
     - 首次导入资产，可点击资产列表的右上角导入按钮，下载导入模板后根据模板提示填写需要导入或更新的信息，填写完成后在导入页面导入文件即可。
 ![V4_assets_build_9](../../../../img/V4_assets_build_9.png)
+
 ### 3.3 云同步
 !!! tip ""
     - JumpServer 堡垒机提供云主机同步功能。云同步功能支持将云资产同步到 JumpServer 堡垒机中。通过创建云账号和同步实例将阿里云、腾讯云、腾讯云（轻量应用服务器）、华为云、百度云、京东云、金山云、AWS(中国)、AWS(国际)、Azure(中国)、Azure(国际)、谷歌云、UCloud 云、VMware、青云私有云、华为私有云、天翼私有云、OpenStack、ZStack、Nutanix、Fusion Compute、深信服云平台、阿里云专有云、局域网等的云资产同步到JumpServer 资产列表。
@@ -115,6 +116,25 @@
 
 !!! tip ""
     - 开始同步并等待任务完成，选择主机，然后单击以导入。
+    - 检查资产列表中的导入结果。如果在资产列表中可以找到导入的资产，则表示该云帐户的资产同步功能正常运行。
+![V4_assets_build_15](../../../../img/V4_assets_build_15.png)
+
+!!! tip ""
+    - 如果用户需要在云同步过程中建立特定的同步规则，他们可以通过定义同步策略来实现。创建同步策略的步骤如下：
+    - 单击云同步页面上的`同步策略`选项卡，以在此页面上创建同步策略。
+    - 填写信息，然后单击最下方`提交`创建策略。
+![V4_assets_build_16](../../../../img/V4_assets_build_16.png)
+
+!!! tip ""
+    - 详细参数描述：
+
+    | 参数       | 描述                                                                                     |
+    |------------|------------------------------------------------------------------------------------------|
+    | 名称       | Sych 策略的名称                                                                         |
+    | 优先级     | 此同步策略的优先级。1-100，数字越小，优先级越高。                                       |
+    | 条件关系   | 并且：只有当所有条件匹配时，才会执行该操作。或者：当至少一个条件匹配时，将执行该操作。  |
+    | 条件       | 策略规则用于匹配云平台上的资产。例如实例名称、平台名称和地址。                          |
+    | 动作设置   | 策略操作是在成功匹配资产后在 JumpServer 上执行的具体操作。它可以将平台、节点、区域和帐户模板设置为成功同步的资产。 |
 
 
 ## 4 资产更新
@@ -150,3 +170,19 @@
     - 当需要删除某个资产时，可以点击相应的资产后方的`···`按钮，选择`删除`按钮，点击删除即可。
     
 ![V4_assets_delete_15](../../../../img/V4_assets_delete_15.png)
+
+## 7 克隆资产
+!!! tip ""
+    - 要复制特定资产，可以单击该资产旁边的`···`按钮，然后选择`副本`选项。
+![V4_assets_clone_1](../../../../img/V4_assets_clone_1.png)
+
+## 8 新增账号
+!!! tip ""
+    - 单击该资产旁边的<更多>按钮，选择<新增账号>选项。您可以直接在此处添加资产账号。
+![V4_assets_adduser_14](../../../../img/V4_assets_adduser_14.png)
+![V4_assets_adduser_10](../../../../img/V4_assets_adduser_10.png)
+
+## 8 发现账号
+!!! tip ""
+    - 单击该资产旁边的`···`按钮，选择`账号发现`选项。您可以对该资产执行账号发现任务。
+![V4_assets_finduser_1](../../../../img/V4_assets_finduser_1.png)
