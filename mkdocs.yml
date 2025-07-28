@@ -61,6 +61,8 @@ nav:
           - 资产列表: manual\admin\console\assets\assets_list.md
           - 网域列表: manual\admin\console\assets\net_list.md
           - Web资产: manual\admin\console\assets\web_assets.md
+        - 授权管理:
+          - 资产授权: manual\admin\console\authorization_manage\assets_authorization
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
