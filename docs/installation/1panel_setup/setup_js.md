@@ -18,7 +18,7 @@
 !!! tip ""
     - 在安装之前会弹出各种安装版本的信息以及数据库选择等信息，需要输入数据库密码等信息，输入完成后点击 **确认** 即可进行安装。
 
-![img](../../img/V4_1Panel_setup2.png)
+![img](../../img/V4_1panel_setup2.png)
 
 !!! tip "详细参数说明:"
 
@@ -48,7 +48,7 @@
 
 !!! info "弹出以下日志记录，出现 **TASK-END** 表示安装完成。"
 
-![img](../../img/V4_1Panel_setup4.png)
+![img](../../img/V4_1panel_setup4.png)
 
 ## 4. 访问 JumpServer
 !!! info "安装成功后，通过浏览器访问登录 JumpServer。"
