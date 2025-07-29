@@ -61,8 +61,9 @@ nav:
           - 资产列表: manual\admin\console\assets\assets_list.md
           - 网域列表: manual\admin\console\assets\net_list.md
           - Web资产: manual\admin\console\assets\web_assets.md
-        - 权限管理: 
-          - 用户登录: manual\admin\console\access_control\user_login.md
+        - 账号管理: 
+          - 账号列表: manual\admin\console\account_management\account_list.md
+          - 账号模板: manual\admin\console\account_management\account_template.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
