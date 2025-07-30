@@ -61,8 +61,12 @@ nav:
           - 资产列表: manual/admin/console/assets/assets_list.md
           - 网域列表: manual/admin/console/assets/net_list.md
           - Web资产: manual/admin/console/assets/web_assets.md
+        - 账号管理: 
+          - 账号列表: manual/admin/console/account_management/account_list.md
+          - 账号模板: manual/admin/console/account_management/account_template.md
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
+          - 访问控制: manual/admin/console/access_control/acls.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         
