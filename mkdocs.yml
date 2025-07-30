@@ -63,6 +63,7 @@ nav:
           - Web资产: manual/admin/console/assets/web_assets.md
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
+          - 访问控制: manual/admin/console/access_control/acls.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         
