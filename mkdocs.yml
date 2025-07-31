@@ -69,6 +69,8 @@ nav:
           - 访问控制: manual/admin/console/access_control/acls.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
+      - 其它:
+        - 标签列表: manual/admin/console/else/tag_list.md
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
