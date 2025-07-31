@@ -69,6 +69,8 @@ nav:
           - 访问控制: manual/admin/console/access_control/acls.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
+        - 认证设置:
+          - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
