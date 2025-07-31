@@ -67,6 +67,17 @@ nav:
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
+      - 工作台: 
+        - 我的资产: 
+          - 文件传输: manual/admin/workbenche/my_assets/file_transfer.md
+          - 文件管理: manual/admin/workbenche/my_assets/file_manage.md
+        - 作业中心: 
+          - 快捷命令: manual/admin/workbenche/activity_center/quick_command.md
+          - 作业管理: manual/admin/workbenche/activity_center/activity_manage.md
+          - 模板管理: manual/admin/workbenche/activity_center/mode_manage.md
+          - 执行历史: manual/admin/workbenche/activity_center/execute_history.md
+        - 其他: 
+          - 系统工具: manual/admin/workbenche/other/system_tool.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         
