@@ -69,6 +69,8 @@ nav:
           - 访问控制: manual/admin/console/access_control/acls.md
       - 工作台: 
         - 我的资产: 
+          - 连接资产: manual/admin/workbenche/my_assets/assets_connect.md
+          - Web终端: manual/admin/workbenche/my_assets/web_terminal.md
           - 文件传输: manual/admin/workbenche/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbenche/my_assets/file_manage.md
         - 作业中心: 
