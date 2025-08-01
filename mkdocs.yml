@@ -69,7 +69,14 @@ nav:
           - 访问控制: manual/admin/console/access_control/acls.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
-        
+      - 其它:
+        - 标签列表: manual/admin/console/else/tag_list.md
+      - 审计台:
+        - 会话审计:
+          - 会话记录: manual/admin/audit/session_audit/session_record.md
+          - 会话命令: manual/admin/audit/session_audit/session_command.md
+          - 文件传输: manual/admin/audit/session_audit/file_transfer.md
+          - 在线用户: manual/admin/audit/session_audit/online_user.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
