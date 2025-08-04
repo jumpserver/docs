@@ -70,8 +70,8 @@ nav:
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
-          - LDAP: manual/admin/system_settings/authentication_settings/V4_LDAP.md
-          - OAuth2: manual/admin/system_settings/authentication_settings/V4_OAuth2.md
+          - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+          - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
