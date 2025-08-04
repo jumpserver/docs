@@ -95,6 +95,8 @@ nav:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
           - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
       - 系统设置:
+        - 概览: manual/admin/system_settings/overview.md
+        - 基本设置: manual/admin/system_settings/basic_settings.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
