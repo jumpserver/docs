@@ -67,8 +67,7 @@ nav:
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
-        - 其它:
-          - 标签列表: manual/admin/console/else/tag_list.md
+        - 标签列表: manual/admin/console/else/tag_list.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
