@@ -67,10 +67,20 @@ nav:
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
-      - 系统设置:
-        - 远程应用: manual/admin/system_settings/remote_apps.md
-      - 其它:
         - 标签列表: manual/admin/console/else/tag_list.md
+      - 工作台: 
+        - 我的资产: 
+          - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
+          - Web终端: manual/admin/workbench/my_assets/web_terminal.md
+          - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
+          - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
+        - 作业中心: 
+          - 快捷命令: manual/admin/workbench/job_center/adhoc.md
+          - 作业管理: manual/admin/workbench/job_center/jobs_management.md
+          - 模板管理: manual/admin/workbench/job_center/templates_management.md
+          - 执行历史: manual/admin/workbench/job_center/execute_history.md
+        - 其他: 
+          - 系统工具: manual/admin/workbenche/other/system_tool.md
       - 审计台:
         - 会话审计:
           - 会话记录: manual/admin/audit/session_audit/session_record.md
@@ -83,7 +93,12 @@ nav:
           - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
         - 作业审计:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
-          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
+          - 作业日志: manu
+      - 系统设置:
+        - 远程应用: manual/admin/system_settings/remote_apps.md
+        - 认证设置:
+          - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+        
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
