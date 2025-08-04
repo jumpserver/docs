@@ -93,7 +93,7 @@ nav:
           - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
         - 作业审计:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
-          - 作业日志: manu
+          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
