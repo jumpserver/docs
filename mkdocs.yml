@@ -70,15 +70,15 @@ nav:
         - 标签列表: manual/admin/console/else/tag_list.md
       - 工作台: 
         - 我的资产: 
-          - 连接资产: manual/admin/workbenche/my_assets/assets_connect.md
-          - Web终端: manual/admin/workbenche/my_assets/web_terminal.md
-          - 文件传输: manual/admin/workbenche/my_assets/file_transfer.md
-          - 文件管理: manual/admin/workbenche/my_assets/file_manage.md
+          - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
+          - Web终端: manual/admin/workbench/my_assets/web_terminal.md
+          - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
+          - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
         - 作业中心: 
-          - 快捷命令: manual/admin/workbenche/activity_center/quick_command.md
-          - 作业管理: manual/admin/workbenche/activity_center/activity_manage.md
-          - 模板管理: manual/admin/workbenche/activity_center/mode_manage.md
-          - 执行历史: manual/admin/workbenche/activity_center/execute_history.md
+          - 快捷命令: manual/admin/workbench/job_center/adhoc.md
+          - 作业管理: manual/admin/workbench/job_center/jobs_management.md
+          - 模板管理: manual/admin/workbench/job_center/templates_management.md
+          - 执行历史: manual/admin/workbench/job_center/execute_history.md
         - 其他: 
           - 系统工具: manual/admin/workbenche/other/system_tool.md
       - 系统设置:
