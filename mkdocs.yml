@@ -98,6 +98,7 @@ nav:
         - 概览: manual/admin/system_settings/overview.md
         - 基本设置: manual/admin/system_settings/basic_settings.md
         - 组织管理(X-Pack): manual/admin/system_settings/organization_manage.md
+        - 通知设置: manual/admin/system_settings/notification_settings.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
