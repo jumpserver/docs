@@ -72,6 +72,12 @@ nav:
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
           - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
+          - 企业微信: manual/admin/system_settings/authentication_settings/WeCom.md
+          - 钉钉: manual/admin/system_settings/authentication_settings/DingTalk.md
+          - 飞书: manual/admin/system_settings/authentication_settings/Feishu.md
+          - Lark: manual/admin/system_settings/authentication_settings/Lark.md
+          - Slack: manual/admin/system_settings/authentication_settings/Slack.md
+          - Radius: manual/admin/system_settings/authentication_settings/Radius.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
