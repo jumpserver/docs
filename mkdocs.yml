@@ -98,7 +98,12 @@ nav:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
-        
+        - 角色列表: manual/admin/system_settings/role_list.md
+      - PAM:
+        - 自动化:
+          - 账号发现: manual/admin/PAM/automation/account_discovery.md
+          - 账号推送: manual/admin/PAM/automation/account_push.md
+          - 账号备份: manual/admin/PAM/automation/account_backup.md 
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
