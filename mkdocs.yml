@@ -98,7 +98,10 @@ nav:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
-        
+      - PAM: 
+        - 安全设置:
+          - 账号改密: manual/admin/PAM/security/change_secrets.md
+          - 风险检测: manual/admin/PAM/security/risk_detection.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
