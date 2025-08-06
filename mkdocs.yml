@@ -94,6 +94,8 @@ nav:
         - 作业审计:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
           - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
+      - PAM:
+        - 应用管理: manual/admin/PAM/applications_manage.md
       - 系统设置:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
