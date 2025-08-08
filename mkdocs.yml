@@ -99,6 +99,7 @@ nav:
         - 远程应用: manual/admin/system_settings/remote_apps.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+        - 角色列表: manual/admin/system_settings/role_list.md
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
