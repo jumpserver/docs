@@ -108,6 +108,7 @@ nav:
           - CAS: manual/admin/system_settings/authentication_settings/CAS.md
           - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
           - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
+          - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
 
 
