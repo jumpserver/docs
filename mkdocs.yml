@@ -103,6 +103,7 @@ nav:
         - 通知设置: manual/admin/system_settings/notification_settings.md        
         - 功能设置: manual/admin/system_settings/feature_settings.md
         - 认证设置:
+          - 基本设置: manual/admin/system_settings/authentication_settings/basic_settings.md
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
 
