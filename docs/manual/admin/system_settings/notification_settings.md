@@ -23,7 +23,7 @@
 ## 2 短信设置(X-Pack)
 !!! note "短信服务为JumpServer企业版功能。"
 
-### 2.1 功能简述
+### 2.1 功能概述
 !!! tip ""
     - 可以设置短信MFA认证方式(目前支持阿里云、腾讯云、华为云、CMPP V2.0和自定义方式对接)。
     - JumpServer还支持使用手机短信找回用户密码，管理员需要开启SMS服务，且用户信息需要配置手机号。
@@ -46,7 +46,7 @@
 ![V4_systemsetting_notification_settings6](../../../img/V4_systemsetting_notification_settings6.png)
 
 ## 3 消息订阅
-### 3.1 功能简述
+### 3.1 功能概述
 !!! tip ""
     - 可以设置JumpServer平台监控消息的接收人。
     - 可以设置监控消息的发送方式(站内信和邮件)。

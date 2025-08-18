@@ -1,5 +1,5 @@
 # Core 环境部署
-## 1 Core 组件简述
+## 1 Core 组件概述
 !!! tip ""
     - [Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
 

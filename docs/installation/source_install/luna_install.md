@@ -1,5 +1,5 @@
 # Luna 环境部署
-## 1 Luna 组件简述
+## 1 Luna 组件概述
 !!! tip ""
     [Luna][luna] 是 JumpServer 的前端 UI 项目，主要使用 [Angular CLI][angular_cli] 完成。
 
