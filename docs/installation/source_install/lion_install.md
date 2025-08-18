@@ -1,5 +1,5 @@
 # Lion 环境部署
-## 1 Lion 组件简述
+## 1 Lion 组件概述
 !!! tip ""
     [Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole]，JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能。
 
