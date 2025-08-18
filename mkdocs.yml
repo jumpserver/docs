@@ -55,8 +55,9 @@ nav:
   - 用户手册:
     - 管理员手册:
       - 控制台:
-        - 用户管理: manual/admin/console/users/users.md
-        - 用户组管理: manual/admin/console/users/user-groups.md
+        - 用户管理:
+          - 用户列表: manual/admin/console/users/users.md
+          - 用户组列表: manual/admin/console/users/user-groups.md
         - 资产管理: 
           - 资产列表: manual/admin/console/assets/assets_list.md
           - 网域列表: manual/admin/console/assets/net_list.md
@@ -80,7 +81,7 @@ nav:
           - 模板管理: manual/admin/workbench/job_center/templates_management.md
           - 执行历史: manual/admin/workbench/job_center/execute_history.md
         - 其他: 
-          - 系统工具: manual/admin/workbenche/other/system_tool.md
+          - 系统工具: manual/admin/workbench/other/system_tool.md
       - 审计台:
         - 会话审计:
           - 会话记录: manual/admin/audit/session_audit/session_record.md
@@ -95,10 +96,18 @@ nav:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
           - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
       - 系统设置:
-        - 远程应用: manual/admin/system_settings/remote_apps.md
+        - 概览: manual/admin/system_settings/overview.md      
+        - 基本设置: manual/admin/system_settings/basic_settings.md
+        - 组织管理: manual/admin/system_settings/organization_manage.md
+        - 角色列表: manual/admin/system_settings/role_list.md
+        - 平台列表: manual/admin/system_settings/platforms.md
+        - 通知设置: manual/admin/system_settings/notification_settings.md        
+        - 功能设置: manual/admin/system_settings/feature_settings.md
         - 认证设置:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
-        - 角色列表: manual/admin/system_settings/role_list.md
+        - 远程应用: manual/admin/system_settings/remote_apps.md
+
+
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
