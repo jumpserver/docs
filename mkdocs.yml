@@ -108,9 +108,9 @@ nav:
         - 远程应用: manual/admin/system_settings/remote_apps.md
       - PAM:
         - 自动化:
-          - 账号发现: manual/admin/PAM/automation/account_discovery.md
-          - 账号推送: manual/admin/PAM/automation/account_push.md
-          - 账号备份: manual/admin/PAM/automation/account_backup.md 
+          - 账号发现: manual/admin/pam/automation/account_discovery.md
+          - 账号推送: manual/admin/pam/automation/account_push.md
+          - 账号备份: manual/admin/pam/automation/account_backup.md
 
         
   - 常见问题:
