@@ -116,6 +116,8 @@ nav:
         - 安全设置:
           - 账号改密: manual/admin/pam/security/change_secrets.md
           - 风险检测: manual/admin/pam/security/risk_detection.md
+        - 应用管理: manual/admin/pam/applications_manage.md
+          
 
         
   - 常见问题:
