@@ -111,6 +111,9 @@ nav:
           - 账号发现: manual/admin/pam/automation/account_discovery.md
           - 账号推送: manual/admin/pam/automation/account_push.md
           - 账号备份: manual/admin/pam/automation/account_backup.md
+        - 安全设置:
+          - 账号改密: manual/admin/pam/security/change_secrets.md
+          - 风险检测: manual/admin/pam/security/risk_detection.md
 
         
   - 常见问题:
