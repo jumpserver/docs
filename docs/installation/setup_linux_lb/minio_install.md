@@ -100,8 +100,8 @@
     | 名称 (Name)     | jms-minio                  | 标识, 不可重复       |
     | 类型 (Type)     | Ceph                       | 固定, 不可更改       |
     | 桶名称 (Bucket) | jumpserver                 | Bucket Name         |
-    | Access key      | minio                      | MINIO_ROOT_USER     |
-    | Secret key      | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
+    | Access key(AK)      | minio                      | MINIO_ROOT_USER     |
+    | Access key secret(SK)     | KXOeyNgDeTdpeu9q           | MINIO_ROOT_PASSWORD |
     | 端点 (Endpoint) | http://192.168.100.41:9000 | minio 服务访问地址   |
-    | 默认存储        |                            | 新组件将自动使用该存储 |
+    | 默认        |                            | 新组件将自动使用该存储 |
 

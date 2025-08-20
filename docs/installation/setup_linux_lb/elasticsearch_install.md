@@ -99,6 +99,7 @@
     | 名称 (Name)     | jms-es                                              | 标识, 不可重复          |
     | 类型 (Type)     | Elasticsearch                                       | 固定, 不可更改          |
     | 主机 (Hosts)    | http://elastic:KXOeyNgDeTdpeu9q@192.168.100.51:9200 | http://es_host:es_port |
+    | 按日期建索引    |                                       | 是否根据日期动态建立索引                  |
     | 索引 (Index)    | jumpserver                                          | 索引                   |
     | 忽略证书认证    |                                                     | https 自签 ssl 需要勾选 |
-    | 默认存储        |                                                     | 新组件将自动使用该存储   |
+    | 默认       |                                                     | 新组件将自动使用该存储   |

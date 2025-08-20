@@ -49,9 +49,23 @@ nav:
         - 在线安装: installation/setup_linux_standalone/online_install.md
         - 在线升级: installation/setup_linux_standalone/online_upgrade.md
         - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
+    - Linux 集群模式部署:
+        - 准备工作: installation/setup_linux_lb/requirements.md
+        - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
+        - 部署 POSTGRESQL 服务: installation/setup_linux_lb/pgsql_install.md
+        - 部署 Redis 服务: installation/setup_linux_lb/redis_install.md
+        - 部署 JumpServer 01 节点: installation/setup_linux_lb/installation_node01.md
+        - 部署 JumpServer 02 节点: installation/setup_linux_lb/installation_node02.md
+        - 部署 JumpServer 03 节点: installation/setup_linux_lb/installation_node03.md
+        - 部署 JumpServer 04 节点: installation/setup_linux_lb/installation_node04.md
+        - 部署 HAProxy 服务: installation/setup_linux_lb/haproxy_install.md
+        - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
+        - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
+        - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
+    
   - 用户手册:
     - 管理员手册:
       - 控制台:
