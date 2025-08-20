@@ -55,8 +55,9 @@ nav:
   - 用户手册:
     - 管理员手册:
       - 控制台:
-        - 用户管理: manual/admin/console/users/users.md
-        - 用户组管理: manual/admin/console/users/user-groups.md
+        - 用户管理:
+          - 用户列表: manual/admin/console/users/users.md
+          - 用户组列表: manual/admin/console/users/user-groups.md
         - 资产管理: 
           - 资产列表: manual/admin/console/assets/assets_list.md
           - 网域列表: manual/admin/console/assets/net_list.md
@@ -107,7 +108,16 @@ nav:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
           - CAS: manual/admin/system_settings/authentication_settings/CAS.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
-
+      - PAM:
+        - 自动化:
+          - 账号发现: manual/admin/pam/automation/account_discovery.md
+          - 账号推送: manual/admin/pam/automation/account_push.md
+          - 账号备份: manual/admin/pam/automation/account_backup.md
+        - 安全设置:
+          - 账号改密: manual/admin/pam/security/change_secrets.md
+          - 风险检测: manual/admin/pam/security/risk_detection.md
+        - 应用管理: manual/admin/pam/applications_manage.md
+          
 
         
   - 常见问题:
