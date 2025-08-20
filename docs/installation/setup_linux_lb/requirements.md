@@ -25,7 +25,7 @@
     | 服务名称   |      IP 地址        |  端口                   |     使用涉及组件/服务     |   最小化硬件配置    |   标准化硬件配置     |
     | ------------- | ---------------- | ----------------------- | ---------------- | ---------------------- | ----------------------- |
     | NFS           |  192.168.100.11  |  -                      | Core             | 2Core/8GB RAM/100G HDD | 4Core/16GB RAM/1T   SSD |
-    | MySQL         |  192.168.100.11  | 3306                    | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
+    | PostgreSQL         |  192.168.100.11  | 5432                    | Core             | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
     | Redis         |  192.168.100.11  | 6379                    | Core, Koko, Lion | 2Core/8GB RAM/90G  HDD | 4Core/16GB RAM/1T   SSD |
     | HAProxy       |  192.168.100.100 | 80,443,2222,33060,33061 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
     | JumpServer 01 |  192.168.100.21  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
