@@ -52,7 +52,7 @@ nav:
     - Linux 集群模式部署:
         - 准备工作: installation/setup_linux_lb/requirements.md
         - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
-        - 部署 POSTGRESQL 服务: installation/setup_linux_lb/pgsql_install.md
+        - 部署 PostgreSQL 服务: installation/setup_linux_lb/pgsql_install.md
         - 部署 Redis 服务: installation/setup_linux_lb/redis_install.md
         - 部署 JumpServer 01 节点: installation/setup_linux_lb/installation_node01.md
         - 部署 JumpServer 02 节点: installation/setup_linux_lb/installation_node02.md

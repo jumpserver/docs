@@ -12,7 +12,7 @@
 
     | 名称    | 版本 | 默认字符集  | 默认字符编码  | TLS/SSL          |
     | :------ | :------ | :--------------- | :----------------- | :--------------- |
-    | MySQL   | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
+    | PostgreSQL   | 16  | utf8             | utf8_general_ci    | :material-check: |
     | MariaDB | >= 10.6 | utf8mb3          | utf8mb3_general_ci | :material-check: |
     
     | Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
@@ -48,7 +48,7 @@
 !!! tip ""
     1.部署 NFS 服务
 
-    2.部署 MySQL 服务
+    2.部署 PostgreSQL 服务
 
     3.部署 Redis 服务
 
