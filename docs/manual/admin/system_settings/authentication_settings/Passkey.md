@@ -1,27 +1,27 @@
-## 关于Passkey
 
-**Passkey** 是一种基于公钥加密的无密码身份验证技术。它取代了传统密码以增强安全性和用户体验。FIDO2 标准（包括 WebAuthn 和 CTAP）支持 Passkey，允许用户使用生物识别技术（指纹或面部识别）、PIN 或安全密钥进行身份验证，而无需输入密码。
+## 1 关于 Passkey
 
-**Fast Identity Online（FIDO）** 是一种开放标准，旨在提供更安全、无密码的身份验证方法。它由 FIDO 联盟开发，主要包括 FIDO UAF（通用身份验证框架）和 FIDO2（由 WebAuthn 和 CTAP 协议组成）。
+!!! tip ""
+    - 进入 **系统设置** 页面，点击 **认证设置 > Passkey**，进入 Passkey 配置页面。
+    - **Passkey** 是一种基于公钥加密的无密码身份认证技术，符合 FIDO2 标准（包括 WebAuthn 和 CTAP），支持通过生物识别（如指纹、面部）、PIN 或安全密钥进行身份验证，提升安全性和用户体验。
+    - 部分认证器需要 JumpServer 启用 HTTPS 访问，否则认证流程可能无法正常进行。
 
-## 如何配置
+## 2 配置参数
 
-在页面右上角，单击设置
+!!! tip ""
+    详细参数说明：
 
+| 参数 | 说明 | 示例 |
+|------|------|------|
+| Passkey | 启用 Passkey 无密码认证 | 启用/禁用 |
+| 服务域名 | Passkey 服务可用的完整域名，多个域名用逗号分隔 | `jumpserver.example.com` |
+| 服务名称 | Passkey 服务名称 | `JumpServer` |
 
-导航到 **系统设置>认证设置>Passkey** 。
+!!! tip ""
+    - 服务域名如未设置，默认取请求主机，并匹配 `config.txt` 文件中的 `DOMAINS`。
 
-在 **Passkey** 字段中，选中以启用 Passkey 认证。
+## 3 操作说明
 
-在 **Passkey 服务域名** 字段中，输入 JumpServer 的完整域名，例如 "jumpserver.example.com"。如果有多个域，请用逗号分隔它们。
-
-!!! tip "提示"
-
-    - 如果未设置，则默认为请求主机，并匹配 "config.txt" 文件中的域。`DOMAINS`
-
-在 **Passkey 服务名称** 字段中，输入服务名称。
-
-默认值为 "JumpServer" 。
-
-单击 **提交。**
+!!! tip ""
+    - 配置完成后，点击 **提交** 保存设置。
 
