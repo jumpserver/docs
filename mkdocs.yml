@@ -55,8 +55,9 @@ nav:
   - 用户手册:
     - 管理员手册:
       - 控制台:
-        - 用户管理: manual/admin/console/users/users.md
-        - 用户组管理: manual/admin/console/users/user-groups.md
+        - 用户管理:
+          - 用户列表: manual/admin/console/users/users.md
+          - 用户组列表: manual/admin/console/users/user-groups.md
         - 资产管理: 
           - 资产列表: manual/admin/console/assets/assets_list.md
           - 网域列表: manual/admin/console/assets/net_list.md
@@ -67,11 +68,63 @@ nav:
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
+        - 标签列表: manual/admin/console/else/tag_list.md
+      - 工作台: 
+        - 我的资产: 
+          - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
+          - Web终端: manual/admin/workbench/my_assets/web_terminal.md
+          - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
+          - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
+        - 作业中心: 
+          - 快捷命令: manual/admin/workbench/job_center/adhoc.md
+          - 作业管理: manual/admin/workbench/job_center/jobs_management.md
+          - 模板管理: manual/admin/workbench/job_center/templates_management.md
+          - 执行历史: manual/admin/workbench/job_center/execute_history.md
+        - 其他: 
+          - 系统工具: manual/admin/workbench/other/system_tool.md
+      - 审计台:
+        - 会话审计:
+          - 会话记录: manual/admin/audit/session_audit/session_record.md
+          - 会话命令: manual/admin/audit/session_audit/session_command.md
+          - 文件传输: manual/admin/audit/session_audit/file_transfer.md
+          - 在线用户: manual/admin/audit/session_audit/online_user.md
+        - 日志审计:
+          - 登录日志: manual/admin/audit/session_audit/log_audit/login_logs.md
+          - 改密日志: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+          - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
+        - 作业审计:
+          - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
+          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
       - 系统设置:
-        - 远程应用: manual/admin/system_settings/remote_apps.md
+        - 概览: manual/admin/system_settings/overview.md      
+        - 基本设置: manual/admin/system_settings/basic_settings.md
+        - 组织管理: manual/admin/system_settings/organization_manage.md
+        - 角色列表: manual/admin/system_settings/role_list.md
+        - 平台列表: manual/admin/system_settings/platforms.md
+        - 通知设置: manual/admin/system_settings/notification_settings.md        
+        - 功能设置: manual/admin/system_settings/feature_settings.md
         - 认证设置:
+          - 基本设置: manual/admin/system_settings/authentication_settings/basic_settings.md
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+          - CAS: manual/admin/system_settings/authentication_settings/CAS.md
+          - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
+          - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
+          - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
           - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
+          - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
+        - 远程应用: manual/admin/system_settings/remote_apps.md
+      - PAM:
+        - 自动化:
+          - 账号发现: manual/admin/pam/automation/account_discovery.md
+          - 账号推送: manual/admin/pam/automation/account_push.md
+          - 账号备份: manual/admin/pam/automation/account_backup.md
+        - 安全设置:
+          - 账号改密: manual/admin/pam/security/change_secrets.md
+          - 风险检测: manual/admin/pam/security/risk_detection.md
+        - 应用管理: manual/admin/pam/applications_manage.md
+          
+
+        
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md

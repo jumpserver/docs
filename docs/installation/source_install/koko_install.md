@@ -1,5 +1,5 @@
 # KoKo 环境部署
-## 1 KoKo 组件简述
+## 1 KoKo 组件概述
 !!! tip ""
     Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 服务。
 

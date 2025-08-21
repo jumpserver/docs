@@ -1,5 +1,5 @@
 # Lina 环境部署
-## 1 Lina 组件简述
+## 1 Lina 组件概述
 !!! tip ""
     - [Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue]，[Element UI][element_ui] 完成。
 
