@@ -110,7 +110,7 @@ nav:
           - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
           - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
           - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
-          - SAMl2: manual/admin/system_settings/authentication_settings/SAML2.md
+          - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
       - PAM:
         - 自动化:
