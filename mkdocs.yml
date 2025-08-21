@@ -106,12 +106,18 @@ nav:
         - 认证设置:
           - 基本设置: manual/admin/system_settings/authentication_settings/basic_settings.md
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
-          - CAS: manual/admin/system_settings/authentication_settings/CAS.md
           - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
+          - CAS: manual/admin/system_settings/authentication_settings/CAS.md
           - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
           - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
           - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
           - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
+          - 企业微信: manual/admin/system_settings/authentication_settings/WeCom.md
+          - 钉钉: manual/admin/system_settings/authentication_settings/DingTalk.md
+          - 飞书: manual/admin/system_settings/authentication_settings/Feishu.md
+          - Lark: manual/admin/system_settings/authentication_settings/Lark.md
+          - Slack: manual/admin/system_settings/authentication_settings/Slack.md
+          - Radius: manual/admin/system_settings/authentication_settings/Radius.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
       - PAM:
         - 自动化:
