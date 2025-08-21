@@ -1,13 +1,11 @@
 # LDAP 认证
 
 ## 关于 LDAP HA
-
-!!! info ""
-    - **LDAP High Availability(LDAP HA)** 是一种开放式协议，用于访问和管理分布式目录信息。主要应用于集中式身份验证和目录服务，如存储用户账户、权限及组织结构信息等。LDAP 被广泛应用于企业身份管理、单点登录(SSO)和访问控制系统中。
+!!! info "注: LDAP HA 认证方式为 JumpServer 企业版功能。"
+!!! tip ""
+    - 进入 **系统设置**，点击 **认证设置 > LDAP HA**，进入 LDAP HA 配置页面。
+    - **LDAP High Availability(LDAP)** 是一种开放式协议，用于访问和管理分布式目录信息。主要应用于集中式身份验证和目录服务，如存储用户账户、权限及组织结构信息等。LDAP 被广泛应用于企业身份管理、单点登录(SSO)和访问控制系统中。
     - 在JumpServer中，LDAP HA的集成通常可以确保在主LDAP服务器出现故障时，系统可以自动切换到备份LDAP HA服务器，从而保证认证服务的连续性。这样，即使 LDAP 服务器遇到问题，JumpServer 也可以继续处理用户身份验证请求，而不会导致停机或服务中断。
-
-!!! tip "提示"
-    - 在设置 LDAP HA 之前配置 LDAP。请参阅[集成 LDAP 指南](https://docs.jumpserver.org/zh/v4/manual/admin/system_settings/authentication_settings/LDAP/)
 
 ## 基础配置
 
