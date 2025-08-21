@@ -1,8 +1,9 @@
 # Lark 认证
 
 ## 关于 Lark
-
-!!! info ""
+!!! info "注: Lark 认证方式为 JumpServer 企业版功能。"
+!!! tip ""
+    - 进入 **系统设置**，点击 **认证设置 > Lark**，进入 Lark 配置页面。
     - **Lark** 认证是 Lark(国际版飞书)提供的一种身份认证机制，使企业和第三方应用程序能够通过 Lark 对用户进行身份认证和授权。
 
 ## 基础配置
@@ -34,22 +35,9 @@ Lark 用户属性示例
 }
 ```
 
-## 测试 Lark 连接
-!!! tip ""
-    - 点击页面右上角的设置按钮
+## JumpServer Lark URL 说明
 
-    - 导航到 **系统设置 > 认证设置 > Lark**
-
-    - 滚动到页面底部。
-
-    - 点击 **测试**。
-
-## JumpServer Lark URLs
-二维码登录 URL
-```bash
-https://jumpserver.example.com/core/auth/lark/qr/login/
-```
-二维码登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/lark/qr/login/callback/
-```
+| URL 类型 | 地址 | 说明 |
+|----------|------|------|
+| 二维码登录 URL | `https://jumpserver.example.com/core/auth/lark/qr/login/` | Lark 二维码登录入口 |
+| 二维码登录回调 URL | `https://jumpserver.example.com/core/auth/lark/qr/login/callback/` | 二维码登录成功回调地址 |

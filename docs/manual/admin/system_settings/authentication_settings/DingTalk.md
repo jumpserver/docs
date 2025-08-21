@@ -1,15 +1,12 @@
 # 钉钉认证
 
 ## 关于钉钉
-
-!!! info ""
-    - **钉钉** 认证是基于钉钉的身份认证方法，支持 OAuth 2.0 授权、二维码登录和企业身份绑定，实现安全便捷的企业用户登录和管理。
+!!! info "注: 钉钉认证方式为 JumpServer 企业版功能。"
+!!! tip ""
+    - 进入 **系统设置** 页面，点击 **认证设置 > 钉钉** ，进入钉钉配置页面。
+    - **钉钉认证** 是基于钉钉的身份认证方法，支持 JumpServer 二维码登录和企业身份绑定，实现安全便捷的企业用户登录和管理。
 
 ## 基础配置
-
-!!! tip ""
-    - 点击页面右上角的设置按钮
-    - 导航至 **系统设置 > 认证设置 > 企业微信**
 
 !!! tip ""
     详细参数说明：
@@ -26,6 +23,7 @@
 钉钉用户属性示例
 !!! tip ""
     -  **映射属性** 字段用于设置用户属性映射。键表示 JumpServer 用户属性名称，值对应钉钉用户属性名称。
+    -  钉钉用户属性示例：
 
 ```json
 {
@@ -35,30 +33,11 @@
 }
 ```
 
-## 测试钉钉连接
-!!! tip ""
-    - 点击页面右上角的设置按钮
+## JumpServer 钉钉 URL 说明
 
-    - 导航到 **系统设置 > 认证设置 > 钉钉**
-
-    - 滚动到页面底部。
-
-    - 点击 **测试**。
-
-## JumpServer 钉钉 URLs
-二维码登录 URL
-```bash
-https://jumpserver.example.com/core/auth/dingtalk/qr/login/
-```
-二维码登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/dingtalk/qr/login/callback/
-```
-OAuth 登录 URL
-```bash
-https://jumpserver.example.com/core/auth/dingtalk/oauth/login/
-```
-OAuth 登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/dingtalk/oauth/login/callback/
-```
+| URL 类型 | 地址 | 说明 |
+|----------|------|------|
+| 二维码登录 URL | `https://jumpserver.example.com/core/auth/dingtalk/qr/login/` | 钉钉二维码登录入口 |
+| 二维码登录回调 URL | `https://jumpserver.example.com/core/auth/dingtalk/qr/login/callback/` | 二维码登录成功回调地址 |
+| OAuth 登录 URL | `https://jumpserver.example.com/core/auth/dingtalk/oauth/login/` | 钉钉 OAuth 登录入口 |
+| OAuth 登录回调 URL | `https://jumpserver.example.com/core/auth/dingtalk/oauth/login/callback/` | OAuth 登录成功回调地址 |

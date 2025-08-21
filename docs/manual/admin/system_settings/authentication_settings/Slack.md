@@ -1,15 +1,13 @@
 # Slack 认证
 
-## 关于 Slack
+## 1 关于 Slack
 
-!!! info ""
-    - **Slack** 认证是一种基于 Slack 平台的身份认证机制，允许用户使用其 Slack 帐户登录企业应用程序或第三方服务，以进行安全的身份验证和授权。
-
-## 基础配置
-
+!!! info "注: Slack 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
-    - 点击页面右上角的设置按钮
-    - 导航到 **系统设置 > 认证设置 > Slack**
+    - 进入 **系统设置**，点击 **认证设置 > Slack**，进入 Slack 配置页面。
+    - **Slack** 认证是基于 Slack 平台的身份认证机制，允许用户使用 Slack 账户安全登录企业应用程序。JumpServer 支持标准 Slack 认证。
+
+## 2 配置参数
 
 !!! tip ""
     详细参数说明：
@@ -35,22 +33,9 @@ Slack 用户属性示例
 }
 ```
 
-## 测试 Slack 连接
-!!! tip ""
-    - 点击页面右上角的设置按钮
+## JumpServer Slack URL 说明
 
-    - 导航到 **系统设置 > 认证设置 > Slack**
-
-    - 滚动到页面底部。
-
-    - 点击 **测试**。
-
-## JumpServer Slack URLs
-二维码登录 URL
-```bash
-https://jumpserver.example.com/core/auth/slack/qr/login/
-```
-二维码登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/slack/qr/login/callback/
-```
+| URL 类型 | 地址 | 说明 |
+|----------|------|------|
+| 二维码登录 URL | `https://jumpserver.example.com/core/auth/slack/qr/login/` | Slack 二维码登录入口 |
+| 二维码登录回调 URL | `https://jumpserver.example.com/core/auth/slack/qr/login/callback/` | 二维码登录成功回调地址 |

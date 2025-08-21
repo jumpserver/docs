@@ -1,15 +1,13 @@
 # 企业微信认证
 
-## 关于企业微信
+## 1 关于企业微信认证
 
-!!! info ""
-    - **企业微信** 认证是基于企业微信的身份认证方法，支持 OAuth 2.0 授权、二维码登录和企业身份绑定，实现安全便捷的企业用户登录和管理。
-
-## 基础配置
-
+!!! info "注: 企业微信认证方式为 JumpServer 企业版功能。"
 !!! tip ""
-    - 点击页面右上角的设置按钮
-    - 导航至 **系统设置 > 认证设置 > 企业微信**
+    - 进入 **系统设置** 页面，点击 **认证设置 > 企业微信** ，进入 企业微信 配置页面。
+    - **企业微信认证** 是基于企业微信的身份认证方法，JumpServer 支持二维码登录和企业身份绑定。
+
+## 2 基础配置
 
 !!! tip ""
     详细参数说明：
@@ -23,9 +21,9 @@
 | 映射属性 | 用户属性映射。键表示 JumpServer 用户属性名称，值对应企业微信用户属性名称 | 示例见下文 |
 | 组织 | 经过身份认证和创建后，用户将被添加到所选组织中 | 默认值：`DEFAULT` |
 
-企业微信用户属性示例
 !!! tip ""
     -  **映射属性** 字段用于设置用户属性映射。键表示 JumpServer 用户属性名称，值对应企业微信用户属性名称。
+    -  企业微信用户属性示例：
 
 ```json
 {
@@ -35,30 +33,11 @@
 }
 ```
 
-## 测试企业微信连接
-!!! tip ""
-    - 点击页面右上角的设置按钮
+## JumpServer 企业微信 URL 说明
 
-    - 导航至 **系统设置 > 认证设置 > 企业微信**
-
-    - 滚动至页面底部。
-
-    - 点击 **测试**。
-
-## JumpServer 企业微信 URLs
-二维码登录 URL
-```bash
-https://jumpserver.example.com/core/auth/wecom/qr/login/
-```
-二维码登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/wecom/qr/login/callback/
-```
-OAuth 登录 URL
-```bash
-https://jumpserver.example.com/core/auth/wecom/oauth/login/
-```
-OAuth 登录成功回调 URL
-```bash
-https://jumpserver.example.com/core/auth/wecom/oauth/login/callback/
-```
+| URL 类型 | 地址 | 说明 |
+|----------|------|------|
+| 二维码登录 URL | `https://jumpserver.example.com/core/auth/wecom/qr/login/` | 企业微信二维码登录入口 |
+| 二维码登录回调 URL | `https://jumpserver.example.com/core/auth/wecom/qr/login/callback/` | 二维码登录成功回调地址 |
+| OAuth 登录 URL | `https://jumpserver.example.com/core/auth/wecom/oauth/login/` | 企业微信 OAuth 登录入口 |
+| OAuth 登录回调 URL | `https://jumpserver.example.com/core/auth/wecom/oauth/login/callback/` | OAuth 登录成功回调地址 |
