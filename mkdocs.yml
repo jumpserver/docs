@@ -189,7 +189,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v4.10.4
+    tag: v4.10.5
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
