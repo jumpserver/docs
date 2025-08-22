@@ -11,40 +11,27 @@
     
 ### 1.2 安装依赖
 !!! tip ""
+    Ubuntu 官方源已包含 HAProxy，无需额外安装 EPEL 源，直接更新系统包索引即可：
     ```sh
-    yum -y install epel-release
+    sudo apt update
     ```
 
 ## 2 安装配置 HAProxy
 ### 2.1 安装 HAProxy
 !!! tip ""
     ```sh
-    yum install -y haproxy
+    sudo apt install -y haproxy
     ```
 
 ### 2.2 配置 HAProxy
 !!! tip ""
     ```sh
     # 打开 HAProxy 的配置文件
-    vi /etc/haproxy/haproxy.cfg
+    sudo vim /etc/haproxy/haproxy.cfg
     ```
     ```nginx
     global
-        # to have these messages end up in /var/log/haproxy.log you will
-        # need to:
-        #
-        # 1) configure syslog to accept network log events.  This is done
-        #    by adding the '-r' option to the SYSLOGD_OPTIONS in
-        #    /etc/sysconfig/syslog
-        #
-        # 2) configure local2 events to go to the /var/log/haproxy.log
-        #   file. A line like the following can be added to
-        #   /etc/sysconfig/syslog
-        #
-        #    local2.*                       /var/log/haproxy.log
-        #
         log         127.0.0.1 local2
-
         chroot      /var/lib/haproxy
         pidfile     /var/run/haproxy.pid
         maxconn     4000
@@ -54,11 +41,6 @@
 
         # turn on stats unix socket
         stats socket /var/lib/haproxy/stats
-
-    #---------------------------------------------------------------------
-    # common defaults that all the 'listen' and 'backend' sections will
-    # use if not designated in their block
-    #---------------------------------------------------------------------
     defaults
         log                     global
         option                  dontlognull
@@ -72,7 +54,6 @@
         timeout http-keep-alive 10s
         timeout check           10s
         maxconn                 3000
-
     listen stats
         bind *:8080
         mode http
@@ -176,26 +157,22 @@
         server 192.168.100.24 192.168.100.24:30000 weight 1 check inter 2s rise 2 fall 3 send-proxy
     ```
 
-### 2.3 配置 SELinux
-!!! tip ""
-    ```sh
-    setsebool -P haproxy_connect_any 1
-    ```
 
-### 2.4 启动 HAProxy
+### 2.3 启动 HAProxy
 !!! tip ""
     ```sh
-    systemctl enable haproxy
-    systemctl start haproxy
+    sudo systemctl enable haproxy
+    sudo systemctl start haproxy
+    sudo systemctl status haproxy
     ```
 
 ## 3 配置防火墙
 !!! tip ""
     ```sh
-    firewall-cmd --permanent --zone=public --add-port=80/tcp
-    firewall-cmd --permanent --zone=public --add-port=443/tcp
-    firewall-cmd --permanent --zone=public --add-port=2222/tcp
-    firewall-cmd --permanent --zone=public --add-port=33060/tcp
-    firewall-cmd --permanent --zone=public --add-port=33061/tcp
-    firewall-cmd --reload
+    sudo ufw allow 80/tcp
+    sudo ufw allow 443/tcp
+    sudo ufw allow 2222/tcp
+    sudo ufw allow 33060/tcp
+    sudo ufw allow 33061/tcp
+    sudo ufw reload
     ```

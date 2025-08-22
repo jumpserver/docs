@@ -13,20 +13,21 @@
     ```
 
 ## 2 安装配置 Docker 环境
-### 2.1 安装 Docker
+### 2.1 安装 Docker 和 Docker Compose：
 !!! tip ""
     ```sh
-    yum install -y yum-utils device-mapper-persistent-data lvm2
-    yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-    sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
-    yum makecache fast
-    yum -y install docker-ce
+    sudo apt update
+    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install -y docker-ce  docker-compose-plugin
     ```
 
 ### 2.2 配置 Docker
 !!! tip ""
     ```sh
-    mkdir /etc/docker/
+    sudo mkdir -p /etc/docker
     vi /etc/docker/daemon.json
     ```
     ```json
@@ -41,54 +42,72 @@
 ### 2.3 启动 Docker
 !!! tip ""
     ```sh
-    systemctl enable docker
-    systemctl start docker
+    sudo systemctl enable docker
+    sudo systemctl start docker
     ```
 
 ## 3 安装配置 Elasticsearch
-### 3.1 下载 Elasticsearch 镜像
-!!! tip ""
-    ```sh
-    docker pull docker.elastic.co/elasticsearch/elasticsearch:7.17.6
-    ```
-    ```vim
-    7a0437f04f83: Pull complete
-    7718d2f58c47: Pull complete
-    cc5c16bd8bb9: Pull complete
-    e3d829b4b297: Pull complete
-    1ad944c92c79: Pull complete
-    373fb8fbaf74: Pull complete
-    5908d3eb2989: Pull complete
-    Digest: sha256:81c126e4eddbc5576285670cb3e23d7ef7892ee5e757d6d9ba870b6fe99f1219
-    Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch:7.17.6
-    docker.elastic.co/elasticsearch/elasticsearch:7.17.6
-    ```
-
-### 3.2 Elasticsearch 持久化数据目录创建
+### 3.1 创建 Elasticsearch 数据目录
 !!! tip ""
     ```sh
     mkdir -p /opt/jumpserver/elasticsearch/data /opt/jumpserver/elasticsearch/logs
     ```
-
-### 3.3 启动 Elasticsearch 服务
+### 3.2 docker-compose 配置
 !!! tip ""
     ```vim
-    ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
-    # 9200                                  # Web 访问端口
-    # 9300                                  # 集群通信
-    # discovery.type=single-node            # 单节点
-    # bootstrap.memory_lock="true"          # 锁定物理内存, 不使用 swap
-    # xpack.security.enabled="true"         # 开启安全模块
-    # TAKE_FILE_OWNERSHIP="true"            # 自动修改挂载文件夹的所属用户
-    # ES_JAVA_OPTS="-Xms512m -Xmx512m"      # JVM 内存大小, 推荐设置为主机内存的一半
-    # elastic                               # Elasticsearch 账号
-    # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
+        进入一个你方便管理的目录（例如/home/ubuntu）
+        cd /home/ubuntu
+        创建并编辑docker-compose.yml
+        vim docker-compose.yml
     ```
+    ```vim
+        ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
+        # 9200                                  # Web 访问端口
+        # 9300                                  # 集群通信
+        # discovery.type=single-node            # 单节点
+        # bootstrap.memory_lock="true"          # 锁定物理内存, 不使用 swap
+        # xpack.security.enabled="true"         # 开启安全模块
+        # TAKE_FILE_OWNERSHIP="true"            # 自动修改挂载文件夹的所属用户
+        # ES_JAVA_OPTS="-Xms512m -Xmx512m"      # JVM 内存大小, 推荐设置为主机内存的一半
+        # elastic                               # Elasticsearch 账号
+        # ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q     # Elasticsearch 密码
+    ```
+    ```vim
+        version: '3.8'
+        services:
+        jms_es:
+            image: docker.elastic.co/elasticsearch/elasticsearch:7.17.6
+            container_name: jms_es
+            restart: always
+            ports:
+            - "9200:9200"
+            - "9300:9300"
+            environment:
+            - cluster.name=docker-cluster
+            - discovery.type=single-node
+            - network.host=0.0.0.0
+            - bootstrap.memory_lock=true
+            - xpack.security.enabled=true
+            - TAKE_FILE_OWNERSHIP=true
+            - ES_JAVA_OPTS=-Xms512m -Xmx512m
+            - ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q
+            volumes:
+            - /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data
+            - /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs
+            ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+    ```
+### 3.4 启动 Elasticsearch 服务
+!!! tip ""
     ```sh
-    docker run --name jms_es -d -p 9200:9200 -p 9300:9300 -e cluster.name=docker-cluster -e discovery.type=single-node -e network.host=0.0.0.0 -e bootstrap.memory_lock="true" -e xpack.security.enabled="true" -e TAKE_FILE_OWNERSHIP="true" -e ES_JAVA_OPTS="-Xms512m -Xmx512m" -e ELASTIC_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/elasticsearch/data:/usr/share/elasticsearch/data -v /opt/jumpserver/elasticsearch/logs:/usr/share/elasticsearch/logs --restart=always docker.elastic.co/elasticsearch/elasticsearch:7.17.6
+        # 确保当前目录是docker-compose.yml所在的目录（例如/home/ubuntu）
+        cd /home/ubuntu
+        docker compose up -d
     ```
 
-### 3.4 在 JumpServer 中配置 Elasticsearch 
+### 3.5 在 JumpServer 中配置 Elasticsearch 
 !!! tip ""
     - 访问 JumpServer Web 页面并使用管理员账号进行登录。
     - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [命令存储] 下方选择 [创建] 选择 [Elasticsearch]

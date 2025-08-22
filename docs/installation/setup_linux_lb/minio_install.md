@@ -16,17 +16,19 @@
 ### 2.1 安装 Docker
 !!! tip ""
     ```sh
-    yum install -y yum-utils device-mapper-persistent-data lvm2
-    yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-    sed -i 's+download.docker.com+mirrors.aliyun.com/docker-ce+' /etc/yum.repos.d/docker-ce.repo
-    yum makecache fast
-    yum -y install docker-ce
+    sudo apt update
+    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
+    
     ```
 
 ### 2.2 配置 Docker
 !!! tip ""
     ```sh
-    mkdir /etc/docker/
+    sudo mkdir -p /etc/docker
     vi /etc/docker/daemon.json
     ```
     ```json
@@ -41,47 +43,55 @@
 ### 2.3 启动 Docker
 !!! tip ""
     ```sh
-    systemctl enable docker
-    systemctl start docker
+    sudo systemctl enable docker
+    sudo systemctl start docker
     ```
 
 ## 3 安装配置 MinIO
-### 3.1 下载 MinIO 镜像
+### 3.1 安装 docker-compose
 !!! tip ""
     ```sh
-    docker pull minio/minio:latest
-    ```
-    ```vim
-    latest: Pulling from minio/minio
-    a591faa84ab0: Pull complete
-    76b9354adec6: Pull complete
-    f9d8746550a4: Pull complete
-    890b1dd95baa: Pull complete
-    3a8518c890dc: Pull complete
-    8053f0501aed: Pull complete
-    506c41cb8532: Pull complete
-    Digest: sha256:e7a725edb521dd2af07879dad88ee1dfebd359e57ad8d98104359ccfbdb92024
-    Status: Downloaded newer image for minio/minio:latest
-    docker.io/minio/minio:latest
+    sudo apt install -y docker-compose-plugin
+    docker compose version
     ```
 
 ### 3.2 MinIO 持久化数据目录创建
 !!! tip ""
     ```sh
-    mkdir -p /opt/jumpserver/minio/data /opt/jumpserver/minio/config
+    sudo mkdir -p /opt/jumpserver/minio/data /opt/jumpserver/minio/config
     ```
-
-### 3.3 启动 MinIO 服务
+### 3.3 docker-compose 配置
 !!! tip ""
     ```vim
-    ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
-    # 9000                                  # api     访问端口
-    # 9001                                  # console 访问端口
-    # MINIO_ROOT_USER=minio                 # minio 账号
-    # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
+        ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
+        # 9000                                  # api     访问端口
+        # 9001                                  # console 访问端口
+        # MINIO_ROOT_USER=minio                 # minio 账号
+        # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
     ```
+    ```vim 
+        version: '3.8'
+        services:
+        jms_minio:
+            image: minio/minio:latest
+            container_name: jms_minio
+            restart: always
+            ports:
+            - "9000:9000"   # MinIO API端口
+            - "9001:9001"   # MinIO控制台端口
+            environment:
+            - MINIO_ROOT_USER=minio
+            - MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q
+            volumes:
+            - /opt/jumpserver/minio/data:/data
+            - /opt/jumpserver/minio/config:/root/.minio
+            command: server /data --console-address ":9001"
+    ```
+### 3.4 启动 MinIO 服务
+!!! tip ""
     ```sh
-    docker run --name jms_minio -d -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=minio -e MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q -v /opt/jumpserver/minio/data:/data -v /opt/jumpserver/minio/config:/root/.minio --restart=always minio/minio:latest server /data --console-address ":9001"
+        cd /opt/jumpserver
+        docker compose up -d
     ```
 
 ### 3.5 在 MinIO 中创建 Buckets
