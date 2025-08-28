@@ -1,9 +1,9 @@
 # 总体介绍
 
-!!! tip " :warning: **<font color="red">JumpServer V2 社区版已停止维护</font>** :warning: "   
+!!! tip "" :warning: **<font color="red">JumpServer V2 社区版已停止维护</font>** :warning:    
     - 2023年7月28日，JumpServer 开源项目组正式发布 JumpServer 开源堡垒机 V2版本产品生命周期相关说明，[详情点击跳转](./faq/v2_timeline.md)。
 
-!!! tip "
+!!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。
 
     JumpServer 使用 Python 开发，配备了业界领先的 Web Terminal 方案，交互界面美观、用户体验好。
