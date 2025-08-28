@@ -1,6 +1,6 @@
 # 总体介绍
 
-!!! tip "" :warning: **<font color="red">JumpServer V2 社区版已停止维护</font>** :warning:   
+!!! tip "" :warning: **<font color="red">JumpServer V2 社区版已停止维护</font>** :warning:  
 !!! tip "" 2023年7月28日，JumpServer 开源项目组正式发布 JumpServer 开源堡垒机 V2版本产品生命周期相关说明，[详情点击跳转](./faq/v2_timeline.md)。
 
 
