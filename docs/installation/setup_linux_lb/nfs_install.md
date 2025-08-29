@@ -9,32 +9,29 @@
     192.168.100.11
     ```
 
-### 1.2 安装依赖
+### 1.2 安装 NFS 服务器软件
 !!! tip ""
     ```sh
-    yum -y install epel-release
+    sudo apt update
+    sudo apt install nfs-kernel-server -y
     ```
 
-### 1.3 安装 NFS 依赖包
-!!! tip ""
-    ```sh
-    yum -y install nfs-utils rpcbind
-    ```
 
 ### 1.4 启动 NFS
 !!! tip ""
     ```sh
-    systemctl enable rpcbind nfs-server nfs-lock nfs-idmap
-    systemctl start rpcbind nfs-server nfs-lock nfs-idmap
+    sudo systemctl enable nfs-kernel-server
+    sudo systemctl start nfs-kernel-server
+    sudo systemctl status nfs-kernel-server
     ```
 
 ### 1.5 配置防火墙
 !!! tip ""
     ```sh
-    firewall-cmd --add-service=nfs --permanent --zone=public
-    firewall-cmd --add-service=mountd --permanent --zone=public
-    firewall-cmd --add-service=rpc-bind --permanent --zone=public
-    firewall-cmd --reload
+    sudo ufw allow nfs
+    sudo ufw allow mountd
+    sudo ufw allow rpc-bind
+    sudo ufw status
     ```
 
 ### 1.6 配置 NFS
@@ -54,5 +51,5 @@
 ### 1.7 让 exports 配置生效
 !!! tip ""
     ```sh
-    exportfs -a
+    sudo exportfs -ra
     ```

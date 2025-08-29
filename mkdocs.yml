@@ -49,9 +49,21 @@ nav:
         - 在线安装: installation/setup_linux_standalone/online_install.md
         - 在线升级: installation/setup_linux_standalone/online_upgrade.md
         - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
+    - Linux 集群模式部署:
+        - 准备工作: installation/setup_linux_lb/requirements.md
+        - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
+        - 部署 PostgreSQL 服务: installation/setup_linux_lb/pgsql_install.md
+        - 部署 Redis 服务: installation/setup_linux_lb/redis_install.md
+        - 部署 JumpServer 01 节点: installation/setup_linux_lb/installation_node01.md
+        - 部署 JumpServer 02 节点: installation/setup_linux_lb/installation_node02.md
+        - 部署 HAProxy 服务: installation/setup_linux_lb/haproxy_install.md
+        - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
+        - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
+        - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
+    
   - 用户手册:
     - 管理员手册:
       - 控制台:
@@ -69,6 +81,28 @@ nav:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
         - 标签列表: manual/admin/console/else/tag_list.md
+      - PAM:
+        - 自动化:
+          - 账号发现: manual/admin/pam/automation/account_discovery.md
+          - 账号推送: manual/admin/pam/automation/account_push.md
+          - 账号备份: manual/admin/pam/automation/account_backup.md
+        - 安全设置:
+          - 账号改密: manual/admin/pam/security/change_secrets.md
+          - 风险检测: manual/admin/pam/security/risk_detection.md
+        - 应用管理: manual/admin/pam/applications_manage.md  
+      - 审计台:
+        - 会话审计:
+          - 会话记录: manual/admin/audit/session_audit/session_record.md
+          - 会话命令: manual/admin/audit/session_audit/session_command.md
+          - 文件传输: manual/admin/audit/session_audit/file_transfer.md
+          - 在线用户: manual/admin/audit/session_audit/online_user.md
+        - 日志审计:
+          - 登录日志: manual/admin/audit/session_audit/log_audit/login_logs.md
+          - 改密日志: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+          - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
+        - 作业审计:
+          - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
+          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md    
       - 工作台: 
         - 我的资产: 
           - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
@@ -82,19 +116,6 @@ nav:
           - 执行历史: manual/admin/workbench/job_center/execute_history.md
         - 其他: 
           - 系统工具: manual/admin/workbench/other/system_tool.md
-      - 审计台:
-        - 会话审计:
-          - 会话记录: manual/admin/audit/session_audit/session_record.md
-          - 会话命令: manual/admin/audit/session_audit/session_command.md
-          - 文件传输: manual/admin/audit/session_audit/file_transfer.md
-          - 在线用户: manual/admin/audit/session_audit/online_user.md
-        - 日志审计:
-          - 登录日志: manual/admin/audit/session_audit/log_audit/login_logs.md
-          - 改密日志: manual/admin/audit/session_audit/log_audit/password_change_logs.md
-          - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
-        - 作业审计:
-          - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
-          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md
       - 系统设置:
         - 概览: manual/admin/system_settings/overview.md      
         - 基本设置: manual/admin/system_settings/basic_settings.md
@@ -125,17 +146,6 @@ nav:
         - 系统工具: manual/admin/system_settings/tools.md
         - 系统任务: manual/admin/system_settings/system_tasks.md
         - 许可证: manual/admin/system_settings/licenses.md
-      - PAM:
-        - 自动化:
-          - 账号发现: manual/admin/pam/automation/account_discovery.md
-          - 账号推送: manual/admin/pam/automation/account_push.md
-          - 账号备份: manual/admin/pam/automation/account_backup.md
-        - 安全设置:
-          - 账号改密: manual/admin/pam/security/change_secrets.md
-          - 风险检测: manual/admin/pam/security/risk_detection.md
-        - 应用管理: manual/admin/pam/applications_manage.md
-          
-
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
@@ -194,7 +204,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: v4.10.4
+    tag: v4.10.5
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
