@@ -1,7 +1,7 @@
 # 部署 Elasticsearch 服务
 
 !!! tip "提示"
-    - 集群部署请参考 (https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+    - 此文档以docker方式部署 Elasticsearch 为例，其他安装方式请参考 (https://www.elastic.co/guide/en/elasticsearch/reference/index.html)
 
 ## 1 准备工作
 ### 1.1 环境信息
@@ -12,47 +12,14 @@
     192.168.100.51
     ```
 
-## 2 安装配置 Docker 环境
-### 2.1 安装 Docker 和 Docker Compose：
-!!! tip ""
-    ```sh
-    sudo apt update
-    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt update
-    sudo apt install -y docker-ce  docker-compose-plugin
-    ```
+## 2  通过 Docker Compose 安装配置 Elasticsearch
 
-### 2.2 配置 Docker
-!!! tip ""
-    ```sh
-    sudo mkdir -p /etc/docker
-    vi /etc/docker/daemon.json
-    ```
-    ```json
-    {
-      "live-restore": true,
-      "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
-      "log-driver": "json-file",
-      "log-opts": {"max-file": "3", "max-size": "10m"}
-    }
-    ```
-
-### 2.3 启动 Docker
-!!! tip ""
-    ```sh
-    sudo systemctl enable docker
-    sudo systemctl start docker
-    ```
-
-## 3 安装配置 Elasticsearch
-### 3.1 创建 Elasticsearch 数据目录
+### 2.1 创建 Elasticsearch 数据目录
 !!! tip ""
     ```sh
     mkdir -p /opt/jumpserver/elasticsearch/data /opt/jumpserver/elasticsearch/logs
     ```
-### 3.2 docker-compose 配置
+### 2.2 docker-compose 配置
 !!! tip ""
     ```vim
         进入一个你方便管理的目录（例如/home/ubuntu）
@@ -99,7 +66,7 @@
                 soft: -1
                 hard: -1
     ```
-### 3.4 启动 Elasticsearch 服务
+### 2.4 启动 Elasticsearch 服务
 !!! tip ""
     ```sh
         # 确保当前目录是docker-compose.yml所在的目录（例如/home/ubuntu）
@@ -107,7 +74,7 @@
         docker compose up -d
     ```
 
-### 3.5 在 JumpServer 中配置 Elasticsearch 
+## 3 在 JumpServer 中配置 Elasticsearch 
 !!! tip ""
     - 访问 JumpServer Web 页面并使用管理员账号进行登录。
     - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [命令存储] 下方选择 [创建] 选择 [Elasticsearch]

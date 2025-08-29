@@ -6,6 +6,7 @@
     - 如果已经有 HLB 或者 SLB 可以跳过 HAProxy 部署，第三方 LB 要注意 session 和 websocket 问题。
     - 如果已经有 云存储 (S3/Ceph/Swift/OSS/Azure) 可以跳过 MinIO 部署，MySQL、Redis 也一样。
     - 生产环境中，应该使用 Ceph 等替代 NFS，或者部署高可用的 NFS 防止单点故障。
+    - 此文档为参考文档，具体架构需要按需设计。
 
 ### 1.1 数据库要求
 !!! tip ""
@@ -30,8 +31,6 @@
     | HAProxy       |  192.168.100.100 | 80,443,2222,33060,33061 | All              | 2Core/4GB RAM/60G  HDD | 4Core/8GB  RAM/60G  SSD |
     | JumpServer 01 |  192.168.100.21  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
     | JumpServer 02 |  192.168.100.22  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-    | JumpServer 03 |  192.168.100.23  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
-    | JumpServer 04 |  192.168.100.24  | 80,2222,33060,33061     | HAProxy          | 2Core/8GB RAM/60G  HDD | 4Core/8GB  RAM/90G  SSD |
     | MinIO         |  192.168.100.41  | 9000,9001               | Core, KoKo, Lion | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
     | Elasticsearch |  192.168.100.51  | 9200,9300               | Core, KoKo       | 2Core/4GB RAM/100G HDD | 4Core/8GB  RAM/1T   SSD |
     
@@ -55,10 +54,6 @@
     4.部署 JumpServer 01 节点 
 
     5.部署 JumpServer 02 节点 
-
-    6.部署 JumpServer 03 节点 
-
-    7.部署 JumpServer 04 节点 
 
     8.部署 HAProxy 服务 
 

@@ -1,8 +1,8 @@
 # 部署 MinIO 服务
 
 !!! tip "提示"
-    - 集群部署请参考 (http://docs.minio.org.cn/docs/master/minio-erasure-code-quickstart-guide)
-
+    - 此文档以docker方式部署MinIO为例，其他安装方式请参考 (https://docs.min.io/docs/minio-quickstart-guide)
+   
 ## 1 准备工作
 ### 1.1 环境信息
 !!! tip ""
@@ -11,61 +11,18 @@
     ```sh 
     192.168.100.41
     ```
-
-## 2 安装配置 Docker 环境
-### 2.1 安装 Docker
-!!! tip ""
-    ```sh
-    sudo apt update
-    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt update
-    sudo apt install -y docker-ce docker-ce-cli containerd.io
-    
-    ```
-
-### 2.2 配置 Docker
-!!! tip ""
-    ```sh
-    sudo mkdir -p /etc/docker
-    vi /etc/docker/daemon.json
-    ```
-    ```json
-    {
-      "live-restore": true,
-      "registry-mirrors": ["https://hub-mirror.c.163.com", "https://bmtrgdvx.mirror.aliyuncs.com", "http://f1361db2.m.daocloud.io"],
-      "log-driver": "json-file",
-      "log-opts": {"max-file": "3", "max-size": "10m"}
-    }
-    ```
-
-### 2.3 启动 Docker
-!!! tip ""
-    ```sh
-    sudo systemctl enable docker
-    sudo systemctl start docker
-    ```
-
-## 3 安装配置 MinIO
-### 3.1 安装 docker-compose
-!!! tip ""
-    ```sh
-    sudo apt install -y docker-compose-plugin
-    docker compose version
-    ```
-
-### 3.2 MinIO 持久化数据目录创建
+## 2 通过 Docker Compose 安装配置 MinIO
+### 2.1 MinIO 持久化数据目录创建
 !!! tip ""
     ```sh
     sudo mkdir -p /opt/jumpserver/minio/data /opt/jumpserver/minio/config
     ```
-### 3.3 docker-compose 配置
+### 2.2 docker-compose.yml 配置
 !!! tip ""
     ```vim
         ## 请自行修改账号密码并牢记，丢失后可以删掉容器后重新用新密码创建，数据不会丢失
-        # 9000                                  # api     访问端口
-        # 9001                                  # console 访问端口
+        # 9000                                   # api     访问端口
+        # 9001                                   # console 访问端口
         # MINIO_ROOT_USER=minio                 # minio 账号
         # MINIO_ROOT_PASSWORD=KXOeyNgDeTdpeu9q  # minio 密码
     ```
@@ -87,19 +44,20 @@
             - /opt/jumpserver/minio/config:/root/.minio
             command: server /data --console-address ":9001"
     ```
-### 3.4 启动 MinIO 服务
+### 2.4 启动 MinIO 服务
 !!! tip ""
     ```sh
         cd /opt/jumpserver
         docker compose up -d
     ```
 
-### 3.5 在 MinIO 中创建 Buckets
+## 3 MinIO 配置
+### 3.1 在 MinIO 中创建 Buckets
 !!! tip ""
     - 访问 http://192.168.100.41:9000，输入刚才设置的 MinIO 账号密码登录。
     - 点击左侧菜单的 Buckets，选择 Create Bucket 创建桶，Bucket Name 输入 jumpserver，然后点击 Save 保存。
 
-### 3.6 在 JumpServer 中配置 MinIO
+### 3.2 在 JumpServer 中配置 MinIO
 !!! tip ""
     - 访问 JumpServer Web 页面并使用管理员账号进行登录。
     - 点击左侧菜单栏的 [终端管理]，在页面的上方选择 [存储配置]，在 [录像存储] 下方选择 [创建] 选择 [Ceph]
