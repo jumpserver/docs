@@ -140,7 +140,7 @@ nav:
           - Slack: manual/admin/system_settings/authentication_settings/Slack.md
           - Radius: manual/admin/system_settings/authentication_settings/Radius.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
-          
+        
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
