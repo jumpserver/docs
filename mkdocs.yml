@@ -119,6 +119,11 @@ nav:
           - Slack: manual/admin/system_settings/authentication_settings/Slack.md
           - Radius: manual/admin/system_settings/authentication_settings/Radius.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
+        - 安全设置: manual/admin/system_settings/security.md
+        - 界面设置: manual/admin/system_settings/appearance.md
+        - 系统工具: manual/admin/system_settings/tools.md
+        - 系统任务: manual/admin/system_settings/system_tasks.md
+        - 许可证: manual/admin/system_settings/licenses.md
       - PAM:
         - 自动化:
           - 账号发现: manual/admin/pam/automation/account_discovery.md
