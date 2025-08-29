@@ -49,9 +49,21 @@ nav:
         - 在线安装: installation/setup_linux_standalone/online_install.md
         - 在线升级: installation/setup_linux_standalone/online_upgrade.md
         - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
+    - Linux 集群模式部署:
+        - 准备工作: installation/setup_linux_lb/requirements.md
+        - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
+        - 部署 PostgreSQL 服务: installation/setup_linux_lb/pgsql_install.md
+        - 部署 Redis 服务: installation/setup_linux_lb/redis_install.md
+        - 部署 JumpServer 01 节点: installation/setup_linux_lb/installation_node01.md
+        - 部署 JumpServer 02 节点: installation/setup_linux_lb/installation_node02.md
+        - 部署 HAProxy 服务: installation/setup_linux_lb/haproxy_install.md
+        - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
+        - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
+        - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
+    
   - 用户手册:
     - 管理员手册:
       - 控制台:
@@ -128,9 +140,6 @@ nav:
           - Slack: manual/admin/system_settings/authentication_settings/Slack.md
           - Radius: manual/admin/system_settings/authentication_settings/Radius.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
-
-          
-
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md
