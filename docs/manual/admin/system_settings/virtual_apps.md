@@ -1,11 +1,11 @@
 # 虚拟应用
-!!! warning "注：虚拟应用为企业版功能。"
+!!! info "注：虚拟应用为企业版功能。"
 
-## 1 功能简述
+## 1 功能概述
 !!! info ""
-    - 在 JumpServer 中，VirtualApp (虚拟应用) 是一种包含镜像的应用程序。当用户通过 VirtualApp (虚拟应用) 连接资产时， Panda 会基于该镜像创建对应的 VirtualApp 容器，并通过该容器建立连接。
-    - Panda 也称为应用提供者 (Application provider) 是 JumpServer 的一个组件，用于拉取 VirtualApp 镜像并管理容器，包括创建、启动、停止和删除容器。
-    - 通过虚拟应用，可以使用Linux操作系统作为远程应用中的应用服务器。
+    - VirtualApp（虚拟应用）是 JumpServer 基于 Linux 图形化操作系统推出的远程应用功能，最初为信创系统场景设计。
+    - Panda 也称为应用提供者 (Application provider) 是 JumpServer 的一个组件，用于管理 VirtualApp。  
+    - 通过虚拟应用，可以发布 Web、数据库等资产。
 
 
 ## 2 功能启用
