@@ -129,16 +129,16 @@ nav:
           - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
           - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
           - CAS: manual/admin/system_settings/authentication_settings/CAS.md
-          - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
-          - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
-          - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
-          - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
-          - 企业微信: manual/admin/system_settings/authentication_settings/WeCom.md
-          - 钉钉: manual/admin/system_settings/authentication_settings/DingTalk.md
-          - 飞书: manual/admin/system_settings/authentication_settings/Feishu.md
-          - Lark: manual/admin/system_settings/authentication_settings/Lark.md
-          - Slack: manual/admin/system_settings/authentication_settings/Slack.md
-          - Radius: manual/admin/system_settings/authentication_settings/Radius.md
+          - LDAP HA (X-Pack): manual/admin/system_settings/authentication_settings/LDAPHA.md
+          - OIDC (X-Pack): manual/admin/system_settings/authentication_settings/OIDC.md
+          - OAuth2 (X-Pack): manual/admin/system_settings/authentication_settings/OAuth2.md
+          - SAML2 (X-Pack): manual/admin/system_settings/authentication_settings/SAML2.md
+          - 企业微信 (X-Pack): manual/admin/system_settings/authentication_settings/WeCom.md
+          - 钉钉 (X-Pack): manual/admin/system_settings/authentication_settings/DingTalk.md
+          - 飞书 (X-Pack): manual/admin/system_settings/authentication_settings/Feishu.md
+          - Lark (X-Pack): manual/admin/system_settings/authentication_settings/Lark.md
+          - Slack (X-Pack): manual/admin/system_settings/authentication_settings/Slack.md
+          - Radius (X-Pack): manual/admin/system_settings/authentication_settings/Radius.md
         - 存储设置: manual/admin/system_settings/storage.md
         - 组件设置: manual/admin/system_settings/components.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
