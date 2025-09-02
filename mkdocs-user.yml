@@ -1,0 +1,218 @@
+site_name: 'JumpServer 文档'
+site_url: 'https://docs.jumpserver.org'
+site_author: 'jumpserver'
+site_description: "JumpServer 开源堡垒机的在线文档"
+
+repo_name: 'jumpserver/jumpserver'
+repo_url: 'https://github.com/jumpserver/jumpserver'
+edit_uri: ''
+
+theme:
+  name: 'material'
+  logo: 'img/logo.png'
+  favicon: 'img/facio.ico'
+  language: 'zh'
+  palette:
+    - scheme: default
+      accent: 'red'
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      accent: 'red'
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+  font: false
+  custom_dir: 'theme'
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - 控制台:
+    - 用户管理:
+      - 用户列表: manual/admin/console/users/users.md
+      - 用户组列表: manual/admin/console/users/user-groups.md
+    - 资产管理: 
+      - 资产列表: manual/admin/console/assets/assets_list.md
+      - 网域列表: manual/admin/console/assets/net_list.md
+      - Web资产: manual/admin/console/assets/web_assets.md
+    - 账号管理: 
+      - 账号列表: manual/admin/console/account_management/account_list.md
+      - 账号模板: manual/admin/console/account_management/account_template.md
+    - 授权管理:
+      - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
+      - 访问控制: manual/admin/console/access_control/acls.md
+    - 标签列表: manual/admin/console/else/tag_list.md
+  - PAM:
+    - 自动化:
+      - 账号发现: manual/admin/pam/automation/account_discovery.md
+      - 账号推送: manual/admin/pam/automation/account_push.md
+      - 账号备份: manual/admin/pam/automation/account_backup.md
+    - 安全设置:
+      - 账号改密: manual/admin/pam/security/change_secrets.md
+      - 风险检测: manual/admin/pam/security/risk_detection.md
+    - 应用管理: manual/admin/pam/applications_manage.md  
+  - 审计台:
+    - 会话审计:
+      - 会话记录: manual/admin/audit/session_audit/session_record.md
+      - 会话命令: manual/admin/audit/session_audit/session_command.md
+      - 文件传输: manual/admin/audit/session_audit/file_transfer.md
+      - 在线用户: manual/admin/audit/session_audit/online_user.md
+    - 日志审计:
+      - 登录日志: manual/admin/audit/session_audit/log_audit/login_logs.md
+      - 改密日志: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+      - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
+    - 作业审计:
+      - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
+      - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md    
+  - 工作台: 
+    - 我的资产: 
+      - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
+      - Web终端: manual/admin/workbench/my_assets/web_terminal.md
+      - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
+      - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
+    - 作业中心: 
+      - 快捷命令: manual/admin/workbench/job_center/adhoc.md
+      - 作业管理: manual/admin/workbench/job_center/jobs_management.md
+      - 模板管理: manual/admin/workbench/job_center/templates_management.md
+      - 执行历史: manual/admin/workbench/job_center/execute_history.md
+    - 其他: 
+      - 系统工具: manual/admin/workbench/other/system_tool.md
+  - 系统设置:
+    - 概览: manual/admin/system_settings/overview.md      
+    - 基本设置: manual/admin/system_settings/basic_settings.md
+    - 组织管理: manual/admin/system_settings/organization_manage.md
+    - 角色列表: manual/admin/system_settings/role_list.md
+    - 平台列表: manual/admin/system_settings/platforms.md
+    - 通知设置: manual/admin/system_settings/notification_settings.md        
+    - 功能设置: manual/admin/system_settings/feature_settings.md
+    - 认证设置:
+      - 基本设置: manual/admin/system_settings/authentication_settings/basic_settings.md
+      - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+      - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
+      - CAS: manual/admin/system_settings/authentication_settings/CAS.md
+      - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
+      - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
+      - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
+      - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
+      - 企业微信: manual/admin/system_settings/authentication_settings/WeCom.md
+      - 钉钉: manual/admin/system_settings/authentication_settings/DingTalk.md
+      - 飞书: manual/admin/system_settings/authentication_settings/Feishu.md
+      - Lark: manual/admin/system_settings/authentication_settings/Lark.md
+      - Slack: manual/admin/system_settings/authentication_settings/Slack.md
+      - Radius: manual/admin/system_settings/authentication_settings/Radius.md
+    - 存储设置: manual/admin/system_settings/storage.md
+    - 组件设置: manual/admin/system_settings/components.md
+    - 远程应用: manual/admin/system_settings/remote_apps.md
+    - 虚拟应用: manual/admin/system_settings/virtual_apps.md
+    - 安全设置: manual/admin/system_settings/security.md
+    - 界面设置: manual/admin/system_settings/appearance.md
+    - 系统工具: manual/admin/system_settings/tools.md
+    - 系统任务: manual/admin/system_settings/system_tasks.md
+    - 许可证: manual/admin/system_settings/licenses.md
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: ⚓︎
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - theme/.icons
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.saneheaders
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  jumpserver:
+    tag: v4.10.6
+  search:
+    separator: '[\s\-\.]+'
+    language: 'zh'
+    Content-Encoding: gzip
+    boost: 100
+  generator: false
+  version:
+    default: master
+    provider: mike
+  analytics:
+    provider: google
+    property: UA-147297392-3
+  social:
+    - icon: Bilibili_Logo_Blue
+      link: https://space.bilibili.com/510493147?spm_id_from=333.337.0.0
+    - icon: fontawesome/brands/github
+      link: https://github.com/jumpserver
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/jumpserver/
+    - icon: fontawesome/solid/envelope
+      link: mailto:support@fit2cloud.com
+    - icon: fontawesome/brands/skype
+      link: tel://400-052-0755
+    - icon: fontawesome/brands/qq
+      link: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
+
+extra_css:
+  - css/extra.css
+  - css/termynal.css
+  - css/custom.css
+  - stylesheets/extra.css
+
+extra_javascript:
+  - js/termynal.js
+  - js/custom.js
+
+
+copyright: Copyright &copy; 2014-2025 杭州飞致云信息科技有限公司</a>, All Rights Reserved.
+plugins:
+    - search:
+        lang:
+          - en
+          - ja
+        separator: '[\s\-\.]+'
+    - macros
+    - to-pdf:
+        cover_title: JumpServer V4.10-lts
+        cover_subtitle: 管理员手册
+        download_link: header
+        toc_level: 3

@@ -31,7 +31,7 @@ class Options(object):
         ('custom_template_path',
             config_options.Type(str, default="templates")),
 
-        ('toc_title', config_options.Type(str, default="Table of contents")),
+        ('toc_title', config_options.Type(str, default="目录")),
         ('heading_shift', config_options.Type(bool, default=True)),
         ('toc_level', config_options.Type(int, default=2)),
         ('ordered_chapter_level', config_options.Type(int, default=3)),
