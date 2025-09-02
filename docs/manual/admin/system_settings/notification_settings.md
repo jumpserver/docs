@@ -33,6 +33,8 @@
 !!! tip ""
     - 选择对应的短信服务商，填入服务商平台认证相关信息，点击`测试`按钮可测试配置是否正确。
 ![V4_systemsetting_notification_settings3](../../../img/V4_systemsetting_notification_settings3.png)
+!!! tip "短信配置模板示例"
+    - 您的 JumpServer 动态码为：${code}，验证码 1 分钟内有效，请勿泄露！
 
 ### 2.3 用户侧配置
 !!! tip ""
