@@ -1,0 +1,143 @@
+.md-typeset > ul,
+.md-typeset > ol {
+  margin-left: 0rem !important;
+}
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-left: 1.5rem !important;
+}
+
+@media print {
+
+  // admonition icon
+  .md-typeset :is(.admonition-title,summary):before {
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+
+  .md-typeset {
+    // Tabbed code block container
+    .tabbed-set {
+      display: block;
+
+      .tabbed-content--wrap {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+
+        // Hide radio buttons
+        > input {
+          display: none;
+        }
+
+        > label {
+          background-color: rgba($color: #aaa, $alpha: 0.2);
+          padding: 0.2rem 2rem;
+          margin: 0;
+          font-weight: 600;
+          color: #666;
+          border-radius: 3px 3px 0 0;
+          border-bottom-color: transparent;
+        }
+
+        > .tabbed-content {
+          display: block;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .admonition-title+.tabbed-set:last-child,
+    summary+.tabbed-set:last-child {
+      margin-top: 0.5rem;
+    }
+
+    // details
+    > details summary::after {
+        display: none;
+    }
+
+    // content indent
+    &>div,
+    &>div.admonition,
+    &>details,
+    &>div.tabbed-set,
+    &>blockquote,
+    &>mark,
+    &>table,
+    &>p {
+      margin-left: 0.7rem;
+    }
+    &>table.highlighttable {
+      margin: 0 0 0 0.7rem;
+    }
+    table.highlighttable,
+    table.highlighttable>tbody {
+      width: 100%;
+    }
+    table.highlighttable {
+      padding-bottom: 0.5em;
+      .linenos {
+        padding-bottom: 0;
+      }
+    }
+    &>ul,
+    &>ol {
+      margin-left: 1.5rem;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin-left: 0.25rem;
+    }
+
+    *:not(h3) + h4 {
+      margin-top: 1.5rem;
+    }
+
+    hr {
+      border-bottom: 1px dotted #999;
+    }
+
+    .footnote {
+      line-height: 1.1;
+    }
+
+    // Data tables
+    table:not([class]) {
+      th, td {
+        padding: 0.5em 1.25rem 0.4em;
+      }
+
+      td {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+
+  .md-typeset {
+    span.twemoji {
+      vertical-align: middle;
+      height: 1.125rem;
+      display: inline-block;
+
+      > img {
+        height: 1.125rem;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
+
+  // Task lists
+  .task-list-indicator:before {
+    left: -1.5em
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left: .2rem solid #a9a9a9;
+    padding-left: .6rem;
+  }
+}

@@ -1,0 +1,94 @@
+@page {
+  size: a4 portrait;
+  margin: 25mm 10mm 25mm 10mm;
+  counter-increment: page;
+  white-space: pre;
+  color: grey;
+
+  @top-right {
+    font-size: 7pt;
+    content: string(chapter);
+  }
+
+  @bottom-center {
+    font-size: 8pt;
+    content: '- 'counter(page)'/'counter(pages)' -';
+  }
+
+  @bottom-right {
+    font-size: 6pt;
+    content: string(copyright);
+  }
+}
+
+@media print {
+  body {
+    background: none;
+    background-color: #fff;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %headings !optional;
+}
+
+article,
+section + section {
+  page-break-before: always;
+  min-height: 100vh;
+
+  &,
+  %headings,
+  div.tabbed-content--wrap > .tabbed-content {
+    clear: both;
+  }
+
+  /* Defining all page breaks */
+  %headings,
+  img {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  a,
+  blockquote,
+  table,
+  ul,
+  ol {
+    page-break-before: avoid;
+    page-break-inside: avoid;
+  }
+
+  pre,
+  dt + dd {
+    page-break-before: avoid;
+  }
+
+  %headings + ul,
+  %headings + ol {
+    page-break-inside: auto;
+  }
+
+  div.admonition {
+    page-break-inside: avoid;
+  }
+
+  div.tabbed-content--wrap {
+    page-break-inside: avoid;
+  }
+
+  * + div.highlight,
+  * + div.tabbed-set {
+    page-break-before: avoid;
+  }
+}
+
+section.two-columns {
+  columns: 2;
+  column-gap: 1cm;
+}

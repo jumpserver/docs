@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mkdocs-to-pdf"
+version = "0.10.1"
+description = "Generate a single PDF file from an `mkdocs` repository"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = [
+    "beautifulsoup4 >= 4.9.3",
+    "libsass >= 0.23.0",
+    "mkdocs >= 1.6.1",
+    "weasyprint == 62.3",
+    "pydyf == 0.10.0",
+]
+authors = [
+    { name = "orzih" },
+]
+maintainers = [
+    { name = "Dom Walters" },
+    { name = "Hideyuki Kato" },
+]
+keywords = ["mkdocs", "material", "pdf", "weasyprint"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+
+[project.optional-dependencies]
+docs = [
+    "mkdocs-material >= 8.4.0",
+    "mkdocs-macros-plugin >= 0.7.0",
+    "mike >= 1.1.2",
+    "mkdocs-minify-plugin == 0.8.0",
+]
+samples = [
+    "markdown-callouts == 0.4.0",
+    "mdx-gh-links == 0.4",
+    "mkdocstrings-python == 1.16.5",
+    "mkdocs-autorefs == 1.4.0",
+    "mkdocs-click == 0.5.0",
+    "mkdocs-literate-nav == 0.6.1",
+    "mkdocs-material >= 8.4.0",
+    "mkdocs-minify-plugin == 0.8.0",
+    "mkdocs-redirects == 1.2.2",
+]
+all = ["mkdocs-to-pdf[docs, samples]"]
+
+[project.entry-points."mkdocs.plugins"]
+to-pdf = "mkdocs_to_pdf.plugin:WithPdfPlugin"
+
+[project.urls]
+Repository = "https://github.com/domWalters/mkdocs-to-pdf"
+
+[tool.hatch.build]
+include = [
+    "CONTRIBUTING.md",
+    "CHANGELOG",
+    "src/mkdocs_to_pdf/**/*.css",
+    "src/mkdocs_to_pdf/**/*.html",
+    "src/mkdocs_to_pdf/**/*.j2",
+    "src/mkdocs_to_pdf/**/*.js",
+    "src/mkdocs_to_pdf/**/*.map",
+    "src/mkdocs_to_pdf/**/*.scss",
+    "src/mkdocs_to_pdf/**/*.py",
+    "src/mkdocs_to_pdf/**/py.typed",
+]
+exclude = [
+    "samples",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mkdocs_to_pdf"]
