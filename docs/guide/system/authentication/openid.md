@@ -165,7 +165,7 @@
         | `AUTH_OPENID_IGNORE_SSL_VERIFICATION` | 是否忽略 SSL 验证（在向 OpenID Server 发送请求获取数据时） |
         | `AUTH_OPENID_SHARE_SESSION`           | 是否共享 session（控制用户是否可以单点退出）               |
     
-    === "标准 OIDC 配置方式"
+    === "标准 OpenID 配置方式"
         ```sh
         vi /opt/jumpserver/config/config.txt
         ```
