@@ -150,6 +150,17 @@ class Generator(object):
         if self._options.debug_html:
             print(f'{html_string}')
 
+        # Output HTML file if requested
+        if self._options.output_html:
+            html_output_path = output_path.replace('.pdf', '.html')
+            abs_html_path = os.path.join(config['site_dir'], html_output_path)
+            os.makedirs(os.path.dirname(abs_html_path), exist_ok=True)
+            
+            with open(abs_html_path, 'w', encoding='utf-8') as f:
+                f.write(html_string)
+            
+            self.logger.info(f'Output HTML to "{abs_html_path}".')
+
         self.logger.info("Rendering for PDF.")
 
         abs_pdf_path = os.path.join(config['site_dir'], output_path)

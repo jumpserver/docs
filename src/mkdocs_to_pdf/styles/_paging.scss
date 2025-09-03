@@ -4,21 +4,40 @@
   counter-increment: page;
   white-space: pre;
   color: grey;
-
+ /* logo */
   @top-right {
-    font-size: 7pt;
-    content: string(chapter);
+    content: "JumpServer";
+    margin-top: -3%;
+    margin-right: 1.5%;
+    font-size: 15pt;
+    color: #2b937c;
+    font-weight: bold;
+
+  }
+  /* copyright */
+  @top-left {
+    content: string(copyright);
+    font-size: 6pt;
+    margin-left: -2%;
+  }
+ /* bar */
+  @top-center {
+    content: "";
+    border-top: 6px solid #2b937c;
+    width: 110%;
+    margin-left: -10%;
+    margin-top: 14mm;
   }
 
   @bottom-center {
-    font-size: 8pt;
-    content: '- 'counter(page)'/'counter(pages)' -';
+    font-size: 10pt;
+    content: '- 'counter(page)' -';
   }
 
-  @bottom-right {
-    font-size: 6pt;
-    content: string(copyright);
-  }
+  // @bottom-right {
+  //   font-size: 6pt;
+  //   content: string(copyright);
+  // }
 }
 
 @media print {

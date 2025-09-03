@@ -15,6 +15,7 @@ class Options(object):
 
         ('verbose', config_options.Type(bool, default=False)),
         ('debug_html', config_options.Type(bool, default=False)),
+        ('output_html', config_options.Type(bool, default=False)),
         ('show_anchors', config_options.Type(bool, default=False)),
 
         ('output_path', config_options.Type(str, default="pdf/document.pdf")),
@@ -55,6 +56,7 @@ class Options(object):
 
         self.verbose = local_config['verbose']
         self.debug_html = local_config['debug_html']
+        self.output_html = local_config['output_html']
         self.show_anchors = local_config['show_anchors']
 
         self.output_path = local_config.get('output_path', None)
@@ -77,6 +79,11 @@ class Options(object):
                 if local_config['cover_title'] else config['site_name']
             self._cover_subtitle = local_config['cover_subtitle']
             self._cover_logo = local_config['cover_logo']
+        else:
+            # Initialize cover attributes even when cover is disabled
+            self._cover_title = None
+            self._cover_subtitle = None
+            self._cover_logo = None
 
         # path to custom template 'cover.html' and custom scss 'styles.scss'
         self.custom_template_path = local_config['custom_template_path']
