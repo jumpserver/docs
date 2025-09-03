@@ -1,3 +1,11 @@
+:root {
+  string-set: author 'jumpserver', copyright 'Copyright © 2014-2025 杭州飞致云信息科技有限公司, All Rights Reserved.', title '';
+}
+
+.build-time-string-set {
+  string-set: build-time content();
+}
+
 @page {
   size: a4 portrait;
   margin: 25mm 10mm 25mm 10mm;
@@ -27,6 +35,12 @@
     width: 110%;
     margin-left: -10%;
     margin-top: 14mm;
+  }
+
+  @bottom-right {
+    content: "此文档更新于 {{BUILD_TIME}}";
+    font-size: 8pt;
+    color: #666;
   }
 
   @bottom-center {

@@ -4,6 +4,7 @@ import re
 from typing import Pattern
 from importlib import import_module
 from importlib.util import module_from_spec, spec_from_file_location
+from datetime import datetime
 
 from bs4 import BeautifulSoup, PageElement
 from weasyprint import HTML, urls
@@ -112,8 +113,26 @@ class Generator(object):
             soup = BeautifulSoup(
                 '<html><head></head><body></body></html>', 'html.parser')
 
+        # 注入动态构建时间到meta标签
+        current_time = datetime.now().strftime("%Y 年 %m 月 %d 日")
+        meta_tag = soup.new_tag('meta', attrs={'name': 'build-time', 'content': current_time})
+        soup.head.append(meta_tag)
+        
+        # 添加隐藏的build-time元素用于CSS string-set
+        build_time_element = soup.new_tag('div', attrs={
+            'class': 'build-time-string-set',
+            'style': 'display: none;'
+        })
+        build_time_element.string = current_time
+        soup.body.insert(0, build_time_element)
+
         def add_stylesheet(stylesheet: str):
             if stylesheet:
+                # 替换CSS中的占位符为动态时间
+                stylesheet = stylesheet.replace(
+                    "{{BUILD_TIME}}",
+                    current_time
+                )
                 style_tag = soup.new_tag('style')
                 style_tag.string = stylesheet
                 soup.head.append(style_tag)
