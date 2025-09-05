@@ -1,10 +1,10 @@
-## 1 关于CAS
+## 关于CAS
 
 !!! tip ""
     - 进入 **系统设置** 页面，点击 **认证设置 > CAS** ，进入 CAS 配置页面。
 	- **Central Authentication Service （CAS）** 是一种单点登录 （SSO） 协议，旨在为多个应用程序提供集中式身份验证。JumpServer 支持标准 CAS 平台认证。
 
-## 2 基础配置
+## 基础配置
 
 !!! tip ""
     详细参数说明：
@@ -32,7 +32,7 @@
 ```
 
 
-## 3 JumpServer CAS URL 说明
+## JumpServer CAS URL 说明
 
 !!! tip ""
     详细 URL 说明：

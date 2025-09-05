@@ -1,12 +1,12 @@
 
 
-## 1 关于 SAML2
+## 关于 SAML2
 !!! info "注: SAML2 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
     - 进入 **系统设置** 页面，点击 **认证设置 > SAML2**，进入 SAML2 配置页面。
     - **SAML2(Security Assertion Markup Language 2.0)** 是一种开放标准，用于在身份提供者(IdP)和服务提供者(SP)之间安全交换身份认证和授权数据。JumpServer 认证支持标准 SAML2。
 
-## 2 配置参数
+## 配置参数
 
 !!! tip ""
     详细参数说明：
@@ -62,7 +62,7 @@
 }
 ```
 
-## 3 JumpServer SAML2 URL 说明
+## JumpServer SAML2 URL 说明
 
 !!! tip ""
     详细 URL 说明：

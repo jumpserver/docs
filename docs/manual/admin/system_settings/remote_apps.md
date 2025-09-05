@@ -1,17 +1,17 @@
 # 远程应用
 !!! warning "注：社区版仅支持 Web GUI 方式使用远程应用，本地客户端连接方式(MSTSC)为企业版功能。"
-## 1 功能概述
+## 功能概述
 !!! info ""
     - 远程应用（RemoteApp）功能是微软在 Windows Server 2008之后，在其系统中集成的一项服务功能，使用户可以通过远程桌面访问远端的桌面与程序，客户端本机无须安装系统与应用程序的情况下也能正常使用远端发布的各种的桌面与应用。
 
 ![img](../../../img/V4_RemoteApp1.png)
 
-## 2 应用发布机
+## 应用发布机
 !!! tip ""
     - RemoteApp 功能需准备应用发布机环境来进行支持。
     - 应用发布机是用来运行 Web 页面资产或者使用远程应用 Navicat 连接数据的程序运行主体。
 
-### 2.1 系统要求
+### 系统要求
 !!! tip ""
     - 应用发布机的具体系统要求如下：
 
@@ -24,30 +24,32 @@
 | RDS 许可证 | 已安装并激活 | 远程桌面服务许可证必须有效，Windows Server 默认试用 120 天 |
 | 网络连接 | 能够通过网络访问 JumpServer 服务(HTTPS/HTTPS) | 注册、应用安装需要 |
 
-### 2.2 创建应用发布机
+### 创建应用发布机
 !!! tip ""
     - 点击应用发布机页面的`创建`按钮即新建一个应用发布机。
 
 ![img](../../../img/V4_RemoteApp2.png)
 
 !!! tip ""
-- 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
-  
-=== "WinRM(推荐)"
-    !!! note "WinRM 是微软推出的一种新式的方便远程管理的服务，可以使用管理员账号在 PowerShell 或者 CMD 命令行通过 **winrm quickconfig** 实现 WinRM 服务快速配置。"
+    - 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
 
-    !!! tip ""
-        - 通过 WinRM 协议部署应用发布机，在创建应用发布机页面添加 WinRM 协议即可。如果同时存在 SSH 协议，JumpServer 将优先选择 SSH 协议。
-        ![remoteapp18](../../../img/V4_RemoteApp7.png)
+#### WinRM(推荐)
 
-=== "OpenSSH"
-    !!! tip ""
-        - 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
-        ![V4_RemoteApp3](../../../img/V4_RemoteApp3.png)
+!!! note "WinRM 是微软推出的一种新式的方便远程管理的服务，可以使用管理员账号在 PowerShell 或者 CMD 命令行通过 **winrm quickconfig** 实现 WinRM 服务快速配置。"
 
-    !!! tip ""
-        - OpenSSH 安装包传到应用发布机桌面后，双击进行安装。
-        ![V4_RemoteApp4](../../../img/V4_RemoteApp4.png)
+!!! tip ""
+    - 通过 WinRM 协议部署应用发布机，在创建应用发布机页面添加 WinRM 协议即可。如果同时存在 SSH 协议，JumpServer 将优先选择 SSH 协议。
+    ![remoteapp18](../../../img/V4_RemoteApp7.png)
+
+#### OpenSSH
+
+!!! tip ""
+    - 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
+    ![V4_RemoteApp3](../../../img/V4_RemoteApp3.png)
+
+!!! tip ""
+    - OpenSSH 安装包传到应用发布机桌面后，双击进行安装。
+    ![V4_RemoteApp4](../../../img/V4_RemoteApp4.png)
 
 !!! tip ""
     - 详细参数说明：
@@ -68,13 +70,13 @@
 | RDS 最大断开时间 | 如果某个会话连接达到了此最大时间，连接即断开。 |
 | RDS 远程应用注销时间限制 | 远程应用会话断开后的注销时间。 |
 
-### 2.3 部署应用发布机
+### 部署应用发布机
 !!! tip ""
     - 创建应用发布机后需手动执行应用发布机部署，安装 Chrome、DBeaver 或其他远程应用。
     - 点击 `应用发布机名称` 按钮进入应用发布机详情页中，选择 `发布机部署` 页签，点击快速更新模块的 `初始化部署` 按钮，初始化应用发布机。
 ![V4_RemoteApp5](../../../img/V4_RemoteApp5.png)
 
-### 2.4 查看应用发布机详情
+### 查看应用发布机详情
 !!! tip ""
     - 点击 `应用发布机名称` 进入应用发布机详情页中。
     - 此页面包含应用发布机详情信息，包括：远程应用发布机帐号列表、远程应用、发布机部署记录等。

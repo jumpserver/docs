@@ -33,9 +33,9 @@ class HeadlessChromeDriver(object):
                         '--headless',
                         '--disable-gpu',
                         '--disable-web-security',
-                        '-–allow-file-access-from-files',
+                        '--allow-file-access-from-files',
                         '--run-all-compositor-stages-before-draw',
-                        '--virtual-time-budget=10000',
+                        '--virtual-time-budget=30000',
                         '--dump-dom',
                         temp.name], stdout=PIPE) as chrome:
                 return chrome.stdout.read().decode('utf-8')

@@ -15,7 +15,7 @@ dependencies = [
     "mkdocs >= 1.6.1",
     "weasyprint == 62.3",
     "pydyf == 0.10.0",
-    "pypdf >= 3.0.0",
+    "pypdf2",
     "reportlab >= 4.0.0",
     "Pillow >= 10.0.0",
 ]

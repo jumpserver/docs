@@ -37,6 +37,8 @@ theme:
     repo: fontawesome/brands/github
 
 nav:
+  - 免责声明: manual/disclaimer.md
+  - 前言: manual/prologue_admin.md
   - 控制台:
     - 用户管理:
       - 用户列表: manual/admin/console/users/users.md

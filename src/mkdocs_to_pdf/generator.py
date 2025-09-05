@@ -69,6 +69,10 @@ class Generator(object):
         else:
             self.logger.debug(f' (post: [{page.title}]({page.url})')
 
+        # 替换页面内容中的 BUILD_TIME 占位符
+        current_time = datetime.now().strftime("%Y 年 %m 月 %d 日")
+        output_content = output_content.replace('{{BUILD_TIME}}', current_time)
+
         soup = self._soup_from_content(output_content, page)
 
         self._remove_empty_tags(soup)
@@ -145,6 +149,13 @@ class Generator(object):
             content = self._get_content(soup, page)
             if content:
                 soup.body.append(content)
+                  
+        try:
+            with open('stage1.html', 'w', encoding='utf-8') as f:
+                f.write(str(soup))
+            self.logger.info('临时页面已输出为 stage1.html')
+        except Exception as e:
+            self.logger.warning(f'输出 stage1.html 失败: {e}')
 
         make_indexes(soup, self._options)
         make_cover(soup, self._options)
@@ -277,6 +288,14 @@ class Generator(object):
             page_path = self._page_path_for_id(page)
             article['id'] = f'{page_path}:'  # anchor for each page.
             article['data-url'] = f'/{page_path}'
+            
+            # Replace BUILD_TIME placeholders in article content (safer approach)
+            build_time = datetime.now().strftime('%Y 年 %m 月 %d 日')
+            for text_node in article.find_all(string=True):
+                if '{{ BUILD_TIME }}' in text_node:
+                    new_text = text_node.replace('{{ BUILD_TIME }}', build_time)
+                    text_node.replace_with(new_text)
+            
             return article
 
         elif page.children:

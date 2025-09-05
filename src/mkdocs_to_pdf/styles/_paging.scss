@@ -15,11 +15,13 @@
  /* logo */
   @top-right {
     content: "JumpServer";
+
     margin-top: -3%;
     margin-right: 1.5%;
     font-size: 15pt;
     color: #2b937c;
     font-weight: bold;
+    font-family: "Microsoft YaHei", sans-serif;
 
   }
   /* copyright */
@@ -37,11 +39,11 @@
     margin-top: 14mm;
   }
 
-  @bottom-right {
-    content: "此文档更新于 {{BUILD_TIME}}";
-    font-size: 8pt;
-    color: #666;
-  }
+  // @bottom-right {
+  //   content: "此文档更新于 {{BUILD_TIME}}";
+  //   font-size: 8pt;
+  //   color: #666;
+  // }
 
   @bottom-center {
     font-size: 10pt;
@@ -90,11 +92,16 @@ section + section {
 
   a,
   blockquote,
-  table,
   ul,
   ol {
     page-break-before: avoid;
     page-break-inside: avoid;
+  }
+
+  /* Allow tables to be broken across pages */
+  table {
+    page-break-before: auto;
+    page-break-inside: auto;
   }
 
   pre,

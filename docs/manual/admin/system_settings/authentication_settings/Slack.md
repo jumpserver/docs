@@ -1,13 +1,13 @@
 # Slack 认证
 
-## 1 关于 Slack
+## 关于 Slack
 
 !!! info "注: Slack 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
     - 进入 **系统设置**，点击 **认证设置 > Slack**，进入 Slack 配置页面。
     - **Slack** 认证是基于 Slack 平台的身份认证机制，允许用户使用 Slack 账户安全登录企业应用程序。JumpServer 支持标准 Slack 认证。
 
-## 2 配置参数
+## 配置参数
 
 !!! tip ""
     详细参数说明：

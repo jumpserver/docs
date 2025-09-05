@@ -12,23 +12,25 @@ article {
   }
 
   h3 {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.15rem;
+    // font-weight: bold;
+    border-bottom: 0.8px solid rgb(71, 73, 76);
   }
 
   h4 {
-    font-size: 1.0rem;
+    font-size: 1.0rem !important;
+    font-weight: normal !important; // 显式取消加粗
     font-weight: bold;
   }
 
   h5 {
-    font-size: 0.95rem;
-    font-weight: bold;
+    font-size: 1.0rem !important;
+    // font-weight: bold;
   }
 
   h6 {
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 1.0rem !important;
+    // font-weight: bold;
   }
 
   h1>.pdf-order,
