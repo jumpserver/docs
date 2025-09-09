@@ -148,13 +148,15 @@ nav:
         - 系统工具: manual/admin/system_settings/tools.md
         - 系统任务: manual/admin/system_settings/system_tasks.md
         - 许可证: manual/admin/system_settings/licenses.md
-        
+    - API 文档: 
+      - 概览: dev/rest_api.md  
+      - 用户api: manual/admin/api/user.md
+
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
     - 企业版: https://www.jumpserver.org/enterprise.html
   - 开发文档:
-    - API 文档: dev/rest_api.md
     - 交互命令: dev/shell.md
   - 用户案例: user_stories.md
   - 更新日志: change_log.md
