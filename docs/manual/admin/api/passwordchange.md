@@ -56,11 +56,11 @@
         "name": "test", 
         "assets": ["9266b1f8-f74d-482c-805a-6eed0e099a42"], 
         "nodes": [{ 
-        "pk": "90cdb498-9167-4308-8087-cd27b953f5fb" 
+            "pk": "90cdb498-9167-4308-8087-cd27b953f5fb" 
         }], 
         "crontab": "0 0 * */1 *", 
         "recipients": [{ 
-        "pk": "d1a02c44-e40b-41ac-884a-c44f3c664209" 
+            "pk": "d1a02c44-e40b-41ac-884a-c44f3c664209" 
         }], 
         "comment": "test" 
         }'
