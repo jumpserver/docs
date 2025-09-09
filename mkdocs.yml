@@ -154,7 +154,7 @@ nav:
       - 用户组api: manual/admin/api/usergroup.md
       - 资产节点api: manual/admin/api/assetsnodes.md
       - 资产账号api: manual/admin/api/assetsaccounts.md
-      
+      - 资产api: manual/admin/api/assets.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
