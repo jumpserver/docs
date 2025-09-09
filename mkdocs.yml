@@ -158,6 +158,7 @@ nav:
       - 资产授权api: manual/admin/api/assetauthorization.md
       - 改密计划api: manual/admin/api/passwordchange.md
       - 账号备份api: manual/admin/api/accountbackup.md
+      - 工单api: manual/admin/api/ticket.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
