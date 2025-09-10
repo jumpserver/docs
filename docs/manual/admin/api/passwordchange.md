@@ -1,11 +1,11 @@
-**1. 查询改密计划**
+## 1. 查询改密计划
 !!! tip "请求示例"
     ```sh
     curl -X GET 'https://localhost/api/v1/accounts/change-secret-automations/?offset=0&limit=15' \ 
         -H 'Authorization: Bearer b96810faac725563304dada8c323c4fa061863d4' \ 
         -H 'X-JMS-ORG: 00000000-0000-0000-0000-000000000002' 
     ```
-**2. 创建改密计划**
+## 2. 创建改密计划
 !!! tip "请求示例"
     ```sh
     curl -X POST 'https://localhost/api/v1/accounts/change-secret-automations/' \ 
@@ -35,7 +35,7 @@
         "comment": "test" 
         }'
     ```
-**3. 更新改密计划**
+## 3. 更新改密计划
 !!! tip "请求示例"
     ```sh
     curl -X PUT 'https://localhost/api/v1/accounts/change-secret-automations/0a6a2e40-f92b-4aca-94ef-5f6ae5b0966c' \ 
@@ -65,7 +65,7 @@
         "comment": "test" 
         }'
     ```
-**4. 删除改密计划**
+## 4. 删除改密计划
 !!! tip "请求示例"
     ```sh
     curl -X DELETE 'https://localhost/api/v1/accounts/change-secret-automations/0a6a2e40-f92b-4aca-94ef
@@ -74,7 +74,7 @@
         -H 'X-JMS-ORG: 00000000-0000-0000-0000-000000000002'  
     ```
 
-**5. 执行改密计划**
+## 5. 执行改密计划
 !!! tip "请求示例"
     ```sh
     curl -X POST 'https://localhost/api/v1/accounts/change-secret-executions/' \ 

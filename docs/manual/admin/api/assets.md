@@ -1,4 +1,4 @@
-**1. 创建主机资产**
+## 1. 创建主机资产
 !!! tip "请求示例"
     ```sh
     curl -X POST 'https://localhost/api/v1/assets/hosts/'\ 
@@ -30,7 +30,18 @@
              "accounts":[] 
             }'
     ```
-**2. 删除资产**
+| 参数名     | 类型       | 描述                                                                 | 是否必选 | 默认值  |
+|------------|------------|----------------------------------------------------------------------|----------|---------|
+| name       | String     | 名称                                                                 | 是       | -       |
+| addrs      | String     | IP地址                                                               | 是       | -       |
+| platform   | String     | 系统平台，示例值：1（代表Linux）、5（代表Windows）                    | 是       | -       |
+| nodes      | String[]   | 节点                                                                 | 是       | -       |
+| protocols  | String[]   | 协议/端口，参数格式示例：`{"name": "ssh", "port": 22}`                | 否       | -       |
+| labels     | String[]   | 标签                                                                 | 否       | -       |
+| is_active  | Boolean    | 激活状态                                                             | 否       | true    |
+| accounts   | String[]   | 账号信息                                                             | 否       | -       |
+
+## 2. 删除资产
 !!! tip "请求示例"
     ```sh
     curl -X DELETE 'https://localhost/api/v1/assets/hosts/1b56ff93-18e9-478e-97c2-8b6a3720b95d/' \ 
