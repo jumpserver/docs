@@ -104,8 +104,8 @@
 
 ## 8 了解更多
 !!! tip ""
-    - [如何向团队介绍 JumpServer？](https://www.jumpserver.org/documents/introduce-jumpserver_202310.pdf)
-    - [新一代堡垒机建设指南](https://fit2cloud.com/whitepaper/jumpserver-whitepaper_202307.pdf){:target="_blank"}
+    - [如何向团队介绍 JumpServer？](https://www.fit2cloud.com/jumpserver/documents/introduce-jumpserver_202507.pdf)
+    - [JumpServer 技术白皮书](https://whitepaper.jumpserver.org/){:target="_blank"}
     - [JumpServer 知识库](https://kb.fit2cloud.com/categories/jumpserver){:target="_blank"}
     - [FIT2CLOUD Bilibili 官方站](https://space.bilibili.com/510493147?spm_id_from=333.337.0.0){:target="_blank"}
     - [FIT2CLOUD 技术博客](https://blog.fit2cloud.com/){:target="_blank"}
