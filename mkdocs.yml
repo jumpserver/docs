@@ -1,7 +1,7 @@
 site_name: 'JumpServer 文档'
 site_url: 'https://docs.jumpserver.org'
-site_author: 'wojiushixiaobai'
-site_description: "JumpServer 是全球首款开源的堡垒机"
+site_author: '飞致云'
+site_description: "JumpServer 在线文档"
 
 repo_name: 'jumpserver/jumpserver'
 repo_url: 'https://github.com/jumpserver/jumpserver'
