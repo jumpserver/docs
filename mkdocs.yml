@@ -1,7 +1,7 @@
 site_name: 'JumpServer 文档'
 site_url: 'https://docs.jumpserver.org'
-site_author: 'jumpserver'
-site_description: "JumpServer 开源堡垒机的在线文档"
+site_author: '飞致云'
+site_description: "JumpServer 在线文档"
 
 repo_name: 'jumpserver/jumpserver'
 repo_url: 'https://github.com/jumpserver/jumpserver'
@@ -230,8 +230,6 @@ extra:
       link: mailto:support@fit2cloud.com
     - icon: fontawesome/brands/skype
       link: tel://400-052-0755
-    - icon: fontawesome/brands/qq
-      link: https://qm.qq.com/cgi-bin/qm/qr?k=om7dOmqflNsfzegPBODIxooO_dMDGiD1&jump_from=webapi
 
 extra_css:
   - css/extra.css
