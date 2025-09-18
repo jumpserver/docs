@@ -1,43 +1,8 @@
 # 快速入门
-## 1 一键安装
+## 1 安装 JumpServer
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](installation/source_install/requirements.md)
-    - 如用于生产环境，推荐使用 [离线安装包](https://community.fit2cloud.com/#/products/jumpserver/downloads) 进行部署
-
-!!! tip ""
-    === "中国大陆"
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
-        ```
-        </div>
-    === "其他地区"
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
-        ```
-        </div>
+    - 推荐使用 [离线安装包方式](installation/setup_linux_standalone/offline_install.md) 来部署 JumpServer
 
 !!! info "安装成功后，通过浏览器访问登录 JumpServer"
     ```sh
