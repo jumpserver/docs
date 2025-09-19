@@ -8,7 +8,7 @@
 
     | Name    | KoKo                     | Go   | Node  | Redis Client |
     | :------ | :----------------------- | :--  | :---- | :----------- |
-    | Version | {{ jumpserver.tag }}     | 1.18 | 16.5  | >= 6.0       |
+    | Version | {{ jumpserver.tag }}     | 1.24.7 | 20.15.1  | >= 6.0       |
 
 ### 1.2 选择部署方式
 !!! tip ""
@@ -19,9 +19,9 @@
 
         ```bash
         cd /opt
-        mkdir /opt/koko-{{ jumpserver.tag }}
-        wget -O /opt/koko-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-        tar -xf koko-{{ jumpserver.tag }}.tar.gz -C /opt/koko-{{ jumpserver.tag }} --strip-components 1
+        mkdir /opt/koko
+        wget -O /opt/koko.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
+        tar -xf koko-{{ jumpserver.tag }}.tar.gz -C /opt/koko --strip-components 1
         ```
 
         - 安装 Node。
@@ -30,30 +30,31 @@
         ```bash
         node -v
         ```
-        `v16.5`
+        `v20.15.1`
 
         - 安装 Client 依赖。
 
-        === "Ubuntu 20.04"
+        === "Ubuntu 22.04"
             ```bash
+            
             apt-get update
             apt install software-properties-common
             add-apt-repository -y ppa:redislabs/redis
-            apt-get install -y mariadb-client bash-completion redis-tools
+            apt-get install -y  bash-completion redis-tools jq less ca-certificates
             cd /opt
             mkdir /opt/kubectl-aliases
-            wget http://download.jumpserver.org/public/kubectl_aliases.tar.gz -O kubectl_aliases.tar.gz
+            wget https://github.com/ahmetb/kubectl-aliases/raw/master/.kubectl_aliases
             tar -xf kubectl_aliases.tar.gz -C /opt/kubectl-aliases
             ```
 
         - 安装 Go。
         - [Go][go] 官方网站参考文档部署 golang，请根据 [环境要求](#_14)，通过命令行中判断是否安装完成：
 
-        === "Ubuntu 20.04"
+        === "Ubuntu 22.04"
             ```bash
             cd /opt
-            wget https://golang.google.cn/dl/go1.18.7.linux-amd64.tar.gz
-            tar -xf go1.18.7.linux-amd64.tar.gz -C /usr/local/
+            wget wget https://go.dev/dl/go1.24.7.linux-amd64.tar.gz
+            tar -xf go1.24.7.linux-amd64.tar.gz -C /usr/local/
             chown -R root:root /usr/local/go
             export PATH=/usr/local/go/bin:$PATH
             echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
@@ -62,7 +63,7 @@
         ```bash
         go version
         ```
-        `go version go1.18.7 linux/amd64`
+        `go version go1.24.7 linux/amd64`
 
         - 编译。
 
@@ -72,9 +73,10 @@
         | macOS | amd64 | make darwin |
 
         ```bash
-        cd /opt/koko-{{ jumpserver.tag }}
+        cd /opt/koko
         make
         cp build/koko-{{ jumpserver.tag }}-linux-amd64.tar.gz /opt
+        go mod download
         ```
 
         !!! tip "构建完成后, 生成在 build 目录下"
@@ -139,39 +141,32 @@
     # NAME: {{ Hostname }}
 
     # Jumpserver项目的url, api请求注册会使用
-    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+    CORE_HOST: http://127.0.0.1:8080
 
     # Bootstrap Token, 预共享秘钥, 用来注册coco使用的service account和terminal
     # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
-    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+    BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>
 
     # 启动时绑定的ip, 默认 0.0.0.0
-    BIND_HOST: 0.0.0.0
+    # BIND_HOST: 0.0.0.0
 
     # 监听的SSH端口号, 默认2222
-    SSHD_PORT: 2222            # 使用 0.0.0.0:2222
+    # SSHD_PORT: 2222
 
     # 监听的HTTP/WS端口号，默认5000
-    HTTPD_PORT: 5000           # 使用 0.0.0.0:5000
-
-    # 项目使用的ACCESS KEY, 默认会注册,并保存到 ACCESS_KEY_STORE中,
-    # 如果有需求, 可以写到配置文件中, 格式 access_key_id:access_key_secret
-    # ACCESS_KEY: null
-
-    # ACCESS KEY 保存的地址, 默认注册后会保存到该文件中
-    # ACCESS_KEY_FILE: data/keys/.access_key
+    # HTTPD_PORT: 5000
 
     # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
-    LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
+    # LOG_LEVEL: INFO
 
     # SSH连接超时时间 (default 15 seconds)
     # SSH_TIMEOUT: 15
 
+    # Api Http请求的超时时间 (default 30 seconds)
+    # HTTP_REQUEST_TIMEOUT: 30
+
     # 语言 [en,zh]
     # LANGUAGE_CODE: zh
-
-    # SFTP的根目录, 可选 /tmp, Home其他自定义目录
-    # SFTP_ROOT: /tmp
 
     # SFTP是否显示隐藏文件
     # SFTP_SHOW_HIDDEN_FILE: false
@@ -198,11 +193,17 @@
     # SHARE_ROOM_TYPE: local
 
     # Redis配置
-    # REDIS_HOST: 127.0.0.1      # 如果需要部署多个 koko, 需要通过 redis 来保持会话
+    # REDIS_HOST: 127.0.0.1
     # REDIS_PORT: 6379
     # REDIS_PASSWORD:
     # REDIS_CLUSTERS:
     # REDIS_DB_ROOM:
+
+    # 是否开启本地转发 (目前仅对 vscode remote ssh 有效果)
+    # ENABLE_LOCAL_PORT_FORWARD: false
+
+    # 是否开启 针对 vscode 的 remote-ssh 远程开发支持 (前置条件: 必须开启 ENABLE_LOCAL_PORT_FORWARD )
+    # ENABLE_VSCODE_SUPPORT: false
     ```
 
 ### 1.4 启动 KoKo
@@ -241,8 +242,6 @@
 [guacamole-server]: https://github.com/apache/guacamole-server
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
 [guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
-[wisp]: https://github.com/jumpserver/wisp
-[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
 [lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
@@ -262,9 +261,3 @@
 [magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
