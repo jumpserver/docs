@@ -8,7 +8,7 @@
 
     | Name    | Luna                     | Node  |
     | :------ | :----------------------- | :---- |
-    | Version | {{ jumpserver.tag }}     | 16.5 |
+    | Version | {{ jumpserver.tag }}     | 20.15.1 |
 
 ### 1.2 选择部署方式
 !!! tip ""
@@ -30,12 +30,12 @@
         ```bash
         node -v
         ```
-        `v16.5`
+        `v20.15.1`
 
         - 安装依赖。
 
         ```bash
-        cd /opt/luna-{{ jumpserver.tag }}
+        cd /opt/luna
         yarn install
         ```
 
@@ -47,53 +47,76 @@
         ```
         ```yaml
         {
-          "/koko": {
-            "target": "http://localhost:5000",  # KoKo 地址
-            "secure": false,
-            "ws": true
+        "/koko/": {
+          "target": "http://localhost:5050",  # KoKo 地址
+          "secure": false,
+          "ws": true,
+          "changeOrigin": true
+        },
+        "/media/": {
+          "target": "http://localhost:8080",  # Core 地址
+          "secure": false,
+          "changeOrigin": true
+        },
+        "/api/": {
+          "target": "http://localhost:8080",  # Core 地址
+          "secure": false,
+          "changeOrigin": true
+        },
+        "/ws/": {
+          "target": "ws://localhost:8080",  # Core 地址
+          "secure": false,
+          "changeOrigin": true,
+          "ws": true
+        },
+        "/core": {
+          "target": "http://localhost:8080",  # Core 地址
+          "secure": false,
+          "changeOrigin": true
+        },
+        "/static": {
+          "target": "http://localhost:8080",  # Core 地址
+          "secure": false,
+          "changeOrigin": true
+        },
+        "/lion": {
+          "target": "http://localhost:9529",  # Lion 地址
+          "secure": false,
+          "pathRewrite": {
+            "^/lion/monitor": "/monitor"
           },
-          "/media/": {
-            "target": "http://localhost:8080",  # Core 地址
-            "secure": false,
-            "changeOrigin": true
-          },
-          "/api/": {
-            "target": "http://localhost:8080",  # Core 地址
-            "secure": false,                    # https ssl 需要开启
-            "changeOrigin": true
-          },
-          "/core": {
-            "target": "http://localhost:8080",  # Core 地址
-            "secure": false,
-            "changeOrigin": true
-          },
-          "/static": {
-            "target": "http://localhost:8080",  # Core 地址
-            "secure": false,
-            "changeOrigin": true
-          },
-          "/lion": {
-            "target": "http://localhost:9529",  # Lion 地址
-            "secure": false,
-            "pathRewrite": {
-              "^/lion/monitor": "/monitor"
-            },
-            "ws": true,
-            "changeOrigin": true
-          },
-          "/omnidb": {
-            "target": "http://localhost:8082",
-            "secure": false,
-            "ws": true,
-            "changeOrigin": true
-          }
+          "ws": true,
+          "changeOrigin": true
+        },
+        "/chen": {
+          "target": "http://localhost:9523",
+          "secure": false,
+          "ws": true,
+          "changeOrigin": true
+        },
+        "/facelive": {
+          "target": "http://localhost:5173",
+          "secure": false,
+          "ws": true,
+          "changeOrigin": true
+        },
+        "/kael": {
+          "target": "http://localhost:5172",
+          "secure": false,
+          "ws": true,
+          "changeOrigin": true
+        },
+        "/ui/": {
+          "target": "http://localhost:9528",
+          "secure": false,
+          "changeOrigin": true
         }
+      }
         ```
 
         - 运行 Luna。
-
         ```bash
-        ./node_modules/.bin/ng serve
+        yarn dev
         ```
 
         - 构建 Luna。
@@ -154,7 +177,6 @@
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
 [guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
 [wisp]: https://github.com/jumpserver/wisp
-[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
 [lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
@@ -174,9 +196,3 @@
 [magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
