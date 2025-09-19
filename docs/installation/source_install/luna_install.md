@@ -13,7 +13,6 @@
 ### 1.2 选择部署方式
 !!! tip ""
     === "源代码部署"
-
         - 下载源代码。
         - 可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
@@ -47,74 +46,75 @@
         ```
         ```yaml
         {
-        "/koko/": {
-          "target": "http://localhost:5050",  # KoKo 地址
-          "secure": false,
-          "ws": true,
-          "changeOrigin": true
-        },
-        "/media/": {
-          "target": "http://localhost:8080",  # Core 地址
-          "secure": false,
-          "changeOrigin": true
-        },
-        "/api/": {
-          "target": "http://localhost:8080",  # Core 地址
-          "secure": false,
-          "changeOrigin": true
-        },
-        "/ws/": {
-          "target": "ws://localhost:8080",  # Core 地址
-          "secure": false,
-          "changeOrigin": true,
-          "ws": true
-        },
-        "/core": {
-          "target": "http://localhost:8080",  # Core 地址
-          "secure": false,
-          "changeOrigin": true
-        },
-        "/static": {
-          "target": "http://localhost:8080",  # Core 地址
-          "secure": false,
-          "changeOrigin": true
-        },
-        "/lion": {
-          "target": "http://localhost:9529",  # Lion 地址
-          "secure": false,
-          "pathRewrite": {
-            "^/lion/monitor": "/monitor"
+          "/koko/": {
+            "target": "http://localhost:5050",  # KoKo 地址
+            "secure": false,
+            "ws": true,
+            "changeOrigin": true
           },
-          "ws": true,
-          "changeOrigin": true
-        },
-        "/chen": {
-          "target": "http://localhost:9523",
-          "secure": false,
-          "ws": true,
-          "changeOrigin": true
-        },
-        "/facelive": {
-          "target": "http://localhost:5173",
-          "secure": false,
-          "ws": true,
-          "changeOrigin": true
-        },
-        "/kael": {
-          "target": "http://localhost:5172",
-          "secure": false,
-          "ws": true,
-          "changeOrigin": true
-        },
-        "/ui/": {
-          "target": "http://localhost:9528",
-          "secure": false,
-          "changeOrigin": true
+          "/media/": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/api/": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/ws/": {
+            "target": "ws://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true,
+            "ws": true
+          },
+          "/core": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/static": {
+            "target": "http://localhost:8080",  # Core 地址
+            "secure": false,
+            "changeOrigin": true
+          },
+          "/lion": {
+            "target": "http://localhost:9529",  # Lion 地址
+            "secure": false,
+            "pathRewrite": {
+              "^/lion/monitor": "/monitor"
+            },
+            "ws": true,
+            "changeOrigin": true
+          },
+          "/chen": {
+            "target": "http://localhost:9523",
+            "secure": false,
+            "ws": true,
+            "changeOrigin": true
+          },
+          "/facelive": {
+            "target": "http://localhost:5173",
+            "secure": false,
+            "ws": true,
+            "changeOrigin": true
+          },
+          "/kael": {
+            "target": "http://localhost:5172",
+            "secure": false,
+            "ws": true,
+            "changeOrigin": true
+          },
+          "/ui/": {
+            "target": "http://localhost:9528",
+            "secure": false,
+            "changeOrigin": true
+          }
         }
-      }
         ```
 
         - 运行 Luna。
+
         ```bash
         yarn dev
         ```
@@ -127,9 +127,7 @@
         cp -rf luna luna-{{ jumpserver.tag }}
         tar -czf luna-{{ jumpserver.tag }}.tar.gz luna-{{ jumpserver.tag }}
         ```
-
         !!! tip "构建完成后, 生成在 luna 目录下"
-
     === "使用 Release"
 
         - 下载 Release 文件，从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。
