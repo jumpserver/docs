@@ -8,7 +8,7 @@
 
     | Name    | Lina                     | Node  |
     | :------ | :----------------------- | :---- |
-    | Version | {{ jumpserver.tag }}     | 20.15  |
+    | Version | {{ jumpserver.tag }}     | 20.15.1  |
 
 ### 1.2 选择部署方式
 !!! tip ""

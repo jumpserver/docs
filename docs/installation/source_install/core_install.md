@@ -39,7 +39,7 @@
 
     ```
 !!! tip ""
-    === "Ubuntu 20.04"
+    === "Ubuntu 22.04"
         ```bash
         sudo apt update && sudo apt upgrade -y
         sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 

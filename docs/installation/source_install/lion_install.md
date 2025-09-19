@@ -8,7 +8,7 @@
 
     | Name    | JumpServer               | Guacd                  |  Lion                    |
     | :------ | :----------------------- | :--------------------- | :----------------------- |
-    | Version | {{ jumpserver.tag }}     | [1.4.0][guacd-1.4.0]   | {{ jumpserver.tag }} |
+    | Version | {{ jumpserver.tag }}     | [1.5.5][guacd-1.5.5]   | {{ jumpserver.tag }} |
 
     - 可以从 [Github][guacamole-server] 网站上获取对应的 guacd 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
 
@@ -22,10 +22,11 @@
 
     - 参考 [building-guacamole-server][building-guacamole-server] 官方文档，安装对应操作系统的依赖包。
 
-    === "Ubuntu 20.04"
+    === "Ubuntu 22.04"
         ```bash
-        apt-get install -y libcairo2-dev libjpeg-turbo8-dev libpng-dev libtool-bin libossp-uuid-dev
-        apt-get install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev     libpulse-dev libssl-dev libvorbis-dev libwebp-dev
+        sudo apt update
+        apt install -y build-essential git curl wget ca-certificates  supervisor jq
+        apt install -y libcairo2-dev libjpeg62-turbo-dev libpng-dev libtool-bin libossp-uuid-dev libavcodec-dev libavformat-dev libavutil-dev libswscale-dev freerdp2-dev libpango1.0-dev libssh2-1-dev libtelnet-dev libvncserver-dev libwebsockets-dev libpulse-dev libssl-dev libvorbis-dev libwebp-dev
         ```
 
 ### 1.2 构建 Guacd
@@ -80,22 +81,22 @@
     # NAME: {{ Hostname }}
 
     # Jumpserver项目的url, api请求注册会使用
-    CORE_HOST: http://127.0.0.1:8080   # Core 的地址
+    CORE_HOST: http://127.0.0.1:8080
 
     # Bootstrap Token, 预共享秘钥, 用来注册使用的service account和terminal
     # 请和jumpserver 配置文件中保持一致，注册完成后可以删除
-    BOOTSTRAP_TOKEN: ********  # 和 Core config.yml 的值保持一致
+    BOOTSTRAP_TOKEN: <PleasgeChangeSameWithJumpserver>
 
     # 启动时绑定的ip, 默认 0.0.0.0
-    BIND_HOST: 0.0.0.0
+    # BIND_HOST: 0.0.0.0
 
     # 监听的HTTP/WS端口号，默认8081
-    HTTPD_PORT: 8081
+    # HTTPD_PORT: 8081
 
     # 设置日志级别 [DEBUG, INFO, WARN, ERROR, FATAL, CRITICAL]
-    LOG_LEVEL: DEBUG           # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
+    # LOG_LEVEL: INFO
 
-    # Guacamole Server ip，默认127.0.0.1
+    # Guacamole Server ip， 默认127.0.0.1
     # GUA_HOST: 127.0.0.1
 
     # Guacamole Server 端口号，默认4822
@@ -108,7 +109,7 @@
     # REDIS_HOST: 127.0.0.1
     # REDIS_PORT: 6379
     # REDIS_PASSWORD:
-    # REDIS_DB_ROOM:
+    # REDIS_DB_ROOM: 0
     ```
 
 ### 1.5 启动 Guacd
@@ -117,9 +118,24 @@
     /etc/init.d/guacd start
     ```
 
-### 1.6 启动 Lion
+### 1.6 编译启动 Lion
 !!! tip ""
     ```bash
+    cd /opt/lion-{{ jumpserver.tag }}-linux-amd64/ui
+    yarn install
+    yarn build
+
+    cd ..
+    go mod download
+    export GOFLAGS="-X 'main.Buildstamp=$(date -u '+%Y-%m-%d %I:%M:%S%p')' \
+                -X 'main.Githash=$(git rev-parse HEAD)' \
+                -X 'main.Goversion=$(go version)' \
+                -X 'main.Version=${VERSION}'"
+                
+    go build -trimpath -ldflags "$GOFLAGS" -o lion .
+    chmod +x entrypoint.sh
+    supervisorctl -c supervisord.conf 
+    
     ./lion
     ```
 
@@ -153,9 +169,8 @@
 [apache]: http://www.apache.org/
 [guacamole-server]: https://github.com/apache/guacamole-server
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
-[guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
+[guacd-1.5.5]: http://download.jumpserver.org/public/guacamole-server-1.5.5.tar.gz
 [wisp]: https://github.com/jumpserver/wisp
-[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
 [lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
@@ -170,14 +185,4 @@
 [lion-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-loong64.tar.gz
 [lion-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-darwin-amd64.tar.gz
 [lion-{{ jumpserver.tag }}-windows-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-windows-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-arm64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
-[magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
+

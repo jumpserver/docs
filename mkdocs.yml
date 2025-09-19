@@ -70,7 +70,6 @@ nav:
         - Luna 环境部署: installation/source_install/luna_install.md
         - Koko 环境部署: installation/source_install/koko_install.md
         - Lion 环境部署: installation/source_install/lion_install.md
-        - Chen 环境部署: installation/source_install/chen_install.md
         - JumpServer 环境整合: installation/source_install/merge_jumpserver.md
         
   - 用户手册:

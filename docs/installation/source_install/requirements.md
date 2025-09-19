@@ -29,11 +29,7 @@
 
     5.Lion 环境部署
 
-    6.Magnus 环境部署
-
-    7.Nginx 环境部署
-
-    8.JumpServer 环境整合
+    6.JumpServer 环境整合
 
 
 [nginx]: http://nginx.org/
