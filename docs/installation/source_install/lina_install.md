@@ -8,7 +8,7 @@
 
     | Name    | Lina                     | Node  |
     | :------ | :----------------------- | :---- |
-    | Version | {{ jumpserver.tag }}     | 16.5  |
+    | Version | {{ jumpserver.tag }}     | 20.15  |
 
 ### 1.2 选择部署方式
 !!! tip ""
@@ -26,12 +26,12 @@
         - 安装 Node。
         - 从 [Node][node] 官方网站参考文档部署 Node.js，请根据 [环境要求](#_6)，通过命令行中判断是否安装完成：   
 
-        === "Ubuntu 20.04"
+        === "Ubuntu 22.04"
             ```bash
             cd /opt
-            wget https://nodejs.org/download/release/v16.5.0/node-v16.5.0-linux-x64.tar.xz
-            tar -xf node-v16.5.0-linux-x64.tar.xz
-            mv node-v16.5.0-linux-x64 /usr/local/node
+            wget https://nodejs.org/download/release/v20.15.1/node-v20.15.1-linux-x64.tar.xz
+            tar -xf node-v20.15.1-linux-x64.tar.xz
+            mv node-v20.15.1-linux-x64 /usr/local/node
             chown -R root:root /usr/local/node
             export PATH=/usr/local/node/bin:$PATH
             echo 'export PATH=/usr/local/node/bin:$PATH' >> ~/.bashrc
@@ -39,12 +39,12 @@
         ```bash
         node -v
         ```
-        `v16.5`
+        `v20.15.1`
 
         - 安装依赖。
 
         ```bash
-        cd /opt/lina-{{ jumpserver.tag }}
+        cd /opt/lina
         npm install -g yarn
         yarn install
         ```
@@ -76,9 +76,12 @@
         VUE_APP_LOGIN_PATH = '/core/auth/login/'
         VUE_APP_LOGOUT_PATH = '/core/auth/logout/'
 
+
         # Dev server for core proxy
-        VUE_APP_CORE_HOST = 'http://localhost:8080'  # 修改成 Core 的 url 地址
-        VUE_APP_CORE_WS = 'ws://localhost:8070'
+        VUE_APP_CORE_HOST = 'http://localhost:8080'   # 修改成 Core 的 url 地址
+        VUE_APP_CORE_WS = 'ws://localhost:8080'
+        VUE_APP_KOKO_HOST = 'http://localhost:5000'
+        VUE_APP_KOKO_WS = 'ws://localhost:5000'
         VUE_APP_ENV = 'development'
         ```
 
@@ -92,8 +95,8 @@
 
         ```bash
         yarn build
-        cp -rf lina lina-{{ jumpserver.tag }}
-        tar -czf lina-{{ jumpserver.tag }}.tar.gz lina-{{ jumpserver.tag }}
+        cp -rf lina lina
+        tar -czf lina.tar.gz lina
         ```
 
         !!! tip "构建完成后, 生成在 lina 目录下"
@@ -145,7 +148,7 @@
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
 [guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
 [wisp]: https://github.com/jumpserver/wisp
-[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
+
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
 [lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
@@ -165,9 +168,3 @@
 [magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
