@@ -19,9 +19,8 @@
     - 应用 (通过 Remote App 连接各类应用)
 
 !!! tip "文档指引"
-    - **JumpServer 介绍**    
 
-    [**产品简介**](https://jumpserver.org/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**安装部署**](installation/setup_linux_standalone/requirements/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**体验环境**](https://demo.jumpserver.org/ ) &emsp;&emsp;&emsp;&emsp;&emsp;  [**企业试用**](https://jinshuju.net/f/kyOYpi) &emsp;&emsp;&emsp;&emsp;&emsp;  [**社区论坛**](https://bbs.fit2cloud.com/c/js/5) &emsp;&emsp;&emsp;&emsp;&emsp; [**20分钟掌握 JumpServer 视频教学**](https://www.bilibili.com/video/BV11AsDegEo8/)
+    [**产品官网**](https://jumpserver.org/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**安装部署**](installation/setup_linux_standalone/requirements/) &emsp;&emsp;&emsp;&emsp;&emsp;  [**在线体验**](https://demo.jumpserver.org/ ) &emsp;&emsp;&emsp;&emsp;&emsp;  [**企业版试用**](https://jinshuju.net/f/kyOYpi) &emsp;&emsp;&emsp;&emsp;&emsp;  [**社区论坛**](https://bbs.fit2cloud.com/c/js/5) &emsp;&emsp;&emsp;&emsp;&emsp; [**视频教学**](https://www.bilibili.com/video/BV11AsDegEo8/) &emsp;&emsp;&emsp;&emsp;&emsp; [**技术白皮书**]([https://www.bilibili.com/video/BV11AsDegEo8/](https://whitepaper.jumpserver.org/))
 
 ## 2 产品特色
 !!! tip ""
@@ -38,29 +37,23 @@
 ## 3 页面展示
 ![!界面展示](img/dashboard.png)
 
-## 4 功能列表
-!!! tip ""
-    - [JumpServer 堡垒机功能列表](https://www.jumpserver.org/features.html)
-
-## 5 应用商店
+## 4 应用商店
 !!! tip ""
     JumpServer 的远程应用功能，社区版默认支持 Chrome、DBeaver 应用，企业版支持更丰富的远程应用，可点击 [应用商店](https://apps.fit2cloud.com/jumpserver) 来获取更多远程应用。
 
-## 6 安全说明
+## 5 安全说明
 !!! tip ""
     - JumpServer 是一款安全产品，请遵循 [基本安全建议](faq/security.md) 进行安装部署
     - 如果你发现安全问题，可以直接联系我们：support@fit2cloud.com
 
-
-## 7 商业产品
+## 6 商业产品
 !!! tip ""
     - [JumpServer 企业版](https://jumpserver.org/enterprise.html){:target="_blank"}
     - [JumpServer 一体机](https://jumpserver.org/hardware.html){:target="_blank"}
 
-## 8 了解更多
+## 7 了解更多
 !!! tip ""
     - [如何向团队介绍 JumpServer？](https://www.fit2cloud.com/jumpserver/documents/introduce-jumpserver_202507.pdf)
     - [JumpServer 技术白皮书](https://whitepaper.jumpserver.org/){:target="_blank"}
     - [JumpServer 知识库](https://kb.fit2cloud.com/categories/jumpserver){:target="_blank"}
     - [教学视频](https://space.bilibili.com/510493147?spm_id_from=333.337.0.0){:target="_blank"}
-    - [技术博客](https://blog.fit2cloud.com/){:target="_blank"}
