@@ -8,7 +8,7 @@
 
     | Name    | Core                     | Python |
     | :------ | :----------------------- | :----- |
-    | Version | {{ jumpserver.tag }}     | 3.9    |
+    | Version | {{ jumpserver.tag }}     | 3.11   |
 
 ### 1.2 下载源代码
 !!! tip ""
@@ -21,9 +21,6 @@
     wget -O /opt/jumpserver-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/jumpserver/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
     tar -xf jumpserver-{{ jumpserver.tag }}.tar.gz -C /opt/jumpserver-{{ jumpserver.tag }} --strip-components 1
     cd jumpserver-{{ jumpserver.tag }}
-    rm -f apps/common/utils/ip/geoip/GeoLite2-City.mmdb apps/common/utils/ip/ipip/ipipfree.ipdb
-    wget https://download.jumpserver.org/files/ip/GeoLite2-City.mmdb -O apps/common/utils/ip/geoip/GeoLite2-City.mmdb
-    wget https://download.jumpserver.org/files/ip/ipipfree.ipdb -O apps/common/utils/ip/ipip/ipipfree.ipdb
     ```
 
     ```bash
@@ -31,17 +28,21 @@
     ```
     ```vim
     requirements/           # 对应操作系统需要的依赖包
-    ├── apk_pkg.sh          # Alpine
-    ├── deb_pkg.sh          # 基于 Debian 的发行版(如: Ubuntu)
-    ├── issues.txt          # macOS 一些问题及解决方案
-    ├── mac_pkg.sh          # macOS
-    ├── requirements.txt    # python
-    └── rpm_pkg.sh          # 基于 RedHat 的发行版(如: CentOS)
+    ├── apk_pkg.sh          # Alpine Linux 依赖安装脚本
+    ├── clean_site_packages.sh  # 清理 Python site-packages 的脚本
+    ├── collections.yml      # Ansible 集合配置文件
+    ├── deb_pkg.sh           # 基于 Debian 的发行版(如: Ubuntu)依赖安装脚本
+    ├── issue.md            # 常见问题及解决方案文档
+    ├── mac_pkg.sh           # macOS 依赖安装脚本
+    ├── rpm_pkg.sh           # 基于 RedHat 的发行版(如: CentOS)依赖安装脚本
+    └── static_files.sh      # 静态文件处理脚本
+
     ```
 !!! tip ""
     === "Ubuntu 20.04"
         ```bash
-        apt-get install -y pkg-config libxmlsec1-dev libpq-dev libffi-dev libxml2 libxslt-dev libldap2-dev libsasl2-dev sshpass mariadb-client bash-completion g++ make sshpass
+        sudo apt update && sudo apt upgrade -y
+        sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 
         ```
 
         !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
@@ -55,31 +56,30 @@
 
 !!! tip ""
     ```bash
-    apt-get install -y python3.9 python3.9-dev python3.9-venv
+    apt-get install -y python3.11 python3.11-dev python3.11-venv python3-pip
     ```
     ```bash
-    python3.9
+    python3.11
     ```
     ```python
-    Python 3.9.5 (default, Nov 23 2021, 15:27:38)
-    [GCC 9.3.0] on linux
+    Python 3.11.0rc1 (main, Aug 12 2022, 10:02:14) [GCC 11.2.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
-    >>>
+    >>> 
     ```
 
-### 1.4 安装 Python 依赖
+### 1.4 安装 Python 依赖 (通过 uv)
 !!! tip ""
     - 为 JumpServer 项目单独创建 python3 虚拟环境。
 
     ```bash
-    python3.9 -m venv /opt/py3
+    python3.11 -m venv /opt/py3
     source /opt/py3/bin/activate
     ```
 
     - 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
 
     ```bash
-    poetry install
+    uv pip install -r pyproject.toml
     ```
 
     - 修改配置文件。
@@ -90,28 +90,27 @@
     ```
     ```yaml
     # SECURITY WARNING: keep the secret key used in production secret!
-    # 加密秘钥 生产环境中请修改为随机字符串，请勿外泄, 可使用命令生成
-    # $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 48;echo
-    SECRET_KEY: ****************  # 必填项, 长度推荐 50 位以上
+    # 加密密钥 生产环境中请修改为随机字符串，请勿外泄, 可使用命令生成
+    # $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 49;echo
+    SECRET_KEY:
 
     # SECURITY WARNING: keep the bootstrap token used in production secret!
-    # 预共享Token koko 和 lion 用来注册服务账号，不在使用原来的注册接受机制
-    # $ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c 24;echo
-    BOOTSTRAP_TOKEN: ***********  # 必填项, 长度推荐 20 位以上
+    # 预共享Token coco和guacamole用来注册服务账号，不在使用原来的注册接受机制
+    BOOTSTRAP_TOKEN:
 
     # Development env open this, when error occur display the full process track, Production disable it
     # DEBUG 模式 开启DEBUG后遇到错误时可以看到更多日志
-    DEBUG: true                   # 开发建议打开 DEBUG, 生产环境应该关闭
+    # DEBUG: true
 
     # DEBUG, INFO, WARNING, ERROR, CRITICAL can set. See https://docs.djangoproject.com/en/1.10/topics/logging/
     # 日志级别
-    LOG_LEVEL: DEBUG              # 开发建议设置 DEBUG, 生产环境推荐使用 ERROR
+    # LOG_LEVEL: DEBUG
     # LOG_DIR:
 
-    # Session expiration setting, Default 24 hour, Also set expired on on browser close
-    # 浏览器Session过期时间，默认24小时, 也可以设置浏览器关闭则过期
-    # SESSION_COOKIE_AGE: 86400
-    SESSION_EXPIRE_AT_BROWSER_CLOSE: true  # 浏览器关闭 session 过期
+    # Session expiration setting, Default 1 hour, Also set expired on on browser close
+    # 浏览器Session过期时间，默认 1 小时, 也可以设置浏览器关闭则过期
+    # SESSION_COOKIE_AGE: 3600
+    # SESSION_EXPIRE_AT_BROWSER_CLOSE: false
 
     # Database setting, Support sqlite3, mysql, postgres ....
     # 数据库设置
@@ -122,65 +121,28 @@
     # DB_ENGINE: sqlite3
     # DB_NAME:
     # MySQL or postgres setting like:
-    # 使用Mysql作为数据库
-    DB_ENGINE: mysql
-    DB_HOST: 127.0.0.1       # 自行配置 数据库相关
-    DB_PORT: 3306
+    # 使用 PostgreSQL 作为数据库
+    DB_ENGINE: postgresql
+    DB_HOST: 127.0.0.1
+    DB_PORT: 5432
     DB_USER: jumpserver
-    DB_PASSWORD: ********
+    DB_PASSWORD:
     DB_NAME: jumpserver
 
     # When Django start it will bind this host and port
     # ./manage.py runserver 127.0.0.1:8080
-    # 运行时绑定端口, 将会使用 0.0.0.0:8080 0.0.0.0:8070 端口
+    # 运行时绑定端口
     HTTP_BIND_HOST: 0.0.0.0
     HTTP_LISTEN_PORT: 8080
     WS_LISTEN_PORT: 8070
 
     # Use Redis as broker for celery and web socket
     # Redis配置
-    REDIS_HOST: 127.0.0.1    # 自行配置 Redis 相关
+    REDIS_HOST: 127.0.0.1
     REDIS_PORT: 6379
-    REDIS_PASSWORD: ********
+    # REDIS_PASSWORD:
     # REDIS_DB_CELERY: 3
     # REDIS_DB_CACHE: 4
-
-    # Use OpenID Authorization
-    # 使用 OpenID 进行认证设置
-    # AUTH_OPENID: False # True or False
-    # BASE_SITE_URL: None
-    # AUTH_OPENID_CLIENT_ID: client-id
-    # AUTH_OPENID_CLIENT_SECRET: client-secret
-    # AUTH_OPENID_PROVIDER_ENDPOINT: https://op-example.com/
-    # AUTH_OPENID_PROVIDER_AUTHORIZATION_ENDPOINT: https://op-example.com/authorize
-    # AUTH_OPENID_PROVIDER_TOKEN_ENDPOINT: https://op-example.com/token
-    # AUTH_OPENID_PROVIDER_JWKS_ENDPOINT: https://op-example.com/jwks
-    # AUTH_OPENID_PROVIDER_USERINFO_ENDPOINT: https://op-example.com/userinfo
-    # AUTH_OPENID_PROVIDER_END_SESSION_ENDPOINT: https://op-example.com/logout
-    # AUTH_OPENID_PROVIDER_SIGNATURE_ALG: HS256
-    # AUTH_OPENID_PROVIDER_SIGNATURE_KEY: None
-    # AUTH_OPENID_SCOPES: "openid profile email"
-    # AUTH_OPENID_ID_TOKEN_MAX_AGE: 60
-    # AUTH_OPENID_ID_TOKEN_INCLUDE_CLAIMS: True
-    # AUTH_OPENID_USE_STATE: True
-    # AUTH_OPENID_USE_NONCE: True
-    # AUTH_OPENID_SHARE_SESSION: True
-    # AUTH_OPENID_IGNORE_SSL_VERIFICATION: True
-    # AUTH_OPENID_ALWAYS_UPDATE_USER: True
-
-    # Use Radius authorization
-    # 使用Radius来认证
-    # AUTH_RADIUS: false
-    # RADIUS_SERVER: localhost
-    # RADIUS_PORT: 1812
-    # RADIUS_SECRET:
-
-    # CAS 配置
-    # AUTH_CAS': False,
-    # CAS_SERVER_URL': "http://host/cas/",
-    # CAS_ROOT_PROXIED_AS': 'http://jumpserver-host:port',  
-    # CAS_LOGOUT_COMPLETELY': True,
-    # CAS_VERSION': 3,
 
     # LDAP/AD settings
     # LDAP 搜索分页数量
@@ -204,30 +166,39 @@
     # OTP settings
     # OTP/MFA 配置
     # OTP_VALID_WINDOW: 0
-    # OTP_ISSUER_NAME: Jumpserver
+    # OTP_ISSUER_NAME: JumpServer
 
-    # Perm show single asset to ungrouped node
-    # 是否把未授权节点资产放入到 未分组 节点中
-    # PERM_SINGLE_ASSET_TO_UNGROUP_NODE: False
-    #
-    # 同一账号仅允许在一台设备登录
-    # USER_LOGIN_SINGLE_MACHINE_ENABLED: False
-    #
     # 启用定时任务
-    # PERIOD_TASK_ENABLE: True
+    # PERIOD_TASK_ENABLED: True
     #
-    # 启用二次复合认证配置
-    # LOGIN_CONFIRM_ENABLE: False
-    #
-    # Windows 登录跳过手动输入密码
-    # WINDOWS_SKIP_ALL_MANUAL_PASSWORD: False
+
+    # 是否开启 Luna 水印
+    # SECURITY_WATERMARK_ENABLED: False
+
+    # 浏览器关闭页面后，会话过期
+    # SESSION_EXPIRE_AT_BROWSER_CLOSE: False
+
+    # 每次 api 请求，session 续期
+    # SESSION_SAVE_EVERY_REQUEST: True
+
+    # 仅允许用户从来源处登录
+    # ONLY_ALLOW_AUTH_FROM_SOURCE: False
+
+    # 仅允许已存在的用户登录，不允许第三方认证后，自动创建用户
+    # ONLY_ALLOW_EXIST_USER_AUTH: False
+
+    # 开启人脸识别 XPACK 功能
+    #FACE_RECOGNITION_ENABLED: true
+    #FACE_RECOGNITION_DISTANCE_THRESHOLD': 0.35
+    #FACE_RECOGNITION_COSINE_THRESHOLD': 0.95
     ```
 
-    - 处理国际化。
+    - 编译翻译文件。
 
     ```bash
-    rm -f apps/locale/zh/LC_MESSAGES/django.mo apps/locale/zh/LC_MESSAGES/djangojs.mo
-    python apps/manage.py compilemessages
+    cd apps
+    python manage.py compilemessages
+    cd ..
     ```  
 
 ### 1.5 启动 Core
@@ -269,7 +240,6 @@
 [building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
 [guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
 [wisp]: https://github.com/jumpserver/wisp
-[wisp_release]: https://github.com/jumpserver/wisp/releases/tag/{{ jumpserver.wisp }}
 [magnus]: https://github.com/jumpserver/magnus-release
 [magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
 [lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
@@ -289,9 +259,3 @@
 [magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
 [magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-linux-loong64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-linux-loong64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-amd64.tar.gz
-[wisp-{{ jumpserver.wisp }}-darwin-arm64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-darwin-arm64.tar.gz
-[wisp-{{ jumpserver.wisp }}-windows-amd64]: https://github.com/jumpserver/wisp/releases/download/{{ jumpserver.wisp }}/wisp-{{ jumpserver.wisp }}-windows-amd64.tar.gz
