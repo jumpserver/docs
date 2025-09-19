@@ -206,10 +206,15 @@
     # ENABLE_VSCODE_SUPPORT: false
     ```
 
-### 1.4 启动 KoKo
+### 1.4 编译并启动 KoKo
 !!! tip ""
     ```bash
-    ./koko
+    cd /opt/koko/ui
+    yarn install
+    yarn build
+
+    cd ..
+    go run cmd/koko/koko.go
     ```
 
 [nginx]: http://nginx.org/
