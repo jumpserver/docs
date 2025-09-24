@@ -1,4 +1,4 @@
-# Lina 环境部署
+# Lina 环境搭建
 ## 1 Lina 组件概述
 !!! tip ""
     - [Lina][lina] 是 JumpServer 的前端 UI 项目，主要使用 [Vue][vue]，[Element UI][element_ui] 完成。
@@ -10,17 +10,15 @@
     | :------ | :----------------------- | :---- |
     | Version | {{ jumpserver.tag }}     | 20.15.1  |
 
-### 1.2 选择部署方式
+### 1.2 选择搭建方式
 !!! tip ""
-    === "源代码部署"  
-        - 下载源代码。
-        - 从 [Github][lina] 下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    === "克隆源代码仓库（推荐方式）。"  
+        - 从 [Github][lina] 获取源代码，通过命令行中提取该存档：
 
         ```bash
         cd /opt
-        mkdir /opt/lina-{{ jumpserver.tag }}
-        wget -O /opt/lina-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/lina/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-        tar -xf lina-{{ jumpserver.tag }}.tar.gz -C /opt/lina-{{ jumpserver.tag }} --strip-components 1
+        git clone https://github.com/jumpserver/lina.git
+        cd lina
         ```
 
         - 安装 Node。
@@ -91,17 +89,8 @@
         yarn serve
         ```
 
-        - 构建 Lina。
 
-        ```bash
-        yarn build
-        cp -rf lina lina
-        tar -czf lina.tar.gz lina
-        ```
-
-        !!! tip "构建完成后, 生成在 lina 目录下"
-
-    === "使用 Release"
+    === "下载源代码压缩包并解压"
 
         - 下载 Release 文件，从 [Github][lina] 网站上获取最新的 [Release][lina_release] 副本。
         - 这些版本是最新代码的稳定快照。

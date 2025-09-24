@@ -1,4 +1,4 @@
-# Core 环境部署
+# Core 环境搭建
 ## 1 Core 组件概述
 !!! tip ""
     - [Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
@@ -10,21 +10,21 @@
     | :------ | :----------------------- | :----- |
     | Version | {{ jumpserver.tag }}     | 3.11   |
 
-### 1.2 下载源代码
+### 1.2 克隆源代码仓库
 !!! tip ""
-    - 可以从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载的源将采用 .tar.gz 存档的形式，通过命令行中提取该存档：
+    - 可以从 [Github][core] 网站上获取最新的源代码 。这些版本是最新代码，通过命令行中提取该文件：
 
 !!! tip ""
     ```bash
     cd /opt
-    mkdir /opt/jumpserver-{{ jumpserver.tag }}
-    wget -O /opt/jumpserver-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/jumpserver/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-    tar -xf jumpserver-{{ jumpserver.tag }}.tar.gz -C /opt/jumpserver-{{ jumpserver.tag }} --strip-components 1
-    cd jumpserver-{{ jumpserver.tag }}
+    git clone https://github.com/jumpserver/jumpserver.git
+    cd jumpserver
     ```
 
     ```bash
     ls -l requirements/
+    bash static_files.sh
+    bash apk_pkg.sh # 根据自己的 Linux 发行版选择对应的脚本
     ```
     ```vim
     requirements/           # 对应操作系统需要的依赖包
@@ -38,17 +38,17 @@
     └── static_files.sh      # 静态文件处理脚本
 
     ```
-!!! tip ""
-    === "Ubuntu 22.04"
-        ```bash
-        sudo apt update && sudo apt upgrade -y
-        sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 
-        ```
 
-        !!! warning "如果你安装的是 MySQL, 将 mariadb 开发包自行替换成 mysql, 或者不要将 数据库 和 Core 部署在一起"
-        ```bash
-        apt-get install -y libmariadb-dev
-        ```
+    === "Ubuntu 22.04"
+            ```bash
+            sudo apt update && sudo apt upgrade -y
+            sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 
+            ```
+
+!!! warning "如果你使用的是 MySQL 数据库，确保安装的是 MySQL 的开发包，而不是 MariaDB 的开发包，或者建议将数据库和 Core 服务部署在不同的主机上。"
+    ```bash
+    apt-get install -y libmysqlclient-dev
+    ```
 
 ### 1.3 安装 Python3
 !!! tip ""
@@ -222,7 +222,7 @@
 [flower]: https://github.com/mher/flower/
 [daphne]: https://github.com/django/daphne/
 [github]: https://github.com/
-[core_release]: https://github.com/jumpserver/jumpserver/releases/tag/{{ jumpserver.tag }}
+[core_release]: https://github.com/jumpserver/jumpserver
 [python]: https://www.python.org/downloads/
 [linux_packages]: http://nginx.org/en/linux_packages.html
 [lina_release]: https://github.com/jumpserver/lina/releases/tag/{{ jumpserver.tag }}

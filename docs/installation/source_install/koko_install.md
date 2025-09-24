@@ -1,4 +1,4 @@
-# KoKo 环境部署
+# KoKo 环境搭建
 ## 1 KoKo 组件概述
 !!! tip ""
     Koko 是 Go 版本的 coco，重构了 coco 的 SSH/SFTP 服务和 Web Terminal 服务。
@@ -12,16 +12,12 @@
 
 ### 1.2 选择部署方式
 !!! tip ""
-    === "源代码部署"
-
-        - 下载源代码。
-        - 从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    === "克隆源代码仓库（推荐方式）。"
+        - 从 [Github][koko] 获取源代码，通过命令行中提取该存档：
 
         ```bash
         cd /opt
-        mkdir /opt/koko
-        wget -O /opt/koko.tar.gz https://github.com/jumpserver/koko/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-        tar -xf koko-{{ jumpserver.tag }}.tar.gz -C /opt/koko --strip-components 1
+        git clone https://github.com/jumpserver/koko.git
         ```
 
         - 安装 Node。
@@ -79,7 +75,6 @@
         go mod download
         ```
 
-        !!! tip "构建完成后, 生成在 build 目录下"
 
     === "使用 Release"
 

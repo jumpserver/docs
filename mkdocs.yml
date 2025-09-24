@@ -63,15 +63,7 @@ nav:
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
-    - 源码部署:
-        - 环境要求: installation/source_install/requirements.md
-        - Core 环境部署: installation/source_install/core_install.md
-        - Lina 环境部署: installation/source_install/lina_install.md
-        - Luna 环境部署: installation/source_install/luna_install.md
-        - Koko 环境部署: installation/source_install/koko_install.md
-        - Lion 环境部署: installation/source_install/lion_install.md
-        - Nginx 环境部署: installation/source_install/nginx_install.md
-        - JumpServer 环境整合: installation/source_install/merge_jumpserver.md
+  
         
   - 用户手册:
     - 管理员手册:
@@ -164,6 +156,13 @@ nav:
     - 企业版: https://www.jumpserver.org/enterprise.html
   - 开发文档:
     - API 文档: dev/rest_api.md
+    - 开发环境搭建:
+        - 环境要求: installation/source_install/requirements.md
+        - Core 环境搭建: installation/source_install/core_install.md
+        - Lina 环境搭建: installation/source_install/lina_install.md
+        - Luna 环境搭建: installation/source_install/luna_install.md
+        - Koko 环境搭建: installation/source_install/koko_install.md
+        - Lion 环境搭建: installation/source_install/lion_install.md
     - 交互命令: dev/shell.md
   - 用户案例: user_stories.md
   - 更新日志: change_log.md

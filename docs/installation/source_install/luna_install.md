@@ -1,4 +1,4 @@
-# Luna 环境部署
+# Luna 环境搭建
 ## 1 Luna 组件概述
 !!! tip ""
     [Luna][luna] 是 JumpServer 的前端 UI 项目，主要使用 [Angular CLI][angular_cli] 完成。
@@ -10,17 +10,15 @@
     | :------ | :----------------------- | :---- |
     | Version | {{ jumpserver.tag }}     | 20.15.1 |
 
-### 1.2 选择部署方式
+### 1.2 选择搭建方式
 !!! tip ""
-    === "源代码部署"
-        - 下载源代码。
-        - 可以从 [Github][luna] 网站上获取最新的 [Release][core_release] 副本。这些版本是最新代码的稳定快照，从项目网站下载 Source code.tar.gz 源代码，通过命令行中提取该存档：
+    === "克隆源代码仓库（推荐方式）。"
+        - 从 [Github][luna] 获取源代码，通过命令行中提取该存档：
 
         ```bash
         cd /opt
-        mkdir /opt/luna-{{ jumpserver.tag }}
-        wget -O /opt/luna-{{ jumpserver.tag }}.tar.gz https://github.com/jumpserver/luna/archive/refs/tags/{{ jumpserver.tag }}.tar.gz
-        tar -xf luna-{{ jumpserver.tag }}.tar.gz -C /opt/luna-{{ jumpserver.tag }} --strip-components 1
+        git clone https://github.com/jumpserver/luna.git
+        cd luna
         ```
 
         - 安装 Node。
@@ -118,17 +116,7 @@
         ```bash
         yarn dev
         ```
-
-        - 构建 Luna。
-
-        ```bash
-        yarn build
-        cp -R src/assets/i18n luna/
-        cp -rf luna luna-{{ jumpserver.tag }}
-        tar -czf luna-{{ jumpserver.tag }}.tar.gz luna-{{ jumpserver.tag }}
-        ```
-        !!! tip "构建完成后, 生成在 luna 目录下"
-    === "使用 Release"
+    === "下载源代码压缩包并解压"
 
         - 下载 Release 文件，从 [Github][luna] 网站上获取最新的 [Release][luna_release] 副本。
         - 这些版本是最新代码的稳定快照。

@@ -1,4 +1,4 @@
-# Lion 环境部署
+# Lion 环境搭建
 ## 1 Lion 组件概述
 !!! tip ""
     [Lion][lion] 使用了 [Apache][apache] 软件基金会的开源项目 [Guacamole][guacamole]，JumpServer 使用 Golang 和 Vue 重构了 Guacamole 实现 RDP/VNC 协议跳板机功能。
@@ -43,33 +43,11 @@
 
 ### 1.3 下载 Lion
 !!! tip ""
-    - 可以从 [Github][lion] 网站上获取最新的 [Release][lion_release] 副本。
-
-    | OS      | Arch    | Name                                                                                              |
-    | :------ | :------ | :------------------------------------------------------------------------------------------------ |
-    | Linux   | amd64   | [lion-{{ jumpserver.tag }}-linux-amd64.tar.gz][lion-{{ jumpserver.tag }}-linux-amd64]     |
-    | Linux   | arm64   | [lion-{{ jumpserver.tag }}-linux-arm64.tar.gz][lion-{{ jumpserver.tag }}-linux-arm64]     |
-    | Linux   | loong64 | [lion-{{ jumpserver.tag }}-linux-loong64.tar.gz][lion-{{ jumpserver.tag }}-linux-loong64] |
-    | Darwin  | amd64   | [lion-{{ jumpserver.tag }}-darwin-amd64.tar.gz][lion-{{ jumpserver.tag }}-darwin-amd64]   |
-    | Windows | amd64   | [lion-{{ jumpserver.tag }}-windows-amd64.tar.gz][lion-{{ jumpserver.tag }}-windows-amd64] |
-
-!!! tip ""
-    === "Linux/amd64"
-        ```bash
-        cd /opt
-        wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
-        tar -xf lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
-        cd lion-{{ jumpserver.tag }}-linux-amd64
-        ```
-
-    === "Linux/arm64"
-        ```bash
-        cd /opt
-        wget https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
-        tar -xf lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
-        cd lion-{{ jumpserver.tag }}-linux-arm64
-        ```
-
+    - 可以从 [Github][lion] 网站上获取最新的源代码 。
+    ```bash
+    cd /opt
+    git clone https://github.com/jumpserver/lion.git
+    ```
 ### 1.4 修改配置文件
 !!! tip ""
     ```bash
@@ -121,22 +99,27 @@
 ### 1.6 编译启动 Lion
 !!! tip ""
     ```bash
-    cd /opt/lion-{{ jumpserver.tag }}-linux-amd64/ui
+    # 安装依赖和构建前端
+    cd /opt/lion/ui
     yarn install
     yarn build
 
+    # 下载后端依赖并构建后端
     cd ..
     go mod download
+    # 设置编译版本信息
     export GOFLAGS="-X 'main.Buildstamp=$(date -u '+%Y-%m-%d %I:%M:%S%p')' \
                 -X 'main.Githash=$(git rev-parse HEAD)' \
                 -X 'main.Goversion=$(go version)' \
                 -X 'main.Version=${VERSION}'"
                 
-    go build -trimpath -ldflags "$GOFLAGS" -o lion .
+    go build -trimpath -ldflags "$GOFLAGS" -o lion .  # 编译后端
+    # 启动服务
     chmod +x entrypoint.sh
-    supervisorctl -c supervisord.conf 
+    supervisord -c supervisord.conf  # 使用 supervisord 管理进程
     
-    ./lion
+    # 直接启动后端服务
+    ./lion # 后端启动命令
     ```
 
 
@@ -163,7 +146,7 @@
 [go]: https://golang.google.cn/
 [koko]: https://github.com/jumpserver/koko
 [koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.tag }}
-[lion]: https://github.com/jumpserver/lion-release
+[lion]: https://github.com/jumpserver/lion
 [lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.tag }}
 [guacamole]: http://guacamole.apache.org/
 [apache]: http://www.apache.org/
