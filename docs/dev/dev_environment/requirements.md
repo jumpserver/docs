@@ -5,7 +5,7 @@
 ## 1 架构图
 !!! tip ""
     - JumpServer 分为多个组件，大致的架构如下图所示，其中 [Lina][lina] 和 [Luna][luna] 为纯静态文件，最终由 [Nginx][nginx] 整合。
-![!架构图](../../img/architecture.png)
+![!架构图](../../img/component%20relationship.png)
 
 ## 2 数据库要求
 !!! tip ""
