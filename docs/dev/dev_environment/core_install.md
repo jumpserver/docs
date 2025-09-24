@@ -10,42 +10,56 @@
     | :------ | :----------------------- | :----- |
     | Version | {{ jumpserver.tag }}     | 3.11   |
 
-### 1.2 克隆源代码仓库
+### 1.2 获取源代码
 !!! tip ""
-    - 可以从 [Github][core] 网站上获取最新的源代码 。这些版本是最新代码，通过命令行中提取该文件：
+    === "克隆源代码仓库"
+        - 从 [Github][core] 获取源代码：
 
-!!! tip ""
-    ```bash
-    cd /opt
-    git clone https://github.com/jumpserver/jumpserver.git
-    cd jumpserver
-    ```
+        ```bash
+        cd /opt
+        git clone https://github.com/jumpserver/jumpserver.git
+        cd jumpserver
+        ```
 
-    ```bash
-    ls -l requirements/
-    bash static_files.sh
-    bash apk_pkg.sh # 根据自己的 Linux 发行版选择对应的脚本
-    ```
-    ```vim
-    requirements/           # 对应操作系统需要的依赖包
-    ├── apk_pkg.sh          # Alpine Linux 依赖安装脚本
-    ├── clean_site_packages.sh  # 清理 Python site-packages 的脚本
-    ├── collections.yml      # Ansible 集合配置文件
-    ├── deb_pkg.sh           # 基于 Debian 的发行版(如: Ubuntu)依赖安装脚本
-    ├── issue.md            # 常见问题及解决方案文档
-    ├── mac_pkg.sh           # macOS 依赖安装脚本
-    ├── rpm_pkg.sh           # 基于 RedHat 的发行版(如: CentOS)依赖安装脚本
-    └── static_files.sh      # 静态文件处理脚本
+        ```bash
+        ls -l requirements/
+        bash static_files.sh
+        bash apk_pkg.sh # 根据自己的 Linux 发行版选择对应的脚本
+        ```
+        ```vim
+        requirements/           # 对应操作系统需要的依赖包
+        ├── apk_pkg.sh          # Alpine Linux 依赖安装脚本
+        ├── clean_site_packages.sh  # 清理 Python site-packages 的脚本
+        ├── collections.yml      # Ansible 集合配置文件
+        ├── deb_pkg.sh           # 基于 Debian 的发行版(如: Ubuntu)依赖安装脚本
+        ├── issue.md            # 常见问题及解决方案文档
+        ├── mac_pkg.sh           # macOS 依赖安装脚本
+        ├── rpm_pkg.sh           # 基于 RedHat 的发行版(如: CentOS)依赖安装脚本
+        └── static_files.sh      # 静态文件处理脚本
 
-    ```
+        ```
 
-    === "Ubuntu 22.04"
+        === "Ubuntu 22.04"
             ```bash
             sudo apt update && sudo apt upgrade -y
             sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 
             ```
 
-!!! warning "如果使用的是不是 PostgreSQL ，而是 MySQL 或者 MariaDB 数据库。请确保安装的是相应的开发包，或者将数据库和 Core 服务部署在不同的主机上。"
+    === "下载发布包"
+        - 下载 Release 文件，从 [Github][core] 网站上获取最新的 [Release][core_release] 副本。
+        - 这些版本是最新代码的稳定快照。
+
+        | OS  | Arch | Name                                                  |
+        | :-- | :--- | :---------------------------------------------------- |
+        | All | All  | [core-{{ jumpserver.tag }}.tar.gz][core-{{ jumpserver.tag }}] |
+
+        ```bash
+        cd /opt
+        wget https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.tag }}/core-{{ jumpserver.tag }}.tar.gz
+        tar -xf core-{{ jumpserver.tag }}.tar.gz
+        ```
+
+!!! warning "如果使用的是不是 PostgreSQL ，而是 MySQL 或者 MariaDB 数据库。请确保安装相应的开发包，或者将数据库和 Core 服务部署在不同的主机上。"
     ```bash
     apt-get install -y libmysqlclient-dev # MySQL
     apt-get install -y libmariadbclient-dev # MariaDB
@@ -53,7 +67,7 @@
 
 ### 1.3 安装 Python3
 !!! tip ""
-    - 从 [Python][python] 网站获取部署 Python3 的方法，请根据 [环境要求](#_3)，通过命令行中判断是否安装完成：
+    - 从 [Python][python] 网站获取部署 Python3 的方法，通过命令行中判断是否安装完成：
 
 !!! tip ""
     ```bash
@@ -219,3 +233,5 @@
 [flower]: https://github.com/mher/flower/
 [daphne]: https://github.com/django/daphne/
 [python]: https://www.python.org/downloads/
+[core_release]: https://github.com/jumpserver/jumpserver/releases/tag/{{ jumpserver.tag }}
+[core-{{ jumpserver.tag }}]: https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.tag }}/core-{{ jumpserver.tag }}.tar.gz
