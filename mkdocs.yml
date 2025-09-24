@@ -157,7 +157,7 @@ nav:
   - 开发文档:
     - API 文档: dev/rest_api.md
     - 开发环境搭建:
-        - 环境要求: dev/dev_environment/requirements.md
+        - 概述: dev/dev_environment/requirements.md
         - Core 环境搭建: dev/dev_environment/core_install.md
         - Lina 环境搭建: dev/dev_environment/lina_install.md
         - Luna 环境搭建: dev/dev_environment/luna_install.md
