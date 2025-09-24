@@ -1,7 +1,7 @@
 # Core 环境搭建
 ## 1 Core 组件概述
 !!! tip ""
-    - [Core][core] 是 JumpServer 的核心组件，由 [Django][django] 二次开发而来，内置了 [Gunicorn][gunicorn] [Celery][celery] Beat [Flower][flower] [Daphne][daphne] 服务。
+    - [Core][core] 是 JumpServer 的核心组件，基于 [Django][django] 开发，内置了 [Gunicorn][gunicorn]、[Celery][celery]、[Flower][flower] 以及 [Daphne][daphne] 等服务。
 
 ### 1.1 环境要求
 !!! tip ""
@@ -45,9 +45,10 @@
             sudo apt install -y ca-certificates wget g++ make pkg-config default-libmysqlclient-dev freetds-dev gettext libkrb5-dev libldap2-dev libsasl2-dev cron openssh-client sshpass nmap bubblewrap libx11-dev 
             ```
 
-!!! warning "如果你使用的是 MySQL 数据库，确保安装的是 MySQL 的开发包，而不是 MariaDB 的开发包，或者建议将数据库和 Core 服务部署在不同的主机上。"
+!!! warning "如果使用的是不是 PostgreSQL ，而是 MySQL 或者 MariaDB 数据库。请确保安装的是相应的开发包，或者将数据库和 Core 服务部署在不同的主机上。"
     ```bash
-    apt-get install -y libmysqlclient-dev
+    apt-get install -y libmysqlclient-dev # MySQL
+    apt-get install -y libmariadbclient-dev # MariaDB
     ```
 
 ### 1.3 安装 Python3
@@ -77,9 +78,11 @@
     ```
 
     - 每次运行项目都需要先执行 `source /opt/py3/bin/activate` 载入此环境。
+    - 安装 uv 。
 
     ```bash
-    uv pip install -r pyproject.toml
+    pip install uv   
+    uv sync
     ```
 
     - 修改配置文件。
@@ -209,53 +212,10 @@
     ./jms start
     ```
 
-[nginx]: http://nginx.org/
-[lina]: https://github.com/jumpserver/lina/
-[vue]: https://cn.vuejs.org/
-[element_ui]: https://element.eleme.cn/
-[luna]: https://github.com/jumpserver/luna/
-[angular_cli]: https://github.com/angular/angular-cli
 [core]: https://github.com/jumpserver/jumpserver/
 [django]: https://docs.djangoproject.com/
 [gunicorn]: https://gunicorn.org/
 [celery]: https://docs.celeryproject.org/
 [flower]: https://github.com/mher/flower/
 [daphne]: https://github.com/django/daphne/
-[github]: https://github.com/
-[core_release]: https://github.com/jumpserver/jumpserver
 [python]: https://www.python.org/downloads/
-[linux_packages]: http://nginx.org/en/linux_packages.html
-[lina_release]: https://github.com/jumpserver/lina/releases/tag/{{ jumpserver.tag }}
-[node]: https://nodejs.org/
-[luna_release]: https://github.com/jumpserver/luna/releases/tag/{{ jumpserver.tag }}
-[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.tag }}
-[go]: https://golang.google.cn/
-[koko]: https://github.com/jumpserver/koko
-[koko_release]: https://github.com/jumpserver/koko/releases/tag/{{ jumpserver.tag }}
-[lion]: https://github.com/jumpserver/lion-release
-[lion_release]: https://github.com/jumpserver/lion-release/releases/tag/{{ jumpserver.tag }}
-[guacamole]: http://guacamole.apache.org/
-[apache]: http://www.apache.org/
-[guacamole-server]: https://github.com/apache/guacamole-server
-[building-guacamole-server]: http://guacamole.apache.org/doc/gug/installing-guacamole.html#building-guacamole-server
-[guacd-1.4.0]: http://download.jumpserver.org/public/guacamole-server-1.4.0.tar.gz
-[wisp]: https://github.com/jumpserver/wisp
-[magnus]: https://github.com/jumpserver/magnus-release
-[magnus_release]: https://github.com/jumpserver/magnus-release/releases/tag/{{ jumpserver.tag }}
-[lina-{{ jumpserver.tag }}]: https://github.com/jumpserver/lina/releases/download/{{ jumpserver.tag }}/lina-{{ jumpserver.tag }}.tar.gz
-[luna-{{ jumpserver.tag }}]: https://github.com/jumpserver/luna/releases/download/{{ jumpserver.tag }}/luna-{{ jumpserver.tag }}.tar.gz
-[koko-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-amd64.tar.gz
-[koko-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-arm64.tar.gz
-[koko-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-linux-loong64.tar.gz
-[koko-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-darwin-amd64.tar.gz
-[koko-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/koko/releases/download/{{ jumpserver.tag }}/koko-{{ jumpserver.tag }}-darwin-arm64.tar.gz
-[lion-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-amd64.tar.gz
-[lion-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-arm64.tar.gz
-[lion-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-linux-loong64.tar.gz
-[lion-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-darwin-amd64.tar.gz
-[lion-{{ jumpserver.tag }}-windows-amd64]: https://github.com/jumpserver/lion-release/releases/download/{{ jumpserver.tag }}/lion-{{ jumpserver.tag }}-windows-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-arm64.tar.gz
-[magnus-{{ jumpserver.tag }}-linux-loong64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-linux-loong64.tar.gz
-[magnus-{{ jumpserver.tag }}-darwin-amd64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-amd64.tar.gz
-[magnus-{{ jumpserver.tag }}-darwin-arm64]: https://github.com/jumpserver/magnus-release/releases/download/{{ jumpserver.tag }}/magnus-{{ jumpserver.tag }}-darwin-arm64.tar.gz
