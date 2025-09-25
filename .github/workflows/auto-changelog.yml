@@ -33,6 +33,7 @@ jobs:
           major=$(echo "$version" | sed -E 's/^v([0-9]+).*/\1/')
           base_branch="v${major}.0"
           echo "Latest version: $version (major=$major base=$base_branch)"
+          git fetch --all --prune --quiet
           # verify base branch exists
           if ! git ls-remote --exit-code --heads origin "$base_branch" >/dev/null 2>&1; then
             echo "Base branch $base_branch not found. Skipping." >&2
@@ -48,7 +49,7 @@ jobs:
             upd=true
           fi
           echo "version=$version" >> $GITHUB_OUTPUT
-            echo "base=$base_branch" >> $GITHUB_OUTPUT
+          echo "base=$base_branch" >> $GITHUB_OUTPUT
           echo "update=$upd" >> $GITHUB_OUTPUT
 
       - name: Generate changelog entry
@@ -58,16 +59,12 @@ jobs:
           echo 'Preview:'
           grep -n "^${{ steps.detect.outputs.version }}$" -A12 docs/change_log.md || true
 
-      - name: Commit changes
+      - name: Stage changes
         if: ${{ steps.detect.outputs.update == 'true' }}
         run: |
-          set -e
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          branch=chore/changelog-${{ steps.detect.outputs.version }}
-          git checkout -b "$branch"
           git add docs/change_log.md
-          git commit -m "chore: add changelog for ${{ steps.detect.outputs.version }}"
 
       - name: Create Pull Request
         if: ${{ steps.detect.outputs.update == 'true' }}
