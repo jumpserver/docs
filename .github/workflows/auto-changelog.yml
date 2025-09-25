@@ -1,0 +1,91 @@
+name: Auto Changelog
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 20 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Detect latest & base branch
+        id: detect
+        run: |
+          set -e
+          raw=$(curl -s https://community.fit2cloud.com/v1/products/jumpserver/releases | jq -r '.[0].version')
+          if [ -z "$raw" ] || [ "$raw" = "null" ]; then echo "No version"; exit 1; fi
+          version=${raw%-lts}
+          major=$(echo "$version" | sed -E 's/^v([0-9]+).*/\1/')
+          base_branch="v${major}.0"
+          echo "Latest version: $version (major=$major base=$base_branch)"
+          # verify base branch exists
+          if ! git ls-remote --exit-code --heads origin "$base_branch" >/dev/null 2>&1; then
+            echo "Base branch $base_branch not found. Skipping." >&2
+            echo "update=false" >> $GITHUB_OUTPUT
+            echo "version=$version" >> $GITHUB_OUTPUT
+            echo "base=$base_branch" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          git checkout "$base_branch"
+          if grep -q "^$version$" docs/change_log.md; then
+            echo "Already present in changelog."; upd=false
+          else
+            upd=true
+          fi
+          echo "version=$version" >> $GITHUB_OUTPUT
+            echo "base=$base_branch" >> $GITHUB_OUTPUT
+          echo "update=$upd" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog entry
+        if: ${{ steps.detect.outputs.update == 'true' }}
+        run: |
+          python .github/scripts/gen_changelog.py "${{ steps.detect.outputs.version }}"
+          echo 'Preview:'
+          grep -n "^${{ steps.detect.outputs.version }}$" -A12 docs/change_log.md || true
+
+      - name: Commit changes
+        if: ${{ steps.detect.outputs.update == 'true' }}
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          branch=chore/changelog-${{ steps.detect.outputs.version }}
+          git checkout -b "$branch"
+          git add docs/change_log.md
+          git commit -m "chore: add changelog for ${{ steps.detect.outputs.version }}"
+
+      - name: Create Pull Request
+        if: ${{ steps.detect.outputs.update == 'true' }}
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/changelog-${{ steps.detect.outputs.version }}
+          title: "chore: add changelog for ${{ steps.detect.outputs.version }}"
+          commit-message: "chore: add changelog for ${{ steps.detect.outputs.version }}"
+          body: |
+            自动生成的更新日志条目: **${{ steps.detect.outputs.version }}**
+
+            目标基础分支: `${{ steps.detect.outputs.base }}`
+
+            请 @Nickyang00 审核。
+          base: ${{ steps.detect.outputs.base }}
+          reviewers: Nickyang00
+          delete-branch: true
+
+      - name: Skip
+        if: ${{ steps.detect.outputs.update != 'true' }}
+        run: echo "No changelog update needed (version=${{ steps.detect.outputs.version }}, base=${{ steps.detect.outputs.base }})."
