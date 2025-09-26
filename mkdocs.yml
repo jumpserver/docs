@@ -63,6 +63,7 @@ nav:
     - Kubernetes  Helm 模式部署:
         - 在线安装: installation/setup_kubernetes/helm_online_install.md
         - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
+    - 数据备份以及恢复: installation/backup_recovery.md
     
   - 用户手册:
     - 管理员手册:
