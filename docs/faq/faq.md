@@ -2,18 +2,17 @@
 ## 1 常见问题汇总
 !!! tip ""
     - [JumpServer 常见问题汇总](https://kb.fit2cloud.com/?p=73)
-    - [JumpServer 查询日志方法](https://kb.fit2cloud.com/?p=8b420906-c41e-417a-b171-8414213d8f8e)
+    - [JumpServer 查询日志方法](https://kb.fit2cloud.com/?p=63720781-1d9b-45f6-91a2-8911852f97a0)
     - [JumpServer 组件相关的常见问题](https://kb.fit2cloud.com/?p=288bcfe2-c7f6-4954-984c-55c115b524e9)
 
 ## 2 系统管理相关
 !!! tip ""
     - [Linux 常见高危命令汇总](https://kb.fit2cloud.com/?p=173)
-    - [JumpServer 存储目录迁移](https://kb.fit2cloud.com/?p=d2555b92-6992-4c8d-9282-20ed06f10add)
+    - [JumpServer 存储目录迁移](https://kb.fit2cloud.com/?p=a1828b09-cad5-4ef4-bbc5-a494874f5224)
     - [JumpServer 如何使用自己的 SSL 证书进行访问？](https://kb.fit2cloud.com/?p=152)
     - [JumpServer 登录密码忘记及用户锁定如何处理](https://kb.fit2cloud.com/?p=53)
     - [JumpServer 堡垒机对接 Elasticsearch 集群存储命令](https://kb.fit2cloud.com/?p=220)
-    - [资产列表中的”可连接“与”硬件信息“如何获取？](https://kb.fit2cloud.com/?p=216)
-    - [如何修改 JumpServer 对接其他认证方式后的等待时间？](https://kb.fit2cloud.com/?p=213)
+    - [如何修改 JumpServer 对接其他认证方式后的等待时间？](https://kb.fit2cloud.com/?p=ffdf4aa6-709a-450d-9ded-9c2b4927e6ee)*
     - [如何限制某个资产只允许通过某个 IP 登录 JumpServer 之后进行连接？](https://kb.fit2cloud.com/?p=199)
     - [JumpServer 如何对接 Windows AD 域？](https://kb.fit2cloud.com/?p=167)
     - [如何修改 JumpServer 的上传文件大小的限制并修改上传文件的超时时间？](https://kb.fit2cloud.com/?p=157)
@@ -22,19 +21,17 @@
 ## 3 功能模块相关
 !!! tip ""
     - [v3版本远程应用发布与使用](https://kb.fit2cloud.com/?p=9beffa46-3b58-456b-9db0-7a0b2a9cc665)
-    - [Windows 资产无法连接](https://kb.fit2cloud.com/?p=13)
-    - [Windows 资产测试可连接性](https://kb.fit2cloud.com/?p=11)
+    - [Windows 资产连接失败、常见故障排查思路](https://kb.fit2cloud.com/?p=67e14952-885e-4699-a32d-909ce94df406)
     - [批量改密、资产连接性测试等任务输出显示“....”](https://kb.fit2cloud.com/?p=16)
     - [如何通过表格批量创建更新资产、授权、用户信息？](https://kb.fit2cloud.com/?p=144)
     - [Windows 设备中没有虚拟设备 Guacamole RDP 解决方案](https://kb.fit2cloud.com/?p=59)
     - [用户通过密钥连接 JumpServer 堡垒机](https://kb.fit2cloud.com/?p=098989ab-b70d-49c2-bf03-04574312ae78)
-    - [RDP 访问组件 Razor 常见问题](https://kb.fit2cloud.com/?p=172)
+    - [RDP 访问组件 Razor 常见问题](https://kb.fit2cloud.com/?p=49fe7216-117d-4552-a141-36be4490664d)
     - [如何通过 JumpServer 访问 Linux（CentOS）的图形化界面？](https://kb.fit2cloud.com/?p=141)
     - [通过开源软件 XRDP 实现堡垒机远程 Linux(Ubuntu) 桌面](https://kb.fit2cloud.com/?p=140)
     - [JumpServer 使用 Magnus 组件连接数据库报错 Unknown system variable 'transaction_isolation'](https://kb.fit2cloud.com/?p=130)
     - [Razor 组件证书不可信任导致资产无法连接](https://kb.fit2cloud.com/?p=116)
-    - [Windows 资产纳管&连接问题&文件上传下载](https://kb.fit2cloud.com/?p=87)
-    - [Linux 资产纳管&登录连接常见错误&文件上传下载](https://kb.fit2cloud.com/?p=86)
+
 
 ## 4 身份认证相关
 !!! tip ""
