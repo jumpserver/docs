@@ -31,23 +31,29 @@
 ![img](../../../img/V4_RemoteApp2.png)
 
 !!! tip ""
-- 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
-  
-=== "WinRM(推荐)"
-    !!! note "WinRM 是微软推出的一种新式的方便远程管理的服务，可以使用管理员账号在 PowerShell 或者 CMD 命令行通过 **winrm quickconfig** 实现 WinRM 服务快速配置。"
+    - 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH，可在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面获取安装包。
 
-    !!! tip ""
-        - 通过 WinRM 协议部署应用发布机，在创建应用发布机页面添加 WinRM 协议即可。如果同时存在 SSH 协议，JumpServer 将优先选择 SSH 协议。
-        ![remoteapp18](../../../img/V4_RemoteApp7.png)
+#### WinRM（推荐）
 
-=== "OpenSSH"
-    !!! tip ""
-        - 通过 OpenSSH 协议部署应用发布机需要安装 OpenSSH 协议，可以在 JumpServer 页面 - `Web终端` - `帮助` - `下载` 页面找到 OpenSSH 安装包。
-        ![V4_RemoteApp3](../../../img/V4_RemoteApp3.png)
+!!! note ""
+    WinRM 是微软推出的一种远程管理服务，可使用管理员账号在 PowerShell 或 CMD 中通过 `winrm quickconfig` 快速启用。
 
-    !!! tip ""
-        - OpenSSH 安装包传到应用发布机桌面后，双击进行安装。
-        ![V4_RemoteApp4](../../../img/V4_RemoteApp4.png)
+!!! tip ""
+    - 创建应用发布机时添加 WinRM 协议即可。如果同时存在 SSH 协议，JumpServer 将优先选择 SSH。
+    
+![remoteapp18](../../../img/V4_RemoteApp7.png)
+
+#### OpenSSH
+
+!!! tip ""
+    - 通过 OpenSSH 协议部署应用发布机需要先安装 OpenSSH 协议组件。
+    
+![V4_RemoteApp3](../../../img/V4_RemoteApp3.png)
+
+!!! tip ""
+    - OpenSSH 安装包上传到应用发布机桌面后，双击进行安装。
+    
+![V4_RemoteApp4](../../../img/V4_RemoteApp4.png)
 
 !!! tip ""
     - 详细参数说明：
