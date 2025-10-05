@@ -84,7 +84,7 @@
 ### 4.4 会话分享
 !!! tip ""
     - JumpServer 支持进行会话分享， 用户可在页面右侧点击小齿轮，选择分享，设置人员、时间、权限等信息后进行分享会话。
-![web_terminal18](../../img/web_terminal18.png)
+![web_terminal18](../../img/web_terminal19.png)
 
 
 ## 5 文件管理
