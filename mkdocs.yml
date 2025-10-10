@@ -103,7 +103,8 @@ nav:
           - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
         - 作业审计:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
-          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md    
+          - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md  
+        - 报表: manual/admin/audit/session_audit/reports.md    
       - 工作台: 
         - 我的资产: 
           - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
