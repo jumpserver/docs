@@ -141,6 +141,7 @@ nav:
           - Lark (X-Pack): manual/admin/system_settings/authentication_settings/Lark.md
           - Slack (X-Pack): manual/admin/system_settings/authentication_settings/Slack.md
           - Radius (X-Pack): manual/admin/system_settings/authentication_settings/Radius.md
+          - MFA_Facelive (X-Pack): manual/admin/system_settings/authentication_settings/MFA_Facelive.md
         - 存储设置: manual/admin/system_settings/storage.md
         - 组件设置: manual/admin/system_settings/components.md
         - 远程应用: manual/admin/system_settings/remote_apps.md
