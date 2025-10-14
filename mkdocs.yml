@@ -150,6 +150,8 @@ nav:
         - 系统工具: manual/admin/system_settings/tools.md
         - 系统任务: manual/admin/system_settings/system_tasks.md
         - 许可证: manual/admin/system_settings/licenses.md
+      - 其他设置:
+        - 人脸识别 (X-Pack): manual/admin/others/MFA_Facelive.md
         
   - 常见问题:
     - 产品 FAQ: faq/faq.md

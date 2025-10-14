@@ -54,6 +54,7 @@
 
 !!! tip ""
     - 数据库类型中默认包含 MySQL、MariaDB、PostgreSQL、Redis、MongoDB、Oracle、SQLServer、ClickHouse、Dameng、DB2。
+    - 部分数据库支持 koko 通过 TLS 加密连接，如 MySQL, SQLSERVER 等。
 ![V4_assets_build_5](../../../../img/V4_assets_type_5.png)
 
 !!! tip ""
