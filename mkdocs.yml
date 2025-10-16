@@ -152,13 +152,14 @@ nav:
         - 系统任务: manual/admin/system_settings/system_tasks.md
         - 许可证: manual/admin/system_settings/licenses.md
     - 普通用户手册:
+      - 个人设置: manual/user/personal_settings/profile.md
       - 工作台: 
         - 我的资产: 
           - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
           - Web终端: manual/admin/workbench/my_assets/web_terminal.md
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
-      - 个人设置: manual/user/personal_settings/profile.md
+      
 
 
   - 常见问题:
