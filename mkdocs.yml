@@ -158,7 +158,7 @@ nav:
           - Web终端: manual/admin/workbench/my_assets/web_terminal.md
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
-        - 个人设置: manual/user/personal_settings/profile.md
+      - 个人设置: manual/user/personal_settings/profile.md
 
 
   - 常见问题:
