@@ -153,14 +153,14 @@ nav:
       - 其他设置:
         - 人脸识别 (X-Pack): manual/admin/others/MFA_Facelive.md
     - 普通用户手册:
-      - 个人设置: manual/user/personal_settings/profile.md
+      - 个人设置: manual/user/profile.md
       - 工作台: 
         - 我的资产: 
           - 连接资产: manual/admin/workbench/my_assets/assets_connect.md
           - Web终端: manual/admin/workbench/my_assets/web_terminal.md
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
-      
+      - 工单: manual/user/ticket.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
