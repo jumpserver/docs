@@ -160,7 +160,7 @@ nav:
           - Web终端: manual/admin/workbench/my_assets/web_terminal.md
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
-      
+      - 工单: manual/user/workorder/workorder.md
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
