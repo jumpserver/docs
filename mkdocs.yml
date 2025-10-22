@@ -104,6 +104,7 @@ nav:
         - 作业审计:
           - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
           - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md  
+        - 工单审计: manual/admin/audit/session_audit/ticket_audit.md
         - 报表: manual/admin/audit/session_audit/reports.md    
       - 工作台: 
         - 我的资产: 
@@ -152,6 +153,23 @@ nav:
         - 许可证: manual/admin/system_settings/licenses.md
       - 其他设置:
         - 人脸识别 (X-Pack): manual/admin/others/MFA_Facelive.md
+    - 审计员手册:
+      - 审计台:
+        - 会话审计:
+            - 会话记录: manual/admin/audit/session_audit/session_record.md
+            - 会话命令: manual/admin/audit/session_audit/session_command.md
+            - 文件传输: manual/admin/audit/session_audit/file_transfer.md
+            - 在线用户: manual/admin/audit/session_audit/online_user.md
+        - 日志审计:
+            - 登录日志: manual/admin/audit/session_audit/log_audit/login_logs.md
+            - 改密日志: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+            - 操作日志: manual/admin/audit/session_audit/log_audit/operation_logs.md
+        - 作业审计:
+            - 作业列表: manual/admin/audit/session_audit/job_audit/job_list.md
+            - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md  
+        - 工单审计: manual/admin/audit/session_audit/ticket_audit.md
+      - 报表: manual/admin/audit/session_audit/reports.md
+
     - 普通用户手册:
       - 个人设置: manual/user/profile.md
       - 工作台: 
