@@ -8,5 +8,3 @@ FIT2CLOUD, Inc.、FIT2CLOUD 徽标是 FIT2CLOUD, Inc. 和或其附属公司的�
 
 **FIT2CLOUD®**
 
-## 关于此文档
-本文档自动生成于 {{BUILD_TIME}} 基于 {{jumpserver.tag}} 版本, 仅供参考。具体以 FIT2CLOUD [官方网站](https://docs.jumpserver.org/zh/v4/) 最新发布版本为准。
