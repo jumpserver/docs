@@ -1,23 +1,38 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案（JS-2025.03.31）"
-    **2025年3月，有用户反馈发现JumpServer开源堡垒机存在安全漏洞，并向JumpServer开源项目组进行上报。**
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案 2025-10-30（CVE-2025-62712|CVE-2025-62795）"
+    **2025年10月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向JumpServer开源项目组进行上报。**
 
     **漏洞信息：** 
-    <br> [JumpServer用户在连接Kubernetes资产时，可能存在Kubernetes认证信息泄漏的风险，CVE编号为CVE-2025-27095 ](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-5q9w-f4wh-f535)
+    <br>1. [JumpServer 连接过的令牌列表，存在越权访问风险，CVE 编号为 CVE-2025-62712](https://nvd.nist.gov/vuln/detail/CVE-2025-62712)
+    <br>2. [JumpServer LDAP 配置存在越权测试风险，CVE 编号为 CVE-2025-62795](https://nvd.nist.gov/vuln/detail/CVE-2025-62795)
     
-    **以上漏洞影响版本为：** <br> JumpServer V3版本: <= v3.10.17版本
-    <br> JumpServer V4版本: v4.4.0-v4.6.0版本
+    **以上漏洞影响版本为：** <br> JumpServer V3版本：<=v3.10.20 LTS版本
+    <br> JumpServer V4版本：<=v4.10.11 LTS版本
 
-    **安全版本为：** <br> JumpServer V3版本 >= v3.10.18版本 
-    <br> JumpServer V4版本 >= v4.7.0版本
+    **安全版本为：** <br> JumpServer V3版本：>=v3.10.21 LTS版本
+    <br> JumpServer V4版本：>=v4.10.12 LTS版本
 
     **修复方案：**
     <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
-    <br>**临时修复方案：** 取消所有用户的Kubernetes资产授权。
+    <br>**临时修复方案：** 限制相关 API 接口访问权限，对JumpServer的主要功能基本无影响。**Nginx 配置示例如下：**
+    
+    ```nginx   
+    # CVE-2025-62712
+    location /api/v1/authentication/super-connection-token/  {
+        return 200 '';
+    }
+    location /api/v1/resources/super-connection-tokens/  {
+        return 200 '';
+    }
+    
+    # CVE-2025-62795, 这个会禁用 ldap 配置中的测试和导入功能
+    location /ws/ldap {
+        return 200 '';
+    }
 
-    **特别鸣谢：** <br> 感谢以下社区用户向JumpServer开源社区及时反馈上述漏洞。
-    <br> CVE-2025-27095: @paraddise
+    ``` 
+    **特别鸣谢：** <br> 感谢SolidLab发现并向JumpServer开源社区及时反馈上述漏洞。
 
 ## 1 JumpServer 是什么？
 !!! tip ""
