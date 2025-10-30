@@ -1,0 +1,46 @@
+name: Check Release
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 20 * * *'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v3.0
+
+      - name: Get Latest v3 Version
+        id: get_version
+        run: |
+          # 获取所有发布，筛选 tag_name 以 v3. 开头，按创建时间逆序取最新
+          releases=$(curl -s https://api.github.com/repos/jumpserver/jumpserver/releases?per_page=100)
+          version=$(echo "$releases" | jq -r '.[] | select(.tag_name | test("^v3\\.")) | .tag_name' | head -n 1)
+          echo "Latest v3 Version: ${version}"
+          if [[ -z "${version}" || "${version}" == "null" ]]; then
+            echo "No v3.x release found" >&2
+            exit 1
+          fi
+          # 输出 version
+          echo "version=${version}" >> $GITHUB_ENV
+          echo "version=${version}" >> $GITHUB_OUTPUT
+          if grep -q "tag: ${version}" mkdocs.yml; then
+            echo "v3 tag already up-to-date"
+          else
+            echo "update=true" >> $GITHUB_ENV
+            echo "update=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update Version
+        if: steps.get_version.outputs.update == 'true'
+        run: |
+          # 仅替换 v3 行，避免误伤其它版本配置；使用 GitHub Actions 注入的版本环境变量
+          sed -i "s@tag: v3.*@tag: ${{ steps.get_version.outputs.version }}@" mkdocs.yml
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add mkdocs.yml
+          git commit -m "Update v3 tag to ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
+          git push origin HEAD
