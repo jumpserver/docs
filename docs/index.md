@@ -1,5 +1,40 @@
 # 产品介绍
 
+??? warning "重要通知 | JumpServer 漏洞通知及修复方案 2025-10-30（CVE-2025-62712|CVE-2025-62795）"
+    **2025年10月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向JumpServer开源项目组进行上报。**
+
+    **漏洞信息：** 
+    <br>1. [JumpServer 连接过的令牌列表，存在越权访问风险，CVE 编号为 CVE-2025-62712](https://nvd.nist.gov/vuln/detail/CVE-2025-62712)
+    <br>2. [JumpServer LDAP 配置存在越权测试风险，CVE 编号为 CVE-2025-62795](https://nvd.nist.gov/vuln/detail/CVE-2025-62795)
+    
+    **以上漏洞影响版本为：** <br> JumpServer V3版本：<=v3.10.20 LTS版本
+    <br> JumpServer V4版本：<=v4.10.11 LTS版本
+
+    **安全版本为：** <br> JumpServer V3版本：>=v3.10.21 LTS版本
+    <br> JumpServer V4版本：>=v4.10.12 LTS版本
+
+    **修复方案：**
+    <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
+    <br>**临时修复方案：** 限制相关 API 接口访问权限，对JumpServer的主要功能基本无影响。**Nginx 配置示例如下：**
+    
+    ```nginx   
+    # CVE-2025-62712
+    location /api/v1/authentication/super-connection-token/  {
+        return 200 '';
+    }
+    location /api/v1/resources/super-connection-tokens/  {
+        return 200 '';
+    }
+    
+    # CVE-2025-62795, 这个会禁用 ldap 配置中的测试和导入功能
+    location /ws/ldap {
+        return 200 '';
+    }
+
+    ``` 
+    **特别鸣谢：** <br> 感谢SolidLab发现并向JumpServer开源社区及时反馈上述漏洞。
+
+
 ## 1 JumpServer 是什么？
 !!! tip ""
     JumpServer 是广受欢迎的开源堡垒机，是符合 4A 规范的专业运维安全审计系统。JumpServer 帮助企业以更安全的方式管控和登录所有类型的资产，实现事前授权、事中监察、事后审计，满足等保合规要求。
