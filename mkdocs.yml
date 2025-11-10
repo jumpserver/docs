@@ -169,7 +169,6 @@ nav:
             - 作业日志: manual/admin/audit/session_audit/job_audit/job_logs.md  
         - 工单审计: manual/admin/audit/session_audit/ticket_audit.md
       - 报表: manual/admin/audit/session_audit/reports.md
-
     - 普通用户手册:
       - 个人设置: manual/user/profile.md
       - 工作台: 
@@ -179,6 +178,11 @@ nav:
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
       - 工单: manual/user/ticket.md
+    
+    - 运维手册:
+      - 系统架构说明: manual/maintenance/system_architecture.md
+      - 服务端口说明: manual/maintenance/service_port.md
+  
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
