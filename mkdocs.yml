@@ -184,6 +184,7 @@ nav:
       - 服务端口说明: manual/maintenance/service_port.md
       - 日常基本操作: manual/maintenance/daily_operations.md
       - 日志查看操作: manual/maintenance/logs_inspection.md
+      - 系统升级操作: manual/maintenance/system_upgrade.md
   
   - 常见问题:
     - 产品 FAQ: faq/faq.md
