@@ -185,6 +185,7 @@ nav:
       - 日常基本操作: manual/maintenance/daily_operations.md
       - 日志查看操作: manual/maintenance/logs_inspection.md
       - 系统升级操作: manual/maintenance/system_upgrade.md
+      - 故障恢复操作: manual/maintenance/fault_recovery.md
   
   - 常见问题:
     - 产品 FAQ: faq/faq.md
