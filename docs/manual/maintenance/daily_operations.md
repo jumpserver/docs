@@ -173,66 +173,74 @@ JumpServer 默认的安装脚本位于 `/opt/jumpserver-ee-版本号-系统架�
 
 > 其他参数（默认参数或其他可自行添加的参数）请参考：https://docs.jumpserver.org/zh/v3/guide/env/
 
-#### 修改 config.txt
+**修改 config.txt**
 
 JumpServer 的核心配置文件为 `config.txt`，默认位置：`/opt/jumpserver/config/config.txt`。
 
 如需要在 JumpServer 运行过程中更改 `config.txt` 文件中的内容，需要重启 JumpServer 服务。
 
 **命令一**：（任意目录下均可执行）
-```bash
-jmsctl restart
-```
+!!! tip ""
+    ```bash
+    jmsctl restart
+    ```
 
 **命令二**：（切换至安装包目录下执行）
-```bash
-cd jumpserver-ee-v4.10.6-x86_64/
-./jmsctl.sh restart
-```
+!!! tip ""
+    ```bash
+    cd jumpserver-ee-v4.10.6-x86_64/
+    ./jmsctl.sh restart
+    ```
 
-#### 修改其他配置文件
+**修改其他配置文件**
 
 JumpServer 在运行过程中，修改其他配置文件中的所有参数，均需要重启 JumpServer 进行加载。例如：
 - nginx 的配置文件（`/opt/jumpserver/config/nginx/lb_http_server.conf`）
 - MySQL 的配置文件（`/opt/jumpserver/config/mariadb/mariadb.cnf`）
 
 **命令一**：（任意目录下均可执行）
-```bash
-jmsctl restart
-```
+!!! tip ""
+    ```bash
+    jmsctl restart
+    ```
 
 **命令二**：（切换至安装包目录下执行）
-```bash
-cd jumpserver-ee-v4.10.6-x86_64/
-./jmsctl.sh restart
-```
+!!! tip ""
+    ```bash
+    cd jumpserver-ee-v4.10.6-x86_64/
+    ./jmsctl.sh restart
+    ```
 
 ### 数据库备份
 
 JumpServer 运行中，为防止 JumpServer 系统故障导致数据丢失，需要定时对 JumpServer 数据库进行备份。
 
-#### JumpServer 节点备份命令
+**JumpServer 节点备份命令**
 **命令一**：(任意目录下均可执行)
-```bash
-jmsctl backup_db
-```
+!!! tip ""
+    ```bash
+    jmsctl backup_db
+    ```
 
 **命令二**：(切换至安装包目录下执行)
-```bash
-cd jumpserver-ee-v4.10.6-x86_64/
-./jmsctl.sh backup_db
-```
+!!! tip ""
+    ```bash
+    cd jumpserver-ee-v4.10.6-x86_64/
+    ./jmsctl.sh backup_db
+    ```
 
-#### 手动备份命令
+**手动备份命令**
 **MySQL 手动备份**：
-```bash
-mysqldump -u$登录用户 -p$登录用户密码 jumpserver > jumpserver-$(date +"%Y-%m-%d").sql
-```
+!!! tip ""
+    ```bash
+    mysqldump -u$登录用户 -p$登录用户密码 jumpserver > jumpserver-$(date +"%Y-%m-%d").sql
+    ```
 
 **PostgreSQL 手动备份**：
-```bash
-pg_dump -U $登录用户 -h localhost -d jumpserver -f jumpserver-$(date +"%Y-%m-%d").sql
-```
+!!! tip ""
+    ```bash
+    pg_dump -U $登录用户 -h localhost -d jumpserver -f jumpserver-$(date +"%Y-%m-%d").sql
+    ```
 
 ### 数据库恢复
 
@@ -243,46 +251,57 @@ pg_dump -U $登录用户 -h localhost -d jumpserver -f jumpserver-$(date +"%Y-%m
 #### 单节点数据库
 
 ##### MySQL 单节点数据库回滚
-1. 停止 JumpServer 服务
-   ```bash
-   jmsctl stop 
-   ```
-2. 复制备份的 SQL 文件进入 jms_mysql 容器
-   ```bash
-   docker cp *.sql jms_mysql:/root
-   ```
-3. 进入数据库容器
-   ```bash
-   docker exec -it jms_mysql bash
-   ```
-4. 登录数据库
-   ```bash
-   mysql -uroot -p$MARIADB_ROOT_PASSWORD
-   ```
-5. 查看创建数据库的命令
-   ```sql
-   show create database jumpserver;
-   ```
-6. 删除旧的 JumpServer 数据库（注：高危命令，删除前需保证有备份文件）
-   ```sql
-   drop database jumpserver;
-   ```
-7. 创建新的数据库（复制刚刚查询到的创建数据库命令）
-   ```sql
-   create database jumpserver default charset utf8;
-   ```
-8. 恢复数据库数据
+停止 JumpServer 服务
+!!! tip ""
+    ```bash
+    jmsctl stop 
+    ```
+复制备份的 SQL 文件进入 jms_mysql 容器
+!!! tip ""
+    ```bash
+    docker cp *.sql jms_mysql:/root
+    ```
+进入数据库容器
+!!! tip ""
+    ```bash
+    docker exec -it jms_mysql bash
+    ```
+登录数据库
+!!! tip ""
+    ```bash
+    mysql -uroot -p$MARIADB_ROOT_PASSWORD
+    ```
+查看创建数据库的命令
+!!! tip ""
+    ```sql
+    show create database jumpserver;
+    ```
+删除旧的 JumpServer 数据库（注：高危命令，删除前需保证有备份文件）
+!!! tip ""
+    ```sql
+    drop database jumpserver;
+    ```
+创建新的数据库（复制刚刚查询到的创建数据库命令）
+!!! tip ""
+    ```sql
+    create database jumpserver default charset utf8;
+    ```
+恢复数据库数据
    - 方法一：直接在数据库中执行
-     ```sql
-     source /root/db_backup.sql;
-     ```
+!!! tip ""
+    ```sql
+    source /root/db_backup.sql;
+    ```
    - 方法二：退出当前环境至服务器 shell 中执行
+!!! tip ""
      ```bash
      jmsctl restore_db db_backup.sql
      ```
-9. 重新启动 JumpServer
-   ```bash
-   jmsctl start
-   ```
+    重新启动 JumpServer
+
+!!! tip ""
+    ```bash
+    jmsctl start
+    ```
 
 
