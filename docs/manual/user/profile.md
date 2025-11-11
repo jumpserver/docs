@@ -2,14 +2,14 @@
 !!! tip ""
     - 点击页面右上角 **用户名称** 按钮进入 **个人信息** 界面，该页面主要查看个人账号信息，设置个人信息临时密码等等。
 
-![image](../../../img/profile01.png)
+![image](../../img/profile01.png)
 ## 1 个人信息
 !!! tip ""
     - 该页面可以查看普通用户的基本信息。同时，在该页面可以进行一些认证配置，例如MFA
     认证、密码、SSH密钥登录信息等；如果管理员用户配置了企业微信、钉钉认证等，还可
     以在此页面绑定相应的账号认证信息。另外，此页面还可以设置消息订阅，默认包含站内信
     和邮件设置，如果管理员配置了企业微信、钉钉等，还可以在此处开启相关的消息订阅。
-![image](../../../img/profile02.png)
+![image](../../img/profile02.png)
 
 ## 2 MFA 认证
 
@@ -19,13 +19,13 @@
 **OTP动态令牌**
 !!! tip ""
     - OTP（One-Time Password）即一次性密码，是一种动态密码，每次认证时都需要输入新的密码，该密码由动态令牌生成。
-![image](../../../img/profile_mfa01.png)
+![image](../../img/profile_mfa01.png)
 
 - 点击进入配置页面后根据内容下载相关 应用程序，并按照提示进行绑定。
 
-![image](../../../img/profile_mfa02.png)
+![image](../../img/profile_mfa02.png)
 
-![image](../../../img/profile_mfa03.png)
+![image](../../img/profile_mfa03.png)
 
 - 配置成功后相关用户填写完成用户名密码后登录时需要输入动态令牌完成二次验证。
 
@@ -35,13 +35,13 @@
 **1 配置 MFA 人脸识别**
 **在用户详细信息页面记录面部信息并启用 MFA**
 
-![image.png](../../../../img/Facelive1.png)
+![image.png](../../img/Facelive1.png)
 
 **退出登录并尝试重新登录，选择人脸验证**
- ![image.png](../../../../img/Facelive2.png)
+ ![image.png](../../img/Facelive2.png)
 
 **请在30秒内完成面部验证**
-![image.png](../../../../img/Facelive3.png)
+![image.png](../../img/Facelive3.png)
 
 
 
@@ -49,20 +49,20 @@
 
 - 可以使用邮箱验证码作为二次验证，用户在登录时输入邮箱验证码即可完成登录。
 - 在个人信息栏中开启邮箱功能
-![image.png](../../../../img/profile_mfa05.png)
+![image.png](../../img/profile_mfa05.png)
 - 在系统设置 > 通知设置 中开启邮箱验证功能，并配置邮箱服务器信息。
-![image.png](../../../../img/profile_mfa04.png)
+![image.png](../../img/profile_mfa04.png)
 - 在登录后的 MFA 认证方式中选择 Email，输入对应的验证码即可完成登录。
-![image.png](../../../../img/profile_mfa06.png)
+![image.png](../../img/profile_mfa06.png)
 
 **SMS 认证**
 
 - 可以使用短信验证码作为二次验证，用户在登录时输入短信验证码即可完成登录。
 - 在个人信息栏中绑定手机号以启用短信验证功能
-![image.png](../../../../img/profile_mfa07.png)
+![image.png](../../img/profile_mfa07.png)
 
 - 在登录后的 MFA 认证方式中选择 SMS, 输入对应的验证码即可完成登录。
-![image.png](../../../../img/profile_mfa08.png)
+![image.png](../../img/profile_mfa08.png)
 
 
 ## 3 认证设置
@@ -70,7 +70,7 @@
     - 普通用户在个人信息页面可对本人账号信息进行相应的认证配置和消息订阅配置，可以查看和设置用户的认证信息，包括密码、SSH 密钥登录信息。
     - 登陆密码设置：普通用户可在此页面自行更新当前账户的密码。
     - SSH 公钥设置：普通用户可在此页面自行设置 SSH 公钥并下载，在使用 SSH 终端登录堡垒机时使用该公钥。
-![image](../../../img/profile03.png)
+![image](../../img/profile03.png)
 
 ## 4 访问密钥
 !!! tip ""
@@ -78,7 +78,7 @@
     - 生成访问密钥：用户可以点击生成 **访问密钥** 按钮生成，生成后请妥善保存，访问密钥生成后无法再次查看，请妥善保管。
     - 此 API 密钥权限和当前用户角色权限保持一致。
     - API 文档请参考：https://<堡垒机地址>/api/docs/。
-![image](../../../img/profile04.png)
+![image](../../img/profile04.png)
 
 ## 5 连接令牌
 !!! tip ""
@@ -93,7 +93,7 @@
     即可创建令牌信息；
     - 通过调用API 方式创建。
 
-![image](../../../img/profile05.png)
+![image](../../img/profile05.png)
 
 ## 6 偏好设置
 !!! tip ""
@@ -103,12 +103,12 @@
 ### 6.1 **基本**
 !!! tip ""
     - 点击个人设置页面中的左侧页签 **基本** 按钮，可以对从JumpServer页面导出文件进行加密密码的设置。
-![image](../../../img/profile06.png)
+![image](../../img/profile06.png)
 
 ### 6.2 **Web终端**    
 !!! tip ""
     点击个人设置页面中的中间页签 **Web终端** 按钮，对 Web 终端页面资产连接时的参数进行设置
-![image](../../../img/profile07.png)    
+![image](../../img/profile07.png)    
 
 详细配置解释:
 
