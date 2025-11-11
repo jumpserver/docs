@@ -1,12 +1,10 @@
-## 日志查看
-
-### 系统组件日志
+## 1 系统组件日志
 
 JumpServer 的默认安装地址为 `/data/jumpserver`，具体安装地址可执行以下命令查看：
-!!! tip ""
-    ```bash
-    cat /opt/jumpserver/config/config.txt | grep VOLUME_DIR
-    ```
+
+```bash
+cat /opt/jumpserver/config/config.txt | grep VOLUME_DIR
+```
 
 本次示例以 `/data/jumpserver/` 为例：
 
@@ -40,20 +38,20 @@ JumpServer 的核心日志存放在 `/data/jumpserver/core/data/logs`。
 | Facelive | `/data/jumpserver/facelive/data/logs` |
 | Nec | `/data/jumpserver/nec/data/logs` |
 
-### Docker 日志查看
+## 2 Docker 日志查看
 
 **示例：查看 core 容器的后 100 行日志**
-!!! tip ""
-    ```bash
-    docker logs -f jms_core --tail 100
-    ```
+
+```bash
+docker logs -f jms_core --tail 100
+```
 
 **查看其他组件的实时日志**
-!!! tip ""
-    ```bash
-    # 通过容器 ID 查看
-    docker logs -f [Container ID]
 
-    # 通过容器名称查看
-    docker logs -f [Container name]
-    ```
+```bash
+# 通过容器 ID 查看
+docker logs -f [Container ID]
+
+# 通过容器名称查看
+docker logs -f [Container name]
+```
