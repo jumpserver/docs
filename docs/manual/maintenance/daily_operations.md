@@ -18,12 +18,13 @@ JumpServer 默认的安装脚本位于 `<安装包解压路径>/jmsctl.sh`。同
 | `jmsctl start` | 启动 JumpServer 服务的所有容器 |
 | `jmsctl stop` | 停止 JumpServer 服务的所有容器 |
 | `jmsctl down` | 关闭并移除 JumpServer 服务的所有容器 |
-| `jmsctl restart` | 移除容器后重启 JumpServer 服务的所有容器 |
+| `jmsctl restart` | 重启 JumpServer 服务的所有容器 |
 | `jmsctl status` | 查看 JumpServer 服务的容器运行状态 |
 | `jmsctl backup_db` | 备份 JumpServer 数据库文件 |
-| `jmsctl uninstall` | 卸载 JumpSerevr 服务（操作此项会删除所有与 JumpServer 相关的数据，操作前需谨慎） |
+| `jmsctl uninstall` | 卸载 JumpServer 服务（操作此项会删除所有与 JumpServer 相关的数据，操作前需谨慎） |
 | `jmsctl restore_db` | 恢复数据库数据，使用备份的 SQL 文件来恢复数据库信息 |
-> 注意：jmsctl restart/down 命令会删除容器或重建容器。服务会中断，但持久化目录数据以及业务数据不受影响。
+
+> 注意：`jmsctl restart/down` 命令会删除容器或重建容器。服务会中断，但持久化目录数据以及业务数据不受影响。
 
 ## 2 修改配置文件
 
@@ -177,30 +178,46 @@ JumpServer 默认的安装脚本位于 `<安装包解压路径>/jmsctl.sh`。同
 
 JumpServer 的核心配置文件为 `config.txt`，默认位置：`/opt/jumpserver/config/config.txt`。
 
-如需要在 JumpServer 运行过程中更改 `config.txt` 文件中的内容，需要通过 `jmsctl restart` ，命令重启 JumpServer 服务。
+如需要在 JumpServer 运行过程中更改 `config.txt` 文件中的内容，需要通过 `jmsctl restart` 命令重启 JumpServer 服务。
 
 ### 2.3 修改其他配置文件
 
 JumpServer 在运行过程中，修改其他配置文件中的所有参数，均需要重启 JumpServer 进行加载。例如：
+
 - nginx 的配置文件（`/opt/jumpserver/config/nginx/lb_http_server.conf`）
 - MySQL 的配置文件（`/opt/jumpserver/config/mariadb/mariadb.cnf`）
 - PostgreSQL 的配置文件（`/data/jumpserver/postgresql/data/postgresql.conf`）
 
-如需要在 JumpServer 运行过程中更改上述文件中的内容，需要通过 `jmsctl restart` ，命令重启 JumpServer 服务。
-数据库更改操作建议提前备份数据。
+如需要在 JumpServer 运行过程中更改上述文件中的内容，需要通过 `jmsctl restart` 命令重启 JumpServer 服务。
+
+> 注意:数据库更改操作建议提前备份数据。
 
 ## 3 数据库备份
 
-JumpServer 运行中，为防止 JumpServer 系统故障导致数据丢失，需要定时对 JumpServer 数据库进行备份，可以通过 `jmsctl backup_db` 命令进行数据库备份。
+JumpServer 运行中，为防止 JumpServer 系统故障导致数据丢失，需要定时对 JumpServer 数据库进行备份。
 
-**手动备份命令**
-**MySQL 手动备份**：
+### 3.1 命令行工具备份
+
+!!! tip ""
+    ```bash
+    jmsctl backup_db
+    ```
+
+### 3.2 手动备份命令
+
+#### MySQL 手动备份
+
+> 注：内置数据库需要进入容器执行
+
 !!! tip ""
     ```bash
     mysqldump -u$登录用户 -p$登录用户密码 jumpserver > jumpserver-$(date +"%Y-%m-%d").sql
     ```
 
-**PostgreSQL 手动备份**：
+#### PostgreSQL 手动备份
+
+> 注：内置数据库需要进入容器执行
+
 !!! tip ""
     ```bash
     pg_dump -U $登录用户 -h localhost -d jumpserver -f jumpserver-$(date +"%Y-%m-%d").dump
@@ -212,8 +229,50 @@ JumpServer 运行中，为防止 JumpServer 系统故障导致数据丢失，需
 
 > 注意：数据库回滚的前提是之前有进行数据库备份工作。
 
-###单节点数据库
+### 4.1 单节点数据库命令行工具恢复
 
-##### MySQL 单节点数据库回滚
+!!! tip ""
+    ```bash
+    jmsctl restore_db <backup_file_path>  
+    # 文件路径参数无法使用相对路径。被封文件默认位置在 /data/jumpserver/db_backup 目录下。
+    ```
+
+### 4.2 手动恢复命令
+#### MySQL 单节点数据库回滚
+
+> 注：内置数据库需要进入容器执行
+
+!!! tip ""
+    ```bash
+    # 1. 停止 JumpServer 服务
+    jmsctl stop
+    
+    # 2. 恢复数据库
+    mysql -u$登录用户 -p$登录用户密码 jumpserver < /path/to/backup/jumpserver-YYYY-MM-DD.sql
+    
+    # 3. 启动 JumpServer 服务
+    jmsctl start
+    ```
+
+#### PostgreSQL 单节点数据库回滚
+
+> 注：内置数据库需要进入容器执行
+
+!!! tip ""
+    ```bash
+    # 1. 停止 JumpServer 服务
+    jmsctl stop
+    
+    # 2. 恢复数据库
+    psql -U $登录用户 -h localhost -d jumpserver -f /path/to/backup/jumpserver-YYYY-MM-DD.dump
+    
+    # 3. 启动 JumpServer 服务
+    jmsctl start
+    ```
+### 4.3 多节点数据库恢复
+
+!!! info "企业版客户如果数据库架构复杂，建议在企业客户支持群中联系客户成功团队获取恢复帮助。"
+
+需要根据具体的数据库集群架构，参考对应数据库的集群恢复方案进行操作。
 
 

@@ -22,7 +22,7 @@
 | DB_USER| root | - | 数据库用户 |
 | DB_PASSWORD | '' | - | 数据库用户密码 |
 | DB_USE_SSL | false | true <br> false | 数据库启用 SSL 方式 |
-| REDIS_HOST | 127.0.0.1 | - | Reids 地址 |
+| REDIS_HOST | 127.0.0.1 | - | Redis 地址 |
 | REDIS_PORT | 6379 | - | Redis 端口 |
 | REDIS_PASSWORD | '' | - | Redis 密码 |
 | REDIS_USE_SSL | false | true <br> false | Redis 启用 SSL 方式 |
@@ -104,7 +104,7 @@
 | CLIENT_ALIVE_INTERVAL | 30 | 30 <br> 0 | 用户 SSH 登录 KoKo 之后，KoKo 给 SSH Client 发送的心跳间隔，默认为30，0则表示不发送，保持登录用户连接不断开 |
 | RETRY_ALIVE_COUNT_MAX | 3 | - | 登录资产之后，KoKo 向资产发送心跳包出现错误的重试次数，默认为3。 <br> # 当网络不稳定时，可以数值可设置大一些。 |
 | SHARE_ROOM_TYPE | local | local <br> redis | 会话监控和共享使用的方式 |
-| REDIS_HOST | 127.0.0.1 | - | Reids 地址 |
+| REDIS_HOST | 127.0.0.1 | - | Redis 地址 |
 | REDIS_PORT | 6379 | - | Redis 端口 |
 | REDIS_PASSWORD | '' | - | Redis 密码 |
 | REDIS_DB_ROOM | 0 | - | 选择的 Redis 库索引 |
@@ -126,14 +126,14 @@
 | GUA_PORT | 4822 | - | Guacd 项目端口 |
 | LOG_LEVEL | DEBUG | DEBUG <br> INFO <br> WARNING <br> ERROR <br> CRITICAL | 日志级别 |
 | SHARE_ROOM_TYPE | local | local <br> redis | 会话监控和共享使用的方式 |
-| REDIS_HOST | 127.0.0.1 | - | Reids 地址 |
+| REDIS_HOST | 127.0.0.1 | - | Redis 地址 |
 | REDIS_PORT | 6379 | - | Redis 端口 |
 | REDIS_PASSWORD | '' | - | Redis 密码 |
 | REDIS_DB_ROOM | 0 | - | 选择的 Redis 库索引 |
-| JUMPSERVER_DISABLE_ALL_COPY_PASTE | false | true <br> false | 全局禁用上传下载 |
-| JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD | false | true <br> false | 全局禁用剪切板粘贴复制 |
-| JUMPSERVER_REMOTE_APP_UPLOAD_DOWNLOAD_ENABLE | false | true <br> false | 开启Remote App的上传下载 |
-| JUMPSERVER_REMOTE_APP_COPY_PASTE_ENABLE | false | true <br> false | 开启Remote app的剪切板粘贴复制 |
+| JUMPSERVER_DISABLE_ALL_COPY_PASTE | false | true <br> false | 全局禁用剪切板粘贴复制 |
+| JUMPSERVER_DISABLE_ALL_UPLOAD_DOWNLOAD | false | true <br> false | 全局禁用上传下载 |
+| JUMPSERVER_REMOTE_APP_UPLOAD_DOWNLOAD_ENABLE | false | true <br> false | 开启 Remote App 的上传下载 |
+| JUMPSERVER_REMOTE_APP_COPY_PASTE_ENABLE | false | true <br> false | 开启 Remote App 的剪切板粘贴复制 |
 | JUMPSERVER_COLOR_DEPTH | 32 | 低色 16位 <br> 真彩 24位 <br> 真彩 32位 | 颜色深度 |
 | JUMPSERVER_DPI | 120 | 120 <br> 160 <br> 240 | 图像每英寸长度内的像素点数 |
 | JUMPSERVER_DISABLE_AUDIO | false | true <br> false | 禁止声音 |

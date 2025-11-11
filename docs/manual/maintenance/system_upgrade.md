@@ -24,8 +24,8 @@ jmsctl backup_db
 ## 3 解压安装包并进入新版本安装包目录
 
 ```bash
-tar -xf jumpserver-ee- {{ jumpserver.tag }} -x86_64.tar.gz
-cd jumpserver-ee- {{ jumpserver.tag }} -x86_64/
+tar -xf jumpserver-ee-{{ jumpserver.tag }}-x86_64.tar.gz
+cd jumpserver-ee-{{ jumpserver.tag }}-x86_64/
 ```
 
 ## 4 执行升级脚本
