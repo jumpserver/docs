@@ -1,11 +1,11 @@
-## 1 关于OIDC
+## 1.关于OIDC
 
 !!! info "注: OIDC 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
     - 通过点击页面右上角小齿轮进入 **系统设置** 页面，点击 **认证设置 > OIDC** ，进入 OIDC 配置页面。
     - **OpenID Connect(OIDC)** 是一种基于 OAuth 2.0 的身份认证协议。JumpServer 认证支持标准的 OIDC 认证。
 
-## 2 基础配置
+## 2.基础配置
 !!! tip ""
     详细参数说明：
 
@@ -67,7 +67,7 @@
 }
 ```
 
-## 3 JumpServer OIDC URL 说明
+## 3.JumpServer OIDC URL 说明
 
 !!! tip ""
     详细 URL 说明：

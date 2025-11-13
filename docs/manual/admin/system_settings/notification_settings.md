@@ -3,7 +3,7 @@
 !!! tip ""
     - 通过点击页面右上角小齿轮进入 **系统设置** 页面，点击 **通知设置** ，进入通知设置页面。
 
-## 1 邮箱设置
+## 1.邮箱设置
 !!! tip ""
     - 邮件设置界面主要配置邮件的发件邮箱信息，用于发送创建用户密码设置邮件、危险命令邮件、授权过期邮件等邮件到JumpServer用户邮箱。
 ![V4_systemsetting_notification_settings1](../../../img/V4_systemsetting_notification_settings1.png)
@@ -22,7 +22,7 @@
 | 邮件模板 | 用于发送邮件的模版，包括邮件标题前缀和邮件内容 |
 | 收件人 | 用于测试电子邮件服务器是否连通的测试邮箱地址 |
 
-## 2 短信设置
+## 2.短信设置
 !!! info "注：短信服务为 JumpServer 企业版功能。"
 
 ### 2.1 功能概述
@@ -49,7 +49,7 @@
 ![V4_systemsetting_notification_settings5](../../../img/V4_systemsetting_notification_settings5.png)
 ![V4_systemsetting_notification_settings6](../../../img/V4_systemsetting_notification_settings6.png)
 
-## 3 消息订阅
+## 3.消息订阅
 ### 3.1 功能概述
 !!! tip ""
     - 可以设置 JumpServer 平台监控消息的接收人。

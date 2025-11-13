@@ -1,12 +1,12 @@
 
-## 1 关于 OAuth2
+## 1.关于 OAuth2
 
 !!! info "注: OAuth2 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
     - 通过点击页面右上角小齿轮进入 **系统设置** 页面，点击 **认证设置 > OAuth2** ，进入 OAuth2 配置页面。
     - **OAuth2** 是一种开放三方授权协议，JumpServer 支持标准 OAuth2 平台认证。
 
-## 2 配置参数
+## 2.配置参数
 
 !!! tip ""
     详细参数说明：
@@ -50,7 +50,7 @@
 }
 ```
 
-## 3 JumpServer OAuth2 URL 说明
+## 3.JumpServer OAuth2 URL 说明
 
 | URL 类型 | 地址 | 说明 |
 |----------|------|------|
