@@ -1,12 +1,12 @@
 # Radius 认证
 
-## 1.关于 RADIUS
+## 1 关于 RADIUS
 !!! info "注: RADIUS 认证方式为 JumpServer 企业版功能。"
 !!! tip ""
     - 通过点击页面右上角小齿轮进入 **系统设置** 页面，点击 **认证设置 > Radius** ，进入 RADIUS 配置页面。
     - **RADIUS（远程身份认证拨入用户服务）** 是一种基于 RADIUS 协议的网络访问控制认证机制，提供身份认证、授权和计费（AAA）功能。JumpServer 支持标准 RADIUS 认证。
 
-## 2.配置参数
+## 2 配置参数
 
 !!! tip ""
     - 点击页面右上角的设置按钮
