@@ -1,13 +1,13 @@
 # 虚拟应用
 !!! info "注：虚拟应用为企业版功能。"
 
-## 1 功能概述
+## 1.功能概述
 !!! tips ""
     - VirtualApp（虚拟应用）是 JumpServer 基于 Linux 图形化操作系统推出的远程应用功能，最初为信创系统场景设计。
     - Panda 也称为应用提供者 (Application provider) 是 JumpServer 的一个组件，用于管理 VirtualApp。  
     - 通过虚拟应用，可以发布 Web、数据库等资产。
 
-## 2 功能启用
+## 2.功能启用
 
 ### 2.1 开启虚拟应用
 !!! info ""
@@ -43,7 +43,7 @@ jmsctl restart
     - 可以点击上传按钮上传自开发的应用。
 ![img](../../../img/v4_virtualapp3.png)
 
-## 3 功能使用
+## 3.功能使用
 !!! info ""
     - 配置完成后，创建一个 Website 资产，使用 Web 终端选择虚拟应用方式进行连接。
 ![img](../../../img/v4_virtualapp4.png)
