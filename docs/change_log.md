@@ -6,7 +6,7 @@ v4.10.13
 
 !!! info "新增功能 🌱"
     - feat: 全新 JumpServer 客户端，体积更小，操作体验更佳（V4）
-    - feat: 支持 录像转码功能，可对 Lion、Razor 生成的录像进行转码（video-worker）
+    - feat: 支持 录像转码功能，可对 Lion、Razor 生成的录像进行转码（video-worker）【企业版】
     - feat: 后端数据库 PostgreSQL 已支持 SSL 加密连接
 
 !!! summary "功能优化 🚀"
