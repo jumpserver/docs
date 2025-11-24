@@ -1,8 +1,10 @@
 # 通知设置
 
+!!! tip ""
+    - 通过点击页面右上角小齿轮进入 **系统设置** 页面，点击 **通知设置** ，进入通知设置页面。
+
 ## 1 邮箱设置
 !!! tip ""
-    - 点击页面左侧的`通知设置`按钮，即进入邮件设置页面。
     - 邮件设置界面主要配置邮件的发件邮箱信息，用于发送创建用户密码设置邮件、危险命令邮件、授权过期邮件等邮件到JumpServer用户邮箱。
 ![V4_systemsetting_notification_settings1](../../../img/V4_systemsetting_notification_settings1.png)
 
@@ -21,7 +23,7 @@
 | 收件人 | 用于测试电子邮件服务器是否连通的测试邮箱地址 |
 
 ## 2 短信设置
-!!! info "短信服务为JumpServer企业版功能。"
+!!! info "注：短信服务为 JumpServer 企业版功能。"
 
 ### 2.1 功能概述
 !!! tip ""
@@ -31,7 +33,7 @@
 
 ### 2.2 配置说明
 !!! tip ""
-    - 选择对应的短信服务商，填入服务商平台认证相关信息，点击`测试`按钮可测试配置是否正确。
+    - 选择对应的短信服务商，填入服务商平台认证相关信息，点击 **测试** 按钮可测试配置是否正确。
 ![V4_systemsetting_notification_settings3](../../../img/V4_systemsetting_notification_settings3.png)
 !!! tip "短信配置模板示例"
     - 您的 JumpServer 动态码为：${code}，验证码 1 分钟内有效，请勿泄露！
@@ -50,11 +52,11 @@
 ## 3 消息订阅
 ### 3.1 功能概述
 !!! tip ""
-    - 可以设置JumpServer平台监控消息的接收人。
+    - 可以设置 JumpServer 平台监控消息的接收人。
     - 可以设置监控消息的发送方式(站内信和邮件)。
 ![V4_systemsetting_notification_settings7](../../../img/V4_systemsetting_notification_settings7.png)
 ### 3.2 设置消息接收人
 !!! tip ""
-    - 点击`修改消息接收人`按钮，进入设置界面。
+    - 点击 **编辑消息接收人** 按钮，进入设置界面。
     - 在可选择列表中勾选用户，会将其移入已选择。在已选择列表中勾选用户，会将其移入未选择。
 ![V4_systemsetting_notification_settings8](../../../img/V4_systemsetting_notification_settings8.png)
