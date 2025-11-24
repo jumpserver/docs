@@ -1,0 +1,18 @@
+name: Trigger documentaion_workflows PDF Build
+
+on:
+  push:
+    branches:
+      - v4.0
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger documentaion_workflows workflow
+        run: |
+          curl -i -v -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/jumpserver-east/documentaion_workflows/dispatches \
+            -d '{"event_type":"trigger-docs-update","client_payload":{"branch":"v4.0"}}'
