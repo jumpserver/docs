@@ -40,9 +40,6 @@ nav:
   - 产品介绍: index.md
   - 快速入门: quick_start.md
   - 安装部署:
-    - 1Panel 模式部署:
-        - 安装指南: installation/1panel_setup/setup_js.md
-        - 运维指南: installation/1panel_setup/config_js.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 安装指南: installation/setup_linux_standalone/offline_install.md
@@ -58,6 +55,9 @@ nav:
         - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
         - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
         - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
+    - 1Panel 模式部署:
+        - 安装指南: installation/1panel_setup/setup_js.md
+        - 运维指南: installation/1panel_setup/config_js.md
     - Kubernetes  Helm 模式部署:
         - 安装指南: installation/setup_kubernetes/helm_online_install.md
         - 升级指南: installation/setup_kubernetes/helm_online_upgrade.md
