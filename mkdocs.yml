@@ -196,7 +196,6 @@ nav:
     - 交互命令: dev/shell.md
   - 用户案例: user_stories.md
   - 更新日志: change_log.md
-  - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 联系我们: contact.md
 
 markdown_extensions:
