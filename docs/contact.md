@@ -10,7 +10,8 @@
     - 邮箱：support@fit2cloud.com
     - 电话：400-052-0755
     - 社区论坛: [开源社区论坛][开源社区论坛]
-    - 企业版试用申请：https://jumpserver.org/enterprise.html    
+    - 企业版试用申请：https://jumpserver.org/enterprise.html   
+    - 技术咨询: https://jinshuju.net/f/sQ91MK
     
 ## 3 微信公众号
 ![wechat-official](img/wechat-official.png){ width="156px" }
