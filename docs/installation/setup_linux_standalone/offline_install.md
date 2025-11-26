@@ -9,7 +9,7 @@
 ## 1. 安装部署
 
 !!! warning ""
-    - 离线安装目前只支持 linux/amd64 架构, 其他架构请参考 [在线安装](./online_install.md)
+    - 社区版的离线安装目前只支持 linux/amd64 架构, 其他架构需要： [申请企业版试用](https://jinshuju.net/f/kyOYpi)
 
 === "linux/amd64"
     !!! tip ""

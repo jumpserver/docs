@@ -41,14 +41,12 @@ nav:
   - 快速入门: quick_start.md
   - 安装部署:
     - 1Panel 模式部署:
-        - 部署过程: installation/1panel_setup/setup_js.md
-        - 运维管理: installation/1panel_setup/config_js.md
+        - 安装指南: installation/1panel_setup/setup_js.md
+        - 运维指南: installation/1panel_setup/config_js.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
-        - 离线安装: installation/setup_linux_standalone/offline_install.md
-        - 在线安装: installation/setup_linux_standalone/online_install.md
-        - 在线升级: installation/setup_linux_standalone/online_upgrade.md
-        - 离线升级: installation/setup_linux_standalone/offline_upgrade.md
+        - 安装指南: installation/setup_linux_standalone/offline_install.md
+        - 升级指南: installation/setup_linux_standalone/offline_upgrade.md
     - Linux 集群模式部署:
         - 准备工作: installation/setup_linux_lb/requirements.md
         - 部署 NFS 服务: installation/setup_linux_lb/nfs_install.md
@@ -61,9 +59,9 @@ nav:
         - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
         - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
     - Kubernetes  Helm 模式部署:
-        - 在线安装: installation/setup_kubernetes/helm_online_install.md
-        - 在线升级: installation/setup_kubernetes/helm_online_upgrade.md
-    - 数据备份以及恢复: installation/backup_recovery.md
+        - 安装指南: installation/setup_kubernetes/helm_online_install.md
+        - 升级指南: installation/setup_kubernetes/helm_online_upgrade.md
+    - 数据备份以及恢复指南: installation/backup_recovery.md
     
   - 用户手册:
     - 管理员手册:

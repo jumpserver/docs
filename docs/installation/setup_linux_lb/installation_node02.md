@@ -34,16 +34,9 @@
     ```
 
 ## 3 安装 JumpServer 
-### 3.1 下载 jumpserver-install 软件包
+### 3.1 下载安装包
 !!! tip ""
-    ```sh
-    cd /opt
-    yum -y install wget
-    wget https://github.com/jumpserver/installer/releases/download/{{ jumpserver.tag }}/jumpserver-installer-{{ jumpserver.tag }}.tar.gz
-    tar -xf jumpserver-installer-{{ jumpserver.tag }}.tar.gz
-    cd jumpserver-installer-{{ jumpserver.tag }}
-    ```
-!!! info "如果环境无法访问外网，请于 https://community.fit2cloud.com/#/products/jumpserver/downloads 下载离线版本安装包。"
+    - 从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录。
 ### 3.2 修改临时配置文件
 !!! tip ""
     ```sh

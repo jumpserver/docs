@@ -2,7 +2,7 @@
 ## 1 安装 JumpServer
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - 推荐使用 [离线安装包方式](installation/setup_linux_standalone/offline_install.md) 来部署 JumpServer
+    - 参照 [Linux 单机安装部署指南](installation/setup_linux_standalone/offline_install.md) 来快速部署 JumpServer
 
 !!! info "安装成功后，通过浏览器访问登录 JumpServer"
     ```sh
