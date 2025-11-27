@@ -40,9 +40,6 @@ nav:
   - 产品介绍: index.md
   - 快速入门: quick_start.md
   - 安装部署:
-    - 1Panel 模式部署:
-        - 安装指南: installation/1panel_setup/setup_js.md
-        - 运维指南: installation/1panel_setup/config_js.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 安装指南: installation/setup_linux_standalone/offline_install.md
@@ -58,6 +55,9 @@ nav:
         - 部署 MinIO 服务: installation/setup_linux_lb/minio_install.md
         - 部署 Elasticsearch 服务: installation/setup_linux_lb/elasticsearch_install.md
         - 注意事项: installation/setup_linux_lb/linux_lb_upgrade.md
+    - 1Panel 模式部署:
+        - 安装指南: installation/1panel_setup/setup_js.md
+        - 运维指南: installation/1panel_setup/config_js.md
     - Kubernetes  Helm 模式部署:
         - 安装指南: installation/setup_kubernetes/helm_online_install.md
         - 升级指南: installation/setup_kubernetes/helm_online_upgrade.md
@@ -177,6 +177,16 @@ nav:
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
       - 工单: manual/user/ticket.md
+
+    - 客户端手册:
+      - 客户端下载与安装: manual/client/client_installation.md
+      - Linux 资产连接: manual/client/linux_asset_connection.md
+      - Windows 资产连接: manual/client/windows_asset_connection.md
+      - 数据库资产连接: manual/client/database_asset_connection.md
+      - 设备资产连接: manual/client/device_asset_connection.md
+      - 收藏资产连接: manual/client/favorite_asset_connection.md
+      - 连接设置: manual/client/connection_settings.md
+
   - 常见问题:
     - 产品 FAQ: faq/faq.md
     - 安全建议: faq/security.md
@@ -186,7 +196,6 @@ nav:
     - 交互命令: dev/shell.md
   - 用户案例: user_stories.md
   - 更新日志: change_log.md
-  - 技术咨询: https://jinshuju.net/f/sQ91MK
   - 联系我们: contact.md
 
 markdown_extensions:
