@@ -18,7 +18,3 @@
     - Celery 是处理异步任务的组件，用于执行 JumpServer 相关的自动化任务。
     - Video 是专门处理 Razor 组件和 Lion 组件产生录像的格式转换工作，将产生的会话录像转化为 MP4 格式。
     - Panda 是基于国产操作系统的应用发布机，用于调度 Virtualapp 应用。
-    
-
-## 3 逻辑架构
-!!! tip "详见 [源码部署](installation/source_install/requirements.md)"

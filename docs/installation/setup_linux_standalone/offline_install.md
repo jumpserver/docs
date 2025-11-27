@@ -8,6 +8,9 @@
 
 ## 1. 安装部署
 
+!!! warning ""
+    - 社区版的离线安装目前只支持 linux/amd64 架构, 其他架构需要： [申请企业版试用](https://jinshuju.net/f/kyOYpi)
+
 === "linux/amd64"
     !!! tip ""
         从飞致云社区 [下载最新的 linux/amd64 离线包](https://community.fit2cloud.com/#/products/jumpserver/downloads){:target="_blank"}, 并上传到部署服务器的 /opt 目录
