@@ -79,6 +79,7 @@ nav:
         - 授权管理:
           - 资产授权: manual/admin/console/authorization_manage/assets_authorization.md
           - 访问控制: manual/admin/console/access_control/acls.md
+          - 会话分享: manual/admin/console/authorization_manage/session_sharing.md
         - 标签列表: manual/admin/console/else/tag_list.md
       - PAM:
         - 自动化:
