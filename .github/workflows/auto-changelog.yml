@@ -72,7 +72,6 @@ jobs:
           
           git add docs/change_log.md
           git commit -m "chore: add changelog for ${{ steps.detect.outputs.version }}"
-          git push origin "$branch" --force
 
       - name: Create Pull Request
         if: ${{ steps.detect.outputs.update == 'true' }}
