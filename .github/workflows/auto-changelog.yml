@@ -41,8 +41,8 @@ jobs:
             echo "base=$base_branch" >> $GITHUB_OUTPUT
             exit 0
           fi
-          git checkout "$base_branch"
-          if grep -q "^$version$" docs/change_log.md; then
+          # Check remote file content without checkout to avoid ambiguity/detached HEAD issues
+          if git show "origin/$base_branch:docs/change_log.md" | grep -q "^$version$"; then
             echo "Already present in changelog."; upd=false
           else
             upd=true
@@ -64,10 +64,15 @@ jobs:
           set -e
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          branch=chore/changelog-${{ steps.detect.outputs.version }}
-          git checkout -b "$branch"
+          branch="chore/changelog-${{ steps.detect.outputs.version }}"
+          base="${{ steps.detect.outputs.base }}"
+          
+          # Create new branch from remote base
+          git checkout -b "$branch" "origin/$base"
+          
           git add docs/change_log.md
           git commit -m "chore: add changelog for ${{ steps.detect.outputs.version }}"
+          git push origin "$branch" --force
 
       - name: Create Pull Request
         if: ${{ steps.detect.outputs.update == 'true' }}
