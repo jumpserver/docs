@@ -41,8 +41,8 @@ jobs:
             echo "base=$base_branch" >> $GITHUB_OUTPUT
             exit 0
           fi
-          git checkout "$base_branch"
-          if grep -q "^$version$" docs/change_log.md; then
+          # Check remote file content without checkout to avoid ambiguity/detached HEAD issues
+          if git show "origin/$base_branch:docs/change_log.md" | grep -q "^$version$"; then
             echo "Already present in changelog."; upd=false
           else
             upd=true
@@ -58,16 +58,21 @@ jobs:
           echo 'Preview:'
           grep -n "^${{ steps.detect.outputs.version }}$" -A12 docs/change_log.md || true
 
-      - name: Commit changes
+      - name: Stage changes
         if: ${{ steps.detect.outputs.update == 'true' }}
         run: |
           set -e
+          # Ensure we are on the correct base branch before staging
+          base="${{ steps.detect.outputs.base }}"
+          git checkout -B "$base" "origin/$base"
+          
+          # Run generation again to ensure file is updated in the correct branch context if needed
+          # (Optional, but safe if the previous step modified a file in a detached head or different branch)
+          python .github/scripts/gen_changelog.py "${{ steps.detect.outputs.version }}"
+          
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          branch=chore/changelog-${{ steps.detect.outputs.version }}
-          git checkout -b "$branch"
           git add docs/change_log.md
-          git commit -m "chore: add changelog for ${{ steps.detect.outputs.version }}"
 
       - name: Create Pull Request
         if: ${{ steps.detect.outputs.update == 'true' }}
