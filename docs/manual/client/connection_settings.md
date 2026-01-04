@@ -19,6 +19,7 @@
 **SSH**
 
 该页面可以调整通过 SSH 协议连接资产的本地应用配置
+
 ![image](../../img/clientV4_06.png)
 
 **Telnet**
@@ -28,12 +29,14 @@
 ### 文件传输
 **SFTP**
 该页面可以调整通过 SFTP 协议传输文件的本地应用配置
+
 ![image](../../img/clientV4_07.png)
 
 ### 远程桌面
 **RDP**
 
 该页面可以调整通过 RDP 协议连接资产的本地应用配置
+
 ![image](../../img/clientV4_08.png)
 
 **VNC**
