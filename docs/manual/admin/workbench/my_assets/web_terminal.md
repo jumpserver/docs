@@ -86,11 +86,11 @@
 | MySQL | ✓ | ✓ | ✓ | ✓ | ✓ |
 | MariaDB | ✓ | ✓ | ✓ | ✓ | ✓ |
 | PostgreSQL | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Oracle(X-Pack) | ✗ | ✓ | ✓ | ✓ | ✓ |
-| SQLServer(X-Pack) | ✗ | ✓ | ✓ | ✓ | ✓ |
-| Redis | ✓ | ✗ | ✓ | ✓ | ✓ |
-| MongoDB | ✓ | ✗ | ✓ | ✓ | ✓ |
-| ClickHouse(X-Pack) | ✓ | ✗ | ✗ | ✗ | ✓ |
+| Oracle(X-Pack) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| SQLServer(X-Pack) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Redis | ✗ | ✓ | ✓ | ✓ | ✓ |
+| MongoDB | ✗ | ✓ | ✓ | ✓ | ✓ |
+| ClickHouse(X-Pack) | ✗ | ✓ | ✗ | ✗ | ✓ |
 | Dameng(X-Pack) | ✓ | ✗ | ✗ | ✗ | ✓ |
 
 !!! info "说明"
