@@ -1,0 +1,32 @@
+name: Check Client Release
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 21 * * *'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v4.0
+
+      - name: Get Client Version
+        run: |
+          version=$(curl -s https://api.github.com/repos/jumpserver/client/releases/latest | jq -r .tag_name | sed 's/^v//')
+          echo "Current Client Version: ${version}"
+          if [ -z "${version}" ]; then
+            exit 1
+          fi
+          echo "version=${version}" >> $GITHUB_ENV
+          grep -q "client_tag: ${version}" mkdocs.yml || echo "update=true" >> $GITHUB_ENV
+
+      - name: Update Client Version
+        if: env.update == 'true'
+        run: |
+          sed -i "s@client_tag: .*@client_tag: ${{ env.version }}@" mkdocs.yml
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Update Client Version to ${{ env.version }}"
+          git push origin HEAD
