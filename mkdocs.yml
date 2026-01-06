@@ -178,15 +178,12 @@ nav:
           - 文件传输: manual/admin/workbench/my_assets/file_transfer.md
           - 文件管理: manual/admin/workbench/my_assets/file_explorer.md
       - 工单: manual/user/ticket.md
+      - 客户端使用:
+        - 客户端下载与安装: manual/client/client_installation.md
+        - 资产连接: manual/client/asset_connection.md
+        - 连接设置: manual/client/connection_settings.md
 
-    - 客户端手册:
-      - 客户端下载与安装: manual/client/client_installation.md
-      - Linux 资产连接: manual/client/linux_asset_connection.md
-      - Windows 资产连接: manual/client/windows_asset_connection.md
-      - 数据库资产连接: manual/client/database_asset_connection.md
-      - 设备资产连接: manual/client/device_asset_connection.md
-      - 收藏资产连接: manual/client/favorite_asset_connection.md
-      - 连接设置: manual/client/connection_settings.md
+
 
   - 常见问题:
     - 产品 FAQ: faq/faq.md
@@ -245,6 +242,7 @@ markdown_extensions:
 extra:
   jumpserver:
     tag: v4.10.14
+    client_tag: 4.1.1
   search:
     separator: '[\s\-\.]+'
     language: 'zh'
