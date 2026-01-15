@@ -17,7 +17,8 @@
 | 33062 | Magnus MariaDB 服务端口 | DB Client 方式连接 MariaDB 数据库资产 |
 | 54320 | Magnus PostgreSQL 服务端口 | DB Client 方式连接 PostgreSQL 数据库资产 |
 | 63790 | Magnus Redis 服务端口 | DB Client 方式连接 Redis 数据库资产 |
-| 30000-30100 | Magnus Oracle 服务端口 | DB Client 方式连接 Oracle 数据库资产，该端口范围可自定义 |
+| 15210 | Magnus Oracle 服务端口 | DB Client 方式连接 Oracle 数据库资产 |
+| 15900 | NEC 服务端口 |  VNC 服务使用 |
 
 ## 2 防火墙常用命令
 !!! tip ""
