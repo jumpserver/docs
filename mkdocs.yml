@@ -40,7 +40,6 @@ nav:
   - 产品介绍: index.md
   - 快速入门: quick_start.md
   - 安装部署:
-    - 网络端口说明: installation/network_port.md
     - Linux 单机部署:
         - 环境要求: installation/setup_linux_standalone/requirements.md
         - 安装指南: installation/setup_linux_standalone/offline_install.md
@@ -62,8 +61,9 @@ nav:
     - Kubernetes  Helm 模式部署:
         - 安装指南: installation/setup_kubernetes/helm_online_install.md
         - 升级指南: installation/setup_kubernetes/helm_online_upgrade.md
+    - 网络端口说明: installation/network_port.md  
     - 数据备份以及恢复指南: installation/backup_recovery.md
-    
+  
   
   - 用户手册:
     - 管理员手册:
