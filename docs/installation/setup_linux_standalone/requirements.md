@@ -28,7 +28,7 @@
 
 | 名称        | 版本    | 默认字符集        | 默认字符编码        | TLS/SSL          |
 | :--------- | :------ | :--------------- | :----------------- | :--------------- |
-| PostgreSQL | >= 9.6  | UTF8             | en_US.utf8         | :material-check: |
+| PostgreSQL | >= 16  | UTF8             | en_US.utf8         | :material-check: |
 | MySQL      | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
 | MariaDB    | >= 10.6 | utf8mb3          | utf8mb3_general_ci | :material-check: |
 
