@@ -1,60 +1,8 @@
 # 快速入门
-## 1 一键安装
+## 1 安装 JumpServer
 !!! tip ""
     - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
-    - Gentoo / Arch Linux 请通过 [源码安装](installation/source_install/requirements.md)
-    - 如用于生产环境，推荐使用 [离线安装包](https://community.fit2cloud.com/#/products/jumpserver/downloads) 进行部署
-
-!!! tip ""
-    === "中国大陆"
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://resource.fit2cloud.com/jumpserver/jumpserver/releases/download/{{ jumpserver.tag }}/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
-        ```
-        </div>
-    === "其他地区"
-        <div class="termy">
-        ```console
-        // root@localhost:/opt#
-        $ curl -sSL https://github.com/jumpserver/jumpserver/releases/download/{{ jumpserver.tag }}/quick_start.sh | bash
-
-        ---> 100%
-        <span style="color: green;">[Success]</span>: download install script to /opt/jumpserver-installer-{{jumpserver.tag}}
-        [Info]: Start executing the installation script.
-        [Info]: In an automated script deployment, note the message prompts on the screen.
-        ---> 100%
-        <span style="color: green;">[Success]</span>: The Installation is Complete.
-
-        For more commands, you can enter <span style="color: red;">jmsctl --help</span> to view help information.
-        ```
-        </div>
-
-!!! tip "提示"
-    - 首次安装后需要修改配置文件，定义 DOMAINS 字段后即可正常使用。
-    - 如果服务器是一键安装并且旧版本就已经使用 JumpServer 开启了 HTTPS，则不需要进行任何更改。
-    - 需要使用 IP 地址来访问 JumpServer 的场景，可以根据自己的 IP 类型来填写 config.txt 配置文件中 DOMAINS 字段为公网 IP 还是内网 IP。
-
-    ```
-      # 打开config.txt 配置文件，定义 DOMAINS 字段
-      vim /opt/jumpserver/config/config.txt 
-
-      # 可信任 DOMAINS 定义,
-      # 定义可信任的访问 IP, 请根据实际情况修改, 如果是公网 IP 请改成对应的公网 IP,
-      # DOMAINS="demo.jumpserver.org"    # 使用域名访问
-      # DOMAINS="172.17.200.191"         # 使用 IP 访问
-      # DOMAINS="demo.jumpserver.org,172.17.200.191"    # 使用 IP 和 域名一起访问
-      DOMAINS=
-    ```
+    - 推荐使用 [离线安装包](installation/setup_linux_standalone/offline_install.md) 进行生产环境的部署
 
 !!! info "安装成功后，通过浏览器访问登录 JumpServer"
     ```sh
