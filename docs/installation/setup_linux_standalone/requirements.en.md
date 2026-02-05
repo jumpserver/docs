@@ -1,14 +1,14 @@
-# 环境要求
+# Requirements
 
-## 1. 操作系统
+## 1. Operating System
 
 !!! tip ""
-    - 支持主流 Linux 发行版本（基于 Debian / RedHat，包括国产操作系统）
+    - Supports mainstream Linux distributions (based on Debian / RedHat, including domestic operating systems)
 
-| 操作系统   | 架构 | Linux 内核  | 软件要求       | 最小化硬件配置     |
+| Operating System | Architecture | Linux Kernel | Software Requirements | Minimum Hardware Configuration |
 | :------------ | :----------- | :-------- | :------------------------------------ | :-------------------- |
-| linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 4Core/8GB RAM/100G HDD |
-| linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 4Core/8GB RAM/100G HDD |
+| linux/amd64   | x86_64       | >= 4.0    | wget curl tar gettext iptables python | 4Core / 8GB RAM / 100G HDD |
+| linux/arm64   | aarch64      | >= 4.0    | wget curl tar gettext iptables python | 4Core / 8GB RAM / 100G HDD |
 
 === "Debian / Ubuntu"
     !!! tip ""
@@ -23,21 +23,21 @@
         yum update
         yum install -y wget curl tar gettext iptables
         ```
-## 2 数据库
-!!! tip "JumpServer 需要使用 PostgreSQL、MySQL 或 MariaDB 存储数据，使用 Redis 缓存数据"
+## 2. Database
+!!! tip "JumpServer requires PostgreSQL, MySQL, or MariaDB to store data, and uses Redis for data caching."
 
-| 名称        | 版本    | 默认字符集        | 默认字符编码        | TLS/SSL          |
+| Name        | Version | Default Character Set | Default Collation | TLS/SSL          |
 | :--------- | :------ | :--------------- | :----------------- | :--------------- |
 | PostgreSQL | >= 16  | UTF8             | en_US.utf8         | :material-check: |
 | MySQL      | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
 | MariaDB    | >= 10.6 | utf8mb3          | utf8mb3_general_ci | :material-check: |
 
-| 名称    | 版本 | Sentinel         | Cluster            | TLS/SSL          |
+| Name    | Version | Sentinel         | Cluster            | TLS/SSL          |
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
 | Redis   | >= 6.0  | :material-check: | :material-close:   | :material-check: |
 
 
-!!! tip "创建数据库 SQL 参考"
+!!! tip "Database Creation SQL Reference"
 
 === "PostgreSQL"
     !!! tip ""
