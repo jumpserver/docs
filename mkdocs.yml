@@ -240,6 +240,13 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra:
+  alternate:
+    - name: 中文
+      link: /
+      lang: zh
+    - name: English
+      link: /en/
+      lang: en
   jumpserver:
     tag: v4.10.14
     client_tag: 4.1.1
@@ -282,6 +289,174 @@ plugins:
     - search:
         lang:
           - en
-          - ja
+          - zh
         separator: '[\s\-\.]+'
     - macros
+    - i18n:
+        docs_structure: suffix
+        fallback_to_default: true
+        reconfigure_material: true
+        languages:
+          - locale: zh
+            name: 中文
+            build: true
+            default: true
+          - locale: en
+            name: English
+            build: true
+            link: /en/
+            nav:
+              - Product Introduction: index.md
+              - Quick Start: quick_start.md
+              - Installation:
+                - Linux Standalone:
+                    - Requirements: installation/setup_linux_standalone/requirements.md
+                    - Installation Guide: installation/setup_linux_standalone/offline_install.md
+                    - Upgrade Guide: installation/setup_linux_standalone/offline_upgrade.md
+                - Linux Cluster:
+                    - Preparation: installation/setup_linux_lb/requirements.md
+                    - Deploy NFS: installation/setup_linux_lb/nfs_install.md
+                    - Deploy PostgreSQL: installation/setup_linux_lb/pgsql_install.md
+                    - Deploy Redis: installation/setup_linux_lb/redis_install.md
+                    - Deploy Node 01: installation/setup_linux_lb/installation_node01.md
+                    - Deploy Node 02: installation/setup_linux_lb/installation_node02.md
+                    - Deploy HAProxy: installation/setup_linux_lb/haproxy_install.md
+                    - Deploy MinIO: installation/setup_linux_lb/minio_install.md
+                    - Deploy Elasticsearch: installation/setup_linux_lb/elasticsearch_install.md
+                    - Upgrade Notes: installation/setup_linux_lb/linux_lb_upgrade.md
+                - 1Panel Setup:
+                    - Installation Guide: installation/1panel_setup/setup_js.md
+                    - Operation Guide: installation/1panel_setup/config_js.md
+                - K8s Helm Setup:
+                    - Installation Guide: installation/setup_kubernetes/helm_online_install.md
+                    - Upgrade Guide: installation/setup_kubernetes/helm_online_upgrade.md
+                - Network Ports: installation/network_port.md
+                - Backup & Recovery: installation/backup_recovery.md
+              - User Manual:
+                - Admin Manual:
+                  - Console:
+                    - User Mgmt:
+                      - User List: manual/admin/console/users/users.md
+                      - User Groups: manual/admin/console/users/user-groups.md
+                    - Asset Mgmt:
+                      - Asset List: manual/admin/console/assets/assets_list.md
+                      - Gateway List: manual/admin/console/assets/net_list.md
+                      - Web Assets: manual/admin/console/assets/web_assets.md
+                    - Account Mgmt:
+                      - Account List: manual/admin/console/account_management/account_list.md
+                      - Account Templates: manual/admin/console/account_management/account_template.md
+                    - Authorization:
+                      - Asset Grants: manual/admin/console/authorization_manage/assets_authorization.md
+                      - Access Control: manual/admin/console/access_control/acls.md
+                      - Session Sharing: manual/admin/console/authorization_manage/session_sharing.md
+                    - Tags: manual/admin/console/else/tag_list.md
+                  - PAM:
+                    - Automation:
+                      - Account Discovery: manual/admin/pam/automation/account_discovery.md
+                      - Account Push: manual/admin/pam/automation/account_push.md
+                      - Account Backup: manual/admin/pam/automation/account_backup.md
+                    - Security:
+                      - Change Password: manual/admin/pam/security/change_secrets.md
+                      - Risk Detection: manual/admin/pam/security/risk_detection.md
+                    - App Mgmt: manual/admin/pam/applications_manage.md
+                  - Audit Console:
+                    - Session Audit:
+                      - Session Records: manual/admin/audit/session_audit/session_record.md
+                      - Session Commands: manual/admin/audit/session_audit/session_command.md
+                      - File Transfers: manual/admin/audit/session_audit/file_transfer.md
+                      - Online Users: manual/admin/audit/session_audit/online_user.md
+                    - Log Audit:
+                      - Login Logs: manual/admin/audit/session_audit/log_audit/login_logs.md
+                      - Password Change Logs: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+                      - Operation Logs: manual/admin/audit/session_audit/log_audit/operation_logs.md
+                    - Job Audit:
+                      - Job List: manual/admin/audit/session_audit/job_audit/job_list.md
+                      - Job Logs: manual/admin/audit/session_audit/job_audit/job_logs.md
+                    - Ticket Audit: manual/admin/audit/session_audit/ticket_audit.md
+                    - Reports: manual/admin/audit/session_audit/reports.md
+                  - Workbench:
+                    - My Assets:
+                      - Connect Assets: manual/admin/workbench/my_assets/assets_connect.md
+                      - Web Terminal: manual/admin/workbench/my_assets/web_terminal.md
+                      - File Transfer: manual/admin/workbench/my_assets/file_transfer.md
+                      - File Manager: manual/admin/workbench/my_assets/file_explorer.md
+                    - Job Center:
+                      - Adhoc Commands: manual/admin/workbench/job_center/adhoc.md
+                      - Job Mgmt: manual/admin/workbench/job_center/jobs_management.md
+                      - Templates: manual/admin/workbench/job_center/templates_management.md
+                      - History: manual/admin/workbench/job_center/execute_history.md
+                    - Others:
+                      - System Tools: manual/admin/workbench/other/system_tool.md
+                  - System Settings:
+                    - Overview: manual/admin/system_settings/overview.md
+                    - Basic Settings: manual/admin/system_settings/basic_settings.md
+                    - Org Mgmt: manual/admin/system_settings/organization_manage.md
+                    - Role List: manual/admin/system_settings/role_list.md
+                    - Platform List: manual/admin/system_settings/platforms.md
+                    - Notifications: manual/admin/system_settings/notification_settings.md
+                    - Feature Settings: manual/admin/system_settings/feature_settings.md
+                    - Authentication:
+                      - Basic: manual/admin/system_settings/authentication_settings/basic_settings.md
+                      - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
+                      - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
+                      - CAS: manual/admin/system_settings/authentication_settings/CAS.md
+                      - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
+                      - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
+                      - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
+                      - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
+                      - WeCom: manual/admin/system_settings/authentication_settings/WeCom.md
+                      - DingTalk: manual/admin/system_settings/authentication_settings/DingTalk.md
+                      - Feishu: manual/admin/system_settings/authentication_settings/Feishu.md
+                      - Lark: manual/admin/system_settings/authentication_settings/Lark.md
+                      - Slack: manual/admin/system_settings/authentication_settings/Slack.md
+                      - Radius: manual/admin/system_settings/authentication_settings/Radius.md
+                    - Storage: manual/admin/system_settings/storage.md
+                    - Components: manual/admin/system_settings/components.md
+                    - Remote Apps: manual/admin/system_settings/remote_apps.md
+                    - Virtual Apps: manual/admin/system_settings/virtual_apps.md
+                    - Security: manual/admin/system_settings/security.md
+                    - Appearance: manual/admin/system_settings/appearance.md
+                    - Tools: manual/admin/system_settings/tools.md
+                    - System Tasks: manual/admin/system_settings/system_tasks.md
+                    - License: manual/admin/system_settings/licenses.md
+                  - Other Settings:
+                    - MFA Face ID: manual/admin/others/MFA_Facelive.md
+                - Auditor Manual:
+                  - Audit Console:
+                    - Session Audit:
+                        - Session Records: manual/admin/audit/session_audit/session_record.md
+                        - Session Commands: manual/admin/audit/session_audit/session_command.md
+                        - File Transfer: manual/admin/audit/session_audit/file_transfer.md
+                        - Online Users: manual/admin/audit/session_audit/online_user.md
+                    - Log Audit:
+                        - Login Logs: manual/admin/audit/session_audit/log_audit/login_logs.md
+                        - Password Change: manual/admin/audit/session_audit/log_audit/password_change_logs.md
+                        - Operation Logs: manual/admin/audit/session_audit/log_audit/operation_logs.md
+                    - Job Audit:
+                        - Job List: manual/admin/audit/session_audit/job_audit/job_list.md
+                        - Job Logs: manual/admin/audit/session_audit/job_audit/job_logs.md
+                    - Ticket Audit: manual/admin/audit/session_audit/ticket_audit.md
+                  - Reports: manual/admin/audit/session_audit/reports.md
+                - User Manual:
+                  - Profile: manual/user/profile.md
+                  - Workbench:
+                    - My Assets:
+                      - Connect Assets: manual/admin/workbench/my_assets/assets_connect.md
+                      - Web Terminal: manual/admin/workbench/my_assets/web_terminal.md
+                      - File Transfer: manual/admin/workbench/my_assets/file_transfer.md
+                      - File Manager: manual/admin/workbench/my_assets/file_explorer.md
+                  - Tickets: manual/user/ticket.md
+                  - Client Usage:
+                    - Download & Install: manual/client/client_installation.md
+                    - Asset Connection: manual/client/asset_connection.md
+                    - Preferences: manual/client/connection_settings.md
+              - FAQ:
+                - Product FAQ: faq/faq.md
+                - Security Advice: faq/security.md
+                - Enterprise Edition: https://www.jumpserver.org/enterprise.html
+              - Development:
+                - API Docs: dev/rest_api.md
+                - Shell Commands: dev/shell.md
+              - User Stories: user_stories.md
+              - Change Log: change_log.md
+              - Contact Us: contact.md
