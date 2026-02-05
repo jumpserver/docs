@@ -242,13 +242,6 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra:
-  alternate:
-    - name: 中文
-      link: /
-      lang: zh
-    - name: English
-      link: /en/
-      lang: en
   jumpserver:
     tag: v4.10.15
     client_tag: 4.1.2
@@ -306,7 +299,6 @@ plugins:
           - locale: en
             name: English
             build: true
-            link: /en/
             nav:
               - Product Introduction: index.md
               - Quick Start: quick_start.md
