@@ -299,6 +299,7 @@ plugins:
           - locale: en
             name: English
             build: true
+            site_name: JumpServer Documentation
             nav_translations:
               产品介绍: Product Introduction
               快速入门: Quick Start
