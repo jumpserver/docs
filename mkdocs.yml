@@ -299,158 +299,121 @@ plugins:
           - locale: en
             name: English
             build: true
-            nav:
-              - Product Introduction: index.md
-              - Quick Start: quick_start.md
-              - Installation:
-                - Linux Standalone:
-                    - Requirements: installation/setup_linux_standalone/requirements.md
-                    - Installation Guide: installation/setup_linux_standalone/offline_install.md
-                    - Upgrade Guide: installation/setup_linux_standalone/offline_upgrade.md
-                - Linux Cluster:
-                    - Preparation: installation/setup_linux_lb/requirements.md
-                    - Deploy NFS: installation/setup_linux_lb/nfs_install.md
-                    - Deploy PostgreSQL: installation/setup_linux_lb/pgsql_install.md
-                    - Deploy Redis: installation/setup_linux_lb/redis_install.md
-                    - Deploy Node 01: installation/setup_linux_lb/installation_node01.md
-                    - Deploy Node 02: installation/setup_linux_lb/installation_node02.md
-                    - Deploy HAProxy: installation/setup_linux_lb/haproxy_install.md
-                    - Deploy MinIO: installation/setup_linux_lb/minio_install.md
-                    - Deploy Elasticsearch: installation/setup_linux_lb/elasticsearch_install.md
-                    - Upgrade Notes: installation/setup_linux_lb/linux_lb_upgrade.md
-                - 1Panel Setup:
-                    - Installation Guide: installation/1panel_setup/setup_js.md
-                    - Operation Guide: installation/1panel_setup/config_js.md
-                - K8s Helm Setup:
-                    - Installation Guide: installation/setup_kubernetes/helm_online_install.md
-                    - Upgrade Guide: installation/setup_kubernetes/helm_online_upgrade.md
-                - Network Ports: installation/network_port.md
-                - Backup & Recovery: installation/backup_recovery.md
-              - User Manual:
-                - Admin Manual:
-                  - Console:
-                    - User Mgmt:
-                      - User List: manual/admin/console/users/users.md
-                      - User Groups: manual/admin/console/users/user-groups.md
-                    - Asset Mgmt:
-                      - Asset List: manual/admin/console/assets/assets_list.md
-                      - Gateway List: manual/admin/console/assets/net_list.md
-                      - Web Assets: manual/admin/console/assets/web_assets.md
-                    - Account Mgmt:
-                      - Account List: manual/admin/console/account_management/account_list.md
-                      - Account Templates: manual/admin/console/account_management/account_template.md
-                    - Authorization:
-                      - Asset Grants: manual/admin/console/authorization_manage/assets_authorization.md
-                      - Access Control: manual/admin/console/access_control/acls.md
-                      - Session Sharing: manual/admin/console/authorization_manage/session_sharing.md
-                    - Tags: manual/admin/console/else/tag_list.md
-                  - PAM:
-                    - Automation:
-                      - Account Discovery: manual/admin/pam/automation/account_discovery.md
-                      - Account Push: manual/admin/pam/automation/account_push.md
-                      - Account Backup: manual/admin/pam/automation/account_backup.md
-                    - Security:
-                      - Change Password: manual/admin/pam/security/change_secrets.md
-                      - Risk Detection: manual/admin/pam/security/risk_detection.md
-                    - App Mgmt: manual/admin/pam/applications_manage.md
-                  - Audit Console:
-                    - Session Audit:
-                      - Session Records: manual/admin/audit/session_audit/session_record.md
-                      - Session Commands: manual/admin/audit/session_audit/session_command.md
-                      - File Transfers: manual/admin/audit/session_audit/file_transfer.md
-                      - Online Users: manual/admin/audit/session_audit/online_user.md
-                    - Log Audit:
-                      - Login Logs: manual/admin/audit/session_audit/log_audit/login_logs.md
-                      - Password Change Logs: manual/admin/audit/session_audit/log_audit/password_change_logs.md
-                      - Operation Logs: manual/admin/audit/session_audit/log_audit/operation_logs.md
-                    - Job Audit:
-                      - Job List: manual/admin/audit/session_audit/job_audit/job_list.md
-                      - Job Logs: manual/admin/audit/session_audit/job_audit/job_logs.md
-                    - Ticket Audit: manual/admin/audit/session_audit/ticket_audit.md
-                    - Reports: manual/admin/audit/session_audit/reports.md
-                  - Workbench:
-                    - My Assets:
-                      - Connect Assets: manual/admin/workbench/my_assets/assets_connect.md
-                      - Web Terminal: manual/admin/workbench/my_assets/web_terminal.md
-                      - File Transfer: manual/admin/workbench/my_assets/file_transfer.md
-                      - File Manager: manual/admin/workbench/my_assets/file_explorer.md
-                    - Job Center:
-                      - Adhoc Commands: manual/admin/workbench/job_center/adhoc.md
-                      - Job Mgmt: manual/admin/workbench/job_center/jobs_management.md
-                      - Templates: manual/admin/workbench/job_center/templates_management.md
-                      - History: manual/admin/workbench/job_center/execute_history.md
-                    - Others:
-                      - System Tools: manual/admin/workbench/other/system_tool.md
-                  - System Settings:
-                    - Overview: manual/admin/system_settings/overview.md
-                    - Basic Settings: manual/admin/system_settings/basic_settings.md
-                    - Org Mgmt: manual/admin/system_settings/organization_manage.md
-                    - Role List: manual/admin/system_settings/role_list.md
-                    - Platform List: manual/admin/system_settings/platforms.md
-                    - Notifications: manual/admin/system_settings/notification_settings.md
-                    - Feature Settings: manual/admin/system_settings/feature_settings.md
-                    - Authentication:
-                      - Basic: manual/admin/system_settings/authentication_settings/basic_settings.md
-                      - LDAP: manual/admin/system_settings/authentication_settings/LDAP.md
-                      - Passkey: manual/admin/system_settings/authentication_settings/Passkey.md
-                      - CAS: manual/admin/system_settings/authentication_settings/CAS.md
-                      - LDAP HA: manual/admin/system_settings/authentication_settings/LDAPHA.md
-                      - OIDC: manual/admin/system_settings/authentication_settings/OIDC.md
-                      - OAuth2: manual/admin/system_settings/authentication_settings/OAuth2.md
-                      - SAML2: manual/admin/system_settings/authentication_settings/SAML2.md
-                      - WeCom: manual/admin/system_settings/authentication_settings/WeCom.md
-                      - DingTalk: manual/admin/system_settings/authentication_settings/DingTalk.md
-                      - Feishu: manual/admin/system_settings/authentication_settings/Feishu.md
-                      - Lark: manual/admin/system_settings/authentication_settings/Lark.md
-                      - Slack: manual/admin/system_settings/authentication_settings/Slack.md
-                      - Radius: manual/admin/system_settings/authentication_settings/Radius.md
-                    - Storage: manual/admin/system_settings/storage.md
-                    - Components: manual/admin/system_settings/components.md
-                    - Remote Apps: manual/admin/system_settings/remote_apps.md
-                    - Virtual Apps: manual/admin/system_settings/virtual_apps.md
-                    - Security: manual/admin/system_settings/security.md
-                    - Appearance: manual/admin/system_settings/appearance.md
-                    - Tools: manual/admin/system_settings/tools.md
-                    - System Tasks: manual/admin/system_settings/system_tasks.md
-                    - License: manual/admin/system_settings/licenses.md
-                  - Other Settings:
-                    - MFA Face ID: manual/admin/others/MFA_Facelive.md
-                - Auditor Manual:
-                  - Audit Console:
-                    - Session Audit:
-                        - Session Records: manual/admin/audit/session_audit/session_record.md
-                        - Session Commands: manual/admin/audit/session_audit/session_command.md
-                        - File Transfer: manual/admin/audit/session_audit/file_transfer.md
-                        - Online Users: manual/admin/audit/session_audit/online_user.md
-                    - Log Audit:
-                        - Login Logs: manual/admin/audit/session_audit/log_audit/login_logs.md
-                        - Password Change: manual/admin/audit/session_audit/log_audit/password_change_logs.md
-                        - Operation Logs: manual/admin/audit/session_audit/log_audit/operation_logs.md
-                    - Job Audit:
-                        - Job List: manual/admin/audit/session_audit/job_audit/job_list.md
-                        - Job Logs: manual/admin/audit/session_audit/job_audit/job_logs.md
-                    - Ticket Audit: manual/admin/audit/session_audit/ticket_audit.md
-                  - Reports: manual/admin/audit/session_audit/reports.md
-                - User Manual:
-                  - Profile: manual/user/profile.md
-                  - Workbench:
-                    - My Assets:
-                      - Connect Assets: manual/admin/workbench/my_assets/assets_connect.md
-                      - Web Terminal: manual/admin/workbench/my_assets/web_terminal.md
-                      - File Transfer: manual/admin/workbench/my_assets/file_transfer.md
-                      - File Manager: manual/admin/workbench/my_assets/file_explorer.md
-                  - Tickets: manual/user/ticket.md
-                  - Client Usage:
-                    - Download & Install: manual/client/client_installation.md
-                    - Asset Connection: manual/client/asset_connection.md
-                    - Preferences: manual/client/connection_settings.md
-              - FAQ:
-                - Product FAQ: faq/faq.md
-                - Security Advice: faq/security.md
-                - Enterprise Edition: https://www.jumpserver.org/enterprise.html
-              - Development:
-                - API Docs: dev/rest_api.md
-                - Shell Commands: dev/shell.md
-              - User Stories: user_stories.md
-              - Change Log: change_log.md
-              - Contact Us: contact.md
+            nav_translations:
+              产品介绍: Product Introduction
+              快速入门: Quick Start
+              安装部署: Installation
+              Linux 单机部署: Linux Standalone
+              环境要求: Requirements
+              安装指南: Installation Guide
+              升级指南: Upgrade Guide
+              Linux 集群模式部署: Linux Cluster
+              准备工作: Preparation
+              部署 NFS 服务: Deploy NFS
+              部署 PostgreSQL 服务: Deploy PostgreSQL
+              部署 Redis 服务: Deploy Redis
+              部署 JumpServer 01 节点: Deploy Node 01
+              部署 JumpServer 02 节点: Deploy Node 02
+              部署 HAProxy 服务: Deploy HAProxy
+              部署 MinIO 服务: Deploy MinIO
+              部署 Elasticsearch 服务: Deploy Elasticsearch
+              注意事项: Upgrade Notes
+              1Panel 模式部署: 1Panel Setup
+              运维指南: Operation Guide
+              Kubernetes  Helm 模式部署: K8s Helm Setup
+              网络端口说明: Network Ports
+              数据备份以及恢复指南: Backup & Recovery
+              用户手册: User Manual
+              管理员手册: Admin Manual
+              控制台: Console
+              用户管理: User Management
+              用户列表: User List
+              用户组: User Groups
+              资产管理: Asset Management
+              资产列表: Asset List
+              网域列表: Gateway List
+              Web资产: Web Assets
+              账号管理: Account Management
+              账号列表: Account List
+              账号模板: Account Templates
+              授权管理: Authorization
+              资产授权: Asset Grants
+              访问控制: Access Control
+              会话分享: Session Sharing
+              标签列表: Tags
+              PAM: PAM
+              自动化: Automation
+              账号发现: Account Discovery
+              账号推送: Account Push
+              账号备份: Account Backup
+              安全设置: Security
+              账号改密: Change Password
+              风险检测: Risk Detection
+              应用管理: App Management
+              审计台: Audit Console
+              会话审计: Session Audit
+              会话记录: Session Records
+              会话命令: Session Commands
+              文件传输: File Transfers
+              在线用户: Online Users
+              日志审计: Log Audit
+              登录日志: Login Logs
+              改密日志: Password Change Logs
+              操作日志: Operation Logs
+              作业审计: Job Audit
+              作业列表: Job List
+              作业日志: Job Logs
+              工单审计: Ticket Audit
+              报表: Reports
+              工作台: Workbench
+              我的资产: My Assets
+              连接资产: Connect Assets
+              Web终端: Web Terminal
+              文件管理: File Manager
+              作业中心: Job Center
+              快捷命令: Adhoc Commands
+              作业管理: Job Management
+              模板管理: Templates
+              执行历史: History
+              其他: Others
+              系统工具: System Tools
+              系统设置: System Settings
+              概览: Overview
+              基本设置: Basic Settings
+              组织管理: Organization Management
+              角色列表: Role List
+              平台列表: Platform List
+              通知设置: Notifications
+              功能设置: Feature Settings
+              认证设置: Authentication
+              认证: Authentication
+              存储设置: Storage
+              组件设置: Components
+              远程应用: Remote Apps
+              虚拟应用: Virtual Apps
+              界面设置: Appearance
+              系统任务: System Tasks
+              许可证: License
+              其他设置: Other Settings
+              人脸识别 (X-Pack): MFA Face ID (X-Pack)
+              审计员手册: Auditor Manual
+              普通用户手册: User Manual
+              个人设置: Profile
+              工单: Tickets
+              客户端使用: Client Usage
+              客户端下载与安装: Download & Install
+              资产连接: Asset Connection
+              连接设置: Preferences
+              常见问题: FAQ
+              产品 FAQ: Product FAQ
+              安全建议: Security Advice
+              企业版: Enterprise Edition
+              开发文档: Development
+              API 文档: API Docs
+              交互命令: Shell Commands
+              用户案例: User Stories
+              更新日志: Change Log
+              联系我们: Contact Us
+              企业微信 (X-Pack): WeCom (X-Pack)
+              钉钉 (X-Pack): DingTalk (X-Pack)
+              飞书 (X-Pack): Feishu (X-Pack)
