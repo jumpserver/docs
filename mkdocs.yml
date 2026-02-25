@@ -63,6 +63,7 @@ nav:
         - 升级指南: installation/setup_kubernetes/helm_online_upgrade.md
     - 网络端口说明: installation/network_port.md  
     - 数据备份以及恢复指南: installation/backup_recovery.md
+    - 参数说明: manual/env.md
   
   
   - 用户手册:
