@@ -185,6 +185,15 @@ nav:
         - 客户端下载与安装: manual/client/client_installation.md
         - 资产连接: manual/client/asset_connection.md
         - 连接设置: manual/client/connection_settings.md
+      
+  - 运维手册:
+    - 系统架构说明: manual/maintenance/system_architecture.md
+    - 服务端口说明: manual/maintenance/service_port.md
+    - 日常基本操作: manual/maintenance/daily_operations.md
+    - 日志查看操作: manual/maintenance/logs_inspection.md
+    - 系统升级操作: manual/maintenance/system_upgrade.md
+    - 故障恢复操作: manual/maintenance/crash_recovery.md
+    - 系统参数说明: manual/maintenance/env.md
 
 
 
