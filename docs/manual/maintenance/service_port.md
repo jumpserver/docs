@@ -48,10 +48,11 @@ JumpServer 部署成功后，需要开放的端口如下：
 2. 重启 docker 服务；
 3. 重启 JumpServer 服务。
 
- ```bash
- # 修改网络相关配置（根据实际需求执行）
- # 重启 docker 服务
- systemctl restart docker
- # 重启 JumpServer 服务
- jmsctl restart
- ```
+!!! tip ""
+    ```bash
+    # 修改网络相关配置（根据实际需求执行）
+    # 重启 docker 服务
+    systemctl restart docker
+    # 重启 JumpServer 服务
+    jmsctl restart
+    ```

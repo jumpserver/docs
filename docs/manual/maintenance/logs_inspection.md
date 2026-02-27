@@ -22,6 +22,7 @@ JumpServer 的核心日志存放在 `/data/jumpserver/core/data/logs`。
 | `flower.log` | 作业中心的任务监控组件日志 |
 | `gunicorn.log` | 用来记录请求的日志 |
 | `jumpserver.log` | JumpServer 的总日志 |
+| `unexpected_exception.log` | JumpServer 报错信息日志 |
 
 **其他组件的日志文件位置**
 
