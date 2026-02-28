@@ -19,8 +19,9 @@
 | Assets | The assets that need to use the domain to communicate with JumpServer |
 
 ## 3 Domain details
+
 !!! tip ""
-    - Click the **Domain Name** button on the domain list page to open the domain detail page, which mainly contains the domain details page, gateway list page, and activity logs page.
+    - Click the **Domain Name** button on the **Domain List** page to open the **Domain Detail** page, which contains the domain details, gateway list, asset list, and activity logs.
 
 ![V4_net_detail_2.png](../../../../img/V4_net_detail_2.png)
 
@@ -31,32 +32,37 @@
     - Activity: This module mainly records activity logs for the domain.
 
 ## 4 Create a gateway
+
 !!! tip ""
-    - On the domain detail page, click **Gateway List** to create gateway address information for the domain. JumpServer will jump from the gateway server to connect to assets. After creation, you can update, copy, and test gateway connectivity.
+    - On the **Domain Detail** page, click the **Gateway List** tab to create gateway address information for the domain. JumpServer will use the gateway server to establish an SSH tunnel and connect to assets. After creation, you can update, copy, and test gateway connectivity.
 
 ![V4_gateway_create_3](../../../../img/V4_gateway_create_3.png)
 
 ![V4_gateway_create_4](../../../../img/V4_gateway_create_4.png)
 
 ## 5 Update domain
+
 !!! tip ""
-    - When you need to update a domain's information, click the **Edit** button next to the domain to open the domain update page and update the domain details. When you need to modify the gateway information for the domain, click the **Domain Name** button to open the domain detail page and update the gateway information in the gateway module.
+    - When you need to update a domain's information, click the **Edit** button next to the domain to open the **Domain Update** page and update the domain details. When you need to modify the gateway information for the domain, click the **Domain Name** button to open the **Domain Detail** page and update the gateway information in the **Gateway List** section.
 
 ![V4_net_update_5](../../../../img/V4_net_update_5.png)
 
 ## 6 Delete domain
+
 !!! tip ""
     - When you need to delete a domain, click the **Edit** button next to the domain and select **Delete**.
 
 ![V4_net_delete_2](../../../../img/V4_net_delete_2.png)
 
 ## 7 Clone domain
+
 !!! tip ""
-    - To copy a specific domain, click the **···** button next to the corresponding domain and select **Copy**.
+    - To copy a specific domain, click the **More** button next to the corresponding domain and select **Copy**.
 
 ![V4_net_detail_1](../../../../img/V4_net_clone_1.png)
 
 ## 8 Test connection
+
 !!! tip ""
     - To test the connectivity of a gateway, click the **More** button next to the corresponding domain and select **Test Connection**.
 

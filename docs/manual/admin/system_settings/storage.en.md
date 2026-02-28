@@ -1,7 +1,8 @@
 # Storage Settings
 
 !!! tip ""
-    - Click the gear icon in the top-right corner to enter the **System Settings** page, then click **Storage Settings** to open the storage settings page.
+    - Click the **Gear** icon in the top-right corner to open the **System Settings** page.
+    - Click **System Settings > Storage Settings** to open the **Storage Settings** page.
     - The storage settings page mainly configures settings for JumpServer recording storage, account backup, and command storage.
   
 ## 1 Object Storage

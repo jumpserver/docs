@@ -5,7 +5,7 @@
 ## Linux Asset Connection
 
 !!! tip ""
-    - The client supports SSH, SFTP, VNC protocols to connect to target Linux assets. After connection, you can execute commands and upload/download files.
+    - The client supports SSH, SFTP, and VNC protocols to connect to target Linux assets. After connection, you can execute commands and upload/download files.
 
 !!! tip ""
     - In the Linux asset list, click **Connect** next to the target asset name to open the connection window.
@@ -16,7 +16,9 @@
 ## Windows Asset Connection
 
 !!! tip ""
-    - The client supports RDP, VNC, SSH, SFTP protocols to connect to target Windows assets. After connection, you can execute commands and upload/download files.
+    - The client supports RDP, VNC, SSH, and SFTP protocols to connect to target Windows assets. After connection, you can execute commands and upload/download files.
+
+!!! tip ""
     - In the Windows asset list, click **Connect** next to the target asset name to open the connection window.
     - In the connection window, select the protocol, choose the account to use, and click the **Confirm** button to connect to the asset.
 
@@ -41,7 +43,9 @@
 ## Device Asset Connection
 
 !!! tip ""
-    - The client supports SSH protocol to connect to target device assets. Device assets include General, Cisco, Huawei, H3C by default.
+    - The client supports SSH protocol to connect to target device assets. Device assets include **General**, **Cisco**, **Huawei**, and **H3C** by default.
+
+!!! tip ""
     - In the **Devices** asset list, click **Connect** next to the target asset name to open the connection window.
     - In the connection window, select the protocol, choose the account to use, and click the **Confirm** button to connect to the asset.
 

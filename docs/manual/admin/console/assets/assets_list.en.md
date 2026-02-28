@@ -2,7 +2,8 @@
 
 ## 1 Overview
 !!! tip ""
-    - Go to the **Console** page, click **Asset Management > Asset List** to open the asset list page.
+    - Click the **Console** button on the navigation bar to open the **Console** page.
+    - Click **Asset Management > Asset List** to open the **Asset List** page.
     - The asset list page includes asset tree and type tree, asset types, asset creation, asset updates, asset details, asset deletion and other functional modules.
   
 ## 2 Asset tree and type tree

@@ -1,7 +1,8 @@
 # User Group Management
 ## 1 Overview
 !!! tip ""
-    - Go to the **Console** page, click **User Management > User Groups** to open the user group list page.
+    - Click the **Console** button on the navigation bar to open the **Console** page.
+    - Click **User Management > User Groups** to open the **User Group List** page.
     - This page is used to manage JumpServer user groups, including creating, deleting, updating, and viewing user groups.
     - User groups organize users into groups. When assigning asset permissions, you can authorize entire user groups; a single user can join multiple user groups.
 ![users_01](../../../../img/v4_user-groups_01.png)

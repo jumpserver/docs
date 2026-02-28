@@ -3,7 +3,8 @@
 !!! warning "Note: In v4.0, Job Center is disabled by default. System administrators need to enable it at **System Settings > Feature Settings > Job Center**."
 
 !!! tip ""
-    - Enter the **Workbench** page, click **Job Center > Quick Commands** to open the quick commands page.
+    - Click the **Workbench** button on the navigation bar to open the **Workbench** page.
+    - Click **Job Center > Quick Commands** to open the **Quick Commands** page.
     - Quick Commands allows batch command execution on assets that users have permission for. Select assets to execute quick commands in the asset tree, and select account information, timeout settings, etc.
 ![v4_quick_command_1](../../../../img/v4_quick_command_1.png)
 

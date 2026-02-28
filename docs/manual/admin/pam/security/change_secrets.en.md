@@ -2,7 +2,8 @@
 ## 1 Overview
 !!! info "Note: Account password change is a JumpServer Enterprise edition feature."
 !!! tip ""
-    - Go to the **PAM** page, click **Security Settings > Account Password Change** to open the account password change page.
+    - Click the **PAM** button on the navigation bar to open the **PAM** page.
+    - Click **Security Settings > Account Password Change** to open the **Account Password Change** page.
     - Account password change is designed to meet user security requirements by regularly or manually executing tasks to modify user passwords on assets.
     - The account password change task changes user passwords on assets using the privileged account of the asset **This operation requires a privileged account in the asset's account list**.
     - Account password change currently does not support changing Windows domain account passwords.

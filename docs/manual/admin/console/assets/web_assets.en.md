@@ -8,11 +8,12 @@
 
 ## 2 Create a web asset
 
-!!! warning "Before using Web-type assets, you must configure a remote application publisher. See [Remote Applications](../../system_settings/remote_apps.md) for detailed configuration."
+!!! warning ""
+    Before using Web-type assets, you must configure a remote application publisher. See [Remote Applications](../../system_settings/remote_apps.md) for detailed configuration.
 
 !!! tip ""
     - Go to the **Console** page, click **Asset Management > Asset List** to open the asset list page.
-    - Click the **Create** button in the top-left corner of the page, select Web type asset to open the asset creation page, and fill in the asset details.
+    - Click the **Create** button in the top-left corner of the page, select **Web** type asset to open the asset creation page, and fill in the asset details.
 
 !!! tip ""
     - Detailed parameter descriptions:
@@ -23,29 +24,32 @@
 | IP/Hostname | Required. The real address of the web page, supporting domain names and IP addresses. Duplicates are allowed. If the port is not 80 or 443, include the port number. |
 | Asset Platform | Default. The asset platform for Web-type assets |
 | Node | Required. The node to which the asset belongs |
-| Selector | Required. Select the autofill mode. See [Autofill](#3) in this document for detailed configuration |
+| Selector | Required. Select the auto-fill mode. See [Auto-fill](#3) in this document for detailed configuration |
 | Protocol | Default. Default HTTP/HTTPS protocol |
 | Account List | Optional. Accounts used to log in to the asset; multiple accounts can be created. Accounts are bound to assets. |
-| Domain | Optional. For assets across network segments, access through a domain gateway as a proxy is required. **Web assets do not support gateways by default; this option only serves to annotate gateway machine information** |
+| Domain | Optional. For assets across network segments, access through a network gateway as a proxy is required. **Web assets do not support gateways by default; this option only serves to annotate gateway machine information** |
 | Label | Optional. Add labels to the asset for easier management. Web assets also support specifying specific remote app publishers through labels. |
 | Active | Required. Whether the asset is available for use |
 | Note | Optional. Description of the asset information |
 
-## 3 Autofill
-!!! tip ""
-	- The autofill feature is mainly used for websites that require user authentication. Before users access such websites, JumpServer automatically fills in predefined usernames and passwords on the login page to complete authentication. This process is transparent to users without requiring manual credential entry.
+## 3 Auto-fill
 
-### 3.1 Disable autofill
+!!! tip ""
+	- The auto-fill feature is mainly used for websites that require user authentication. Before users access such websites, JumpServer automatically fills in predefined usernames and passwords on the login page to complete authentication. This process is transparent to users without requiring manual credential entry.
+
+### 3.1 Disable auto-fill
+
 !!! tip ""
 	- This method applies to websites that do not require authentication.
 
-### 3.2 Basic autofill
+### 3.2 Basic auto-fill
+
 !!! tip ""
 	- This method applies to websites where the username, password, and login button are all on the same page. JumpServer automatically fills in the credentials and submits the form to authenticate the user.
 
-	- When autofilling information, **you need to locate elements on the web page**. Supported selector types include name selectors, ID selectors, class selectors, CSS selectors, and XPath selectors. For more information, see [Selenium Python: Locating Elements](https://selenium-python.readthedocs.io/locating-elements.html).
+	- When filling in information automatically, **you need to locate elements on the web page**. Supported selector types include name selectors, ID selectors, class selectors, CSS selectors, and XPath selectors. For more information, see [Selenium Python: Locating Elements](https://selenium-python.readthedocs.io/locating-elements.html).
 
-### 3.3 Script autofill
+### 3.3 Script auto-fill
 !!! tip ""
 	- This script method applies to websites with complex login procedures. It supports advanced automation, including multi-step authentication and interaction with dynamic page elements.
 

@@ -3,7 +3,8 @@
 ## 1 Feature Overview
 
 !!! tip ""
-    - Enter the **Audit** page, click **Session Audit > Session Records** to open the session records page.
+    - Click the **Audit** button on the navigation bar to open the **Audit** page.
+    - Click **Session Audit > Session Records** to open the **Session Records** page.
     - Session records contain online sessions and historical sessions in two parts, mainly displaying detailed session records of asset logins, including user, protocol, remote address, session time, and session recordings.
 
 ## 2 Online Sessions

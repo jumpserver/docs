@@ -1,7 +1,8 @@
 # Account Push
 ## 1 Overview
 !!! tip ""
-    - Go to the **PAM** page, click **Automation > Account Push** to open the account push page.
+    - Click the **PAM** button on the navigation bar to open the **PAM** page.
+    - Click **Automation > Account Push** to open the **Account Push** page.
     - JumpServer supports automatic user configuration for managed assets. It includes pushing accounts, push task execution history, and execution records.
 ## 2 Account push task
 !!! tip ""

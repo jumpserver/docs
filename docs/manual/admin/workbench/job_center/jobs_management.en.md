@@ -1,7 +1,8 @@
 # Jobs Management
 
 !!! tip ""
-    - Enter the **Workbench** page, click **Job Center > Jobs Management** to open the jobs management page.
+    - Click the **Workbench** button on the navigation bar to open the **Workbench** page.
+    - Click **Job Center > Jobs Management** to open the **Jobs Management** page.
     - Jobs Management supports creating two types of job tasks: commands and Playbooks. Users can set jobs to run periodically or manually, enabling automated operation and maintenance.
 
 ## 1 Create Job

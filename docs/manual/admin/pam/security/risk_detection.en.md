@@ -3,7 +3,8 @@
 ## 1 Overview
 !!! info "Note: Risk detection is a JumpServer Enterprise edition feature."
 !!! tip ""
-    - Go to the **PAM** page, click **Security Settings > Risk Detection** to open the risk detection page.
+    - Click the **PAM** button on the navigation bar to open the **PAM** page.
+    - Click **Security Settings > Risk Detection** to open the **Risk Detection** page.
     - JumpServer supports account risk detection features that can detect risks such as accounts not logged in for a long time, expired passwords, weak passwords, duplicate passwords, etc., and can export the risk list for review, handling, or ignoring.
 ![V4_risk_detection_1](../../../../img/V4_risk_detection_1.png)
 

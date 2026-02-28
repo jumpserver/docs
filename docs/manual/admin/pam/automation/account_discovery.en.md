@@ -1,7 +1,8 @@
 # Account Discovery
 ## 1 Overview
 !!! tip ""
-    - Go to the **PAM** page, click **Automation > Account Discovery** to open the account discovery page.
+    - Click the **PAM** button on the navigation bar to open the **PAM** page.
+    - Click **Automation > Account Discovery** to open the **Account Discovery** page.
     - The account discovery feature can collect account information from assets managed by JumpServer. By executing tasks, you can collect asset account information. JumpServer supports binding discovered account information to managed assets, reducing manual operations.
 ## 2 Discover accounts
 !!! tip ""

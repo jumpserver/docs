@@ -1,7 +1,8 @@
 # Ticket List
 
 !!! tip ""
-    - Enter the **Audit** page, click **Session Audit > Ticket List** to open the ticket list page.
+    - Click the **Audit** button on the navigation bar to open the **Audit** page.
+    - Click **Session Audit > Ticket List** to open the **Ticket List** page.
     - The ticket list page displays the list of tickets submitted by system users. Click on the corresponding ticket title to view ticket details.
 
 ![image](../../../../img/ticket_audit01.png)

@@ -1,7 +1,8 @@
 # System Tasks
 
 !!! tip ""
-    - Click the gear icon in the top-right corner to enter the **System Settings** page, then click **System Tasks** to open the system tasks view page.
+    - Click the **Gear** icon in the top-right corner to open the **System Settings** page.
+    - Click **System Settings > System Tasks** to open the **System Tasks** page.
 
 ## Task List
 

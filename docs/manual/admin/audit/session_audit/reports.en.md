@@ -1,7 +1,8 @@
 # Reports
 
 !!! tip ""
-    - Enter the **Audit** page, click **Session Audit > Reports** to open the reports page.
+    - Click the **Audit** button on the navigation bar to open the **Audit** page.
+    - Click **Session Audit > Reports** to open the **Reports** page.
     - On the reports page you can view user login reports, user password change reports, asset statistics reports, asset activity reports, account statistics reports, account automation reports, supporting visual data analysis and export.
 
 ## 1 User Reports
