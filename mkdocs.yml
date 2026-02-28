@@ -302,6 +302,7 @@ plugins:
             build: true
             site_name: JumpServer Documentation
             nav_translations:
+              参数说明: Configuration Parameters 
               产品介绍: Product Introduction
               快速入门: Quick Start
               安装部署: Installation
