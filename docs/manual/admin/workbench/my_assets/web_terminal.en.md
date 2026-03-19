@@ -1,7 +1,7 @@
 # Web Terminal
 
 !!! tip ""
-    - The Web Terminal page is primarily used for asset connections. Click the <Web Terminal> button on the Workbench page or the icon in the top-right corner to jump to the Web Terminal page and initiate asset access from this page.
+    - The Web Terminal page is primarily used for asset connections. Click the **Web Terminal** button on the **Workbench** page or the icon in the top-right corner to access the Web Terminal page and initiate asset connections from this page.
 ![v4_web_terminal_1](../../../../img/v4_web_terminal_1.png)
 
 
@@ -22,14 +22,14 @@
 ## 3 Session Dragging
 
 !!! tip ""
-    - When users connect to assets using **Web Terminal** mode, the corresponding Tab windows can be manually dragged to adjust arrangement positions.
+    - When users connect to assets using **Web Terminal** mode, the corresponding Tab windows can be manually dragged to adjust their display positions.
 ![v4_web_terminal_4](../../../../img/v4_web_terminal_4.png)
 
 
 ## 4 Session Switching
 
 !!! tip ""
-    - When users connect to multiple assets, they can use **ALT+Left/Right** keyboard shortcut to quickly jump to the next session.
+    - When users connect to multiple assets, they can use the **ALT+Left/Right** keyboard shortcut to quickly switch between sessions.
 
 ## 5 Session Split Screen
 

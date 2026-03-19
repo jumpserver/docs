@@ -3,7 +3,8 @@
 ## 1 Feature Overview
 
 !!! tip ""
-    - Enter the **Audit** page, click **Session Audit > Session Commands** to open the session commands page.
+    - Click the **Audit** button on the navigation bar to open the **Audit** page.
+    - Click **Session Audit > Session Commands** to open the **Session Commands** page.
     - Session commands mainly display commands executed by users after asset connection. By clicking a specific record row, you can view detailed command execution results.
     - Click to switch to the **Session** commands page. Click the dropdown box shown to display partial output of command execution results.
 ![session_command_02](../../../../img/v4_session_command_02.png)

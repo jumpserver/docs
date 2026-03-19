@@ -1,6 +1,7 @@
 # Personal Profile
+
 !!! tip ""
-    - Click the **Username** button in the top right corner of the page to enter the **Personal Profile** interface. This page mainly displays personal account information and allows you to set personal temporary passwords and other configurations.
+    - Click the **Username** button in the top right corner of the page to enter the **Personal Profile** interface. This page mainly displays personal account information and allows you to configure personal authentication and other settings.
 
 ![image](../../img/profile01.png)
 ## 1 Personal Information
@@ -29,36 +30,40 @@
 
 **Face Recognition**
 
+!!! tip ""
+    - Face recognition is a biometric authentication method that verifies user identity through facial features.
+
 **1 Configure MFA Face Recognition**
 **Record facial information on the user details page and enable MFA**
 
 ![image.png](../../img/Facelive1.png)
 
-**Log out and attempt to log in again, select face verification**
- ![image.png](../../img/Facelive2.png)
+- Log out and attempt to log in again, select face verification
+![image.png](../../img/Facelive2.png)
 
-**Complete face verification within 30 seconds**
+- Complete face verification within 30 seconds
 ![image.png](../../img/Facelive3.png)
 
 
 
 **Email Verification**
 
-- You can use email verification codes as two-factor verification. Users can complete login by entering the email verification code during login.
-- Enable email functionality in the personal information section
+!!! tip ""
+    - You can use email verification codes as two-factor verification. Users can complete login by entering the email verification code during login.
+    - Enable email functionality in the personal information section
 ![image.png](../../img/profile_mfa05.png)
-- Enable email verification in System Settings > Notification Settings and configure the email server information.
+    - Go to **System Settings > Notification Settings** to enable email verification and configure the email server information.
 ![image.png](../../img/profile_mfa04.png)
-- Select Email in the MFA authentication methods after login and enter the corresponding verification code to complete login.
+    - Select **Email** in the MFA authentication methods after login and enter the corresponding verification code to complete login.
 ![image.png](../../img/profile_mfa06.png)
 
 **SMS Authentication**
 
-- You can use SMS verification codes as two-factor verification. Users can complete login by entering the SMS verification code during login.
-- Bind your phone number in the personal information section to enable SMS verification
+!!! tip ""
+    - You can use SMS verification codes as two-factor verification. Users can complete login by entering the SMS verification code during login.
+    - Bind your phone number in the personal information section to enable SMS verification
 ![image.png](../../img/profile_mfa07.png)
-
-- Select SMS in the MFA authentication methods after login and enter the corresponding verification code to complete login.
+    - Select **SMS** in the MFA authentication methods after login and enter the corresponding verification code to complete login.
 ![image.png](../../img/profile_mfa08.png)
 
 
@@ -97,9 +102,10 @@
     - Click the **Basic** button on the left side of the personal settings page to set encryption passwords for files exported from the JumpServer page.
 ![image](../../img/profile06.png)
 
-### 6.2 **Web Terminal**    
+### 6.2 **Web Terminal**
+
 !!! tip ""
-    Click the **Web Terminal** button in the middle of the personal settings page to configure parameters when connecting to assets on the web terminal page.
+    - Click the **Web Terminal** button in the middle of the personal settings page to configure parameters when connecting to assets on the web terminal page.
 ![image](../../img/profile07.png)    
 
 Detailed configuration explanation:

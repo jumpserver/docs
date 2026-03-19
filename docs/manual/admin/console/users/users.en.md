@@ -1,7 +1,8 @@
 # User Management
 ## 1 Overview
 !!! tip ""
-    - Go to the **Console** page, click **User Management > User List** to open the user list page.
+    - Click the **Console** button on the navigation bar to open the **Console** page.
+    - Click **User Management > User List** to open the **User List** page.
     - This page is mainly used to manage JumpServer users, including creating, deleting, updating and viewing users.
 ![users_01](../../../../img/v4_users_01.png)
 ## 2 Create a user

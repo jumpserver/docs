@@ -2,7 +2,8 @@
 
 ## 1 Overview
 !!! tip ""
-    - Go to the **Console** page, click **Asset Management > Asset Authorization** to open the asset authorization page.
+    - Click the **Console** button on the navigation bar to open the **Console** page.
+    - Click **Asset Management > Asset Authorization** to open the **Asset Authorization** page.
     - Asset authorization rules restrict user access to assets, ensuring users can only access authorized assets through specific rules.
 
 ## 2 Create asset authorization

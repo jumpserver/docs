@@ -3,7 +3,8 @@
 ## 1 Feature Overview
 
 !!! tip ""
-    - Enter the **Audit** page, click **Job Audit > Job Logs** to open the job logs page.
+    - Click the **Audit** button on the navigation bar to open the **Audit** page.
+    - Click **Job Audit > Job Logs** to open the **Job Logs** page.
     - Job tasks are log information records of task execution in the user's job center functionality.
     - Main recorded information includes task creator, execution command, whether completed/successful, date, and other information, and can output execution task records.
 

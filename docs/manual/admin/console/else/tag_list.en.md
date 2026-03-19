@@ -3,7 +3,8 @@
 ## 1 Feature Overview
 
 !!! tip ""
-    - Enter the **Console** page, click **Other > Tag List** to open the tag list page.
+    - Click the **Console** button on the navigation bar to open the **Console** page.
+    - Click **Other > Tag List** to open the **Tag List** page.
     - JumpServer provides tagging functionality supporting adding tags to assets, users, and accounts for convenient resource querying and management. Users can customize various resource properties as tags to achieve resource classification, summarization, and analysis. Tags also support advanced features such as endpoint rules and application server binding, meeting distributed architecture deployment requirements.
 
 ## 2 Creating Tags

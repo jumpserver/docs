@@ -4,7 +4,8 @@
 
 ## 1 Overview
 !!! tip ""
-    - Enter the **System Settings** page by clicking the gear icon in the top-right corner, then click **Role List** to open the role list page.
+    - Click the **Gear** icon in the top-right corner to open the **System Settings** page.
+    - Click **System Settings > Role List** to open the **Role List** page.
     - The system default roles are System Administrator, System Auditor, User and System Components; organization roles default to Organization Administrator, Organization Auditor, Organization User. Default roles cannot be deleted or updated.
 
 ## 2 Create Role

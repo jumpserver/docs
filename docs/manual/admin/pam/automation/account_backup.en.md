@@ -1,7 +1,8 @@
 # Account Backup
 ## 1 Overview
 !!! tip ""
-    - Go to the **PAM** page, click **Automation > Account Backup** to open the account backup page.
+    - Click the **PAM** button on the navigation bar to open the **PAM** page.
+    - Click **Automation > Account Backup** to open the **Account Backup** page.
     - To prevent uncontrollable factors such as server data corruption and asset account loss that may prevent the environment from running normally, JumpServer supports an account backup feature that can backup all asset accounts on JumpServer. Backup strategies can be immediate or scheduled backup.
 ## 2 Account backup task
 !!! tip ""

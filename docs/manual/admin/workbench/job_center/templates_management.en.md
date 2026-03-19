@@ -1,7 +1,8 @@
 # Templates Management
 
 !!! tip ""
-    - Enter the **Workbench** page, click **Job Center > Templates Management** to open the templates management page.
+    - Click the **Workbench** button on the navigation bar to open the **Workbench** page.
+    - Click **Job Center > Templates Management** to open the **Templates Management** page.
     - Templates Management supports creating two types of templates: commands and Playbooks. Users can quickly create automated tasks in Quick Commands and Jobs Management, improving work efficiency.
 ![v4_mode_manage_1](../../../../img/v4_mode_manage_1.png)
 
