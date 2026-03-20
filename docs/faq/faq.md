@@ -33,8 +33,8 @@
     - [通过开源软件 XRDP 实现堡垒机远程 Linux(Ubuntu) 桌面](https://kb.fit2cloud.com/?p=140)
     - [JumpServer 使用 Magnus 组件连接数据库报错 Unknown system variable 'transaction_isolation'](https://kb.fit2cloud.com/?p=130)
     - [Razor 组件证书不可信任导致资产无法连接](https://kb.fit2cloud.com/?p=116)
-    - [Windows 资产纳管&连接问题&文件上传下载](https://kb.fit2cloud.com/?p=87)
-    - [Linux 资产纳管&登录连接常见错误&文件上传下载](https://kb.fit2cloud.com/?p=86)
+    - [Windows 文件上传下载](https://kb.fit2cloud.com/?p=84f72563-f0cc-4332-8676-1dd08eecd008)
+    - [Linux 文件上传下载](https://kb.fit2cloud.com/?p=a9ba0d33-94b4-439e-b6d2-81c1db7e8d33)
 
 ## 4 身份认证相关
 !!! tip ""
