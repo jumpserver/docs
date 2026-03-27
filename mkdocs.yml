@@ -10,7 +10,7 @@ edit_uri: ''
 theme:
   name: 'material'
   logo: 'img/logo.png'
-  favicon: 'img/facio.ico'
+  favicon: 'img/favicon.ico'
   language: 'zh'
   palette:
     - scheme: default
