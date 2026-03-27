@@ -88,7 +88,7 @@
 
 ## 7 了解更多
 !!! tip ""
-    - [如何向团队介绍 JumpServer？](https://www.fit2cloud.com/jumpserver/documents/introduce-jumpserver_202511.pdf)
+    - [如何向团队介绍 JumpServer？](https://www.fit2cloud.com/jumpserver/documents/introduce-jumpserver_2026.pdf)
     - [JumpServer 技术白皮书](https://whitepaper.jumpserver.org/){:target="_blank"}
     - [JumpServer 知识库](https://kb.fit2cloud.com/categories/jumpserver){:target="_blank"}
     - [教学视频](https://space.bilibili.com/510493147?spm_id_from=333.337.0.0){:target="_blank"}
