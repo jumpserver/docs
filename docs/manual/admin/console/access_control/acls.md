@@ -108,6 +108,10 @@
 ![V4_data_desensitive_1](../../../../img/V4_data_desensitive_1.png)
 
 !!! tip ""
+    - 完成数据脱敏规则的创建后，在 Web 终端处连接一台数据库资产进行测试验证。以 PostgreSQL 数据库为例，通过 Web CLI 方式连接到指定的 PostgreSQL 数据库资产后，执行查询语句，如下 查询示例（其中，password 为指定的遮盖列名）：
+![V4_data_desensitive_1](../../../../img/V4_data_desensitive_2.png)
+
+!!! tip ""
     详细参数说明：
 
 | 参数   | 说明 |
@@ -118,6 +122,8 @@
 | 资产   | • **全部资产**：全部资产资源； • **指定资产**：指定资产资源； • **属性筛选**：根据属性名来匹配属性值筛选目标资源 |
 | 帐号  | • **所有帐号**：所有帐号资源； • **指定帐号**：指定帐号资源 |
 | 规则   | • **遮盖列名**：支持多个字段名，逗号分隔，支持通配符。例如：<br>单字段名 `password` 表示只脱敏 `password` 字段；<br>多个字段名：`password,secret` 表示脱敏 `password` 和 `secret`；<br>通配符 `*`：`password*` 表示脱敏字段名中包含 `password` 前缀的字段；<br>通配符 `*`：`.*password` 表示脱敏字段名中包含 `password` 后缀的字段 <br>• **遮盖方法**：根据所选方法对数据进行遮盖脱敏 |
+
+
 
 ## 5 连接方式(X-Pack)
 !!! info "注：连接方式控制为 JumpServer 企业版功能。"
