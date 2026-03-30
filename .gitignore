@@ -4,3 +4,4 @@ _build/
 build/
 site/
 .history/
+venv

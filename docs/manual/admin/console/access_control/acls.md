@@ -108,6 +108,10 @@
 ![V4_data_desensitive_1](../../../../img/V4_data_desensitive_1.png)
 
 !!! tip ""
+    - 完成数据脱敏规则的创建后，在 Web 终端处连接一台数据库资产进行测试验证。以 PostgreSQL 数据库为例，通过 Web CLI 方式连接到指定的 PostgreSQL 数据库资产后，执行查询语句，如下 查询示例（其中，password 为指定的遮盖列名）：
+![V4_data_desensitive_1](../../../../img/V4_data_desensitive_2.png)
+
+!!! tip ""
     详细参数说明：
 
 | 参数   | 说明 |
