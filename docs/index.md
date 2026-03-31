@@ -34,6 +34,8 @@
     ``` 
     **特别鸣谢：** <br> 感谢SolidLab发现并向JumpServer开源社区及时反馈上述漏洞。
 
+!!! tip "[速来体验丨JumpServer Skills 技能正式发布](https://mp.weixin.qq.com/s/6kv_UtZRWELXZc_v26U47A)"
+
 
 ## 1 JumpServer 是什么？
 !!! tip ""
