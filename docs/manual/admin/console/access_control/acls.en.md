@@ -108,6 +108,11 @@
 ![V4_data_desensitive_1](../../../../img/V4_data_desensitive_1.png)
 
 !!! tip ""
+    After completing the creation of data masking rules, connect to a database asset at the web terminal for testing and verification. Taking a PostgreSQL database as an example, after connecting to the designated PostgreSQL database asset via the web CLI, execute a query statement as shown in the following query example (where "password" is the specified masked column name).
+![V4_commandfilter_1](../../../../img/V4_data_desensitive_2.png)
+
+
+!!! tip ""
     Detailed parameter descriptions:
 
 | Parameter | Description |
