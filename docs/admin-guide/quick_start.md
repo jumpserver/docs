@@ -3,7 +3,7 @@
 - [教学视频](https://jumpserver.org/video.html){:target="_blank"}
 
 
-!!! info "以下操作均在 Web 页面完成，请使用 admin 用户登陆！"
+!!! info "以下操作均在 Web 页面完成，请使用 admin 用户登陆"
 
 
 ## 一、系统设置
