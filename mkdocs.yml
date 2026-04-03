@@ -38,6 +38,7 @@ theme:
 
 nav:
   - 产品介绍: index.md
+  - 版本对比: https://jumpserver.org/features.html 
   - 快速入门: quick_start.md
   - 安装部署:
     - Linux 单机部署:
