@@ -22,8 +22,7 @@
 ## 3 功能模块相关
 !!! tip ""
     - [v3版本远程应用发布与使用](https://kb.fit2cloud.com/?p=9beffa46-3b58-456b-9db0-7a0b2a9cc665)
-    - [Windows 资产无法连接](https://kb.fit2cloud.com/?p=13)
-    - [Windows 资产测试可连接性](https://kb.fit2cloud.com/?p=11)
+    - [Windows 资产无法连接](https://kb.fit2cloud.com/?p=750695e9-a92a-49b2-87fb-1d3543053095)
     - [批量改密、资产连接性测试等任务输出显示“....”](https://kb.fit2cloud.com/?p=16)
     - [如何通过表格批量创建更新资产、授权、用户信息？](https://kb.fit2cloud.com/?p=144)
     - [Windows 设备中没有虚拟设备 Guacamole RDP 解决方案](https://kb.fit2cloud.com/?p=59)
