@@ -14,7 +14,7 @@
     - JumpServer 为提高安全性，默认查看密码需要校验 MFA；如需取消验证 MFA，可以在 JumpServer 的配置文件(默认为 `/opt/jumpserver/config/config.txt` )中添加配置项 `SECURITY_VIEW_AUTH_NEED_MFA=False` 并重启 JumpServer 服务。
 ### 2.2 账号信息导入/导出
 !!! tip "" 
-    - 可以针对账户信息批量导出，JumpServer 支持导出所有资产关联账号的详细信息与账号密码。账号筛选可根据账号类型、风险账号可以快速筛选账号列表。
+    - 可以针对账户信息批量导出，JumpServer 支持导出所有资产关联账号的详细信息与账号密码，导出后的文件设有密码保护，该密码可以在右上角用户头像的偏好设置中修改。账号筛选可根据账号类型、风险账号可以快速筛选账号列表。
 ![account_list_02](../../../../img/v4_account_list_02.png)
 ### 2.3 添加账号
 !!! tip "" 

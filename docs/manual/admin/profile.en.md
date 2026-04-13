@@ -3,11 +3,11 @@
 !!! tip ""
     - Click the **Username** button in the top right corner of the page to enter the **Personal Profile** interface. This page mainly displays personal account information and allows you to configure personal authentication and other settings.
 
-![image](../../img/profile01.png)
+![image](../../img/V4manual_admin_profile_en_01.png)
 ## 1 Personal Information
 !!! tip ""
-    - This page displays basic information for regular users. On this page, you can also perform authentication configurations, such as MFA authentication, passwords, SSH key login information, etc. If the administrator has configured enterprise WeChat, DingTalk authentication, etc., you can also bind the corresponding account authentication information on this page. Additionally, this page allows you to set message subscriptions, which by default include in-site messages and email settings. If the administrator has configured enterprise WeChat, DingTalk, etc., you can also enable related message subscriptions here.
-![image](../../img/profile02.png)
+    - This page displays basic information for administrator. On this page, you can also perform authentication configurations, such as MFA authentication, passwords, SSH key login information, etc. If the administrator has configured enterprise WeChat, DingTalk authentication, etc., you can also bind the corresponding account authentication information on this page. Additionally, this page allows you to set message subscriptions, which by default include in-site messages and email settings. If the administrator has configured enterprise WeChat, DingTalk, etc., you can also enable related message subscriptions here.
+![image](../../img/V4manual_admin_profile_en_02.png)
 
 ## 2 MFA Authentication
 
@@ -49,9 +49,9 @@
 **Email Verification**
 
 !!! tip ""
-    - You can use email verification codes as two-factor verification. Users can complete login by entering the email verification code during login.
+    - You can use email verification codes as two-factor verification. Administrator can complete login by entering the email verification code during login.
     - Enable email functionality in the personal information section
-![image.png](../../img/profile_mfa05.png)
+![image.png](../../img/V4manual_admin_profile_en_03.png)
     - Go to **System Settings > Notification Settings** to enable email verification and configure the email server information.
 ![image.png](../../img/profile_mfa04.png)
     - Select **Email** in the MFA authentication methods after login and enter the corresponding verification code to complete login.
@@ -72,7 +72,7 @@
     - Regular users can perform authentication configuration and message subscription configuration for their own accounts on the personal profile page. You can view and set user authentication information, including passwords and SSH key login information.
     - Login Password Settings: Regular users can update their current account password on this page.
     - SSH Public Key Settings: Regular users can set SSH public keys and download them on this page, which are used when logging in to the bastion host using SSH terminal.
-![image](../../img/profile03.png)
+![image](../../img/V4manual_admin_profile_en_04.png)
 
 ## 4 Access Keys
 !!! tip ""
@@ -80,7 +80,7 @@
     - Generate Access Key: Users can click the **Generate Access Key** button to generate one. After generation, please save it properly. After the access key is generated, it cannot be viewed again, so please keep it safely.
     - This API key permissions are consistent with the current user role permissions.
     - For API documentation, refer to: https://<bastion host address>/api/docs/.
-![image](../../img/profile04.png)
+![image](../../img/V4manual_admin_profile_en_05.png)
 
 ## 5 Connection Token
 !!! tip ""
@@ -90,23 +90,32 @@
     - Connect to database applications: Connect to database applications through the web terminal and select the connection method as **Database Client** to create token information.
     - Create by calling the API method.
 
-![image](../../img/profile05.png)
+![image](../../img/V4manual_admin_profile_en_06.png)
 
-## 6 Preferences
+### 6 Access Token
+
+!!! tip ""
+
+- Access tokens are temporary credentials generated via the JumpServer client using the OAuth2 (Authorization Code Grant) flow, used to access protected resources.
+- This mechanism is based on the standard OAuth2 protocol. After a user completes authentication via a third-party provider (such as DingTalk or WeCom), JumpServer generates a short-lived access token for identity verification in subsequent requests.
+
+![image](../../img/V4manual_admin_profile_en_07.png)
+
+## 7 Preferences
 !!! tip ""
     - Users can configure the web terminal service on the **Preferences** page.
 
 
-### 6.1 **Basic**
+### 7.1 **Basic**
 !!! tip ""
     - Click the **Basic** button on the left side of the personal settings page to set encryption passwords for files exported from the JumpServer page.This encryption password is used to encrypt exported files to prevent data leakage.
-![image](../../img/profile06.png)
+![image](../../img/V4manual_admin_profile_en_08.png)
 
-### 6.2 **Web Terminal**
+### 7.2 **Web Terminal**
 
 !!! tip ""
     - Click the **Web Terminal** button in the middle of the personal settings page to configure parameters when connecting to assets on the web terminal page.
-![image](../../img/profile07.png)    
+![image](../../img/V4manual_admin_profile_en_09.png)    
 
 Detailed configuration explanation:
 

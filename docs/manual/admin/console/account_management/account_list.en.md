@@ -14,7 +14,7 @@
     - For security, JumpServer defaults to requiring MFA verification to view passwords. To disable MFA verification, add the configuration `SECURITY_VIEW_AUTH_NEED_MFA=False` to the JumpServer configuration file (default: `/opt/jumpserver/config/config.txt`) and restart the JumpServer service.
 ### 2.2 Account information import/export
 !!! tip "" 
-    - You can bulk export account information. JumpServer supports exporting detailed information and passwords of all accounts associated with assets. Account filtering can quickly filter the account list based on account type and risk accounts.
+    - You can bulk export account information. JumpServer supports exporting detailed information and passwords of all accounts associated with assets.Exported files are password-protected. You can modify this password in Preferences, accessible via the user avatar in the top-right corner. Account filtering can quickly filter the account list based on account type and risk accounts.
 ![account_list_02](../../../../img/v4_account_list_02.png)
 ### 2.3 Add account
 !!! tip "" 
