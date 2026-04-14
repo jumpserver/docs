@@ -69,6 +69,7 @@ nav:
   
   - 用户手册:
     - 管理员手册:
+      - 个人设置: manual/admin/profile.md
       - 控制台:
         - 用户管理:
           - 用户列表: manual/admin/console/users/users.md
