@@ -161,10 +161,10 @@
                     https(JSONObject.toJSONString(map), "", "/api/v1/authentication/auth/");
                 }
 
-                public static void https(String params, String token, String uri) throws IOException {
+                public static void https(String params, String token, String url) throws IOException {
 
                     // 创建 URL 对象
-                    URL obj = new URL(JMS_URL + uri);
+                    URL obj = new URL(JMS_URL + url);
                     // 打开连接
                     HttpsURLConnection conn = (HttpsURLConnection) obj.openConnection();
 
@@ -448,7 +448,7 @@
                     String keySecret = "";
                     String endpoint = "";
 
-                    String uri = "/api/v1/users/users/";
+                    String url = "/api/v1/users/users/";
 
                     DefaultKeychain provider = new DefaultKeychain();
                     HmacKey hmacKey = new HmacKey(apiKey, keySecret);
@@ -484,7 +484,7 @@
                         OkHttpClient client = builderClient.build();
 
                         Request.Builder builder = new Request.Builder()
-                                .url(endpoint + uri)
+                                .url(endpoint + url)
                                 .method("GET", null);
                         for (Map.Entry<String, String> header : headers.entrySet()) {
                             builder.addHeader(header.getKey(), header.getValue());

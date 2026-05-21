@@ -13,7 +13,7 @@
 !!! tip ""
     - Click the settings button in the top-right corner
     - Navigate to **System Settings > Authentication Settings > LDAP HA**
-    - In the **Server Address** field, enter the LDAP HA server URI, such as "ldap://example.com:389" and "ldaps://example.com:636".
+    - In the **Server Address** field, enter the LDAP HA server URL, such as "ldap://example.com:389" and "ldaps://example.com:636".
 
 !!! info ""
     - To configure LDAP TLS certificates, upload `ldap_ca.pem`, `ldap_cert.pem`, and `ldap_cert.key` files to the JumpServer `/data/jumpserver/core/data/certs` directory, then restart JumpServer using the command `jmsctl restart`.

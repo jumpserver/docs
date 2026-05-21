@@ -12,8 +12,8 @@
 | 参数 | 说明 | 示例 |
 |------|------|------|
 | CAS | 勾选启用 CAS 身份验证 | 启用/禁用 |
-| 服务端地址 | CAS 服务器 URI | `https://example.com/cas` |
-| 回调地址 | CAS 代理服务器 URI | `https://foo.bar:8443` |
+| 服务端地址 | CAS 服务器 URL | `https://example.com/cas` |
+| 回调地址 | Jumpserver 访问 URL | `https://foo.bar:8443` |
 | 版本 | CAS 协议版本：1、2、3 或 CAS_2_SAML_1_0 | 默认值：3 |
 | 映射属性 | 用户属性映射。键表示 CAS 用户属性名称，值对应 JumpServer 用户属性名称 | 示例见下文 |
 | 组织 | 身份验证和创建后，用户将被添加到所选组织中 |  |

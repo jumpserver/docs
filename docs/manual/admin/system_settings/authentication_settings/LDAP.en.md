@@ -23,7 +23,7 @@
 | Parameter | Description | Example |
 | --- | --- | --- |
 | LDAP | Enable LDAP authentication | Enable/Disable |
-| Server | LDAP server URI | `ldap://example.com:389` or `ldaps://example.com:636` |
+| Server | LDAP server URL | `ldap://example.com:389` or `ldaps://example.com:636` |
 | Bind DN | User DN with query permissions for querying and filtering users | `cn=admin,dc=example,dc=com` or `user@domain.com` format |
 | Password | Password for bind DN user | |
 | User OU | Search starting OU, specifying where to start searching for users; multiple values separated by `\|` | `ou=users,dc=example,dc=com\|ou=tech,dc=example,dc=com` |
