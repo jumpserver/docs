@@ -1,4 +1,17 @@
 # Changelog
+v4.10.16
+------------------------
+Mar 5, 2026
+
+!!! info "New Features 🌱"
+    - feat: Added client trusted IP verification capability
+
+!!! summary "Feature Optimization 🚀"
+    - perf: Replaced Environment with SandboxedEnvironment to enhance YAML template rendering security
+
+!!! success "Bug Fixes 🐛"
+    - fix: Fixed issue where certificate verification was not properly performed for outgoing requests
+    - fix: Fixed logical conflict caused by inconsistent field order when exporting resources
 
 v4.10.15
 ------------------------
