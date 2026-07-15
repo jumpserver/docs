@@ -16,7 +16,7 @@
     - In the **Server Address** field, enter the LDAP HA server URI, such as "ldap://example.com:389" and "ldaps://example.com:636".
 
 !!! info ""
-    - To configure LDAP TLS certificates, upload `ldap_ca.pem`, `ldap_cert.pem`, and `ldap_cert.key` files to the JumpServer `/data/jumpserver/core/data/certs` directory, then restart JumpServer using the command `jmsctl restart`.
+    - To configure LDAP TLS certificates, upload `ldap_ca.pem`, `ldap_cert.pem`, and `ldap_cert.key` files to the JumpServer `/opt/jumpserver/config/certs` directory, then restart JumpServer using the command `jmsctl restart`.
 
 !!! tip ""
     - In the **Bind DN** field, enter a user DN with at least query permissions; this permission will be used to query and filter users, for example "cn=admin,dc=example,dc=com".

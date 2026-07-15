@@ -15,7 +15,7 @@
     - 导航至 **系统设置 > 认证设置 > LDAP**
 
 !!! info ""
-    - 若需配置 LDAP TLS 证书，请将 `ldap_ca.pem、ldap_cert.pem、ldap_cert.key` 文件上传至 JumpServer 服务器 `/data/jumpserver/core/data/certs` 目录，然后通过命令 `jmsctl restart` 重启 JumpServer 服务。
+    - 若需配置 LDAP TLS 证书，请将 `ldap_ca.pem、ldap_cert.pem、ldap_cert.key` 文件上传至 JumpServer 服务器 `/opt/jumpserver/config/certs` 目录，然后通过命令 `jmsctl restart` 重启 JumpServer 服务。
 
 !!! tip ""
     详细参数说明：
