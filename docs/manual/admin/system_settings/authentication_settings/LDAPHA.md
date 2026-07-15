@@ -16,7 +16,7 @@
     - 在 **服务端地址** 字段中，键入 LDAP HA 服务器 URI，例如"ldap://example.com:389”和“ldaps://example.com:636"。
 
 !!! info ""
-    - 若需配置 LDAP TLS 证书，请将 `ldap_ca.pem、ldap_cert.pem、ldap_cert.key` 文件上传至 JumpServer 服务器 `/data/jumpserver/core/data/certs` 目录，然后通过命令 `jmsctl restart` 重启 JumpServer 服务。
+    - 若需配置 LDAP TLS 证书，请将 `ldap_ca.pem、ldap_cert.pem、ldap_cert.key` 文件上传至 JumpServer 服务器 `/opt/jumpserver/config/certs` 目录，然后通过命令 `jmsctl restart` 重启 JumpServer 服务。
 
 !!! tip ""
     - 在 **绑定 DN** 字段中，输入至少具有查询权限的用户 DN，该权限将用于查询和筛选用户，例如“cn=admin，dc=example，dc=com”。
