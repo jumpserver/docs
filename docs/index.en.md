@@ -1,38 +1,38 @@
 # Product Introduction
 
-??? warning "Important Notice | JumpServer Vulnerability Notification and Fix 2025-10-30 (CVE-2025-62712|CVE-2025-62795)"
-    **In October 2025, users reported security vulnerabilities in JumpServer open source bastion machine and reported them to the JumpServer open source project team.**
+??? warning "[Important Notice | JumpServer Vulnerability Notification and Remediation (JS-2026.7.29)]"
+    In July 2026, the JumpServer open source project team received vulnerability reports from security researchers. After verification, the following vulnerabilities were confirmed:
 
-    **Vulnerability Information：** 
-    <br>1. [JumpServer token list for connected sessions has privilege escalation risk, CVE number CVE-2025-62712](https://nvd.nist.gov/vuln/detail/CVE-2025-62712)
-    <br>2. [JumpServer LDAP configuration has unauthorized testing risk, CVE number CVE-2025-62795](https://nvd.nist.gov/vuln/detail/CVE-2025-62795)
-    
-    **Affected versions:** <br> JumpServer V3: <=v3.10.20 LTS
-    <br> JumpServer V4: <=v4.10.11 LTS
+    ■ **Vulnerability in the fastjson dependency of the JumpServer Chen component (CVE-2026-16723)**. Details: [Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
 
-    **Secure versions:** <br> JumpServer V3: >=v3.10.21 LTS
-    <br> JumpServer V4: >=v4.10.12 LTS
+    ■ **Command injection in JumpServer Ansible Gateway SSH ProxyCommand (CVE-2026-XXXXX)**. Details: [GHSA-q9wr-gv6g-5gm6](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-q9wr-gv6g-5gm6)
 
-    **Fix solutions:**
-    <br>**Permanent fix:** Upgrade JumpServer software to the above secure versions.
-    <br>**Temporary fix:** Restrict access to relevant API endpoints with minimal impact to main JumpServer functions. **Nginx configuration example:**
-    
-    ```nginx   
-    # CVE-2025-62712
-    location /api/v1/authentication/super-connection-token/  {
-        return 200 '';
-    }
-    location /api/v1/resources/super-connection-tokens/  {
-        return 200 '';
-    }
-    
-    # CVE-2025-62795, this will disable test and import functions in ldap config
-    location /ws/ldap {
-        return 200 '';
-    }
+    ■ **Unsafe Lookup plugin invocation during JumpServer Ansible automation template rendering (CVE-2026-XXXXX)**. Details: [GHSA-gr5x-5c4h-867g](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-gr5x-5c4h-867g)
 
-    ``` 
-    **Special thanks to:** <br> Thanks to SolidLab for discovering and timely reporting the above vulnerabilities to the JumpServer open source community.
+    ■ **SFTP path traversal in JumpServer KoKo Web Terminal (CVE-2026-54336)**. Details: [GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
+
+    ■ **Remote command execution through Jinja template injection during JumpServer Applet Host deployment (CVE-2026-44845)**. Details: [GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
+
+    ■ **Privilege overwrite in JumpServer organization invitation logic (CVE-2026-44846)**. Details: [GHSA-j836-99w5-523r](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-j836-99w5-523r)
+
+    **Affected versions:**
+
+    <br>JumpServer V3: earlier than v3.10.22 LTS
+    <br>JumpServer V4: earlier than v4.10.17 LTS
+
+    **Secure versions:**
+
+    <br>JumpServer V3: v3.10.22 LTS or later
+    <br>JumpServer V4: v4.10.17 LTS or later
+
+    If an immediate upgrade is not possible:
+
+    **■** Restrict administrative access to high-risk functionality such as Ansible automation, SSH gateways, and Applet Hosts, granting the relevant permissions only to trusted administrators;
+
+    **■** Review existing SSH gateway configurations, automation task templates, Applet Host configurations, and organization role change records for suspicious content;
+
+    **■** Limit the use of accounts that have user invitation permissions.
+
 
 
 ## 1 What is JumpServer?
