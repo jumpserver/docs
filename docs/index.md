@@ -1,38 +1,37 @@
 # 产品介绍
 
-??? warning "重要通知 | JumpServer 漏洞通知及修复方案 2025-10-30（CVE-2025-62712|CVE-2025-62795）"
-    **2025年10月，有用户反馈发现 JumpServer 开源堡垒机存在安全漏洞，并向JumpServer开源项目组进行上报。**
+??? warning "[重要通知丨JumpServer 漏洞通知及修复方案（JS-2026.7.29）]"
+    2026 年 7 月，JumpServer 开源项目组收到安全研究人员提交的漏洞报告。经验证，此次发现的漏洞包括：
 
-    **漏洞信息：** 
-    <br>1. [JumpServer 连接过的令牌列表，存在越权访问风险，CVE 编号为 CVE-2025-62712](https://nvd.nist.gov/vuln/detail/CVE-2025-62712)
-    <br>2. [JumpServer LDAP 配置存在越权测试风险，CVE 编号为 CVE-2025-62795](https://nvd.nist.gov/vuln/detail/CVE-2025-62795)
-    
-    **以上漏洞影响版本为：** <br> JumpServer V3版本：<=v3.10.20 LTS版本
-    <br> JumpServer V4版本：<=v4.10.11 LTS版本
+    ■ **JumpServer Chen 组件依赖库 fastjson 漏洞（CVE-2026-16723）**。漏洞详情：[Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
 
-    **安全版本为：** <br> JumpServer V3版本：>=v3.10.21 LTS版本
-    <br> JumpServer V4版本：>=v4.10.12 LTS版本
+    ■ **JumpServer Ansible Gateway SSH ProxyCommand 命令注入漏洞（CVE-2026-XXXXX）**。漏洞详情：[GHSA-q9wr-gv6g-5gm6](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-q9wr-gv6g-5gm6)
 
-    **修复方案：**
-    <br>**永久修复方案：** 升级 JumpServer 软件至上述安全版本。
-    <br>**临时修复方案：** 限制相关 API 接口访问权限，对JumpServer的主要功能基本无影响。**Nginx 配置示例如下：**
-    
-    ```nginx   
-    # CVE-2025-62712
-    location /api/v1/authentication/super-connection-token/  {
-        return 200 '';
-    }
-    location /api/v1/resources/super-connection-tokens/  {
-        return 200 '';
-    }
-    
-    # CVE-2025-62795, 这个会禁用 ldap 配置中的测试和导入功能
-    location /ws/ldap {
-        return 200 '';
-    }
+    ■ **JumpServer Ansible 自动化模板渲染存在不安全 Lookup 插件调用漏洞（CVE-2026-XXXXX）**。漏洞详情：[GHSA-gr5x-5c4h-867g](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-gr5x-5c4h-867g)
 
-    ``` 
-    **特别鸣谢：** <br> 感谢SolidLab发现并向JumpServer开源社区及时反馈上述漏洞。
+    ■ **JumpServer KoKo Web Terminal SFTP 路径遍历漏洞（CVE-2026-54336）**。漏洞详情：[GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
+
+    ■ **JumpServer Applet Host 部署 Jinja 模板注入远程命令执行漏洞（CVE-2026-44845）**。漏洞详情：[GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
+
+    ■ **JumpServer 组织邀请逻辑权限覆盖漏洞（CVE-2026-44846）**。漏洞详情：[GHSA-j836-99w5-523r](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-j836-99w5-523r)
+
+    **以上漏洞影响版本：**
+
+    <br>JumpServer V3 版本：&lt; v3.10.22 LTS 版本
+    <br>JumpServer V4 版本：&lt; v4.10.17 LTS 版本
+
+    **安全版本：**
+
+    <br>JumpServer V3 版本：>= v3.10.22 LTS 版本
+    <br>JumpServer V4 版本：>= v4.10.17 LTS 版本
+
+    如果暂时无法升级：
+
+    **■** 建议限制 Ansible 自动化、SSH 网关、Applet Host 等高风险功能的管理权限，仅向可信管理员授予相关权限；
+
+    **■** 审查已有 SSH 网关配置、自动化任务模板、Applet Host 配置以及组织角色变更记录，排查异常内容；
+
+    **■** 限制具有用户邀请权限账号的使用范围。
 
 ## 1 JumpServer 是什么？
 !!! tip ""
