@@ -29,12 +29,12 @@
 | 名称        | 版本    | 默认字符集        | 默认字符编码        | TLS/SSL          |
 | :--------- | :------ | :--------------- | :----------------- | :--------------- |
 | PostgreSQL | >= 16  | UTF8             | en_US.utf8         | :material-check: |
-| MySQL      | >= 5.7  | utf8             | utf8_general_ci    | :material-check: |
+| MySQL      | >= 8.0  | utf8             | utf8_general_ci    | :material-check: |
 | MariaDB    | >= 10.6 | utf8mb3          | utf8mb3_general_ci | :material-check: |
 
 | 名称    | 版本 | Sentinel         | Cluster            | TLS/SSL          |
 | :------ | :------ | :--------------- | :----------------- | :--------------- |
-| Redis   | >= 6.0  | :material-check: | :material-close:   | :material-check: |
+| Redis   | >= 7.0  | :material-check: | :material-close:   | :material-check: |
 
 
 !!! tip "创建数据库 SQL 参考"
