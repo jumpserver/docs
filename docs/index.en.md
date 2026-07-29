@@ -5,10 +5,6 @@
 
     ■ **Vulnerability in the fastjson dependency of the JumpServer Chen component (CVE-2026-16723)**. Details: [Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
 
-    ■ **Command injection in JumpServer Ansible Gateway SSH ProxyCommand (CVE-2026-XXXXX)**. Details: [GHSA-q9wr-gv6g-5gm6](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-q9wr-gv6g-5gm6)
-
-    ■ **Unsafe Lookup plugin invocation during JumpServer Ansible automation template rendering (CVE-2026-XXXXX)**. Details: [GHSA-gr5x-5c4h-867g](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-gr5x-5c4h-867g)
-
     ■ **SFTP path traversal in JumpServer KoKo Web Terminal (CVE-2026-54336)**. Details: [GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
 
     ■ **Remote command execution through Jinja template injection during JumpServer Applet Host deployment (CVE-2026-44845)**. Details: [GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
