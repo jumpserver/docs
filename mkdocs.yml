@@ -246,7 +246,7 @@ markdown_extensions:
 
 extra:
   jumpserver:
-    tag: null
+    tag: v4.10.18
     client_tag: 4.1.5
   search:
     separator: '[\s\-\.]+'
