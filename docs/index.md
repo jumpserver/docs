@@ -6,10 +6,6 @@
 
     ■ **JumpServer Chen 组件依赖库 fastjson 漏洞（CVE-2026-16723）**。漏洞详情：[Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
 
-    ■ **JumpServer Ansible Gateway SSH ProxyCommand 命令注入漏洞（CVE-2026-XXXXX）**。漏洞详情：[GHSA-q9wr-gv6g-5gm6](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-q9wr-gv6g-5gm6)
-
-    ■ **JumpServer Ansible 自动化模板渲染存在不安全 Lookup 插件调用漏洞（CVE-2026-XXXXX）**。漏洞详情：[GHSA-gr5x-5c4h-867g](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-gr5x-5c4h-867g)
-
     ■ **JumpServer KoKo Web Terminal SFTP 路径遍历漏洞（CVE-2026-54336）**。漏洞详情：[GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
 
     ■ **JumpServer Applet Host 部署 Jinja 模板注入远程命令执行漏洞（CVE-2026-44845）**。漏洞详情：[GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
