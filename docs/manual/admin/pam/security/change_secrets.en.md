@@ -6,7 +6,6 @@
     - Click **Security Settings > Account Password Change** to open the **Account Password Change** page.
     - Account password change is designed to meet user security requirements by regularly or manually executing tasks to modify user passwords on assets.
     - The account password change task changes user passwords on assets using the privileged account of the asset **This operation requires a privileged account in the asset's account list**.
-    - Account password change currently does not support changing Windows domain account passwords.
 
 !!! warning ""
     - Since **modifying privileged user passwords** is a high-risk operation, JumpServer does not allow modifying privileged user passwords by default. The function to modify asset privileged account passwords is disabled by default and requires administrators to add the option `CHANGE_AUTH_PLAN_SECURE_MODE_ENABLED=false` in the configuration file and restart the bastion machine service to take effect.
