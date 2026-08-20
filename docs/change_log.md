@@ -1,5 +1,60 @@
 # 更新日志
 
+v4.10.19
+------------------------
+2026年8月20日
+
+!!! info "新增功能 🌱"
+    - feat: 新增 KOTL 组件，实现 JumpServer 自身的可视化运维
+    - feat: 统一 Magnus 服务端口，并支持根据连接协议报文自动识别协议
+    - feat: 文件传输支持账号策略，完善账号选择、权限校验及异常资产确认机制
+    - feat: SMTP 支持使用系统 CA、自定义 CA，或关闭证书校验
+    - feat: 新增剪贴板访问控制，主要适用于 RDP、VNC 等图形化连接
+
+!!! summary "功能优化 🚀"
+    - perf: 优化表单中多对多资源的选择体验与数据加载性能
+    - perf: 优化资源列表顶部的搜索与筛选体验
+    - perf: 优化资源批量编辑表单的交互方式及资源批量选择体验
+    - perf: 优化工单相关 API 的查询性能，减少 SQL 执行次数
+    - perf: 优化 API OPTIONS 响应结构，将 filters、ordering、search 等查询元数据作为独立字段返回
+    - perf: 优化用户创建页面，移除名称唯一性校验，支持用户名称重复
+    - perf: 升级 Chen SQL 解析器版本
+    - perf: 增强 Chen 对 PostgreSQL ALTER COLUMN TYPE、SET DATA TYPE、COLLATE、USING 等字段类型变更语法的解析能力
+    - perf: 用户账号过期及授权过期提醒邮件支持配置发送时间参数
+    - perf: 增强 Chen 对 Oracle SQL 方言的解析能力
+    - perf: 将华为云 OBS SDK 升级至 3.26.2，提升对象存储兼容性
+    - perf: 新增 FusionCompute 用户类型配置，支持本地用户、域用户及接口互联用户
+    - perf: 工单支持创建工单流，并可配置抄送人
+    - perf: 优化自动化任务日志
+    - perf: 优化自动化改密任务的推送性能
+    - perf: 交换机支持“切换自”账号
+    - perf: 支持全局配置个人偏好
+    - perf: 增强 Koko rzsz 文件传输的稳定性
+    - perf: 重置密码邮件同时展示用户姓名和登录用户名
+    - perf: 优化组织删除前的依赖检查，增加账号模板依赖提示
+    - perf: 将 Ansible Executor 镜像升级至 Python 3.14，并补充 AWS SDK 依赖
+    - perf: 优化 NEC VNC Proxy，支持连接 Mac 资产
+    - perf: 优化 Koko Web Terminal 的剪贴板访问控制
+    - perf: 优化命令存储，支持 Elasticsearch 9
+
+!!! success "问题修复 🐛"
+    - fix: OAuth2 客户端授权回调过程中产生的 Grant 操作不再记录审计日志
+    - fix: 修复解绑 UKey 序列号时，因空值处理异常导致报错的问题
+    - fix: 修复 Chen SQL 中 – 行注释可能导致后续字段或表达式在格式化后被错误注释的问题
+    - fix: 修复 Chen 无法解析 Oracle FETCH FIRST … ROW ONLY、OFFSET … ROW 等分页语法的问题
+    - fix: 修复 Chen 解析 Oracle SQL 时可能将其隐式拆分为多条语句的问题，避免未使用分号分隔的 SQL 被错误拆分执行
+    - fix: 修复部分 MySQL 数据库因 Public Key Retrieval 限制导致 Chen 无法连接的问题
+    - fix: 修复部分禁止匿名查询的 LDAP 服务无法正常连接的问题
+    - fix: 修复部分 S3 兼容对象存储配置测试或访问失败的问题
+    - fix: 修复部分数据库环境下查询资源活动日志时出现字符排序规则冲突的问题
+    - fix: 修复 LDAP 工作线程未正确清理数据库连接而导致连接异常的问题
+    - fix: 修复清理审计命令时，空查询集导致时间戳处理异常的问题
+    - fix: 修复作业中心授权节点搜索不生效的问题
+    - fix: 修复 PostgreSQL Ping 模块数据库参数传递错误的问题
+    - fix: 修复 Koko 登录 Ubuntu 资产时切换自账号失败的问题
+
+
+
 v4.10.18
 ------------------------
 2026年7月28日
