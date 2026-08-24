@@ -1,33 +1,44 @@
 # Product Introduction
 
-??? warning "[Important Notice | JumpServer Vulnerability Notification and Remediation (JS-2026.7.29)]"
-    In July 2026, the JumpServer open source project team received vulnerability reports from security researchers. After verification, the following vulnerabilities were confirmed:
+??? warning "[Important Notice | JumpServer Vulnerability Notification and Remediation (JS-2026.08.21)]"
+    In August 2026, the JumpServer open source project team received vulnerability reports from security researchers. After verification, the following vulnerability was confirmed:
 
-    ■ **Vulnerability in the fastjson dependency of the JumpServer Chen component (CVE-2026-16723)**. Details: [Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
-
-    ■ **SFTP path traversal in JumpServer KoKo Web Terminal (CVE-2026-54336)**. Details: [GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
-
-    ■ **Remote command execution through Jinja template injection during JumpServer Applet Host deployment (CVE-2026-44845)**. Details: [GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
-
-    ■ **Privilege overwrite in JumpServer organization invitation logic (CVE-2026-44846)**. Details: [GHSA-j836-99w5-523r](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-j836-99w5-523r)
+    ■ **Access key disclosure caused by SQL query filtering in JumpServer (CVE-2026-xxxxx)**. Details: [GHSA-6rp5-ff2m-qfrm](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-6rp5-ff2m-qfrm)
 
     **Affected versions:**
 
-    <br>JumpServer V3: earlier than v3.10.22 LTS
-    <br>JumpServer V4: earlier than v4.10.17 LTS
+    <br>JumpServer V3: >= 3.7.0, < 3.10.23
+    <br>JumpServer V4: >= 4.0.0, < 4.10.19
 
-    **Secure versions:**
+    **Fixed versions:**
 
-    <br>JumpServer V3: v3.10.22 LTS or later
-    <br>JumpServer V4: v4.10.17 LTS or later
+    <br>JumpServer V3: >= v3.10.23
+    <br>JumpServer V4: >= v4.10.19
 
-    If an immediate upgrade is not possible:
+    **Exploitation conditions:**
 
-    **■** Restrict administrative access to high-risk functionality such as Ansible automation, SSH gateways, and Applet Hosts, granting the relevant permissions only to trusted administrators;
+    An attacker with ordinary user privileges can use this API to obtain the access keys of other users, which is equivalent to having the permissions of other users, including admin.
 
-    **■** Review existing SSH gateway configurations, automation task templates, Applet Host configurations, and organization role change records for suspicious content;
+    **Remediation:**
 
-    **■** Limit the use of accounts that have user invitation permissions.
+    Users are advised to upgrade to a secure version as soon as possible. In the secure versions, JumpServer has fixed the above issues.
+
+    **Temporary workaround:**
+
+    Disable this filtering parameter in the nginx configuration file:
+
+    1. If HTTPS is enabled, modify `/opt/jumpserver/config/nginx/lb_http_server.conf`;
+
+    2. If HTTPS is not enabled, modify `/etc/nginx/conf.d/http_server.conf` inside the jms_web container, and commit the changes after completion.
+
+    ```
+    location / {
+        if ($arg__rel != "") {
+            return 400;
+        }
+        .....
+    }
+    ```
 
 
 
