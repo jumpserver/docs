@@ -14,12 +14,17 @@
 | 6379 | Database Service | Redis service |
 | 3389 | Razor Service Port | RDP Client method to connect to Windows assets |
 | 2222 | SSH Client | Use terminal tools like Xshell, PuTTY, MobaXterm to connect to JumpServer via SSH Client |
-| 33061 | Magnus MySQL Service Port | DB Client method to connect to MySQL database assets |
-| 33062 | Magnus MariaDB Service Port | DB Client method to connect to MariaDB database assets |
-| 54320 | Magnus PostgreSQL Service Port | DB Client method to connect to PostgreSQL database assets |
-| 63790 | Magnus Redis Service Port | DB Client method to connect to Redis database assets |
-| 15210 | Magnus Oracle Service Port | DB Client method to connect to Oracle database assets |
+| 5525 | Magnus Service Port | DB Client method to connect to database assets. The system automatically assigns the corresponding port based on the type of the connected asset |
 | 15900 | NEC Service Port | VNC service |
+
+!!! tip ""
+    - Starting from v4.10.19, the Magnus port has been unified to **5525**, and it no longer uses different ports for different database types. When connecting to database assets, the system automatically assigns the corresponding connection port based on the asset type (MySQL, MariaDB, PostgreSQL, Redis, Oracle, etc.).
+    - The Magnus ports used in older versions (before v4.10.19) are as follows. After upgrading, please adjust the firewall rules as needed:
+        - 33061: Magnus MySQL Service Port
+        - 33062: Magnus MariaDB Service Port
+        - 54320: Magnus PostgreSQL Service Port
+        - 63790: Magnus Redis Service Port
+        - 15210: Magnus Oracle Service Port
 
 ## 2 Firewall Common Commands
 

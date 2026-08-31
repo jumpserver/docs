@@ -13,12 +13,17 @@
 | 6379 | 数据库服务 | Redis 服务使用 |
 | 3389 | Razor 服务端口 | RDP Client 方式连接 Windows 资产 |
 | 2222 | SSH Client | SSH Client 方式使用终端工具连接 JumpServer，比如 Xshell、PuTTY、MobaXterm 等终端工具 |
-| 33061 | Magnus MySQL 服务端口 | DB Client 方式连接 MySQL 数据库资产 |
-| 33062 | Magnus MariaDB 服务端口 | DB Client 方式连接 MariaDB 数据库资产 |
-| 54320 | Magnus PostgreSQL 服务端口 | DB Client 方式连接 PostgreSQL 数据库资产 |
-| 63790 | Magnus Redis 服务端口 | DB Client 方式连接 Redis 数据库资产 |
-| 15210 | Magnus Oracle 服务端口 | DB Client 方式连接 Oracle 数据库资产 |
+| 5525 | Magnus 服务端口 | DB Client 方式连接数据库资产，系统会根据所连接资产的类型自动分配对应端口 |
 | 15900 | NEC 服务端口 |  VNC 服务使用 |
+
+!!! tip ""
+    - 自 v4.10.19 版本起，Magnus 的端口统一调整为 **5525**，不再区分数据库类型使用不同的端口。连接数据库资产时，系统会自动根据资产的类型（MySQL、MariaDB、PostgreSQL、Redis、Oracle 等）分配对应的连接端口。
+    - 旧版本（v4.10.19 之前）使用的 Magnus 端口如下，升级后请按需调整防火墙放行规则：
+        - 33061：Magnus MySQL 服务端口
+        - 33062：Magnus MariaDB 服务端口
+        - 54320：Magnus PostgreSQL 服务端口
+        - 63790：Magnus Redis 服务端口
+        - 15210：Magnus Oracle 服务端口
 
 ## 2 防火墙常用命令
 !!! tip ""
