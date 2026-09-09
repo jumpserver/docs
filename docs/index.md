@@ -11,13 +11,13 @@
     任意已登录的普通用户只需在API请求中附加特定参数，便能越权获取管理员的Access Key。
 
     **受影响版本：**
-    
-    JumpServer V3 版本：>= 3.7.0 且 <v3.10.23 LTS
-    JumpServer V4 版本：>= 4.0.0 且 <v4.10.19 LTS
-    
+
+    JumpServer V3 版本：>= 3.7.0 且 &lt;v3.10.23 LTS<br>
+    JumpServer V4 版本：>= 4.0.0 且 &lt;v4.10.19 LTS
+
     **安全版本：**
 
-    JumpServer V3 版本：>= v3.10.23 LTS
+    JumpServer V3 版本：>= v3.10.23 LTS<br>
     JumpServer V4 版本：>= v4.10.19 LTS
 
     **修复方案：**

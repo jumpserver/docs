@@ -12,13 +12,13 @@
 
     **Affected versions:**
 
-    <br>JumpServer V3: >= 3.7.0 and &lt; v3.10.23 LTS
-    <br>JumpServer V4: >= 4.0.0 and &lt; v4.10.19 LTS
+    JumpServer V3: >= 3.7.0 and &lt; v3.10.23 LTS<br>
+    JumpServer V4: >= 4.0.0 and &lt; v4.10.19 LTS
 
     **Secure versions:**
 
-    <br>JumpServer V3: >= v3.10.23 LTS
-    <br>JumpServer V4: >= v4.10.19 LTS
+    JumpServer V3: >= v3.10.23 LTS<br>
+    JumpServer V4: >= v4.10.19 LTS
 
     **Remediation:**
 
