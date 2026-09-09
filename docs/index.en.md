@@ -1,33 +1,51 @@
 # Product Introduction
 
-??? warning "[Important Notice | JumpServer Vulnerability Notification and Remediation (JS-2026.7.29)]"
-    In July 2026, the JumpServer open source project team received vulnerability reports from security researchers. After verification, the following vulnerabilities were confirmed:
+??? warning "[Important Notice | JumpServer Vulnerability Notification and Remediation (JS-2026.09.09)]"
 
-    ■ **Vulnerability in the fastjson dependency of the JumpServer Chen component (CVE-2026-16723)**. Details: [Security Advisory: Remote Code Execution in fastjson 1.2.68-1.2.83](https://github.com/alibaba/fastjson2/wiki/Security-Advisory:-Remote-Code-Execution-in-fastjson-1.2.68%E2%80%931.2.83)
+    In August 2026, the JumpServer open source project team received vulnerability reports from security researchers. After verification, the following vulnerability was confirmed:
 
-    ■ **SFTP path traversal in JumpServer KoKo Web Terminal (CVE-2026-54336)**. Details: [GHSA-x6rg-36j6-76vr](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-x6rg-36j6-76vr)
+    ■ **JumpServer SQL query filtering leads to access key leakage vulnerability**. Details: [GHSA-6rp5-ff2m-qfrm](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-6rp5-ff2m-qfrm)
 
-    ■ **Remote command execution through Jinja template injection during JumpServer Applet Host deployment (CVE-2026-44845)**. Details: [GHSA-22h6-pcgh-9v7q](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q)
+    **Exploitation conditions:**
 
-    ■ **Privilege overwrite in JumpServer organization invitation logic (CVE-2026-44846)**. Details: [GHSA-j836-99w5-523r](https://github.com/jumpserver/jumpserver/security/advisories/GHSA-j836-99w5-523r)
+    Any logged-in regular user can obtain the administrator's Access Key without authorization by appending specific parameters to an API request.
 
     **Affected versions:**
 
-    <br>JumpServer V3: earlier than v3.10.22 LTS
-    <br>JumpServer V4: earlier than v4.10.17 LTS
+    <br>JumpServer V3: >= 3.7.0 and &lt; v3.10.23 LTS
+    <br>JumpServer V4: >= 4.0.0 and &lt; v4.10.19 LTS
 
     **Secure versions:**
 
-    <br>JumpServer V3: v3.10.22 LTS or later
-    <br>JumpServer V4: v4.10.17 LTS or later
+    <br>JumpServer V3: >= v3.10.23 LTS
+    <br>JumpServer V4: >= v4.10.19 LTS
 
-    If an immediate upgrade is not possible:
+    **Remediation:**
 
-    **■** Restrict administrative access to high-risk functionality such as Ansible automation, SSH gateways, and Applet Hosts, granting the relevant permissions only to trusted administrators;
+    Upgrade the JumpServer bastion host (including Community Edition and Enterprise Edition) to a secure version.
 
-    **■** Review existing SSH gateway configurations, automation task templates, Applet Host configurations, and organization role change records for suspicious content;
+    **Temporary remediation:**
 
-    **■** Limit the use of accounts that have user invitation permissions.
+    Disable the following related filtering parameters in the nginx configuration file:
+
+    1. If HTTPS is enabled, this can be done by modifying the /opt/jumpserver/config/nginx/lb_http_server.conf configuration file;
+
+    2. If HTTPS is not enabled, you need to modify the /etc/nginx/conf.d/http_server.conf configuration file in the jms_web container, and then execute the container commit to save the changes. After the update is complete, restart the jms_web container.
+
+    ```
+    location / {
+        if ($args ~* "(^|&)(_|%5f)(r|%72)(e|%65)(l|%6c)=") {        
+            return 400;    
+        }    
+        .....
+    }
+    ```
+    After the fix, you can verify it with the following commands:
+    ```
+    curl -sk -o /dev/null -w '%{http_code}\n' 'http://<address>/api/v1/users/users/?_rel=not'    # Expected 400
+    curl -sk -o /dev/null -w '%{http_code}\n' 'http://<address>/api/v1/users/users/?%5Frel=not'  # Expected 400
+    curl -sk -o /dev/null -w '%{http_code}\n' 'http://<address>/api/v1/users/users/'             # Expected 401/403
+    ```
 
 
 
