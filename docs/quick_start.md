@@ -25,8 +25,7 @@
     | 172.16.80.31 |   test_mysql01  |    3306    |      MySQL 5     |      root     |  Test2020.M   |
 
 !!! warning "注意"
-    - Windows 资产如需执行 `更新资产` 信息、`可连接性测试` 等自动化任务，需先进行 [Windows SSH 设置](guide/asset_requirements/windows_ssh.md)，此非登录 Windows 资产的必填项。
-    - MySQL 应用需要授权 `Core` 和 `KoKo` 的远程访问的权限 [MySQL 应用要求](guide/asset_requirements/mysql.md)
+    - Windows 资产如需执行 `更新资产` 信息、`可连接性测试` 等自动化任务，需先进行 Windows SSH 设置，此非登录 Windows 资产的必填项。
 
 ### 2.2 编辑资产树
 !!! tip ""
