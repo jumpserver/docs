@@ -29,7 +29,7 @@
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| Server Address | Keycloak server URI | `https://keycloak.example.com` |
+| Server Address | Keycloak server URL | `https://keycloak.example.com` |
 | Domain | Keycloak domain name | `JumpServer` |
 
 ### 2.2 Using Native OIDC
