@@ -25,8 +25,7 @@
     | 172.16.80.31 | test_mysql01 | 3306 | MySQL 5 | root | Test2020.M |
 
 !!! warning "Note"
-    - Windows assets need [Windows SSH setup](guide/asset_requirements/windows_ssh.md) before executing automation tasks such as `update asset information` and `connectivity testing`; this is not required for logging in to Windows assets.
-    - MySQL application requires granting `Core` and `KoKo` remote access permissions [MySQL requirements](guide/asset_requirements/mysql.md)
+    - Windows assets need Windows SSH setup before executing automation tasks such as `update asset information` and `connectivity testing`; this is not required for logging in to Windows assets.
 
 ### 2.2 Edit Asset Tree
 !!! tip ""
