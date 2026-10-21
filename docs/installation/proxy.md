@@ -53,7 +53,7 @@
     server {
       listen 80;
       server_name demo.jumpserver.org;  # 自行修改成你自己的域名
-      return 301 https://$server_name$request_uri;
+      return 301 https://$server_name$request_url;
     }
 
     server {
@@ -132,7 +132,7 @@
     server {
         listen 80;
         server_name demo.jumpserver.org;  # 自行修改成你的域名
-        return 301 https://$server_name$request_uri;
+        return 301 https://$server_name$request_url;
     }
     server {
         listen 443 ssl http2;

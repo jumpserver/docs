@@ -25,7 +25,7 @@
 
 | 参数 | 说明 | 示例 |
 |------|------|------|
-| 服务端地址 | Keycloak 服务器 URI | `https://keycloak.example.com` |
+| 服务端地址 | Keycloak 服务器 URL | `https://keycloak.example.com` |
 | 域 | Keycloak 域名称 | `JumpServer` |
 
 ### 2.2 使用本机 OIDC

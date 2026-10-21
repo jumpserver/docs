@@ -23,7 +23,7 @@
 | 参数 | 说明 | 示例 |
 |------|------|------|
 | LDAP | 勾选启用 LDAP 身份验证 | 启用/禁用 |
-| 服务器 |  LDAP 服务器 URI | `ldap://example.com:389` 或 `ldaps://example.com:636` |
+| 服务器 |  LDAP 服务器 URL | `ldap://example.com:389` 或 `ldaps://example.com:636` |
 | 绑定 DN | 具有查询权限的用户 DN，用于查询和筛选用户 | `cn=admin，dc=example，dc=com` 或者 `user@domain.com` 格式 |
 | 密码 | 绑定 DN 用户的密码 |   |
 | 用户 OU | 搜索起始 OU，指定从何处开始搜索用户，多个值用 `|` 分隔 | `ou=users，dc=example，dc=com |ou=tech，dc=example，dc=com` |
